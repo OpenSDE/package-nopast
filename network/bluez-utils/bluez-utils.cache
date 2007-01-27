@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1134157643 Fri Dec  9 20:47:23 2005
+[BUILDTIME] 20 (9)
+[SIZE] 0.42 MB, 54 files
+
+[DEP] alsa-lib
+[DEP] bash
+[DEP] binutils
+[DEP] bluez-libs
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] fuse
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libusb
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openobex
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

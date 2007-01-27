@@ -1,0 +1,28 @@
+
+[TIMESTAMP] 1165032693 Sat Dec  2 06:11:33 2006
+[BUILDTIME] 10 (5)
+[SIZE] 0.10 MB, 8 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] openssl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

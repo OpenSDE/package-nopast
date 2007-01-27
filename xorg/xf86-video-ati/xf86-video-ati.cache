@@ -1,0 +1,38 @@
+
+[TIMESTAMP] 1133925436 Wed Dec  7 04:17:16 2005
+[BUILDTIME] 40 (9)
+[SIZE] 1.61 MB, 39 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] fontsproto
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] glproto
+[DEP] grep
+[DEP] libdrm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] net-tools
+[DEP] panoramixproto
+[DEP] pkgconfig
+[DEP] randrproto
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] videoproto
+[DEP] xextproto
+[DEP] xf86driproto
+[DEP] xf86miscproto
+[DEP] xineramaproto
+[DEP] xorg-server
+[DEP] xproto

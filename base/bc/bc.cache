@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1133885241 Tue Dec  6 17:07:21 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.30 MB, 21 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo

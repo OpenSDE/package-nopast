@@ -1,0 +1,28 @@
+
+[TIMESTAMP] 1134039996 Thu Dec  8 12:06:36 2005
+[BUILDTIME] 15 (9) ERROR
+[SIZE] 0.21 MB, 34 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] blackdown-jdk
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] libbonobo
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] orbit2
+[DEP] pkgconfig
+[DEP] popt
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1134044515 Thu Dec  8 13:21:55 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.41 MB, 30 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] perl
+[DEP] perl-crypt-des
+[DEP] perl-digest-sha1
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

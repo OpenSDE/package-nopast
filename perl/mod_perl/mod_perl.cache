@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1133830029 Tue Dec  6 01:47:09 2005
+[BUILDTIME] 45 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] apache
+[DEP] apr
+[DEP] apr-util
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] gawk
+[DEP] gcc
+[DEP] gdbm
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] perl
+[DEP] perl-io-socket-ssl
+[DEP] perl-libwww
+[DEP] perl-net-ssleay
+[DEP] perl-uri
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

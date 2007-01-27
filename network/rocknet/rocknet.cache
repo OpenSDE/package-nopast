@@ -1,0 +1,15 @@
+
+[TIMESTAMP] 1165059144 Sat Dec  2 13:32:24 2006
+[BUILDTIME] 5 (9)
+[SIZE] 0.04 MB, 24 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] m4
+[DEP] sed

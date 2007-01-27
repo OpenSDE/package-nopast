@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1165002256 Fri Dec  1 21:44:16 2006
+[BUILDTIME] 15 (5) ERROR
+[SIZE] 4.05 MB, 1334 files
+
+[DEP] 00-dirtree
+[DEP] asterisk
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

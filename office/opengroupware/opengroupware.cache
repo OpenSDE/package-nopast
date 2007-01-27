@@ -1,0 +1,34 @@
+
+[TIMESTAMP] 1165043902 Sat Dec  2 09:18:22 2006
+[BUILDTIME] 190 (5) ERROR
+[SIZE] 0.02 MB, 16 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] ffcall
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] glibc32
+[DEP] gmp
+[DEP] gnustep-base
+[DEP] gnustep-gui
+[DEP] gnustep-make
+[DEP] grep
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] make
+[DEP] openldap
+[DEP] openssl
+[DEP] pilot-link
+[DEP] sed
+[DEP] sope
+[DEP] sysfiles
+[DEP] tar

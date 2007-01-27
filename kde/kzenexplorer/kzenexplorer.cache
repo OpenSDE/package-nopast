@@ -1,0 +1,65 @@
+
+[TIMESTAMP] 1164939197 Fri Dec  1 04:13:17 2006
+[BUILDTIME] 30 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] arts
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] file
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] kdelibs
+[DEP] libdnet
+[DEP] libdrm
+[DEP] libice
+[DEP] libjpeg
+[DEP] libnjb
+[DEP] libpng
+[DEP] libsm
+[DEP] libusb
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxinerama
+[DEP] libxml
+[DEP] libxmu
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] pkgconfig
+[DEP] qt
+[DEP] sed
+[DEP] sysfiles
+[DEP] taglib
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

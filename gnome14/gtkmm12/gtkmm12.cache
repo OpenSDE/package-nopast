@@ -1,0 +1,38 @@
+
+[TIMESTAMP] 1134019671 Thu Dec  8 06:27:51 2005
+[BUILDTIME] 35 (9)
+[SIZE] 2.36 MB, 217 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glib12
+[DEP] glibc
+[DEP] grep
+[DEP] gtk+12
+[DEP] libsigc++1
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] xproto

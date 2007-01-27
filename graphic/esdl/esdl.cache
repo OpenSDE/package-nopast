@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1133837173 Tue Dec  6 03:46:13 2005
+[BUILDTIME] 10 (5)
+[SIZE] 1.44 MB, 97 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] erlang-otp
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libsdl
+[DEP] libx11
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xproto

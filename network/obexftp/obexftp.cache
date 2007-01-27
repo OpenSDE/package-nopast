@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1134157458 Fri Dec  9 20:44:18 2005
+[BUILDTIME] 15 (9)
+[SIZE] 0.18 MB, 46 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bluez-libs
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openobex
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

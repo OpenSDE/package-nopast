@@ -1,0 +1,55 @@
+
+[TIMESTAMP] 1133829805 Tue Dec  6 01:43:25 2005
+[BUILDTIME] 75 (5)
+[SIZE] 2.61 MB, 135 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] dclib
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] libdnet
+[DEP] libdrm
+[DEP] libice
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxinerama
+[DEP] libxml
+[DEP] libxmu
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openssl
+[DEP] qt
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

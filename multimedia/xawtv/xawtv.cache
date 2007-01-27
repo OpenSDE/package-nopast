@@ -1,0 +1,65 @@
+
+[TIMESTAMP] 1134202363 Sat Dec 10 09:12:43 2005
+[BUILDTIME] 10 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] aalib
+[DEP] alsa-lib
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib12
+[DEP] glibc
+[DEP] gpm
+[DEP] grep
+[DEP] imake
+[DEP] inputproto
+[DEP] kbproto
+[DEP] lesstif
+[DEP] libdrm
+[DEP] libdv
+[DEP] libice
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libquicktime
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxft
+[DEP] libxinerama
+[DEP] libxp
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxv
+[DEP] libxxf86dga
+[DEP] libxxf86vm
+[DEP] libzvbi
+[DEP] linux-header
+[DEP] lirc
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] pkgconfig
+[DEP] renderproto
+[DEP] sed
+[DEP] slang
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

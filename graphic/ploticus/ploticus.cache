@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1134009337 Thu Dec  8 03:35:37 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.61 MB, 41 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libpng
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xproto
+[DEP] zlib

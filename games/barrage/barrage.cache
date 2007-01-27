@@ -1,0 +1,36 @@
+
+[TIMESTAMP] 1133744003 Mon Dec  5 01:53:23 2005
+[BUILDTIME] 5 (5)
+[SIZE] 1.77 MB, 45 files
+
+[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libmikmod
+[DEP] libogg
+[DEP] libsdl
+[DEP] libsdl_mixer
+[DEP] libvorbis
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] sed
+[DEP] smpeg
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo

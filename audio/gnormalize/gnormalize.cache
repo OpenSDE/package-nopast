@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1164759263 Tue Nov 28 21:14:23 2006
+[BUILDTIME] 100 (9)
+[SIZE] 1.14 MB, 26 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] hicolor-icon-theme
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

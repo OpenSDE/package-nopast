@@ -1,0 +1,42 @@
+
+[TIMESTAMP] 1164970873 Fri Dec  1 13:01:13 2006
+[BUILDTIME] 60 (5)
+[SIZE] 4.81 MB, 70 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] device-mapper
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glib12
+[DEP] glibc
+[DEP] grep
+[DEP] gtk+12
+[DEP] libselinux
+[DEP] libsepol
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] pkgconfig
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

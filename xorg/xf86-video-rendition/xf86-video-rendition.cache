@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1133928244 Wed Dec  7 05:04:04 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.25 MB, 20 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] fontsproto
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pkgconfig
+[DEP] randrproto
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xextproto
+[DEP] xorg-server
+[DEP] xproto

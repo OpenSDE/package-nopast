@@ -1,0 +1,48 @@
+
+[TIMESTAMP] 1133954786 Wed Dec  7 12:26:26 2005
+[BUILDTIME] 70 (9)
+[SIZE] 3.19 MB, 153 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] libice
+[DEP] libsm
+[DEP] libtool
+[DEP] libx11
+[DEP] libxau
+[DEP] libxaw
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxmu
+[DEP] libxp
+[DEP] libxpm
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] procps
+[DEP] rman
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tcl
+[DEP] texinfo
+[DEP] util-linux
+[DEP] xextproto
+[DEP] xproto

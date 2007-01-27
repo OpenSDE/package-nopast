@@ -1,0 +1,20 @@
+# Copyright (C) 1998 - 2003 Clifford Wolf
+
+SHELL=/bin/sh
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+MAILTO=root
+
+#
+# Make daily checkings and send reports to root
+#
+0 5 * * * root test -x /usr/sbin/cron.run && /usr/sbin/cron.run -mail-to-root
+
+#
+# Run the at jobs
+#
+* * * * * root test -x /usr/lib/atrun && /usr/lib/atrun
+
+#
+# Update /var/db/*  (passwd.db, shadow.db, ...)
+#
+# * * * * * root make -C /var/db > /dev/null 2>&1

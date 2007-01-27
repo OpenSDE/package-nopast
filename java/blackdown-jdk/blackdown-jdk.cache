@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1134049915 Thu Dec  8 14:51:55 2005
+[BUILDTIME] 15 (9)
+[SIZE] 84.49 MB, 1771 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] java-dirtree
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

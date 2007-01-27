@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1165026135 Sat Dec  2 04:22:15 2006
+[BUILDTIME] 15 (5)
+[SIZE] 0.46 MB, 13 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] dpkg
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gnupth
+[DEP] grep
+[DEP] libassuan
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libksba
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] openldap
+[DEP] openssl
+[DEP] perl
+[DEP] perl-gettext
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

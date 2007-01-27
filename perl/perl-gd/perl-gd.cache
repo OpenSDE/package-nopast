@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1134059848 Thu Dec  8 17:37:28 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.52 MB, 35 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libgd
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libx11
+[DEP] libxpm
+[DEP] linux-header
+[DEP] make
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zlib

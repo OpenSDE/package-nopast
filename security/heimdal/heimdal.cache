@@ -1,0 +1,50 @@
+
+[TIMESTAMP] 1165078890 Sat Dec  2 19:01:30 2006
+[BUILDTIME] 295 (9)
+[SIZE] 9.63 MB, 408 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bdb
+[DEP] bdb33
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] dpkg
+[DEP] e2fsprogs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] groff
+[DEP] imake
+[DEP] libcap
+[DEP] libice
+[DEP] liblockfile
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] man
+[DEP] mktemp
+[DEP] ncurses
+[DEP] openssl
+[DEP] pam
+[DEP] patch
+[DEP] perl
+[DEP] perl-gettext
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto

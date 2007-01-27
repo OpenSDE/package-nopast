@@ -1,0 +1,52 @@
+
+[TIMESTAMP] 1134006781 Thu Dec  8 02:53:01 2005
+[BUILDTIME] 195 (9)
+[SIZE] 17.68 MB, 636 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] ghostscript
+[DEP] glibc
+[DEP] graphviz
+[DEP] grep
+[DEP] imake
+[DEP] jasper
+[DEP] jbigkit
+[DEP] lcms
+[DEP] libice
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libsm
+[DEP] libtiff
+[DEP] libtool
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxml
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xextproto
+[DEP] xproto
+[DEP] zlib

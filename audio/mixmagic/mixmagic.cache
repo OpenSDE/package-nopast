@@ -1,0 +1,47 @@
+
+[TIMESTAMP] 1134184582 Sat Dec 10 04:16:22 2005
+[BUILDTIME] 15 (9)
+[SIZE] 0.25 MB, 31 files
+
+[DEP] alsa-lib
+[DEP] audiofile
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] bdb33
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] esound
+[DEP] findutils
+[DEP] gcc
+[DEP] gettext
+[DEP] glib12
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] gtk+12
+[DEP] imlib
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] libxml1
+[DEP] libxpm
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] orbit10
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] xproto
+[DEP] zlib

@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1133955160 Wed Dec  7 12:32:40 2005
+[BUILDTIME] 25 (9)
+[SIZE] 1.64 MB, 353 files
+
+[DEP] bash
+[DEP] bdftopcf
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gzip
+[DEP] make
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

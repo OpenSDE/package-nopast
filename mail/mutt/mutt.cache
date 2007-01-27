@@ -1,0 +1,38 @@
+
+[TIMESTAMP] 1133946457 Wed Dec  7 10:07:37 2005
+[BUILDTIME] 20 (9)
+[SIZE] 3.61 MB, 107 files
+
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gdbm
+[DEP] gettext
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] zlib

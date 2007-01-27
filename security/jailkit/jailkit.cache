@@ -1,0 +1,34 @@
+
+[TIMESTAMP] 1168019151 Fri Jan  5 18:45:51 2007
+[BUILDTIME] 10 (5)
+[SIZE] 0.21 MB, 40 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] gzip
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] numpy
+[DEP] pil
+[DEP] pygobject
+[DEP] python
+[DEP] rat
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] trac-doxygen
+[DEP] util-linux
+[DEP] wxpython

@@ -1,0 +1,34 @@
+
+[TIMESTAMP] 1165003497 Fri Dec  1 22:04:57 2006
+[BUILDTIME] 35 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] heimdal
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] pam
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tcp_wrappers
+[DEP] util-linux

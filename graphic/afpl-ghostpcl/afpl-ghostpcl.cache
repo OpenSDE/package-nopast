@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1164622691 Mon Nov 27 12:18:11 2006
+[BUILDTIME] 35 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxt
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xproto

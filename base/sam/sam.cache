@@ -1,0 +1,14 @@
+
+[TIMESTAMP] 1164964698 Fri Dec  1 11:18:18 2006
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 0.02 MB, 12 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] grep
+[DEP] sed

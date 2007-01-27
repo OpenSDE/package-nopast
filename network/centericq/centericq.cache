@@ -1,0 +1,36 @@
+
+[TIMESTAMP] 1134264626 Sun Dec 11 02:30:26 2005
+[BUILDTIME] 125 (9)
+[SIZE] 3.38 MB, 45 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gpgme
+[DEP] grep
+[DEP] libgpg-error
+[DEP] libidn
+[DEP] libjpeg
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] zlib

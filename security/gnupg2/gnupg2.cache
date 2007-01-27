@@ -1,0 +1,33 @@
+
+[TIMESTAMP] 1133952168 Wed Dec  7 11:42:48 2005
+[BUILDTIME] 30 (9)
+[SIZE] 1.25 MB, 34 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gnupth
+[DEP] grep
+[DEP] libassuan
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libksba
+[DEP] libusb
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib

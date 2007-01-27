@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1134205318 Sat Dec 10 10:01:58 2005
+[BUILDTIME] 25 (9)
+[SIZE] 3.43 MB, 253 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libidn
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openjade
+[DEP] openssl
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib

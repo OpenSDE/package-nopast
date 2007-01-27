@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1134123674 Fri Dec  9 11:21:14 2005
+[BUILDTIME] 5 (9)
+[SIZE] 2.14 MB, 168 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] docbookx
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] scrollkeeper
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

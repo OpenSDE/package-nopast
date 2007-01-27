@@ -1,0 +1,41 @@
+
+[TIMESTAMP] 1133837500 Tue Dec  6 03:51:40 2005
+[BUILDTIME] 10 (5)
+[SIZE] 0.13 MB, 15 files
+
+[DEP] 00-dirtree
+[DEP] atk
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cairo
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gaim
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] glitz
+[DEP] grep
+[DEP] gtk+
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libotr
+[DEP] libpng
+[DEP] libx11
+[DEP] libxrender
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pango
+[DEP] patch
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto

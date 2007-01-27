@@ -1,0 +1,17 @@
+
+[TIMESTAMP] 1134263274 Sun Dec 11 02:07:54 2005
+[BUILDTIME] 5 (9)
+[SIZE] 1.19 MB, 22 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

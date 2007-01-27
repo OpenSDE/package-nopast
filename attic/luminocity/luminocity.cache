@@ -1,0 +1,58 @@
+
+[TIMESTAMP] 1134274628 Sun Dec 11 05:17:08 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.16 MB, 20 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] compositeproto
+[DEP] coreutils
+[DEP] damageproto
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fixesproto
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] gtk+
+[DEP] inputproto
+[DEP] kbproto
+[DEP] libdrm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxrender
+[DEP] libxtst
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pango
+[DEP] patch
+[DEP] perl
+[DEP] pkgconfig
+[DEP] recordproto
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xextproto
+[DEP] xproto
+[DEP] zlib

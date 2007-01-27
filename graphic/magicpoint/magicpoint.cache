@@ -1,0 +1,56 @@
+
+[TIMESTAMP] 1134031550 Thu Dec  8 09:45:50 2005
+[BUILDTIME] 15 (9)
+[SIZE] 8.74 MB, 40 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] flex
+[DEP] fontconfig
+[DEP] freetype
+[DEP] freetype1
+[DEP] gawk
+[DEP] gcc
+[DEP] gccmakedep
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] inputproto
+[DEP] kbproto
+[DEP] lcms
+[DEP] libice
+[DEP] libjpeg
+[DEP] libmng
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxft
+[DEP] libxmu
+[DEP] libxrender
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] pkgconfig
+[DEP] renderproto
+[DEP] rman
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

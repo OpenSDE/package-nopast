@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1134318357 Sun Dec 11 17:25:57 2005
+[BUILDTIME] 10 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] alsa-lib
+[DEP] autoconf
+[DEP] automake
+[DEP] avifile
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] lame
+[DEP] libmad
+[DEP] libquicktime
+[DEP] libsdl
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] rte
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

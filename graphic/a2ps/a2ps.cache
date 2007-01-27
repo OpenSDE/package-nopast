@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1134003317 Thu Dec  8 01:55:17 2005
+[BUILDTIME] 25 (9)
+[SIZE] 2.99 MB, 300 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] emacs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] psutils
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

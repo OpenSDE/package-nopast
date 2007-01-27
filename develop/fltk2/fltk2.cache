@@ -1,0 +1,49 @@
+
+[TIMESTAMP] 1165909153 Tue Dec 12 08:39:13 2006
+[BUILDTIME] 45 (5)
+[SIZE] 3.32 MB, 206 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] inputproto
+[DEP] libdrm
+[DEP] libice
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxft
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxrender
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xextproto
+[DEP] xineramaproto
+[DEP] xprop
+[DEP] xproto
+[DEP] zlib

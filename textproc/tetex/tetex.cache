@@ -1,0 +1,54 @@
+
+[TIMESTAMP] 1134000792 Thu Dec  8 01:13:12 2005
+[BUILDTIME] 145 (9)
+[SIZE] 353.05 MB, 19620 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] ed
+[DEP] expat
+[DEP] findutils
+[DEP] flex
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gpm
+[DEP] grep
+[DEP] imake
+[DEP] lesstif
+[DEP] libdnet
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxaw
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxft
+[DEP] libxmu
+[DEP] libxp
+[DEP] libxpm
+[DEP] libxrender
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

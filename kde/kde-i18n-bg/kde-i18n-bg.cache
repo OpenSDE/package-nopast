@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1134165578 Fri Dec  9 22:59:38 2005
+[BUILDTIME] 20 (9)
+[SIZE] 7.67 MB, 557 files
+
+[DEP] 00-dirtree
+[DEP] arts
+[DEP] autoconf
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] kdelibs
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

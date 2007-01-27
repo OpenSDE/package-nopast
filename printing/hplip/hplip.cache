@@ -1,0 +1,40 @@
+
+[TIMESTAMP] 1165033743 Sat Dec  2 06:29:03 2006
+[BUILDTIME] 60 (5) ERROR
+[SIZE] 12.29 MB, 992 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cups
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] gzip
+[DEP] hpijs
+[DEP] libjpeg
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-snmp
+[DEP] numpy
+[DEP] openssl
+[DEP] patch
+[DEP] pil
+[DEP] pygobject
+[DEP] python
+[DEP] sane-backends
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] wxpython

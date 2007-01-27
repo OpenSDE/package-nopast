@@ -1,0 +1,13 @@
+
+[TIMESTAMP] 1069904760 Thu Nov 27 04:46:00 2003
+[CONFIG-ID] 2.0.0-rc4-powerpc-powerpc-750-generic-expert
+[ROCKVER] 2.0.0-rc4
+
+[LOGS] 9-yaboot.log
+
+[BUILDTIME] 4609 (9)
+[SIZE] 0.79 MB, 69 files
+
+[DEP] bash binutils bzip2 coreutils findutils gcc glibc grep gzip make
+[DEP] patch sed sysfiles tar yaboot
+

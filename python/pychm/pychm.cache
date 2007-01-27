@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1168463868 Wed Jan 10 18:17:48 2007
+[BUILDTIME] 100 (9)
+[SIZE] 0.14 MB, 15 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] chmlib
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gst-python
+[DEP] linux-header
+[DEP] paramiko
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar

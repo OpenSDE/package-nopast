@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1134123052 Fri Dec  9 11:10:52 2005
+[BUILDTIME] 15 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] apache
+[DEP] apr
+[DEP] apr-util
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib12
+[DEP] glibc
+[DEP] grep
+[DEP] libxml1
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openssl
+[DEP] patch
+[DEP] perl
+[DEP] popt
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] util-linux

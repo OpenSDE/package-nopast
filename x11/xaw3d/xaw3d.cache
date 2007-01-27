@@ -1,0 +1,36 @@
+
+[TIMESTAMP] 1133955326 Wed Dec  7 12:35:26 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.64 MB, 90 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] gccmakedep
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxext
+[DEP] libxmu
+[DEP] libxp
+[DEP] libxpm
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xextproto
+[DEP] xproto

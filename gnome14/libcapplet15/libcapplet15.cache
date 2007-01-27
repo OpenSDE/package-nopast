@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1134006951 Thu Dec  8 02:55:51 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.23 MB, 58 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib12
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] gtk+12
+[DEP] imlib
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] orbit10
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo

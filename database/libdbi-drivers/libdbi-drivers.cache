@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1164966083 Fri Dec  1 11:41:23 2006
+[BUILDTIME] 10 (5)
+[SIZE] 1.03 MB, 66 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libdbi
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] mysql
+[DEP] net-tools
+[DEP] postgresql
+[DEP] sed
+[DEP] sqlite
+[DEP] sqlite2
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

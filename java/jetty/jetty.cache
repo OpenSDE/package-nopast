@@ -1,0 +1,18 @@
+
+[TIMESTAMP] 1159632270 Sat Sep 30 18:04:30 2006
+[BUILDTIME] 100 (9)
+[SIZE] 18.52 MB, 1057 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] unzip

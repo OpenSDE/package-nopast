@@ -1,0 +1,40 @@
+
+[TIMESTAMP] 1134005939 Thu Dec  8 02:38:59 2005
+[BUILDTIME] 20 (9)
+[SIZE] 2.90 MB, 36 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] emacs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] latex2html
+[DEP] libice
+[DEP] libpng
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tetex
+[DEP] texinfo
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

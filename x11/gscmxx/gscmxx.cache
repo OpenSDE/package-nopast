@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1133740096 Mon Dec  5 00:48:16 2005
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 0.21 MB, 17 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gtk-perl10
+[DEP] imagemagick
+[DEP] make
+[DEP] perl
+[DEP] perl-image-size
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

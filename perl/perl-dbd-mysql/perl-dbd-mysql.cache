@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1134204774 Sat Dec 10 09:52:54 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.37 MB, 32 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mysql
+[DEP] openssl
+[DEP] perl
+[DEP] perl-dbi
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zlib

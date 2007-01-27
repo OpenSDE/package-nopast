@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1132935817 Fri Nov 25 17:23:37 2005
+[BUILDTIME] 100 (9)
+[SIZE] 0.07 MB, 13 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] fontsproto
+[DEP] gawk
+[DEP] gcc
+[DEP] gccmakedep
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] make
+[DEP] randrproto
+[DEP] renderproto
+[DEP] rman
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] videoproto
+[DEP] xorg-server
+[DEP] xproto

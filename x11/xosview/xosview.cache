@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1134272028 Sun Dec 11 04:33:48 2005
+[BUILDTIME] 15 (9) ERROR
+[SIZE] 0.14 MB, 8 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxpm
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto

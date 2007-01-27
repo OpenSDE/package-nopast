@@ -1,0 +1,14 @@
+
+[TIMESTAMP] 1075336621 Wed Jan 28 21:37:01 2004
+[CONFIG-ID] 2.0.0-rc5-x86-pentium2-32-mnemosyne-expert
+[ROCKVER] 2.0.0-rc5
+
+[LOGS] 5-rsbac.log 9-rsbac.log
+
+[BUILDTIME] 5204 (9)
+[SIZE] 4.03 MB, 112 files
+
+[DEP] 00-dirtree autoconf automake bash binutils bison bzip2 coreutils
+[DEP] diffutils findutils gcc3 gettext glibc grep linux-header
+[DEP] linux24-src make mktemp ncurses perl sed sysfiles tar texinfo
+

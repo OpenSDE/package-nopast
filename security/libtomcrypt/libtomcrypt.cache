@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1166303714 Sat Dec 16 18:15:14 2006
+[BUILDTIME] 100 (9)
+[SIZE] 1.96 MB, 24 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tetex
+[DEP] tomsfastmath

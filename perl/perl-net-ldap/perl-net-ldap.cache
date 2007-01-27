@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1134062620 Thu Dec  8 18:23:40 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.83 MB, 95 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] perl
+[DEP] perl-authen-sasl
+[DEP] perl-convert-asn1
+[DEP] perl-io-socket-ssl
+[DEP] perl-libxml
+[DEP] perl-net-ssleay
+[DEP] perl-uri
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

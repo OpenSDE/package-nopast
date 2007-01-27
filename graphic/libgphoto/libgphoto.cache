@@ -1,0 +1,34 @@
+
+[TIMESTAMP] 1134139953 Fri Dec  9 15:52:33 2005
+[BUILDTIME] 110 (9)
+[SIZE] 4.72 MB, 277 files
+
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] libexif
+[DEP] libjpeg
+[DEP] libusb
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] pkgconfig
+[DEP] rpm
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] util-linux
+[DEP] xscreensaver

@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1164998891 Fri Dec  1 20:48:11 2006
+[BUILDTIME] 5 (5)
+[SIZE] 0.14 MB, 10 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] lua
+[DEP] make
+[DEP] ncurses
+[DEP] patch
+[DEP] pkgconfig
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] unzip

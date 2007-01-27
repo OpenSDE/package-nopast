@@ -1,0 +1,37 @@
+
+[TIMESTAMP] 1134152062 Fri Dec  9 19:14:22 2005
+[BUILDTIME] 45 (9)
+[SIZE] 2.81 MB, 403 files
+
+[DEP] aspell
+[DEP] audiofile
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gmp
+[DEP] gnustep-base
+[DEP] gnustep-gui
+[DEP] gnustep-make
+[DEP] grep
+[DEP] libice
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libsm
+[DEP] libtiff
+[DEP] libungif
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zlib

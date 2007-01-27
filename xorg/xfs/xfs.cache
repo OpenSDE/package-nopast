@@ -1,0 +1,33 @@
+
+[TIMESTAMP] 1133931492 Wed Dec  7 05:58:12 2005
+[BUILDTIME] 10 (9)
+[SIZE] 0.13 MB, 20 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] fontsproto
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libfontenc
+[DEP] libfs
+[DEP] libxfont
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] xtrans
+[DEP] zlib

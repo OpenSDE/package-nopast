@@ -1,0 +1,22 @@
+
+[TIMESTAMP] 1133831791 Tue Dec  6 02:16:31 2005
+[BUILDTIME] 5 (5)
+[SIZE] 0.37 MB, 57 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] kdebindings
+[DEP] mod_ruby
+[DEP] rmagick
+[DEP] ruby
+[DEP] sed
+[DEP] subversion
+[DEP] sysfiles
+[DEP] tar

@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1134254724 Sat Dec 10 23:45:24 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.32 MB, 17 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libgd
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxpm
+[DEP] make
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zlib

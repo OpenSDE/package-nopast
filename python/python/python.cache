@@ -1,0 +1,37 @@
+
+[TIMESTAMP] 1133956688 Wed Dec  7 12:58:08 2005
+[BUILDTIME] 80 (9)
+[SIZE] 47.48 MB, 4326 files
+
+[DEP] bash
+[DEP] bdb
+[DEP] bdb33
+[DEP] binutils
+[DEP] bluez-libs
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gdbm
+[DEP] glibc
+[DEP] grep
+[DEP] kdebindings
+[DEP] libx11
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] patch
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tcl
+[DEP] tk
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

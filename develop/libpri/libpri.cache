@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1160373068 Mon Oct  9 07:51:08 2006
+[BUILDTIME] 5 (5)
+[SIZE] 0.27 MB, 11 files
+
+[DEP] 00-dirtree
+[DEP] asterisk
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1133955864 Wed Dec  7 12:44:24 2005
+[BUILDTIME] 15 (9)
+[SIZE] 0.35 MB, 46 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

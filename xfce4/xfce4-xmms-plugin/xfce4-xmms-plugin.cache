@@ -1,0 +1,28 @@
+
+[TIMESTAMP] 1164961822 Fri Dec  1 10:30:22 2006
+[BUILDTIME] 10 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] net-tools
+[DEP] pango
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

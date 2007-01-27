@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1133800746 Mon Dec  5 17:39:06 2005
+[BUILDTIME] 5 (5)
+[SIZE] 0.10 MB, 12 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] perl-dbd-postgresql
+[DEP] perl-dbi
+[DEP] perl-html-template
+[DEP] postgresql
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

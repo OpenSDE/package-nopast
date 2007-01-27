@@ -1,0 +1,2 @@
+run     exec mpd --stdout --no-daemon D_sysconfdir/mpd.conf
+log     mpd

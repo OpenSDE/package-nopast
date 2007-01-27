@@ -1,0 +1,37 @@
+
+[TIMESTAMP] 1165043005 Sat Dec  2 09:03:25 2006
+[BUILDTIME] 15 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] acl
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] libselinux
+[DEP] libsepol
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] numpy
+[DEP] pil
+[DEP] pygobject
+[DEP] python
+[DEP] rat
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] wxpython

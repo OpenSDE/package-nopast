@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1165035016 Sat Dec  2 06:50:16 2006
+[BUILDTIME] 5 (5)
+[SIZE] 0.18 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libpcap
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo

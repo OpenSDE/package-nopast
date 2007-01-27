@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1134159348 Fri Dec  9 21:15:48 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.04 MB, 11 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] inputproto
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxtst
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xextproto
+[DEP] xproto

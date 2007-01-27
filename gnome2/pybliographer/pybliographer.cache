@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1134200509 Sat Dec 10 08:41:49 2005
+[BUILDTIME] 5 (9) ERROR
+[SIZE] 0.09 MB, 12 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] gnome-python
+[DEP] gnue-common
+[DEP] grep
+[DEP] libx11
+[DEP] linux-header
+[DEP] make
+[DEP] net-tools
+[DEP] numpy
+[DEP] patch
+[DEP] pil
+[DEP] pkgconfig
+[DEP] pygtk
+[DEP] python
+[DEP] recode
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] wxpython
+[DEP] zope

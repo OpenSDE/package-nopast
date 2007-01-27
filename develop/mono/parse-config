@@ -1,0 +1,10 @@
+if hasflag MONO; then
+	if [ "$pkg" == "mono" ]; then
+		prefix="opt/mono"
+	else
+		pkgprefix -t mono
+		prefix=$( pkgprefix mono )
+	fi
+	set_confopt
+	sysconfdir=${sysconfdir%/mono}
+fi

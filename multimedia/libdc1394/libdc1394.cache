@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1134215922 Sat Dec 10 12:58:42 2005
+[BUILDTIME] 10 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libraw1394
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

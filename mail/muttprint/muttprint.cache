@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1133761995 Mon Dec  5 06:53:15 2005
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 1.24 MB, 56 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

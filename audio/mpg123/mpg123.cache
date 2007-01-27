@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1162442312 Thu Nov  2 05:38:32 2006
+[BUILDTIME] 10 (9)
+[SIZE] 0.21 MB, 8 files
+
+[DEP] 00-dirtree
+[DEP] alsa-lib
+[DEP] audiofile
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] esound
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] jack
+[DEP] libsdl
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

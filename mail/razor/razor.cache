@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1133942272 Wed Dec  7 08:57:52 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.34 MB, 61 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] perl
+[DEP] perl-digest-sha1
+[DEP] perl-net-dns
+[DEP] perl-uri
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1158092671 Tue Sep 12 22:24:31 2006
+[BUILDTIME] 50 (5)
+[SIZE] 2.69 MB, 28 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tetex
+[DEP] util-linux

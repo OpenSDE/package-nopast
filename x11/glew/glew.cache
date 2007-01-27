@@ -1,0 +1,33 @@
+
+[TIMESTAMP] 1133833767 Tue Dec  6 02:49:27 2005
+[BUILDTIME] 15 (5)
+[SIZE] 1.36 MB, 18 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libdrm
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] libxmu
+[DEP] libxt
+[DEP] libxxf86vm
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xproto

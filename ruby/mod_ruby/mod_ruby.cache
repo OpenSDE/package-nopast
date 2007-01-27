@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1134210412 Sat Dec 10 11:26:52 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.21 MB, 25 files
+
+[DEP] apache
+[DEP] apr
+[DEP] apr-util
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] perl
+[DEP] ruby
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

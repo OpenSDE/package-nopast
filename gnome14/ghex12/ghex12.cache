@@ -1,0 +1,44 @@
+
+[TIMESTAMP] 1133761972 Mon Dec  5 06:52:52 2005
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gdk-pixbuf10
+[DEP] gettext
+[DEP] glib12
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] gnome-print10
+[DEP] grep
+[DEP] gtk+12
+[DEP] imlib
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] libxpm
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] orbit10
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] xproto

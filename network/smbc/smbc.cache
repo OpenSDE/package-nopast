@@ -1,0 +1,32 @@
+
+[TIMESTAMP] 1133828578 Tue Dec  6 01:22:58 2005
+[BUILDTIME] 20 (5)
+[SIZE] 0.31 MB, 31 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openldap
+[DEP] openssl
+[DEP] perl
+[DEP] popt
+[DEP] samba
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

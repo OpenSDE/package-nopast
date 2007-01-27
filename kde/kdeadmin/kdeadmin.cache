@@ -1,0 +1,65 @@
+
+[TIMESTAMP] 1134154179 Fri Dec  9 19:49:39 2005
+[BUILDTIME] 90 (9)
+[SIZE] 4.25 MB, 270 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fam
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] imake
+[DEP] kdelibs
+[DEP] libart_lgpl23
+[DEP] libdnet
+[DEP] libdrm
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libice
+[DEP] libidn
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libprelude
+[DEP] libsm
+[DEP] libtasn1
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxinerama
+[DEP] libxmu
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pam
+[DEP] patch
+[DEP] perl
+[DEP] qt
+[DEP] sed
+[DEP] shadow
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

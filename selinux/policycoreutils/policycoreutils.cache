@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1165042865 Sat Dec  2 09:01:05 2006
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] glibc32
+[DEP] gnutls
+[DEP] grep
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libselinux
+[DEP] libsepol
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] pam
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

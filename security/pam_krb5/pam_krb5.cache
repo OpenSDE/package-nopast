@@ -1,0 +1,37 @@
+
+[TIMESTAMP] 1164960583 Fri Dec  1 10:09:43 2006
+[BUILDTIME] 10 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] glibc32
+[DEP] gnutls
+[DEP] grep
+[DEP] heimdal
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openssl
+[DEP] pam
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] util-linux

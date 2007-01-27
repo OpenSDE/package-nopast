@@ -1,0 +1,33 @@
+
+[TIMESTAMP] 1133949498 Wed Dec  7 10:58:18 2005
+[BUILDTIME] 125 (9)
+[SIZE] 5.57 MB, 292 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gmp
+[DEP] grep
+[DEP] libtool
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tcp_wrappers
+[DEP] util-linux

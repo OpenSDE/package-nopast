@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1166027563 Wed Dec 13 11:32:43 2006
+[BUILDTIME] 100 (9)
+[SIZE] 0.14 MB, 46 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] trac-doxygen

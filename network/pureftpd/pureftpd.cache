@@ -1,0 +1,38 @@
+
+[TIMESTAMP] 1165004920 Fri Dec  1 22:28:40 2006
+[BUILDTIME] 30 (5)
+[SIZE] 0.25 MB, 30 files
+
+[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] libcap
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] libtool
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openldap
+[DEP] openssl
+[DEP] pam
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1133760585 Mon Dec  5 06:29:45 2005
+[BUILDTIME] 5 (5)
+[SIZE] 0.04 MB, 9 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] enlightenment16
+[DEP] gcc
+[DEP] gdbm
+[DEP] glib12
+[DEP] glibc
+[DEP] grep
+[DEP] gtk+12
+[DEP] imlib
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] linux-header
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

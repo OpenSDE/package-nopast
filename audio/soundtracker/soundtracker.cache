@@ -1,0 +1,47 @@
+
+[TIMESTAMP] 1134184939 Sat Dec 10 04:22:19 2005
+[BUILDTIME] 20 (9)
+[SIZE] 0.90 MB, 43 files
+
+[DEP] alsa-lib
+[DEP] audiofile
+[DEP] bash
+[DEP] bdb33
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] esound
+[DEP] findutils
+[DEP] flac
+[DEP] gawk
+[DEP] gcc
+[DEP] gdk-pixbuf10
+[DEP] gettext
+[DEP] glib12
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] gtk+12
+[DEP] imlib
+[DEP] jack
+[DEP] libice
+[DEP] libsm
+[DEP] libsndfile
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

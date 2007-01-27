@@ -1,0 +1,13 @@
+
+[TIMESTAMP] 1069831143 Wed Nov 26 08:19:03 2003
+[CONFIG-ID] 2.0.0-rc4-powerpc-powerpc-750-desktop-expert
+[ROCKVER] 2.0.0-rc4
+
+[LOGS] 9-mac-fdisk.log
+
+[BUILDTIME] 6369 (9)
+[SIZE] 0.10 MB, 12 files
+
+[DEP] bash binutils bzip2 coreutils findutils gcc glibc grep
+[DEP] linux24benh-header make patch sed sysfiles tar
+

@@ -1,0 +1,49 @@
+
+[TIMESTAMP] 1134320309 Sun Dec 11 17:58:29 2005
+[BUILDTIME] 210 (9)
+[SIZE] 11.00 MB, 399 files
+
+[DEP] apache
+[DEP] apr
+[DEP] apr-util
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] blackdown-jdk
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] dbus
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gdbm
+[DEP] gettext
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] libxml
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] neon
+[DEP] net-tools
+[DEP] numpy
+[DEP] openldap
+[DEP] openssl
+[DEP] patch
+[DEP] perl
+[DEP] pil
+[DEP] python
+[DEP] ruby
+[DEP] sed
+[DEP] swig
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] util-linux
+[DEP] wxpython
+[DEP] zlib

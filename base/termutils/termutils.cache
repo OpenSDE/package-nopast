@@ -1,0 +1,14 @@
+
+[TIMESTAMP] 1040258503 Thu Dec 19 01:41:43 2002
+[CONFIG-ID] 1.7-snapshot-ia32-reference
+[ROCKVER] 1.7-snapshot
+
+[LOGS] 5-termutils.log 9-termutils.log
+
+[BUILDTIME] 1262 (9)
+[SIZE] 0.11 MB, 14 files
+
+[DEP] bash binutils bzip2 diffutils fileutils findutils gcc glibc grep
+[DEP] linux24-src make net-tools patch postfix sed sh-utils sysfiles
+[DEP] tar textutils
+

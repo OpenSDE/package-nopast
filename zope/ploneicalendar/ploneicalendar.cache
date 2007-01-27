@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1133779415 Mon Dec  5 11:43:35 2005
+[BUILDTIME] 5 (5)
+[SIZE] 0.56 MB, 99 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] plone
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zope

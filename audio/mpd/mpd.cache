@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1134263114 Sun Dec 11 02:05:14 2005
+[BUILDTIME] 15 (9)
+[SIZE] 0.22 MB, 19 files
+
+[DEP] alsa-lib
+[DEP] audiofile
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] flac
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libao
+[DEP] libid3tag
+[DEP] libmad
+[DEP] libmikmod
+[DEP] libogg
+[DEP] libvorbis
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib

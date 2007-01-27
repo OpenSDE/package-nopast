@@ -1,0 +1,13 @@
+
+[TIMESTAMP] 1035031794 Sat Oct 19 14:49:54 2002
+[CONFIG-ID] 1.7-snapshot-ia32-reference
+[ROCKVER] 1.7-snapshot
+
+[LOGS] 1-termcap.log 3-termcap.log 9-termcap.log
+
+[BUILDTIME] 900 (9)
+[SIZE] 0.88 MB, 19 files
+
+[DEP] bash binutils bzip2 diffutils fileutils findutils gcc2 gcc glibc
+[DEP] grep make net-tools patch sed sh-utils sysfiles tar termcap textutils
+

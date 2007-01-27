@@ -1,0 +1,44 @@
+
+[TIMESTAMP] 1157702029 Fri Sep  8 08:53:49 2006
+[BUILDTIME] 100 (9)
+[SIZE] 5.00 MB, 219 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] glibc32
+[DEP] grep
+[DEP] imake
+[DEP] lcms
+[DEP] libice
+[DEP] libjpeg
+[DEP] libtiff
+[DEP] libusb
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxinerama
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xextproto
+[DEP] xf86vidmodeproto
+[DEP] xineramaproto
+[DEP] xproto
+[DEP] zlib

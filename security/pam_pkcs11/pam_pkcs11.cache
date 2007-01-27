@@ -1,0 +1,41 @@
+
+[TIMESTAMP] 1165035368 Sat Dec  2 06:56:08 2006
+[BUILDTIME] 20 (5) ERROR
+[SIZE] 0.01 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] heimdal
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libidn
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] openldap
+[DEP] openssl
+[DEP] pam
+[DEP] pcsc-lite
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

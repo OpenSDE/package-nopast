@@ -1,0 +1,17 @@
+
+[TIMESTAMP] 1133827549 Tue Dec  6 01:05:49 2005
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 0.02 MB, 11 files
+
+[DEP] 00-dirtree
+[DEP] apache
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] grep
+[DEP] phppgadmin
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

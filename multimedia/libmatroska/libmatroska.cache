@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1134201926 Sat Dec 10 09:05:26 2005
+[BUILDTIME] 20 (9) ERROR
+[SIZE] 2.32 MB, 40 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libebml
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

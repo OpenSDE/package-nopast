@@ -1,0 +1,43 @@
+
+[TIMESTAMP] 1162745611 Sun Nov  5 17:53:31 2006
+[BUILDTIME] 100 (9)
+[SIZE] 20.46 MB, 1013 files
+
+[DEP] 00-dirtree
+[DEP] atk
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cpio
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] gtk+
+[DEP] libglade
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libxml
+[DEP] linux-header
+[DEP] make
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] pango
+[DEP] patch
+[DEP] pkgconfig
+[DEP] postgresql
+[DEP] readline
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] xorg
+[DEP] zlib

@@ -1,0 +1,13 @@
+
+[TIMESTAMP] 1164633344 Mon Nov 27 15:15:44 2006
+[BUILDTIME] 0 (5) ERROR
+[SIZE] 0.01 MB, 6 files
+
+[DEP] bash
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] grep
+[DEP] sed

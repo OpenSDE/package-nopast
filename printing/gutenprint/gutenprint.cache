@@ -1,0 +1,63 @@
+
+[TIMESTAMP] 1161011229 Mon Oct 16 17:07:09 2006
+[BUILDTIME] 140 (5)
+[SIZE] 116.57 MB, 12812 files
+
+[DEP] 00-dirtree
+[DEP] atk
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cairo
+[DEP] coreutils
+[DEP] cups
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] flex
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] gimp
+[DEP] glib
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] gtk+
+[DEP] inputproto
+[DEP] kbproto
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libtasn1
+[DEP] libtiff
+[DEP] libtool
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] pango
+[DEP] pkgconfig
+[DEP] readline
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

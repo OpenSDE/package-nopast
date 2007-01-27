@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1133761862 Mon Dec  5 06:51:02 2005
+[BUILDTIME] 5 (5)
+[SIZE] 0.10 MB, 13 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

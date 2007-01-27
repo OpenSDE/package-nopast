@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1133895384 Tue Dec  6 19:56:24 2005
+[BUILDTIME] 5 (9)
+[SIZE] 0.05 MB, 11 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bigreqsproto
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

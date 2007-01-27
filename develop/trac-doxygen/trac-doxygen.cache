@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1166026754 Wed Dec 13 11:19:14 2006
+[BUILDTIME] 100 (9)
+[SIZE] 0.03 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] patch
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] trac-webadmin

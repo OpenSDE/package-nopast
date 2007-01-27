@@ -1,0 +1,54 @@
+
+[TIMESTAMP] 1134202781 Sat Dec 10 09:19:41 2005
+[BUILDTIME] 120 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] alsa-lib
+[DEP] audiofile
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] bdb33
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] esound
+[DEP] findutils
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gdk-pixbuf10
+[DEP] gettext
+[DEP] glib12
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] gnome-print10
+[DEP] grep
+[DEP] gtk+12
+[DEP] imlib
+[DEP] indent
+[DEP] libice
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxi
+[DEP] libxml1
+[DEP] libxpm
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] oaf10
+[DEP] orbit10
+[DEP] perl
+[DEP] popt
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib

@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1164922365 Thu Nov 30 23:32:45 2006
+[BUILDTIME] 5 (5) ERROR
+[SIZE] 1.29 MB, 97 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tetex
+[DEP] texinfo
+[DEP] util-linux

@@ -1,0 +1,40 @@
+
+[TIMESTAMP] 1160961554 Mon Oct 16 03:19:14 2006
+[BUILDTIME] 105 (5)
+[SIZE] 5.23 MB, 232 files
+
+[DEP] adns
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] heimdal
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libidn
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] openssl
+[DEP] patch
+[DEP] pcre
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux

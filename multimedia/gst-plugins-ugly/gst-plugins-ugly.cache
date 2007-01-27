@@ -1,0 +1,40 @@
+
+[TIMESTAMP] 1158869823 Thu Sep 21 23:17:03 2006
+[BUILDTIME] 100 (9)
+[SIZE] 1.04 MB, 56 files
+
+[DEP] 00-dirtree
+[DEP] a52dec
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] gst-plugins-base
+[DEP] gstreamer
+[DEP] lame
+[DEP] libdvdread
+[DEP] libid3tag
+[DEP] libmad
+[DEP] libmpeg2
+[DEP] liboil
+[DEP] libxml
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] pkgconfig
+[DEP] pygtk
+[DEP] python
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib

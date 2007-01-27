@@ -1,0 +1,22 @@
+
+[TIMESTAMP] 1134062415 Thu Dec  8 18:20:15 2005
+[BUILDTIME] 10 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libelf
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zlib

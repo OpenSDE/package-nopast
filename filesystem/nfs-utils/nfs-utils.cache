@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1134244897 Sat Dec 10 21:01:37 2005
+[BUILDTIME] 20 (9)
+[SIZE] 0.44 MB, 56 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libevent
+[DEP] libnfsidmap
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] net-tools
+[DEP] openldap
+[DEP] openssl
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] tcp_wrappers

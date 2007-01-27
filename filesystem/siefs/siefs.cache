@@ -1,0 +1,15 @@
+
+[TIMESTAMP] 1134013773 Thu Dec  8 04:49:33 2005
+[BUILDTIME] 5 (9) ERROR
+[SIZE] 0.01 MB, 6 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] gcc
+[DEP] grep
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar

@@ -1,0 +1,41 @@
+
+[TIMESTAMP] 1159307158 Wed Sep 27 00:45:58 2006
+[BUILDTIME] 100 (9)
+[SIZE] 0.80 MB, 41 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] directfb
+[DEP] dpkg
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libx11
+[DEP] libxau
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxscrnsaver
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] pam
+[DEP] perl
+[DEP] pkgconfig
+[DEP] scrnsaverproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
+[DEP] zlib
