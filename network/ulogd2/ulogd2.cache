@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1172443839 Sun Feb 25 23:50:39 2007
+[BUILDTIME] 20 (5)
+[SIZE] 0.13 MB, 39 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libnetfilter_conntrack
+[DEP] libnetfilter_log
+[DEP] make
+[DEP] mktemp
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
