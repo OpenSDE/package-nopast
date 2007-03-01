@@ -27,7 +27,8 @@
 
 [U] http://etcnet.org/
 
-[A] Pilot <web@pilot.org.ua>
+[A] Denis Ovsienko <pilot@etcnet.org>
+[A] Andrew Kornilov <hiddenman@altlinux.org>
 [M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/network
@@ -37,4 +38,4 @@
 [V] 0.8.5
 [P] X -----5---9 203.000
 
-[D] 4065768240 etcnet-0.8.5.tar.bz2 http://etcnet.org/files/
+[D] 3791500590 etcnet-0.8.5.tar.bz2 http://etcnet.org/files/
