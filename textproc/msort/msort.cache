@@ -1,24 +1,27 @@
 
-[TIMESTAMP] 1167387845 Fri Dec 29 11:24:05 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.50 MB, 9 files
+[TIMESTAMP] 1173111495 Mon Mar  5 13:18:15 2007
+[BUILDTIME] 100 (9)
+[SIZE] 0.60 MB, 10 files
 
 [DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] crm114
 [DEP] diffutils
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gmp
 [DEP] grep
+[DEP] libuninum
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
+[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] tre
 [DEP] util-linux
