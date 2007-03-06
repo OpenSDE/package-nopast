@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1173192108 Tue Mar  6 11:41:48 2007
+[BUILDTIME] 100 (9)
+[SIZE] 2.18 MB, 9 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libtiff
+[DEP] make
+[DEP] panda
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] zlib
