@@ -24,10 +24,10 @@
 [T] standard Maildir and mbox formats. There's also a fully featured POP3
 [T] server included.
 
-[U] http://www.dovecot.org/
+[U] http://www.dovecot.org
 
 [A] Timo Sirainen <tss@iki.fi>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/network
 
