@@ -1,0 +1,2 @@
+run	D_sbindir/dovecot -F -c D_sysconfdir/dovecot.conf
+log	dovecot
