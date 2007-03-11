@@ -88,6 +88,8 @@ if pkgcheck "gcc" X; then
 		bool 'Build the F77 compiler' SDECFG_PKG_GCC_F77 1
 		bool 'Build the OBJC compiler' SDECFG_PKG_GCC_OBJC 1
 		comment ' '
+		bool 'Build version specific runtime libraries' \
+					SDECFG_PKG_GCC_VERSION_LIBS 0
 		bool 'Build the pre-compiled header (PCH) for libstdc++' \
 					SDECFG_PKG_GCC_CXX_PCH 0 
 	menu_end
