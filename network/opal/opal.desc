@@ -31,10 +31,11 @@
 
 [L] MPL
 [S] Stable
-[V] 2.2.3
+[V] 2.2.6
 [P] X -----5---9 185.000
 
-[D] 3583238725 opal-2.2.3.tar.gz http://www.ekiga.org/admin/downloads/latest/sources/sources/
+[D] 1802071485 opal-2.2.6.tar.gz http://www.ekiga.org/admin/downloads/latest/sources/sources/
+#[D] 815594470 opal-v2_2_4-src-tar.gz http://www.voxgratia.org/releases/
 
 # there's something screwed somewhere...
 [O] var_append makeinstopt ' ' "LIBDIR=/$libdir"
