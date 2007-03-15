@@ -1,0 +1,13 @@
+--- ./Makefile.in.orig	2007-03-15 08:33:21.000000000 -0400
++++ ./Makefile.in	2007-03-15 08:34:10.000000000 -0400
+@@ -896,10 +896,6 @@
+ install-exec-hook remove-installed-links:
+ 	@for prog_ext in $(bin_PROGRAMS) $(bin_SCRIPTS); do \
+ 	  prog=`echo "$$prog_ext"|sed 's/$(EXEEXT)$$//'`; \
+-	  case $$prog in \
+-	  gunzip) aliases='uncompress';; \
+-	  *) continue;; \
+-	  esac; \
+ 	  transform='$(transform)'; \
+ 	  test "X$$prog" = "X$$prog_ext" || \
+ 	    transform="$$transform"';s/$$/$(EXEEXT)/'; \
