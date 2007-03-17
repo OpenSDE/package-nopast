@@ -31,8 +31,9 @@
 
 [L] Commercial
 [S] Stable
-[V] 5.5.1-19175
+[V] 5.5.2-29772
 [P] O -----5---9 800.000
 
-[D] 2270414033 VMware-workstation-5.5.1-19175.tar.gz -http://download3.vmware.com/software/wkst/
+#[D] 680249694 VMware-workstation-5.5.2-29772.tar.gz -manual://www.vmware.com/download/ws/
+[D] 680249694 VMware-workstation-5.5.2-29772.tar.gz -http://www.kuzko.com/soft/vmware/5.5.2/
 [D] 225654600 vmware-any-any-update108.tar.gz -http://ftp.cvut.cz/vmware/
