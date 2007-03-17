@@ -21,13 +21,12 @@
 
 [A] Dave Coffin <dcoffin@cybercom.net>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
-[M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/graphic
 
-[L] PublicDomain GPL
+[L] GPL
 [S] Stable
-[V] 8.61
+[V] 8.66
 [P] X -----5---9 800.000
 
-[D] 3344535571 dcraw-8.61.tar.gz http://www.cybercom.net/~dcoffin/dcraw/archive/
+[D] 461809066 dcraw-8.66.tar.gz http://www.cybercom.net/~dcoffin/dcraw/archive/
