@@ -19,8 +19,8 @@ ECHO='echo -e'
 ESC='\e'	# 033
 BELL='\a'	# 07
 
-ART_SUCCESS=" :-)"
-ART_FAILURE=" :-("
+ART_SUCCESS="  OK "
+ART_FAILURE=" FAIL"
 ART_NEXT=" v "
 
 COLOR_TITLE="$ESC[36m"		# cyan
