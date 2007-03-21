@@ -60,7 +60,7 @@ conffiles_loop() {
 
 	cp -v .config .config.1
 
-	j=2 ; for (( i=1 ; i<loops ; i++, j++ )) {
+	j=2 ; for (( i=0 ; i<loops ; i++, j++ )) {
 		conffiles_apply > .config.$j
 		cp -v .config.$j .config
 		
