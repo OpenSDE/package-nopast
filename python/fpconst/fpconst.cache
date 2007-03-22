@@ -1,0 +1,12 @@
+
+[TIMESTAMP] 1174557784 Thu Mar 22 11:03:04 2007
+[BUILDTIME] 100 (9)
+[SIZE] 0.03 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bzip2
+[DEP] coreutils
+[DEP] gcc
+[DEP] grep
+[DEP] python
+[DEP] sysfiles
