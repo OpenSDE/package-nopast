@@ -16,8 +16,8 @@
 #
 
 ECHO='echo -e'
-ESC='\e'	# 033
-BELL='\a'	# 07
+ESC='\e'	# \e or \033
+BELL='\a'	# \a or 07
 
 ART_SUCCESS="  OK "
 ART_FAILURE=" FAIL"
@@ -31,9 +31,8 @@ COLOR_FAILURE="$ESC[31m"	# red
 MOVE_EOL="$ESC[222G"		# 222 columns to the right... kind-of-eol
 MOVE_UP="$ESC[1A"		# 1 line up (eat last \n)
 
-# ${#foo} works on bash, dash and pdksh, not on ash
-MOVE_LEFT_STATUS="$ESC[${#ART_SUCCESS}D"	# move left the length of $ART_SUCCESS
-MOVE_LEFT_NEXT="$ESC[${#ART_NEXT}D"		# move left the length of $ART_NEXT
+MOVE_LEFT_STATUS="$ESC[$( expr ${#ART_SUCCESS} - 1 )D"	# move left the length of $ART_SUCCESS
+MOVE_LEFT_NEXT="$ESC[$( expr ${#ART_NEXT} - 1 )D"	# move left the length of $ART_NEXT
 
 title() {
 	local x=1 columns=
