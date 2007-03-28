@@ -20,7 +20,7 @@
 [T] on.
 
 [A] Felix von Leitner <fefe@fefe.de>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [F] DIETLIBC
 
@@ -28,8 +28,8 @@
 
 [L] GPL
 [S] Beta
-[V] 0.17
+[V] 0.18
 [P] X -1---5---9 102.040
 
-[D] 2768546223 embutils-0.17.tar.bz2 http://www.fefe.de/embutils/
+[D] 835572 embutils-0.18.tar.bz2 http://dl.fefe.de/
 
