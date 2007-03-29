@@ -29,6 +29,8 @@
 
 [C] extra/filesystem
 
+[F] NO-AS-NEEDED
+
 [L] GPL
 [S] Stable
 [V] 1.8.6
