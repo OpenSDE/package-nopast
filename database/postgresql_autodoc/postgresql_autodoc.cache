@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1175962637 Sat Apr  7 19:17:17 2007
+[BUILDTIME] 100 (9)
+[SIZE] 0.13 MB, 15 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] perl
+[DEP] perl-dbd-postgresql
+[DEP] perl-dbi
+[DEP] perl-html-template
+[DEP] perl-term-readkey
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
