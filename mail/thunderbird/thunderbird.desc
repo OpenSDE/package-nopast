@@ -24,16 +24,17 @@
 [U] http://www.mozilla.org/products/thunderbird/
 
 [A] The Mozilla Community <http://www.mozilla.org/about.html>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/office
 
 [L] MPL
 [S] Stable
-[V] 1.5.0.10
+[V] 2.0.0.0rc1
 [P] X -----5---9 152.700
 
+[O] mozver=2.0.0.0
 [O] . $base/package/*/*/mozilla-conf.in
 
-[D] 4266136523 thunderbird-1.5.0.10-source.tar.bz2 http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/1.5.0.10/source/
+[D] 2142901314 thunderbird-2.0.0.0rc1-source.tar.bz2 http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/2.0.0.0rc1/source/
 
