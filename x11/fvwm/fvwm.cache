@@ -9,7 +9,7 @@
 [DEP] bdb33
 [DEP] binutils
 [DEP] bzip2
-[DEP] cf
+[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] esound

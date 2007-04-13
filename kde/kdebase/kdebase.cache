@@ -13,7 +13,7 @@
 [DEP] binutils
 [DEP] blackdown-jdk
 [DEP] bzip2
-[DEP] cf
+[DEP] xorg-cf-files
 [DEP] compositeproto
 [DEP] coreutils
 [DEP] cyrus-sasl2

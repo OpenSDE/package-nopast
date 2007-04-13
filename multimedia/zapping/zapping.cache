@@ -12,7 +12,7 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] cf
+[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] dbus
 [DEP] diffutils

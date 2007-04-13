@@ -10,7 +10,7 @@
 [DEP] bison
 [DEP] boehm-gc
 [DEP] bzip2
-[DEP] cf
+[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] findutils
