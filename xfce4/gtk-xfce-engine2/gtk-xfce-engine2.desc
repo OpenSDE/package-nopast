@@ -27,9 +27,9 @@
 
 [L] GPL
 [S] Stable
-[V] 2.4.0
+[V] 2.4.1
 [P] X -----5---9 222.200
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 3005884278 gtk-xfce-engine-2.4.0.tar.bz2 http://www.xfce.org/archive/xfce-4.4.0/src/
+[D] 11052869 gtk-xfce-engine-2.4.1.tar.bz2 http://www.xfce.org/archive/xfce-4.4.1/src/
