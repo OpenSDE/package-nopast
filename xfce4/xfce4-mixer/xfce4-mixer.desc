@@ -25,11 +25,11 @@
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/desktop/xfce
-[F] XFCE
+[F] XFCE NOPARALLEL
 
 [L] BSD
-[S] Beta
-[V] 4.4.0
+[S] Stable
+[V] 4.4.1
 [P] X -----5---9 223.900
 
-[D] 2922615948 xfce4-mixer-4.4.0.tar.bz2 http://www.xfce.org/archive/xfce-4.4.0/src/
+[D] 653461975 xfce4-mixer-4.4.1.tar.bz2 http://www.xfce.org/archive/xfce-4.4.1/src/
