@@ -29,8 +29,8 @@
 [F] XFCE
 
 [L] LGPL
-[S] Beta
-[V] 4.4.0
+[S] Stable
+[V] 4.4.1
 [P] X -----5---9 222.400
 
-[D] 2604126310 libxfce4mcs-4.4.0.tar.bz2 http://www.xfce.org/archive/xfce-4.4.0/src/
+[D] 1133947115 libxfce4mcs-4.4.1.tar.bz2 http://www.xfce.org/archive/xfce-4.4.1/src/
