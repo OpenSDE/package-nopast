@@ -27,8 +27,8 @@
 [F] XFCE
 
 [L] BSD
-[S] Beta
-[V] 4.4.0
+[S] Stable
+[V] 4.4.1
 [P] X -----5---9 222.300
 
-[D] 2913064223 libxfce4util-4.4.0.tar.bz2 http://www.xfce.org/archive/xfce-4.4.0/src/
+[D] 1169124968 libxfce4util-4.4.1.tar.bz2 http://www.xfce.org/archive/xfce-4.4.1/src/
