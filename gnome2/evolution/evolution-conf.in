@@ -40,4 +40,6 @@ fi
 if pkginstalled openldap; then
 	pkgprefix -t openldap
 	var_append confopt ' ' "--with-openldap=$root/$( pkgprefix openldap )"
+	var_append GCC_WRAPPER_APPEND ' ' "-I$root/$( pkgprefix includedir openldap )"
+	var_append GCC_WRAPPER_APPEND ' ' "-L$root/$( pkgprefix libdir openldap )"
 fi
