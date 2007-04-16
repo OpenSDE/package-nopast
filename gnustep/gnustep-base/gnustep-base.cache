@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1134144930 Fri Dec  9 17:15:30 2005
-[BUILDTIME] 90 (9)
-[SIZE] 5.32 MB, 827 files
+[TIMESTAMP] 1176675668 Sun Apr 15 22:21:08 2007
+[BUILDTIME] 40 (9)
+[SIZE] 6.98 MB, 853 files
 
+[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -18,12 +19,13 @@
 [DEP] gnustep-make
 [DEP] grep
 [DEP] gzip
+[DEP] iana-etc
 [DEP] libxml
 [DEP] libxslt
 [DEP] linux-header
 [DEP] make
+[DEP] mdnsresponder
 [DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] sed
 [DEP] sysfiles
