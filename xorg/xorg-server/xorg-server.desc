@@ -27,10 +27,10 @@
 
 [L] OpenSource
 [S] Stable
-[V] 1.1.99.903
+[V] 1.2.0
 [P] X -----5---9 112.446
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 2334897554 xorg-server-1.1.99.903.tar.bz2 http://xorg.freedesktop.org/releases/individual/xserver/
-[D] 4132289102 xorg-server-1.1.99.903-fixes-1.patch http://svn.cross-lfs.org/svn/repos/patches/xorg/
+[D] 1671862874 xorg-server-1.2.0.tar.bz2 http://xorg.freedesktop.org/releases/individual/xserver/
+[D] 414299844 xorg-server-1.2.0-xcmisc.patch !http://xorg.freedesktop.org/archive/X11R7.2/patches/xorg-xserver-1.2.0-xcmisc.diff
