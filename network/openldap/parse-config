@@ -12,7 +12,10 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-if [ -f "$root/var/adm/packages/openldap" ] ; then
+if pkginstalled -f openldap; then
+	# only when openldap is effectively installed
+	pkgprefix -t openldap
+
 	# FIXME! lib64 tweak - should be removed if we have proper symlinks  
 	[[ $libdir == *lib ]] || var_append GCC_WRAPPER_APPEND ' ' "-L$root$( pkgprefix libdir openldap )"
 
