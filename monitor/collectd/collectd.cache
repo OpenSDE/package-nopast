@@ -1,10 +1,11 @@
 
-[TIMESTAMP] 1165952414 Tue Dec 12 20:40:14 2006
-[BUILDTIME] 35 (5)
-[SIZE] 0.27 MB, 67 files
+[TIMESTAMP] 1176860155 Wed Apr 18 01:35:55 2007
+[BUILDTIME] 50 (9)
+[SIZE] 0.51 MB, 80 files
 
 [DEP] 00-dirtree
 [DEP] bash
+[DEP] bdb
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
@@ -17,8 +18,12 @@
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] gss
+[DEP] heimdal
 [DEP] libart_lgpl23
+[DEP] libidn
 [DEP] liboping
+[DEP] libpcap
 [DEP] libpng
 [DEP] libstatgrab
 [DEP] linux-header
@@ -27,6 +32,7 @@
 [DEP] mktemp
 [DEP] mysql
 [DEP] openssl
+[DEP] patch
 [DEP] rrdtool
 [DEP] sed
 [DEP] sysfiles
