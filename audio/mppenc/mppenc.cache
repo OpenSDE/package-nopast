@@ -1,24 +1,21 @@
 
-[TIMESTAMP] 1164602021 Mon Nov 27 06:33:41 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.30 MB, 9 files
+[TIMESTAMP] 1176852205 Wed Apr 18 02:23:25 2007
+[BUILDTIME] 5 (5)
+[SIZE] 0.13 MB, 8 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] glibc32
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] nasm
-[DEP] patch
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
