@@ -32,7 +32,7 @@
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] base/library
-[F] LIBTOOL-QUIRK
+[F] LIBTOOL-QUIRK NOPARALLEL
 
 [L] BSD
 [S] Stable
