@@ -30,7 +30,7 @@
 [U] http://www.kde.org
 
 [A] The KDE-Team (see http://www.kde.org/people.html)
-[M] The OpenSDE Community <list@opensde.org>
+[M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
 
 [C] extra/office extra/desktop/kde
 [F] KDE
@@ -46,5 +46,3 @@
 [D] 712351799 koffice-l10n-es-1.6.2.tar.bz2 ftp://ftp.kde.org/pub/kde/stable/koffice-1.6.2/src/koffice-l10n/
 [D] 3795267772 koffice-l10n-fr-1.6.2.tar.bz2 ftp://ftp.kde.org/pub/kde/stable/koffice-1.6.2/src/koffice-l10n/
 [D] 1038705897 koffice-l10n-it-1.6.2.tar.bz2 ftp://ftp.kde.org/pub/kde/stable/koffice-1.6.2/src/koffice-l10n/
-# [D] 0 koffice-l10n-bg-1.6.2.tar.bz2 ftp://ftp.kde.org/pub/kde/stable/koffice-1.6.2/src/koffice-l10n/
-
