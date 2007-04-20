@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1177070326 Fri Apr 20 14:58:46 2007
+[BUILDTIME] 5 (5)
+[SIZE] 0.65 MB, 145 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] kdelibs
+[DEP] libtool
+[DEP] libxml
+[DEP] linux-header
+[DEP] pykde
+[DEP] pyqt
+[DEP] python
+[DEP] sed
+[DEP] sip
+[DEP] sysfiles
+[DEP] tar
