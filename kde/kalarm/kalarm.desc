@@ -25,10 +25,11 @@
 
 [U] http://www.astrojar.org.uk/linux/kalarm.html
 
-[A] David Jarvie <software __at__ astrojar __dot__ org __dot__ uk>
+[A] David Jarvie <software@astrojar.org.uk>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
 
 [C] extra/desktop/kde
+[F] KDE
 
 [L] GPL
 [S] Stable
