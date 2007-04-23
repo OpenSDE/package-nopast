@@ -30,6 +30,7 @@
 [M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/network
+[F] LDAP-QUIRK
 
 [L] GPL
 [S] Stable
