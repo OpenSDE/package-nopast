@@ -23,7 +23,14 @@ if pkginstalled -f openldap; then
 		echo_warning "Injecting -L and -I to find openldap as requested."
 
 		pkgprefix -t openldap
-		var_append GCC_WRAPPER_APPEND ' ' "-L$root$( pkgprefix libdir openldap )"
-		var_append GCC_WRAPPER_APPEND ' ' "-I$root$( pkgprefix includedir openldap )"
+		LDAPINC="$root$( pkgprefix includedir openldap )"
+		LDAPLIB="$root$( pkgprefix libdir openldap )"
+
+		var_append GCC_WRAPPER_APPEND ' ' "-L$LDAPLIB"
+		var_append CPP_WRAPPER_APPEND ' ' "-L$LDAPLIB"
+		var_append GCC_WRAPPER_APPEND ' ' "-I$LDAPINC"
+		var_append CPP_WRAPPER_APPEND ' ' "-I$LDAPINC"
+
+		unset LDAPINC LDAPLIB
 	fi
 fi
