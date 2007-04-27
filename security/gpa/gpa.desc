@@ -32,4 +32,4 @@
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 1648465581 gpa-0.7.5.tar.bz2 http://wald.intevation.org/frs/download.php/324/
+[D] 1648465581 gpa-0.7.5.tar.bz2 ftp://ftp.gnupg.org/gcrypt/alpha/gpa/
