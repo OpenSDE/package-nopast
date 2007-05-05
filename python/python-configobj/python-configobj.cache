@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1178409289 Sat May  5 19:54:49 2007
+[BUILDTIME] 100 (9)
+[SIZE] 0.24 MB, 10 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gst-python
+[DEP] paramiko
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] unzip
