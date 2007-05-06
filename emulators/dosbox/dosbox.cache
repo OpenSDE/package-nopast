@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133739005 Mon Dec  5 00:30:05 2005
-[BUILDTIME] 45 (5)
-[SIZE] 1.03 MB, 16 files
+[TIMESTAMP] 1178429884 Sun May  6 01:38:04 2007
+[BUILDTIME] 100 (9)
+[SIZE] 1.85 MB, 8 files
 
 [DEP] 00-dirtree
 [DEP] alsa-lib
@@ -17,7 +17,6 @@
 [DEP] grep
 [DEP] libpng
 [DEP] libsdl
-[DEP] libsdl_net
 [DEP] libx11
 [DEP] libxau
 [DEP] libxdmcp
