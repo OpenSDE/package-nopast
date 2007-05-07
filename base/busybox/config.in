@@ -26,6 +26,7 @@ then
 			block_end
 		fi
 		bool 'Create Busybox symlinks' SDECFG_PKG_BUSYBOX_SYMLINKS 0
+		bool 'Enable everything by default' SDECFG_PKG_BUSYBOX_DEFCONFIG 1
 		bool 'Enable SUSv2 backward compatibility' SDECFG_PKG_BUSYBOX_SUSv2 0
 	menu_end
 fi
