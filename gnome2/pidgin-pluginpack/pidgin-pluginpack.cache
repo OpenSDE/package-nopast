@@ -1,24 +1,25 @@
 
-[TIMESTAMP] 1157031504 Thu Aug 31 16:38:24 2006
+[TIMESTAMP] 1178591825 Mon May  7 22:37:05 2007
 [BUILDTIME] 100 (9)
-[SIZE] 0.17 MB, 40 files
+[SIZE] 0.42 MB, 66 files
 
 [DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
-[DEP] bison
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gaim
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
@@ -27,9 +28,8 @@
 [DEP] gtk+
 [DEP] inputproto
 [DEP] kbproto
-[DEP] libice
+[DEP] libgnomeui
 [DEP] libpng
-[DEP] libsm
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcursor
@@ -38,6 +38,7 @@
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
+[DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] linux-header
@@ -45,6 +46,9 @@
 [DEP] mktemp
 [DEP] net-tools
 [DEP] pango
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pidgin
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
