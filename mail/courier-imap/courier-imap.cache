@@ -11,7 +11,7 @@
 [DEP] courier-authlib
 [DEP] dante
 [DEP] diffutils
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc

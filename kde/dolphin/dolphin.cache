@@ -14,7 +14,7 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] font-util
 [DEP] fontconfig

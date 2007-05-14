@@ -17,7 +17,7 @@
 [DEP] cups
 [DEP] diffutils
 [DEP] expat
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype

@@ -22,7 +22,7 @@
 [DEP] diffutils
 [DEP] esound
 [DEP] expat
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] fixesproto
 [DEP] fontconfig

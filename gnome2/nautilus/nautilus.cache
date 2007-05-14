@@ -16,7 +16,7 @@
 [DEP] eel
 [DEP] esound
 [DEP] expat
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype

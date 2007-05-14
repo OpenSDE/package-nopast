@@ -9,7 +9,7 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] gcc
 [DEP] glibc

@@ -10,7 +10,7 @@
 [DEP] coreutils
 [DEP] courier-authlib
 [DEP] diffutils
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc

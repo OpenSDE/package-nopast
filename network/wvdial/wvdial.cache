@@ -8,7 +8,7 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] fam
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc

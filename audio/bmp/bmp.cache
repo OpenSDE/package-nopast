@@ -16,7 +16,7 @@
 [DEP] dbus
 [DEP] diffutils
 [DEP] expat
-[DEP] fam
+[DEP] gamin
 [DEP] file
 [DEP] findutils
 [DEP] flex

@@ -9,7 +9,7 @@
 [DEP] coreutils
 [DEP] dbus
 [DEP] diffutils
-[DEP] fam
+[DEP] gamin
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
