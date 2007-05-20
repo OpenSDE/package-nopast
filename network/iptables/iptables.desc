@@ -22,7 +22,7 @@
 [T] different tables which may be defined, and each table contains a number
 [T] of built-in  chains,  and may contain user-defined chains.
 
-[U] http://netfilter.kernelnotes.org/
+[U] http://www.netfilter.org/projects/iptables/
 
 [A] The Netfilter Core Team
 [M] Christian Wiese <morfoh@opensde.org>
