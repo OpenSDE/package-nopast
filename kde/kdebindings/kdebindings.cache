@@ -1,15 +1,16 @@
 
-[TIMESTAMP] 1134119005 Fri Dec  9 10:03:25 2005
-[BUILDTIME] 1025 (9)
-[SIZE] 28.43 MB, 158 files
+[TIMESTAMP] 1181118041 Wed Jun  6 11:20:41 2007
+[BUILDTIME] 425 (5)
+[SIZE] 19.78 MB, 119 files
 
+[DEP] 00-dirtree
+[DEP] arts
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
-[DEP] blackdown-jdk
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
 [DEP] expat
 [DEP] gamin
@@ -19,30 +20,25 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
-[DEP] glib12
 [DEP] glibc
-[DEP] gnue-common
 [DEP] grep
-[DEP] gtk+12
 [DEP] imake
-[DEP] kaffe
 [DEP] kdelibs
 [DEP] libart_lgpl23
-[DEP] libdnet
 [DEP] libdrm
 [DEP] libice
 [DEP] libidn
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxi
 [DEP] libxinerama
 [DEP] libxmu
 [DEP] libxrandr
@@ -50,16 +46,14 @@
 [DEP] libxt
 [DEP] libxxf86vm
 [DEP] linux-header
+[DEP] m4
 [DEP] make
 [DEP] mesa
 [DEP] mktemp
-[DEP] net-tools
-[DEP] numpy
 [DEP] openssl
 [DEP] patch
 [DEP] pcre
 [DEP] perl
-[DEP] pil
 [DEP] python
 [DEP] qt
 [DEP] ruby
@@ -69,6 +63,6 @@
 [DEP] tcl
 [DEP] tk
 [DEP] util-linux
-[DEP] wxpython
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib
