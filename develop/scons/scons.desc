@@ -12,6 +12,7 @@
 [COPY] the Free Software Foundation; version 2 of the License. A copy of the
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
+
 [I] A make-like program
 
 [T] SCons is an Open Source software construction tool?that is, a next-
@@ -28,9 +29,9 @@
 [C] extra/development
 
 [L] OpenSource
-[S] Beta
-[V] 0.96.95
+[S] Stable
+[V] 0.97
 [P] X -----5---9 144.500
 
-[D] 819399417 scons-0.96.95.tar.gz http://dl.sourceforge.net/sourceforge/scons/
+[D] 2844810301 scons-0.97.tar.gz http://dl.sourceforge.net/sourceforge/scons/
 
