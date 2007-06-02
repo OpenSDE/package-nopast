@@ -5,23 +5,19 @@
 
 [DEP] 00-dirtree
 [DEP] alsa
-[DEP] alsa:dev
-[DEP] bash2
+[DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
 [DEP] e2fsprogs
-[DEP] e2fsprogs:dev
 [DEP] findutils
 [DEP] gawk
-[DEP] gcc40
-[DEP] gcc40:dev
-[DEP] glibc23
-[DEP] glibc23:dev
+[DEP] gcc
+[DEP] glibc
 [DEP] grep
 [DEP] gzip
-[DEP] linux-libc-headers:dev
+[DEP] linux-headers
 [DEP] make
 [DEP] mktemp
 [DEP] net-tools
@@ -30,4 +26,3 @@
 [DEP] tar
 [DEP] util-linux
 [DEP] xorg
-[DEP] xorg:dev
