@@ -1,0 +1,44 @@
+
+[TIMESTAMP] 1180972889 Mon Jun  4 17:01:29 2007
+[BUILDTIME] 100 (9)
+[SIZE] 7.22 MB, 476 files
+
+[DEP] 00-dirtree
+[DEP] acl
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gmp
+[DEP] grep
+[DEP] kdebase
+[DEP] kdelibs
+[DEP] kdepim
+[DEP] libart_lgpl23
+[DEP] libidn
+[DEP] libjpeg
+[DEP] libpng
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] nas
+[DEP] net-tools
+[DEP] pcre
+[DEP] perl
+[DEP] pkgconfig
+[DEP] qt
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xorg
+[DEP] zlib
