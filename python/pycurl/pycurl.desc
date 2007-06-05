@@ -20,13 +20,13 @@
 [U] http://pycurl.sourceforge.net/
 
 [A] kj <kjetilja@cs.uit.no>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Oliver Winston <zuberiw@googlemail.com>
 
 [C] extra/development
 
 [L] GPL
 [S] Stable 
 [V] 7.15.5
-[P] X -----5---9 800.000
+[P] O -----5---9 800.000
 
 [D] 2852288 pycurl-7.15.5.tar.gz http://pycurl.sourceforge.net/download/
