@@ -34,11 +34,11 @@
 [F] DIETLIBC
 [L] GPL
 [S] Stable
-[V] 6.7
+[V] 6.9
 [P] X -1-3-5---9 107.100
 
-[D] 2911795092 coreutils-6.7.tar.bz2 ftp://ftp.gnu.org/pub/gnu/coreutils/
+[D] 448021350 coreutils-6.9.tar.bz2 ftp://ftp.gnu.org/pub/gnu/coreutils/
 
-[D] 590381111 coreutils-6.7-i18n-1.patch http://www.linuxfromscratch.org/patches/downloads/coreutils/
-[D] 426943901 coreutils-6.7-suppress_uptime_kill_su-1.patch http://www.linuxfromscratch.org/patches/downloads/coreutils/
-[D] 27309275 coreutils-6.7-uname-1.patch http://www.linuxfromscratch.org/patches/downloads/coreutils/
+[D] 552857878 coreutils-6.9-i18n-1.patch http://www.linuxfromscratch.org/patches/downloads/coreutils/
+[D] 426943901 coreutils-6.9-suppress_uptime_kill_su-1.patch http://www.linuxfromscratch.org/patches/downloads/coreutils/
+[D] 27309275 coreutils-6.9-uname-1.patch http://www.linuxfromscratch.org/patches/downloads/coreutils/
