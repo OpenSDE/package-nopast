@@ -23,16 +23,16 @@
 [U] http://ftp.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 
 [A] Greg Kroah-Hartman <greg@kroah.com>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [C] base/system base/kernel
 
 [F] DIETLIBC
 
 [L] GPL
-[S] Beta
-[V] 105
+[S] Stable
+[V] 112
 [P] X -?---5---9 102.030
 
-[D] 1793761676 udev-105.tar.gz http://ftp.kernel.org/pub/linux/utils/kernel/hotplug/
+[D] 4159244877 udev-112.tar.bz2 http://ftp.kernel.org/pub/linux/utils/kernel/hotplug/
 
