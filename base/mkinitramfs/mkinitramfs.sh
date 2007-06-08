@@ -13,55 +13,44 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-set -e
-
 root=
 kernever=
 template=
 running=
 
 mkinitrd_usage() {
-	cat <<-EOT
-	Usage: $0 [ -R <root> ] [ -T <template> ] [<kernelver>]
-		root.....: location of the sandbox to work in
-		           (default: /)
-		template.: file to use as template for this image
-		           (default: \$root/boot/initrd.img)
-		kernelver: kerner version to use when grabbing the
-		           modules. (default: $( uname -r ))
-	EOT
+	cat <<EOT
+Usage: $0 [ -R <root> ] [ -T <template> ] [<kernelver>]
+	root.....: location of the sandbox to work in
+	           (default: /)
+	template.: file to use as template for this image
+	           (default: \$root/boot/initrd.img)
+	kernelver: kerner version to use when grabbing the
+	           modules. (default: $( uname -r ))
+EOT
 }
 
-while [ $# -gt 1 ]; do
+while [ $# -gt 0 ]; do
 	case "$1" in
 		-R)	root="$2"; shift ;;
 		-T)	template="$2"; shift ;;
 		[0-9]*)	kernelver="$1" ;;
-		*)	usage; exit 1 ;; 
+		*)	mkinitrd_usage; exit 1 ;; 
 	esac
 	shift
 done
 
 # $root - root of the sandbox
 [ "$root" ] || root="/"
-if [ -d "$root" ]; then
+if [ ! -d "$root" ]; then
 	echo "ERROR: '$root' is not a directory"
+	mkinitrd_usage
 	exit 2
 else
 	root=$( cd "$root"; pwd -P )
-	echo "root: '$root'"
-
 	[ "$root" != "/" ] || root=""
 fi
 
-# $template - cpio.gz file to use as base for this initrd
-[ "$template" ] || template="${root}/boot/initrd.img"
-if [ ! -r "$template" ]; then
-	echo "ERROR: template '$template' not found."
-	exit 3
-else
-	echo "template: '${template#$root}'"
-fi
 
 # $kernelver - kernel version, only useful if we have modules
 if [ -z "$kernelver" ]; then
@@ -69,17 +58,41 @@ if [ -z "$kernelver" ]; then
 	running=yes
 fi
 
+# $template - cpio.gz file to use as base for this initrd
+[ "$template" ] || template="${root}/boot/initrd.img"
+if [ ! -r "$template" ]; then
+	echo "ERROR: template '$template' not found."
+	mkinitrd_usage
+	exit 3
+else
+	echo "template: '${template#$root}'"
+fi
+
 moddir="${root}/lib/modules/$kernelver"
 sysmap="${root}/boot/System.map_$kernelver"
 if [ -d "$moddir" ]; then
-	echo "kernel: $kernelver, module dir: $moddir"
+	echo "kernel: $kernelver, ${root:+root: $root, }module dir: ${moddir#$root}"
 	if [ ! -r "$sysmap" ]; then
 		echo "ERROR: System.map file not found."
+		mkinitrd_usage
 		exit 4
 	fi
 else
-	echo "kernel: $kernelver, no modules found."
+	echo "kernel: $kernelver, ${root:+root: $root, }no modules found."
 	moddir=
 fi
+
+if [ $UID -ne 0 ]; then
+	echo "ERROR: only root can run $0."
+	mkinitrd_usage
+	exit 5
+fi
+
+for tool in mktemp cpio gzip gunzip; do
+	if [ -z "$( type -p $tool )" ]; then
+		echo "ERROR: $tool is no available"
+		exit 6
+	fi
+done
 
 echo "done."
