@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1133882439 Tue Dec  6 16:20:39 2005
-[BUILDTIME] 25 (9)
-[SIZE] 2.04 MB, 54 files
+[TIMESTAMP] 1181329271 Fri Jun  8 15:01:11 2007
+[BUILDTIME] 100 (9)
+[SIZE] 1.96 MB, 49 files
 
+[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -19,7 +20,7 @@
 [DEP] mktemp
 [DEP] net-tools
 [DEP] patch
-[DEP] perl
 [DEP] sed
 [DEP] sysfiles
+[DEP] texinfo
 [DEP] util-linux
