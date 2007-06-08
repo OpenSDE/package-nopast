@@ -20,13 +20,12 @@ running=
 
 mkinitrd_usage() {
 	cat <<EOT
-Usage: $0 [ -R <root> ] [ -T <template> ] [<kernelver>]
-	root.....: location of the sandbox to work in
-	           (default: /)
+Usage: ${0##*/} [ -R <root> ] [ -T <template> ] [<kernelver>]
+	root.....: location of the sandbox to work in (default: /)
 	template.: file to use as template for this image
 	           (default: \$root/boot/initrd.img)
-	kernelver: kerner version to use when grabbing the
-	           modules. (default: $( uname -r ))
+	kernelver: kerner version to use when grabbing the modules.
+	           (default: $( uname -r ))
 EOT
 }
 
@@ -49,6 +48,8 @@ if [ ! -d "$root" ]; then
 else
 	root=$( cd "$root"; pwd -P )
 	[ "$root" != "/" ] || root=""
+
+	[ -z "$root" ] || echo "root: $root"
 fi
 
 
@@ -65,20 +66,24 @@ if [ ! -r "$template" ]; then
 	mkinitrd_usage
 	exit 3
 else
-	echo "template: '${template#$root}'"
+	# skip readlink -f as dependency
+	x="${template##*/}"
+	[ "$x" != "$template" ] || template="$PWD/$x"
+	[ "${template:0:1}" == "/" ] || template="$PWD/$template"
+	template="$( cd "${template%/*}"; pwd -P )/$x"
 fi
 
 moddir="${root}/lib/modules/$kernelver"
 sysmap="${root}/boot/System.map_$kernelver"
 if [ -d "$moddir" ]; then
-	echo "kernel: $kernelver, ${root:+root: $root, }module dir: ${moddir#$root}"
+	echo "kernel: $kernelver, module dir: ${moddir#$root}"
 	if [ ! -r "$sysmap" ]; then
 		echo "ERROR: System.map file not found."
 		mkinitrd_usage
 		exit 4
 	fi
 else
-	echo "kernel: $kernelver, ${root:+root: $root, }no modules found."
+	echo "kernel: $kernelver, no modules found."
 	moddir=
 fi
 
@@ -95,4 +100,37 @@ for tool in mktemp cpio gzip gunzip; do
 	fi
 done
 
-echo "done."
+tmpdir=$( mktemp -d )
+olddir="$PWD"
+cd "$tmpdir"
+
+echo "Extracting '${template#$root}' into '$tmpdir'..."
+gunzip -c < "$template" | cpio -i
+if [ $? -eq 0 ]; then
+	errno=0
+	for x in $( ls -1d $root/usr/lib/mkinitrd/*.sh 2> /dev/null ); do
+		echo "Calling ${x#$root/usr/lib/mkinitrd/}"
+		$SHELL "$x" || errno=$?
+
+		[ $errno -eq 0 ] || break
+	done
+
+	if [ $errno -eq 0 ]; then
+		initrd=boot/initrd-$kernelver.img
+		rm -rvf "$root/$initrd.cpio" "$root/$initrd"
+
+		echo "Repacking '$tmpdir' into \$root/$initrd"
+		find * | cpio -o -H newc --file "$root/$initrd.cpio"
+		cd "$olddir"
+
+		gzip -c -9 "$root/$initrd.cpio" > "$root/$initrd"
+		rm -rf "$tmpdir" "$root/$initrd.cpio"
+		echo "done."
+		exit 0
+	fi
+fi
+
+cd "$olddir"
+rm -rf "$tmpdir"
+echo "failed."
+exit 1
