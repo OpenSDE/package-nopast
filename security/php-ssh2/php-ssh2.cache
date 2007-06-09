@@ -1,0 +1,28 @@
+
+[TIMESTAMP] 1181396282 Sat Jun  9 16:38:02 2007
+[BUILDTIME] 20 (5)
+[SIZE] 0.07 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libssh2
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] openssl
+[DEP] perl
+[DEP] php
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
