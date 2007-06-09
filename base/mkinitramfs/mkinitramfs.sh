@@ -76,7 +76,7 @@ fi
 moddir="${root}/lib/modules/$kernelver"
 sysmap="${root}/boot/System.map_$kernelver"
 if [ -d "$moddir" ]; then
-	echo "kernel: $kernelver, module dir: ${moddir#$root}"
+	echo "kernel: $kernelver, module dir: ${moddir#$root/}"
 	if [ ! -r "$sysmap" ]; then
 		echo "ERROR: System.map file not found."
 		mkinitrd_usage
@@ -104,10 +104,16 @@ tmpdir=$( mktemp -d )
 olddir="$PWD"
 cd "$tmpdir"
 
-echo "Extracting '${template#$root}' into '$tmpdir'..."
+# here we go, extract the template
+echo "Extracting '${template#$root/}' into '$tmpdir'..."
 gunzip -c < "$template" | cpio -i
 if [ $? -eq 0 ]; then
 	errno=0
+
+	# prepare the environment for the plugins
+	export root tmpdir kernelver moddir sysmap running
+
+	# call the plugins
 	for x in $( ls -1d $root/usr/lib/mkinitrd/*.sh 2> /dev/null ); do
 		echo "Calling ${x#$root/usr/lib/mkinitrd/}"
 		$SHELL "$x" || errno=$?
@@ -115,22 +121,26 @@ if [ $? -eq 0 ]; then
 		[ $errno -eq 0 ] || break
 	done
 
+	# repack if everything went well
 	if [ $errno -eq 0 ]; then
 		initrd=boot/initrd-$kernelver.img
-		rm -rvf "$root/$initrd.cpio" "$root/$initrd"
 
 		echo "Repacking '$tmpdir' into \$root/$initrd"
-		find * | cpio -o -H newc --file "$root/$initrd.cpio"
-		cd "$olddir"
+		find . | cpio -o -H newc | gzip -9 > "$root/$initrd.$$"
 
-		gzip -c -9 "$root/$initrd.cpio" > "$root/$initrd"
-		rm -rf "$tmpdir" "$root/$initrd.cpio"
-		echo "done."
-		exit 0
+		if [ $? -eq 0 ]; then
+			mv -f "$root/$initrd.$$" "$root/$initrd"
+			cd "$olddir"; rm -rf "$tmpdir"
+
+			echo "done."
+			exit 0
+		else
+			rm -f "$root/$initrd.$$"
+		fi
 	fi
 fi
 
-cd "$olddir"
-rm -rf "$tmpdir"
+cd "$olddir"; rm -rf "$tmpdir"
+
 echo "failed."
 exit 1
