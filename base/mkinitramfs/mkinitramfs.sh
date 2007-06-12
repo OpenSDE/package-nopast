@@ -130,6 +130,7 @@ if [ $? -eq 0 ]; then
 
 		if [ $? -eq 0 ]; then
 			mv -f "$root/$initrd.$$" "$root/$initrd"
+			du -sh "$root/$initrd"
 			cd "$olddir"; rm -rf "$tmpdir"
 
 			echo "done."
