@@ -35,8 +35,8 @@
 
 [L] PublicDomain 
 [S] Stable
-[V] 1.32
+[V] 2.0.8
 [P] O -1---5---9 179.002
 
-[D] 976391346 libselinux-1.32.tgz http://www.nsa.gov/selinux/archives/
+[D] 1005125822 libselinux-2.0.8.tgz http://www.nsa.gov/selinux/archives/
 
