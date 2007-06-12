@@ -60,7 +60,7 @@ if [ -n "$moddir" ]; then
 	echo -n "Installing modules:"
 
 	# greedy^3
-	find $moddir/kernel/drivers/{block,ide,ieee1394,md,scsi,cdrom,usb,message} \
+	find $moddir/kernel/drivers/{block,ata,ide,ieee1394,md,scsi,cdrom,usb,message} \
 		$moddir/kernel/{lib,fs} \
 		-type f | while read file; do
 		module_install "$file"
