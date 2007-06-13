@@ -1,0 +1,2 @@
+# hotplug
+ENV{MODALIAS}=="?*",	RUN+="/sbin/modprobe $env{MODALIAS}"
