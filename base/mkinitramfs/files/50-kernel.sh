@@ -43,21 +43,34 @@ if [ -n "$moddir" ]; then
 			module="$1"
 			source="$( find "$moddir/kernel" -name "$module.ko" | head -n 1 )"
 		fi
-		target="lib/modules/$kernelver/${source#$moddir/}"
 
-		if [ ! -f $target ]; then
-			echo -n " $module"
-			mkdir -p "${target%/*}"
-			cp "$source" "$target"
+		if [ -r "$source" ]; then
+			target="lib/modules/$kernelver/${source#$moddir/}"
 
-			for dep in $( $MODINFO "$source" | grep "^depends:" | tr -s ' ' | cut -d' ' -f2 | tr ',' ' ' ); do
-				module_install "$dep"
-			done
+			if [ ! -f $target ]; then
+				echo -n " $module"
+				mkdir -p "${target%/*}"
+				cp "$source" "$target"
+
+				for dep in $( $MODINFO "$source" | grep "^depends:" | tr -s ' ' | cut -d' ' -f2 | tr ',' ' ' ); do
+					module_install "$dep"
+				done
+			fi
+		else
+			modules_missing="$modules_missing $module"
+			echo -n " [$module]"
 		fi
 	}
 
 
 	echo -n "Installing modules:"
+	modules_missing=
+
+	if [ -n "$MKINITRD_MODULES" ]; then
+		for module in $MKINITRD_MODULES; do
+			module_install "$module"
+		done
+	fi
 
 	# greedy^3
 	find $moddir/kernel/drivers/{block,ata,ide,ieee1394,md,scsi,cdrom,usb,message} \
@@ -68,4 +81,6 @@ if [ -n "$moddir" ]; then
 	echo
 
 	$DEPMOD -ae -b "$tmpdir" -F "$sysmap" "$kernelver"
+
+	[ -z "$modules_missing" ] || echo "Failed to find:$modules_missing"
 fi
