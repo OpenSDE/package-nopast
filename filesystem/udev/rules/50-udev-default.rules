@@ -7,10 +7,10 @@ KERNEL=="ptmx",			GROUP="tty", MODE="0666", OPTIONS="last_rule"
 KERNEL=="console",		MODE="0600", OPTIONS="last_rule"
 
 # serial devices
-KERNEL=="tty[A-Z]*|pppox*|ircomm*|noz*", GROUP="uucp"
-KERNEL=="hvc*|hvsi*",		GROUP="uucp"
-KERNEL=="iseries/vtty*",	GROUP="uucp"
-KERNEL=="mwave",		NAME="modems/%k", GROUP="uucp"
+KERNEL=="tty[A-Z]*|pppox*|ircomm*|noz*", GROUP="modem"
+KERNEL=="hvc*|hvsi*",		GROUP="modem"
+KERNEL=="iseries/vtty*",	GROUP="modem"
+KERNEL=="mwave",		NAME="modems/%k", GROUP="modem"
 KERNEL=="ttyUSB*", ATTRS{product}=="[Pp]alm*Handheld*", SYMLINK+="pilot"
 KERNEL=="ttyUSB*", ATTRS{product}=="[Hh]andspring*Treo*|[Hh]andspring*Visor*", SYMLINK+="pilot"
 
