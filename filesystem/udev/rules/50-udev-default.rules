@@ -1,4 +1,9 @@
-# console
+# console (NAME)
+KERNEL=="pty[pqrstuvwxyzabcdef][0123456789abcdef]",	NAME="pty/m%m"
+KERNEL=="tty[pqrstuvwxyzabcdef][0123456789abcdef]",	NAME="pty/s%m"
+KERNEL=="tty[0-9]*",		NAME="vc/%n"
+
+# console (GROUP,MODE)
 KERNEL=="pty[pqrstuvwxyzabcdef][0123456789abcdef]", GROUP="tty", MODE="0666", OPTIONS="last_rule"
 KERNEL=="tty[pqrstuvwxyzabcdef][0123456789abcdef]", GROUP="tty", MODE="0666", OPTIONS="last_rule"
 KERNEL=="tty",			GROUP="tty", MODE="0666", OPTIONS="last_rule"
