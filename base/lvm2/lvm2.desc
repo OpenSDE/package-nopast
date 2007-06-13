@@ -27,15 +27,15 @@
 
 [U] http://sources.redhat.com/lvm2/
 
-[A] linux-lvm@redhat.com
+[A] Red Hat, Inc. <linux-lvm@redhat.com>
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/filesystem
 
 [L] GPL
 [S] Stable
-[V] 2.02.19
+[V] 2.02.25
 [P] X -?-3-----9 184.000
 
-[D] 2094513046 LVM2.2.02.19.tgz ftp://sources.redhat.com/pub/lvm2/
+[D] 2611074846 LVM2.2.02.25.tgz ftp://sources.redhat.com/pub/lvm2/
 
