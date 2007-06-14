@@ -1,6 +1,6 @@
 # vi: set ft=conf :
 
-KERNEL=="device-mapper", SYMLINK+="mapper/control"
+KERNEL=="device-mapper", NAME="mapper/control"
 
 KERNEL!="dm-*", GOTO="device_mapper_end"
 ACTION!="add|change", GOTO="device_mapper_end"
