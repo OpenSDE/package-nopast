@@ -125,6 +125,7 @@ if [ $? -eq 0 ]; then
 	if [ $errno -eq 0 ]; then
 		initrd=boot/initrd-$kernelver.img
 
+		echo "Expanded size: $( du -sh . | cut -d' ' -f1 )"
 		echo "Repacking '$tmpdir' into \$root/$initrd"
 		find . | cpio -o -H newc | gzip -9 > "$root/$initrd.$$"
 
