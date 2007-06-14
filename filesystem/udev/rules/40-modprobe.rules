@@ -10,6 +10,8 @@ ENV{MODALIAS}=="?*",	RUN+="/sbin/modprobe $env{MODALIAS}"
 SUBSYSTEM=="scsi", KERNEL=="[0-9]*:[0-9]*", ACTION=="add", ATTR{type}=="0|7|14", ATTR{timeout}="60"
 SUBSYSTEM=="scsi", KERNEL=="[0-9]*:[0-9]*", ACTION=="add", ATTR{type}=="1", ATTR{timeout}="900"
 
+SUBSYSTEM=="scsi",		ACTION=="add", ATTRS{type}=="0", RUN+="/sbin/modprobe sd_mod"
+
 SUBSYSTEM=="scsi_device",	ACTION=="add", ATTRS{type}=="0|7|14", RUN+="/sbin/modprobe sd_mod"
 SUBSYSTEM=="scsi_device",	ACTION=="add", ATTRS{type}=="1", ATTR{vendor}=="On[sS]tream", RUN+="/sbin/modprobe osst"
 SUBSYSTEM=="scsi_device",	ACTION=="add", ATTRS{type}=="1", RUN+="/sbin/modprobe st"
