@@ -1,3 +1,5 @@
+# vi: set ft=conf :
+
 # md links hook into "change" events, when the array becomes available
 
 SUBSYSTEM!="block", GOTO="md_end"
