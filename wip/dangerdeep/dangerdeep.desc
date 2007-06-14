@@ -12,16 +12,18 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] A WW2 German submarine simulation
 
-[T] Danger from the deep (aka dangerdeep) is a WW2 German submarine
-[T] simulation. It should be portable to operating systems or platforms
-[T] that use SDL/OpenGL. This game is planned as a tactical simulation,
-[T] and will be as realistic as time and knowledge of physics allows.
+[I] A WW2 German uboat simulation
+
+[T] Danger from the Deep (aka dangerdeep) is a WW2 German uboat simulation,
+[T] focused in historical and technical realism. It should be portable to 
+[T] operating systems or platforms that use SDL/OpenGL. This game is planned as
+[T] a tactical simulation and will be as realistic as time allows.
 
 [U] http://dangerdeep.sourceforge.net
 
-[A] thorsten_jordan <trb7@trb.net>
+[A] Thorsten Jordan <thorsten_jordan@gmx.de>
+[A] Luis Barrancos <rconstruct@mail.telepac.pt>
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/game
@@ -29,7 +31,7 @@
 [L] GPL
 [S] Alpha
 [V] 0.3.0
-[P] O -----5---9 800.000
+[P] O -----5---9 861.000
 
 [D] 1762615643 dangerdeep-0.3.0.tar.gz http://dl.sourceforge.net/dangerdeep/
 [D] 1784621464 dangerdeep-data-0.3.0.zip http://dl.sourceforge.net/dangerdeep/
