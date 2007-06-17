@@ -14,20 +14,18 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-diff -ur ADGen.orig/ADGen.py ADGen/ADGen.py
---- ADGen.orig/ADGen.py	2007-03-25 17:13:12.000000000 +0200
-+++ ADGen/ADGen.py	2007-03-25 17:52:56.000000000 +0200
-@@ -24,6 +24,9 @@
- # -----------------------------------------------------------------------------
- ##
- 
-+import sys
+diff -u -r adgen.orig/adgen.py adgen/adgen.py
+--- adgen.orig/adgen.py	2007-05-02 23:03:00.000000000 +0200
++++ adgen/adgen.py	2007-06-17 13:11:21.000000000 +0200
+@@ -29,6 +29,7 @@
+ import os
+ import shutil
+ import sys
 +sys.path.append("$LIBDIR")
-+
- import ADGenDebug
- from ADGenDebug import debug
  
-@@ -440,4 +443,4 @@
+ import util.adgenDebug as adgenDebug
+ import util.adgenI18N as adgenI18N
+@@ -616,4 +617,4 @@
      pass
      
  if __name__ == "__main__":
