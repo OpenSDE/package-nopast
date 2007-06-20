@@ -21,7 +21,7 @@
 [T] setting of devices connected to the PCI bus.
 
 [A] Martin Mares <mj@suse.cz>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [F] NOPARALLEL
 [C] base/system
@@ -32,5 +32,5 @@
 [P] X -----5---9 149.900
 
 [D] 3447994077 pciutils-2.2.5.tar.gz ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/
-[D] 2653390900 pci.ids-2007-06-16.bz2 !http://pciids.sourceforge.net/pci.ids.bz2
+[D] 3081596158 pci.ids-2007-06-20.bz2 !http://pciids.sourceforge.net/pci.ids.bz2
 
