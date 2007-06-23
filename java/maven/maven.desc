@@ -30,8 +30,7 @@
 
 [L] APL
 [S] Stable
-[V] 2.0.6
+[V] 2.0.7
 [P] X -----5---9 800.050
 
-#[D] 0 maven-2.0.3-src.tar.bz2 svn+http://svn.apache.org/repos/asf/maven/components/trunk maven-components -r389387
-[D] 585395945 maven-2.0.6-bin.tar.bz2 http://www.eu.apache.org/dist/maven/binaries/
+[D] 1858668950 maven-2.0.7-bin.tar.bz2 http://dl.apache.org/dist/maven/binaries/
