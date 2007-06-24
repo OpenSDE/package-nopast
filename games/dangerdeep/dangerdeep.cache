@@ -1,0 +1,54 @@
+
+[TIMESTAMP] 1182681389 Sun Jun 24 12:36:29 2007
+[BUILDTIME] 105 (5)
+[SIZE] 73.09 MB, 748 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fftw3
+[DEP] findutils
+[DEP] freeglut
+[DEP] gawk
+[DEP] gcc
+[DEP] gle
+[DEP] glew
+[DEP] glibc
+[DEP] glproto
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] kbproto
+[DEP] libdrm
+[DEP] libglpng
+[DEP] libpthread-stubs
+[DEP] libsdl
+[DEP] libsdl_image
+[DEP] libsdl_mixer
+[DEP] libsdl_net
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] mesa
+[DEP] numpy
+[DEP] pil
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] rat
+[DEP] scons
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] trac-doxygen
+[DEP] unzip
+[DEP] wxpython
+[DEP] xproto
