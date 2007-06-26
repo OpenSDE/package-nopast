@@ -29,12 +29,13 @@
 [A] Malcolm Box <mbox@users.sourceforge.net>
 [A] Per Kristian Gjermshus <pergj@users.sourceforge.net>
 [M] The OpenSDE Community <list@opensde.org>
+[M] Minto van der Sluis <misl@opensde.org>
 
 [C] extra/tool
 
 [L] GPL
 [S] Stable
 [V] 0.3.1
-[P] X -----5---9 800.000
+[P] O -----5---9 800.000
 
 [D] 12952139 lxr-0.3.1.tar.gz http://dl.sourceforge.net/sourceforge/lxr/
