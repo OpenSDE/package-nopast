@@ -25,7 +25,7 @@ else
 	# wrap the sytem compiler
 	ccache_dir=ccache
 	if atstage toolchain; then
-		x=`uname -m | uname2arch`
+		x=`/bin/uname -m | uname2arch`
 		var_append ccache_dir - $x
 	fi
 
