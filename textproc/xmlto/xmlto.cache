@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1184032772 Mon Jul  9 21:59:32 2007
+[BUILDTIME] 5 (5)
+[SIZE] 0.08 MB, 30 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] docbook-xml
+[DEP] docbook-xsl
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
