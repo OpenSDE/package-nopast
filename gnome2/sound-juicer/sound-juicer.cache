@@ -15,7 +15,7 @@
 [DEP] coreutils
 [DEP] dasher
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] esound
 [DEP] expat
 [DEP] file

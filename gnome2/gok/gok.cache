@@ -19,7 +19,7 @@
 [DEP] dbus
 [DEP] dbus-glib
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] ekiga
 [DEP] eog
 [DEP] epiphany

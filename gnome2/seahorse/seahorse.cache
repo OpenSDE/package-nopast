@@ -14,7 +14,7 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] eel
 [DEP] esound
 [DEP] expat

@@ -14,7 +14,7 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] dmxproto
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] esound
 [DEP] expat
 [DEP] findutils

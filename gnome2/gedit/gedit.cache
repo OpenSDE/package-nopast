@@ -13,7 +13,7 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] eel
 [DEP] esound
 [DEP] expat

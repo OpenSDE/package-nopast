@@ -13,7 +13,7 @@
 [DEP] coreutils
 [DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] esound
 [DEP] evolution-data-server
 [DEP] expat

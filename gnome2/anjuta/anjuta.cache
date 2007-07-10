@@ -26,7 +26,7 @@
 [DEP] dbus-glib
 [DEP] devhelp
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] e2fsprogs
 [DEP] eog
 [DEP] epiphany

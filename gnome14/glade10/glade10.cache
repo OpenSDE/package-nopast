@@ -18,7 +18,7 @@
 [DEP] coreutils
 [DEP] dasher
 [DEP] diffutils
-[DEP] docbookx
+[DEP] docbook-xml
 [DEP] eog
 [DEP] epiphany
 [DEP] esound
