@@ -216,7 +216,7 @@ lx_patch ()
 	if [[ $treever = 24* ]] ; then
 		echo "Create symlinks and a few headers for <$lx_cpu> ... "
 		eval $MAKE $makeopt symlinks
-		cp $base/package/base/linux24/autoconf.h include/linux/
+		cp $base/package/*/linux24/autoconf.h include/linux/
 		touch include/linux/modversions.h
 	elif [ "$lx_kernelrelease" != "UTS_RELEASE" ]; then
 		echo "Create symlinks and a few headers for <$lx_cpu> ... "
