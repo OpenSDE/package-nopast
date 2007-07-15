@@ -14,20 +14,25 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./Makefile.orig	2007-07-11 11:08:19.000000000 -0400
-+++ ./Makefile	2007-07-11 11:08:36.000000000 -0400
-@@ -124,14 +124,6 @@
+--- ./Makefile.orig	2007-07-15 07:15:44.000000000 -0400
++++ ./Makefile	2007-07-15 12:52:28.000000000 -0400
+@@ -170,19 +170,6 @@
  SO_OBJECTS = dumapp_so.o duma_so.o sem_inc_so.o print_so.o
  
- all:	libduma.a $(DUMASO) tstheap dumatest dumatestpp testoperators tstheap_so dumatestpp_so
--	@ echo "Testing DUMA."
--	@ echo "After the last test, it should print that the test has PASSED."
--	$(CURPATH)dumatest
--	$(CURPATH)tstheap 3072
--	$(CURPATH)testoperators
+ all:	libduma.a tstheap$(EXEPOSTFIX) dumatest$(EXEPOSTFIX) dumatestpp$(EXEPOSTFIX) testoperators$(EXEPOSTFIX) $(DUMA_DYN_DEPS)
+-	@ echo
+-	@ echo "Testing DUMA (static library):"
+-	$(CURPATH)dumatest$(EXEPOSTFIX)
+-	$(CURPATH)tstheap$(EXEPOSTFIX) 3072
+-	$(CURPATH)testoperators$(EXEPOSTFIX)
+-	@ echo
+-	@ echo "DUMA static confidence test PASSED."
+-	@ echo
+-	@ echo "Testing DUMA (dynamic library)."
 -	(export LD_PRELOAD=./$(DUMASO); exec $(CURPATH)tstheap_so 3072)
 -	@ echo
--	@ echo "DUMA confidence test PASSED."
+-	@ echo "DUMA dynamic confidence test PASSED."
+-	@ echo
  
  install: libduma.a duma.3 $(DUMASO)
  	$(INSTALL) -m 755 duma.sh $(BIN_INSTALL_DIR)/duma
