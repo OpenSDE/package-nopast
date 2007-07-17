@@ -31,6 +31,8 @@
 [L] GPL
 [S] Stable
 [V] 1.6.1
-[P] X -1---5---9 102.000
+[P] X -?---5---9 102.001
 
 [D] 3511620770 busybox-1.6.1.tar.bz2 http://busybox.net/downloads/
+[D] 3883757934 busybox-1.6.1-adduser.patch http://busybox.net/downloads/fixes-1.6.1/
+[D] 3494677559 busybox-1.6.1-init.patch http://busybox.net/downloads/fixes-1.6.1/
