@@ -52,22 +52,34 @@
  	INSTALL_TARGETS += $(INSTALL_CMDLIB_TARGETS)
  endif
  
-@@ -168,9 +167,16 @@
- 		done; \
- 	)
+--- ./tools/Makefile.in.orig	2007-07-18 20:11:11.000000000 -0400
++++ ./tools/Makefile.in	2007-07-18 20:12:41.000000000 -0400
+@@ -105,7 +105,7 @@
  
--install_tools_static: lvm.static
-+install_tools_static: lvm.static .commands
- 	$(INSTALL) -D $(OWNER) $(GROUP) -m 555 $(STRIP) lvm.static \
--		$(staticdir)/lvm.static
-+		$(staticdir)/lvm
-+	@echo Creating symbolic links for individual commands in $(sbindir)
-+	@( \
-+		for v in `cat .commands`; do \
-+			cd $(sbindir); \
-+			$(LN_S) -f lvm $$v; \
-+		done; \
-+	)
+ lvm.static: $(OBJECTS) lvm-static.o $(top_srcdir)/lib/liblvm.a
+ 	$(CC) -o $@ $(CFLAGS) $(OBJECTS) lvm-static.o -static \
+-		$(LDFLAGS) $(LVMLIBS) $(LIBS) -rdynamic
++		$(LDFLAGS) $(LVMLIBS) $(LIBS)
  
- install: $(INSTALL_TARGETS)
- 
+ liblvm2cmd.a: $(top_srcdir)/lib/liblvm.a $(OBJECTS) lvmcmdlib.o lvm2cmd.o
+ 	cat $(top_srcdir)/lib/liblvm.a > $@
+--- ./configure.orig	2007-07-18 20:19:25.000000000 -0400
++++ ./configure	2007-07-18 20:19:44.000000000 -0400
+@@ -1948,7 +1948,6 @@
+ 		CLDWHOLEARCHIVE="-Wl,-whole-archive"
+ 		CLDNOWHOLEARCHIVE="-Wl,-no-whole-archive"
+ 		LDDEPS="$LDDEPS .export.sym"
+-		LDFLAGS="$LDFLAGS -Wl,--export-dynamic"
+ 		LIB_SUFFIX="so"
+ 		DEVMAPPER=yes
+ 		ODIRECT=yes
+--- ./configure.in.orig	2007-07-18 20:22:31.000000000 -0400
++++ ./configure.in	2007-07-18 20:22:42.000000000 -0400
+@@ -37,7 +37,6 @@
+ 		CLDWHOLEARCHIVE="-Wl,-whole-archive"
+ 		CLDNOWHOLEARCHIVE="-Wl,-no-whole-archive"
+ 		LDDEPS="$LDDEPS .export.sym"
+-		LDFLAGS="$LDFLAGS -Wl,--export-dynamic"
+ 		LIB_SUFFIX="so"
+ 		DEVMAPPER=yes
+ 		ODIRECT=yes
