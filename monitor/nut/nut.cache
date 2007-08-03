@@ -1,0 +1,34 @@
+
+[TIMESTAMP] 1186145171 Fri Aug  3 14:46:11 2007
+[BUILDTIME] 100 (9)
+[SIZE] 2.34 MB, 144 files
+
+[DEP] 00-dirtree
+[DEP] alsa-tools
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] dbus
+[DEP] dbus-glib
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] hal
+[DEP] libusb
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] openssl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] subversion
+[DEP] sysfiles
+[DEP] tar
+[DEP] udev
+[DEP] util-linux
