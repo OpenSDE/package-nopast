@@ -24,7 +24,7 @@ done
 # add compatibility symlink
 for x in sbin lib; do
 	[ -x "$prefix/$x/sendmail" ] || ln -sf ../bin/sendmail $prefix/$x/sendmail
-fi
+done
 
 exit 0
 
