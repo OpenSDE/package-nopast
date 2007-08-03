@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1175888976 Fri Apr  6 21:49:36 2007
+[TIMESTAMP] 1186107435 Fri Aug  3 10:17:15 2007
 [BUILDTIME] 100 (5)
-[SIZE] 4.60 MB, 152 files
+[SIZE] 6.01 MB, 192 files
 
 [DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] dpkg
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -20,10 +20,8 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] nfs-utils
-[DEP] perl
-[DEP] perl-gettext
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] texinfo
 [DEP] util-linux
