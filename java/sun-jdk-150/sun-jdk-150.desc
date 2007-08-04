@@ -33,11 +33,11 @@
 
 [L] Restricted
 [S] Stable
-[V] 1.5.0-11
+[V] 1_5_0_12
 [P] O -----5---9 150.000
 
 [O] . $base/package/*/*/java-sun-conf.in jdk
 
-[D] 2471990391 jdk-1_5_0_11-linux-i586.bin  -manual://java.sun.com/j2se/1.5.0/download.jsp
-[D] 1711390433 jdk-1_5_0_11-linux-amd64.bin  -manual://java.sun.com/j2se/1.5.0/download.jsp
+[D] 347597837 jdk-1_5_0_12-linux-i586.bin -manual://java.sun.com/j2se/1.5.0/download.jsp
+[D] 1189100188 jdk-1_5_0_12-linux-amd64.bin -manual://java.sun.com/j2se/1.5.0/download.jsp
 
