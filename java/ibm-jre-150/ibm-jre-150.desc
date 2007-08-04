@@ -33,13 +33,13 @@
 
 [L] Restricted
 [S] Stable
-[V] 1.5.0-4.0
+[V] 5.0-5.0
 [P] O -----5---9 150.000
 
 [O] . $base/package/*/*/java-ibm-conf.in jre
 
-[D] 707995921 ibm-java2-jre-5.0-4.0-linux-i386.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
-[D] 2983854941 ibm-java2-jre-5.0-4.0-linux-x86_64.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
-[D] 702023873 ibm-java2-jre-5.0-4.0-linux-ppc.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
-[D] 1045238842 ibm-java2-jre-5.0-4.0-linux-ppc64.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
+[D] 1135979562 ibm-java2-jre-5.0-5.0-linux-i386.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
+[D] 2243003209 ibm-java2-jre-5.0-5.0-linux-x86_64.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
+[D] 1389511601 ibm-java2-jre-5.0-5.0-linux-ppc.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
+[D] 1597441664 ibm-java2-jre-5.0-5.0-linux-ppc64.tgz -manual://www-128.ibm.com/developerworks/java/jdk/linux/download.html
 
