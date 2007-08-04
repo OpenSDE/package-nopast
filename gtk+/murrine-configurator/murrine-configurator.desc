@@ -12,16 +12,17 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
+[I] Murrine theme configurator
 
-[I] Murrine theme configurator. 
+[T] This is absolutely the first Configurator for a Gtk Engine. New Murrine
+[T] Configurator give users the opportunity to configure all the Murrine
+[T] Engine style options, like glaze style, roundness, menu bar and items
+[T] styles, and many other aspects to reach their desired effects.
+[T]
+[T] With Murrine Configurator i want to give users the opportunity to
+[T] configure.
 
-[T] With Murrine Configurator i want to give users the opportunity to configure all the Murrine Engine style options.
-[T] The usage is very simple and the dialogs explain step by step the style options you can edit.
-[T] The program is written in bash and required only the installation of "zenity", that is a Gtk2 utility for bash scripting.
-
-
-
-[U] http://cimi.netsons.org/pages/murrine/configurator.php
+[U] http://murrine.netsons.org/?q=node/8
 
 [A] Cimitan Andrea <cimi86@alice.it>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
@@ -30,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 0.5
+[V] 1.4
 
 [P] X -----5---9 200.400
 
-[D] 2878531772 murrine-configurator-0.5.tar.bz2 http://cimi.netsons.org/media/download_gallery/murrine/
+[D] 2780502493 murrine-configurator-1.4.tar.bz2 !http://murrine.netsons.org/files/nmc.tar_3.bz2
