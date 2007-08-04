@@ -16,7 +16,7 @@ if pkgcheck iptables X
 then
  	menu_begin MENU_PKG_IPTABLES 'IPtables Package Options'
 
-	bool "Enable development support (libiptc)" \
+	bool "Enable development support (libipq/libiptc)" \
 		SDECFG_PKG_IPTABLES_DEVEL	0
 
 	menu_end
