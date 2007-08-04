@@ -31,13 +31,13 @@
 
 [L] Restricted
 [S] Stable
-[V] 1.4.2-8.0
+[V] 1.4.2-9.0
 [P] O -----5---9 150.000
 
 [O] . $base/package/*/*/java-ibm-conf.in jdk
 
-[D] 800558680 IBMJava2-SDK-1.4.2-8.0.x86.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
-[D] 833066885 IBMJava2-SDK-AMD64-1.4.2-8.0.x86_64.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
-[D] 150777912 IBMJava2-SDK-1.4.2-8.0.ppc.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
-[D] 1201771006 IBMJava2-SDK-1.4.2-8.0.ppc64.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
+[D] 363701547 IBMJava2-SDK-1.4.2-9.0.x86.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
+[D] 2639011144 IBMJava2-SDK-AMD64-1.4.2-9.0.x86_64.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
+[D] 1389369048 IBMJava2-SDK-1.4.2-9.0.ppc.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
+[D] 1886009703 IBMJava2-SDK-1.4.2-9.0.ppc64.tgz -manual://www14.software.ibm.com/webapp/iwm/web/reg/pick.do?source=lxdk
 
