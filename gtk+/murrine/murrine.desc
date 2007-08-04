@@ -12,7 +12,7 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Murrine GTK Engine. 
+[I] Murrine GTK Engine
 
 [T] "Murrine" is an Italian word meaning the glass artworks done by Venicians 
 [T] glass blowers. They're absolutely wonderful and colorful.
@@ -22,7 +22,7 @@
 [T] and ubuntulooks (30% faster and more), since I have tryed to optimize the code 
 [T] and removed a lot of slow gradients to provide this unique style.
 
-[U] http://cimi.netsons.org/pages/murrine.php
+[U] http://murrine.netsons.org/ 
 
 [A] Cimitan Andrea <cimi86@alice.it>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
@@ -31,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 0.52
+[V] 0.53.1
 
 [P] X -----5---9 200.400
 
-[D] 3920916289 murrine-0.52.tar.bz2 http://cimi.netsons.org/media/download_gallery/murrine/
+[D] 3097425482 murrine-0.53.1.tar.bz2 http://murrine.netsons.org/files/
