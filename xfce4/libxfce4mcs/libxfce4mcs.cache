@@ -1,6 +1,6 @@
 
-[TIMESTAMP] 1186182901 Fri Aug  3 19:15:01 2007
-[BUILDTIME] 10 (5)
+[TIMESTAMP] 1186353665 Sun Aug  5 18:41:05 2007
+[BUILDTIME] 15 (9)
 [SIZE] 0.19 MB, 35 files
 
 [DEP] 00-dirtree
@@ -21,6 +21,7 @@
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
+[DEP] libxdmcp
 [DEP] libxfce4util
 [DEP] linux-header
 [DEP] make

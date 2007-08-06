@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133770767 Mon Dec  5 09:19:27 2005
-[BUILDTIME] 20 (5)
-[SIZE] 1.29 MB, 110 files
+[TIMESTAMP] 1186353752 Sun Aug  5 18:42:32 2007
+[BUILDTIME] 25 (9)
+[SIZE] 1.29 MB, 106 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -9,7 +9,6 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
@@ -26,24 +25,29 @@
 [DEP] gtk+
 [DEP] imake
 [DEP] kbproto
+[DEP] libexo
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfce4mcs
 [DEP] libxfce4util
 [DEP] libxfcegui4
+[DEP] libxfixes
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
+[DEP] perl
 [DEP] pkgconfig
 [DEP] randrproto
 [DEP] renderproto
@@ -51,7 +55,20 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
+[DEP] thunar
 [DEP] util-linux
+[DEP] xarchiver
 [DEP] xf86vidmodeproto
 [DEP] xfce-mcs-manager
+[DEP] xfce-utils
+[DEP] xfce4-appfinder
+[DEP] xfce4-mixer
+[DEP] xfce4-panel
+[DEP] xfce4-session
+[DEP] xfce4-terminal
+[DEP] xfdesktop
+[DEP] xfmedia
+[DEP] xfprint
+[DEP] xfwm4
+[DEP] xorg-cf-files
 [DEP] xproto

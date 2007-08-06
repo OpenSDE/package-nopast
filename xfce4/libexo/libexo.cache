@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133793804 Mon Dec  5 15:43:24 2005
-[BUILDTIME] 25 (5)
-[SIZE] 0.92 MB, 94 files
+[TIMESTAMP] 1186353832 Sun Aug  5 18:43:52 2007
+[BUILDTIME] 50 (9)
+[SIZE] 1.72 MB, 155 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -9,9 +9,9 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
 [DEP] findutils
@@ -25,30 +25,54 @@
 [DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] imake
+[DEP] hal
+[DEP] kbproto
 [DEP] libice
+[DEP] libnotify
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
 [DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfce4mcs
 [DEP] libxfce4util
 [DEP] libxfcegui4
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxrandr
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
-[DEP] numpy
 [DEP] pango
-[DEP] pil
+[DEP] perl
+[DEP] perl-uri
 [DEP] pkgconfig
-[DEP] pygtk
 [DEP] python
+[DEP] renderproto
 [DEP] sed
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
+[DEP] thunar
 [DEP] util-linux
-[DEP] wxpython
+[DEP] xarchiver
+[DEP] xfce-mcs-manager
+[DEP] xfce-mcs-plugins
+[DEP] xfce-utils
+[DEP] xfce4-appfinder
+[DEP] xfce4-mixer
+[DEP] xfce4-panel
+[DEP] xfce4-session
+[DEP] xfce4-terminal
+[DEP] xfdesktop
+[DEP] xfmedia
+[DEP] xfprint
+[DEP] xfwm4
 [DEP] xproto
+[DEP] zlib

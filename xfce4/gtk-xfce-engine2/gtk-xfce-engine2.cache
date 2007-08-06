@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133770012 Mon Dec  5 09:06:52 2005
-[BUILDTIME] 15 (5)
-[SIZE] 0.29 MB, 95 files
+[TIMESTAMP] 1186353600 Sun Aug  5 18:40:00 2007
+[BUILDTIME] 15 (9)
+[SIZE] 0.18 MB, 98 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -9,7 +9,6 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
@@ -24,19 +23,24 @@
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
+[DEP] kbproto
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxdmcp
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
+[DEP] xorg-cf-files
+[DEP] xproto

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1186182931 Fri Aug  3 19:15:31 2007
-[BUILDTIME] 25 (5)
-[SIZE] 1.29 MB, 185 files
+[TIMESTAMP] 1186353697 Sun Aug  5 18:41:37 2007
+[BUILDTIME] 40 (9)
+[SIZE] 1.29 MB, 187 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -20,10 +20,12 @@
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
+[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
 [DEP] kbproto
+[DEP] libexo
 [DEP] libice
 [DEP] libpng
 [DEP] libpthread-stubs
@@ -44,6 +46,20 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
+[DEP] thunar
 [DEP] util-linux
+[DEP] xarchiver
+[DEP] xfce-mcs-manager
+[DEP] xfce-mcs-plugins
+[DEP] xfce-utils
+[DEP] xfce4-appfinder
+[DEP] xfce4-mixer
+[DEP] xfce4-panel
+[DEP] xfce4-session
+[DEP] xfce4-terminal
+[DEP] xfdesktop
+[DEP] xfmedia
+[DEP] xfprint
+[DEP] xfwm4
 [DEP] xorg-cf-files
 [DEP] xproto

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1155340313 Fri Aug 11 23:51:53 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.29 MB, 30 files
+[TIMESTAMP] 1186354503 Sun Aug  5 18:55:03 2007
+[BUILDTIME] 15 (9)
+[SIZE] 0.83 MB, 74 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -20,19 +20,21 @@
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
+[DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
-[DEP] libice
+[DEP] libexo
 [DEP] libpng
-[DEP] libsm
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfce4util
+[DEP] libxfcegui4
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
@@ -41,7 +43,6 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] perl
 [DEP] pkgconfig
@@ -49,7 +50,19 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] thunar
 [DEP] util-linux
+[DEP] xfce-mcs-manager
+[DEP] xfce-mcs-plugins
+[DEP] xfce-utils
+[DEP] xfce4-appfinder
+[DEP] xfce4-mixer
+[DEP] xfce4-panel
+[DEP] xfce4-session
+[DEP] xfce4-terminal
 [DEP] xfdesktop
+[DEP] xfmedia
+[DEP] xfprint
+[DEP] xfwm4
 [DEP] xproto
 [DEP] zlib

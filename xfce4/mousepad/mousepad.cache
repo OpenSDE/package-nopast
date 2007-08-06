@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1155340275 Fri Aug 11 23:51:15 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.19 MB, 34 files
+[TIMESTAMP] 1186354483 Sun Aug  5 18:54:43 2007
+[BUILDTIME] 15 (9)
+[SIZE] 0.23 MB, 43 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -20,15 +20,18 @@
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
+[DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
+[DEP] libexo
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
@@ -42,15 +45,16 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
+[DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
+[DEP] xfce-mcs-manager
 [DEP] xproto
 [DEP] zlib
