@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133835756 Tue Dec  6 03:22:36 2005
-[BUILDTIME] 30 (5)
-[SIZE] 2.17 MB, 132 files
+[TIMESTAMP] 1186353954 Sun Aug  5 18:45:54 2007
+[BUILDTIME] 40 (9)
+[SIZE] 1.95 MB, 127 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -9,8 +9,8 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
 [DEP] expat
 [DEP] findutils
@@ -25,11 +25,15 @@
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
+[DEP] kbproto
+[DEP] libexo
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
@@ -44,16 +48,29 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
+[DEP] perl
+[DEP] perl-xml-parser
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
+[DEP] thunar
 [DEP] util-linux
+[DEP] xarchiver
 [DEP] xfce-mcs-manager
+[DEP] xfce-mcs-plugins
 [DEP] xfce-utils
+[DEP] xfce4-appfinder
+[DEP] xfce4-mixer
+[DEP] xfce4-panel
+[DEP] xfce4-terminal
+[DEP] xfdesktop
+[DEP] xfmedia
+[DEP] xfprint
 [DEP] xfwm4
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib
