@@ -1,0 +1,53 @@
+
+[TIMESTAMP] 1186411149 Mon Aug  6 10:39:09 2007
+[BUILDTIME] 40 (9)
+[SIZE] 0.38 MB, 96 files
+
+[DEP] 00-dirtree
+[DEP] atk
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cairo
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] glitz
+[DEP] grep
+[DEP] gtk+
+[DEP] kbproto
+[DEP] libice
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdmcp
+[DEP] libxfce4mcs
+[DEP] libxfce4util
+[DEP] libxfcegui4
+[DEP] libxrender
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] pango
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] pygtk
+[DEP] python
+[DEP] renderproto
+[DEP] sed
+[DEP] startup-notification
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xfce4-panel
+[DEP] xproto
