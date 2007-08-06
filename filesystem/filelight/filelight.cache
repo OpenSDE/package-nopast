@@ -1,0 +1,62 @@
+
+[TIMESTAMP] 1186381228 Mon Aug  6 08:20:28 2007
+[BUILDTIME] 35 (5)
+[SIZE] 0.42 MB, 24 files
+
+[DEP] 00-dirtree
+[DEP] acl
+[DEP] apollon
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gamin
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] hicolor-icon-theme
+[DEP] imake
+[DEP] kdelibs
+[DEP] kphone
+[DEP] libart_lgpl23
+[DEP] libdnet
+[DEP] libdrm
+[DEP] libice
+[DEP] libidn
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxinerama
+[DEP] libxmu
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] perl
+[DEP] qt
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xorg-cf-files
+[DEP] xproto
+[DEP] zlib
