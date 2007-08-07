@@ -13,27 +13,24 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Collects and normalize events from Prelude sensors 
+[I] Collects and normalizes events from Prelude sensors
 
-[T] The PreludeManager is a high-availability server which collect and normalize 
-[T] information from distributed sensors and store them into a database (or any 
-[T] kind of user provided media). It also provide the ability to relay received 
-[T] events to one or several other prelude-manager servers. It also provide you 
-[T] the ability to filter received events so that you can provide specific action 
-[T] for specific event. 
+[T] The Prelude Manager is a high-availability server which collects and
+[T] normalizes information from distributed sensors and stores them into
+[T] a database (or any kind of user provided media).
+[T] It also provides the ability to relay received events to one or several
+[T] other prelude-manager servers and to filter received events so that you
+[T] can provide specific actions for specific events.
   
 [U] http://www.prelude-ids.org 
 
 [A] Yoann Vandoorselaere <yoann@prelude-ids.org> 
 [A] The Prelude-IDS Project <http://www.prelude-ids.org>
-[M] Christian Wiese <jeru@ixplanet.org>
+[M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/security
 
-[E] libprelude libpreludedb 
-
-[L] OpenSource 
-
+[L] GPL 
 [S] Stable 
 [V] 0.9.9
 [P] X -----5---9 200.600
