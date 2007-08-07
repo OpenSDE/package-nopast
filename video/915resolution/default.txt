@@ -1,0 +1,23 @@
+#
+# 915resolution default
+#
+# find free modes by  /usr/sbin/915resolution -l
+# and set it to MODE or set to 'MODE=auto'
+#
+# With 'auto' detection, the panel-size will be fetched from the VBE
+# BIOS if possible and the highest-numbered mode in each bit-depth
+# will be overwritten with the detected panel-size.
+MODE=auto
+#
+# and set resolutions for the mode.
+# e.g. use XRESO=1024 and YRESO=768
+XRESO=
+YRESO=
+#
+# We can also set the pixel mode.
+# e.g. use BIT=32
+# Please note that this is optional,
+# you can also leave this value blank.
+BIT=
+EOT
+
