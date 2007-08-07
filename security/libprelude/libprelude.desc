@@ -13,36 +13,34 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] The central library for Prelude-IDS framework 
+[I] The central library for Prelude-IDS framework
 
-[T] Libprelude is the library that provide the framework used to access the 
-[T] Prelude system. It handles secured communications with one or several 
-[T] prelude-manager collector, and provide an API (Application Programming 
-[T] Interface) to create IDMEF (Intrusion Detection Message Exchange Format) 
-[T] based events. 
-[T] It also provides important features like failover (saving to a local 
-[T] file for later retransmission, usage of a fallback route), in case one 
-[T] of the prelude-manager server used goes down. 
-[T] Moreover, it gives you the ability to create sensor that read events 
-[T] received by one or a set of prelude-manager. 
-[T] You could for example write an interactive notification system using 
-[T] this feature. 
+[T] Libprelude is the library that provide the framework used to access the
+[T] Prelude system. It handles secured communications with one or several
+[T] prelude-manager collector, and provides an API (Application Programming
+[T] Interface) to create IDMEF (Intrusion Detection Message Exchange Format)
+[T] based events.
+[T] It also provides important features like failover (saving to a local
+[T] file for later retransmission, usage of a fallback route), in case one
+[T] of the prelude-manager server is down.
+[T] Moreover, it gives you the ability to create sensors that read events
+[T] received by one or a set of prelude-manager.
+[T] You could for example write an interactive notification system using
+[T] this feature.
 [T]
 [T] For more Informations on IDMEF see: http://www.ietf.org/
   
 [U] http://www.prelude-ids.org
 
 [A] Yoann Vandoorselaere <yoann@prelude-ids.org>
-[M] Christian Wiese <jeru@ixplanet.org>
+[M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/security
+
 [F] FPIC-QUIRK
 [F] NOPARALLEL
 
-[E] gnutls
-
-[L] OpenSource 
-
+[L] GPL
 [S] Stable 
 [V] 0.9.14
 [P] X -----5---9 109.400
