@@ -13,23 +13,22 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Prelude Management Console  
+[I] A web based Management Console for Prelude-IDS 
 
-[T] Prewikka is a web based Prelude Management Console 
+[T] Prewikka is a web based Prelude Management Console, providing advanced
+[T] features like contextual filtering, aggregation, etc.
 
 [U] http://www.prelude-ids.org/ 
 
-[A] The Prelude-IDS Project
-[A] Miika Keskinen <miika.keskinen@citadec.com>
-[A] Markus Alkio <markus.alkio@citadec.com> 
-[M] Christian Wiese <jeru@ixplanet.org>
+[A] Nicolas Delon <nicolas.delon@prelude-ids.com>
+[A] Yoann Vandoorselaere <yoann@prelude-ids.org>
+[A] Miika Keskinen <miika.keskinen@citadec.com> (initial author)
+[A] Markus Alkio <markus.alkio@citadec.com> (initial author)
+[M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/security 
 
-[E] libprelude cheetah 
-
-[L] OpenSource 
-
+[L] GPL 
 [S] Stable 
 [V] 0.9.12.1
 [P] X -----5---9 200.700
