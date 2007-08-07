@@ -44,8 +44,8 @@
 
 [O] . package/*/*/modular-x-conf.in
 
-[V] 6.5.2
+[V] 7.0.1
 [P] X -----5---9 112.467
 
-[D] 3520516574 MesaLib-6.5.2.tar.bz2 http://dl.sourceforge.net/sourceforge/mesa3d/
+[D] 1393820725 MesaLib-7.0.1.tar.bz2 http://dl.sourceforge.net/sourceforge/mesa3d/
 
