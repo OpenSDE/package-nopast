@@ -14,27 +14,27 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- slim-1.2.6/slim.conf.orig	2007-08-08 23:49:01.000000000 +0000
-+++ slim-1.2.6/slim.conf	2007-08-08 23:48:53.000000000 +0000
+--- /home/oliver/slim-1.2.6/slim.conf.orig	2007-08-08 23:49:01.000000000 +0000
++++ /home/oliver/slim-1.2.6/slim.conf	2007-08-08 23:54:33.000000000 +0000
 @@ -1,17 +1,17 @@
  # Path, X server and arguments (if needed)
  # Note: -xauth $authfile is automatically appended
 -default_path        ./:/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
 -default_xserver     /usr/X11R6/bin/X
-+default_path        ./:/bin:/usr/bin:/usr/local/bin:/usr/X11R7/bin
-+default_xserver     /usr/X11R7/bin/X
++default_path        ./:/bin:/usr/bin:/usr/local/bin:/usr/X11/bin
++default_xserver     /usr/X11/bin/X
  #xserver_arguments   -dpi 75
  
  # Commands for halt, login, etc.
  halt_cmd            /sbin/shutdown -h now
  reboot_cmd          /sbin/shutdown -r now
 -console_cmd         /usr/X11R6/bin/xterm -C -fg white -bg black +sb -T "Console login" -e /bin/sh -c "/bin/cat /etc/issue; exec /bin/login"
-+console_cmd         /usr/X11R7/bin/xterm -C -fg white -bg black +sb -T "Console login" -e /bin/sh -c "/bin/cat /etc/issue; exec /bin/login"
++console_cmd         /usr/X11/bin/xterm -C -fg white -bg black +sb -T "Console login" -e /bin/sh -c "/bin/cat /etc/issue; exec /bin/login"
  #suspend_cmd        /usr/sbin/suspend
  
  # Full path to the xauth binary
 -xauth_path         /usr/X11R6/bin/xauth 
-+xauth_path         /usr/X11R7/bin/xauth 
++xauth_path         /usr/X11/bin/xauth 
  
  # Xauth file for server
  authfile           /var/run/slim.auth
