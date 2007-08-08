@@ -36,10 +36,10 @@
 
 [L] GPL
 [S] Stable
-[V] 0.2.8
+[V] 0.2.10
 [P] X -----5---9 142.200
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 4124748168 exaile_0.2.8.tar.gz http://www.exaile.org/files/
+[D] 200519475 exaile_0.2.10.tar.gz http://www.exaile.org/files/
 
