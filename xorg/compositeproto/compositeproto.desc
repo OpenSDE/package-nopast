@@ -26,9 +26,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 0.3.1
+[V] 0.4
 [P] X -----5---9 112.400
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 3370797945 compositeproto-0.3.1.tar.bz2 http://xorg.freedesktop.org/releases/individual/proto/
+[D] 1174664632 compositeproto-0.4.tar.bz2 http://xorg.freedesktop.org/releases/individual/proto/
