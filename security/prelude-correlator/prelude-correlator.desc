@@ -1,0 +1,15 @@
+[I] Prelude-IDS Correlation Engine
+
+[T] Prelude-IDS Correlation Engine
+
+[A] [A] Yoann Vandoorselaere <yoann@prelude-ids.org>
+[M] Christian Wiese <morfoh@opensde.org>
+
+[C] extra/tool
+
+[L] OpenSource
+[S] Alpha
+[V] r9712
+[P] X -----5---9 800.000
+
+[D] X prelude-correlator-r9712.tar.bz2 svn+http://svn.prelude-ids.org/prelude-correlator/trunk -r9712
