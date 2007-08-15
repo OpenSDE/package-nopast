@@ -12,7 +12,6 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-
 [I] A replacement for (or supplement to) the grep family
 
 [T] Glark offers: Perl compatible regular expressions, 
@@ -29,7 +28,7 @@
 [L] LGPL
 [S] Stable
 [V] 1.8.0
-[P] X -1---5---9 107.900
+[P] X -?---5---9 107.900
 
 [D] 51522196 glark-1.8.0.tar.gz http://www.incava.org/pub/glark/
 
