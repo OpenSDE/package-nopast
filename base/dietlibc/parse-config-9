@@ -119,7 +119,7 @@ if [ "$pkg_dietlibc_useit" = 1 ]; then
 			set_wrapper_and_misc
 			;;
 
-		coreutils|findutils|curl|procps|radiusclient-ng|libpcap|binutils|udhcp|file|libxml|lvm2|iputils)
+		coreutils|findutils|curl|procps|radiusclient-ng|libpcap|binutils|udhcp|file|libxml|lvm2|iputils|hotplug2)
 			echo_status "Enabling non-portable BSD features."
 			var_append CC_WRAPPER_INSERT " " "-D_BSD_SOURCE"
 			set_wrapper_and_misc
@@ -159,7 +159,7 @@ if [ "$pkg_dietlibc_useit" = 1 ]; then
 	esac
 
 	case "$pkg" in
-		sed|lilo|findutils|net-tools|dropbear|udev|rng-tools|udhcp|psmisc)
+		sed|lilo|findutils|net-tools|dropbear|udev|rng-tools|udhcp|psmisc|busybox|e2fsprogs)
 			add_lib "-lcompat"
 			;;
 		coreutils)

@@ -25,14 +25,14 @@
 [A] William Lachance <w_lach@yahoo.ca>
 [A] Marc Maurer <uwog@uwog.net>
 [A] Fridrich Strba <fridrich.strba@bluewin.ch>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [C] base/library
 
 [L] LGPL
 [S] Beta
-[V] 0.8.7
+[V] 0.8.10
 [P] X -----5---9 157.800
 
-[D] 138913971 libwpd-0.8.7.tar.gz http://dl.sourceforge.net/sourceforge/libwpd/
+[D] 2816196457 libwpd-0.8.10.tar.gz http://dl.sourceforge.net/sourceforge/libwpd/
 

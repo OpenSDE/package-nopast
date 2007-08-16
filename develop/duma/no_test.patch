@@ -14,25 +14,25 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./Makefile.orig	2007-07-15 07:15:44.000000000 -0400
-+++ ./Makefile	2007-07-15 12:52:28.000000000 -0400
-@@ -170,19 +170,6 @@
+--- ./Makefile.orig	2007-08-14 16:53:17.000000000 -0400
++++ ./Makefile	2007-08-15 18:04:32.000000000 -0400
+@@ -215,19 +215,6 @@
  SO_OBJECTS = dumapp_so.o duma_so.o sem_inc_so.o print_so.o
  
- all:	libduma.a tstheap$(EXEPOSTFIX) dumatest$(EXEPOSTFIX) dumatestpp$(EXEPOSTFIX) testoperators$(EXEPOSTFIX) $(DUMA_DYN_DEPS)
--	@ echo
--	@ echo "Testing DUMA (static library):"
+ all:	libduma.a tstheap$(EXEPOSTFIX) dumatest$(EXEPOSTFIX) testmt$(EXEPOSTFIX) dumatestpp$(EXEPOSTFIX) testoperators$(EXEPOSTFIX) $(DUMA_DYN_DEPS)
+-	@ $(ECHOLF)
+-	@ $(ECHO) "Testing DUMA (static library):"
 -	$(CURPATH)dumatest$(EXEPOSTFIX)
 -	$(CURPATH)tstheap$(EXEPOSTFIX) 3072
 -	$(CURPATH)testoperators$(EXEPOSTFIX)
--	@ echo
--	@ echo "DUMA static confidence test PASSED."
--	@ echo
--	@ echo "Testing DUMA (dynamic library)."
--	(export LD_PRELOAD=./$(DUMASO); exec $(CURPATH)tstheap_so 3072)
--	@ echo
--	@ echo "DUMA dynamic confidence test PASSED."
--	@ echo
+-	@ $(ECHOLF)
+-	@ $(ECHO) "DUMA static confidence test PASSED."
+-	@ $(ECHOLF)
+-	@ $(ECHO) "Testing DUMA (dynamic library)."
+-	(export LD_PRELOAD=./$(DUMASO); export DYLD_INSERT_LIBRARIES=./$(DUMASO); export DYLD_FORCE_FLAT_NAMESPACE=1; exec $(CURPATH)tstheap_so 3072)
+-	@ $(ECHOLF)
+-	@ $(ECHO) "DUMA dynamic confidence test PASSED."
+-	@ $(ECHOLF)
  
  install: libduma.a duma.3 $(DUMASO)
  	$(INSTALL) -m 755 duma.sh $(BIN_INSTALL_DIR)/duma

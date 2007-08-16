@@ -31,7 +31,7 @@
 [L] GPL
 [S] Stable
 [V] 394
-[P] X -1---5---9 108.800
+[P] X -?---5---9 108.800
 
 [D] 3454954325 less-394.tar.gz http://www.greenwoodsoftware.com/less/
 [D] 190724856 less-394-signal_fix-1.patch http://www.linuxfromscratch.org/patches/downloads/less/

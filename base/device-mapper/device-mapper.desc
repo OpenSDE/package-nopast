@@ -15,7 +15,7 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Device-Mapper
+[I] Logical volume management for the Linux kernel
 
 [T] The Device-mapper is a new component of the linux kernel
 [T] that supports logical volume management. It is required by
@@ -24,15 +24,15 @@
 
 [U] http://sources.redhat.com/dm/
 
-[A] dm-devel@redhat.com
+[A] Red Hat, Inc <dm-devel@redhat.com>
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/filesystem
 
 [L] GPL
 [S] Stable
-[V] 1.02.15
-[P] X ---3-----9 183.800
+[V] 1.02.20
+[P] X -?-3-----9 183.800
 
-[D] 2385732643 device-mapper.1.02.15.tgz ftp://sources.redhat.com/pub/dm/
+[D] 607338793 device-mapper.1.02.20.tgz ftp://sources.redhat.com/pub/dm/
 
