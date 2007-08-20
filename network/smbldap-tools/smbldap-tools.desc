@@ -33,8 +33,7 @@
 
 [L] OpenSource
 [S] Stable
-[V] 0.9.2
+[V] 0.9.3
 [P] X -----5---9 800.000
 
-[D] 4207286837 smbldap-tools-0.9.2.tgz http://samba.idealx.org/dist/
-
+[D] 2843231588 smbldap-tools-0.9.3.tgz http://download.gna.org/smbldap-tools/packages/
