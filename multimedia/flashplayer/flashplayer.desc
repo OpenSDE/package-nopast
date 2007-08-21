@@ -13,23 +13,25 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Macromedia Flash Player for Mozilla
+[I] Adobe Flash Player for Mozilla
 
-[T] Macromedia Flash Player is the high performance, lightweight, highly
+[T] Adobe Flash Player is the high performance, lightweight, highly
 [T] expressive client runtime that delivers powerful and consistent user
 [T] experiences across major operating systems, browsers, mobile phones
 [T] and devices.
 
 [U] http://www.macromedia.com/software/flashplayer/
 
-[A] Macromedia
+[A] Adobe
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/multimedia
 
+[F] BINARY
+
 [L] Restricted
 [S] Stable
-[V] 9.0.31.0
+[V] 9.0.47.0
 [P] O -----5---9 800.000
 
-[D] 2023058757 flashplayer-9.0.31.0_linux.tar.gz !http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_9_linux.tar.gz
+[D] 1589892858 flashplayer-9.0.47.0_linux.tar.gz !http://fpdownload.macromedia.com/get/flashplayer/current/install_flash_player_9_linux.tar.gz
