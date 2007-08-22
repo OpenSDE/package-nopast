@@ -12,6 +12,7 @@
 [COPY] the Free Software Foundation; version 2 of the License. A copy of the
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
+
 [I] FreeRADIUS - open source RADIUS Server 
 
 [T] FreeRADIUS features more than 50 vendor-specific dictionary files. 
@@ -32,7 +33,7 @@
 [L] GPL 
 
 [S] Stable
-[V] 1.1.4
+[V] 1.1.7
 [P] X -----5---9 200.500
 
-[D] 3750524552 freeradius-1.1.4.tar.gz ftp://ftp.freeradius.org/pub/radius/ 
+[D] 1637177689 freeradius-1.1.7.tar.gz ftp://ftp.freeradius.org/pub/radius/
