@@ -16,9 +16,9 @@
 if [ "$SDECFG_PKG_CCACHE_USEIT" != 1 ]; then
 	true	# skip
 elif [ -z "`type -p ccache`" ]; then
-	echo_warning 'ccache not available, Compiler Cache disabled.'
+	echo_warning 'Compiler cache disabled! (ccache not available)'
 elif [ "$pkg" == gcc ]; then
-	echo_warning 'Package incompatible with Compiler Cache, disabled.'
+	echo_warning 'Compiler cache disabled! (package incompatible)'
 else
 	unset ${!CCACHE_*}
 
