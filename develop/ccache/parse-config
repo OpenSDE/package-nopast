@@ -19,6 +19,8 @@ elif [ -z "`type -p ccache`" ]; then
 	echo_warning 'Compiler cache disabled! (ccache not available)'
 elif [ "$pkg" == gcc ]; then
 	echo_warning 'Compiler cache disabled! (package incompatible)'
+elif [ "$SDECFG_DEBUG" == 1 ]; then
+	echo_warning 'Compiler cache disabled! (package build with debug symbols)'
 else
 	unset ${!CCACHE_*}
 
