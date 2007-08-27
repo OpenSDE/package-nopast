@@ -16,8 +16,8 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./sysdeps/mips/Makefile.orig	2006-08-19 09:02:40.000000000 -0600
-+++ ./sysdeps/mips/Makefile	2006-08-19 09:03:21.000000000 -0600
+--- ./ports/sysdeps/mips/Makefile.orig	2006-08-19 09:02:40.000000000 -0600
++++ ./ports/sysdeps/mips/Makefile	2006-08-19 09:03:21.000000000 -0600
 @@ -7,6 +7,14 @@
  sysdep_routines += setjmp_aux
  endif
