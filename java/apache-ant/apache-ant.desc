@@ -28,10 +28,10 @@
 
 [L] APL
 [S] Stable
-[V] 1.6.5
+[V] 1.7.0
 [P] X -----5---9 300.000
 
 [O] . $base/package/*/*/java-conf.in NO_AUTO_DETECT
 
-[D] 438470393 apache-ant-1.6.5-src.tar.bz2 http://www.apache.org/dist/ant/source/
+[D] 3541490080 apache-ant-1.7.0-src.tar.bz2 http://www.apache.org/dist/ant/source/
 
