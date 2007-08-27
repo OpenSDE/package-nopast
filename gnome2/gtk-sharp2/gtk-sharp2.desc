@@ -33,9 +33,9 @@
 [F] NOPARALLEL MONO
 
 [L] GPL
-[S] Beta
-[V] 2.10.0
+[S] Stable
+[V] 2.10.1
 [P] X -----5---9 153.650
 
-[D] 4129506588 gtk-sharp-2.10.0.tar.gz http://go-mono.com/sources/gtk-sharp-2.10/
+[D] 972312754 gtk-sharp-2.10.1.tar.gz http://ftp.gnome.org/pub/GNOME/bindings/2.18/2.18.3/sources/mono/
 
