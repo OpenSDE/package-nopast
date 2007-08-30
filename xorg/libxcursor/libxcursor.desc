@@ -27,9 +27,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 1.1.8
+[V] 1.1.9
 [P] X -----5---9 112.421
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 2143692486 libXcursor-1.1.8.tar.bz2 http://xorg.freedesktop.org/releases/individual/lib/
+[D] 2998486299 libXcursor-1.1.9.tar.bz2 http://xorg.freedesktop.org/releases/individual/lib/
