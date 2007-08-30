@@ -28,9 +28,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 3.5.6
+[V] 3.5.7
 [P] X -----5---9 112.414
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 2496134277 libXpm-3.5.6.tar.bz2 http://xorg.freedesktop.org/releases/individual/lib/
+[D] 2379441356 libXpm-3.5.7.tar.bz2 http://xorg.freedesktop.org/releases/individual/lib/
