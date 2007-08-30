@@ -38,9 +38,9 @@
 
 [L] GPL
 [S] Stable
-[V] 4.65
+[V] 4.68
 [P] X -----5---9 115.700
 
-[D] 3408765985 exim-4.65.tar.bz2 ftp://ftp.exim.org/pub/exim/exim4/
+[D] 3476866717 exim-4.68.tar.bz2 ftp://ftp.exim.org/pub/exim/exim4/
 [D] X config.samples.tar.bz2 ftp://ftp.exim.org/pub/exim/exim4/
 
