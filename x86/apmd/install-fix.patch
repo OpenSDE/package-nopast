@@ -1,0 +1,12 @@
+diff -ru apmd.orig/Makefile apmd/Makefile
+--- apmd.orig/Makefile	2001-11-25 23:46:16.000000000 +0100
++++ apmd/Makefile	2007-08-31 14:51:16.000000000 +0200
+@@ -92,7 +92,7 @@
+ 	install        on_ac_power     ${PREFIX}/bin
+ 	install -m 644 apm.1           ${MANDIR}/man1
+ 	install        apmd            ${PREFIX}/sbin
+-	install -b -Vt apmd_proxy      ${APMD_PROXY_DIR}
++	install -b     apmd_proxy      ${APMD_PROXY_DIR}
+ 	install -m 644 apmd.8          ${MANDIR}/man8
+ 	install        xapm            ${PREFIX}/bin
+ 	install -m 644 xapm.1          ${MANDIR}/man1/xapm.1
