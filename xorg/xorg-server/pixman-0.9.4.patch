@@ -32,7 +32,7 @@
  
  #include <X11/X.h>
 -#include <pixman/pixman.h>
-+#include <pixman.h>
++#include <pixman-1/pixman.h>
  
  #include "scrnintstr.h"
  #include "pixmap.h"
@@ -43,7 +43,7 @@
  #include "mi.h"
  #include "mispans.h"
 -#include <pixman/pixman.h>
-+#include <pixman.h>
++#include <pixman-1/pixman.h>
  
  #undef assert
  #ifdef DEBUG
@@ -54,7 +54,7 @@
  #define _PICTURE_H_
  
 -#include <pixman/pixman.h>
-+#include <pixman.h>
++#include <pixman-1/pixman.h>
  
  typedef struct _DirectFormat	*DirectFormatPtr;
  typedef struct _PictFormat	*PictFormatPtr;
@@ -65,7 +65,7 @@
  #include <X11/Xprotostr.h>
  #include "gc.h"
 -#include <pixman/pixman.h>
-+#include <pixman.h>
++#include <pixman-1/pixman.h>
  
  typedef xPoint DDXPointRec;
  
