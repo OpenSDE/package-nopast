@@ -1,0 +1,21 @@
+From: Alan Coopersmith <alan.coopersmith@sun.com>
+Date: Wed, 29 Aug 2007 00:41:08 +0000 (-0700)
+Subject: Don't fill in motion_history_proc for new input ABI
+X-Git-Url: http://gitweb.freedesktop.org/?p=xorg/driver/xf86-input-void.git;a=commitdiff;h=b5dc10b2ce19fb99c76b6e79dd364d366e4678f8
+
+Don't fill in motion_history_proc for new input ABI
+---
+
+--- a/src/void.c
++++ b/src/void.c
+@@ -283,8 +283,10 @@ xf86VoidInit(InputDriverPtr	drv,
+     pInfo->flags = XI86_KEYBOARD_CAPABLE | XI86_POINTER_CAPABLE | XI86_SEND_DRAG_EVENTS;
+     pInfo->device_control = xf86VoidControlProc;
+     pInfo->read_input = NULL;
++#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) == 0
+     pInfo->motion_history_proc = xf86GetMotionEvents;
+     pInfo->history_size = 0;
++#endif    
+     pInfo->control_proc = NULL;
+     pInfo->close_proc = NULL;
+     pInfo->switch_mode = NULL;
