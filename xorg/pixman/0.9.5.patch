@@ -1,0 +1,51 @@
+From: SÃ¸ren Sandmann Pedersen <sandmann@redhat.com>
+Date: Fri, 17 Aug 2007 22:01:09 +0000 (-0400)
+Subject: Add pixman_image_set_source_clipping()
+X-Git-Url: http://gitweb.freedesktop.org/?p=pixman.git;a=commitdiff;h=3e74bc431908dd42775d8e82ca2e4d589de820cb
+
+Add pixman_image_set_source_clipping()
+---
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -42,7 +42,7 @@ AC_PREREQ([2.57])
+ 
+ m4_define([pixman_major], 0)
+ m4_define([pixman_minor], 9)
+-m4_define([pixman_micro], 4)
++m4_define([pixman_micro], 5)
+ 
+ m4_define([pixman_version],[pixman_major.pixman_minor.pixman_micro])
+ 
+--- a/pixman/pixman-image.c
++++ b/pixman/pixman-image.c
+@@ -466,6 +466,18 @@ pixman_image_set_filter (pixman_image_t 
+     return TRUE;
+ }
+ 
++void
++pixman_image_set_source_clipping (pixman_image_t  *image,
++				  pixman_bool_t    source_clipping)
++{
++    image_common_t *common = &image->common;
++
++    if (source_clipping)
++	common->src_clip = &common->clip_region;
++    else
++	common->src_clip = &common->full_region;
++}
++
+ /* Unlike all the other property setters, this function does not
+  * copy the content of indexed. Doing this copying is simply
+  * way, way too expensive.
+--- a/pixman/pixman.h
++++ b/pixman/pixman.h
+@@ -470,6 +470,8 @@ pixman_bool_t   pixman_image_set_filter 
+ void            pixman_image_set_filter_params       (pixman_image_t               *image,
+ 						      pixman_fixed_t               *params,
+ 						      int                           n_params);
++void		pixman_image_set_source_cliping      (pixman_image_t		   *image,
++						      pixman_bool_t                 source_clipping);
+ void            pixman_image_set_alpha_map           (pixman_image_t               *image,
+ 						      pixman_image_t               *alpha_map,
+ 						      int16_t                       x,
