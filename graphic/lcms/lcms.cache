@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1133966243 Wed Dec  7 15:37:23 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.60 MB, 32 files
+[TIMESTAMP] 1188723324 Sun Sep  2 10:55:24 2007
+[BUILDTIME] 25 (5)
+[SIZE] 0.69 MB, 30 files
 
+[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -12,13 +13,13 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] graphics-dirtree
 [DEP] grep
 [DEP] libjpeg
 [DEP] libtiff
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
