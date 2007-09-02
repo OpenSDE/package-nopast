@@ -1,0 +1,8 @@
+if pkgcheck graphics-dirtree X
+then
+	menu_begin MENU_PKG_GRAPHICS 'CG target options'
+		text 'Install prefix for graphics and related applications' \
+			SDECFG_PKG_GRAPHICS_PREFIX "opt/graphics"
+	menu_end
+fi
+
