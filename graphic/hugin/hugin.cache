@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133848924 Tue Dec  6 07:02:04 2005
-[BUILDTIME] 170 (5)
-[SIZE] 8.01 MB, 147 files
+[TIMESTAMP] 1188893380 Tue Sep  4 10:09:40 2007
+[BUILDTIME] 165 (5)
+[SIZE] 26.21 MB, 166 files
 
 [DEP] 00-dirtree
 [DEP] atk
@@ -24,13 +24,18 @@
 [DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] hicolor-icon-theme
+[DEP] kbproto
+[DEP] libice
 [DEP] libjpeg
+[DEP] libmspack
 [DEP] libpano
 [DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libsm
 [DEP] libtiff
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
@@ -39,17 +44,16 @@
 [DEP] libxinerama
 [DEP] libxrandr
 [DEP] libxrender
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
 [DEP] wxwidgets
-[DEP] wxwidgets24
+[DEP] xproto
 [DEP] zlib
