@@ -26,8 +26,7 @@
 [L] PHP
 [S] Beta
 [V] 0.11-20060607
-#[V] 0.10
 [P] X -----5---9 800.000
 
-[D] X ssh2-0.11-20060607.tar.bz2 cvs://:pserver:cvsread@cvs.php.net:/repository pecl/ssh2 -D 2007-06-07 
+[D] X ssh2-0.11-20060607.tar.bz2 cvs://:pserver:cvsread@cvs.php.net:/repository pecl/ssh2 -D 2006-06-07 
 
