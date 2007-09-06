@@ -54,5 +54,4 @@
 [DEP] texinfo
 [DEP] util-linux
 [DEP] wxwidgets
-[DEP] wxwidgets24
 [DEP] zlib
