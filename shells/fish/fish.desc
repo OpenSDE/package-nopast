@@ -18,7 +18,7 @@
 [T] use. A shell is a program used to execute other programs. For the latest
 [T] information on fish, please visit the fish homepage.
 
-[U] http://roo.no-ip.org/fish/
+[U] http://fishshell.org/ 
 
 [A] Axel Liljencrantz <axel@liljencrantz.se>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
@@ -30,4 +30,4 @@
 [V] 1.22.3
 [P] X -----5---9 127.200
 
-[D] 2950642676 fish-1.22.3.tar.bz2 http://roo.no-ip.org/fish/files/1.22.3/
+[D] 2950642676 fish-1.22.3.tar.bz2 http://fishshell.org/files/1.22.3/
