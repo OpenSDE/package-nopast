@@ -1,16 +1,13 @@
 
-[TIMESTAMP] 1134002642 Thu Dec  8 01:44:02 2005
-[BUILDTIME] 330 (9)
-[SIZE] 60.69 MB, 682 files
+[TIMESTAMP] 1189078224 Thu Sep  6 13:30:24 2007
+[BUILDTIME] 105 (5) ERROR
+[SIZE] 70.68 MB, 840 files
 
 [DEP] 00-dirtree
-[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bison
-[DEP] boehm-gc
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] findutils
@@ -25,7 +22,6 @@
 [DEP] make
 [DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] patch
 [DEP] pkgconfig
 [DEP] sed
@@ -33,4 +29,5 @@
 [DEP] tar
 [DEP] util-linux
 [DEP] valgrind
+[DEP] xorg-cf-files
 [DEP] zlib
