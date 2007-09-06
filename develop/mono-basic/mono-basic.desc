@@ -1,0 +1,27 @@
+[I] Mono VisualBasic.Net compiler and runtime
+
+[T] The Mono Debugger is a graphical debugger which is written in C#.  It
+[T] can debug both native and managed applications and it has a graphical
+[T] and a text-mode user interface.
+[T]
+[T] You can debug any single-threaded and multi-threaded managed
+[T] applications (unmanaged multi-threaded applications are also
+[T] supported, but a few restrictions apply in this case).
+
+[U] http://www.mono-project.com/VisualBasic.NET_support
+
+[A] Martin Baulig <martin@ximian.com>
+[A] Miguel de Icaza <miguel@ximian.com>
+[M] Minto van der Sluis <misl@opensde.org>
+
+[C] extra/development
+[F] MONO
+
+[L] GPL
+[S] Stable
+[V] 1.2.4
+[P] X -----5---9 209.500
+
+[CV-URL] http://go-mono.com/sources/
+
+[D] 4195973436 mono-basic-1.2.4.tar.bz2 http://go-mono.com/sources/mono-basic/
