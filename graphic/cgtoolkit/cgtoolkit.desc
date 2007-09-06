@@ -33,8 +33,8 @@
 [L] Free-to-use
 [S] Stable
 [V] 1.5.0
-[P] X -----5---9 850.000
+[P] X -----5---9 150.000
 
-[D] 3584600666 Cg-1.5_i586.tar.gz !http://developer.download.nvidia.com/cg/Cg_1.5/1.5.0/Cg-1.5_x86.tar.gz
+[D] 3584600666 Cg-1.5_x86.tar.gz http://developer.download.nvidia.com/cg/Cg_1.5/1.5.0/Cg-1.5_x86.tar.gz
 [D] 2983647930 Cg-1.5_x86_64.tar.gz http://developer.download.nvidia.com/cg/Cg_1.5/1.5.0/
 
