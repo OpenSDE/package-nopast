@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1189181927 Fri Sep  7 12:18:47 2007
+[BUILDTIME] 5 (5)
+[SIZE] 0.53 MB, 15 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libpthread-stubs
+[DEP] make
+[DEP] mkfontdir
+[DEP] mkfontscale
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
