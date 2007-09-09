@@ -25,7 +25,7 @@
 [T] through separate applications. Sawfish is mostly GNOME-compliant; almost
 [T] all configuration may be made through a graphical interface.
 
-[U] http://sourceforge.net/projects/sawmill/
+[U] http://sawfish.wikia.com
 
 [A] John Harper <john@dcs.warwick.ac.uk> 
 [M] Juergen "George" Sawinski <jsaw@gmx.net>
@@ -35,9 +35,9 @@
 
 [L] GPL
 [S] Beta
-[V] 1.3
+[V] 1.3.1
 [P] O -----5---9 157.600
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 96834773 sawfish-1.3.tar.gz http://dl.sourceforge.net/sourceforge/sawmill/
+[D] 314361966 sawfish-1.3.1.tar.gz http://dl.sourceforge.net/sourceforge/sawmill/
