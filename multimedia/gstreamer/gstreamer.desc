@@ -35,10 +35,10 @@
 
 [L] LGPL
 [S] Beta
-[V] 0.10.11
+[V] 0.10.14
 [P] X -----5---9 161.400
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 1736510893 gstreamer-0.10.11.tar.bz2 http://gstreamer.freedesktop.org/src/gstreamer/
+[D] 3856813618 gstreamer-0.10.14.tar.bz2 http://gstreamer.freedesktop.org/src/gstreamer/
 
