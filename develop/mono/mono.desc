@@ -31,7 +31,7 @@
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/development
-[F] MONO
+[F] MONO NOPARALLEL
 
 [L] GPL
 [S] Stable
