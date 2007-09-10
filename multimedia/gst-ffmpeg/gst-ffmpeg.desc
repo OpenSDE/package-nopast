@@ -28,10 +28,10 @@
 
 [L] LGPL
 [S] Beta
-[V] 0.10.1
+[V] 0.10.2
 [P] X -----5---9 162.250
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 2967394934 gst-ffmpeg-0.10.1.tar.bz2 http://gstreamer.freedesktop.org/src/gst-ffmpeg/ 
+[D] 3361046561 gst-ffmpeg-0.10.2.tar.bz2 http://gstreamer.freedesktop.org/src/gst-ffmpeg/
 
