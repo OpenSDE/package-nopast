@@ -1,0 +1,51 @@
+
+[TIMESTAMP] 1189478597 Mon Sep 10 22:43:17 2007
+[BUILDTIME] 10 (5)
+[SIZE] 0.14 MB, 24 files
+
+[DEP] 00-dirtree
+[DEP] atk
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cairo
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] glitz
+[DEP] grep
+[DEP] gtk+
+[DEP] kbproto
+[DEP] libcddb
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] pango
+[DEP] pkgconfig
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
