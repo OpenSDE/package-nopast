@@ -15,12 +15,12 @@
 
 if hasflag E17; then
 	if [ "$prefix_auto" = 1 ] ; then
-		if [ "$pkg" == imlib2 ]; then
+		if [ "$pkg" == e ]; then
 			prefix="${SDECFG_PKG_E17_CORE_PREFIX:-opt/e17}"
 			set_confopt
-		elif pkginstalled imlib2 ; then
-			pkgprefix -t imlib2
-			prefix=`pkgprefix imlib2`
+		elif pkginstalled e ; then
+			pkgprefix -t e
+			prefix=`pkgprefix e`
 			set_confopt
 		fi
 	fi
