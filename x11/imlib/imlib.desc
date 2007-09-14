@@ -35,5 +35,5 @@
 
 [O] . $base/package/*/*/gnome14-conf.in
 
-[D] 3308560691 imlib-1.9.15.tar.bz2 ftp://archive.progeny.com/GNOME/sources/imlib/1.9/
+[D] 3308560691 imlib-1.9.15.tar.bz2 ftp://ftp.gnome.org/pub/GNOME/sources/imlib/1.9/
 
