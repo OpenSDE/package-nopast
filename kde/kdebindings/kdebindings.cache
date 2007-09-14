@@ -55,7 +55,7 @@
 [DEP] pcre
 [DEP] perl
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] ruby
 [DEP] sed
 [DEP] sysfiles

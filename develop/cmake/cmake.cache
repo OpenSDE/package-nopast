@@ -17,7 +17,7 @@
 [DEP] make
 [DEP] ncurses
 [DEP] net-tools
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

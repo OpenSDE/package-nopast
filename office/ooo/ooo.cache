@@ -65,7 +65,7 @@
 [DEP] pkgconfig
 [DEP] popt
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] recode
 [DEP] rox-filer
 [DEP] sed

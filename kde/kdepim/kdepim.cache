@@ -67,7 +67,7 @@
 [DEP] perl
 [DEP] pilot-link
 [DEP] pkgconfig
-[DEP] qt
+[DEP] qt3
 [DEP] scrnsaverproto
 [DEP] sed
 [DEP] sysfiles

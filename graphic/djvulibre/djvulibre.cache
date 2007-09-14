@@ -44,7 +44,7 @@
 [DEP] mktemp
 [DEP] net-tools
 [DEP] patch
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

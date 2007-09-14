@@ -62,7 +62,7 @@
 [DEP] pygobject
 [DEP] pygtk
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] renderproto
 [DEP] sed
 [DEP] setuptools

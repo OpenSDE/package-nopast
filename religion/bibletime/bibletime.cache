@@ -52,7 +52,7 @@
 [DEP] openssl
 [DEP] pcre
 [DEP] perl
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sword
 [DEP] sysfiles

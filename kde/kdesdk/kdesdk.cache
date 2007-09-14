@@ -61,7 +61,7 @@
 [DEP] openssl
 [DEP] pcre
 [DEP] perl
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] subversion
 [DEP] sysfiles

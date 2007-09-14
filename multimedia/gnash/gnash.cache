@@ -65,7 +65,7 @@
 [DEP] net-tools
 [DEP] pango
 [DEP] pkgconfig
-[DEP] qt
+[DEP] qt3
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles

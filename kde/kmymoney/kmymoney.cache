@@ -56,7 +56,7 @@
 [DEP] openjade
 [DEP] patch
 [DEP] perl
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

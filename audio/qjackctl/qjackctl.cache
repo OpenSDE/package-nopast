@@ -40,7 +40,7 @@
 [DEP] mesa
 [DEP] mktemp
 [DEP] net-tools
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

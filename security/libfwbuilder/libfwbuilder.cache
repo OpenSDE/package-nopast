@@ -22,7 +22,7 @@
 [DEP] net-snmp
 [DEP] net-tools
 [DEP] openssl
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

@@ -72,7 +72,7 @@
 [DEP] pcre
 [DEP] perl
 [DEP] pkgconfig
-[DEP] qt
+[DEP] qt3
 [DEP] renderproto
 [DEP] scrnsaverproto
 [DEP] sed

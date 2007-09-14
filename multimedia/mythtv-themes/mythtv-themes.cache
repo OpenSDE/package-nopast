@@ -15,7 +15,7 @@
 [DEP] glibc
 [DEP] grep
 [DEP] make
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

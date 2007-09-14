@@ -40,7 +40,7 @@
 [DEP] mjpegtools
 [DEP] mplayer
 [DEP] patch
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

@@ -76,7 +76,7 @@
 [DEP] perl
 [DEP] pkgconfig
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles

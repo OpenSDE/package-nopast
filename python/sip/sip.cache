@@ -21,7 +21,7 @@
 [DEP] numpy
 [DEP] pil
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

@@ -55,7 +55,7 @@
 [DEP] pam
 [DEP] patch
 [DEP] perl
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] shadow
 [DEP] sysfiles

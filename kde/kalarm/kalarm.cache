@@ -64,7 +64,7 @@
 [DEP] mktemp
 [DEP] nas
 [DEP] perl
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

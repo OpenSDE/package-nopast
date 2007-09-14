@@ -42,7 +42,7 @@
 [DEP] mesa
 [DEP] numpy
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sip
 [DEP] sysfiles

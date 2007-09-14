@@ -49,7 +49,7 @@
 [DEP] mktemp
 [DEP] net-tools
 [DEP] openssl
-[DEP] qt
+[DEP] qt3
 [DEP] scrnsaverproto
 [DEP] sed
 [DEP] sysfiles

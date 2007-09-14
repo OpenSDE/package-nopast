@@ -101,7 +101,7 @@
 [DEP] perl
 [DEP] pkgconfig
 [DEP] popt
-[DEP] qt
+[DEP] qt3
 [DEP] randrproto
 [DEP] renderproto
 [DEP] samba

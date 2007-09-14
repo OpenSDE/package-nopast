@@ -26,7 +26,7 @@
 [DEP] pil
 [DEP] pyqt
 [DEP] python
-[DEP] qt
+[DEP] qt3
 [DEP] sed
 [DEP] sip
 [DEP] swig

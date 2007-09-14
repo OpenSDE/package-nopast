@@ -41,7 +41,7 @@
 [DEP] make
 [DEP] mesa
 [DEP] patch
-[DEP] qt
+[DEP] qt3
 [DEP] qt-qca
 [DEP] scrnsaverproto
 [DEP] sed
