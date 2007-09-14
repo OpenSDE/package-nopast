@@ -24,7 +24,7 @@
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/multimedia
-[F] NOPARALLEL E17
+[F] NOPARALLEL 
 
 [L] LGPL
 [S] Stable
