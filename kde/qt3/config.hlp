@@ -12,11 +12,11 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-MENU_PKG_QT
-  Here you'll find options for Qt.
+MENU_PKG_QT3
+  Here you'll find options for Qt3.
 
-SDECFG_PKG_QT_PREFIX
-  Please enter the prefix where you want Qt installed.
+SDECFG_PKG_QT3_PREFIX
+  Please enter the prefix where you want Qt3 installed.
 
-SDECFG_PKG_QT_EXCEPTION_STL 1
+SDECFG_PKG_QT3_EXCEPTION_STL 1
   Whether to enable support for STL data types and exceptions.
