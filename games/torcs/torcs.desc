@@ -32,24 +32,24 @@
 
 [L] GPL
 [S] Stable
-[V] 1.2.4
+[V] 1.3.0
 [P] X -----5---9 217.600
 
-[D] 2191058012 TORCS-1.2.4-src.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 534718156 TORCS-1.2.4-src-robots-base.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 263683630 TORCS-1.2.4-src-robots-berniw.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 3344926521 TORCS-1.2.4-src-robots-bt.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 2335741457 TORCS-1.2.4-src-robots-olethros.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 1792946551 TORCS-1.3.0-src.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 4239942504 TORCS-1.3.0-src-robots-base.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3224278762 TORCS-1.3.0-src-robots-berniw.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3635227636 TORCS-1.3.0-src-robots-bt.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3187819050 TORCS-1.3.0-src-robots-olethros.tgz http://dl.sourceforge.net/sourceforge/torcs/
 
-[D] 3640035336 TORCS-1.2.4-data.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 13458137 TORCS-1.2.4-data-tracks-road.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 2176116922 TORCS-1.2.4-data-tracks-oval.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 2576937965 TORCS-1.2.4-data-tracks-dirt.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 3828516005 TORCS-1.2.4-data-cars-extra.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 828349669 TORCS-1.2.4-data-cars-nascar.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 2196278454 TORCS-1.2.4-data-cars-Patwo-Design.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 2816467380 TORCS-1.2.4-data-cars-kcendra-gt.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 3723695877 TORCS-1.2.4-data-cars-kcendra-roadsters.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 40405216 TORCS-1.2.4-data-cars-kcendra-sport.tgz http://dl.sourceforge.net/sourceforge/torcs/
-[D] 4154990765 TORCS-1.2.4-data-cars-VM.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 983130879 TORCS-1.3.0-data.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 949492860 TORCS-1.3.0-data-tracks-road.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 2300177821 TORCS-1.3.0-data-tracks-oval.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3127381168 TORCS-1.3.0-data-tracks-dirt.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3500846764 TORCS-1.3.0-data-cars-extra.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3962079601 TORCS-1.3.0-data-cars-nascar.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3086537867 TORCS-1.3.0-data-cars-Patwo-Design.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 1745914683 TORCS-1.3.0-data-cars-kcendra-gt.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 1801836674 TORCS-1.3.0-data-cars-kcendra-roadsters.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 4102184675 TORCS-1.3.0-data-cars-kcendra-sport.tgz http://dl.sourceforge.net/sourceforge/torcs/
+[D] 3095073434 TORCS-1.3.0-data-cars-VM.tgz http://dl.sourceforge.net/sourceforge/torcs/
 
