@@ -26,9 +26,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 1.4.7
+[V] 1.9.99
 [P] X -----5---9 112.600
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 3226171595 xf86-video-mga-1.4.7.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
+[D] 3237164674 xf86-video-mga-1.9.99.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
