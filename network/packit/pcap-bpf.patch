@@ -1,0 +1,34 @@
+diff -ruN packit-1.0-orig/src/globals.h packit-1.0/src/globals.h
+--- packit-1.0-orig/src/globals.h	2003-10-03 11:52:08.000000000 +0200
++++ packit-1.0/src/globals.h	2007-09-18 13:04:41.000000000 +0200
+@@ -31,7 +31,13 @@
+ #include <libnet.h>
+ #include <pcap.h>
+ #include <sys/types.h>
++
++#ifdef HAVE_BPF
+ #include <net/bpf.h>
++#elif HAVE_PCAP
++#include <pcap-bpf.h>
++#endif
++
+ #include <signal.h>
+ #include <time.h>
+ #include <stdio.h>
+diff -ruN packit-1.0-orig/src/main.h packit-1.0/src/main.h
+--- packit-1.0-orig/src/main.h	2003-09-27 16:22:52.000000000 +0200
++++ packit-1.0/src/main.h	2007-09-18 13:05:00.000000000 +0200
+@@ -26,7 +26,13 @@
+ #include <libnet.h>
+ #include <pcap.h>
+ #include <sys/types.h>
++
++#ifdef HAVE_BPF
+ #include <net/bpf.h>
++#elif HAVE_PCAP
++#include <pcap-bpf.h>
++#endif
++
+ #include <signal.h>
+ #include <time.h>
+ #include <stdio.h>
