@@ -1,0 +1,32 @@
+--- 4g8-1.0/src/globals.h.orig	2007-09-18 01:17:36.000000000 +0200
++++ 4g8-1.0/src/globals.h	2007-09-18 01:30:41.000000000 +0200
+@@ -31,7 +31,13 @@
+ #include <libnet.h>
+ #include <pcap.h>
+ #include <sys/types.h>
++
++#ifdef HAVE_BPF
+ #include <net/bpf.h>
++#elif HAVE_PCAP
++#include <pcap-bpf.h>
++#endif
++
+ #include <signal.h>
+ #include <time.h>
+ #include <stdio.h>
+--- 4g8-1.0/src/main.h.orig	2007-09-18 01:31:38.000000000 +0200
++++ 4g8-1.0/src/main.h	2007-09-18 01:32:30.000000000 +0200
+@@ -26,7 +26,13 @@
+ #include <libnet.h>
+ #include <pcap.h>
+ #include <sys/types.h>
++
++#ifdef HAVE_BPF
+ #include <net/bpf.h>
++#elif HAVE_PCAP
++#include <pcap-bpf.h>
++#endif
++
+ #include <signal.h>
+ #include <time.h>
+ #include <stdio.h>
