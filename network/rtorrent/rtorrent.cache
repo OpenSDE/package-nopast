@@ -16,7 +16,7 @@
 [DEP] glibc
 [DEP] grep
 [DEP] libsigc++
-[DEP] libtorrent
+[DEP] rs-libtorrent
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
