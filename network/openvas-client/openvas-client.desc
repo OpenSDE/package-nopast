@@ -30,10 +30,10 @@
 [F] NOPARALLEL
 
 [L] GPL
-[S] Beta
-[V] 0.9.1
+[S] Stable
+[V] 1.0.0
 [P] X -----5---9 800.000
 
 [O] . $base/package/*/*/openvas-conf.in
 
-[D] 1204439226 openvas-client-0.9.1.tar.gz http://wald.intevation.org/frs/download.php/363/
+[D] 1883352583 openvas-client-1.0.0.tar.gz http://wald.intevation.org/frs/download.php/383/
