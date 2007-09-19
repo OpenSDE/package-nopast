@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1190192804 Wed Sep 19 17:06:44 2007
+[BUILDTIME] 5 (5)
+[SIZE] 0.03 MB, 9 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] pkgconfig
+[DEP] randrproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] videoproto
+[DEP] xf86-video-ast
+[DEP] xorg-server
+[DEP] xproto
