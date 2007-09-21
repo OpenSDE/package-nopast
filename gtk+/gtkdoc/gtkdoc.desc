@@ -33,9 +33,9 @@
 
 [L] GPL
 [S] Stable
-[V] 1.7
+[V] 1.8
 [P] X -----5---9 132.700
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 4050772009 gtk-doc-1.7.tar.bz2 ftp://ftp.gnome.org/pub/gnome/sources/gtk-doc/1.7/
+[D] 1466562395 gtk-doc-1.8.tar.bz2 ftp://ftp.gnome.org/pub/gnome/sources/gtk-doc/1.8/
