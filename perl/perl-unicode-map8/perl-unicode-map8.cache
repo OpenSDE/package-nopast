@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1190649917 Mon Sep 24 12:05:17 2007
+[BUILDTIME] 5 (5)
+[SIZE] 0.37 MB, 197 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] perl
+[DEP] perl-unicode
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
