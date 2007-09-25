@@ -33,13 +33,13 @@
 
 [L] GPL
 [S] Stable
-[V] 1.1.7
+[V] 1.1.8
 [P] X -----5---9 150.000
 [R] - powerpc64
 
 [O] . $base/package/*/*/java-jdk-conf.in
 
 #[D] X kaffe-2005-12-23.tar.bz2 cvs://:pserver:readonly:readonly@cvs.kaffe.org:/cvs/kaffe kaffe -D 2005-12-23
-[D] 2982117461 kaffe-1.1.7.tar.gz ftp://ftp.kaffe.org/pub/kaffe/v1.1.x-development/
+[D] 1468309742 kaffe-1.1.8.tar.gz ftp://ftp.kaffe.org/pub/kaffe/v1.1.x-development/
 
 #[D] 39758106 kaffe-1.1.7-rc1.tar.gz http://www.kaffe.org/~robilad/
