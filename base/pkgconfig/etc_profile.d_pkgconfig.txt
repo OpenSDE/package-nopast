@@ -12,4 +12,10 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-hook_add postmake 5 'cp -vf $confdir/etc_profile.d_pkgconfig.txt $root/etc/profile.d/pkgconfig'
+# set the PKG_CONFIG_PATH variable
+#
+PKG_CONFIG_PATH=
+for x in {/usr,/usr/X11*,/usr/local,/opt/*,$HOME}/{lib,lib64,share}/pkgconfig; do
+	[ -d "$x" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}$x"
+done
+export PKG_CONFIG_PATH

@@ -25,13 +25,12 @@
 
 [A] James Henstridge <james@daa.com.au>
 [A] Havoc Pennington <hp@redhat.com> {Maintainer}
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mrry <amery@opensde.org>
 
 [C] base/tool
 
 [L] GPL
 [S] Stable
-
 [V] 0.22
 [P] X -----5---9 105.000
 
