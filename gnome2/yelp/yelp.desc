@@ -29,10 +29,10 @@
 
 [L] LGPL
 [S] Stable
-[V] 2.18.0
+[V] 2.20.0
 [P] X -----5---9 154.850
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 589992068 yelp-2.18.0.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/yelp/2.18/
+[D] 4106937947 yelp-2.20.0.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/yelp/2.20/
 
