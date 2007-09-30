@@ -26,9 +26,9 @@
 
 [L] LGPL
 [S] Stable
-[V] 2.18.2
+[V] 2.20.0
 [P] X -----5---9 153.900
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 3917998654 libgnomekbd-2.18.2.tar.gz ftp://ftp.gnome.org/pub/GNOME/sources/libgnomekbd/2.18/
+[D] 3798330218 libgnomekbd-2.20.0.tar.gz ftp://ftp.gnome.org/pub/GNOME/sources/libgnomekbd/2.20/
