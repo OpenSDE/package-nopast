@@ -28,9 +28,9 @@
 
 [L] LGPL
 [S] Stable
-[V] 2.18.1
+[V] 2.20.0
 [P] X -----5---9 178.500
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 2319310517 liboobs-2.18.1.tar.bz2 ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/2.18/
+[D] 3959754171 liboobs-2.20.0.tar.bz2 ftp://ftp.gnome.org/pub/GNOME/sources/liboobs/2.20/
