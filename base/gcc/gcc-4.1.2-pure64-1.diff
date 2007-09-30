@@ -1,0 +1,143 @@
+diff -ruN gcc-4.1.2/gcc/config/i386/linux64.h gcc-4.1.2-pure64/gcc/config/i386/linux64.h
+--- gcc-4.1.2/gcc/config/i386/linux64.h	2005-08-10 20:53:01.000000000 +0300
++++ gcc-4.1.2-pure64/gcc/config/i386/linux64.h	2007-09-30 02:40:00.000000000 +0300
+@@ -60,8 +60,8 @@
+   %{!shared: \
+     %{!static: \
+       %{rdynamic:-export-dynamic} \
+-      %{m32:%{!dynamic-linker:-dynamic-linker /lib/ld-linux.so.2}} \
+-      %{!m32:%{!dynamic-linker:-dynamic-linker /lib64/ld-linux-x86-64.so.2}}} \
++      %{m32:%{!dynamic-linker:-dynamic-linker /lib32/ld-linux.so.2}} \
++      %{!m32:%{!dynamic-linker:-dynamic-linker /lib/ld-linux-x86-64.so.2}}} \
+     %{static:-static}}"
+ 
+ /* Similar to standard Linux, but adding -ffast-math support.  */
+diff -ruN gcc-4.1.2/gcc/config/i386/t-linux64 gcc-4.1.2-pure64/gcc/config/i386/t-linux64
+--- gcc-4.1.2/gcc/config/i386/t-linux64	2005-08-10 20:53:01.000000000 +0300
++++ gcc-4.1.2-pure64/gcc/config/i386/t-linux64	2007-09-30 02:41:43.000000000 +0300
+@@ -6,7 +6,7 @@
+ 
+ MULTILIB_OPTIONS = m64/m32
+ MULTILIB_DIRNAMES = 64 32 
+-MULTILIB_OSDIRNAMES = ../lib64 ../lib
++MULTILIB_OSDIRNAMES = ../lib ../lib32
+ 
+ LIBGCC = stmp-multilib
+ INSTALL_LIBGCC = install-multilib
+diff -ruN gcc-4.1.2/gcc/config/mips/linux64.h gcc-4.1.2-pure64/gcc/config/mips/linux64.h
+--- gcc-4.1.2/gcc/config/mips/linux64.h	2005-06-25 04:22:41.000000000 +0300
++++ gcc-4.1.2-pure64/gcc/config/mips/linux64.h	2007-09-30 02:42:37.000000000 +0300
+@@ -47,9 +47,9 @@
+       %{!static: \
+         %{rdynamic:-export-dynamic} \
+         %{!dynamic-linker: \
+-	  %{mabi=n32: -dynamic-linker /lib32/ld.so.1} \
+-	  %{mabi=64: -dynamic-linker /lib64/ld.so.1} \
+-	  %{mabi=32: -dynamic-linker /lib/ld.so.1}}} \
++	  %{mabi=n32: -dynamic-linker /lib64/ld.so.1} \
++	  %{mabi=64: -dynamic-linker /lib/ld.so.1} \
++	  %{mabi=32: -dynamic-linker /lib32/ld.so.1}}} \
+       %{static:-static}}} \
+ %{mabi=n32:-melf32%{EB:b}%{EL:l}tsmipn32} \
+ %{mabi=64:-melf64%{EB:b}%{EL:l}tsmip} \
+diff -ruN gcc-4.1.2/gcc/config/mips/t-linux64 gcc-4.1.2-pure64/gcc/config/mips/t-linux64
+--- gcc-4.1.2/gcc/config/mips/t-linux64	2006-09-10 10:13:12.000000000 +0300
++++ gcc-4.1.2-pure64/gcc/config/mips/t-linux64	2007-09-30 02:43:48.000000000 +0300
+@@ -1,6 +1,6 @@
+ MULTILIB_OPTIONS = mabi=n32/mabi=32/mabi=64
+ MULTILIB_DIRNAMES = n32 32 64
+-MULTILIB_OSDIRNAMES = ../lib32 ../lib ../lib64
++MULTILIB_OSDIRNAMES = ../lib64 ../lib32 ../lib
+ 
+ EXTRA_MULTILIB_PARTS=crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o
+ 
+diff -ruN gcc-4.1.2/gcc/config/rs6000/linux64.h gcc-4.1.2-pure64/gcc/config/rs6000/linux64.h
+--- gcc-4.1.2/gcc/config/rs6000/linux64.h	2006-02-10 22:58:33.000000000 +0200
++++ gcc-4.1.2-pure64/gcc/config/rs6000/linux64.h	2007-09-30 02:46:47.000000000 +0300
+@@ -339,11 +339,11 @@
+ 
+ #define LINK_OS_LINUX_SPEC32 "-m elf32ppclinux %{!shared: %{!static: \
+   %{rdynamic:-export-dynamic} \
+-  %{!dynamic-linker:-dynamic-linker /lib/ld.so.1}}}"
++  %{!dynamic-linker:-dynamic-linker /lib32/ld.so.1}}}"
+ 
+ #define LINK_OS_LINUX_SPEC64 "-m elf64ppc %{!shared: %{!static: \
+   %{rdynamic:-export-dynamic} \
+-  %{!dynamic-linker:-dynamic-linker /lib64/ld64.so.1}}}"
++  %{!dynamic-linker:-dynamic-linker /lib/ld64.so.1}}}"
+ 
+ #undef  TOC_SECTION_ASM_OP
+ #define TOC_SECTION_ASM_OP \
+diff -ruN gcc-4.1.2/gcc/config/rs6000/t-linux64 gcc-4.1.2-pure64/gcc/config/rs6000/t-linux64
+--- gcc-4.1.2/gcc/config/rs6000/t-linux64	2006-02-10 22:58:33.000000000 +0200
++++ gcc-4.1.2-pure64/gcc/config/rs6000/t-linux64	2007-09-30 02:47:31.000000000 +0300
+@@ -11,7 +11,7 @@
+ MULTILIB_EXTRA_OPTS     = fPIC mstrict-align
+ MULTILIB_EXCEPTIONS     = 
+ MULTILIB_EXCLUSIONS     = 
+-MULTILIB_OSDIRNAMES    = ../lib64 ../lib
++MULTILIB_OSDIRNAMES    = ../lib ../lib32
+ MULTILIB_MATCHES        = 
+ 
+ # We want fine grained libraries, so use the new code to build the
+diff -ruN gcc-4.1.2/gcc/config/sparc/linux64.h gcc-4.1.2-pure64/gcc/config/sparc/linux64.h
+--- gcc-4.1.2/gcc/config/sparc/linux64.h	2006-02-11 10:38:51.000000000 +0200
++++ gcc-4.1.2-pure64/gcc/config/sparc/linux64.h	2007-09-30 02:51:50.000000000 +0300
+@@ -162,21 +162,21 @@
+   { "link_arch_default", LINK_ARCH_DEFAULT_SPEC },	  \
+   { "link_arch",	 LINK_ARCH_SPEC },
+     
+-#define LINK_ARCH32_SPEC "-m elf32_sparc -Y P,/usr/lib %{shared:-shared} \
++#define LINK_ARCH32_SPEC "-m elf32_sparc -Y P,/usr/lib32 %{shared:-shared} \
+   %{!shared: \
+     %{!ibcs: \
+       %{!static: \
+         %{rdynamic:-export-dynamic} \
+-        %{!dynamic-linker:-dynamic-linker /lib/ld-linux.so.2}} \
++        %{!dynamic-linker:-dynamic-linker /lib32/ld-linux.so.2}} \
+         %{static:-static}}} \
+ "
+ 
+-#define LINK_ARCH64_SPEC "-m elf64_sparc -Y P,/usr/lib64 %{shared:-shared} \
++#define LINK_ARCH64_SPEC "-m elf64_sparc -Y P,/usr/lib %{shared:-shared} \
+   %{!shared: \
+     %{!ibcs: \
+       %{!static: \
+         %{rdynamic:-export-dynamic} \
+-        %{!dynamic-linker:-dynamic-linker /lib64/ld-linux.so.2}} \
++        %{!dynamic-linker:-dynamic-linker /lib/ld-linux.so.2}} \
+         %{static:-static}}} \
+ "
+ 
+@@ -252,12 +252,12 @@
+ #else /* !SPARC_BI_ARCH */
+ 
+ #undef LINK_SPEC
+-#define LINK_SPEC "-m elf64_sparc -Y P,/usr/lib64 %{shared:-shared} \
++#define LINK_SPEC "-m elf64_sparc -Y P,/usr/lib %{shared:-shared} \
+   %{!shared: \
+     %{!ibcs: \
+       %{!static: \
+         %{rdynamic:-export-dynamic} \
+-        %{!dynamic-linker:-dynamic-linker /lib64/ld-linux.so.2}} \
++        %{!dynamic-linker:-dynamic-linker /lib/ld-linux.so.2}} \
+         %{static:-static}}} \
+ %{mlittle-endian:-EL} \
+ %{!mno-relax:%{!r:-relax}} \
+diff -ruN gcc-4.1.2/gcc/config/sparc/t-linux64 gcc-4.1.2-pure64/gcc/config/sparc/t-linux64
+--- gcc-4.1.2/gcc/config/sparc/t-linux64	2004-04-01 19:05:22.000000000 +0300
++++ gcc-4.1.2-pure64/gcc/config/sparc/t-linux64	2007-09-30 02:54:16.000000000 +0300
+@@ -1,6 +1,6 @@
+ MULTILIB_OPTIONS = m64/m32
+ MULTILIB_DIRNAMES = 64 32
+-MULTILIB_OSDIRNAMES = ../lib64 ../lib
++MULTILIB_OSDIRNAMES = ../lib ../lib32
+ 
+ LIBGCC = stmp-multilib
+ INSTALL_LIBGCC = install-multilib
+@@ -16,4 +16,4 @@
+ 
+ CRTSTUFF_T_CFLAGS = `if test x$$($(GCC_FOR_TARGET) $(MULTILIB_CFLAGS) \
+ 				 -print-multi-os-directory) \
+-			= x../lib64; then echo -mcmodel=medany; fi`
++			= x../lib; then echo -mcmodel=medany; fi`
