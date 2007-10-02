@@ -31,10 +31,12 @@
 
 [L] MPL
 [S] Stable
-[V] 2.2.8
+[V] 2.2.11
 [P] X -----5---9 185.000
 
-[D] 4294577527 opal-2.2.8.tar.gz http://www.ekiga.org/admin/downloads/latest/sources/sources/
+[CV-URL] http://www.ekiga.org/index.php?rub=5&path=sources/sources
+
+[D] 0 opal-2.2.11.tar.gz http://www.ekiga.org/admin/downloads/latest/sources/sources/
 #[D] 815594470 opal-v2_2_4-src-tar.gz http://www.voxgratia.org/releases/
 
 # there's something screwed somewhere...
