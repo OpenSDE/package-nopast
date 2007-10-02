@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1134032010 Thu Dec  8 09:53:30 2005
-[BUILDTIME] 50 (9)
-[SIZE] 1.13 MB, 104 files
+[TIMESTAMP] 1191323497 Tue Oct  2 13:11:37 2007
+[BUILDTIME] 60 (5)
+[SIZE] 0.90 MB, 115 files
 
+[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -16,25 +17,25 @@
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
+[DEP] imake
 [DEP] kbproto
-[DEP] libart_lgpl23
-[DEP] libgnomecanvas
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxdmcp
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] pkgconfig
 [DEP] renderproto
@@ -42,4 +43,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
+[DEP] xorg-cf-files
 [DEP] xproto
