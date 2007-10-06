@@ -31,7 +31,7 @@
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
 
 [C] extra/development extra/desktop/kde
-[F] FPIC-QUIRK KDE
+[F] FPIC-QUIRK KDE QT3-PLUGIN
 
 [L] GPL
 [S] Stable
