@@ -30,7 +30,7 @@
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
 
 [C] extra/development extra/desktop/kde
-[F] NOPARALLEL KDE
+[F] NOPARALLEL KDE QT3-PLUGIN
 
 [L] GPL
 [S] Stable
