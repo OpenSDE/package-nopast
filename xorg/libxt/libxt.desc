@@ -28,9 +28,10 @@
 
 [L] OpenSource
 [S] Stable
-[V] 1.0.5
+[V] 1.0.5-3
 [P] X -----5---9 112.412
 
 [O] . package/*/*/modular-x-conf.in
 
 [D] 3119749362 libXt-1.0.5.tar.bz2 http://xorg.freedesktop.org/releases/individual/lib/
+[D] 869847224 libxt_1.0.5-3.diff.gz http://ftp.debian.org/debian/pool/main/libx/libxt/
