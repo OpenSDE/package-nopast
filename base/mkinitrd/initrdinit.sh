@@ -25,6 +25,16 @@ mount -t usbfs none /proc/bus/usb
 mount -t sysfs none /sys
 ln -s /proc/self/fd /dev/fd
 
+if [ ! -c /dev/console ]; then
+        mknod /dev/console c 5 1
+fi
+if [ ! -c /dev/null ]; then
+        mknod /dev/null c 1 3
+fi
+if [ ! -c /dev/zero ]; then
+        mknod /dev/zero c 1 5
+fi
+
 echo "Populating /dev (u/dev) ..."
 udevd --daemon
 udevtrigger
@@ -79,10 +89,16 @@ if [ "$root" ]; then
 			mount -t none /proc -o move /rootfs/proc
 			mount -t none /sys -o move /rootfs/sys
 
-			if [ ! -f /rootfs/dev/console ]; then
+			if [ ! -c /rootfs/dev/console ]; then
 				mknod /rootfs/dev/console c 5 1
+			fi
+			if [ ! -c /rootfs/dev/null ]; then
 				mknod /rootfs/dev/null c 1 3
+			fi
+			if [ ! -c /rootfs/dev/zero ]; then
 				mknod /rootfs/dev/zero c 1 5
+			fi
+			if [ ! -c /rootfs/dev/tty ]; then
 				mknod /rootfs/dev/tty c 5 0
 			fi
 
