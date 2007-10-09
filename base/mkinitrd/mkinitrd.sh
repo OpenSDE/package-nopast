@@ -115,6 +115,10 @@ echo "Injecting programs and configuration ..."
 
 # copying config
 #
+
+# group (needed by udev to resolve group names)
+cp -a ${root}/etc/group $tmpdir/etc/
+# udev
 cp -ar ${root}/etc/udev $tmpdir/etc/
 # in theory all, but fat and currently only cdrom_id is needed ...
 cp -ar ${root}/lib/udev/* $tmpdir/lib/udev/
