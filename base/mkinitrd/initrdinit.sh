@@ -36,11 +36,12 @@ if [ ! -c /dev/zero ]; then
 fi
 
 echo "Populating /dev (u/dev) ..."
+echo "" > /sys/kernel/uevent_helper
 udevd --daemon
-udevtrigger
 
-echo "Running hotplug++ ..."
-/sbin/hotplug++ -synth
+echo "Triggering coldplug ..."
+udevtrigger
+udevsettle
 
 echo "Loading additional subsystem and filesystem driver ..."
 # hack to be removed
