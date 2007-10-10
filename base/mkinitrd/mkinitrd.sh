@@ -125,7 +125,7 @@ cp -ar ${root}/lib/udev/* $tmpdir/lib/udev/
 
 # setup programs
 #
-for x in ${root}/sbin/{hotplug++,udevd,udevtrigger,modprobe,insmod} ${root}/usr/sbin/disktype
+for x in ${root}/sbin/{hotplug++,udevd,udevtrigger,udevsettle,modprobe,insmod} ${root}/usr/sbin/disktype
 do
 	# sanity check
 	file $x | grep -q "dynamically linked" &&
