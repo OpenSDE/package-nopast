@@ -1,0 +1,32 @@
+diff -ruN xawtv-3.95.orig/libng/plugins/read-qt.c xawtv-3.95/libng/plugins/read-qt.c
+--- xawtv-3.95.orig/libng/plugins/read-qt.c	2003-02-14 15:14:05.000000000 +0100
++++ xawtv-3.95/libng/plugins/read-qt.c	2007-10-07 16:34:17.000000000 +0200
+@@ -4,9 +4,9 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <pthread.h>
+-#include <quicktime/quicktime.h>
+-#include <quicktime/colormodels.h>
+-#include <quicktime/lqt.h>
++#include <lqt/quicktime.h>
++#include <lqt/colormodels.h>
++#include <lqt/lqt.h>
+ 
+ #include "grab-ng.h"
+ 
+diff -ruN xawtv-3.95.orig/libng/plugins/write-qt.c xawtv-3.95/libng/plugins/write-qt.c
+--- xawtv-3.95.orig/libng/plugins/write-qt.c	2003-02-14 15:14:06.000000000 +0100
++++ xawtv-3.95/libng/plugins/write-qt.c	2007-10-07 16:32:27.000000000 +0200
+@@ -4,9 +4,9 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <pthread.h>
+-#include <quicktime/quicktime.h>
+-#include <quicktime/colormodels.h>
+-#include <quicktime/lqt.h>
++#include <lqt/quicktime.h>
++#include <lqt/colormodels.h>
++#include <lqt/lqt.h>
+ 
+ #include "grab-ng.h"
+ 
