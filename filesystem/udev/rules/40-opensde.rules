@@ -1,0 +1,7 @@
+# vi: set ft=conf :
+
+# console (NAME)
+KERNEL=="pty[pqrstuvwxyzabcdef][0123456789abcdef]",	NAME="pty/m%m"
+KERNEL=="tty[pqrstuvwxyzabcdef][0123456789abcdef]",	NAME="pty/s%m"
+KERNEL=="tty[0-9]*",		NAME="vc/%n"
+
