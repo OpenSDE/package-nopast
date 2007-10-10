@@ -45,15 +45,15 @@ udevsettle
 
 echo "Loading additional subsystem and filesystem driver ..."
 # hack to be removed
-modprobe sbp2
+#modprobe sbp2
 
 # well some hardcoded help for now ...
-modprobe ide-generic
-modprobe ide-disk
-modprobe ide-cd
-modprobe sd_mod
-modprobe sr_mod
-modprobe sg
+#modprobe ide-generic
+#modprobe ide-disk
+#modprobe ide-cd
+#modprobe sd_mod
+#modprobe sr_mod
+#modprobe sg
 
 # the modular filesystems ...
 for x in /lib/modules/*/kernel/fs/{*/,}*.*o ; do
