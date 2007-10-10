@@ -5,6 +5,10 @@ ACTION!="add", GOTO="drivers_end"
 # hotplug
 ENV{MODALIAS}=="?*",	RUN+="/sbin/modprobe $env{MODALIAS}"
 
+SUBSYSTEM=="pnp", ENV{MODALIAS}!="?*", RUN+="/bin/sh -c 'while read id; do /sbin/modprobe pnp:d$$id; done < /sys$devpath/id'"
+
+SUBSYSTEM=="tifm", RUN+="/sbin/modprobe --all tifm_sd tifm_ms"
+
 # scsi
 # sd:		0 TYPE_DISK, 7 TYPE_MOD, 14 TYPE_RBC
 # sr:		4 TYPE_WORM, 5 TYPE_ROM
