@@ -10,12 +10,6 @@ SUBSYSTEM=="pnp", ENV{MODALIAS}!="?*", RUN{ignore_error}+="/bin/sh -c 'while rea
 SUBSYSTEM=="tifm", RUN+="/sbin/modprobe --all tifm_sd tifm_ms"
 
 # scsi
-# sd:		0 TYPE_DISK, 7 TYPE_MOD, 14 TYPE_RBC
-# sr:		4 TYPE_WORM, 5 TYPE_ROM
-# st/osst:	1 TYPE_TAPE
-SUBSYSTEM=="scsi", KERNEL=="[0-9]*:[0-9]*", ACTION=="add", ATTR{type}=="0|7|14", ATTR{timeout}="60"
-SUBSYSTEM=="scsi", KERNEL=="[0-9]*:[0-9]*", ACTION=="add", ATTR{type}=="1", ATTR{timeout}="900"
-
 SUBSYSTEM=="scsi",		ACTION=="add", ATTRS{type}=="0", RUN+="/sbin/modprobe sd_mod"
 
 SUBSYSTEM=="scsi_device",	ACTION=="add", ATTRS{type}=="0|7|14", RUN+="/sbin/modprobe sd_mod"
