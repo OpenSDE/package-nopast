@@ -41,5 +41,7 @@
 [V] 1.0.1
 [P] X -----5---9 801.000
 
+[O] . $base/package/*/*/gtk+-conf.in
+
 [D] 3853281720 fyre-1.0.1.tar.bz2 http://flapjack.navi.cx/releases/fyre/
 
