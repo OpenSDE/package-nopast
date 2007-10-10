@@ -1,5 +1,7 @@
 # vi: set ft=conf :
 
+ACTION!="add", GOTO="drivers_end"
+
 # hotplug
 ENV{MODALIAS}=="?*",	RUN+="/sbin/modprobe $env{MODALIAS}"
 
@@ -23,3 +25,5 @@ SUBSYSTEM=="ide", ACTION=="add", ATTR{media}=="tape", RUN+="/sbin/modprobe ide-s
 
 # mmc
 SUBSYSTEM=="mmc", ACTION=="add", RUN+="/sbin/modprobe mmc_block"
+
+LABEL="drivers_end"
