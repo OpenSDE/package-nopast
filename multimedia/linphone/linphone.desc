@@ -31,9 +31,9 @@
 
 [L] GPL
 [S] Stable
-[V] 1.3.5
+[V] 1.7.1
 [P] X -----5---9 211.600
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 2535303715 linphone-1.3.5.tar.gz http://simon.morlat.free.fr/download/stable/source/
+[D] 3232233872 linphone-1.7.1.tar.gz http://download.savannah.gnu.org/releases/linphone/stable/sources/
