@@ -1,0 +1,26 @@
+use a real temp dir like 'var/tmp' for temp files instead of 
+'var/adm/postinstall' which is used for something else
+diff -ruN mine-0.23.orig/install.c mine-0.23/install.c
+--- mine-0.23.orig/install.c	2005-08-09 13:57:29.000000000 +0300
++++ mine-0.23/install.c	2007-10-11 14:47:58.753311837 +0300
+@@ -141,7 +141,7 @@
+ 	if ( ! mode_test ) 
+ 	{
+ 		char postinst[1024];
+-		snprintf(postinst, 1024, "%s/var/adm/postinstall/%s-install.XXXXXX", root, pname);
++		snprintf(postinst, 1024, "%s/var/tmp/%s-install.XXXXXX", root, pname);
+ 		if ( mkstemp(postinst) != -1 ) 
+ 			logfile = fopen(postinst, "w");
+ 		if ( mode_verbose ) {
+diff -ruN mine-0.23.orig/remove.c mine-0.23/remove.c
+--- mine-0.23.orig/remove.c	2005-08-09 13:57:29.000000000 +0300
++++ mine-0.23/remove.c	2007-10-11 14:48:35.250803447 +0300
+@@ -102,7 +102,7 @@
+ 	if ( ! mode_test ) 
+ 	{
+ 		char postinst[1024];
+-		snprintf(postinst, 1024, "%s/var/adm/postinstall/%s-remove.XXXXXX",
++		snprintf(postinst, 1024, "%s/var/tmp/%s-remove.XXXXXX",
+ 					 root, package);
+ 		if ( mkstemp(postinst) != -1 ) 
+ 			logfile = fopen(postinst, "w");
