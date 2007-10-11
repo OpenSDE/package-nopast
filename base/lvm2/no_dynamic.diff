@@ -83,3 +83,14 @@
  		LIB_SUFFIX="so"
  		DEVMAPPER=yes
  		ODIRECT=yes
+--- ./tools/Makefile.in.orig	2007-10-11 16:19:43.000000000 -0400
++++ ./tools/Makefile.in	2007-10-11 16:20:25.000000000 -0400
+@@ -170,7 +170,7 @@
+ 
+ install_tools_static: lvm.static
+ 	$(INSTALL) -D $(OWNER) $(GROUP) -m 555 $(STRIP) lvm.static \
+-		$(staticdir)/lvm.static
++		$(staticdir)/lvm
+ 
+ install: $(INSTALL_TARGETS)
+ 
