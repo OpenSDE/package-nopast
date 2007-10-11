@@ -30,9 +30,11 @@
 
 [L] GPL
 [S] Stable
-[V] 1.6.1
+[V] 1.7.2
 [P] X -?---5---9 102.001
 
-[D] 3511620770 busybox-1.6.1.tar.bz2 http://busybox.net/downloads/
-[D] 3883757934 busybox-1.6.1-adduser.patch http://busybox.net/downloads/fixes-1.6.1/
-[D] 3494677559 busybox-1.6.1-init.patch http://busybox.net/downloads/fixes-1.6.1/
+[D] 673718611 busybox-1.7.2.tar.bz2 http://busybox.net/downloads/
+[D] 4166840845 busybox-1.7.2-ash.patch http://busybox.net/downloads/fixes-1.7.2/
+[D] 4021443764 busybox-1.7.2-iptun.patch http://busybox.net/downloads/fixes-1.7.2/
+[D] 3870594009 busybox-1.7.2-logger.patch http://busybox.net/downloads/fixes-1.7.2/
+[D] 1019328765 busybox-1.7.2-tail.patch http://busybox.net/downloads/fixes-1.7.2/
