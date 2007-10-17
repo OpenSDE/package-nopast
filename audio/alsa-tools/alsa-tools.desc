@@ -30,9 +30,9 @@
 
 [L] GPL
 [S] Stable
-[V] 1.0.13
+[V] 1.0.15
 [P] X -----5---9 130.700
 
-[D] 1836325299 alsa-tools-1.0.13.tar.bz2 ftp://ftp.alsa-project.org/pub/tools/
+[D] 2919975415 alsa-tools-1.0.15.tar.bz2 ftp://ftp.alsa-project.org/pub/tools/
 
-[D] 2196241478 alsa-tools-1.0.13-ac3dec_config_update-1.patch http://svn.cross-lfs.org/svn/repos/patches/alsa-tools/
+#[D] 0 alsa-tools-1.0.15-ac3dec_config_update-1.patch http://svn.cross-lfs.org/svn/repos/patches/alsa-tools/
