@@ -30,9 +30,11 @@
 
 [L] APL
 [S] Stable
-[V] 5.5.20
+[V] 5.5.25
 [P] X -----5---9 800.000
 
-[D] 2236285825 apache-tomcat-5.5.20.tar.gz http://dl.apache.org/dist/tomcat/tomcat-5/v5.5.20/bin/
-[D] 1753564245 apache-tomcat-5.5.20-compat.tar.gz http://dl.apache.org/dist/tomcat/tomcat-5/v5.5.20/bin/
+[CV-URL] http://tomcat.apache.org/download-55.cgi
+
+[D] 444418506 apache-tomcat-5.5.25.tar.gz http://dl.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin/
+[D] 3587419641 apache-tomcat-5.5.25-compat.tar.gz http://dl.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin/
 
