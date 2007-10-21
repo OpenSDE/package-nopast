@@ -17,13 +17,14 @@
 [T] Google Earth search for satellite image using an address, building name  
 [T] etc.
 
-
 [U] http://earth.google.com/
 
 [A] Google
 [M] Oliver Winston <zuberiw@gmail.com>
 
 [C] extra/network
+
+[F] BINARY
 
 [L] Restricted
 [S] Beta
