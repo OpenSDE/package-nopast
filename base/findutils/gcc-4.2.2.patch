@@ -1,0 +1,11 @@
+Patch aquired from http://bugs.gentoo.org/show_bug.cgi?id=197326
+--- ./gnulib/lib/mbuiter.h.orig	2007-02-11 19:17:09.000000000 +0200
++++ ./gnulib/lib/mbuiter.h	2007-11-19 18:42:23.439310475 +0200
+@@ -94,6 +94,7 @@
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <stddef.h>
+ 
+ /* Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
+    <wchar.h>.
