@@ -1,0 +1,22 @@
+
+[I] A PostgerSQL utility
+
+[T] An utility to format PostgreSQL heap/index/control files
+[T] into a human-readable form. Can format/dump the files several ways,
+[T] as listed in the Invocation section, as well as dumping straight binary. 
+[T] Forensics utility, not for the faint of heart ones.
+
+[U] http://sources.redhat.com/rhdb/index.html 
+
+[A] The RHDB team {http://sources.redhat.com/rhdb/who.html}
+[M] Nagy Karoly Gabriel <karasz@opensde.org>
+
+[C] extra/database
+
+[L] GPL
+[S] Stable
+[V] 8.2
+[P] X -----5---9 125.000
+
+[D] 0 pg_filedump-8.2.tar http://sources.redhat.com/rhdb/tools/
+
