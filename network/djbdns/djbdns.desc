@@ -41,25 +41,25 @@
 [U] http://cr.yp.to/djbdns.html
 [U] http://tinydns.org/
 
-[A] Dan J. Bernstein <djb@cr.yp.to>
+[A] D. J. Bernstein <djb@cr.yp.to>
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/tool extra/server
 [F] DIETLIBC
 
-[L] Free-to-use
+[L] PublicDomain
 [S] Stable
 [V] 1.05
 [P] O -----5---9 800.000
 
 [CV-URL] http://cr.yp.to/djbdns/install.html
 
-[D] 288838240 djbdns-1.05.tar.gz -http://cr.yp.to/djbdns/
+[D] 288838240 djbdns-1.05.tar.gz http://cr.yp.to/djbdns/
 [D] 954762665 djbdns-1.05-man-20031023.tar.gz http://smarden.org/pape/djb/manpages/
 
-[D] 3494963783 djbdns-patch-1.05-tinydns_sighup.diff !http://www-dt.e-technik.uni-dortmund.de/~ma/djb/dns/djbdns-1.05-sighup.patch
-[D] 1356936764 djbdns-patch-1.05-tinydns_multi_data.diff !http://iksz.hu/package/djbdns-conf/djbdns-1.05-multi_tinydns_data.patch
-[D] 1626283109 djbdns-patch-1.05-dnscache_dumpcache-v4.diff !http://efge.free.fr/djbdns/patch-dnscache-dumpcache-v4.txt
+[D] 3494963783 djbdns-patch-1.05-tinydns_sighup.diff http://www-dt.e-technik.uni-dortmund.de/~ma/djb/dns/djbdns-1.05-sighup.patch
+[D] 1356936764 djbdns-patch-1.05-tinydns_multi_data.diff http://iksz.hu/package/djbdns-conf/djbdns-1.05-multi_tinydns_data.patch
+[D] 1626283109 djbdns-patch-1.05-dnscache_dumpcache-v4.diff http://efge.free.fr/djbdns/patch-dnscache-dumpcache-v4.txt
 [D] 2810644152 djbdns-patch-1.05-dnscache_dumpcache_over_sighup-v4.diff http://dl.geeks.cl/t2/
-[D] 517344466 djbdns-patch-1.04-fwdzone.diff !http://www.skarnet.org/software/djbdns-fwdzone/djbdns-1.04-fwdzone.patch
+[D] 517344466 djbdns-patch-1.04-fwdzone.diff http://www.skarnet.org/software/djbdns-fwdzone/djbdns-1.04-fwdzone.patch
 
