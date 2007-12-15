@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1197719959 Sat Dec 15 13:59:19 2007
+[BUILDTIME] 0 (5)
+[SIZE] 3.95 MB, 590 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
