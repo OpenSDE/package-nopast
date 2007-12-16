@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1197744994 Sat Dec 15 15:56:34 2007
+[BUILDTIME] 100 (9)
+[SIZE] 0.03 MB, 8 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libmrss
+[DEP] libnxml
+[DEP] linux-header
+[DEP] make
+[DEP] openssl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
