@@ -34,7 +34,7 @@
 [L] GPL
 [S] Stable
 [V] 2.61-13
-[P] X -----5---9 800.000
+[P] X -?---5---9 800.000
 
 [D] 1409920116 ssmtp_2.61.orig.tar.gz http://ftp.debian.org/debian/pool/main/s/ssmtp/
 [D] 3124039352 ssmtp_2.61-13.diff.gz http://ftp.debian.org/debian/pool/main/s/ssmtp/
