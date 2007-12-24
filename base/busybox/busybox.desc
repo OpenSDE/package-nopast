@@ -30,9 +30,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.8.2
+[V] 1.9.0
 [P] X -?---5---9 102.001
 
-[D] 3814877564 busybox-1.8.2.tar.bz2 http://busybox.net/downloads/
-[D] 1216216117 busybox-1.8.2-static.patch http://busybox.net/downloads/fixes-1.8.2/
-[D] 1278507680 busybox-1.8.2-vi.patch http://busybox.net/downloads/fixes-1.8.2/
+[D] 3992043393 busybox-1.9.0.tar.bz2 http://busybox.net/downloads/
