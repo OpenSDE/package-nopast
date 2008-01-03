@@ -78,7 +78,7 @@ else
 			else printf "x=%.2f\n", hit*100 / (hit+miss);
 			print "ccache_hit=" hit "; ccache_miss=" miss; }' )"
 	y=$( du -sh "$CCACHE_DIR" | cut -f1 )
-	echo_status "Compiler Cache enabled: $x% ($y) cache hits so far."
+	echo_status "Compiler Cache enabled: $x% ($y) cache hits so far"
 
 	ccache_print_status() {
 		eval "$( ccache -s | gawk '/cache hit/ { hit=$3-'$ccache_hit'; }
