@@ -1,0 +1,10 @@
+--- ./contrib/Makefile.orig	2006-09-09 07:07:51.000000000 +0300
++++ ./contrib/Makefile	2008-01-08 21:38:38.021126900 +0200
+@@ -26,6 +26,7 @@
+ 		pgcrypto	\
+ 		pgrowlocks	\
+ 		pgstattuple	\
++		pllua		\
+ 		seg		\
+ 		spi		\
+ 		tablefunc	\
