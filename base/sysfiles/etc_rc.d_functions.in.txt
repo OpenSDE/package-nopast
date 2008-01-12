@@ -54,7 +54,7 @@ title() {
 
 status() {
 	$ECHO -n "$MOVE_UP$MOVE_EOL$MOVE_LEFT_STATUS"
-	if [ ${1:-error} -eq 0 ]; then
+	if [ ${1:-$error} -eq 0 ]; then
 		$ECHO "$COLOR_SUCCESS$ART_SUCCESS$COLOR_NORMAL"
 	else
 		$ECHO "$BELL$COLOR_FAILURE$ART_FAILURE$COLOR_NORMAL"
