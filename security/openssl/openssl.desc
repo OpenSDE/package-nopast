@@ -29,7 +29,7 @@
 
 [A] The OpenSSL Project
 [A] Eric A. Young, Tim J. Hudson
-[M] The OpenSDE Community <list@opensde.org>
+[M] Christian Wiese <morfoh@opensde.org>
 
 [C] base/library
 [F] DIETLIBC NOPARALLEL 
