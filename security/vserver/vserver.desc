@@ -38,13 +38,13 @@
 
 [L] GPL
 [S] Stable
-[V] 2.2.0.5
+[V] 2.2.0.6
 [P] O -?---5---9 190.200
 
 [F] NOPARALLEL DIETLIBC NO-SSP
 
 # linux26 patches
-[D] 1806307565 patch-2.6.22.10-vs2.2.0.5.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/
+[D] 870004511 patch-2.6.22.16-vs2.2.0.6.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/
 #[D] 299972723 patch-2.6.21.5-vs2.2.0-rc3.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/testing/
 
 # linux24 patches
