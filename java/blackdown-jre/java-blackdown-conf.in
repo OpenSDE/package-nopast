@@ -29,7 +29,7 @@ makeinstopt=
 # and doc directory are created at the proper level.
 . $base/package/*/*/java-jdk-conf.in $1
 
-java_install_opt=""
+java_install_opt=
 java_home_original=
 
 # Check if installing needs to be done with or without X11.
