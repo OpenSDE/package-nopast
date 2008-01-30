@@ -57,6 +57,7 @@ var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC"
 makeinstopt="$makeopt"
 
 auto_config() {
+	local x= loop=
 	# get defconfig (.config.1)
 	#
 	if [ -f $base/architecture/$arch/kernel$treever.conf.sh ] ; then
@@ -90,33 +91,38 @@ auto_config() {
 	echo "Enabling all modules ..."
 	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
 
-	# call scripts to tweak the config file
+	# for "safety" we will apply the config twice, so hidden options have time
+	# to appear
 	#
-	for x in $lx_confscripts ; do
-		echo "  running: $x"
-		sh $x .config
-	done
-	cp .config{,.3}
+	for loop in 1 2; do
+		# call scripts to tweak the config file
+		#
+		for x in $lx_confscripts ; do
+			echo "  running: $x"
+			sh $x .config
+		done
+		cp .config{,.3.$loop}
 
-	# merge various text/plain config files
-	#
-	for x in $lx_confmerge; do
-		if [ -f $x ] ; then
-			echo "  merging: '$x'"
-			tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
-				$x | tr '\n' '|')"
-			egrep -v "\bCONFIG_($tag)\b" < .config > .config.4
-			sed 's,\(CONFIG_.*\)=n,# \1 is not set,' \
-				$x >> .config.4
-			cp .config{.4,}
-		else
-			echo_warning "Can't find '${x#$base/}' for merging."
-		fi
-	done
+		# merge various text/plain config files
+		#
+		for x in $lx_confmerge; do
+			if [ -f $x ] ; then
+				echo "  merging: '$x'"
+				tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
+					$x | tr '\n' '|')"
+				egrep -v "\bCONFIG_($tag)\b" < .config > .config.4.$loop
+				sed 's,\(CONFIG_.*\)=n,# \1 is not set,' \
+					$x >> .config.4.$loop
+				cp .config{.4.$loop,}
+			else
+				echo_warning "Can't find '${x#$base/}' for merging."
+			fi
+		done
 
-	# create a valid .config
-	#
-	yes '' | eval $MAKE $makeopt oldconfig > /dev/null ; cp .config{,.5}
+		# create a valid .config
+		#
+		yes '' | eval $MAKE $makeopt oldconfig > /dev/null ; cp .config{,.5.$loop}
+	done
 
 	# last disable broken stuff
 	#
