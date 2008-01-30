@@ -23,6 +23,17 @@ lx_extraversion=
 lx_kernelrelease=
 lx_customconf="\$base/config/$config/linux.cfg"
 
+# $lx_confmerge list of config snaps gets merged to .config.3 on auto_config()
+#
+lx_confmerge=
+for x in $base/config/$config/linux.cfg \
+         $base/target/$target/kernel${treever}.conf \
+         $base/target/$target/kernel.conf ; do
+	if [ -f $x ] ; then
+		var_append lx_confmerge ' ' "$x"
+	fi
+done
+
 # inject a possible pre-/ post-release patch
 # we filter out .tar`s to avoid trouble with the linuxsh kernel drop-in trees
 var_insert patchfiles " " "`match_source_file patch-.* | grep -v '\.tar\.'`"
@@ -81,9 +92,7 @@ auto_config ()
 	cp .config{,.3}
 
 	# merge various text/plain config files
-	for x in $base/config/$config/linux.cfg \
-	         $base/target/$target/kernel${treever}.conf \
-	         $base/target/$target/kernel.conf ; do
+	for x in $lx_confmerge; do
 	   if [ -f $x ] ; then
 		echo "  merging: '$x'"
 		tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
@@ -92,6 +101,8 @@ auto_config ()
 		sed 's,\(CONFIG_.*\)=n,# \1 is not set,' \
 			$x >> .config.4
 		cp .config{.4,}
+	   else
+		echo_warning "Can't find '${x#$base/}' for merging."
 	   fi
 	done
 
