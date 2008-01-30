@@ -56,8 +56,9 @@ makeopt=
 var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC"
 makeinstopt="$makeopt"
 
-auto_config ()
-{
+auto_config() {
+	# get defconfig (.config.1)
+	#
 	if [ -f $base/architecture/$arch/kernel$treever.conf.sh ] ; then
 		echo "  using: architecture/$arch/kernel$treever.conf.sh"
 		. $base/architecture/$arch/kernel$treever.conf.sh > .config
@@ -90,6 +91,7 @@ auto_config ()
 	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
 
 	# call scripts to tweak the config file
+	#
 	for x in $lx_confscripts ; do
 		echo "  running: $x"
 		sh $x .config
@@ -97,43 +99,46 @@ auto_config ()
 	cp .config{,.3}
 
 	# merge various text/plain config files
+	#
 	for x in $lx_confmerge; do
-	   if [ -f $x ] ; then
-		echo "  merging: '$x'"
-		tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
-			$x | tr '\n' '|')"
-		egrep -v "\bCONFIG_($tag)\b" < .config > .config.4
-		sed 's,\(CONFIG_.*\)=n,# \1 is not set,' \
-			$x >> .config.4
-		cp .config{.4,}
-	   else
-		echo_warning "Can't find '${x#$base/}' for merging."
-	   fi
+		if [ -f $x ] ; then
+			echo "  merging: '$x'"
+			tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
+				$x | tr '\n' '|')"
+			egrep -v "\bCONFIG_($tag)\b" < .config > .config.4
+			sed 's,\(CONFIG_.*\)=n,# \1 is not set,' \
+				$x >> .config.4
+			cp .config{.4,}
+		else
+			echo_warning "Can't find '${x#$base/}' for merging."
+		fi
 	done
 
 	# create a valid .config
+	#
 	yes '' | eval $MAKE $makeopt oldconfig > /dev/null ; cp .config{,.5}
 
 	# last disable broken stuff
+	#
 	rm -f /tmp/$$.sed
 	list="CONFIG_THIS_DOES_NOT_EXIST"
 	for x in $pkg_linux_brokenfiles ; do
-	    if [ -f "$x" ] ; then
-		echo "Disable broken file: $x"
-		list="$list `tr ' ' '\t' < $x | cut -f1 | grep '^CONFIG_'`"
-            fi
+		if [ -f "$x" ] ; then
+			echo "Disable broken file: $x"
+			list="$list `tr ' ' '\t' < $x | cut -f1 | grep '^CONFIG_'`"
+		fi
 	done
 	for x in $list ; do
 		echo "s,^$x=.\$,# $x is not set,;" >> /tmp/$$.sed
 	done
-
 	sed -f /tmp/$$.sed < .config > .config.6
-	cp .config{.6,} ; rm -f /tmp/$$.sed
+	rm -f /tmp/$$.sed
+	cp .config{.6,}
 
 	# create a valid .config (dependencies might need to be disabled)
 	yes '' | eval $MAKE $makeopt oldconfig > /dev/null
 
-	# save final config
+	# save final config (with modules)
 	cp .config{,_modules}
 
 	echo "Creating config without modules ...."
