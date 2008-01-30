@@ -29,8 +29,18 @@ lx_confmerge=
 for x in $base/config/$config/linux.cfg \
          $base/target/$target/kernel${treever}.conf \
          $base/target/$target/kernel.conf ; do
-	if [ -f $x ] ; then
+	if [ -f "$x" ]; then
 		var_append lx_confmerge ' ' "$x"
+	fi
+done
+
+# $lx_confscripts list of scripts to alter .config.2 generating .config.3 on auto_config()
+lx_confscripts=
+for x in $base/target/$target/kernel$treever.conf.sh \
+	 $base/target/$target/kernel.conf.sh ; do
+	if [ -f "$x" ]; then
+		var_append lx_confscripts ' ' "$x"
+		break
 	fi
 done
 
@@ -79,12 +89,7 @@ auto_config ()
 	echo "Enabling all modules ..."
 	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
 
-	if [ -f $base/target/$target/kernel$treever.conf.sh ] ; then
-		lx_confscripts="$base/target/$target/kernel$treever.conf.sh $confscripts"
-	elif [ -f $base/target/$target/kernel.conf.sh ] ; then
-		lx_confscripts="$base/target/$target/kernel.conf.sh $confscripts"
-	fi
-
+	# call scripts to tweak the config file
 	for x in $lx_confscripts ; do
 		echo "  running: $x"
 		sh $x .config
