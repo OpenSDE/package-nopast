@@ -45,7 +45,7 @@
 -		cp tzfile.5 $(MANDIR)/man5/.
 -		cp tzselect.8 zdump.8 zic.8 $(MANDIR)/man8/.
 +			-d $(DESTDIR)$(TZDIR) -p $(POSIXRULES)
-+		ln -sf ..$(TZDIR)$(LOCALTIME) $(DESTDIR)/etc/localtime
++		ln -sf ..$(TZDIR)/$(LOCALTIME) $(DESTDIR)/etc/localtime
 +		-rm -f $(DESTDIR)$(TZDIR)/iso3166.tab $(DESTDIR)$(TZDIR)/zone.tab
 +		cp iso3166.tab zone.tab $(DESTDIR)$(TZDIR)/.
 +		-mkdir $(DESTDIR)$(TOPDIR) $(DESTDIR)$(ETCDIR)
