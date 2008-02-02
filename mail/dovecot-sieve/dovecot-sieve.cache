@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1201375189 Sat Jan 26 21:19:49 2008
+[BUILDTIME] 15 (5)
+[SIZE] 0.13 MB, 8 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] dovecot
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
