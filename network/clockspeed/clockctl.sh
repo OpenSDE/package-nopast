@@ -13,16 +13,16 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-# /usr/local/bin/clockctl
+# Based on: http://www.thedjbway.org/clockspeed/clockctl
 # interface to djb clockspeed (0.62)
 # wcm, 2003.11.26 - 2003.11.26
 # ===
 
 # read configuration:
-if [ -r /usr/local/etc/clockspeed.conf ] ; then
-  . /usr/local/etc/clockspeed.conf
+if [ -r /etc/conf/clockspeed ] ; then
+  . /etc/conf/clockspeed
 else
-  echo "$0: configuration error: unable to read clockspeed.conf"
+  echo "$0: configuration error: unable to read /etc/conf/clockspeed"
   exit 1
 fi
 
@@ -31,10 +31,10 @@ clock_pick()
 {
   case ${CLOCK_TYPE} in
   ntp|NTP)
-      ${CLOCKSPEED_BIN}/sntpclock "${CLOCK_IP}"
+      D_bindir/sntpclock "${CLOCK_IP}"
       ;;
   tai|TAI)
-      ${CLOCKSPEED_BIN}/taiclock "${CLOCK_IP}"
+      D_bindir/taiclock "${CLOCK_IP}"
       ;;
   *)
       echo "$0: configuration error: CLOCK_TYPE not recognized"
@@ -48,20 +48,20 @@ clock_pick()
 case $1 in
 a|atto)
     echo "Viewing current attoseconds in hardware tick:"
-    ${CLOCKSPEED_BIN}/clockview < ${CLOCKSPEED_HOME}/etc/atto
+    D_bindir/clockview < /var/state/clockspeed/atto
     ;;
 m|mark)
     echo "Obtaining new calibration mark from master server at ${CLOCK_IP}:"
-    clock_pick | tee ${CLOCKSPEED_HOME}/adjust | ${CLOCKSPEED_BIN}/clockview
+    clock_pick | tee /var/state/clockspeed/adjust | D_bindir/clockview
     ;;
 s|sync)
     echo "Setting system clock with master server at ${CLOCK_IP}:"
-    clock_pick | ${CLOCKSPEED_BIN}/clockadd && \
-    clock_pick | ${CLOCKSPEED_BIN}/clockview
+    clock_pick | D_bindir/clockadd && \
+    clock_pick | D_bindir/clockview
     ;;
 v|view)
     echo "Checking system clock against master server at ${CLOCK_IP} (clockview):"
-    clock_pick | ${CLOCKSPEED_BIN}/clockview
+    clock_pick | D_bindir/clockview
     ;;
 h|help)
     cat <<END_HELP
@@ -81,4 +81,4 @@ END_HELP
 esac
 
 exit 0
-### that's all, folks!      
+### that's all, folks!
