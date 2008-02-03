@@ -20,65 +20,61 @@
 
 # read configuration:
 if [ -r /etc/conf/clockspeed ] ; then
-  . /etc/conf/clockspeed
+	. /etc/conf/clockspeed
 else
-  echo "$0: configuration error: unable to read /etc/conf/clockspeed"
-  exit 1
+	echo "$0: configuration error: unable to read /etc/conf/clockspeed"
+	exit 1
 fi
 
 # clock_pick function:
-clock_pick()
-{
-  case ${CLOCK_TYPE} in
-  ntp|NTP)
-      D_bindir/sntpclock "${CLOCK_IP}"
-      ;;
-  tai|TAI)
-      D_bindir/taiclock "${CLOCK_IP}"
-      ;;
-  *)
-      echo "$0: configuration error: CLOCK_TYPE not recognized"
-      exit 1;
-      ;;
-   esac
+clock_pick() {
+	case "${CLOCK_TYPE}" in
+		ntp|NTP)	D_bindir/sntpclock "${CLOCK_IP}"
+			;;
+		tai|TAI)	D_bindir/taiclock "${CLOCK_IP}"
+			;;
+		*)
+			echo "$0: configuration error: CLOCK_TYPE not recognized"
+			exit 1
+			;;
+	esac
 }
 
 
 # process command:
-case $1 in
-a|atto)
-    echo "Viewing current attoseconds in hardware tick:"
-    D_bindir/clockview < /var/state/clockspeed/atto
-    ;;
-m|mark)
-    echo "Obtaining new calibration mark from master server at ${CLOCK_IP}:"
-    clock_pick | tee /var/state/clockspeed/adjust | D_bindir/clockview
-    ;;
-s|sync)
-    echo "Setting system clock with master server at ${CLOCK_IP}:"
-    clock_pick | D_bindir/clockadd && \
-    clock_pick | D_bindir/clockview
-    ;;
-v|view)
-    echo "Checking system clock against master server at ${CLOCK_IP} (clockview):"
-    clock_pick | D_bindir/clockview
-    ;;
-h|help)
-    cat <<END_HELP
-clockspeed control:
-  atto -- inspect current "attoseconds"
-  mark -- obtain new calibration mark for clockspeed
-  sync -- set the system clock with master time server
-  view -- check system clock against master time server
-  help -- this screen
-END_HELP
-    ;;
-
-*)
-    echo "Usage: $0 [ a|atto | m|mark | s|sync | v|view | h|help ]"
-    exit 1
-    ;;
+case "$1" in
+	a|atto)
+		echo "Viewing current attoseconds in hardware tick:"
+		D_bindir/clockview < /var/state/clockspeed/atto
+		;;
+	m|mark)
+		echo "Obtaining new calibration mark from master server at ${CLOCK_IP}:"
+		clock_pick | tee /var/state/clockspeed/adjust | D_bindir/clockview
+		;;
+	s|sync)
+		echo "Setting system clock with master server at ${CLOCK_IP}:"
+		clock_pick | D_bindir/clockadd && \
+		clock_pick | D_bindir/clockview
+		;;
+	v|view)
+		echo "Checking system clock against master server at ${CLOCK_IP} (clockview):"
+		clock_pick | D_bindir/clockview
+		;;
+	h|help)
+		cat <<-EOT
+		clockspeed control:
+		  atto -- inspect current "attoseconds"
+		  mark -- obtain new calibration mark for clockspeed
+		  sync -- set the system clock with master time server
+		  view -- check system clock against master time server
+		  help -- this screen
+		EOT
+		exit 0
+		;;
+	*)
+		echo "Usage: $0 [ a|atto | m|mark | s|sync | v|view | h|help ]"
+		exit 1
+		;;
 esac
 
-exit 0
 ### that's all, folks!
