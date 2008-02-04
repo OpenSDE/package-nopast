@@ -1,6 +1,6 @@
 # -*- perl -*- (for emacs syntax coloring)
 #
-#  /etc/mol/molrc.macos 
+#  /etc/mol/molrc.macos
 #
 #  Mac-on-Linux master configuration file for MacOS (classic) booting
 #
@@ -20,7 +20,7 @@ include		${etc}/molrc.net	# networking
 #------------------------------------------------------------------------------
 
 ram_size:		48		# should probably be increased
-disable_altivec:	no		# 
+disable_altivec:	no		#
 
 sound_driver:		dsp		# (any | dsp | esd)
 sound_device:		/dev/sound/dsp
@@ -49,7 +49,7 @@ play_startboing:	no		# play startboing
 #		-cd		CD/DVD
 #		-boot		boot from this disk.
 #		-boot1		boot from this disk (ignore other -boot flags)
-#	
+#
 #	If the --cdboot switch is used, then MOL will boot from CD
 
 blkdev:			/dev/cdrom	-cd ${cdboot}
@@ -66,7 +66,7 @@ ifeq ${session} 4 {
 }
 
 ifeq ${boot_type} oldworld {
-    # oldworld booting (for MacOS 8.5 or older) 
+    # oldworld booting (for MacOS 8.5 or older)
     blkdev:		/var/oldworld.image -rw
 }
 

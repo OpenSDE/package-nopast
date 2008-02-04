@@ -30,33 +30,33 @@
 ##########################################################################
 #___INFO__MARK_END__
 
-# 
+#
 # OPENSSL_HOME the directory where the include and lib directory of openssl
 # is installed
 #
 set OPENSSL_HOME = /usr
 
-# 
+#
 # KRB_HOME the directory where the include and lib directory of kerberos is
 # installed
 #
 set KRB_HOME = /vol2/tools/SW/krb5/$buildarch
 
-# 
+#
 # INSURE4_LIBDIR the directory where the insure library is installed
 #
 set INSURE4_LIBDIR = /vol2/tools/insure4/lib.alpha4
-# 
+#
 # man2html path
 #
 set MAN2HTMLPATH = /usr/bin/man2html
-# 
+#
 # groff path
 #
 set GROFFPATH = /usr/bin/groff
 
 #
-# SWIG path 
+# SWIG path
 #
 set SWIG = /usr/bin/swig
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> <!-- -*- SGML -*- --> 
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- SGML -*- -->
 
 <deviceinfo version="0.2">
 
@@ -25,11 +25,11 @@
 	    <match key="volume.partition.msdos_part_table_type" int="0x1c">
 	      <merge key="volume.policy.should_mount" type="bool">true</merge>
 	    </match>
-	  </match>	  
+	  </match>
 	</match>
       </match>
     </match>
-    
+
   </device>
-  
+
 </deviceinfo>

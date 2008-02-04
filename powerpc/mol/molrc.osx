@@ -41,7 +41,7 @@ disable_altivec:	no
 #	partition (/dev/discs/disc0/disc7) or a disk image.
 #
 #	The following flags are supported
-#	
+#
 #		-rw/-ro		read-write / read-only [default]
 #		-force		force usage of device (be careful!)
 #		-boot		boot from this disk
