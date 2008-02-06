@@ -13,7 +13,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-arch_boot_cd_pre()
+boot_cd_pre()
 {
 	mkdir -p $isofsdir/{boot,etc}/
 
@@ -22,9 +22,9 @@ arch_boot_cd_pre()
 	# rs6k b50, but does not work, yet:
 	cp $isofsdir/{boot/yaboot.rs6k,install.bin}
 
-	cp -v $base/architecture/powerpc/boot/{boot.msg,ofboot.b} \
+	cp -v $base/package/$bootloader/boot/{boot.msg,ofboot.b} \
 	      $isofsdir/boot/
-        cp -v $base/architecture/powerpc/boot/mapping $isofsdir/
+        cp -v $base/package/$bootloader/boot/mapping $isofsdir/
 
 	# IBM RS/6000
 	echo "device=cdrom:" > $isofsdir/etc/yaboot.conf
@@ -34,7 +34,7 @@ arch_boot_cd_pre()
 	echo -e "\nmessage=/boot/boot.msg\n" > $isofsdir/x
 }
 
-arch_boot_cd_add()
+boot_cd_add()
 {
 	# unused $3, verbose name
 	cat >> $isofsdir/x <<-EOT
@@ -46,7 +46,7 @@ image=$4
 EOT
 }
 
-arch_boot_cd_post()
+boot_cd_post()
 {
 	# footer
 	cat $isofsdir/x >> $isofsdir/boot/yaboot.conf
