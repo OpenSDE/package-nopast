@@ -13,19 +13,18 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-
-arch_boot_cd_pre()
+boot_cd_pre()
 {
 	mkdir -p $isofsdir/boot/grub
 	cp -f $build_root/boot/grub/stage{1,2,2_eltorito} $isofsdir/boot/grub/
 	cp -f $build_root/boot/opensde-grub-splash.xpm.gz $isofsdir/boot/
 
 	# header
-	sed -n '/CUT/q;p' $base/architecture/x86/boot/menu.lst \
+	sed -n '/CUT/q;p' $base/package/$bootloader/boot/menu.lst \
 		> $1/boot/grub/menu.lst
 }
 
-arch_boot_cd_add()
+boot_cd_add()
 {
 	cat >> $1/boot/grub/menu.lst <<-EOT
 
@@ -36,10 +35,10 @@ initrd (cd)$5
 EOT
 }
 
-arch_boot_cd_post()
+boot_cd_post()
 {
 	# footer
-	sed '1,/CUT/d' $base/architecture/x86/boot/menu.lst \
+	sed '1,/CUT/d' $base/package/$bootloader/boot/menu.lst \
 		>> $1/boot/grub/menu.lst
 	echo_status "Creating isofs_arch.txt file .."
 
