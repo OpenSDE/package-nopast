@@ -13,16 +13,15 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-
-arch_boot_cd_pre()
+boot_cd_pre()
 {
 	mkdir -p $isofsdir/boot
 	cp -f $build_root/boot/{second.b,isofs.b} $isofsdir/boot/
-	cp -f $base/architecture/sparc/boot/{silo.conf,boot.msg} \
+	cp -f $base/package/$bootloader/boot/{silo.conf,boot.msg} \
 	      $isofsdir/boot/
 }
 
-arch_boot_cd_add()
+boot_cd_add()
 {
 	# unused $2, verbose name
 	cat >> $isofsdir/boot/silo.conf <<-EOT
@@ -35,7 +34,7 @@ image=$4
 EOT
 }
 
-arch_boot_cd_post()
+boot_cd_post()
 {
 	echo_status "Creating isofs_arch.txt file .."
 
