@@ -27,6 +27,7 @@
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] base/tool
+[F] BOOT
 [R] + x86 x86-64
 
 [F] NO-SSP
