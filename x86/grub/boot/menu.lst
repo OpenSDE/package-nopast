@@ -1,0 +1,18 @@
+
+# T2 Grub configuration "header" - the actual images are inserted
+# automatically
+
+timeout 8
+default 0
+fallback 1
+
+foreground  = 000000
+background  = e4e6e3
+splashimage (cd)/boot/opensde-grub-splash.xpm.gz
+
+# CUT #
+
+title  Installed OS from HD
+root (hd0)
+chainloader +1
+
