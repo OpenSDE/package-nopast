@@ -22,9 +22,10 @@
 [T] known as Software RAID arrays
 
 [A] Neil Brown
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/filesystem
+[F] DIETLIBC
 
 [L] GPL
 [S] Stable
