@@ -33,17 +33,14 @@ dnl
     fi
 dnl
     [ -x /bin/dmesg ] && /bin/dmesg -n 3
-    block_split(`Configuring the /dev filesystem ...')
-	check(`sh /etc/conf/devfs')
 dnl
     block_split(`Starting udevd ...')
-	echo "" > /proc/sys/kernel/hotplug
+	echo "" > /sys/kernel/uevent_helper
 	check(`udevd --daemon')
-    block_split(`Running hotplug++ ...')
-	udevtrigger
-	check(`/sbin/hotplug++ -synth')
+    block_split(`Triggering coldplug ...')
+	check(`udevtrigger')
+	check(`udevsettle')
 
-	echo "/sbin/hotplug++" > /proc/sys/kernel/hotplug
 dnl
     if [ -s /etc/lvmtab -o -s /etc/lvm/.cache ]; then
 	block_split(`Activating Volume Groups...')
