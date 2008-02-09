@@ -17,10 +17,38 @@
 # [MAIN] 70 extlinux extlinux (syslinux) Boot Loader Setup
 # [SETUP] 90 extlinux
 
-create_kernel_list() {
-	local label= first=1 initrd=
-        first=1
-        for x in `(cd /boot/ ; ls vmlinuz_* ) | sort -r` ; do
+rootdev_cache=
+bootdev_cache=
+bootdrive_cache=
+
+rootdev()
+{
+	[ -n "$rootdev_cache" ] || rootdev_cache=$(
+					grep '^/dev/.* / ' /proc/mounts |
+					head -n 1 | cut -d' ' -f1 )
+	echo "$rootdev_cache"
+}
+
+bootdev()
+{
+	[ -n "$bootdev_cache" ] || bootdev_cache=$(
+					grep '^/dev/.* /boot ' /proc/mounts |
+					head -n 1 | cut -d' ' -f1 )
+	[ -n "$bootdev_cache" ] || bootdev_cache=$( rootdev )
+	echo "$bootdev_cache"
+}
+
+bootdrive()
+{
+	[ -n "$bootdrive_cache" ] || bootdrive_cache=$(
+					bootdev | sed -r 's/p?[0-9]*$//' )
+	echo "$bootdrive_cache"
+}
+
+extlinux_kernel_list()
+{
+	local label= first=1 initrd= x=
+        for x in `(cd /boot/ ; ls -1 vmlinuz_* ) | sort -r` ; do
                 if [ $first = 1 ] ; then
                         label=linux ; first=0
                 else
@@ -33,50 +61,52 @@ create_kernel_list() {
 
 		LABEL $label
 		    KERNEL  /$x
-		    APPEND  initrd=/$initrd root=$rootdev ro
+		    APPEND  initrd=/$initrd root=$( rootdev ) ro
 		EOT
         done
 }
 
-create_extlinux_conf() {
-	i=0 ; rootdev="`grep ' / ' /proc/mounts | tail -n 1 | \
-					awk '/\/dev\// { print $1; }'`"
-	rootdev="$( cd ${rootdev%/*} ; pwd -P )/${rootdev##*/}"
-	# TODO: readlink? //mnemoc
-	while [ -L $rootdev ] ; do
-		directory="$( cd `dirname $rootdev` ; pwd -P )"
-		rootdev="$( ls -l $rootdev | sed 's,.* -> ,,' )"
-		[ "${rootdev##/*}" ] && rootdev="$directory/$rootdev"
-		i=$(( $i + 1 )) ; [ $i -gt 20 ] && rootdev="Not found!"
-	done
-	bootdev="`echo $rootdev | sed -e 's,[0-9]*$,,'`"
+extlinux_create_conf()
+{
+	mkdir -p $extlinuxdir
 
-	mkdir -p /boot/extlinux
-
-	cat <<-EOT > /boot/extlinux/extlinux.conf
+	cat > $extlinuxconf <<-EOT
 	DEFAULT linux
 	PROMPT 1
 	TIMEOUT 300
 	EOT
 
-	create_kernel_list >> /boot/extlinux/extlinux.conf
+	extlinux_kernel_list >> $extlinuxconf
 
-	gui_message "This is the new /boot/extlinux/extlinux.conf file:
+	gui_message "This is the new $extlinuxconf file:
 
-$( cat /boot/extlinux/extlinux.conf )"
+$( cat $extlinuxconf )"
 
 }
 
-main() {
+extlinux_install()
+{
+	gui_cmd "Installing extlinux in $extlinuxdir" \
+		"mkdir -p $extlinuxdir; extlinux -i $extlinuxdir"
+}
 
-	while
+extlinux_clean_mbr()
+{
+	cat /usr/lib/syslinux/mbr.bin > "$1"
+}
 
-        gui_menu extlinux 'Extlinux (syslinux) Boot Loader Setup' \
-                '(Re-)Create extlinux.conf with installed kernels' 'create_extlinux_conf' \
-                '(Re-)Install extlinux in /boot/extlinux' \
-			'gui_cmd "Installing extlinux in /boot/extlinux" "mkdir -p /boot/extlinux; extlinux -i /boot/extlinux"' \
-                "Edit /boot/extlinux/extlinux.conf (recommended before installing extlinux)" \
-                        "gui_edit 'Extlinux Config File' /boot/extlinux/extlinux.conf"
-    do : ; done
+main()
+{
+	local extlinuxdir=/boot/extlinux
+	local extlinuxconf=$extlinuxdir/extlinux.conf
+	local drive=$( bootdrive )
+
+	while gui_menu extlinux 'Extlinux (syslinux) Boot Loader Setup' \
+                '(Re-)Create extlinux.conf with installed kernels' 'extlinux_create_conf' \
+                "(Re-)Install extlinux in $extlinuxdir" 'extlinux_install' \
+		"Clean $drive's MBR (use with care)" "extlinux_clean_mbr '$drive'" \
+                "Edit $extlinuxconf (recommended)" \
+						"gui_edit 'Extlinux Config File' $extlinuxconf"
+	do : ; done
 }
 
