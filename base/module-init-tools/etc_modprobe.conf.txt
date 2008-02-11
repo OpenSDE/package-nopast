@@ -203,3 +203,4 @@ alias sha384 sha512
 alias char-major-89-* i2c-dev
 alias net-pf-24 pppoe
 
+blacklist evbug
