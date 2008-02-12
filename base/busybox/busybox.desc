@@ -30,10 +30,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.9.0
+[V] 1.9.1
 [P] X -?---5---9 102.001
 
-[D] 3992043393 busybox-1.9.0.tar.bz2 http://busybox.net/downloads/
-[D] 3176028680 busybox-1.9.0-allno.patch http://busybox.net/downloads/fixes-1.9.0/
-[D] 3515663712 busybox-1.9.0-iproute.patch http://busybox.net/downloads/fixes-1.9.0/
-[D] 2300239371 busybox-1.9.0-nameif.patch http://busybox.net/downloads/fixes-1.9.0/
+[D] 2768994649 busybox-1.9.1.tar.bz2 http://busybox.net/downloads/
