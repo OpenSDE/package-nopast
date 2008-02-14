@@ -30,5 +30,4 @@
 [V] 1.0-r18
 [P] X -----5---9 400.000
 
-[D] 266417489 vstatd-1.0-r18.tar.bz2 svn+http://svn.linux-vserver.org/svn/vstatd/trunk -r18
-
+[D] X vstatd-1.0-r18.tar.bz2 svn+http://svn.linux-vserver.org/svn/vstatd/trunk -r18
