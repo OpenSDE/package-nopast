@@ -35,11 +35,13 @@ MOVE_UP="$ESC[1A"		# 1 line up (eat last \n)
 MOVE_LEFT_STATUS="$ESC[$( expr ${#ART_SUCCESS} - 1 )D"	# move left the length of $ART_SUCCESS
 MOVE_LEFT_NEXT="$ESC[$( expr ${#ART_NEXT} - 1 )D"	# move left the length of $ART_NEXT
 
-banner() {
+banner()
+{
 	$ECHO "$COLOR_BANNER$*$COLOR_NORMAL"
 }
 
-title() {
+title()
+{
 	local x=1 columns=
 	columns=$( if ! stty size -F /dev/tty; then
 		stty size -F /dev/console
@@ -57,7 +59,8 @@ title() {
 	error=0
 }
 
-status() {
+status()
+{
 	$ECHO -n "$MOVE_UP$MOVE_EOL$MOVE_LEFT_STATUS"
 	if [ ${1:-$error} -eq 0 ]; then
 		$ECHO "$COLOR_SUCCESS$ART_SUCCESS$COLOR_NORMAL"
@@ -66,11 +69,13 @@ status() {
 	fi
 }
 
-check() {
+check()
+{
 	$* || error=$?
 }
 
-action() {
+action()
+{
 	title "$1"
 	shift
 	$* || error=$?
