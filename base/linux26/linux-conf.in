@@ -67,16 +67,11 @@ auto_config_merge() {
 
 auto_config() {
 	local x= loop=
-	# get defconfig (.config.1)
+	# get defconfig (.config.0)
 	#
 	echo "Creating linux default config"
 	cp arch/$lx_cpu/defconfig .config
-	cp .config{,.1}
-
-	# all modules needs to be first so modules can be disabled by i.e.
-	# the targets later
-	echo "Enabling all modules ..."
-	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
+	cp .config{,.0}
 
 	# architecture specific configuration (will be merged)
 	x=$( ls -1 $base/package/*/linux26/arch/config.$arch.sh 2> /dev/null | head -n 1)
@@ -86,6 +81,25 @@ auto_config() {
 		echo_warning "No config scripts found for this architecture ($arch)."
 		echo > .config.$arch
 	fi
+
+	if [ -s .config.$arch ]; then
+		# apply $arch specific rules
+		#
+		for loop in 1 2; do
+			auto_config_merge .config.$arch > .config.1.$loop.0
+			cp .config{.1.$loop.0,}
+
+			# create a valid .config
+			#
+			yes '' | eval $MAKE $makeopt oldconfig > /dev/null ; cp .config{,.1.$loop}
+		done
+
+	fi
+
+	# all modules needs to be first so modules can be disabled by i.e.
+	# the targets later
+	echo "Enabling all modules ..."
+	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
 
 	# for "safety" we will apply the config twice, so hidden options have time
 	# to appear
@@ -101,7 +115,7 @@ auto_config() {
 
 		# merge various text/plain config files
 		#
-		for x in .config.$arch $lx_confmerge; do
+		for x in $lx_confmerge; do
 			if [ -f $x ] ; then
 				auto_config_merge "$x" > .config.4.$loop
 				cp .config{.4.$loop,}
