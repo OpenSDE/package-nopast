@@ -56,6 +56,15 @@ makeopt=
 var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC"
 makeinstopt="$makeopt"
 
+auto_config_merge() {
+	local rules="$1" tag=
+	echo "  merging: '$rules'" >&2
+	tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
+		"$rules" | tr '\n' '|')"
+	egrep -v "\bCONFIG_($tag)\b" < .config
+	sed 's,\(CONFIG_.*\)=n,# \1 is not set,' "$rules"
+}
+
 auto_config() {
 	local x= loop=
 	# get defconfig (.config.1)
@@ -94,12 +103,7 @@ auto_config() {
 		#
 		for x in .config.$arch $lx_confmerge; do
 			if [ -f $x ] ; then
-				echo "  merging: '$x'"
-				tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
-					$x | tr '\n' '|')"
-				egrep -v "\bCONFIG_($tag)\b" < .config > .config.4.$loop
-				sed 's,\(CONFIG_.*\)=n,# \1 is not set,' \
-					$x >> .config.4.$loop
+				auto_config_merge "$x" > .config.4.$loop
 				cp .config{.4.$loop,}
 			else
 				echo_warning "Can't find '${x#$base/}' for merging."
