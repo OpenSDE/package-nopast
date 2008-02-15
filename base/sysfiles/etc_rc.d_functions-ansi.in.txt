@@ -23,6 +23,7 @@ ART_SUCCESS="  OK "
 ART_FAILURE=" FAIL"
 ART_NEXT=" v "
 
+COLOR_BANNER="$ESC[35;1m"	# magenta
 COLOR_TITLE="$ESC[36m"		# cyan
 COLOR_NORMAL="$ESC[0m"		# default (no attributes)
 COLOR_SUCCESS="$ESC[32m"	# green
@@ -33,6 +34,10 @@ MOVE_UP="$ESC[1A"		# 1 line up (eat last \n)
 
 MOVE_LEFT_STATUS="$ESC[$( expr ${#ART_SUCCESS} - 1 )D"	# move left the length of $ART_SUCCESS
 MOVE_LEFT_NEXT="$ESC[$( expr ${#ART_NEXT} - 1 )D"	# move left the length of $ART_NEXT
+
+banner() {
+	$ECHO "$COLOR_BANNER$*$COLOR_NORMAL"
+}
 
 title() {
 	local x=1 columns=
