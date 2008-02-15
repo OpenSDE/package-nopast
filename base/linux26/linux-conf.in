@@ -27,8 +27,8 @@ lx_customconf="\$base/config/$config/linux.cfg"
 #
 lx_confmerge=
 for x in $base/config/$config/linux.cfg \
-         $base/target/$target/kernel${treever}.conf \
-         $base/target/$target/kernel.conf ; do
+	$( get_expanded $base/target/%/kernel${treever}.conf `get_reverted $targetchain` ) \
+	$( get_expanded $base/target/%/kernel.conf `get_reverted $targetchain` ); do
 	if [ -f "$x" ]; then
 		var_append lx_confmerge ' ' "$x"
 	fi
