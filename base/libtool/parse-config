@@ -13,6 +13,12 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
+libtool_remove_la()
+{
+	echo "Removing .la files..."
+	grep '\.la$' $builddir/flist.txt | xargs rm -fv "$root/{}"
+}
+
 # Some packges have outdated libtool that e.g. does not handle lib64. The
 # LIBTOOL-QUIRK flag allows automated updating of those files.
 
@@ -102,4 +108,8 @@ elif ! hasflag NO-LIBTOOL-FIX; then
 fi
 
 #hook_add premake 7 libtool_final_check
+
+if ! atstage native; then
+	hook_add postflist 5 libtool_remove_la
+fi
 
