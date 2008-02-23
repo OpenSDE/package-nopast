@@ -17,7 +17,7 @@
 Submitted by: Christian Wiese <morfoh@opensde.org>
 Date: 2008-02-23
 Initial Package Version: 2.06
-Upstream Status: submitted
+Upstream Status: accepted (will be included in upcoming 2.07)
 Origin: OpenSDE
 Description: Fixes build issues while using more than one make job, assuring
              that cap_names.h is generated before compiling cap_text.c. 
