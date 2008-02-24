@@ -23,7 +23,7 @@
 [T] with Kerberos V4. Kerberos V4 support should not be used if possible
 [T] as it has security weaknesses.
 
-[U] http://www.pdc.kth.se/heimdal/
+[U] http://www.h5l.org
 
 [A] Jimmy Engelbrecht
 [M] The OpenSDE Community <list@opensde.org>
