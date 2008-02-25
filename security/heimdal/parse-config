@@ -48,6 +48,7 @@ if pkginstalled -f heimdal; then
 
 			var_append extraconfopt " " "--with-gssapi-includes${KRB5INC:+=$KRB5INC}"	#From curl
 			var_append extraconfopt " " "--with-gssapi-libs${KRB5LIB:+=$KRB5LIB}"		#From curl
+			var_append extraconfopt " " "--with-gssapi=$root/$( pkgprefix heimdal )"		#From curl
 
 			# and well known mandatory dependencies
 			var_append extraconfopt " " "--with-ssl"        #from ethereal
