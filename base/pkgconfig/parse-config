@@ -23,4 +23,19 @@ if atstage cross; then
 	export PKG_CONFIG_PATH
 	export PKG_CONFIG_SYSROOT_DIR
 	export PKG_CONFIG_LIBDIR=$PKG_CONFIG_PATH # needed, otherwse system is used
+
+
+	# as we use PKG_CONFIG_SYSROOT_DIR, make sure $root doesn't leak on .pc files
+	#
+	pkgconfig_postflist_sanitize() {
+		local pc=
+		grep '\.pc$' "$builddir/flist.txt" | while read pc; do
+			if grep -q "$root" "$root/$pc"; then
+				echo_warning "pkgconfig: fixed $pc."
+				sed -i -e "s|$root||g" "$root/$pc"
+			fi
+		done
+	}
+
+	hook_add postflist 1 'pkgconfig_postflist_sanitize'
 fi
