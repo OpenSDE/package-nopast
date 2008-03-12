@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1205322724 Wed Mar 12 13:52:04 2008
+[BUILDTIME] 5 (5)
+[SIZE] 0.20 MB, 8 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] patch
+[DEP] pcre
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
