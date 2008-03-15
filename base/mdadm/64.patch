@@ -18,6 +18,10 @@ when cross compiling against dietlibc:
 sysfs.c: In function 'sysfs_read':
 sysfs.c:81: warning: format '%d' expects type 'int', but argument 3 has type 'long unsigned int'
 
+but when compiled for i386:
+sysfs.c: In function 'sysfs_read':
+sysfs.c:81: warning: format '%lu' expects type 'long unsigned int', but argument 3 has type 'int'
+
 --- ./sysfs.c.orig	2008-03-11 00:17:59.000000000 +0000
 +++ ./sysfs.c	2008-03-11 00:28:05.000000000 +0000
 @@ -78,9 +78,9 @@
@@ -25,23 +29,23 @@ sysfs.c:81: warning: format '%d' expects type 'int', but argument 3 has type 'lo
  		if (fstat(fd, &stb)) return NULL;
  		if (major(stb.st_rdev)==9)
 -			sprintf(sra->name, "md%d", minor(stb.st_rdev));
-+			sprintf(sra->name, "md%lu", minor(stb.st_rdev));
++			sprintf(sra->name, "md%d", (int) minor(stb.st_rdev));
  		else
--			sprintf(sra->name, "md_d%d",
-+			sprintf(sra->name, "md_d%lu",
- 				minor(stb.st_rdev)>>MdpMinorShift);
+ 			sprintf(sra->name, "md_d%d",
+-				minor(stb.st_rdev)>>MdpMinorShift);
++				(int) minor(stb.st_rdev)>>MdpMinorShift);
  	} else {
  		if (devnum >= 0)
 @@ -232,10 +232,10 @@
  	int n;
  	if (fstat(fd, &stb)) return 0;
  	if (major(stb.st_rdev) == 9)
--		sprintf(fname, "/sys/block/md%d/md/component_size",
-+		sprintf(fname, "/sys/block/md%lu/md/component_size",
- 			minor(stb.st_rdev));
+ 		sprintf(fname, "/sys/block/md%d/md/component_size",
+-			minor(stb.st_rdev));
++			(int) minor(stb.st_rdev));
  	else
--		sprintf(fname, "/sys/block/md_d%d/md/component_size",
-+		sprintf(fname, "/sys/block/md_d%lu/md/component_size",
- 			minor(stb.st_rdev)>>MdpMinorShift);
+ 		sprintf(fname, "/sys/block/md_d%d/md/component_size",
+-			minor(stb.st_rdev)>>MdpMinorShift);
++			(int) minor(stb.st_rdev)>>MdpMinorShift);
  	fd = open(fname, O_RDONLY);
  	if (fd < 0)
