@@ -38,12 +38,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2.2.0.6
+[V] 2.2.0.7
 [P] O -?---5---9 190.200
 
-[D] 658328487 patch-2.6.22.18-vs2.2.0.6.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/
+[D] 3524913094 patch-2.6.22.19-vs2.2.0.7.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/
 #[D] 299972723 patch-2.6.21.5-vs2.2.0-rc3.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/testing/
-
-#[D] 2164392062 delta-keydep-fix01.diff http://vserver.13thfloor.at/Experimental/
-[D] 2892706952 delta-ocfs2-fix01.diff http://people.linux-vserver.org/~dhozac/p/k/
-[D] 3920833347 delta-initpid-fix05.diff http://people.linux-vserver.org/~dhozac/p/k/
