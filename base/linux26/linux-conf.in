@@ -60,36 +60,23 @@ auto_config() {
 	local x= loop=
 	# get defconfig (.config.1)
 	#
-	if [ -f $base/architecture/$arch/kernel$treever.conf.sh ] ; then
-		echo "  using: architecture/$arch/kernel$treever.conf.sh"
-		. $base/architecture/$arch/kernel$treever.conf.sh > .config
-	elif [ -f $base/architecture/$arch/kernel$treever.conf.m4 ] ; then
-		echo "  using: architecture/$arch/kernel$treever.conf.m4"
-		m4 -I $base/architecture/$arch -I $base/architecture/share \
-		   $base/architecture/$arch/kernel$treever.conf.m4 > .config
-	elif [ -f $base/architecture/$arch/kernel$treever.conf ] ; then
-		echo "  using: architecture/$arch/kernel$treever.conf"
-		cp $base/architecture/$arch/kernel$treever.conf .config
-	elif [ -f $base/architecture/$arch/kernel.conf.sh ] ; then
-		echo "  using: architecture/$arch/kernel.conf.sh"
-		. $base/architecture/$arch/kernel.conf.sh > .config
-	elif [ -f $base/architecture/$arch/kernel.conf.m4 ] ; then
-		echo "  using: architecture/$arch/kernel.conf.m4"
-		m4 -I $base/architecture/$arch -I $base/architecture/share \
-		   $base/architecture/$arch/kernel.conf.m4 > .config
-	elif [ -f $base/architecture/$arch/kernel.conf ] ; then
-		echo "  using: architecture/$arch/kernel.conf"
-		cp $base/architecture/$arch/kernel.conf .config
-	else
-		echo "  using: no SDE kernel config found"
-		cp arch/$lx_cpu/defconfig .config
-	fi
+	echo "Creating linux default config"
+	cp arch/$lx_cpu/defconfig .config
 	cp .config{,.1}
 
 	# all modules needs to be first so modules can be disabled by i.e.
 	# the targets later
 	echo "Enabling all modules ..."
 	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
+
+	# architecture specific configuration (will be merged)
+	x=$( ls -1 $base/package/*/linux26/arch/config.$arch.sh 2> /dev/null | head -n 1)
+	if [ -f "$x" ]; then
+		sh "$x" "$ver" > .config.$arch
+	else
+		echo_warning "No config scripts found for this architecture ($arch)."
+		echo > .config.$arch
+	fi
 
 	# for "safety" we will apply the config twice, so hidden options have time
 	# to appear
@@ -105,7 +92,7 @@ auto_config() {
 
 		# merge various text/plain config files
 		#
-		for x in $lx_confmerge; do
+		for x in .config.$arch $lx_confmerge; do
 			if [ -f $x ] ; then
 				echo "  merging: '$x'"
 				tag="$(sed '/CONFIG_/ ! d; s,.*CONFIG_\([^ =]*\).*,\1,' \
