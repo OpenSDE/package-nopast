@@ -29,10 +29,10 @@
 
 [L] MPL
 [S] Stable
-[V] 2.0.0.12
+[V] 2.0.0.13
 [P] X -----5---9 144.500
 
 [O] . $base/package/*/*/mozilla-conf.in
 
-[D] 2899297738 firefox-2.0.0.12-source.tar.bz2 http://mozilla.osuosl.org/pub/mozilla.org/firefox/releases/2.0.0.12/source/
+[D] 2054866538 firefox-2.0.0.13-source.tar.bz2 http://mozilla.osuosl.org/pub/mozilla.org/firefox/releases/2.0.0.13/source/
 
