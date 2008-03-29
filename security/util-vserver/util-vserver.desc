@@ -29,13 +29,13 @@
 
 [L] GPL
 [S] Stable
-[V] 0.30.214
+[V] 0.30.215
 [P] O -?---5---9 190.200
 
 [F] NOPARALLEL DIETLIBC NO-SSP
 
 # vserver utilities
-[D] 2381518897 util-vserver-0.30.214.tar.bz2 http://ftp.linux-vserver.org/pub/utils/util-vserver/
+[D] 1903976627 util-vserver-0.30.215.tar.bz2 http://ftp.linux-vserver.org/pub/utils/util-vserver/
 #[D] 871601915 util-vserver-0.30.213-rc6.tar.bz2 http://people.linux-vserver.org/~dhozac/t/uv-testing/
 
 # and addons
