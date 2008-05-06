@@ -274,9 +274,8 @@ main() {
 	# read global section and interface list ...
 	read_section ""
 
-	p_interfaces=$(ip link | egrep '[^:]*: .*' | \
-	               sed 's/[^:]*: \([a-z0-9]*\): .*/\1/' | \
-	               grep -v -e lo -e sit)
+	p_interfaces=$(ip -o link | \
+	               sed -n -e 's|^[0-9]*: \([^:]*\):.*link/ether.*|\1|p' ) 
 
 	if [ $first_run = 1 ] ; then
 		first_run=0
