@@ -30,17 +30,9 @@
 
 [L] GPL
 [S] Stable
-[V] 1.10.1
+[V] 1.10.2
 [P] X -?---5---9 102.001
 
-[D] 293314813 busybox-1.10.1.tar.bz2 http://busybox.net/downloads/
-[D] 3351844698 busybox-1.10.1-completion.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 1967102668 busybox-1.10.1-echo.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 3728391533 busybox-1.10.1-hppa.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 3275087074 busybox-1.10.1-ioctl.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 3832356793 busybox-1.10.1-mdev.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 193364867 busybox-1.10.1-proc.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 2423540247 busybox-1.10.1-ssd.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 2311406726 busybox-1.10.1-tar.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 1706652033 busybox-1.10.1-taskset.patch http://busybox.net/downloads/fixes-1.10.1/
-[D] 1971109092 busybox-1.10.1-trylink.patch http://busybox.net/downloads/fixes-1.10.1/
+[D] 2323937649 busybox-1.10.2.tar.bz2 http://busybox.net/downloads/
+[D] 2374210126 busybox-1.10.2-mdev.patch http://busybox.net/downloads/fixes-1.10.2/
+[D] 1252331721 busybox-1.10.2-semicolon.patch http://busybox.net/downloads/fixes-1.10.2/
