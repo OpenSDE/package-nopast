@@ -22,10 +22,16 @@
 export PATH="/sbin:$PATH"
 
 main_begin
-    block_begin(start, `Mounting /dev/shm and /dev/pts.')
-	mkdir -p /dev/shm
+    # we are assuming /proc and /dev are already mounted
+    block_begin(start, `Populating /dev.')
+       for x in $( cd /lib/udev/devices/; ls -1 ); do
+	       if [ ! -L "/dev/./$x" -a ! -e "/dev/./$x" ];
+	       then check(`cp -a /lib/udev/devices/$x /dev/$x')
+	       fi
+	done
+dnl
+    block_split(`Mounting /dev/shm and /dev/pts.')
 	check(`mount -n /dev/shm')
-	mkdir -p /dev/pts
 	mount -n /dev/pts 2> /dev/null
 dnl
     if [ -f /etc/conf/hardware ] ; then
