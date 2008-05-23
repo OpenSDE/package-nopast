@@ -1,0 +1,53 @@
+
+[TIMESTAMP] 1211549933 Fri May 23 15:38:53 2008
+[BUILDTIME] 100 (9)
+[SIZE] 2.50 MB, 211 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cvs
+[DEP] diffutils
+[DEP] etcnet
+[DEP] fhs
+[DEP] findutils
+[DEP] font-util
+[DEP] gawk
+[DEP] gcc
+[DEP] gconf
+[DEP] gettext
+[DEP] gimp
+[DEP] glibc
+[DEP] gnutls
+[DEP] grep
+[DEP] gzip
+[DEP] intltool
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libpreludedb
+[DEP] libtasn1
+[DEP] libtool
+[DEP] libxaw
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] openldap
+[DEP] openssl
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] swig
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] util-macros
+[DEP] xorg-server
+[DEP] xtrans
+[DEP] zlib
