@@ -34,5 +34,9 @@
 [P] X -?---5---9 102.001
 
 [D] 2323937649 busybox-1.10.2.tar.bz2 http://busybox.net/downloads/
-[D] 2374210126 busybox-1.10.2-mdev.patch http://busybox.net/downloads/fixes-1.10.2/
+[D] 140207020 busybox-1.10.2-mdev-2.patch !http://busybox.net/downloads/fixes-1.10.2/busybox-1.10.2-mdev.patch
 [D] 1252331721 busybox-1.10.2-semicolon.patch http://busybox.net/downloads/fixes-1.10.2/
+[D] 2890931416 busybox-1.10.2-dnsd.patch http://busybox.net/downloads/fixes-1.10.2/
+[D] 3495324616 busybox-1.10.2-fuser.patch http://busybox.net/downloads/fixes-1.10.2/
+[D] 2777253329 busybox-1.10.2-hush.patch http://busybox.net/downloads/fixes-1.10.2/
+[D] 3535080839 busybox-1.10.2-syslogd.patch http://busybox.net/downloads/fixes-1.10.2/
