@@ -23,12 +23,10 @@ if [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
 		eval "pkg_djb_${x}dir='$x'"
 		var_append flistroot ' ' $x
 	done
-	#pkg_djb_compatdir="usr/local/bin"
 elif [ "$SDECFG_PKG_DJB_LAYOUT" == "0" ]; then
 	pkg_djb_packagedir=
 	pkg_djb_commanddir=
 	pkg_djb_servicedir="var/service"
-	#pkg_djb_compatdir=
 fi
 
 # package

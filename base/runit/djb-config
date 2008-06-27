@@ -117,16 +117,6 @@ pkg_djb_installpackage() {
 	for x in `cat package/commands`; do
 		$y $cmddir $pkg_djb_commanddir $x
 	done
-
-	# usr/local is evil :)
-	#if [ "$pkg_djb_compatdir" ]; then
-	#	echo "Making compatibility links in $pkg_djb_compatdir..."
-	#	mkdir -p $pkg_djb_compatdir
-	#	for i in `cat package/commands`; do
-	#		pkg_djb_safelink $pkg_djb_packagedir/$package/$pkg-$ver/command \
-	#			$pkg_djb_compatdir $i
-	#	done
-	#fi
 }
 
 # installs documentation to package directory or $docdir as requested
