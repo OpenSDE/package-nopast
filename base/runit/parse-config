@@ -15,39 +15,6 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-#
-# prepare root links for DJB filesystem hierarchy inside chrooted env.
-#
-if [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
-	for x in package command service; do
-		eval "pkg_djb_${x}dir='$x'"
-		var_append flistroot ' ' $x
-	done
-elif [ "$SDECFG_PKG_DJB_LAYOUT" == "0" ]; then
-	pkg_djb_packagedir=
-	pkg_djb_commanddir=
-	pkg_djb_servicedir="var/service"
-fi
-
-# package
-if [ "$pkg_djb_packagedir" ]; then
-	mkdir -p $xroot/$pkg_djb_packagedir
-	chmod 1755 $xroot/$pkg_djb_packagedir
-	pkg_djb_packagedir=$root/$pkg_djb_packagedir
-fi
-
-# service
-if [ "$pkg_djb_servicedir" ]; then
-	mkdir -p $xroot/$pkg_djb_servicedir
-	chmod 1755 $xroot/$pkg_djb_servicedir
-	pkg_djb_servicedir=$root/$pkg_djb_servicedir
-fi
-
-# command
-if [ "$pkg_djb_commanddir" ]; then
-	mkdir -p $xroot/$pkg_djb_commanddir
-	pkg_djb_commanddir=$root/$pkg_djb_commanddir
-fi
 
 #
 # add init scripts
