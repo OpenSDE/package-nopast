@@ -29,7 +29,7 @@
 [U] http://www.lua.org/
 
 [A] Tecgraf, Computer Graphics Technology Group, PUC-Rio, Brazil <info@lua.org>
-[M] The OpenSDE Community <list@opensde.org>
+[M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/development
 [F] FPIC-QUIRK LUA
@@ -37,7 +37,7 @@
 [L] MIT
 [S] Stable
 [V] 5.1.3
-[P] X -----5---9 109.800
+[P] X -?---5---9 109.800
 
 [D] 821539803 lua-5.1.3.tar.gz http://www.lua.org/ftp/
 
