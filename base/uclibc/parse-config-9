@@ -184,7 +184,7 @@ if [ "$SDECFG_LIBC" == "uclibc" ]; then
 		linux26*|linux-header)
 			pkg_uclibc_pkg=linux26 ;;
 		*)
-			pkg_uclibc_pkg=$pkg ;;
+			pkg_uclibc_pkg=${pkg//-/_} ;;
 	esac
 
 	pkg_uclubc_patches=$( ls -1 $pkg_uclibc_dir/pkg_patch/$pkg_uclibc_pkg-*.patch 2> /dev/null | tr '\n' ' ' )
