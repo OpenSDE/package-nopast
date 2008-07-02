@@ -92,7 +92,7 @@ extlinux_install()
 
 extlinux_clean_mbr()
 {
-	cat /usr/lib/syslinux/mbr.bin > "$1"
+	cat /usr/share/syslinux/mbr.bin > "$1"
 }
 
 main()
