@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1215880818 Sat Jul 12 12:40:18 2008
+[BUILDTIME] 100 (9)
+[SIZE] 0.04 MB, 8 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
