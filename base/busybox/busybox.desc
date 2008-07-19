@@ -34,3 +34,4 @@
 [P] X -?---5---9 102.001
 
 [D] 584933224 busybox-1.11.1.tar.bz2 http://busybox.net/downloads/
+[D] 2931459369 busybox-1.11.1-basename.patch http://busybox.net/downloads/fixes-1.11.1/
