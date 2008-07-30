@@ -16,8 +16,11 @@
 cd "${1:-.}"
 
 while read type node mode uid gid data; do
+	[ -n "$type" ] || continue
+	expr "$type" : '#' > /dev/null && continue
+
 	case "$type" in
-	c)
+	c|s)
 		rm -f "$node"
 		;;
 	esac
@@ -30,11 +33,11 @@ while read type node mode uid gid data; do
 		ln -snvf "$data" "$node"
 		 ;;
 	c)
-		echo "mknod: Creating $node c $data"
+		echo "mknod: Creating $node c $data" >&2
 		mknod "$node" c $data
 		;;
 	s)
-		echo "mkfifo: Creating $node"
+		echo "mkfifo: Creating $node" >&2
 		mkfifo "$node"
 		;;
 	esac
@@ -48,5 +51,6 @@ while read type node mode uid gid data; do
 	esac
 
 	chown "$uid:$gid" "$node"
+	echo "$node"
 done
 
