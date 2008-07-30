@@ -47,10 +47,10 @@ while read type node mode uid gid data; do
 		;;
 	*)
 		chmod "$mode" "$node"
+		chown "$uid:$gid" "$node"
 		;;
 	esac
 
-	chown "$uid:$gid" "$node"
-	echo "$node"
+	echo "$PWD/$node"
 done
 
