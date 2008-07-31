@@ -1,0 +1,16 @@
+
+[TIMESTAMP] 1217526813 Thu Jul 31 13:53:33 2008
+[BUILDTIME] 0 (5)
+[SIZE] 0.04 MB, 8 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] sed
