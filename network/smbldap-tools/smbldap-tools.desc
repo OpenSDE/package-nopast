@@ -15,17 +15,19 @@
 
 [I] Scripts to manage Samba users on LDAP
 
-[T] SMBLDAP-TOOLS is a package containing some useful scripts to manage
-[T] users/groups when you're using LDAP as source of users/groups datas
-[T] (for Unix and for Samba). We developed then used those scripts in our
-[T] SAMBA-LDAP PDC HOWTO to add/del/mod users and groups. Version 0.7 is
-[T] adapted to Samba 2.2.7 and up, and the 0.8 branch works with Samba 3.0
-[T] (some work probably needed for Samba TNG). This IDEALX set of
-[T] contributions is officially integrated into Samba. Check out the CVS
-[T] if possible, usually newer is better with these tools.
+[T] Smbldap-tools is a set of perl scripts designed to manage user and group
+[T] accounts stored in an LDAP directory. They can be used both by users and
+[T] administrators of Linux systems:
+[T]
+[T] * administrators can perform users and groups management operations, in a
+[T]   way similar to the standard useradd or groupmod commands
+[T] * users can change their LDAP password from the command line and get/change
+[T]   personnal informations
 
-[U] http://samba.idealx.org/index.en.html
+[U] https://gna.org/projects/smbldap-tools/
+[U] http://www.iallanis.info
 
+[A] Jerome Tournier <jtournier@gmail.com>
 [A] IDEALX S.A.S <samba@idealx.org>
 [M] Alejandro Mery <amery@opensde.org>
 
