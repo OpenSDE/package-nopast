@@ -36,7 +36,7 @@
 
 [L] GPL
 [S] Beta
-[V] 20071029
+[V] 20080725
 [P] X -----5---9 800.000
 
-[D] 111060308 dovecot-antispam-20071029.tar.bz2 http://dl.opensde.net/sources/dovecot-antispam/
+[D] 2078763401 dovecot-antispam-20080725.tar.gz !http://git.sipsolutions.net/?p=dovecot-antispam.git;a=snapshot;h=bb62a9435e9eaaa673d7b6f8043b79ff7951fca0;sf=tgz
