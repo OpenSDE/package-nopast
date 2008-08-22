@@ -30,12 +30,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.11.1
+[V] 1.11.2
 [P] X -?---5---9 102.001
 
-[D] 584933224 busybox-1.11.1.tar.bz2 http://busybox.net/downloads/
-[D] 59753194 busybox-1.11.1-ash.patch http://busybox.net/downloads/fixes-1.11.1/
-[D] 2931459369 busybox-1.11.1-basename.patch http://busybox.net/downloads/fixes-1.11.1/
-[D] 2447795117 busybox-1.11.1-build.patch http://busybox.net/downloads/fixes-1.11.1/
-[D] 2897459486 busybox-1.11.1-tar-2.patch !http://busybox.net/downloads/fixes-1.11.1/busybox-1.11.1-tar.patch
-[D] 3344894130 busybox-1.11.1-modutils.patch http://busybox.net/downloads/fixes-1.11.1/
+[D] 695697840 busybox-1.11.2.tar.bz2 http://busybox.net/downloads/
