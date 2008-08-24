@@ -30,8 +30,8 @@
 
 [L] GPL
 [S] Stable
-[V] 0.7.3-c502865
+[V] 0.8.0-pre-7fa088e9
 [P] X -----5---9 800.000
 
 #[D] 0 cgit-0.7.2.tar.bz2 !http://hjemli.net/git/cgit/snapshot/cgit-b74cc91574a9284d2f6446fd2ef3df6298ed6992.tar.bz2?id=b74cc91574a9284d2f6446fd2ef3df6298ed6992
-[D] 1570010048 cgit-0.7.3-c502865.tar.bz2 !http://hjemli.net/git/cgit/snapshot/cgit-502865a5ec40fed5f1f865cb34002aecaab8405e.tar.bz2?id=502865a5ec40fed5f1f865cb34002aecaab8405e
+[D] 348151778 cgit-0.8.0-pre-7fa088e9.tar.bz2 !http://hjemli.net/git/cgit/snapshot/cgit-7fa088e99ad2c938ff296e649da33b0bcdd46f63.tar.bz2?id=7fa088e99ad2c938ff296e649da33b0bcdd46f63
