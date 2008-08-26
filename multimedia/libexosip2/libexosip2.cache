@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1219748576 Tue Aug 26 13:02:56 2008
+[BUILDTIME] 20 (5)
+[SIZE] 0.70 MB, 22 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libosip2
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] openssl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
