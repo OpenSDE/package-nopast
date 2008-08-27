@@ -30,7 +30,7 @@
 
 [L] OpenSource
 [S] Stable
-[V] 3.2.2
+[V] 3.2.2-1
 [P] X -----5---9 112.500
 
-[D] 1818128159 ncftp-3.2.2-src.tar.gz ftp://ftp.ncftp.com/ncftp/
+[D] 1073441262 ncftp-3.2.2-1-src.tar.gz !ftp://ftp.ncftp.com/ncftp/ncftp-3.2.2-src.tar.gz
