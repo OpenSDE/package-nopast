@@ -1,0 +1,20 @@
+
+[TIMESTAMP] 1220037219 Fri Aug 29 22:13:39 2008
+[BUILDTIME] 0 (5)
+[SIZE] 0.20 MB, 44 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] pil
+[DEP] python
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
