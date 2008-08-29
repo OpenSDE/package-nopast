@@ -38,7 +38,7 @@
 [M] The OpenSDE Community <list@opensde.org>
 
 # at least cd emulation code contains x86 only assembly :-(
-[R] + x86 x86-64
+[R] + x86
 
 [C] extra/game
 
