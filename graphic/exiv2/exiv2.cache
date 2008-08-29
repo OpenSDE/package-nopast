@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1220038551 Fri Aug 29 22:35:51 2008
+[BUILDTIME] 80 (5)
+[SIZE] 2.60 MB, 19 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
