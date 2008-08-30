@@ -30,9 +30,9 @@
 
 [L] GPL
 [S] Stable
-[V] 2.22.0
+[V] 2.22.4
 [P] X -----5---9 154.900
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 2525519765 nautilus-2.22.0.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/nautilus/2.22/
+[D] 1418303614 nautilus-2.22.4.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/nautilus/2.22/
