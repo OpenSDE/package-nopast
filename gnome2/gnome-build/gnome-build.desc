@@ -32,11 +32,11 @@
 
 [L] GPL
 [S] Alpha
-[V] 0.2.2
+[V] 0.3.0
 [P] X -----5---9 153.200
 [F] NOPARALLEL
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 3112994828 gnome-build-0.2.2.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.2/
+[D] 2979961084 gnome-build-0.3.0.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.3/
 
