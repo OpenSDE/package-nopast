@@ -34,10 +34,10 @@
 
 [L] GPL
 [S] Stable
-[V] 2.20.3
+[V] 2.20.7
 [P] X -----5---9 151.300
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 4165757968 gdm-2.20.3.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/gdm/2.20/
+[D] 3650394501 gdm-2.20.7.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/gdm/2.20/
 
