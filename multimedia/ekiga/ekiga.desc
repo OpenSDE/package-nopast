@@ -35,9 +35,9 @@
 
 [L] GPL
 [S] Stable
-[V] 2.0.11
+[V] 2.0.12
 [P] X -----5---9 209.100
 
 [O] . $base/package/*/*/gnome2-or-gtk-conf.in
 
-[D] 946268214 ekiga-2.0.11.tar.gz http://www.ekiga.org/admin/downloads/latest/sources/sources/
+[D] 291514727 ekiga-2.0.12.tar.gz http://www.ekiga.org/admin/downloads/latest/sources/sources/
