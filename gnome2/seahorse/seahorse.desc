@@ -36,9 +36,9 @@
 
 [L] GPL
 [S] Beta
-[V] 2.21.91
+[V] 2.22.3
 [P] X -----5---9 157.500
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 2239042882 seahorse-2.21.91.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/seahorse/2.21/
+[D] 2065173538 seahorse-2.22.3.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/seahorse/2.22/
