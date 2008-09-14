@@ -15,7 +15,6 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-
 #
 # add init scripts
 #
@@ -100,12 +99,9 @@ if pkginstalled runit; then
 				echo " done."
 				}
 		fi
-	fi
 
-	unset runitconfdir runitxmode runit_has_script
-
-	# minimal services
-	case "$pkg" in
+		# minimal services
+		case "$pkg" in
 		cron)
 			hook_add postmake 9 'ln -svnf /etc/runit/cron $pkg_djb_servicedir/cron'
 			;;
@@ -113,6 +109,10 @@ if pkginstalled runit; then
 			hook_add postmake 9 'ln -svnf /etc/runit/syslogd $pkg_djb_servicedir/syslogd'
 			hook_add postmake 9 'ln -svnf /etc/runit/klogd $pkg_djb_servicedir/klogd'
 			;;
-	esac
+		esac
+	fi
+
+	unset runitconfdir runitxmode runit_has_script
+
 fi
 
