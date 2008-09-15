@@ -35,6 +35,6 @@
 [L] BSD
 [S] Stable
 [V] 3.43
-[P] O -?---5---9 144.000
+[P] X -?---5---9 144.000
 
 [D] 3897456778 libev-3.43.tar.gz http://dist.schmorp.de/libev/
