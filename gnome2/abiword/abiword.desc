@@ -35,4 +35,6 @@
 
 [O] . $base/package/*/*/gnome2-or-gtk-conf.in
 
+[SRC] .
 [D] 4136961461 abiword-2.6.4.tar.gz http://www.abisource.com/downloads/abiword/2.6.4/source/
+[D] 1410342693 abiword-plugins-2.6.4.tar.gz http://www.abisource.com/downloads/abiword/2.6.4/source/
