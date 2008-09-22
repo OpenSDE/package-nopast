@@ -23,7 +23,9 @@ pkg_djb_hierarchy=$1
 #
 # prepare root links for DJB filesystem hierarchy inside chrooted env.
 #
-if [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
+if [ -n "$pkg_djb_servicedir" ]; then
+	:
+elif [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
 	for x in package command service; do
 		eval "pkg_djb_${x}dir='$root/$x'"
 		var_append flistroot ' ' $x
