@@ -26,8 +26,8 @@
 [C] extra/desktop/enlightenment
 
 [L] PublicDomain
-[S] Alpha
-[V] 0.1.0-001
+[S] Beta
+[V] 0.5.0.050
 [P] X -----5---9 490.000
 
-[D] 739586469 e_dbus-0.1.0.003-001.tar.bz2 http://dl.opensde.net/sources/e17/libs/
+[D] 971522693 e_dbus-0.5.0.050.tar.bz2 http://download.enlightenment.org/snapshots/2008-09-25/
