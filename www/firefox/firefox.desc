@@ -28,9 +28,9 @@
 
 [L] MPL
 [S] Stable
-[V] 2.0.0.16
+[V] 2.0.0.17
 [P] X -----5---9 144.500
 
 [O] . $base/package/*/*/mozilla-conf.in
 
-[D] 886730942 firefox-2.0.0.16-source.tar.bz2 http://mozilla.osuosl.org/pub/mozilla.org/firefox/releases/2.0.0.16/source/
+[D] 608157018 firefox-2.0.0.17-source.tar.bz2 http://mozilla.osuosl.org/pub/mozilla.org/firefox/releases/2.0.0.17/source/
