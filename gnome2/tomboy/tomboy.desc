@@ -27,9 +27,9 @@
 
 [L] GPL
 [S] Beta
-[V] 0.10.2
+[V] 0.12.0
 [P] X -----5---9 800.000
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 2234293625 tomboy-0.10.2.tar.bz2 http://download.gnome.org/sources/tomboy/0.10/
+[D] 1700744814 tomboy-0.12.0.tar.bz2 http://download.gnome.org/sources/tomboy/0.12/
