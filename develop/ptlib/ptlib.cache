@@ -1,0 +1,37 @@
+
+[TIMESTAMP] 1222772674 Tue Sep 30 14:04:34 2008
+[BUILDTIME] 110 (5)
+[SIZE] 12.26 MB, 194 files
+
+[DEP] alsa-lib
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libavc1394
+[DEP] libdc1394
+[DEP] libdv
+[DEP] libraw1394
+[DEP] libsdl
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] openssl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] unixodbc
+[DEP] util-linux
