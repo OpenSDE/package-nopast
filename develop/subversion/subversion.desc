@@ -27,7 +27,7 @@
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/server extra/development
-[F] NOPARALLEL DIETLIBC
+[F] DIETLIBC
 
 [L] OpenSource
 [S] Stable
