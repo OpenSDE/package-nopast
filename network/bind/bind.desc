@@ -27,7 +27,6 @@
 [A] ISC Software <bind@isc.org>
 [M] The OpenSDE Community <list@opensde.org>
 
-[F] NOPARALLEL
 [C] extra/server base/system
 
 [L] Free-to-use
