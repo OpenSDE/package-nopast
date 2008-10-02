@@ -30,11 +30,10 @@
 [M] Christian Wiese <jeru@ixplanet.org>
 
 [C] extra/office
-[F] NOPARALLEL
 
 [L] GPL
 [S] Stable
-[V] 0.54
+[V] 0.56
 [P] X -----5---9 173.500
 
-[D] 1359168928 libetpan-0.54.tar.gz http://dl.sourceforge.net/sourceforge/libetpan/
+[D] 3782033248 libetpan-0.56.tar.gz http://dl.sourceforge.net/sourceforge/libetpan/
