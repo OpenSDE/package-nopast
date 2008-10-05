@@ -30,8 +30,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.11.2
+[V] 1.11.3
 [P] X -?---5---9 102.001
 
-[D] 695697840 busybox-1.11.2.tar.bz2 http://busybox.net/downloads/
-[D] 462009236 busybox-1.11.2-kbdmode.patch http://busybox.net/downloads/fixes-1.11.2/
+[D] 1934812016 busybox-1.11.3.tar.bz2 http://busybox.net/downloads/
