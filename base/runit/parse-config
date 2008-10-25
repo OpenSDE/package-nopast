@@ -18,11 +18,11 @@
 #
 # add init scripts
 #
-if pkginstalled runit; then
+if [ "$SDECFG_INIT" == "runit" ]; then
 	# runit_substitute
 	#
 	runit_substitute() {
-		local logdir
+		local logdir=
 
 		if [ "${localstatedir%$pkg}" != "$localstatedir" ]; then
 			logdir=$localstatedir/log
@@ -33,59 +33,83 @@ if pkginstalled runit; then
 		sed -e "s,D_logdir,$logdir,g" $1
 	}
 
-	# runit_tail_prepare /foo/bar/$pkg-$service.tail
+	# runit_tail_install $pkg-$service.tail
 	#
-	runit_tail_prepare() {
-		local tailfile=$1 pkg=$2
-		local service=` echo $tailfile | sed -e "s,^.*/$pkg-,," -e "s,\.tail\$,," -e "s,_,/,g"`
+	runit_tail_install() {
+		local tailfile=
+		local service=
 		local servicedir=
 
-		if [ "${service#runit-}" != "$service" ]; then
-			servicedir=\$root/etc/runit/${service#runit-}
-		else
-			servicedir=\$root\$sysconfdir/$service
-		fi
+		for tailfile; do
+			service=$(echo $tailfile | sed -e "s,^$pkg-,," -e "s,\.tail\$,," -e "s,_,/,g")
 
-		echo_status "runit: Setting conf to install ${servicedir#\$root}/ (TAIL)"
-		hook_add postdoc 5 "tail_install runit '$tailfile' '$servicedir'"
+			if [ "${service#runit-}" != "$service" ]; then
+				servicedir="$root/etc/runit/${service#runit-}"
+			else
+				servicedir="$root$sysconfdir/$service"
+			fi
+
+			echo_status "runit: $tailfile -> ${servicedir#$root}"
+			tail_install runit "$(pkgdesc confdir runit)/packages/$tailfile" "$servicedir"
+		done
 	}
 
-	runitconfdir=$base/package/*/runit
+	runitconfdir=$(pkgdesc confdir runit)
 	runit_has_script=0
-	for x in $( ls -1 $runitconfdir/packages/$pkg-*.tail 2> /dev/null ); do
-		runit_tail_prepare $x $pkg
-		runit_has_script=1
-	done
-	for x in $( cd $runitconfdir/packages; ls -1 $pkg-*.txt 2> /dev/null ); do
-		y=${x#$pkg-}; y=${y%.txt}; y=${y//_/\/}
-		if [ "${y#runit-}" != "$y" ]; then
-			y=\$root/etc/runit/${y#runit-}
-		else
-			y=\$root/\$sysconfdir/$y
-		fi
-		echo_status "runit: Setting conf to install $y"
-		runit_has_script=1
-		case "${y##*/}" in
-			run|finish)	runitxmode=1 ;;
-			*)		runitxmode=  ;;
-		esac
-		hook_add postmake 8 "mkdir -p ${y%/*}; \
-			${runitxmode:+chmod 755 ${y%/*};} \
-			cat $runitconfdir/packages/$x | rock_substitute \
-				| runit_substitute > $y; \
-			${runitxmode:+chmod 755 $y;}"
-	done
 
-	if [ "$SDECFG_INIT" == "runit" ]; then
-		if [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
-			for x in package command service; do
-				eval "pkg_djb_${x}dir='$root/$x'"
-				var_append flistroot ' ' $x
-		        done
-		elif [ "$SDECFG_PKG_DJB_LAYOUT" == "0" ]; then
-		        pkg_djb_packagedir=
-		        pkg_djb_commanddir="$root${2:-$bindir}"
-		        pkg_djb_servicedir="$root/var/service"
+	runit_files="$(cd "$runitconfdir/packages" && ls -1 $pkg-*.tail 2> /dev/null | tr '\n' ' ')"
+	if [ -n "$runit_files" ]; then
+		hook_add postdoc 5 "runit_tail_install $runit_files"
+		runit_has_script=1
+	fi
+
+	runit_files="$(cd "$runitconfdir/packages" && ls -1 $pkg-*.txt 2> /dev/null | tr '\n' ' ')"
+	if [ -n "$runit_files" ]; then
+		hook_add postmake 5 "runit_raw_install $runit_files"
+		runit_has_script=1
+	fi
+
+	runit_raw_install() {
+		local x= y=
+
+		for x; do
+			y=${x#$pkg-}; y=${y%.txt}; y=${y//_/\/}
+
+			if [ "${y#runit-}" != "$y" ]; then
+				y="$root/etc/runit/${y#runit-}"
+			else
+				y="$root$sysconfdir/$y"
+			fi
+
+			echo_status "runit: $x -> ${y#$root}"
+
+			mkdir -p "${y%/*}"
+			cat "$(pkgdesc confdir runit)/packages/$x" | rock_substitute |
+				runit_substitute > "$y"
+
+			case "${y##*/}" in
+			run|finish)	chmod 755 "$y" ;;
+			esac
+		done
+	}
+
+	if [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
+		for x in package command service; do
+			var_append flistroot ' ' $x
+		done
+	fi
+
+	runit_layout() {
+		if [ -z "$pkg_djb_servicedir" ]; then
+			if [ "$SDECFG_PKG_DJB_LAYOUT" == "1" ]; then
+				for x in package command service; do
+					eval "pkg_djb_${x}dir='$root/$x'"
+				done
+			else
+				pkg_djb_packagedir=
+				pkg_djb_commanddir="$root$bindir"
+				pkg_djb_servicedir="$root/var/service"
+			fi
 		fi
 
 		# create them if it doesn't exist
@@ -97,6 +121,9 @@ if pkginstalled runit; then
 		                [ "$x" = command ] || chmod 1755 "$y"
 		        fi
 		done
+	}
+
+	hook_add preconf 5 'runit_layout'
 
 		if [ $runit_has_script -eq 1 ]; then
 			install_init() {
@@ -131,9 +158,7 @@ if pkginstalled runit; then
 			hook_add postmake 9 'ln -svnf /etc/runit/klogd $pkg_djb_servicedir/klogd'
 			;;
 		esac
-	fi
 
 	unset runitconfdir runitxmode runit_has_script
-
 fi
 
