@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1225913287 Wed Nov  5 19:28:07 2008
+[BUILDTIME] 100 (9)
+[SIZE] 0.10 MB, 7 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] unzip
+[DEP] zlib
