@@ -75,6 +75,7 @@ fi
 
 moddir="${root}/lib/modules/$kernelver"
 sysmap="${root}/boot/System.map_$kernelver"
+libdir="${root}D_libdir"
 if [ -d "$moddir" ]; then
 	echo "kernel: $kernelver, module dir: ${moddir#$root/}"
 	if [ ! -r "$sysmap" ]; then
@@ -111,11 +112,11 @@ if [ $? -eq 0 ]; then
 	errno=0
 
 	# prepare the environment for the plugins
-	export root tmpdir kernelver moddir sysmap running
+	export root tmpdir kernelver moddir libdir sysmap running
 
 	# call the plugins
-	for x in $( ls -1d $root/usr/lib/mkinitrd/*.sh 2> /dev/null ); do
-		echo "Calling ${x#$root/usr/lib/mkinitrd/}"
+	for x in $( ls -1d $libdir/*.sh 2> /dev/null ); do
+		echo "Calling ${x#$libdir/}"
 		$SHELL "$x" || errno=$?
 
 		[ $errno -eq 0 ] || break
