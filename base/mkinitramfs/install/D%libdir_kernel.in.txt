@@ -57,6 +57,22 @@ if [ -n "$moddir" ]; then
 		fi
 	}
 
+	module_list_available() {
+		find "$moddir" -type f -name '*.ko'
+	}
+
+	module_list_running() {
+		local x= module=
+		cat /proc/modules | cut -d' ' -f1 | while read x; do
+			module=$(find "$moddir" -type f -name "$x.ko")
+			if [ -n "$module" ]; then
+				echo "$module"
+			else
+				echo "ERROR: $x.ko not found!" >&2
+			fi
+		done
+	}
+
 	safe_depmod() {
 		$DEPMOD -ae -b "$tmpdir" -F "$sysmap" "$kernelver"
 	}
