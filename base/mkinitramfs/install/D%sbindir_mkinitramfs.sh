@@ -115,8 +115,12 @@ if [ $? -eq 0 ]; then
 	export root tmpdir kernelver moddir libdir sysmap running
 
 	# call the plugins
-	for x in $( ls -1d $libdir/*.sh 2> /dev/null ); do
-		echo "Calling ${x#$libdir/}"
+	plugindir="etc/mkinitramfs.d"
+	[ -d "$plugindir" ] || plugindir="$libdir"
+
+	for x in "$plugindir"/*.sh; do
+		[ -s "$x" ] || continue
+		echo "Calling ${x#$plugindir/}"
 		$SHELL "$x" || errno=$?
 
 		[ $errno -eq 0 ] || break
@@ -128,7 +132,8 @@ if [ $? -eq 0 ]; then
 
 		echo "Expanded size: $( du -sh . | cut -d' ' -f1 )"
 		echo "Repacking '$tmpdir' into \$root/$initrd"
-		find . | cpio -o -H newc | gzip -9 > "$root/$initrd.$$"
+		find . | grep -v '^./etc/mkinitramfs.d' |
+			cpio -o -H newc | gzip -9 > "$root/$initrd.$$"
 
 		if [ $? -eq 0 ]; then
 			mv -f "$root/$initrd.$$" "$root/$initrd"
