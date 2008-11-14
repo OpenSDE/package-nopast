@@ -13,58 +13,17 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-MODINFO=${MODINFO:-/sbin/modinfo}
-DEPMOD=${DEPMOD:-/sbin/depmod}
+. "$libdir/kernel.in"
 
 set -e
 
 if [ -n "$moddir" ]; then
 
-	# sanity checks
-	for tool in $MODINFO $DEPMOD; do
-		if [ ! -x "$tool" ]; then
-			echo "ERROR: $tool is no available"
-			exit 1
-		fi
-	done
-
 	if [ "$running" ]; then
 		echo "TODO: building on a running system, we can take the list of active modules."
 	fi
 
-	module_install() {
-		local module= source= target=
-
-		if [ -r "$1" ]; then
-			# absolute path
-			source="$1"
-			module=${source##*/}; module=${module%.ko}
-		else
-			module="$1"
-			source="$( find "$moddir/kernel" -name "$module.ko" | head -n 1 )"
-		fi
-
-		if [ -r "$source" ]; then
-			target="lib/modules/$kernelver/${source#$moddir/}"
-
-			if [ ! -f $target ]; then
-				echo -n " $module"
-				mkdir -p "${target%/*}"
-				cp "$source" "$target"
-
-				for dep in $( $MODINFO "$source" | grep "^depends:" | tr -s ' ' | cut -d' ' -f2 | tr ',' ' ' ); do
-					module_install "$dep"
-				done
-			fi
-		else
-			modules_missing="$modules_missing $module"
-			echo -n " [$module]"
-		fi
-	}
-
-
 	echo -n "Installing modules:"
-	modules_missing=
 
 	if [ -n "$MKINITRD_MODULES" ]; then
 		for module in $MKINITRD_MODULES; do
@@ -80,7 +39,7 @@ if [ -n "$moddir" ]; then
 		done
 	echo
 
-	$DEPMOD -ae -b "$tmpdir" -F "$sysmap" "$kernelver"
+	safe_depmod
 
 	[ -z "$modules_missing" ] || echo "Failed to find:$modules_missing"
 fi
