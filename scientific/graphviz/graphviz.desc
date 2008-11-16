@@ -28,9 +28,9 @@
 
 [L] Free-to-use
 [S] Stable
-[V] 2.18
+[V] 2.20.3
 [P] X -----5---9 200.500
 
 [O] var_append GCC_WRAPPER_APPEND ' ' '-fno-unit-at-a-time'
 
-[D] 771800663 graphviz-2.18.tar.gz http://www.graphviz.org/pub/graphviz/ARCHIVE/
+[D] 2369916848 graphviz-2.20.3.tar.gz http://www.graphviz.org/pub/graphviz/ARCHIVE/
