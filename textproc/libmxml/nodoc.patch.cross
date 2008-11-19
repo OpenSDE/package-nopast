@@ -14,15 +14,31 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./Makefile.in.orig	2008-01-14 00:05:05.000000000 -0500
-+++ ./Makefile.in	2008-01-14 00:06:41.000000000 -0500
-@@ -97,8 +97,7 @@
+--- ./Makefile.in.orig	2008-01-29 05:28:31.000000000 +0000
++++ ./Makefile.in	2008-11-18 14:09:06.000000000 +0000
+@@ -88,7 +88,7 @@
  			mxml-node.o mxml-search.o mxml-set.o
  LIBOBJS		=	$(PUBLIBOBJS) mxml-private.o mxml-string.o
  OBJS		=	mxmldoc.o testmxml.o $(LIBOBJS)
--TARGETS		=	$(LIBMXML) mxmldoc doc/mxml.$(CAT3EXT) \
--			doc/mxmldoc.$(CAT1EXT) testmxml mxml.xml
-+TARGETS		=	$(LIBMXML) mxmldoc
+-TARGETS		=	$(LIBMXML) mxmldoc testmxml mxml.xml doc/mxml.man
++TARGETS		=	$(LIBMXML)
  
  
  #
+@@ -124,7 +124,6 @@
+ 
+ install:	$(TARGETS) install-$(LIBMXML) install-libmxml.a
+ 	$(INSTALL_DIR) $(BUILDROOT)$(bindir)
+-	$(INSTALL_BIN) mxmldoc $(BUILDROOT)$(bindir) 
+ 	$(INSTALL_DIR) $(BUILDROOT)$(docdir)
+ 	for file in $(DOCFILES); do \
+ 		$(INSTALL_MAN) $$file $(BUILDROOT)$(docdir); \
+@@ -133,8 +132,6 @@
+ 	$(INSTALL_DATA) mxml.h $(BUILDROOT)$(includedir)
+ 	$(INSTALL_DIR) $(BUILDROOT)$(libdir)/pkgconfig
+ 	$(INSTALL_DATA) mxml.pc $(BUILDROOT)$(libdir)/pkgconfig
+-	$(INSTALL_DIR) $(BUILDROOT)$(mandir)/man1
+-	$(INSTALL_MAN) doc/mxmldoc.man $(BUILDROOT)$(mandir)/man1/mxmldoc.1
+ 	$(INSTALL_DIR) $(BUILDROOT)$(mandir)/man3
+ 	$(INSTALL_MAN) doc/mxml.man $(BUILDROOT)$(mandir)/man3/mxml.3
+ 
