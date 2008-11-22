@@ -13,16 +13,12 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
+. "$libdir/ssh.in"
 
 # host keys
-echo "Injecting SSH Host Keys"
-for hostkey in $( ls -1 $root/etc/ssh/ssh_host* ); do
-	cp -v "$root/$hostkey" "$tmpdir/etc/ssh/"
+for x in rsa dsa; do
+	openssh_install_hostkey "$x"
 done
 
 # root authorized_keys
-if [ -s "$root/root/.ssh/authorized_keys" ]; then
-        echo "Injecting Root Authorized Keys"
-        cp -v "$root/root/.ssh/authorized_keys" "$tmpdir/root/.ssh/"
-fi
-
+openssh_install_authorized_keys
