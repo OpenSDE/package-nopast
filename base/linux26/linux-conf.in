@@ -19,10 +19,24 @@ treever=${pkg/linux/} ; treever=${treever/-*/}
 [ "$lx_cpu" ] ||
 # powerpc and mips share the same arch for 32/64, maybe more follow
 lx_cpu=`echo $arch | arch2uname | sed -e s/ppc.*/powerpc/ -e s/mips64/mips/`
+lx_arch=`echo $lx_cpu | sed 's/i386/x86/;s/x86_64/x86/;s/ppc.*/powerpc/'`
+lx_subarch=`echo $lx_cpu | sed 's/i.86/i386/;s/sun4u/sparc64/;\
+				s/arm.*/arm/;s/sa110/arm/;\
+				s/s390x/s390/;s/parisc64/parisc/;\
+				s/ppc.*/powerpc/;s/mips.*/mips/'`
 lx_extraversion=
 lx_kernelrelease=
 lx_customconf="\$base/config/$config/linux.cfg"
 
+# $lx_mergedarch is 1 if the kernel has x86 and x86_64 arches merged
+lx_mergedarch=
+ver_n=0
+for x in $( echo "$ver" | cut -d. -f1-3 | tr '.' ' ' ); do
+	ver_n=$( expr $ver_n \* 1000 + $x )
+done
+if [ $ver_n -ge 2006024 ]; then
+	lx_mergedarch=1
+fi
 # $lx_confmerge list of config snaps gets merged to .config.3 on auto_config()
 #
 lx_confmerge=
@@ -53,7 +67,11 @@ makeopt=
 # we need +1 to really saturate the CPUs during the kernel build
 [ $SDECFG_PARALLEL_MAX -gt 1 ] &&
 	var_append makeopt ' ' -j$(( $SDECFG_PARALLEL_MAX + 1 ))
-var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC"
+if [ $lx_mergedarch = 1 ]; then
+	var_append makeopt ' ' "ARCH=$lx_arch CROSS_COMPILE=$archprefix KCC=$KCC"
+else
+	var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC"
+fi
 makeinstopt="$makeopt"
 
 auto_config_merge() {
@@ -70,9 +88,14 @@ auto_config() {
 	# get defconfig (.config.0)
 	#
 	echo "Creating linux default config"
-	cp arch/$lx_cpu/defconfig .config
-	cp .config{,.0}
 
+	if [ -f arch/$lx_cpu/defconfig ]; then
+		cp arch/$lx_cpu/defconfig .config
+		cp .config{,.0}
+	else
+		cp arch/$lx_arch/configs/${lx_subarch}_defconfig .config
+		cp .config{,.0}
+	fi
 	# architecture specific configuration (will be merged)
 	x=$( ls -1 $base/package/*/linux26/arch/config.$arch.sh 2> /dev/null | head -n 1)
 	if [ -f "$x" ]; then
