@@ -1,0 +1,28 @@
+
+[TIMESTAMP] 1227637264 Tue Nov 25 20:21:04 2008
+[BUILDTIME] 50 (5)
+[SIZE] 1.26 MB, 85 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] fuse
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
