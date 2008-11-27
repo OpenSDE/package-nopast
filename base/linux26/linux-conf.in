@@ -29,11 +29,6 @@ lx_extraversion=
 lx_kernelrelease=
 lx_customconf="$base/config/$config/linux.cfg"
 
-# $lx_mergedarch is 1 if the kernel has x86 and x86_64 arches merged
-lx_mergedarch=
-if [ $lx_ver -ge 2006024 ]; then
-	lx_mergedarch=1
-fi
 # $lx_confmerge list of config snaps gets merged to .config.3 on auto_config()
 #
 lx_confmerge=
