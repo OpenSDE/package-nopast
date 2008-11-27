@@ -16,10 +16,16 @@
 
 menu_begin MENU_PKG_LINUX 'Linux Kernel Options'
 
-	choice SDECFG_PKG_LINUX_CONFIG_STYLE modules \
-		none 'Do not perform any automatic kernel configuration' \
-		nomodules 'Perform normal kernel configuration without modules' \
-		modules 'Perform normal kernel configuration including modules'
+	choice SDECFG_PKG_LINUX_CONFIG_STYLE allmodules \
+		none 'Use only the custom settings' \
+		allmodules 'Automatic, starting with all modules enabled' \
+		defconfig 'Automatic, starting with defconfig from upstream' \
+		nomodules 'Using defconfig but disabling all modules at the end'
+
+	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" = none ]; then
+		comment " WARNING: you need config/$config/linux.cfg"
+		comment "          for this setting to work."
+	fi
 
 	if pkgcheck uml_utilities X ; then
 		choice SDECFG_PKG_LINUX_UML_STYLE modules \

@@ -88,14 +88,18 @@ auto_config() {
 	# get defconfig (.config.0)
 	#
 	echo "Creating linux default config"
-
-	if [ -f arch/$lx_cpu/defconfig ]; then
-		cp arch/$lx_cpu/defconfig .config
-		cp .config{,.0}
-	else
-		cp arch/$lx_arch/configs/${lx_subarch}_defconfig .config
-		cp .config{,.0}
-	fi
+	case "$SDECFG_PKG_LINUX_CONFIG_STYLE" in
+		none)
+			abort "auto_config: shouldn't reach this point."
+			;;
+		defconfig|nomodules)
+			eval $MAKE $makeopt defconfig
+			;;
+		allmodules)
+			eval $MAKE $makeopt allmodconfig
+			;;
+	esac
+	cp .config{,.0}
 	# architecture specific configuration (will be merged)
 	x=$( ls -1 $base/package/*/linux26/arch/config.$arch.sh 2> /dev/null | head -n 1)
 	if [ -f "$x" ]; then
@@ -183,7 +187,7 @@ auto_config() {
 	mv .config .config_nomods
 
 	# which .config to use?
-	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" = "modules" ] ; then
+	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" != "nomodules" ] ; then
 		cp .config{_modules,}
 	else
 		cp .config{_nomods,}
