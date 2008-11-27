@@ -14,7 +14,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-treever=${pkg/linux/} ; treever=${treever/-*/}
+treever=$(echo $ver | cut -d. -f1-2 | tr -d .)
 
 [ "$lx_cpu" ] ||
 # powerpc and mips share the same arch for 32/64, maybe more follow
