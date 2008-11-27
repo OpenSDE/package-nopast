@@ -16,6 +16,11 @@
 
 treever=$(echo $ver | cut -d. -f1-2 | tr -d .)
 
+lx_ver=0
+for x in $(echo "$ver" | cut -d. -f1-3 | tr '.' ' '); do
+	lx_ver=$( expr $lx_ver \* 1000 + $x )
+done
+
 [ "$lx_cpu" ] ||
 # powerpc and mips share the same arch for 32/64, maybe more follow
 lx_cpu=`echo $arch | arch2uname | sed -e s/ppc.*/powerpc/ -e s/mips64/mips/`
@@ -30,11 +35,7 @@ lx_customconf="$base/config/$config/linux.cfg"
 
 # $lx_mergedarch is 1 if the kernel has x86 and x86_64 arches merged
 lx_mergedarch=
-ver_n=0
-for x in $( echo "$ver" | cut -d. -f1-3 | tr '.' ' ' ); do
-	ver_n=$( expr $ver_n \* 1000 + $x )
-done
-if [ $ver_n -ge 2006024 ]; then
+if [ $lx_ver -ge 2006024 ]; then
 	lx_mergedarch=1
 fi
 # $lx_confmerge list of config snaps gets merged to .config.3 on auto_config()
