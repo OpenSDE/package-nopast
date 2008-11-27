@@ -16,6 +16,7 @@
 
 treever=$(echo $ver | cut -d. -f1-2 | tr -d .)
 
+lx_confdir=$(pkgdesc confdir linux26)
 lx_ver=0
 for x in $(echo "$ver" | cut -d. -f1-3 | tr '.' ' '); do
 	lx_ver=$( expr $lx_ver \* 1000 + $x )
@@ -90,9 +91,8 @@ auto_config() {
 	esac
 	cp .config{,.0}
 	# architecture specific configuration (will be merged)
-	x=$( ls -1 $base/package/*/linux26/arch/config.$arch.sh 2> /dev/null | head -n 1)
-	if [ -f "$x" ]; then
-		sh "$x" "$lx_ver" > .config.$arch
+	if [ -f "$lx_confdir/arch/config.$arch.sh" ]; then
+		sh "$lx_confdir/arch/config.$arch.sh" "$lx_ver" > .config.$arch
 	else
 		echo_warning "No config scripts found for this architecture ($arch)."
 		echo > .config.$arch
