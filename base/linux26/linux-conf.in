@@ -26,7 +26,7 @@ lx_subarch=`echo $lx_cpu | sed 's/i.86/i386/;s/sun4u/sparc64/;\
 				s/ppc.*/powerpc/;s/mips.*/mips/'`
 lx_extraversion=
 lx_kernelrelease=
-lx_customconf="\$base/config/$config/linux.cfg"
+lx_customconf="$base/config/$config/linux.cfg"
 
 # $lx_mergedarch is 1 if the kernel has x86 and x86_64 arches merged
 lx_mergedarch=
@@ -282,9 +282,9 @@ lx_config() {
 	echo "Generic linux configuration ..."
 	hook_eval preconf
 	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" = none ] ; then
-		echo "Using $lx_customconf."
-		echo "Since automatic generation is disabled ..."
-		eval cp -v $lx_customconf .config || true
+		echo "Using only ${lx_customconf#$base/}."
+		cp -vf $lx_customconf .config
+		eval $MAKE $makeopt oldconfig
 	else
 		echo "Automatically creating default configuration ...."
 		auto_config
