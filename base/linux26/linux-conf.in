@@ -268,12 +268,7 @@ lx_patch ()
 	echo "Correcting user and permissions ..."
 	chown -R root:root . ; chmod -R u=rwX,go=rX .
 
-	if [[ $treever = 24* ]] ; then
-		echo "Create symlinks and a few headers for <$lx_cpu> ... "
-		eval $MAKE $makeopt symlinks
-		cp $base/package/*/linux24/autoconf.h include/linux/
-		touch include/linux/modversions.h
-	elif [ "$lx_kernelrelease" != "UTS_RELEASE" ]; then
+	if [ "$lx_kernelrelease" != "UTS_RELEASE" ]; then
 		echo "Create symlinks and a few headers for <$lx_cpu> ... "
 		eval $MAKE $makeopt include/asm
 	fi
