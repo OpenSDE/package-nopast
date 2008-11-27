@@ -22,9 +22,12 @@ for x in $(echo "$ver" | cut -d. -f1-3 | tr '.' ' '); do
 	lx_ver=$( expr $lx_ver \* 1000 + $x )
 done
 
-[ "$lx_cpu" ] ||
-# powerpc and mips share the same arch for 32/64, maybe more follow
-lx_cpu=`echo $arch | arch2uname | sed -e s/ppc.*/powerpc/ -e s/mips64/mips/`
+lx_cpu="$arch_machine"
+if [ -s "$lx_confdir/arch/$arch.in" ]; then
+	. "$lx_confdir/arch/$arch.in"
+else
+	. "$lx_confdir/arch/shared.in"
+fi
 
 lx_extraversion=
 lx_kernelrelease=
@@ -240,6 +243,9 @@ lx_filter_patch ()
 
 lx_patch ()
 {
+	# validate ARCH
+	[ -d "arch/$lx_cpu/" ] || abort "architecture ($lx_cpu) not known by this kernel."
+
 	echo "Generic linux patching ..."
 
 	# grab extraversion from vanilla
