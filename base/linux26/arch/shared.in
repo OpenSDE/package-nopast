@@ -28,6 +28,11 @@ case "$arch" in
 	x86-64)
 		if [ $lx_ver -ge 2006024 ]; then
 			lx_cpu=x86
+		else
+			lx_cpu=x86_64
 		fi
+		;;
+	x86)
+		lx_cpu=$arch
 		;;
 esac
