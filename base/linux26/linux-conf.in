@@ -104,7 +104,7 @@ auto_config() {
 	# architecture specific configuration (will be merged)
 	x=$( ls -1 $base/package/*/linux26/arch/config.$arch.sh 2> /dev/null | head -n 1)
 	if [ -f "$x" ]; then
-		sh "$x" "$ver" > .config.$arch
+		sh "$x" "$lx_ver" > .config.$arch
 	else
 		echo_warning "No config scripts found for this architecture ($arch)."
 		echo > .config.$arch
