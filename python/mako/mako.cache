@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1227896097 Fri Nov 28 20:14:57 2008
+[BUILDTIME] 0 (5)
+[SIZE] 0.42 MB, 62 files
+
+[DEP] bash
+[DEP] beaker
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] formencode
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] nose
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] pylons
+[DEP] python
+[DEP] runit
+[DEP] sed
+[DEP] setuptools
+[DEP] simplejson
+[DEP] sysfiles
+[DEP] tar
+[DEP] webhelpers
