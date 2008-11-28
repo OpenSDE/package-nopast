@@ -24,7 +24,8 @@ if l7patch="`match_source_file netfilter l7-filter`"; then
 	hook_add postinstall 5 "rm -rf /tmp/${l7patch%.tar*}/"
 
 	l7_fix_and_inject_patch() {
-		local patchfile
+		local patchfile= patchfile2=
+		local l7_confdir=$(pkgdesc confdir l7-filter)
 
 		# harmless for iptables
 		var_append lx_confscripts ' ' $( echo $base/package/*/l7-filter/kernel.conf.sh )
@@ -34,12 +35,16 @@ if l7patch="`match_source_file netfilter l7-filter`"; then
 			hook_add postpatch 5 'chmod +x extensions/.layer7-test'
 		elif [[ $ver = 2.6* ]]; then
 			patchfile=$( echo /tmp/${1%.tar*}/kernel-2.6*.patch )
+			patchfile2="$l7_confdir/$(echo "$ver" | cut -d. -f1-3).diff"
 		#	patch $patchfile $base/package/*/l7-filter/kernel-2.6.17.diff
 		else
 			patchfile=$( echo /tmp/${1%.tar*}/for_older_kernels/kernel-2.4*.patch )
 		fi
 
 		var_append patchfiles ' ' $patchfile
+		if [ -n "$patchfile" -a -s "$patchfile2" ]; then
+			var_append patchfiles ' ' "$patchfile2"
+		fi
 	}
 else
 	abort "what? l7-filter patch not found!"
