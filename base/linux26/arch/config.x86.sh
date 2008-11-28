@@ -12,7 +12,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-linux_ver="$1"
+lx_ver="$1"
 
 # Map $SDECFG_X86_OPT to something meaningful to the kernel
 linux_arch_map="i386:M386
@@ -52,10 +52,15 @@ for x in $( echo "$linux_arch_map" | cut -d: -f2 | sort -u ); do
 	fi
 done
 
-cat <<-EOT
-CONFIG_X86_GENERIC=y
-CONFIG_X86_PC=y
+if [ $lx_ver -ge 2006024 ]; then
+	# Merged i386 and x86-64
+	echo "CONFIG_64BIT=n"
+else
+	cat <<-EOT
+	CONFIG_X86_GENERIC=y
+	CONFIG_X86_PC=y
 
-EOT
+	EOT
+fi
 
-exec sh ${0%/*}/config-common.sh "$linux_ver"
+exec sh ${0%/*}/config-common.sh "$lx_ver"
