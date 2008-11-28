@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1227888599 Fri Nov 28 18:09:59 2008
+[BUILDTIME] 0 (5)
+[SIZE] 2.21 MB, 199 files
+
+[DEP] bash
+[DEP] beaker
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] python
+[DEP] routes
+[DEP] runit
+[DEP] sed
+[DEP] setuptools
+[DEP] sqlalchemy
+[DEP] sysfiles
+[DEP] tar
