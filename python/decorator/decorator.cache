@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1227897305 Fri Nov 28 20:35:05 2008
+[BUILDTIME] 0 (5)
+[SIZE] 0.03 MB, 15 files
+
+[DEP] bash
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] formencode
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] mako
+[DEP] nose
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] python
+[DEP] runit
+[DEP] sed
+[DEP] setuptools
+[DEP] simplejson
+[DEP] unzip
+[DEP] webhelpers
