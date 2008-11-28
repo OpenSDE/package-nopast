@@ -15,11 +15,10 @@
 [I] A SQL toolkit and object relational mapper for Python
 
 [T] SQLAlchemy is a SQL toolkit and object relational mapper for Python. It
-[T] encourages "relational mapping" as opposed to
-[T] "table mapping" and includes enterprise-level features
-[T] such as eager loading, unit-of-work object commits, topological dependency
-[T] sorting, and full usage of bind parameters. It supports MySQL, Postgres,
-[T] Oracle, and SQLite.
+[T] encourages "relational mapping" as opposed to "table mapping" and includes
+[T] enterprise-level features such as eager loading, unit-of-work object
+[T] commits, topological dependency sorting, and full usage of bind parameters.
+[T] It supports MySQL, Postgres, Oracle, and SQLite.
 
 [U] http://www.sqlalchemy.org
 
