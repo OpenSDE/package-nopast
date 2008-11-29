@@ -26,4 +26,8 @@ CONFIG_LOGO=y
 # serial console
 CONFIG_SERIAL_8250=y
 CONFIG_SERIAL_8250_CONSOLE=y
+
+# no debugging by default
+CONFIG_DEBUG_.*=n
+CONFIG_.*_DEBUG=n
 EOT
