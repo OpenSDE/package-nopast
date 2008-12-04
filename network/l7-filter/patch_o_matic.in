@@ -25,24 +25,29 @@ if l7patch="`match_source_file netfilter l7-filter`"; then
 
 	l7_fix_and_inject_patch() {
 		local patchfile= patchfile2=
+		local tmpdir="/tmp/${1%.tar*}" x=
 		local l7_confdir=$(pkgdesc confdir l7-filter)
 
 		# harmless for iptables
 		var_append lx_confscripts ' ' $( echo $base/package/*/l7-filter/kernel.conf.sh )
 
 		if [ "$pkg" = "iptables" ]; then
-			patchfile=$( echo /tmp/${1%.tar*}/iptables-*.patch )
+			x=$(echo $ver | cut -d. -f1-2)
+			ls -al "$tmpdir/iptables-$x"-*
+			patchfile=$(ls -1 "$tmpdir/iptables-$x"-*.patch | head -n1)
 			hook_add postpatch 5 'chmod +x extensions/.layer7-test'
 		elif [[ $ver = 2.6* ]]; then
-			patchfile=$( echo /tmp/${1%.tar*}/kernel-2.6*.patch )
-			patchfile2="$l7_confdir/$(echo "$ver" | cut -d. -f1-3).diff"
-		#	patch $patchfile $base/package/*/l7-filter/kernel-2.6.17.diff
-		else
-			patchfile=$( echo /tmp/${1%.tar*}/for_older_kernels/kernel-2.4*.patch )
+			x=$(echo "$ver" | cut -d. -f1-3)
+			patchfile=$(ls -1 "$tmpdir/kernel"-2.6*.patch | head -n1)
+			patchfile2="$l7_confdir/linux-$x.diff"
 		fi
 
-		var_append patchfiles ' ' $patchfile
-		if [ -n "$patchfile" -a -s "$patchfile2" ]; then
+		if [ -n "$patchfile" -a -s "$patchfile" ]; then
+			var_append patchfiles ' ' "$patchfile"
+		else
+			abort "l7-filter: failed to detect patch."
+		fi
+		if [ -n "$patchfile2" ]; then
 			var_append patchfiles ' ' "$patchfile2"
 		fi
 	}
