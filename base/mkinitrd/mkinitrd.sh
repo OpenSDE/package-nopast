@@ -82,6 +82,7 @@ if [ -x /sbin/modinfo -a -x /sbin/depmod ]; then
 	-e isofs -e udf -e /unionfs -e ntfs -e fat -e dm-mod -e md-mod \
 	-e /ide/ -e /ata/ -e /scsi/ -e /message/ -e hci \
 	-e usb-storage -e sbp2 -e /md/raid \
+	-e /block/ \
 	-e drivers/net/ -e '/ipv6\.' |
   while read fn ; do
 	for x in $fn `/sbin/modinfo $fn | grep depends |
