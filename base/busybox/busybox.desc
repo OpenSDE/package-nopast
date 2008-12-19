@@ -34,3 +34,8 @@
 [P] X -?---5---9 102.001
 
 [D] 196820030 busybox-1.13.1.tar.bz2 http://busybox.net/downloads/
+[D] 3511611331 busybox-1.13.1-bindtodevice.patch http://busybox.net/downloads/fixes-1.13.1/
+[D] 180679526 busybox-1.13.1-crond.patch http://busybox.net/downloads/fixes-1.13.1/
+[D] 1659529890 busybox-1.13.1-init.patch http://busybox.net/downloads/fixes-1.13.1/
+[D] 2544080785 busybox-1.13.1-ip.patch http://busybox.net/downloads/fixes-1.13.1/
+[D] 845475912 busybox-1.13.1-printf.patch http://busybox.net/downloads/fixes-1.13.1/
