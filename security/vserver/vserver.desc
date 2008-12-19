@@ -41,6 +41,6 @@
 [V] 2.3.0.36.2
 [P] O -?---5---9 190.200
 
-[D] 1136599601 patch-2.6.27.6-vs2.3.0.36.2.diff http://vserver.13thfloor.at/Experimental/
+[D] 2929249627 patch-2.6.27.10-vs2.3.0.36.2.diff http://vserver.13thfloor.at/Experimental/
 #[D] 3524913094 patch-2.6.22.19-vs2.2.0.7.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/
 #[D] 299972723 patch-2.6.21.5-vs2.2.0-rc3.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/testing/
