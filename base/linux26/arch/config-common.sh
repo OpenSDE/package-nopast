@@ -31,3 +31,6 @@ CONFIG_SERIAL_8250_CONSOLE=y
 CONFIG_DEBUG_.*=n
 CONFIG_.*_DEBUG=n
 EOT
+
+# broken since 2.6.20 and still as of 2.6.27
+echo "CONFIG_SUNDANCE_MMIO=n"
