@@ -1,25 +1,35 @@
 
-[TIMESTAMP] 1134305317 Sun Dec 11 13:48:37 2005
-[BUILDTIME] 10 (9) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1233753816 Wed Feb  4 15:23:36 2009
+[BUILDTIME] 645 (9)
+[SIZE] 41.68 MB, 96 files
 
+[DEP] alsa-lib
+[DEP] audiofile
 [DEP] bash
 [DEP] binutils
+[DEP] bluez-libs
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] esound
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnutls
 [DEP] grep
+[DEP] libgcrypt
+[DEP] libgpg-error
 [DEP] libsdl
-[DEP] libx11
-[DEP] libxau
-[DEP] libxdmcp
-[DEP] libxext
+[DEP] libtasn1
 [DEP] linux-header
 [DEP] make
+[DEP] ncurses
+[DEP] perl
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] texi2html
 [DEP] zlib
