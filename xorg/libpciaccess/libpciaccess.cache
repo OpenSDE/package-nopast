@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1234045330 Sun Feb  8 00:22:10 2009
+[BUILDTIME] 5 (5)
+[SIZE] 0.09 MB, 13 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] damageproto
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libpthread-stubs
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
