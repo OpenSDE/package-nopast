@@ -14,43 +14,84 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./Makefile.orig	2009-01-18 19:12:34.000000000 +0000
-+++ ./Makefile	2009-01-18 19:40:18.000000000 +0000
-@@ -1,15 +1,36 @@
+Index: protothread.h
+===================================================================
+--- ./protothread.h	(revision 3)
++++ ./protothread.h	(working copy)
+@@ -6,7 +6,9 @@
+ #ifndef PROTOTHREAD_H
+ #define PROTOTHREAD_H
+ 
++#ifndef PT_DEBUG
+ #define PT_DEBUG 1  /* enabled (else 0) */
++#endif
+ #define pt_assert(condition) if (PT_DEBUG) assert(condition)
+ 
+ /* standard definitions */
+Index: Makefile
+===================================================================
+--- ./Makefile	(revision 3)
++++ ./Makefile	(working copy)
+@@ -1,15 +1,56 @@
 +CC = gcc
++LD = gcc
 +AR = ar
  CFLAGS = -g -Wall
  
+-OBJS = \
+-       protothread_test.o \
 +prefix = /usr/local
 +bindir = $(prefix)/bin
 +libdir = $(prefix)/lib
-+DESTDIR=
++includedir = $(prefix)/include
++DESTDIR =
 +
-+TARGETS = pttest protothread.a
++ifeq ($(DEBUG),yes)
++	CFLAGS += -DPT_DEBUG=1
++else
++ifeq ($(DEBUG),no)
++	CFLAGS += -DPT_DEBUG=0
++endif
++endif
 +
- OBJS = \
-        protothread_test.o \
++SRCDIR = .
++
++TARGETS = pttest libprotothread.a
++
++LIB_OBJS = \
         protothread_lock.o \
         protothread_sem.o \
         protothread.o \
  
-+
+-pttest:	$(OBJS) protothread.h
+-	$(CC) $(CFLAGS) -o $@ $(OBJS)
++OBJS = $(LIB_OBJS) \
++       protothread_test.o
+ 
+-$(OBJS): protothread.h
+ 
 +.PHONY: all clean install
 +
 +all: $(TARGETS)
 +
- pttest:	$(OBJS) protothread.h
- 	$(CC) $(CFLAGS) -o $@ $(OBJS)
- 
-+protothread.a: $(OBJS)
-+	$(AR) rcs $@ $(OBJS)
++define OBJ_template
++$(1).o: $(SRCDIR)/$(1).c $(wildcard $(SRCDIR)/$(1).h) $(SRCDIR)/protothread.h
++	$(CC) $(CFLAGS) -c -o $$@ -I$(SRCDIR)/ $$<
++endef
 +
- $(OBJS): protothread.h
- 
++$(foreach x,$(basename $(OBJS)),$(eval $(call OBJ_template,$(x))))
++
++pttest:	$(OBJS)
++	$(LD) $(LDFLAGS) -o $@ $^
++
++libprotothread.a: $(LIB_OBJS)
++	$(AR) rcs $@ $^
++
  clean:
 -	rm -f *.o
-+	rm -f $(OBJS) $(TARGETS)
++	rm -f *.o $(TARGETS)
 +
 +install:
-+	cp -vf pttest $(DESTDIR)$(bindir)/
-+	cp -vf protothread.a $(DESTDIR)$(libdir)/
++	cp -vf pttest $(DESTDIR)$(bindir)/pttest$(SUFFIX)
++	cp -vf libprotothread.a $(DESTDIR)$(libdir)/libprotothread$(SUFFIX).a
++	cp -vf $(SRCDIR)/*.h $(DESTDIR)$(includedir)/
