@@ -10,7 +10,7 @@ mail:x:8:
 wheel:x:10:
 video:x:16:
 audio:x:17:
-uucp:x:31:
+dialout:x:31:
 lp:x:32:
 floppy:x:33:
 cdrom:x:34:
