@@ -1,0 +1,39 @@
+
+[TIMESTAMP] 1235123040 Fri Feb 20 11:44:00 2009
+[BUILDTIME] 5 (5)
+[SIZE] 0.12 MB, 16 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] damageproto
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] inputproto
+[DEP] kbproto
+[DEP] libpciaccess
+[DEP] libpthread-stubs
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdmcp
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] randrproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xf86-input-acecad
+[DEP] xorg-server
+[DEP] xproto
