@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1235409003 Mon Feb 23 18:10:03 2009
+[BUILDTIME] 100 (9)
+[SIZE] 0.15 MB, 34 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libogg
+[DEP] libshout
+[DEP] libtheora
+[DEP] libvorbis
+[DEP] libxml
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] pkgconfig
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] taglib
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib
