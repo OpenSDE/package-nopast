@@ -37,9 +37,8 @@
 [C] extra/multimedia
 
 [L] GPL
-[S] Beta
-[V] 0.102.20
+[S] Stable
+[V] 0.116.2
 [P] X -----5---9 120.090
 
-[D] 4266969186 jack-audio-connection-kit-0.102.20.tar.gz http://dl.sourceforge.net/sourceforge/jackit/
-
+[D] 1208286174 jack-audio-connection-kit-0.116.2.tar.gz http://jackaudio.org/downloads/
