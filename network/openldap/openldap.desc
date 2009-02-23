@@ -27,7 +27,7 @@
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/server
-[F] JAIL LIBTOOL-QUIRK
+[F] JAIL
 
 [L] GPL
 [S] Stable
