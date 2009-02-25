@@ -94,12 +94,12 @@ index e4a241c..04158ad 100644
  		 */
 @@ -1764,7 +1764,7 @@ static loff_t ext4_max_bitmap_size(int bits, int has_huge_files)
  
- 	if (!has_huge_files || sizeof(blkcnt_t) < sizeof(u64)) {
+ 	if (sizeof(blkcnt_t) < sizeof(u64)) {
  		/*
--		 * !has_huge_files or CONFIG_LSF is not enabled
-+		 * !has_huge_files or CONFIG_LBD is not enabled
- 		 * implies the inode i_block represent total blocks in
- 		 * 512 bytes 32 == size of vfs inode i_blocks * 8
+-		 * CONFIG_LSF is not enabled implies the inode
++		 * CONFIG_LBD is not enabled implies the inode
+ 		 * i_block represent total blocks in 512 bytes
+ 		 * 32 == size of vfs inode i_blocks * 8
  		 */
 @@ -2021,13 +2021,13 @@ static int ext4_fill_super(struct super_block *sb, void *data, int silent)
  	if (has_huge_files) {
