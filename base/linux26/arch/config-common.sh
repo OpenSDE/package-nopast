@@ -27,6 +27,10 @@ CONFIG_LOGO=y
 CONFIG_SERIAL_8250=y
 CONFIG_SERIAL_8250_CONSOLE=y
 
+# ps/2 keyboard & mouse - as of 2.6.27, it can't be handled by udev
+CONFIG_SERIO=y
+CONFIG_SERIO_I8042=y
+
 # recommended by udev (as of 136)
 CONFIG_SYSFS_DEPRECATED=n
 CONFIG_SYSFS_DEPRECATED_V2=n
