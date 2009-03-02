@@ -26,6 +26,7 @@
 [U] http://ghostscript.com
 
 [C] extra/printing extra/office
+[F] FPIC-QUIRK
 
 [L] GPL
 [S] Stable
