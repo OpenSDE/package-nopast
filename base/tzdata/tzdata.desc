@@ -30,7 +30,7 @@
 [L] PublicDomain
 [S] Stable
 [V] 2007k
-[P] O -1---5---9 200.000
+[P] X -1---5---9 200.000
 
 [D] 1327969610 tzcode2007k.tar.gz ftp://elsie.nci.nih.gov/pub/
 [D] 1053337723 tzdata2007k.tar.gz ftp://elsie.nci.nih.gov/pub/
