@@ -22,7 +22,7 @@
 [U] http://pypi.python.org/pypi/WebOb/
 
 [A] Ian Bicking <ianb@colorstudy.com>
-[M] Nagy Karoly gabriel <nagy.karoly@opensde.org>
+[M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
 
 [C] extra/tool
 
@@ -30,7 +30,7 @@
 
 [L] MIT
 [S] Beta
-[V] 0.9.5
-[P] X -----5---9 799.000
+[V] 0.9.6.1
+[P] X -----5---9 784.000
 
-[D] 689515269 WebOb-0.9.5.tar.gz http://pypi.python.org/packages/source/W/WebOb/ 
+[D] 2772295377 WebOb-0.9.6.1.tar.gz http://pypi.python.org/packages/source/W/WebOb/
