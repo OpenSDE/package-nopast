@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1236176226 Wed Mar  4 16:17:06 2009
+[BUILDTIME] 0 (5)
+[SIZE] 2.15 MB, 138 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] paste
+[DEP] python
+[DEP] runit
+[DEP] sed
+[DEP] setuptools
+[DEP] simplejson
+[DEP] sysfiles
+[DEP] tar
+[DEP] tempita
+[DEP] webob
