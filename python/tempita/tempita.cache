@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1236114136 Tue Mar  3 23:02:16 2009
+[BUILDTIME] 0 (5)
+[SIZE] 0.04 MB, 7 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] paste
+[DEP] pygments
+[DEP] python
+[DEP] runit
+[DEP] sed
+[DEP] setuptools
+[DEP] simplejson
+[DEP] sysfiles
+[DEP] tar
