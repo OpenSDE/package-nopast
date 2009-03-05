@@ -33,4 +33,6 @@
 [V] 0.8.2
 [P] X -----5---9 800.000
 
-[D] 3337008949 cgit-v0.8.2.tar.bz2 !http://hjemli.net/git/cgit/snapshot/cgit-v0.8.2.tar.bz2?id=v0.8.2
+[CV-URL] http://hjemli.net/git/cgit/refs/tags
+
+[D] 3245660629 cgit-0.8.2.tar.bz2 http://hjemli.net/git/cgit/snapshot/
