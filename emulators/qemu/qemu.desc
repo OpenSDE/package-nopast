@@ -20,7 +20,7 @@
 [T] QEMU is a fast processor emulator using dynamic translation to achieve
 [T] good emulation speed.
 
-[U] http://bellard.org/qemu/
+[U] http://www.nongnu.org/qemu/
 
 [A] Fabrice Bellard <fabrice@bellard.org>
 [M] Alejandro Mery <amery@opensde.org>
@@ -29,11 +29,9 @@
 [F] NO-SSP
 
 [L] GPL
-[S] Beta
-[V] r6511
+[S] Stable
+[V] 0.10.0
 [P] X -----5---9 207.000
 
-[CV-URL] http://bellard.org/qemu/download.html
-
-#[D] 1806984299 qemu-0.9.1.tar.gz http://bellard.org/qemu/
-[D] X qemu-r6511.tar.bz2 svn://svn.sv.gnu.org/qemu/trunk -r6511
+[D] 3893309522 qemu-0.10.0.tar.gz http://download.savannah.gnu.org/releases/qemu/
+#[D] X qemu-r6511.tar.bz2 svn://svn.sv.gnu.org/qemu/trunk -r6511
