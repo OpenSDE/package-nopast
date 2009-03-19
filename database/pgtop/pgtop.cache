@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1237480561 Thu Mar 19 18:36:01 2009
+[BUILDTIME] 0 (5)
+[SIZE] 0.09 MB, 10 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] perl
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
