@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1237483842 Thu Mar 19 19:30:42 2009
+[BUILDTIME] 0 (5)
+[SIZE] 0.19 MB, 7 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libpcap
+[DEP] linux-header
+[DEP] make
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
