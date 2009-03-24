@@ -1,33 +1,38 @@
 
-[TIMESTAMP] 1189078224 Thu Sep  6 13:30:24 2007
-[BUILDTIME] 105 (5) ERROR
-[SIZE] 70.68 MB, 840 files
+[TIMESTAMP] 1237935066 Wed Mar 25 00:51:06 2009
+[BUILDTIME] 530 (9)
+[SIZE] 84.02 MB, 1065 files
 
-[DEP] 00-dirtree
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] grep
 [DEP] imake
+[DEP] lat
 [DEP] linux-header
 [DEP] m4
 [DEP] make
 [DEP] mktemp
 [DEP] ncurses
 [DEP] patch
+[DEP] perl
 [DEP] pkgconfig
+[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] valgrind
 [DEP] xorg-cf-files
 [DEP] zlib
