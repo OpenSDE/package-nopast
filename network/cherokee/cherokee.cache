@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1237403999 Wed Mar 18 21:19:59 2009
-[BUILDTIME] 80 (5)
-[SIZE] 6.55 MB, 904 files
+[TIMESTAMP] 1238241982 Sat Mar 28 14:06:22 2009
+[BUILDTIME] 105 (5)
+[SIZE] 5.25 MB, 764 files
 
 [DEP] bash
 [DEP] binutils
@@ -15,14 +15,15 @@
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] linux-header
+[DEP] iana-etc
 [DEP] make
 [DEP] mktemp
+[DEP] mysql
 [DEP] openssl
-[DEP] pam
 [DEP] pcre
+[DEP] php
 [DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
