@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1238419488 Mon Mar 30 16:24:48 2009
+[BUILDTIME] 0 (5)
+[SIZE] 2.13 MB, 397 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] glibc
+[DEP] grep
+[DEP] rake
+[DEP] ruby
+[DEP] rubygems
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
