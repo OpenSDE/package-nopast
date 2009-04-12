@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1133745612 Mon Dec  5 02:20:12 2005
-[BUILDTIME] 70 (5)
-[SIZE] 14.79 MB, 354 files
+[TIMESTAMP] 1239572885 Mon Apr 13 00:48:05 2009
+[BUILDTIME] 110 (5)
+[SIZE] 20.43 MB, 875 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] atk
 [DEP] audiofile
@@ -12,32 +11,42 @@
 [DEP] bison
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] esound
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
+[DEP] ggz-client-libs
+[DEP] ggz-gtk-client
 [DEP] glib
 [DEP] glibc
 [DEP] glitz
 [DEP] grep
 [DEP] gtk+
+[DEP] gzip
 [DEP] imake
-[DEP] libmikmod
-[DEP] libogg
+[DEP] kbproto
+[DEP] libgcrypt
+[DEP] libggz
+[DEP] libgpg-error
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsdl
 [DEP] libsdl_mixer
-[DEP] libvorbis
+[DEP] libselinux
+[DEP] libsepol
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
@@ -49,13 +58,15 @@
 [DEP] make
 [DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] readline
+[DEP] renderproto
 [DEP] sed
-[DEP] smpeg
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
+[DEP] xproto
 [DEP] zlib
