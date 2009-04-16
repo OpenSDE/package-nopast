@@ -29,15 +29,7 @@ if hasflag KDE; then
 	export PATH="$(pkgprefix bindir qt4):$PATH"
 	export LD_LIBRARY_PATH="$QTDIR/${libdir##*/}:/$prefix/${libdir##*/}:$LD_LIBRARY_PATH"
 
-	kde_cmake()
-	{
-                mkdir build; cd build
-                var_remove_regex confopt ' ' '--.*'
-                var_remove_regex extraconfopt ' ' '--.*'
-                var_append extraconfopt " " "-DCMAKE_INSTALL_PREFIX=/$prefix -DCMAKE_LIBRARY_PATH=$libdir"
-                eval cmake $confopt $extraconfopt ..
-	}
+	. $base/package/*/*/cmake-conf.in
 
-	hook_add preconf 3 "kde_cmake"
 fi
 
