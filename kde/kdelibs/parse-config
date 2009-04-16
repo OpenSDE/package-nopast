@@ -15,11 +15,11 @@
 
 if hasflag KDE; then
 	if [ "$prefix_auto" = 1 ] ; then
-		if [ "$pkg" == "kdelibs" ]; then
+		if [ "$pkg" == "automoc4" ]; then
 			prefix="${SDECFG_PKG_KDE_CORE_PREFIX:-opt/kde}"
 		else
-			pkgprefix -t kdelibs
-			prefix=`pkgprefix kdelibs`
+			pkgprefix -t automoc4
+			prefix=`pkgprefix automoc4`
 		fi
 		set_confopt
 	fi
@@ -29,26 +29,15 @@ if hasflag KDE; then
 	export PATH="$(pkgprefix bindir qt4):$PATH"
 	export LD_LIBRARY_PATH="$QTDIR/${libdir##*/}:/$prefix/${libdir##*/}:$LD_LIBRARY_PATH"
 
-	# some feature and optimization settings ...
-	if pkginstalled openldap; then
-		pkgprefix -t openldap
-		var_append confopt " " "--with-ldap=$root/$( pkgprefix openldap )"
-	fi
+	kde_cmake()
+	{
+                mkdir build; cd build
+                var_remove_regex confopt ' ' '--.*'
+                var_remove_regex extraconfopt ' ' '--.*'
+                var_append extraconfopt " " "-DCMAKE_INSTALL_PREFIX=/$prefix -DCMAKE_LIBRARY_PATH=$libdir"
+                eval cmake $confopt $extraconfopt ..
+	}
 
-	# FIXME: no conditionals?
-	var_append confopt " " "--with-xinerama --enable-dnotify"
-
-	[ "$SDECFG_PKG_KDE_ENABLE_FINAL" != "1" ] ||
-		var_append confopt " " "--enable-final"
-
-	if [ $arch = x86 ]; then
-		var_append confopt " " "--enable-fast-malloc=full"
-	fi
-
-	if [[ $libdir != *lib ]]; then
-		var_append confopt " " "--enable-libsuffix=${libdir##*/lib}"
-	fi
-
-	# HACK around test for kdelibs
-	hook_add preconf 5 "mkdir build; cd build; .. $confopt $extraconfopt"
+	hook_add preconf 3 "kde_cmake"
 fi
+

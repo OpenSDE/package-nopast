@@ -18,10 +18,6 @@ if pkgcheck kdelibs X ; then
  	menu_begin MENU_PKG_KDE 'KDE Package Options'
 		text 'Install prefix for KDE Packages' \
 			SDECFG_PKG_KDE_CORE_PREFIX "opt/kde"
-		bool 'Increase optimization possibilities (--enable-final)' \
-			SDECFG_PKG_KDE_ENABLE_FINAL 0
-		bool 'Generate KDE Library Documentation' \
-			SDECFG_PKG_KDE_APIDOX 0
 	menu_end
 fi
 
