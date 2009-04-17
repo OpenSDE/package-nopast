@@ -1,11 +1,12 @@
 
-[TIMESTAMP] 1239821241 Wed Apr 15 21:47:21 2009
-[BUILDTIME] 25 (5)
-[SIZE] 3.18 MB, 174 files
+[TIMESTAMP] 1239990646 Fri Apr 17 20:50:46 2009
+[BUILDTIME] 45 (5)
+[SIZE] 2.78 MB, 184 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] clucene
 [DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
