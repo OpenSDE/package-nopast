@@ -1,0 +1,63 @@
+
+[TIMESTAMP] 1239974203 Fri Apr 17 16:16:43 2009
+[BUILDTIME] 230 (5)
+[SIZE] 132.78 MB, 8214 files
+
+[DEP] alsa-lib
+[DEP] automoc4
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gamin
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] ilmbase
+[DEP] kdebase
+[DEP] kdebase-workspace
+[DEP] kdelibs
+[DEP] libice
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libsm
+[DEP] libungif
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxml
+[DEP] libxpm
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxtst
+[DEP] linux-header
+[DEP] make
+[DEP] nas
+[DEP] openexr
+[DEP] pcre
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] qt4
+[DEP] sed
+[DEP] soprano
+[DEP] strigi
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xproto
