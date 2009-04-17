@@ -29,6 +29,8 @@ if hasflag KDE; then
 	export PATH="$(pkgprefix bindir qt4):$PATH"
 	export LD_LIBRARY_PATH="$QTDIR/${libdir##*/}:/$prefix/${libdir##*/}:$LD_LIBRARY_PATH"
 
+	var_append extraconfopt " " '-DCMAKE_BUILD_TYPE=Release'
+
 	. $base/package/*/*/cmake-conf.in
 
 fi
