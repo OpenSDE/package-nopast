@@ -1,49 +1,54 @@
 
-[TIMESTAMP] 1134153764 Fri Dec  9 19:42:44 2005
-[BUILDTIME] 350 (9)
-[SIZE] 9.09 MB, 630 files
+[TIMESTAMP] 1239986115 Fri Apr 17 19:35:15 2009
+[BUILDTIME] 175 (5)
+[SIZE] 8.09 MB, 296 files
 
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cmake
+[DEP] compositeproto
 [DEP] coreutils
+[DEP] cyrus-sasl2
 [DEP] diffutils
+[DEP] e2fsprogs
 [DEP] expat
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
+[DEP] fixesproto
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
-[DEP] glib12
+[DEP] glib
 [DEP] glibc
 [DEP] gmp
+[DEP] gnupth
 [DEP] grep
-[DEP] gtk+12
-[DEP] imake
-[DEP] inputproto
+[DEP] kdebase-workspace
+[DEP] kdebindings
 [DEP] kdelibs
-[DEP] libart_lgpl23
-[DEP] libdnet
+[DEP] kdepimlibs
 [DEP] libdrm
 [DEP] libice
-[DEP] libidn
-[DEP] libjpeg
 [DEP] libpng
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxi
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
+[DEP] libxml
+[DEP] libxpm
 [DEP] libxrender
 [DEP] libxt
 [DEP] libxtst
@@ -51,18 +56,22 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-snmp
-[DEP] net-tools
-[DEP] openssl
-[DEP] perl
+[DEP] nas
+[DEP] numpy
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] pyqt4
 [DEP] python
-[DEP] qt3
+[DEP] qimageblitz
+[DEP] qt4
+[DEP] renderproto
 [DEP] sed
+[DEP] sip
+[DEP] strigi
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
-[DEP] xextproto
-[DEP] xmms
+[DEP] wxpython
 [DEP] xproto
 [DEP] zlib
