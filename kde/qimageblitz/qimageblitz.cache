@@ -1,0 +1,39 @@
+
+[TIMESTAMP] 1239970155 Fri Apr 17 15:09:15 2009
+[BUILDTIME] 5 (5)
+[SIZE] 0.27 MB, 15 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] libice
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxrender
+[DEP] libxt
+[DEP] linux-header
+[DEP] make
+[DEP] nas
+[DEP] qt4
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
