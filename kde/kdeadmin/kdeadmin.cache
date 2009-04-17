@@ -1,65 +1,63 @@
 
-[TIMESTAMP] 1134154179 Fri Dec  9 19:49:39 2005
-[BUILDTIME] 90 (9)
-[SIZE] 4.25 MB, 270 files
+[TIMESTAMP] 1239986292 Fri Apr 17 19:38:12 2009
+[BUILDTIME] 115 (5)
+[SIZE] 4.37 MB, 172 files
 
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cmake
 [DEP] coreutils
+[DEP] cyrus-sasl2
 [DEP] diffutils
+[DEP] e2fsprogs
 [DEP] expat
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
+[DEP] glib
 [DEP] glibc
-[DEP] gnutls
 [DEP] grep
-[DEP] imake
+[DEP] kdebase-workspace
+[DEP] kdebindings
 [DEP] kdelibs
-[DEP] libart_lgpl23
-[DEP] libdnet
-[DEP] libdrm
-[DEP] libgcrypt
-[DEP] libgpg-error
+[DEP] kdepimlibs
 [DEP] libice
-[DEP] libidn
-[DEP] libjpeg
 [DEP] libpng
-[DEP] libprelude
 [DEP] libsm
-[DEP] libtasn1
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
+[DEP] libxml
+[DEP] libxpm
 [DEP] libxrender
 [DEP] libxt
-[DEP] libxxf86vm
+[DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
-[DEP] pam
-[DEP] patch
-[DEP] perl
-[DEP] qt3
+[DEP] nas
+[DEP] numpy
+[DEP] phonon
+[DEP] pygobject
+[DEP] pyqt4
+[DEP] python
+[DEP] qt4
 [DEP] sed
-[DEP] shadow
+[DEP] sip
+[DEP] strigi
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
-[DEP] xproto
-[DEP] zlib
+[DEP] wxpython
