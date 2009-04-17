@@ -1,0 +1,54 @@
+
+[TIMESTAMP] 1239978502 Fri Apr 17 17:28:22 2009
+[BUILDTIME] 260 (5)
+[SIZE] 14.37 MB, 435 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] dbus-python
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] kdeutils
+[DEP] libdrm
+[DEP] libice
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdamage
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxml
+[DEP] libxrender
+[DEP] libxslt
+[DEP] libxt
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] nas
+[DEP] numpy
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] qt4
+[DEP] sed
+[DEP] sip
+[DEP] sysfiles
+[DEP] tar
+[DEP] wxpython
+[DEP] zlib
