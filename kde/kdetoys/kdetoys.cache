@@ -1,59 +1,59 @@
 
-[TIMESTAMP] 1134252740 Sat Dec 10 23:12:20 2005
-[BUILDTIME] 90 (9)
-[SIZE] 4.68 MB, 665 files
+[TIMESTAMP] 1240150003 Sun Apr 19 17:06:43 2009
+[BUILDTIME] 25 (5)
+[SIZE] 2.85 MB, 535 files
 
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] e2fsprogs
 [DEP] expat
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] imake
+[DEP] kdebase-workspace
 [DEP] kdelibs
-[DEP] libart_lgpl23
-[DEP] libdnet
-[DEP] libdrm
 [DEP] libice
-[DEP] libidn
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libsm
+[DEP] libungif
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
+[DEP] libxml
+[DEP] libxpm
 [DEP] libxrender
 [DEP] libxt
-[DEP] libxxf86vm
+[DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
+[DEP] nas
 [DEP] pcre
-[DEP] perl
-[DEP] qt3
+[DEP] phonon
+[DEP] qt4
 [DEP] sed
+[DEP] strigi
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
 [DEP] xextproto
 [DEP] xproto
-[DEP] zlib
