@@ -47,9 +47,7 @@
 
 [L] GPL
 [S] Stable
-[V] 0.59.5
+[V] 0.62.9
 [P] X -----5---9 168.100
 
-[O] . $base/package/*/*/cmake-conf.in
-
-[D] 324035764 QtCurve-KDE3-0.59.5.tar.bz2 http://home.freeuk.com/cpdrummond/
+[D] 703562319 QtCurve-KDE4-0.62.9.tar.bz2 http://home.freeuk.com/cpdrummond/

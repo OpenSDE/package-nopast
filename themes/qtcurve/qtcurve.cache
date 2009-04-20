@@ -1,32 +1,40 @@
 
-[TIMESTAMP] 1220176458 Sun Aug 31 11:54:18 2008
-[BUILDTIME] 10 (5)
-[SIZE] 0.51 MB, 26 files
+[TIMESTAMP] 1240064513 Sat Apr 18 17:21:53 2009
+[BUILDTIME] 20 (5)
+[SIZE] 0.84 MB, 29 files
 
-[DEP] arts
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
 [DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] kdebase-workspace
 [DEP] kdelibs
 [DEP] libice
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
+[DEP] libxdmcp
 [DEP] libxext
+[DEP] libxft
+[DEP] libxpm
+[DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] qt3
+[DEP] phonon
+[DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
-[DEP] xproto
