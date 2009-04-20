@@ -24,11 +24,6 @@ if hasflag KDE; then
 		set_confopt
 	fi
 
-	# make sure the right qt and kde libs are used
-	pkgprefix -t qt4
-	export PATH="$(pkgprefix bindir qt4):$PATH"
-	export LD_LIBRARY_PATH="$QTDIR/${libdir##*/}:/$prefix/${libdir##*/}:$LD_LIBRARY_PATH"
-
 	var_append extraconfopt " " '-DCMAKE_BUILD_TYPE=Release'
 
 	. $base/package/*/*/cmake-conf.in
