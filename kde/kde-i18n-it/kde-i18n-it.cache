@@ -1,26 +1,42 @@
 
-[TIMESTAMP] 1134166225 Fri Dec  9 23:10:25 2005
-[BUILDTIME] 60 (9)
-[SIZE] 26.03 MB, 2287 files
+[TIMESTAMP] 1240143775 Sun Apr 19 15:22:55 2009
+[BUILDTIME] 155 (5)
+[SIZE] 22.23 MB, 2039 files
 
-[DEP] 00-dirtree
-[DEP] arts
-[DEP] autoconf
+[DEP] automoc4
 [DEP] bash
+[DEP] binutils
 [DEP] bzip2
+[DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
 [DEP] gcc
 [DEP] gettext
 [DEP] glibc
 [DEP] grep
+[DEP] kde-i18n-de
+[DEP] kdeedu
 [DEP] kdelibs
-[DEP] m4
+[DEP] koffice-i18n
+[DEP] libice
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxft
+[DEP] libxml
+[DEP] libxpm
+[DEP] libxrender
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
+[DEP] phonon
+[DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
