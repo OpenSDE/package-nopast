@@ -1,15 +1,68 @@
 
-[TIMESTAMP] 1134183730 Sat Dec 10 04:02:10 2005
-[BUILDTIME] 5 (9) ERROR
-[SIZE] 0.01 MB, 6 files
+[TIMESTAMP] 1240065844 Sat Apr 18 17:44:04 2009
+[BUILDTIME] 130 (5)
+[SIZE] 5.65 MB, 192 files
 
+[DEP] acl
+[DEP] alsa-lib
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
+[DEP] binutils
 [DEP] bzip2
+[DEP] cdparanoia
+[DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] e2fsprogs
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] flac
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gamin
+[DEP] gawk
 [DEP] gcc
+[DEP] glib
+[DEP] glibc
 [DEP] grep
-[DEP] patch
+[DEP] kdelibs
+[DEP] libice
+[DEP] libjpeg
+[DEP] libmusicbrainz
+[DEP] libogg
+[DEP] libpng
+[DEP] libsm
+[DEP] libungif
+[DEP] libunicode
+[DEP] libvorbis
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxml
+[DEP] libxpm
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxtst
+[DEP] linux-header
+[DEP] make
+[DEP] nas
+[DEP] ncurses
+[DEP] pcre
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] qt4
 [DEP] sed
+[DEP] strigi
 [DEP] sysfiles
+[DEP] taglib
 [DEP] tar
+[DEP] util-linux
+[DEP] xine-lib
+[DEP] xproto
