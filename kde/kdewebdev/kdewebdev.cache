@@ -1,63 +1,67 @@
 
-[TIMESTAMP] 1133991187 Wed Dec  7 22:33:07 2005
-[BUILDTIME] 185 (9)
-[SIZE] 14.93 MB, 1772 files
+[TIMESTAMP] 1240063815 Sat Apr 18 17:10:15 2009
+[BUILDTIME] 140 (5)
+[SIZE] 6.20 MB, 262 files
 
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
+[DEP] boost
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] e2fsprogs
 [DEP] expat
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] fvwm
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] imake
 [DEP] kdelibs
-[DEP] kdesdk
-[DEP] libart_lgpl23
-[DEP] libdnet
-[DEP] libdrm
+[DEP] kdepimlibs
+[DEP] koffice
 [DEP] libgcrypt
 [DEP] libgpg-error
 [DEP] libice
-[DEP] libidn
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libsm
+[DEP] libungif
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxinerama
 [DEP] libxml
-[DEP] libxmu
-[DEP] libxrandr
+[DEP] libxpm
 [DEP] libxrender
 [DEP] libxslt
 [DEP] libxt
-[DEP] libxxf86vm
+[DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
+[DEP] nas
 [DEP] pcre
-[DEP] perl
-[DEP] qt3
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] qt4
+[DEP] readline
+[DEP] ruby
 [DEP] sed
+[DEP] strigi
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
-[DEP] xproto
 [DEP] zlib
