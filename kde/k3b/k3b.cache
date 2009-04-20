@@ -1,39 +1,38 @@
 
-[TIMESTAMP] 1134196783 Sat Dec 10 07:39:43 2005
-[BUILDTIME] 210 (9)
-[SIZE] 9.84 MB, 290 files
+[TIMESTAMP] 1240073078 Sat Apr 18 19:44:38 2009
+[BUILDTIME] 165 (5)
+[SIZE] 11.96 MB, 385 files
 
-[DEP] arts
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cmake
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] e2fsprogs
 [DEP] expat
-[DEP] gamin
 [DEP] ffmpeg
+[DEP] fhs
 [DEP] findutils
 [DEP] flac
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] hal
-[DEP] imake
 [DEP] kdelibs
+[DEP] kdemultimedia
 [DEP] lame
-[DEP] libart_lgpl23
-[DEP] libdnet
-[DEP] libdrm
+[DEP] libdvdread
 [DEP] libice
-[DEP] libidn
-[DEP] libjpeg
 [DEP] libmad
+[DEP] libmpcdec
 [DEP] libmusicbrainz
 [DEP] libogg
 [DEP] libpng
@@ -43,31 +42,26 @@
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxinerama
 [DEP] libxml
-[DEP] libxmu
-[DEP] libxrandr
+[DEP] libxpm
 [DEP] libxrender
 [DEP] libxt
-[DEP] libxxf86vm
+[DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
+[DEP] nas
+[DEP] phonon
 [DEP] pkgconfig
-[DEP] popt
-[DEP] qt3
+[DEP] qt4
 [DEP] sed
+[DEP] strigi
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
 [DEP] util-linux
-[DEP] xproto
-[DEP] zlib
