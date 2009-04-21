@@ -1,71 +1,53 @@
 
-[TIMESTAMP] 1133789162 Mon Dec  5 14:26:02 2005
-[BUILDTIME] 100 (5)
-[SIZE] 4.08 MB, 123 files
+[TIMESTAMP] 1240312364 Tue Apr 21 14:12:44 2009
+[BUILDTIME] 10 (5)
+[SIZE] 0.44 MB, 10 files
 
-[DEP] 00-dirtree
-[DEP] arts
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] e2fsprogs
 [DEP] expat
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] gst-plugins
-[DEP] gstreamer
-[DEP] imake
-[DEP] inputproto
-[DEP] kdebindings
 [DEP] kdelibs
-[DEP] libart_lgpl23
-[DEP] libdnet
-[DEP] libdrm
 [DEP] libice
-[DEP] libidn
-[DEP] libjpeg
 [DEP] libpng
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
-[DEP] libxinerama
 [DEP] libxml
-[DEP] libxmu
-[DEP] libxrandr
+[DEP] libxpm
 [DEP] libxrender
 [DEP] libxt
 [DEP] libxtst
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
-[DEP] pkgconfig
-[DEP] popt
-[DEP] qt3
+[DEP] nas
+[DEP] phonon
+[DEP] qt4
 [DEP] sed
+[DEP] strigi
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux
-[DEP] xextproto
-[DEP] xine-lib
-[DEP] xineramaproto
-[DEP] xproto
-[DEP] zlib
