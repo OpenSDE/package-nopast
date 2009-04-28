@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1238241982 Sat Mar 28 14:06:22 2009
+[TIMESTAMP] 1240941389 Tue Apr 28 20:56:29 2009
 [BUILDTIME] 105 (5)
-[SIZE] 5.25 MB, 764 files
+[SIZE] 5.70 MB, 781 files
 
 [DEP] bash
 [DEP] binutils
@@ -13,6 +13,7 @@
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glibc
 [DEP] grep
 [DEP] iana-etc
