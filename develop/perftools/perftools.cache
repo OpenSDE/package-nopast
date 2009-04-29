@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1241001328 Wed Apr 29 13:35:28 2009
+[BUILDTIME] 50 (5)
+[SIZE] 1.17 MB, 70 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libunwind
+[DEP] make
+[DEP] mktemp
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
