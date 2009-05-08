@@ -25,9 +25,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 0.10.5
+[V] 0.10.6
 [P] X -?---5---9 112.500
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 2472704283 libpciaccess-0.10.5.tar.bz2 http://xorg.freedesktop.org/archive/individual/lib/
+[D] 836343503 libpciaccess-0.10.6.tar.bz2 http://xorg.freedesktop.org/archive/individual/lib/
