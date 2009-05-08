@@ -41,7 +41,7 @@
 [E] libtasn1 opencdk libgcrypt
 
 [S] Stable
-[V] 2.6.4
+[V] 2.6.6
 [P] X -----5---9 109.300
 
-[D] 991545797 gnutls-2.6.4.tar.bz2 ftp://ftp.gnutls.org/pub/gnutls/
+[D] 2513071130 gnutls-2.6.6.tar.bz2 ftp://ftp.gnutls.org/pub/gnutls/
