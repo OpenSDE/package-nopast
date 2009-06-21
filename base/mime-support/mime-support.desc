@@ -14,7 +14,7 @@
 
 [I] Centralised MIME support
 
-[T] MIME files 'mime.types' & 'mailcap', and support programs As these files
+[T] MIME files 'mime.types' & 'mailcap', and support programs. As these files
 [T] can be used by all MIME compliant programs, they have been moved into their
 [T] own package that others can depend upon. Other packages add themselves as
 [T] viewers/editors/composers/etc by using the provided "update-mime" program.
@@ -22,7 +22,7 @@
 [U] http://packages.qa.debian.org/m/mime-support.html
 
 [A] Brian White <bcwhite@pobox.com>
-[M] Nagy Karoly Gabriel <nagu.karoly@opensde.org>
+[M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
 
 [C] base/system
 
