@@ -29,8 +29,8 @@
 
 [L] PublicDomain
 [S] Stable
-[V] 2009b
+[V] 2009j
 [P] X -1---5---9 200.000
 
-[D] 170329029 tzcode2009b.tar.gz ftp://elsie.nci.nih.gov/pub/
-[D] 471635636 tzdata2009b.tar.gz ftp://elsie.nci.nih.gov/pub/
+[D] 428852513 tzcode2009i.tar.gz ftp://elsie.nci.nih.gov/pub/
+[D] 875839301 tzdata2009j.tar.gz ftp://elsie.nci.nih.gov/pub/
