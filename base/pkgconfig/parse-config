@@ -15,15 +15,12 @@
 
 if atstage cross; then
 	#export PKG_CONFIG_DEBUG_SPEW=yes
-	PKG_CONFIG_SYSROOT_DIR=$base/build/$SDECFG_ID
-	PKG_CONFIG_PATH=
-	for x in $PKG_CONFIG_SYSROOT_DIR/{,usr,usr/X11*,usr/local,opt/*}/{lib,lib64,share}/pkgconfig; do
-		[ -d "$x" ] && PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}$x"
-	done
-	export PKG_CONFIG_PATH
-	export PKG_CONFIG_SYSROOT_DIR
-	export PKG_CONFIG_LIBDIR=$PKG_CONFIG_PATH # needed, otherwse system is used
+	export PKG_CONFIG_SYSROOT_DIR="$base/build/$SDECFG_ID"
+	export PKG_CONFIG_PATH=$(ls -1d \
+		"$PKG_CONFIG_SYSROOT_DIR"/{,usr,usr/X11*,usr/local,opt/*}/{lib,lib64,share}/pkgconfig/ \
+		2> /dev/null | tr '\n' ':' | sed -e 's|/\+:|:|g' -e 's|/\+|/|g' -e 's|:$||')
 
+	export PKG_CONFIG_LIBDIR="$PKG_CONFIG_PATH" # needed, otherwse system is used
 
 	# as we use PKG_CONFIG_SYSROOT_DIR, make sure $root doesn't leak on .pc files
 	#
