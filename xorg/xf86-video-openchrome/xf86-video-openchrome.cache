@@ -1,0 +1,46 @@
+
+[TIMESTAMP] 1249571673 Thu Aug  6 11:14:33 2009
+[BUILDTIME] 20 (5)
+[SIZE] 0.37 MB, 18 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] fontsproto
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] glproto
+[DEP] grep
+[DEP] kbproto
+[DEP] libdrm
+[DEP] libpciaccess
+[DEP] libpthread-stubs
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxv
+[DEP] libxvmc
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] randrproto
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] videoproto
+[DEP] xextproto
+[DEP] xf86-video-fbdev
+[DEP] xf86driproto
+[DEP] xorg-server
+[DEP] xproto
