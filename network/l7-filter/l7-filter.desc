@@ -33,8 +33,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2008-12-18
+[V] 2.22
 [P] X -----5---9 800.000
 
-[D] 1972875776 l7-protocols-2008-12-18.tar.gz http://dl.sourceforge.net/sourceforge/l7-filter/
-[D] 3426990904 netfilter-layer7-v2.21.tar.gz http://dl.sourceforge.net/sourceforge/l7-filter/
+[D] 663261763 l7-protocols-2009-05-28.tar.gz http://dl.sourceforge.net/sourceforge/l7-filter/
+[D] 1262243031 netfilter-layer7-v2.22.tar.gz http://dl.sourceforge.net/sourceforge/l7-filter/
