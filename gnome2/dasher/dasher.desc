@@ -26,12 +26,13 @@
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/base extra/desktop/gnome
+[F] X11R6
 
 [L] GPL
-[S] Beta
-[V] 4.10.0
+[S] Stable
+[V] 4.10.1
 [P] X -----5---9 149.500
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 3256437256 dasher-4.10.0.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/dasher/4.10/
+[D] 1411170127 dasher-4.10.1.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/dasher/4.10/
