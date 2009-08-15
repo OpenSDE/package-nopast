@@ -27,8 +27,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2.2.9
+[V] 2.2.10
 [P] X -?---5---9 109.000
 
-[D] 1515391698 pciutils-2.2.9.tar.gz ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/
+[D] 3906709653 pciutils-2.2.10.tar.gz ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/
 [D] 3081596158 pci.ids-2007-06-20.bz2 !http://pciids.sourceforge.net/pci.ids.bz2
