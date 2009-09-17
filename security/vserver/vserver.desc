@@ -38,13 +38,13 @@
 
 [L] GPL
 [S] Stable
-[V] 2.3.0.36.4
+[V] 2.3.0.36.6
 [P] O -?---5---9 190.200
 
 [D] 3929046219 vcmd-0.13.tar.bz2 http://vserver.13thfloor.at/Experimental/TOOLS/
 [D] 1130625335 testme.sh-0.17 http://vserver.13thfloor.at/Stuff/SCRIPT/
 [D] 2865374499 testfs.sh-0.20 http://vserver.13thfloor.at/Stuff/SCRIPT/
 
-[D] 3641118826 patch-2.6.27.13-vs2.3.0.36.4.diff http://vserver.13thfloor.at/Experimental/
+[D] 286671409 patch-2.6.27.33-vs2.3.0.36.6.diff http://vserver.13thfloor.at/Experimental/
 #[D] 3524913094 patch-2.6.22.19-vs2.2.0.7.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/
 #[D] 299972723 patch-2.6.21.5-vs2.2.0-rc3.diff http://ftp.linux-vserver.org/pub/kernel/vs2.2/testing/
