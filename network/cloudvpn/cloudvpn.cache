@@ -1,8 +1,10 @@
 
-[TIMESTAMP] 1231404605 Thu Jan  8 10:50:05 2009
+[TIMESTAMP] 1254222795 Tue Sep 29 13:13:15 2009
 [BUILDTIME] 5 (5)
-[SIZE] 0.13 MB, 15 files
+[SIZE] 0.19 MB, 8 files
 
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -13,11 +15,17 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnutls
 [DEP] grep
-[DEP] openssl
-[DEP] python
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] perl
 [DEP] runit
-[DEP] scons
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
