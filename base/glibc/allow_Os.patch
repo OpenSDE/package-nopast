@@ -20,19 +20,18 @@ objdir-x86_64-unknown-linux-gnu/libc_pic.os: In function `faccessat':
 (.text+0x7fad9): undefined reference to `fstatat64'
 collect2: ld returned 1 exit status
 
-===================================================================
-RCS file: /cvs/glibc/libc/io/sys/stat.h,v
-retrieving revision 1.57
-retrieving revision 1.56
-diff -u -r1.57 -r1.56
-+++ libc/io/sys/stat.h	2007/09/15 02:27:07	1.57
---- libc/io/sys/stat.h	2007/05/10 23:01:02	1.56
-@@ -444,7 +444,7 @@
+--- ./io/sys/stat.h.orig	2009-09-30 19:04:20.000000000 +0200
++++ ./io/sys/stat.h	2009-09-30 19:06:15.000000000 +0200
+@@ -444,7 +444,11 @@
  		       __mode_t __mode, __dev_t *__dev)
       __THROW __nonnull ((3, 5));
  
 -#if defined __GNUC__ && __GNUC__ >= 2 && defined __USE_EXTERN_INLINES
 +#if defined __GNUC__ && __GNUC__ >= 2
++# ifndef __extern_inline
++#  define __extern_inline        extern inline
++# endif
++
  /* Inlined versions of the real stat and mknod functions.  */
  
  __extern_inline int
