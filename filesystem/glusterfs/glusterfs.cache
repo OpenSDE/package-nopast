@@ -1,9 +1,10 @@
 
-[TIMESTAMP] 1227637264 Tue Nov 25 20:21:04 2008
-[BUILDTIME] 50 (5)
-[SIZE] 1.26 MB, 85 files
+[TIMESTAMP] 1254567773 Sat Oct  3 13:02:53 2009
+[BUILDTIME] 45 (5)
+[SIZE] 2.35 MB, 153 files
 
 [DEP] bash
+[DEP] bdb
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
@@ -18,10 +19,10 @@
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] linux-header
 [DEP] m4
 [DEP] make
 [DEP] mktemp
+[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
