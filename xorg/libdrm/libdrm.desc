@@ -26,10 +26,10 @@
 
 [L] OpenSource
 [S] Stable
-[V] 2.4.12
+[V] 2.4.14
 [P] X -?---5---9 112.445
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 896918406 libdrm-2.4.12.tar.gz http://dri.freedesktop.org/libdrm/
+[D] 3310681930 libdrm-2.4.14.tar.gz http://dri.freedesktop.org/libdrm/
 
