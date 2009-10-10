@@ -33,9 +33,14 @@
 
 [L] GPL
 [S] Stable
-[V] 1.2.2
+[V] 1.2.6
 [P] X -----5---9 194.300
 
 [CV-URL] http://www.dovecot.org/download.html
 
-[D] 771852952 dovecot-1.2.2.tar.gz http://dovecot.org/releases/1.2/
+[SRC] tar
+[D] 1196795821 dovecot-1.2.6.tar.gz http://dovecot.org/releases/1.2/
+[D] 2167057544 dovecot-1.2.6-managesieve-0.11.9.diff.gz http://www.rename-it.nl/dovecot/1.2/
+[D] 3781160333 dovecot-1.2-sieve-0.1.9.tar.gz http://www.rename-it.nl/dovecot/1.2/
+[D] 3515061223 dovecot-1.2-managesieve-0.11.9.tar.gz http://www.rename-it.nl/dovecot/1.2/
+
