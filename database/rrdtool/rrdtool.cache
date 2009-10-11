@@ -1,36 +1,37 @@
 
-[TIMESTAMP] 1133970445 Wed Dec  7 16:47:25 2005
-[BUILDTIME] 40 (9)
-[SIZE] 2.77 MB, 167 files
+[TIMESTAMP] 1255269336 Sun Oct 11 16:55:36 2009
+[BUILDTIME] 35 (5)
+[SIZE] 2.00 MB, 145 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] cgilib
+[DEP] cairo
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
+[DEP] file
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
+[DEP] glib
 [DEP] glibc
-[DEP] gnue-common
 [DEP] grep
-[DEP] libart_lgpl23
+[DEP] intltool
 [DEP] libpng
-[DEP] linux-header
+[DEP] libxml
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
-[DEP] numpy
+[DEP] openssl
+[DEP] pango
 [DEP] perl
-[DEP] pil
-[DEP] python
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] tcl
-[DEP] util-linux
-[DEP] wxpython
-[DEP] zlib
+[DEP] util-linux-ng
