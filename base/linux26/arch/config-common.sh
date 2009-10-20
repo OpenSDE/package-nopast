@@ -41,6 +41,7 @@ CONFIG_SYSFS_DEPRECATED_V2=n
 # no debugging by default
 CONFIG_DEBUG_.*=n
 CONFIG_.*_DEBUG=n
+CONFIG_REISERFS_CHECK=n
 EOT
 
 # broken since 2.6.20 and still as of 2.6.27
