@@ -38,9 +38,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 0.2.903
+[V] 0.2.904
 [P] X -----5---9 800.000
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 2382345011 xf86-video-openchrome-0.2.903.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
+[D] 228629273 xf86-video-openchrome-0.2.904.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
