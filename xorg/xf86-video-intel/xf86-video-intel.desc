@@ -31,5 +31,6 @@
 [R] + x86 x86-64
 
 [O] . package/*/*/modular-x-conf.in
+[O] var_append confopt " " "--disable-shave"
 
 [D] 1559399972 xf86-video-intel-2.9.1.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
