@@ -25,9 +25,9 @@
 
 [L] MIT
 [S] Stable
-[V] 1.0.0
+[V] 1.2.0
 [P] X -----5---9 800.000
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 1516824165 xf86-input-synaptics-1.0.0.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
+[D] 2324936892 xf86-input-synaptics-1.2.0.tar.bz2 http://xorg.freedesktop.org/releases/individual/driver/
