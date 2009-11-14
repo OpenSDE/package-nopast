@@ -28,7 +28,7 @@
 [L] GPL
 [S] Stable
 [V] 2.5.5
-[P] X -----5---9 178.200
+[P] X -----5---9 178.180
 
 [O] . $base/package/*/*/gnome2-or-gtk-conf.in
 
