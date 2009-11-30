@@ -28,7 +28,7 @@
 [T] also supported so that almost all principal platforms and programming
 [T] languages can use Tokyo Tyrant.
 
-[U] http://tokyocabinet.sourceforge.net/tyrantdoc/
+[U] http://1978th.net/tokyotyrant/
 
 [A] Mikio Hirabayashi <mikio@users.sourceforge.net>
 [M] Alejandro Mery <amery@opensde.org>
@@ -37,7 +37,7 @@
 
 [L] LGPL
 [S] Stable
-[V] 1.1.28
+[V] 1.1.37
 [P] X -----5---9 801.000
 
-[D] 1829827674 tokyotyrant-1.1.28.tar.gz http://tokyocabinet.sourceforge.net/tyrantpkg/
+[D] 113738566 tokyotyrant-1.1.37.tar.gz http://1978th.net/tokyotyrant/
