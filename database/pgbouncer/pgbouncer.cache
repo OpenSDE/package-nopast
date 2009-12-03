@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1259844612 Thu Dec  3 13:50:12 2009
+[BUILDTIME] 10 (5)
+[SIZE] 0.16 MB, 11 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libevent
+[DEP] make
+[DEP] mktemp
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
