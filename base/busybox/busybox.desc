@@ -30,7 +30,14 @@
 
 [L] GPL
 [S] Stable
-[V] 1.14.4
+[V] 1.15.2
 [P] X -?---5---9 102.001
 
-[D] 3796671093 busybox-1.14.4.tar.bz2 http://busybox.net/downloads/
+[D] 3243190136 busybox-1.15.2.tar.bz2 http://busybox.net/downloads/
+[D] 2948574288 busybox-1.15.2-ash.patch http://busybox.net/downloads/fixes-1.15.2/
+[D] 3657889363 busybox-1.15.2-awk.patch http://busybox.net/downloads/fixes-1.15.2/
+[D] 1502938620 busybox-1.15.2-buildsys.patch http://busybox.net/downloads/fixes-1.15.2/
+[D] 3349941022 busybox-1.15.2-flash.patch http://busybox.net/downloads/fixes-1.15.2/
+[D] 3188596423 busybox-1.15.2-grep.patch http://busybox.net/downloads/fixes-1.15.2/
+[D] 2642409297 busybox-1.15.2-ping.patch http://busybox.net/downloads/fixes-1.15.2/
+[D] 663590546 busybox-1.15.2-split.patch http://busybox.net/downloads/fixes-1.15.2/
