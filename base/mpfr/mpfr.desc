@@ -36,8 +36,9 @@
 
 [L] LGPL
 [S] Stable
-[V] 2.4.1-p5
+[V] 2.4.2-p2
 [P] X 01-3-5---9 102.250
 
-[D] 3848407937 mpfr-2.4.1.tar.bz2 http://www.mpfr.org/mpfr-current/
-[D] 1477065325 patches http://www.mpfr.org/mpfr-current/
+[D] 3391603398 mpfr-2.4.2.tar.bz2 http://www.mpfr.org/mpfr-current/
+[D] 1508630429 mpfr-2.4.2-p1-sin_cos_underflow.patch !http://www.mpfr.org/mpfr-current/patch01
+[D] 1246259146 mpfr-2.4.2-p2-longlong.h.patch !http://www.mpfr.org/mpfr-current/patch02
