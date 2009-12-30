@@ -1,43 +1,52 @@
 
-[TIMESTAMP] 1176860155 Wed Apr 18 01:35:55 2007
-[BUILDTIME] 50 (9)
-[SIZE] 0.51 MB, 80 files
+[TIMESTAMP] 1262181531 Wed Dec 30 14:58:51 2009
+[BUILDTIME] 50 (5)
+[SIZE] 2.10 MB, 228 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
 [DEP] bash
-[DEP] bdb
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] expat
+[DEP] fhs
+[DEP] file
 [DEP] findutils
+[DEP] flex
+[DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] gss
-[DEP] heimdal
-[DEP] libart_lgpl23
-[DEP] libidn
+[DEP] libgcrypt
+[DEP] libgpg-error
 [DEP] liboping
-[DEP] libpcap
 [DEP] libpng
 [DEP] libstatgrab
-[DEP] linux-header
+[DEP] libtool
+[DEP] libxml
 [DEP] lm_sensors
+[DEP] m4
 [DEP] make
 [DEP] mktemp
 [DEP] mysql
 [DEP] openssl
-[DEP] patch
+[DEP] pango
+[DEP] perl
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] postgresql
+[DEP] procps
+[DEP] python
 [DEP] rrdtool
+[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] sysfsutils
 [DEP] tar
-[DEP] util-linux
-[DEP] xfsprogs
-[DEP] zlib
+[DEP] util-linux-ng
