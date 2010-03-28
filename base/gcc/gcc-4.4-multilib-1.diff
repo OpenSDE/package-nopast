@@ -14,10 +14,11 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-diff -Nur gcc-4.2.4-orig/gcc/config/i386/linux64.h gcc-4.2.4/gcc/config/i386/linux64.h
---- gcc-4.2.4-orig/gcc/config/i386/linux64.h	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/i386/linux64.h	2009-08-03 13:28:22.000000000 +0300
-@@ -48,7 +48,7 @@
+diff --git a/gcc/config/i386/linux64.h b/gcc/config/i386/linux64.h
+index cfa3f49..0846dd0 100644
+--- a/gcc/config/i386/linux64.h
++++ b/gcc/config/i386/linux64.h
+@@ -58,7 +58,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
     When the -shared link option is used a final link is not being
     done.  */
  
@@ -25,11 +26,12 @@ diff -Nur gcc-4.2.4-orig/gcc/config/i386/linux64.h gcc-4.2.4/gcc/config/i386/lin
 +#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld-linux.so.2"
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
  
- #undef	LINK_SPEC
-diff -Nur gcc-4.2.4-orig/gcc/config/i386/t-linux64 gcc-4.2.4/gcc/config/i386/t-linux64
---- gcc-4.2.4-orig/gcc/config/i386/t-linux64	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/i386/t-linux64	2009-08-03 13:28:54.000000000 +0300
-@@ -13,7 +13,7 @@
+ #undef ASM_SPEC
+diff --git a/gcc/config/i386/t-linux64 b/gcc/config/i386/t-linux64
+index 36378d8..b76b2e3 100644
+--- a/gcc/config/i386/t-linux64
++++ b/gcc/config/i386/t-linux64
+@@ -7,7 +7,7 @@
  
  MULTILIB_OPTIONS = m64/m32
  MULTILIB_DIRNAMES = 64 32 
@@ -38,12 +40,13 @@ diff -Nur gcc-4.2.4-orig/gcc/config/i386/t-linux64 gcc-4.2.4/gcc/config/i386/t-l
  
  LIBGCC = stmp-multilib
  INSTALL_LIBGCC = install-multilib
-diff -Nur gcc-4.2.4-orig/gcc/config/mips/linux64.h gcc-4.2.4/gcc/config/mips/linux64.h
---- gcc-4.2.4-orig/gcc/config/mips/linux64.h	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/mips/linux64.h	2009-08-03 13:29:52.000000000 +0300
-@@ -35,9 +35,9 @@
- %{!shared: %{pthread:-lpthread} \
-   %{profile:-lc_p} %{!profile: -lc}}"
+diff --git a/gcc/config/mips/linux64.h b/gcc/config/mips/linux64.h
+index 2f24dfa..d0164ac 100644
+--- a/gcc/config/mips/linux64.h
++++ b/gcc/config/mips/linux64.h
+@@ -35,9 +35,9 @@ along with GCC; see the file COPYING3.  If not see
+ %{!shared: \
+   %{profile:-lc_p} %{!profile:-lc}}"
  
 -#define GLIBC_DYNAMIC_LINKER32 "/lib/ld.so.1"
 +#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld.so.1"
@@ -53,9 +56,10 @@ diff -Nur gcc-4.2.4-orig/gcc/config/mips/linux64.h gcc-4.2.4/gcc/config/mips/lin
  #define UCLIBC_DYNAMIC_LINKERN32 "/lib32/ld-uClibc.so.0"
  #define LINUX_DYNAMIC_LINKERN32 \
    CHOOSE_DYNAMIC_LINKER (GLIBC_DYNAMIC_LINKERN32, UCLIBC_DYNAMIC_LINKERN32)
-diff -Nur gcc-4.2.4-orig/gcc/config/mips/t-linux64 gcc-4.2.4/gcc/config/mips/t-linux64
---- gcc-4.2.4-orig/gcc/config/mips/t-linux64	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/mips/t-linux64	2009-08-03 13:30:25.000000000 +0300
+diff --git a/gcc/config/mips/t-linux64 b/gcc/config/mips/t-linux64
+index 0592e7f..d418d73 100644
+--- a/gcc/config/mips/t-linux64
++++ b/gcc/config/mips/t-linux64
 @@ -1,6 +1,6 @@
  MULTILIB_OPTIONS = mabi=n32/mabi=32/mabi=64
  MULTILIB_DIRNAMES = n32 32 64
@@ -64,10 +68,11 @@ diff -Nur gcc-4.2.4-orig/gcc/config/mips/t-linux64 gcc-4.2.4/gcc/config/mips/t-l
  
  EXTRA_MULTILIB_PARTS=crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o
  
-diff -Nur gcc-4.2.4-orig/gcc/config/rs6000/linux64.h gcc-4.2.4/gcc/config/rs6000/linux64.h
---- gcc-4.2.4-orig/gcc/config/rs6000/linux64.h	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/rs6000/linux64.h	2009-08-03 13:31:28.000000000 +0300
-@@ -335,7 +335,7 @@
+diff --git a/gcc/config/rs6000/linux64.h b/gcc/config/rs6000/linux64.h
+index a83cc24..da6bfe7 100644
+--- a/gcc/config/rs6000/linux64.h
++++ b/gcc/config/rs6000/linux64.h
+@@ -342,7 +342,7 @@ extern int dot_symbols;
  #undef	LINK_OS_DEFAULT_SPEC
  #define LINK_OS_DEFAULT_SPEC "%(link_os_linux)"
  
@@ -76,10 +81,11 @@ diff -Nur gcc-4.2.4-orig/gcc/config/rs6000/linux64.h gcc-4.2.4/gcc/config/rs6000
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld64.so.1"
  #define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
  #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
-diff -Nur gcc-4.2.4-orig/gcc/config/rs6000/t-linux64 gcc-4.2.4/gcc/config/rs6000/t-linux64
---- gcc-4.2.4-orig/gcc/config/rs6000/t-linux64	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/rs6000/t-linux64	2009-08-03 13:31:46.000000000 +0300
-@@ -19,7 +19,7 @@
+diff --git a/gcc/config/rs6000/t-linux64 b/gcc/config/rs6000/t-linux64
+index 2a2e7b0..b4ef657 100644
+--- a/gcc/config/rs6000/t-linux64
++++ b/gcc/config/rs6000/t-linux64
+@@ -19,7 +19,7 @@ MULTILIB_DIRNAMES       = 64 32 nof
  MULTILIB_EXTRA_OPTS     = fPIC mstrict-align
  MULTILIB_EXCEPTIONS     = m64/msoft-float
  MULTILIB_EXCLUSIONS     = m64/!m32/msoft-float
@@ -88,30 +94,32 @@ diff -Nur gcc-4.2.4-orig/gcc/config/rs6000/t-linux64 gcc-4.2.4/gcc/config/rs6000
  MULTILIB_MATCHES        = $(MULTILIB_MATCHES_FLOAT)
  
  softfp_wrap_start := '\#ifndef __powerpc64__'
-diff -Nur gcc-4.2.4-orig/gcc/config/sparc/linux64.h gcc-4.2.4/gcc/config/sparc/linux64.h
---- gcc-4.2.4-orig/gcc/config/sparc/linux64.h	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/sparc/linux64.h	2009-08-03 13:32:39.000000000 +0300
-@@ -143,7 +143,7 @@
+diff --git a/gcc/config/sparc/linux64.h b/gcc/config/sparc/linux64.h
+index 9d0799f..4a4cb37 100644
+--- a/gcc/config/sparc/linux64.h
++++ b/gcc/config/sparc/linux64.h
+@@ -109,7 +109,7 @@ along with GCC; see the file COPYING3.  If not see
  
  /* If ELF is the default format, we should not use /lib/elf.  */
  
 -#define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
 +#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld-linux.so.2"
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux.so.2"
- #define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
- #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
-@@ -166,7 +166,7 @@
+ 
+ #ifdef SPARC_BI_ARCH
+@@ -121,7 +121,7 @@ along with GCC; see the file COPYING3.  If not see
    { "link_arch_default", LINK_ARCH_DEFAULT_SPEC },	  \
    { "link_arch",	 LINK_ARCH_SPEC },
  
--#define LINK_ARCH32_SPEC "-m elf32_sparc -Y P,/usr/lib %{shared:-shared} \
-+#define LINK_ARCH32_SPEC "-m elf32_sparc -Y P,/usr/lib32 %{shared:-shared} \
+-#define LINK_ARCH32_SPEC "-m elf32_sparc -Y P,%R/usr/lib %{shared:-shared} \
++#define LINK_ARCH32_SPEC "-m elf32_sparc -Y P,%R/usr/lib32 %{shared:-shared} \
    %{!shared: \
      %{!ibcs: \
        %{!static: \
-diff -Nur gcc-4.2.4-orig/gcc/config/sparc/t-linux64 gcc-4.2.4/gcc/config/sparc/t-linux64
---- gcc-4.2.4-orig/gcc/config/sparc/t-linux64	2009-08-03 13:27:06.000000000 +0300
-+++ gcc-4.2.4/gcc/config/sparc/t-linux64	2009-08-03 13:32:55.000000000 +0300
+diff --git a/gcc/config/sparc/t-linux64 b/gcc/config/sparc/t-linux64
+index 7a1d5b1..8e8025e 100644
+--- a/gcc/config/sparc/t-linux64
++++ b/gcc/config/sparc/t-linux64
 @@ -1,6 +1,6 @@
  MULTILIB_OPTIONS = m64/m32
  MULTILIB_DIRNAMES = 64 32
