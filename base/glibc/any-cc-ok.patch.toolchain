@@ -15,14 +15,37 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-We want to be able to use any reanable working system to bootstrap T2. Here
-we only extract headers and thus any gcc is ok.
+At toolchain stage we only install glibc headers, so any version of gcc, as
+and ld are ok for us.
 
-  - Rene Rebe <rene@exactcode.de>
-
---- ./configure.vanilla	2005-10-26 18:37:37.643642320 +0300
-+++ ./configure	2005-10-26 18:59:09.289629792 +0300
-@@ -4116,9 +4115,9 @@
+diff -ruN glibc-2.9-orig/configure glibc-2.9/configure
+--- glibc-2.9-orig/configure	2009-02-26 22:28:17.000000000 +0100
++++ glibc-2.9/configure	2010-03-31 10:49:08.000000000 +0200
+@@ -4531,9 +4531,9 @@
+   ac_prog_version=`$AS --version 2>&1 | sed -n 's/^.*GNU assembler.* \([0-9]*\.[0-9.]*\).*$/\1/p'`
+   case $ac_prog_version in
+     '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
+-    2.1[3-9]*)
++    *)
+        ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
+-    *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
++    XXX) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+ 
+   esac
+   { echo "$as_me:$LINENO: result: $ac_prog_version" >&5
+@@ -4594,9 +4594,9 @@
+   ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU ld.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
+   case $ac_prog_version in
+     '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
+-    2.1[3-9]*)
++    *)
+        ac_prog_version="$ac_prog_version, ok"; ac_verc_fail=no;;
+-    *) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
++    XXX) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
+ 
+   esac
+   { echo "$as_me:$LINENO: result: $ac_prog_version" >&5
+@@ -4712,9 +4712,9 @@
    ac_prog_version=`$CC -v 2>&1 | sed -n 's/^.*version \([egcygnustpi-]*[0-9.]*\).*$/\1/p'`
    case $ac_prog_version in
      '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
@@ -33,9 +56,10 @@ we only extract headers and thus any gcc is ok.
 +    XXX) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
  
    esac
-   echo "$as_me:$LINENO: result: $ac_prog_version" >&5
---- glibc-20051128/nptl/sysdeps/pthread/configure	2003-12-03 07:50:01.000000000 +0100
-+++ glibc-20051128-fixed/nptl/sysdeps/pthread/configure	2005-12-09 14:17:37.000000000 +0100
+   { echo "$as_me:$LINENO: result: $ac_prog_version" >&5
+diff -ruN glibc-2.9-orig/nptl/sysdeps/pthread/configure glibc-2.9/nptl/sysdeps/pthread/configure
+--- glibc-2.9-orig/nptl/sysdeps/pthread/configure	2009-02-26 22:28:17.000000000 +0100
++++ glibc-2.9/nptl/sysdeps/pthread/configure	2010-03-31 10:46:03.000000000 +0200
 @@ -3,14 +3,14 @@
  if test "x$libc_cv_gcc___thread" != xyes; then
    { { echo "$as_me:$LINENO: error: compiler support for __thread is required" >&5
