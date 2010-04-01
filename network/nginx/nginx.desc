@@ -34,6 +34,7 @@
 [T] * support SSL
 
 [U] http://sysoev.ru/nginx/
+[U] http://nginx.org/
 
 [A] Igor Sysoev <igor@sysoev.ru>
 [M] Alejandro Mery <amery@opensde.org>
@@ -45,4 +46,6 @@
 [V] 0.8.34
 [P] X -?---5---9 800.000
 
-[D] 2987164342 nginx-0.8.34.tar.gz http://sysoev.ru/nginx/
+[CV-URL] http://nginx.org/en/download.html
+
+[D] 2987164342 nginx-0.8.34.tar.gz http://nginx.org/download/
