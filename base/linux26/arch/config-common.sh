@@ -48,6 +48,9 @@ CONFIG_REISERFS_CHECK=n
 # disable gcov kernel profiling support because it seems to be broken
 CONFIG_GCOV_KERNEL=n
 CONFIG_GCOV_PROFILE_ALL=n
+
+# disable the tracing infrastructure by default
+CONFIG_FTRACE=n
 EOT
 
 # broken since 2.6.20 and still as of 2.6.27
