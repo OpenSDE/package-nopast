@@ -31,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.32.10
+[V] 2.6.32.11
 [P] X -?---5---9 102.060
 
 [D] 984128736 linux-2.6.32.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/
-[D] 365582438 patch-2.6.32.10.bz2 http://kernel.org/pub/linux/kernel/v2.6/
+[D] 4224613662 patch-2.6.32.11.bz2 http://kernel.org/pub/linux/kernel/v2.6/
