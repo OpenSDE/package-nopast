@@ -51,6 +51,9 @@ CONFIG_GCOV_PROFILE_ALL=n
 
 # disable the tracing infrastructure by default
 CONFIG_FTRACE=n
+
+# disable build time boot arguments by default
+CONFIG_CMDLINE_BOOL=n
 EOT
 
 # broken since 2.6.20 and still as of 2.6.27
