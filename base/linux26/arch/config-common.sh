@@ -54,6 +54,9 @@ CONFIG_FTRACE=n
 
 # disable build time boot arguments by default
 CONFIG_CMDLINE_BOOL=n
+
+# disable sample code
+CONFIG_SAMPLES=n
 EOT
 
 # broken since 2.6.20 and still as of 2.6.27
