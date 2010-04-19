@@ -33,11 +33,11 @@
 
 [L] Restricted
 [S] Stable
-[V] 6u18
+[V] 6u19
 [P] O -----5---9 150.000
 
 [O] . $base/package/*/*/java-sun-conf.in jdk
 
-[D] 815090759 jdk-6u18-linux-i586.bin -manual://java.sun.com/javase/6/download.jsp
-[D] 2215302980 jdk-6u18-linux-x64.bin -manual://java.sun.com/javase/6/download.jsp
+[D] 1366333771 jdk-6u19-linux-i586.bin -manual://java.sun.com/javase/6/download.jsp
+[D] 1525953131 jdk-6u19-linux-x64.bin -manual://java.sun.com/javase/6/download.jsp
 
