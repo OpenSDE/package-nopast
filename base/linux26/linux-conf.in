@@ -207,6 +207,10 @@ lx_injectextraversion () {
 		version_header=linux/utsrelease.h
 	fi
 
+	if [ -f include/generated/utsrelease.h ]; then
+		version_header=generated/utsrelease.h
+	fi
+
 	# inject final EXTRAVERSION into Makefile
 	sed -i -e "s,^\([ \t]*EXTRAVERSION[ \t]*\)=.*,\1= ${lx_extraversion},g" Makefile
 
