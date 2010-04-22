@@ -85,7 +85,7 @@ auto_config() {
 		none)
 			abort "auto_config: shouldn't reach this point."
 			;;
-		defconfig|nomodules)
+		defconfig|humble|nomodules)
 			eval $MAKE $makeopt defconfig
 			;;
 		allmodules)
@@ -115,10 +115,12 @@ auto_config() {
 
 	fi
 
-	# all modules needs to be first so modules can be disabled by i.e.
-	# the targets later
-	echo "Enabling all modules ..."
-	yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
+	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" != "humble" ]; then
+		# all modules needs to be first so modules can be disabled by i.e.
+		# the targets later
+		echo "Enabling all modules ..."
+		yes '' | eval $MAKE $makeopt no2modconfig > /dev/null ; cp .config{,.2}
+	fi
 
 	# for "safety" we will apply the config twice, so hidden options have time
 	# to appear
