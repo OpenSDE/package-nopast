@@ -22,15 +22,6 @@ auto configuration.
 diff -ruN linux-2.6.32.10-orig/scripts/kconfig/Makefile linux-2.6.32.10/scripts/kconfig/Makefile
 --- linux-2.6.32.10-orig/scripts/kconfig/Makefile	2009-12-03 04:51:21.000000000 +0100
 +++ linux-2.6.32.10/scripts/kconfig/Makefile	2010-03-25 10:15:26.297247478 +0100
-@@ -3,7 +3,7 @@
- # These targets are used from top-level makefile
- 
- PHONY += oldconfig xconfig gconfig menuconfig config silentoldconfig update-po-config \
--	localmodconfig localyesconfig
-+	localmodconfig localyesconfig no2modconfig
- 
- ifdef KBUILD_KCONFIG
- Kconfig := $(KBUILD_KCONFIG)
 @@ -81,7 +81,7 @@
  	$(Q)rm -f arch/um/Kconfig.arch
  	$(Q)rm -f $(obj)/config.pot
