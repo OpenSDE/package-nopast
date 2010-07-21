@@ -1,0 +1,2 @@
+run	D_sbindir/libvirtd
+log	libvirtd
