@@ -20,6 +20,6 @@ if hasflag X11R6; then
 	var_append GCC_WRAPPER_INSERT ' ' '*/X11R6/lib64?-L/usr/X11/lib64'
 fi
 
-if atstage cross && pkginstalled libx11; then
+if atstage cross && pkginstalled -f libx11; then
 	var_append GCC_WRAPPER_INSERT ' ' "-Wl,-rpath,$(pkgprefix -r libdir libx11)"
 fi
