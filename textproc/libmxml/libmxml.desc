@@ -25,7 +25,7 @@
 [T] structure of typed nodes and functions for managing, traversing,
 [T] indexing, and searching the tree.
 
-[U] http://www.easysw.com/~mike/mxml/
+[U] http://www.minixml.org
 
 [A] Michael Sweet <mike@easysw.com>
 [M] Christian Wiese <jeru@ixplanet.org>
