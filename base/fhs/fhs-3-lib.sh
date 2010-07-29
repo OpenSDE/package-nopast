@@ -23,7 +23,9 @@ for x in '' 'usr/' 'usr/local/'; do
 	if [ -z "$lib" ]; then
 		echo "m ${x}lib"
 	else
-		echo "m ${x}lib32"
+		if [ "$SDECFG_MULTILIB" = 1 ]; then
+			echo "m ${x}lib32"
+		fi
 		echo "m ${x}lib64"
 		echo "l ${x}lib $lib"
 	fi
