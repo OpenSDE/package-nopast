@@ -14,10 +14,8 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-diff --git a/Makefile b/Makefile
-index 77a85c6..20e2f11 100644
---- a/Makefile
-+++ b/Makefile
+--- iproute2-2.6.33/Makefile.orig	2010-07-29 15:58:54.676088196 +0200
++++ iproute2-2.6.33/Makefile	2010-07-29 16:08:27.216258415 +0200
 @@ -1,14 +1,14 @@
 -DESTDIR=/usr/
 -ROOTDIR=$(DESTDIR)
@@ -36,7 +34,7 @@ index 77a85c6..20e2f11 100644
  
  # Path to db_185.h include
 -DBM_INCLUDE:=$(ROOTDIR)/usr/include
-+DBM_INCLUDE:=$(DESTDIR)$(PREFIX)/include
++DBM_INCLUDE:=$(DESTDIR)/usr/include
  
  SHARED_LIBS = y
  

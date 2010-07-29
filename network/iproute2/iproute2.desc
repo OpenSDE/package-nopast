@@ -36,9 +36,9 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.31
+[V] 2.6.33
 [P] X -?---5---9 190.000
 
 # temporal hack to srcdir, hopefully
 [O] srcdir=$pkg/$pkg-$ver
-[D] 2305543531 iproute2-2.6.31.tar.bz2 http://devresources.linuxfoundation.org/dev/iproute2/download/
+[D] 3298688898 iproute2-2.6.33.tar.bz2 http://devresources.linuxfoundation.org/dev/iproute2/download/
