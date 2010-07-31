@@ -42,9 +42,7 @@
 
 [L] GPL
 [S] Stable
-[V] 0.8.46
+[V] 0.7.65
 [P] X -?---5---9 800.000
 
-[CV-URL] http://nginx.org/en/download.html
-
-[D] 2443588005 nginx-0.8.46.tar.gz http://nginx.org/download/
+[D] 4181498543 nginx-0.7.65.tar.gz http://sysoev.ru/nginx/
