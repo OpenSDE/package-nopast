@@ -27,10 +27,11 @@
 [M] Christian Wiese <morfoh@opensde.org>
 
 [C] extra/network
+[F] NOPARALLEL
 
 [L] GPL
 [S] Beta
-[V] 0.17
+[V] 1.6
 [P] X -----5---9 800.000
 
-[D] 2951865613 openl2tp-0.17.tar.gz http://dl.sourceforge.net/sourceforge/openl2tp/
+[D] 1766152968 openl2tp-1.6.tar.gz ftp://ftp.openl2tp.org/releases/openl2tp-1.6/
