@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1280940983 Wed Aug  4 18:56:23 2010
+[BUILDTIME] 0 (9)
+[SIZE] 0.12 MB, 11 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
