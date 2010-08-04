@@ -22,7 +22,7 @@
 [T] daemon to do the lookups. This works around a number of problems in the
 [T] original implementation.
 
-[U] http://ch.tudelft.nl/~arthur/nss-ldapd/
+[U] http://arthurdejong.org/nss-pam-ldapd/
 
 [A] Arthur de Jong <arthur@ch.tudelft.nl>
 [M] Alejandro Mery <amery@opensde.org>
