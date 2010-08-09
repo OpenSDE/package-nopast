@@ -90,6 +90,9 @@ EOF
 	# exports
 	export MOZILLA_FIVE_HOME=$libdir/$pkg-$mozver
 	export MOZILLA_OFFICIAL=1 BUILD_OFFICIAL=1
+
+	# Mozilla's configure script don't like --docdir confopt
+	var_remove_regex confopt ' ' "--docdir=.*"
 }
 
 mozilla_register() {
@@ -118,4 +121,3 @@ chownsrcdir=0
 if [ "$pkg" != "seamonkey" ]; then
 	var_append flist''del '|' ".*/aclocal/nspr\.m4"
 fi
-
