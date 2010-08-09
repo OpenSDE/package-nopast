@@ -94,6 +94,7 @@ EOF
 
 mozilla_register() {
 	echo "Run the component registration ..."
+	export MOZILLA_FIVE_HOME=$libdir/$pkg-$mozver
 	pushd $MOZILLA_FIVE_HOME
 	[ -e ./regxpcom ] && LD_LIBRARY_PATH=. ./regxpcom
 	[ -e ./regchrome ] && LD_LIBRARY_PATH=. ./regchrome
