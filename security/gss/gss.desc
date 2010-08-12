@@ -29,8 +29,8 @@
 [C] extra/security
 
 [L] GPL
-[S] Alpha
-[V] 0.1.5
+[S] Stable
+[V] 1.0.1
 [P] X -----5---9 112.000
 
-[D] 3570662115 gss-0.1.5.tar.gz ftp://alpha.gnu.org/gnu/gss/
+[D] 1510108530 gss-1.0.1.tar.gz ftp://ftp.gnu.org/gnu/gss/
