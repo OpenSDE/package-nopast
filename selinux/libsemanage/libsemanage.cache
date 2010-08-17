@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1282038938 Tue Aug 17 11:55:38 2010
+[BUILDTIME] 10 (5)
+[SIZE] 0.83 MB, 144 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libselinux
+[DEP] libsepol
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] ustr
