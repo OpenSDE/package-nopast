@@ -29,8 +29,8 @@
 
 [L] PublicDomain
 [S] Stable
-[V] 2010i
+[V] 2010l
 [P] X -1---5---9 200.000
 
-[D] 2146998178 tzcode2010f.tar.gz ftp://elsie.nci.nih.gov/pub/
-[D] 1379850882 tzdata2010i.tar.gz ftp://elsie.nci.nih.gov/pub/
+[D] 1859581782 tzcode2010l.tar.gz ftp://elsie.nci.nih.gov/pub/
+[D] 3476162825 tzdata2010l.tar.gz ftp://elsie.nci.nih.gov/pub/
