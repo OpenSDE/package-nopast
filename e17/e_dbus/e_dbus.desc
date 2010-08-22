@@ -27,7 +27,7 @@
 
 [L] PublicDomain
 [S] Beta
-[V] 0.5.0.49898
-[P] X -----5---9 200.000
+[V] 1.0.0-alpha
+[P] X -----5---9 201.500
 
-[D] 3605559302 e_dbus-0.5.0.49898.tar.bz2 http://download.enlightenment.org/snapshots/LATEST/
+[D] 2362226959 e_dbus-1.0.0-alpha.tar.bz2 http://download.enlightenment.org/releases/
