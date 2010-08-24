@@ -14,9 +14,10 @@
 
 [I] Library which provides a nice QT interface to RDF storage solutions
 
-[T] Soprano is a library which provides a QT wrapper API to different RDF storage solutions. It
-[T] features named graphs (contexts) and has a modular plug-in structure which allows to use RDF
-[T] backends implemented with different RDF Storage.
+[T] Soprano is a library which provides a QT wrapper API to different RDF
+[T] storage solutions. It [T] features named graphs (contexts) and has a
+[T] modular plug-in structure which allows to use RDF backends implemented
+[T] with different RDF Storage.
 
 [U] http://sourceforge.net/projects/soprano/
 
