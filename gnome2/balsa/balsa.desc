@@ -22,7 +22,7 @@
 [T] response, and can do nifty things like read your GnomeCard address book,
 [T] use LDAP, and render HTML mail.
 
-[U] http://balsa.gnome.org
+[U] http://pawsa.fedorapeople.org/balsa/
 
 [A] Emmanuel Allaud <e.allaud@wanadoo.fr>
 [A] Peter Bloomfield <PeterBloomfield@MindSpring.com>
