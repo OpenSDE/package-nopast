@@ -1,0 +1,52 @@
+
+[TIMESTAMP] 1282739657 Wed Aug 25 14:34:17 2010
+[BUILDTIME] 40 (5)
+[SIZE] 4.31 MB, 137 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cairo
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] glitz
+[DEP] grep
+[DEP] kbproto
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libselinux
+[DEP] libsepol
+[DEP] libtool
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxrender
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] numpy
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] pyxml
+[DEP] renderproto
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] wxpython
+[DEP] xproto
+[DEP] zlib
