@@ -37,9 +37,9 @@
 
 [L] GPL
 [S] Stable
-[V] 3.6.23.1
+[V] 3.7.2
 [P] X -----5---9 120.090
 
 [CV-URL] http://www.sqlite.org/download.html
 
-[D] 860509620 sqlite-amalgamation-3.6.23.1.tar.gz http://www.sqlite.org/
+[D] 1202989169 sqlite-amalgamation-3.7.2.tar.gz http://www.sqlite.org/
