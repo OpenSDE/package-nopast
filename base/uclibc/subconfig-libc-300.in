@@ -27,4 +27,11 @@ if [ "$SDECFG_LIBC" == "uclibc" ]; then
 		none "disable thread support" \
 		old "use older version of linuxthreads (stable)" \
 		new "use slightly newer version of linuxthreads (not much tested)"
+
+	
+	comment ' '
+
+	comment 'Legacy feature support:'
+	bool 'Enable SuSv3 LEGACY functions' SDECFG_PKG_UCLIBC_SUSV3_LEGACY 0
+	bool 'Enable SuSv4 LEGACY or obsolescent functions' SDECFG_PKG_UCLIBC_SUSV4_LEGACY 0
 fi
