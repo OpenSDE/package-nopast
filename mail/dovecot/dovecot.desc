@@ -33,14 +33,14 @@
 
 [L] GPL
 [S] Stable
-[V] 1.2.12
+[V] 1.2.13
 [P] X -----5---9 194.300
 
 [CV-URL] http://www.dovecot.org/download.html
 
 [SRC] tar
-[D] 938249146 dovecot-1.2.12.tar.gz http://dovecot.org/releases/1.2/
-[D] 1951643574 dovecot-1.2.12-managesieve-0.11.11.diff.gz http://www.rename-it.nl/dovecot/1.2/
+[D] 2237552754 dovecot-1.2.13.tar.gz http://dovecot.org/releases/1.2/
+[D] 3548855818 dovecot-1.2.13-managesieve-0.11.11.diff.gz http://www.rename-it.nl/dovecot/1.2/
 [D] 3931420998 dovecot-1.2-sieve-0.1.17.tar.gz http://www.rename-it.nl/dovecot/1.2/
 [D] 1704685134 dovecot-1.2-managesieve-0.11.11.tar.gz http://www.rename-it.nl/dovecot/1.2/
 
