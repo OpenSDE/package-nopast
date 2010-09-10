@@ -27,16 +27,18 @@
 [T] tells the spam classifier that it made an error and needs to reclassify
 [T] the message (as spam/not spam depending on which way it was moved.
 
-[U] http://johannes.sipsolutions.net/Projects/dovecot-antispam
+[U] http://wiki2.dovecot.org/Plugins/Antispam
+[U] http://johannes.sipsolutions.net/Projects/dovecot-antispam (dovecot 1.x)
 
-[A] Johannes Berg <johannes@sipsolutions.net>
-[M] Christian Wiese <morfoh@opensde.org>
+[A] Eugene Paskevich <eugene@raptor.kiev.ua>
+[A] Johannes Berg <johannes@sipsolutions.net> (original author)
+[M] Christian Wiese <chris@opensde.org>
 
 [C] extra/tool
 
 [L] GPL
 [S] Beta
-[V] 1.3
+[V] 2.0.0-9ce38021e8e7 
 [P] X -----5---9 800.000
 
-[D] 1600699422 dovecot-antispam-1.3.tar.bz2 http://johannes.sipsolutions.net/download/dovecot-antispam/
+[D] 2922240569 dovecot-antispam-plugin-2.0.0-9ce38021e8e7.tar.bz2 !http://hg.dovecot.org/dovecot-antispam-plugin/archive/9ce38021e8e7.tar.bz2
