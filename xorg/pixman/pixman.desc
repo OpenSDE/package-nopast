@@ -25,9 +25,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 0.18.2
+[V] 0.19.2
 [P] X -?---5---9 112.550
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 2902388808 pixman-0.18.2.tar.bz2 http://xorg.freedesktop.org/archive/individual/lib/
+[D] 3639344201 pixman-0.19.2.tar.bz2 http://xorg.freedesktop.org/archive/individual/lib/
