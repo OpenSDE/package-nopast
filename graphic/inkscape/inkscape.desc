@@ -34,10 +34,10 @@
 
 [L] GPL
 [S] Stable
-[V] 0.47
+[V] 0.48.0
 [P] X -----5---9 801.000
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 3564580705 inkscape-0.47.tar.gz http://dl.sourceforge.net/sourceforge/inkscape/
+[D] 720172798 inkscape-0.48.0.tar.gz http://dl.sourceforge.net/sourceforge/inkscape/
 #[D] 3746882795 inkscape-20050131-0020.tar.bz2 http://www.inkscape.org/cvs-snap/
