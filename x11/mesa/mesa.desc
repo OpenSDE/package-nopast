@@ -42,8 +42,8 @@
 
 [O] . package/*/*/modular-x-conf.in
 
-[V] 7.6.1
+[V] 7.8.2
 [P] X -?---5---9 112.467
 
-[D] 1602816938 MesaLib-7.6.1.tar.bz2 ftp://ftp.freedesktop.org/pub/mesa/7.6.1/
-[D] 4125939880 MesaGLUT-7.6.1.tar.bz2 ftp://ftp.freedesktop.org/pub/mesa/7.6.1/
+[D] 3918363098 MesaLib-7.8.2.tar.bz2 ftp://ftp.freedesktop.org/pub/mesa/7.8.2/
+[D] 634519422 MesaGLUT-7.8.2.tar.bz2 ftp://ftp.freedesktop.org/pub/mesa/7.8.2/
