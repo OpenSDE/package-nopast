@@ -1,0 +1,40 @@
+
+[TIMESTAMP] 1284675228 Fri Sep 17 00:13:48 2010
+[BUILDTIME] 5 (5)
+[SIZE] 0.15 MB, 14 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] libice
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxrender
+[DEP] libxt
+[DEP] linux-header
+[DEP] make
+[DEP] nas
+[DEP] pkgconfig
+[DEP] qjson
+[DEP] qt4
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng

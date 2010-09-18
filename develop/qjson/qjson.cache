@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1284675210 Fri Sep 17 00:13:30 2010
+[BUILDTIME] 0 (5)
+[SIZE] 0.15 MB, 21 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] pkgconfig
+[DEP] qt4
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng

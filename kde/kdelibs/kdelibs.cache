@@ -1,9 +1,11 @@
 
-[TIMESTAMP] 1239828186 Wed Apr 15 23:43:06 2009
-[BUILDTIME] 1180 (5)
-[SIZE] 307.77 MB, 4218 files
+[TIMESTAMP] 1284811127 Sat Sep 18 13:58:47 2010
+[BUILDTIME] 1620 (5)
+[SIZE] 57.59 MB, 4414 files
 
+[DEP] acl
 [DEP] aspell
+[DEP] attica
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
@@ -11,8 +13,9 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -25,10 +28,13 @@
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] ilmbase
 [DEP] inputproto
 [DEP] jasper
+[DEP] kbproto
+[DEP] libdbusmenu-qt
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
@@ -42,9 +48,11 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxslt
 [DEP] libxt
 [DEP] libxtst
@@ -58,15 +66,18 @@
 [DEP] perl
 [DEP] phonon
 [DEP] pkgconfig
+[DEP] qimageblitz
 [DEP] qt4
 [DEP] renderproto
+[DEP] scrnsaverproto
 [DEP] sed
+[DEP] shared-desktop-ontologies
 [DEP] shared-mime-info
 [DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] valgrind
 [DEP] xextproto
 [DEP] xproto
