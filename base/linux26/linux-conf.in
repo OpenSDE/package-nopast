@@ -65,7 +65,7 @@ makeopt=
 [ $SDECFG_PARALLEL_MAX -gt 1 ] &&
 	var_append makeopt ' ' -j$(( $SDECFG_PARALLEL_MAX + 1 ))
 
-var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC"
+var_append makeopt ' ' "ARCH=$lx_cpu CROSS_COMPILE=$archprefix KCC=$KCC LOCALVERSION="
 makeinstopt="$makeopt"
 
 auto_config_merge() {
