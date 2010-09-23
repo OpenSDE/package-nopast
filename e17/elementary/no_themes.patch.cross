@@ -16,11 +16,11 @@
 
 data/* needs to run edje_cc
 
---- ./Makefile.am.orig	2010-04-29 07:15:13.000000000 -0400
-+++ ./Makefile.am	2010-04-29 07:15:33.000000000 -0400
+--- ./Makefile.am.orig	2010-02-21 19:29:37.000000000 -0500
++++ ./Makefile.am	2010-09-20 18:07:50.000000000 -0400
 @@ -1,4 +1,4 @@
--SUBDIRS = src data doc
-+SUBDIRS = src doc
+-SUBDIRS = src data config doc
++SUBDIRS = src config doc
  
  ACLOCAL_AMFLAGS = -I m4
  
