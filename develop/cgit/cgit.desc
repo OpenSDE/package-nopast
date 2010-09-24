@@ -30,9 +30,11 @@
 
 [L] GPL
 [S] Stable
-[V] 0.8.3.3
+#[V] 0.8.3.3
+[V] 0.8.3-bf8293d3
 [P] X -----5---9 800.000
 
 [CV-URL] http://hjemli.net/git/cgit/refs/tags
 
-[D] 2398434315 cgit-0.8.3.3.tar.bz2 http://hjemli.net/git/cgit/snapshot/
+#[D] 2398434315 cgit-0.8.3.3.tar.bz2 http://hjemli.net/git/cgit/snapshot/
+[D] X cgit-bf8293d3196d49d6c4a48b254a04415183ca2762.tar.bz2 http://hjemli.net/git/cgit/snapshot/
