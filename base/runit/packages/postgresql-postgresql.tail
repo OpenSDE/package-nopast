@@ -1,0 +1,2 @@
+run	envdir ./env setuidgid postgres D_bindir/postmaster -i
+log	postgresql
