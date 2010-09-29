@@ -19,25 +19,16 @@ Description: Replace usleep() with nanosleep()
 usleep() was deprecated by SUSv3 and newer LIBCs are starting to enforce that
 deprecation.
 
---- mdadm-2.6.7/mdopen.c.orig	2010-09-29 19:01:38.854974364 +0200
-+++ mdadm-2.6.7/mdopen.c	2010-09-29 19:03:34.302325754 +0200
-@@ -342,7 +342,7 @@
- 				make_parts(chosen_name, parts, ci->symlinks);
- 			return fd;
- 		}
--		usleep(200000);
-+		nanosleep(&((struct timespec) {0, 200000000L}), NULL);
- 	}
- 	return -1;
- }
---- mdadm-2.6.7/Assemble.c.orig	2010-09-29 19:35:11.139790606 +0200
-+++ mdadm-2.6.7/Assemble.c	2010-09-29 19:34:50.957370956 +0200
-@@ -956,7 +956,7 @@
- 								break;
- 							close(mdfd);
- 						}
--						usleep(usecs);
-+						nanosleep(&((struct timespec){0,(usecs) * 1000ul}), NULL);
- 						usecs <<= 1;
- 					}
- 				}
+--- ./mdadm.h.orig	2010-09-25 22:49:01.040000255 +0200
++++ ./mdadm.h	2010-09-25 22:50:27.192000253 +0200
+@@ -566,3 +566,10 @@
+ #define ALGORITHM_RIGHT_ASYMMETRIC	1
+ #define ALGORITHM_LEFT_SYMMETRIC	2
+ #define ALGORITHM_RIGHT_SYMMETRIC	3
++
++#define usleep(x)	xx_usleep(x)
++static inline void xx_usleep(unsigned k)
++{
++	const struct timespec t = { k/1000000UL, (k%1000000UL)*1000UL };
++	nanosleep(&t, NULL);
++}
