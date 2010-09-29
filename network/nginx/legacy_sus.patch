@@ -24,7 +24,7 @@ deprecation.
  
  #define ngx_gettimeofday(tp)  (void) gettimeofday(tp, NULL);
 -#define ngx_msleep(ms)        (void) usleep(ms * 1000)
-+#define ngx_msleep(ms)        (void) nanosleep(&((struct timespec){0,(ms) * 1000}), NULL)
++#define ngx_msleep(ms)        (void) nanosleep(&((struct timespec){0,(ms) * 1000000ul}), NULL)
  #define ngx_sleep(s)          (void) sleep(s)
  
  
