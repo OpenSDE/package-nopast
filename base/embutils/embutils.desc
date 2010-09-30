@@ -22,7 +22,7 @@
 [A] Felix von Leitner <fefe@fefe.de>
 [M] Alejandro Mery <amery@opensde.org>
 
-[F] DIETLIBC
+[F] USE_DIETLIBC
 
 [C] base/system
 
