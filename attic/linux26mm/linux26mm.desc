@@ -33,7 +33,7 @@
 [L] GPL
 [S] Stable
 [V] 2.6.18-mm3
-[P] X -?---5---9 102.060
+[P] O -?---5---9 102.060
 
 [D] 1833570624 linux-2.6.18.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/
 [D] 264215164 patch-2.6.18-mm3.bz2 !http://kernel.org/pub/linux/kernel/people/akpm/patches/2.6/2.6.18/2.6.18-mm3/2.6.18-mm3.bz2
