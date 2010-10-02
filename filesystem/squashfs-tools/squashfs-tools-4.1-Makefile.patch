@@ -14,8 +14,9 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- squashfs4.1/squashfs-tools/Makefile.orig	2010-09-30 22:36:25.396000820 +0200
-+++ squashfs4.1/squashfs-tools/Makefile	2010-09-30 23:17:39.896000821 +0200
+diff -ruNpP squashfs4.1-orig/squashfs-tools/Makefile squashfs4.1/squashfs-tools/Makefile
+--- squashfs4.1-orig/squashfs-tools/Makefile	2010-09-21 00:11:47.000000000 +0200
++++ squashfs4.1/squashfs-tools/Makefile	2010-10-01 16:02:07.920000826 +0200
 @@ -91,7 +91,7 @@ CFLAGS = $(INCLUDEDIR) -D_FILE_OFFSET_BI
  	-D_GNU_SOURCE -DCOMP_DEFAULT=\"$(COMP_DEFAULT)\"  -O2 -Wall
  
@@ -43,7 +44,7 @@
  CFLAGS += -DLZMA_SUPPORT
  MKSQUASHFS_OBJS += xz_wrapper.o
  UNSQUASHFS_OBJS += xz_wrapper.o
-@@ -117,7 +117,7 @@ LIBS += -llzma
+@@ -117,20 +117,22 @@ LIBS += -llzma
  COMPRESSORS += lzma
  endif
  
@@ -52,7 +53,13 @@
  CFLAGS += -DLZO_SUPPORT
  ifdef LZO_DIR
  INCLUDEDIR += -I$(LZO_DIR)/include
-@@ -129,8 +129,8 @@ LIBS += $(LZO_LIBDIR) -llzo2
++ifndef LZO_LIBDIR
+ LZO_LIBDIR = -L$(LZO_DIR)/lib
+ endif
++endif
+ MKSQUASHFS_OBJS += lzo_wrapper.o
+ UNSQUASHFS_OBJS += lzo_wrapper.o
+ LIBS += $(LZO_LIBDIR) -llzo2
  COMPRESSORS += lzo
  endif
  
@@ -63,7 +70,7 @@
  CFLAGS += -DXATTR_SUPPORT -DXATTR_DEFAULT
  else
  CFLAGS += -DXATTR_SUPPORT
-@@ -142,7 +142,7 @@ endif
+@@ -142,7 +144,7 @@ endif
  #
  # If LZMA_SUPPORT is specified then LZO_DIR must be specified too
  #
@@ -72,7 +79,7 @@
  ifndef LZMA_DIR
  $(error "LZMA_SUPPORT requires LZMA_DIR to be also defined")
  endif
-@@ -151,8 +151,8 @@ endif
+@@ -151,8 +153,8 @@ endif
  #
  # Both XZ_SUPPORT and LZMA_SUPPORT cannot be specified
  #
