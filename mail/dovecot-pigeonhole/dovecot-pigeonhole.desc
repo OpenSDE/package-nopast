@@ -33,8 +33,8 @@
 [C] extra/tool
 
 [L] LGPL
-[S] Alpha
-[V] 0.2.UNSTABLE-5889581572b6
+[S] Beta
+[V] 0.2.0
 [P] X -----5---9 800.000
 
-[D] 4097794629 dovecot-pigeonhole-0.2.UNSTABLE-5889581572b6.tar.bz2 !http://hg.rename-it.nl/dovecot-2.0-pigeonhole/archive/5889581572b6.tar.bz2
+[D] 2691209323 dovecot-2.0-pigeonhole-0.2.0.tar.gz http://www.rename-it.nl/dovecot/2.0/
