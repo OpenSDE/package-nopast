@@ -28,4 +28,5 @@
 [V] 2.1-32
 [P] X -----5---9 800.000
 
+[D] 2059034537 aufs2.1-util.tar.gz !http://git.c3sl.ufpr.br/gitweb?p=aufs/aufs2-util.git;a=snapshot;h=010636f8915b495a6468c9ed19db5c6cc0e6e1c7;sf=tgz
 [D] 532263631 aufs2.1-32.tar.gz !http://git.c3sl.ufpr.br/gitweb?p=aufs/aufs2-standalone.git;a=snapshot;h=refs/heads/aufs2.1-32;sf=tgz
