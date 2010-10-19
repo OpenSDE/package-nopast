@@ -65,7 +65,7 @@ java_preconf() {
 	fi
 
 	# Retrieve the original javahome name from the archive.
-	tempvar="`head -n100 ${java_srctar##*/} | grep javahome`"
+	tempvar="`head -n100 ${java_srctar##*/} | grep javahome=`"
 	java_home_original=${tempvar/*=/}
 
 	# Ready to unpack/install the archive.
