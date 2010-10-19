@@ -44,7 +44,7 @@ java_srctar=
 case $arch in
 	x86)	java_srctar="`match_source_file -p -i586`" ;;
 	ia64)	java_srctar="`match_source_file -p -ia64`" ;;
-	x86-64) java_srctar="`match_source_file -p -amd64`" ;;
+	x86-64) java_srctar="`match_source_file -p -x64`" ;;
 esac
 
 # Make sure there is a file to be patched. If not we
