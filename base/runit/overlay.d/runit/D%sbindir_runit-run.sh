@@ -23,11 +23,13 @@ set -e
 
 SVID="${PWD##*/}"
 RUN=
+RUNOPT=
 
 [ -z "$SCRIPT" ] || . "$PROGNAME"
 
 if [ -n "$RUN" ]; then
-	exec "$RUN"
+	[ -z "$RUNOPT" ] || eval "set -- $RUNOPT $*"
+	exec "$RUN" "$@"
 else
 	echo "$PROGNAME: no daemon to RUN defined" >&2
 	exit 1
