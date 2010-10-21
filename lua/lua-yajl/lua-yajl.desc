@@ -25,7 +25,7 @@
 
 [L] MIT
 [S] Stable
-[V] 1.1
+[V] 1.2
 [P] X -----5---9 800.000
 
-[D] 0 lua-yajl-1.1.tar.gz !http://github.com/brimworks/lua-yajl/tarball/v1.1
+[D] 741428464 lua-yajl-1.2.tar.gz !http://github.com/brimworks/lua-yajl/tarball/v1.2
