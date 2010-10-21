@@ -21,6 +21,11 @@ EOT
 exit 1
 }
 
+die() {
+	[ $# -eq 0 ] || echo "$*" >&2
+	exit 1
+}
+
 progname() {
 	case "$1" in
 	/*)	echo "$1" ;;
@@ -42,8 +47,7 @@ D_sbindir/${TEMPLATE:-runit-run})
 		PROGNAME="$(progname "$1")"; shift
 		SCRIPT=yes
 	else
-		echo "$PROGNAME: invalid script" >&2
-		exit 1
+		die "$PROGNAME: invalid script" >&2
 	fi
 	;;
 *)
