@@ -35,8 +35,8 @@
 
 [L] OpenSource
 [S] Stable
-[V] 8.4.4
+[V] 8.4.5
 [P] X -----5---9 126.000
 
-[D] 1896981238 postgresql-8.4.4.tar.bz2 http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v8.4.4/
+[D] 765594645 postgresql-8.4.5.tar.bz2 http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v8.4.5/
 
