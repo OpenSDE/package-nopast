@@ -31,7 +31,8 @@ fi
 
 lx_extraversion=
 lx_kernelrelease=
-lx_customconf="$base/config/$config/linux.cfg"
+
+lx_customconf="${SDECFG_PKG_LINUX_CONFIG_FILE:-config/$config/linux.cfg}"
 
 # $lx_confmerge list of config snaps gets merged to .config.3 on auto_config()
 #
@@ -283,8 +284,12 @@ lx_config() {
 	echo "Generic linux configuration ..."
 	hook_eval preconf
 	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" = none ] ; then
-		echo "Using only ${lx_customconf#$base/}."
-		cp -vf $lx_customconf .config
+		echo_status "Using only ${lx_customconf}."
+		if expr "$lx_customconf" : '/*' > /dev/null; then
+			cp -vf "$lx_customconf" .config
+		else
+			cp -vf "$base/$lx_customconf" .config
+		fi
 		eval $MAKE $makeopt oldconfig
 	else
 		echo "Automatically creating default configuration ...."

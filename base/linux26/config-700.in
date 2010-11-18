@@ -23,12 +23,11 @@ menu_begin MENU_PKG_LINUX 'Linux Kernel Options'
 		humble 'Automatic, using defconfig but not forcing modules' \
 		nomodules 'Using defconfig but disabling all modules at the end'
 
-	if [ "$SDECFG_PKG_LINUX_CONFIG_STYLE" = none ]; then
-		comment " WARNING: you need config/$config/linux.cfg"
-		comment "          for this setting to work."
-	fi
+	comment ' '
+	text 'Custom settings file' SDECFG_PKG_LINUX_CONFIG_FILE "config/$config/linux.cfg"
 
 	if pkgcheck uml_utilities X ; then
+		comment ' '
 		choice SDECFG_PKG_LINUX_UML_STYLE modules \
 	                none 'Do not perform any automatic UML related optimization' \
        			skas3 'Build UML Host kernel with SKAS3 support' \
