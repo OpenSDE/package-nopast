@@ -14,15 +14,15 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./configure.in.orig	2010-02-25 23:52:20.000000000 +0100
-+++ ./configure.in	2010-02-25 23:55:46.000000000 +0100
-@@ -363,6 +363,9 @@
- AC_CHECK_HEADERS(xcrypt.h crypt.h)
+--- ./configure.in.orig	2010-11-25 12:31:42.138696299 +0100
++++ ./configure.in	2010-11-25 12:32:38.346698690 +0100
+@@ -397,6 +397,9 @@
+ 
  BACKUP_LIBS=$LIBS
- AC_SEARCH_LIBS([crypt],[xcrypt crypt], LIBCRYPT="-l$ac_lib", LIBCRYPT="")
+ AC_SEARCH_LIBS([crypt],[$crypt_libs], LIBCRYPT="-l$ac_lib", LIBCRYPT="")
 +if test "x$LIBCRYPT" = "x-l"; then
 +	LIBCRYPT=-lcrypt
 +fi
  AC_CHECK_FUNCS(crypt_r crypt_gensalt_r)
- Libs=$BACKUP_LIBS
+ LIBS=$BACKUP_LIBS
  AC_SUBST(LIBCRYPT)
