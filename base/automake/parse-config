@@ -46,3 +46,14 @@ if ! atstage toolchain && hasflag AUTOMAKE-QUIRK; then
 	hook_add preconf 3 automake_fixup
 fi
 
+pkg_automake_export_aclocal() {
+	for x in $(cd "${root:-/}"; for d in opt/*/share/aclocal{,-*}/ \
+		usr/share/aclocal{,-*}/ .$datadir/aclocal{,-*}/; do
+		[ -d "$d" ] || continue
+		readlink -f "$d"
+	done | sort -u); do
+		export ACLOCAL_FLAGS="$ACLOCAL_FLAGS -I $x"
+	done
+}
+
+hook_add preconf 3 'pkg_automake_export_aclocal'
