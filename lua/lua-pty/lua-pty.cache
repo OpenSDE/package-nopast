@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1291199360 Wed Dec  1 11:29:20 2010
+[BUILDTIME] 0 (5)
+[SIZE] 0.02 MB, 7 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] patch
+[DEP] pkgconfig
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
