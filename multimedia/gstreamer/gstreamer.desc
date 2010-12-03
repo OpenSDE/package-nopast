@@ -34,9 +34,9 @@
 
 [L] LGPL
 [S] Stable
-[V] 0.10.25
+[V] 0.10.31
 [P] X -----5---9 161.400
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 1787114126 gstreamer-0.10.25.tar.bz2 http://gstreamer.freedesktop.org/src/gstreamer/
+[D] 3625841669 gstreamer-0.10.31.tar.bz2 http://gstreamer.freedesktop.org/src/gstreamer/
