@@ -1,1 +1,1 @@
-run	D_sbindir/haveged -F
+run	D_sbindir/haveged -F -w 3072
