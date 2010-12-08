@@ -22,6 +22,7 @@
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/development
+[F] LUA
 
 [L] MIT
 [S] Stable
