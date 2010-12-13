@@ -27,10 +27,10 @@
 
 [L] GPL
 [S] Stable
-[V] 2.7.5
+[V] 2.7.7
 [P] X -----5---9 220.180
 
 [O] . $base/package/*/*/gnome2-or-gtk-conf.in
 
-[D] 932355973 pidgin-2.7.5.tar.bz2 http://dl.sourceforge.net/sourceforge/pidgin/
+[D] 1436230828 pidgin-2.7.7.tar.bz2 http://dl.sourceforge.net/sourceforge/pidgin/
 
