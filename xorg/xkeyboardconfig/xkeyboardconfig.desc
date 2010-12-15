@@ -28,9 +28,9 @@
 
 [L] MIT
 [S] Stable
-[V] 1.4
+[V] 2.0
 [P] X -----5---9 112.600
 
 [O] . package/*/*/modular-x-conf.in
 
-[D] 3957788053 xkeyboard-config-1.4.tar.bz2 http://xlibs.freedesktop.org/xkbdesc/
+[D] 3342331840 xkeyboard-config-2.0.tar.bz2 http://xlibs.freedesktop.org/xkbdesc/
