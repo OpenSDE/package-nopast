@@ -27,10 +27,9 @@
 
 [L] OpenSource
 [S] Stable
-[V] 1.9.2
+[V] 1.9.3
 [P] X -?---5---9 112.560
 
 [O] . package/*/*/modular-x-conf.in
-[O] var_append confopt " " "--disable-shave"
 
-[D] 3799593419 xorg-server-1.9.2.tar.bz2 http://xorg.freedesktop.org/releases/individual/xserver/
+[D] 1691398337 xorg-server-1.9.3.tar.bz2 http://xorg.freedesktop.org/releases/individual/xserver/
