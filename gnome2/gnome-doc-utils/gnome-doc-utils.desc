@@ -31,7 +31,7 @@
 [L] LGPL
 [S] Stable
 [V] 0.20.2
-[P] X -----5---9 147.305
+[P] X -----5---9 147.195
 
 [O] . $base/package/*/*/gnome2-or-gtk-conf.in
 
