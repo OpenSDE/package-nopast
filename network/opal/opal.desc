@@ -31,14 +31,10 @@
 
 [L] MPL
 [S] Stable
-[V] 3.8.2
+[V] 3.8.3
 [P] X -----5---9 185.000
 
-[CV-URL] http://www.ekiga.org/index.php?rub=5&path=sources/sources
-
-[D] 1467541602 opal-3.8.2.tar.bz2 http://dl.sourceforge.net/sourceforge/opalvoip/v3.8%20Sirius/Stable%202/
-#[D] 815594470 opal-v2_2_4-src-tar.gz http://www.voxgratia.org/releases/
+[D] 1745867256 opal-3.8.3.tar.bz2 http://dl.sourceforge.net/sourceforge/opalvoip/v3.8%20Sirius/Stable%202/
 
 # there's something screwed somewhere...
 [O] var_append makeinstopt ' ' "LIBDIR=/$libdir"
-
