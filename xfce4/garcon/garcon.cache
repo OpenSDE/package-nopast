@@ -1,0 +1,67 @@
+
+[TIMESTAMP] 1296944497 Sat Feb  5 23:21:37 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.89 MB, 116 files
+
+[DEP] atk
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cairo
+[DEP] clutter
+[DEP] clutter-gtk
+[DEP] coreutils
+[DEP] dbus-glib
+[DEP] diffutils
+[DEP] farsight2
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] gettext
+[DEP] gimp
+[DEP] glib
+[DEP] glibc
+[DEP] gobject-introspection
+[DEP] grep
+[DEP] gst-plugins-base
+[DEP] gstreamer
+[DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] intltool
+[DEP] json-glib
+[DEP] libgalago
+[DEP] libgdata
+[DEP] libglade
+[DEP] libgpod
+[DEP] libnice
+[DEP] libnotify
+[DEP] liboil
+[DEP] librsvg
+[DEP] libxfce4util
+[DEP] libxfcegui4
+[DEP] linux-header
+[DEP] make
+[DEP] orbit2
+[DEP] pango
+[DEP] perl
+[DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] udev
+[DEP] util-linux-ng
+[DEP] vte
+[DEP] xfdesktop
+[DEP] zlib
