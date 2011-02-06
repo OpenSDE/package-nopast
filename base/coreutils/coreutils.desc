@@ -34,7 +34,7 @@
 
 [L] GPL
 [S] Stable
-[V] 8.9
+[V] 8.10
 [P] X -1-3-5---9 107.100
 
-[D] 3785342745 coreutils-8.9.tar.gz ftp://ftp.gnu.org/pub/gnu/coreutils/
+[D] 2280863582 coreutils-8.10.tar.gz ftp://ftp.gnu.org/pub/gnu/coreutils/
