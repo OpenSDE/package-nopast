@@ -1,0 +1,66 @@
+
+[TIMESTAMP] 1297190189 Tue Feb  8 19:36:29 2011
+[BUILDTIME] 135 (5)
+[SIZE] 2.61 MB, 251 files
+
+[DEP] acl
+[DEP] attr
+[DEP] automoc4
+[DEP] bash
+[DEP] binutils
+[DEP] boost
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gamin
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] gmp
+[DEP] grep
+[DEP] kdelibs
+[DEP] libdbusmenu-qt
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libice
+[DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxi
+[DEP] libxml
+[DEP] libxpm
+[DEP] libxrender
+[DEP] libxt
+[DEP] libxtst
+[DEP] linux-header
+[DEP] make
+[DEP] nas
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] qca2
+[DEP] qimageblitz
+[DEP] qt4
+[DEP] sed
+[DEP] soprano
+[DEP] strigi
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xfsprogs
+[DEP] xz
