@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1284937070 Mon Sep 20 00:57:50 2010
-[BUILDTIME] 3080 (5)
-[SIZE] 22.47 MB, 541 files
+[TIMESTAMP] 1297260619 Wed Feb  9 15:10:19 2011
+[BUILDTIME] 4925 (5)
+[SIZE] 22.50 MB, 545 files
 
 [DEP] atk
 [DEP] autoconf
@@ -13,6 +13,7 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] dovecot
 [DEP] enchant
 [DEP] expat
 [DEP] fhs
@@ -20,29 +21,46 @@
 [DEP] flex
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gconf110
+[DEP] gdk-pixbuf
+[DEP] gdk-pixbuf10
 [DEP] gettext
 [DEP] glib
+[DEP] glib12
 [DEP] glibc
-[DEP] glitz
+[DEP] gnet
+[DEP] gnet1
+[DEP] gnome-common
+[DEP] gnome-doc-utils
+[DEP] gnome-libs14
+[DEP] gnomemm12
 [DEP] gnutls
+[DEP] gob
 [DEP] gperf
 [DEP] grep
 [DEP] gst-plugins-base
+[DEP] gst-python
 [DEP] gstreamer
 [DEP] gtk+
+[DEP] gtk+12
+[DEP] gtk+extra10
 [DEP] gtkdoc
+[DEP] gtkmm12
 [DEP] icu4c
+[DEP] imlib
 [DEP] kbproto
 [DEP] libgcrypt
+[DEP] libglade10
 [DEP] libgpg-error
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libprelude
+[DEP] libpreludedb
 [DEP] libpthread-stubs
-[DEP] libselinux
 [DEP] libsm
 [DEP] libsoup
 [DEP] libtasn1
@@ -65,8 +83,11 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] mt-st
+[DEP] mysql
 [DEP] numpy
+[DEP] oaf10
+[DEP] orbit10
 [DEP] pango
 [DEP] perl
 [DEP] pixman
@@ -75,6 +96,7 @@
 [DEP] python
 [DEP] renderproto
 [DEP] sed
+[DEP] setuptools
 [DEP] sqlite
 [DEP] sysfiles
 [DEP] tar

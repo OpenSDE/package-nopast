@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134015313 Thu Dec  8 05:15:13 2005
-[BUILDTIME] 30 (9)
-[SIZE] 2.43 MB, 200 files
+[TIMESTAMP] 1297117315 Mon Feb  7 23:21:55 2011
+[BUILDTIME] 45 (5)
+[SIZE] 1.51 MB, 28 files
 
 [DEP] autoconf
 [DEP] automake
@@ -9,41 +9,61 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
+[DEP] curl
 [DEP] diffutils
-[DEP] directfb
 [DEP] ecore
 [DEP] edb
 [DEP] eet
+[DEP] eina
 [DEP] embryo
 [DEP] evas
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
+[DEP] gnutls
 [DEP] grep
+[DEP] gst-python
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libidn
 [DEP] libjpeg
-[DEP] libpng
-[DEP] libtool
+[DEP] libtasn1
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
+[DEP] libxi
 [DEP] libxinerama
 [DEP] libxp
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxscrnsaver
+[DEP] libxtst
 [DEP] linux-header
+[DEP] lua
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] numpy
 [DEP] openssl
 [DEP] perl
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
 [DEP] sed
+[DEP] setuptools
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] wxpython
 [DEP] zlib

@@ -1,16 +1,15 @@
 
-[TIMESTAMP] 1165026135 Sat Dec  2 04:22:15 2006
-[BUILDTIME] 15 (5)
-[SIZE] 0.46 MB, 13 files
+[TIMESTAMP] 1297025635 Sun Feb  6 21:53:55 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.54 MB, 70 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] dpkg
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -24,12 +23,10 @@
 [DEP] libksba
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] openldap
 [DEP] openssl
-[DEP] perl
-[DEP] perl-gettext
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] texinfo
+[DEP] util-linux-ng

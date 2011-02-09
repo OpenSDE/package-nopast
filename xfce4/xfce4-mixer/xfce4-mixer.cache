@@ -1,42 +1,47 @@
 
-[TIMESTAMP] 1186354251 Sun Aug  5 18:50:51 2007
-[BUILDTIME] 30 (9)
-[SIZE] 0.45 MB, 68 files
+[TIMESTAMP] 1297175740 Tue Feb  8 15:35:40 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.62 MB, 98 files
 
-[DEP] 00-dirtree
-[DEP] alsa-lib
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
+[DEP] gst-plugins-base
+[DEP] gstreamer
 [DEP] gtk+
+[DEP] intltool
 [DEP] kbproto
 [DEP] libexo
 [DEP] libice
 [DEP] libpng
 [DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
-[DEP] libxfce4mcs
 [DEP] libxfce4util
 [DEP] libxfcegui4
 [DEP] libxfixes
@@ -47,11 +52,10 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] pango
-[DEP] patch
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
@@ -59,17 +63,14 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] thunar
-[DEP] util-linux
-[DEP] xarchiver
-[DEP] xfce-mcs-manager
-[DEP] xfce-mcs-plugins
+[DEP] util-linux-ng
 [DEP] xfce-utils
 [DEP] xfce4-appfinder
+[DEP] xfce4-dev-tools
 [DEP] xfce4-panel
 [DEP] xfce4-session
 [DEP] xfce4-terminal
-[DEP] xfdesktop
-[DEP] xfmedia
+[DEP] xfconf
 [DEP] xfprint
 [DEP] xfwm4
 [DEP] xproto

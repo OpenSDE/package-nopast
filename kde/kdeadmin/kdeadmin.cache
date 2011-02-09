@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1239986292 Fri Apr 17 19:38:12 2009
-[BUILDTIME] 115 (5)
-[SIZE] 4.37 MB, 172 files
+[TIMESTAMP] 1297094954 Mon Feb  7 17:09:14 2011
+[BUILDTIME] 260 (5)
+[SIZE] 2.99 MB, 108 files
 
 [DEP] acl
 [DEP] attr
@@ -12,8 +12,9 @@
 [DEP] cmake
 [DEP] coreutils
 [DEP] cyrus-sasl2
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -26,9 +27,10 @@
 [DEP] glibc
 [DEP] grep
 [DEP] kdebase-workspace
-[DEP] kdebindings
 [DEP] kdelibs
 [DEP] kdepimlibs
+[DEP] kdeutils
+[DEP] libdbusmenu-qt
 [DEP] libice
 [DEP] libpng
 [DEP] libsm
@@ -40,6 +42,7 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
@@ -50,14 +53,17 @@
 [DEP] nas
 [DEP] numpy
 [DEP] phonon
+[DEP] pkgconfig
 [DEP] pygobject
 [DEP] pyqt4
 [DEP] python
 [DEP] qt4
 [DEP] sed
 [DEP] sip
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxpython
+[DEP] xz

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1239823488 Wed Apr 15 22:24:48 2009
-[BUILDTIME] 10 (5)
-[SIZE] 1.05 MB, 117 files
+[TIMESTAMP] 1297024510 Sun Feb  6 21:35:10 2011
+[BUILDTIME] 50 (5)
+[SIZE] 0.76 MB, 175 files
 
 [DEP] automoc4
 [DEP] bash
@@ -17,7 +17,6 @@
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] kdelibs
 [DEP] libice
 [DEP] libpthread-stubs
 [DEP] libx11
@@ -28,9 +27,10 @@
 [DEP] linux-header
 [DEP] make
 [DEP] pkgconfig
+[DEP] qimageblitz
 [DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto

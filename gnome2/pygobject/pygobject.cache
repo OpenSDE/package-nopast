@@ -1,29 +1,45 @@
 
-[TIMESTAMP] 1164621427 Mon Nov 27 11:57:07 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.53 MB, 51 files
+[TIMESTAMP] 1297030820 Sun Feb  6 23:20:20 2011
+[BUILDTIME] 25 (5)
+[SIZE] 3.48 MB, 227 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
-[DEP] file
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] kbproto
+[DEP] libffi
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] numpy
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] pycairo
 [DEP] python
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xproto
+[DEP] xz
+[DEP] zlib

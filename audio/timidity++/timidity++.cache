@@ -1,20 +1,21 @@
 
-[TIMESTAMP] 1134254385 Sat Dec 10 23:39:45 2005
-[BUILDTIME] 40 (9)
-[SIZE] 0.94 MB, 19 files
+[TIMESTAMP] 1297111938 Mon Feb  7 21:52:18 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.86 MB, 9 files
 
 [DEP] alsa-lib
+[DEP] auctex
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] emacs
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
@@ -25,7 +26,7 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxft
 [DEP] libxmu
@@ -35,13 +36,14 @@
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xaw3d
+[DEP] xemacs
+[DEP] xemacs-packages
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

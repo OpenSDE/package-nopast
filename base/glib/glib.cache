@@ -1,27 +1,73 @@
 
-[TIMESTAMP] 1133959208 Wed Dec  7 13:40:08 2005
-[BUILDTIME] 50 (9)
-[SIZE] 7.94 MB, 517 files
+[TIMESTAMP] 1297258594 Wed Feb  9 14:36:34 2011
+[BUILDTIME] 185 (5)
+[SIZE] 28.71 MB, 843 files
 
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
+[DEP] clutter-gtk
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] farsight2
+[DEP] fhs
 [DEP] findutils
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
+[DEP] gimp
 [DEP] glibc
+[DEP] gnome-libs14
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] gst-plugins-base
+[DEP] gst-python
+[DEP] gstreamer
+[DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] json-glib
+[DEP] libgalago
+[DEP] libgdata
+[DEP] libglade
+[DEP] libgpod
+[DEP] libnice
+[DEP] libnotify
+[DEP] liboil
+[DEP] librsvg
+[DEP] libtool
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] patch
+[DEP] mt-st
+[DEP] numpy
+[DEP] orbit2
+[DEP] pango
 [DEP] perl
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] python
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
+[DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] vte
+[DEP] wxpython
+[DEP] xz
+[DEP] zlib

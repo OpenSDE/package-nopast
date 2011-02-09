@@ -1,23 +1,39 @@
 
-[TIMESTAMP] 1134215922 Sat Dec 10 12:58:42 2005
-[BUILDTIME] 10 (9) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1297107547 Mon Feb  7 20:39:07 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.63 MB, 44 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] imake
+[DEP] libice
+[DEP] libpthread-stubs
 [DEP] libraw1394
+[DEP] libsm
+[DEP] libusb
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxv
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] videoproto
+[DEP] xextproto
+[DEP] xorg-cf-files
+[DEP] xproto
+[DEP] xz

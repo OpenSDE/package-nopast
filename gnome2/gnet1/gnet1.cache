@@ -1,59 +1,57 @@
 
-[TIMESTAMP] 1134129896 Fri Dec  9 13:04:56 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.74 MB, 73 files
+[TIMESTAMP] 1297090826 Mon Feb  7 16:00:26 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.65 MB, 60 files
 
-[DEP] anjuta
-[DEP] at-spi
+[DEP] atk
 [DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] epiphany
-[DEP] evolution-data-server
+[DEP] fhs
 [DEP] findutils
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gimp
 [DEP] glib
 [DEP] glib12
 [DEP] glibc
-[DEP] gmime
-[DEP] gnet
-[DEP] gnome-panel
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] gstreamer
 [DEP] gtk+
 [DEP] gtkdoc
 [DEP] gtkglext
-[DEP] gtksourceview
-[DEP] libbonobo
-[DEP] libbonoboui
-[DEP] libgda
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] json-glib
+[DEP] libgdata
 [DEP] libglade
-[DEP] libgnome
-[DEP] libgnomecanvas
-[DEP] libgnomeprint
-[DEP] libgnomeui
-[DEP] libgsf
+[DEP] libnotify
+[DEP] liboil
 [DEP] librsvg
-[DEP] libsoup
-[DEP] libwnck
-[DEP] linphone
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] pkgconfig
-[DEP] rhythmbox
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] vte

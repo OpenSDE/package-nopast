@@ -1,16 +1,16 @@
 
-[TIMESTAMP] 1134031550 Thu Dec  8 09:45:50 2005
-[BUILDTIME] 15 (9)
-[SIZE] 8.74 MB, 40 files
+[TIMESTAMP] 1297032064 Sun Feb  6 23:41:04 2011
+[BUILDTIME] 5 (5)
+[SIZE] 8.55 MB, 24 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] fontconfig
@@ -22,17 +22,21 @@
 [DEP] glibc
 [DEP] grep
 [DEP] imake
-[DEP] inputproto
+[DEP] imlib
+[DEP] jbigkit
 [DEP] kbproto
 [DEP] lcms
 [DEP] libice
 [DEP] libjpeg
 [DEP] libmng
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
+[DEP] libtiff
+[DEP] libungif
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxft
 [DEP] libxmu
@@ -41,16 +45,15 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
 [DEP] perl
 [DEP] pkgconfig
 [DEP] renderproto
-[DEP] rman
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

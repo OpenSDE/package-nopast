@@ -1,49 +1,65 @@
 
-[TIMESTAMP] 1133747029 Mon Dec  5 02:43:49 2005
-[BUILDTIME] 230 (5)
-[SIZE] 55.15 MB, 4038 files
+[TIMESTAMP] 1297171210 Tue Feb  8 14:20:10 2011
+[BUILDTIME] 880 (5)
+[SIZE] 375.10 MB, 11249 files
 
-[DEP] 00-dirtree
+[DEP] amule
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
+[DEP] boost
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cairo
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
+[DEP] fribidi
 [DEP] gawk
 [DEP] gcc
+[DEP] geany
 [DEP] gettext
+[DEP] glib
 [DEP] glibc
-[DEP] gnome-libs14
 [DEP] grep
 [DEP] imake
-[DEP] kdelibs
+[DEP] joe
+[DEP] kbproto
 [DEP] libice
-[DEP] libjpeg
-[DEP] libmikmod
-[DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsdl
 [DEP] libsdl_image
 [DEP] libsdl_mixer
 [DEP] libsdl_net
-[DEP] libvorbis
+[DEP] libsdl_ttf
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
-[DEP] libxext
+[DEP] libxcb
+[DEP] libxrender
 [DEP] linux-header
+[DEP] lua
+[DEP] m4
 [DEP] make
 [DEP] man
-[DEP] mktemp
-[DEP] net-tools
+[DEP] micq
+[DEP] pango
+[DEP] perl
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] renderproto
+[DEP] rpm
 [DEP] sed
 [DEP] shadow
-[DEP] smpeg
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

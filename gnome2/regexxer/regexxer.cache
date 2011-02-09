@@ -1,41 +1,71 @@
 
-[TIMESTAMP] 1134238091 Sat Dec 10 19:08:11 2005
-[BUILDTIME] 25 (9)
-[SIZE] 0.73 MB, 35 files
+[TIMESTAMP] 1297110066 Mon Feb  7 21:21:06 2011
+[BUILDTIME] 35 (5)
+[SIZE] 0.72 MB, 44 files
 
+[DEP] alacarte
+[DEP] anjuta
 [DEP] atk
+[DEP] atkmm
 [DEP] bash
 [DEP] binutils
+[DEP] brasero
 [DEP] bzip2
 [DEP] cairo
+[DEP] cairomm
 [DEP] coreutils
+[DEP] devhelp
 [DEP] diffutils
+[DEP] eog
 [DEP] expat
+[DEP] fhs
+[DEP] file-roller
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gconf-editor
 [DEP] gconfmm
+[DEP] gdk-pixbuf
+[DEP] gdm
 [DEP] gettext
+[DEP] glade3
 [DEP] glib
 [DEP] glibc
 [DEP] glibmm
-[DEP] glitz
+[DEP] gnome-applets
+[DEP] gnome-control-center
+[DEP] gnome-icon-theme
+[DEP] gnome-media
+[DEP] gnome-netstatus
+[DEP] gnome-nettool
+[DEP] gnome-panel
+[DEP] gnome-settings-daemon
+[DEP] gnome-system-tools
+[DEP] gnopernicus
+[DEP] gok
+[DEP] gossip
 [DEP] grep
+[DEP] gthumb
 [DEP] gtk+
 [DEP] gtkmm
-[DEP] inputproto
 [DEP] kbproto
+[DEP] libbonoboui
+[DEP] libgda
 [DEP] libglade
 [DEP] libglademm
 [DEP] libpng
+[DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libsigc++
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -45,19 +75,21 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] nautilus
 [DEP] orbit2
 [DEP] pango
+[DEP] pangomm
 [DEP] pcre
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] popt
+[DEP] quick-lounge-applet
 [DEP] renderproto
+[DEP] seahorse
 [DEP] sed
+[DEP] sound-juicer
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
-[DEP] zlib

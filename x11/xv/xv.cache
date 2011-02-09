@@ -1,23 +1,26 @@
 
-[TIMESTAMP] 1134008030 Thu Dec  8 03:13:50 2005
-[BUILDTIME] 20 (9)
-[SIZE] 8.64 MB, 40 files
+[TIMESTAMP] 1297028569 Sun Feb  6 22:42:49 2011
+[BUILDTIME] 5 (5)
+[SIZE] 8.56 MB, 36 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] jbigkit
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libtiff
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxt
 [DEP] linux-header
 [DEP] make

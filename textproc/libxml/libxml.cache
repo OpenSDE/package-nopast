@@ -1,30 +1,31 @@
 
-[TIMESTAMP] 1133958884 Wed Dec  7 13:34:44 2005
-[BUILDTIME] 50 (9)
-[SIZE] 10.16 MB, 356 files
+[TIMESTAMP] 1297011145 Sun Feb  6 17:52:25 2011
+[BUILDTIME] 30 (5)
+[SIZE] 9.95 MB, 344 files
 
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
-[DEP] gnue-common
 [DEP] grep
+[DEP] libtool
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] numpy
-[DEP] pil
+[DEP] perl
 [DEP] python
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] wxpython
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

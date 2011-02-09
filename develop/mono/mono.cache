@@ -1,12 +1,11 @@
 
-[TIMESTAMP] 1237935066 Wed Mar 25 00:51:06 2009
-[BUILDTIME] 530 (9)
-[SIZE] 84.02 MB, 1065 files
+[TIMESTAMP] 1297027563 Sun Feb  6 22:26:03 2011
+[BUILDTIME] 415 (5)
+[SIZE] 155.45 MB, 1220 files
 
 [DEP] attr
 [DEP] bash
 [DEP] binutils
-[DEP] bison
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
@@ -19,20 +18,15 @@
 [DEP] glibc
 [DEP] grep
 [DEP] imake
-[DEP] lat
 [DEP] linux-header
-[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
 [DEP] patch
 [DEP] perl
 [DEP] pkgconfig
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux-ng
-[DEP] valgrind
 [DEP] xorg-cf-files
 [DEP] zlib

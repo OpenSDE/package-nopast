@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134306212 Sun Dec 11 14:03:32 2005
-[BUILDTIME] 45 (9)
-[SIZE] 0.96 MB, 62 files
+[TIMESTAMP] 1297167205 Tue Feb  8 13:13:25 2011
+[BUILDTIME] 55 (5)
+[SIZE] 0.96 MB, 54 files
 
 [DEP] atk
 [DEP] bash
@@ -13,49 +13,55 @@
 [DEP] diffutils
 [DEP] docbook-xml
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
+[DEP] libbonoboui
+[DEP] libgnome
 [DEP] libid3tag
 [DEP] libidn
 [DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
+[DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mergeant
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] pango
 [DEP] patch
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] scrollkeeper
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

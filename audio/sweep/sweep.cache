@@ -1,41 +1,62 @@
 
-[TIMESTAMP] 1134186240 Sat Dec 10 04:44:00 2005
-[BUILDTIME] 30 (9)
-[SIZE] 1.25 MB, 67 files
+[TIMESTAMP] 1297103373 Mon Feb  7 19:29:33 2011
+[BUILDTIME] 45 (5)
+[SIZE] 1.34 MB, 53 files
 
 [DEP] alsa-lib
+[DEP] alsa-tools
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flac
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] geany
 [DEP] gettext
-[DEP] glib12
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] gtk+12
+[DEP] gtk+
+[DEP] kbproto
 [DEP] libmad
 [DEP] libogg
+[DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsamplerate
 [DEP] libsndfile
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
+[DEP] libxinerama
+[DEP] libxrandr
+[DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] speex
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xproto

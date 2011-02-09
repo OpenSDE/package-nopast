@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1164894346 Thu Nov 30 15:45:46 2006
-[BUILDTIME] 15 (5)
-[SIZE] 4.21 MB, 32 files
+[TIMESTAMP] 1297107851 Mon Feb  7 20:44:11 2011
+[BUILDTIME] 10 (5)
+[SIZE] 13.98 MB, 50 files
 
-[DEP] 00-dirtree
 [DEP] argus
 [DEP] bash
 [DEP] binutils
@@ -11,6 +10,7 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] gawk
@@ -20,12 +20,11 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] patch
+[DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcp_wrappers
-[DEP] util-linux
+[DEP] util-linux-ng

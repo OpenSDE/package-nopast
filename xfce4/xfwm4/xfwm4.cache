@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1186353912 Sun Aug  5 18:45:12 2007
-[BUILDTIME] 45 (9)
-[SIZE] 3.57 MB, 1309 files
+[TIMESTAMP] 1297174940 Tue Feb  8 15:22:20 2011
+[BUILDTIME] 40 (5)
+[SIZE] 3.84 MB, 1519 files
 
-[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -12,35 +11,39 @@
 [DEP] compositeproto
 [DEP] coreutils
 [DEP] damageproto
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
+[DEP] intltool
 [DEP] kbproto
 [DEP] libice
 [DEP] libpng
 [DEP] libpthread-stubs
 [DEP] libsm
+[DEP] libwnck
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
-[DEP] libxfce4mcs
+[DEP] libxfce4ui
 [DEP] libxfce4util
 [DEP] libxfcegui4
 [DEP] libxfixes
@@ -48,11 +51,13 @@
 [DEP] libxinerama
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxres
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
+[DEP] mt-st
 [DEP] pango
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] randrproto
 [DEP] renderproto
@@ -60,10 +65,11 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
-[DEP] xfce-mcs-manager
-[DEP] xfce-mcs-plugins
+[DEP] xfce4-appfinder
+[DEP] xfconf
+[DEP] xfprint
 [DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

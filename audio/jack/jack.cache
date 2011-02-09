@@ -1,34 +1,68 @@
 
-[TIMESTAMP] 1134030504 Thu Dec  8 09:28:24 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.91 MB, 88 files
+[TIMESTAMP] 1297017227 Sun Feb  6 19:33:47 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.69 MB, 63 files
 
+[DEP] alien
 [DEP] alsa-lib
+[DEP] attr
 [DEP] bash
+[DEP] bin86
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] doxygen
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
-[DEP] ghostscript
+[DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] groff
+[DEP] hal
 [DEP] libcap
-[DEP] libsndfile
+[DEP] libffi
+[DEP] liboping
+[DEP] libprelude
 [DEP] linux-header
+[DEP] lua
 [DEP] make
-[DEP] mktemp
+[DEP] mime-support
 [DEP] ncurses
-[DEP] net-tools
-[DEP] patch
+[DEP] opensc
 [DEP] perl
+[DEP] perl-archive-zip
+[DEP] perl-crypt-des
+[DEP] perl-digest-md5
+[DEP] perl-extutils-depends
+[DEP] perl-html-parser
+[DEP] perl-image-size
+[DEP] perl-io-compress-lzf
+[DEP] perl-libwww
+[DEP] perl-mail-box
+[DEP] perl-mail-sender
+[DEP] perl-mime-base64
+[DEP] perl-net-dns
+[DEP] perl-ui-dialog
+[DEP] perl-unicode-map
+[DEP] perl-unicode-map8
+[DEP] perl-uri
+[DEP] perl-user-identity
+[DEP] perl-xml-parser
 [DEP] pkgconfig
+[DEP] ppp
+[DEP] python
+[DEP] razor
 [DEP] readline
 [DEP] sed
+[DEP] slang
 [DEP] sysfiles
 [DEP] tar
-[DEP] tetex
-[DEP] util-linux
+[DEP] tcl
+[DEP] tk
+[DEP] util-linux-ng
+[DEP] xz
+[DEP] zsh

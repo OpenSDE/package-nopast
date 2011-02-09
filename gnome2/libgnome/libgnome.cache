@@ -1,40 +1,63 @@
 
-[TIMESTAMP] 1134031006 Thu Dec  8 09:36:46 2005
-[BUILDTIME] 25 (9)
-[SIZE] 3.50 MB, 156 files
+[TIMESTAMP] 1297031960 Sun Feb  6 23:39:20 2011
+[BUILDTIME] 20 (5)
+[SIZE] 5.79 MB, 200 files
 
-[DEP] alsa-lib
-[DEP] audiofile
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] esound
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] gnome-vfs
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] howl
+[DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] intltool
+[DEP] json-glib
 [DEP] libbonobo
+[DEP] libcanberra
+[DEP] libglade
+[DEP] libogg
+[DEP] libtool
+[DEP] libvorbis
 [DEP] libxml
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mt-st
 [DEP] openssl
 [DEP] orbit2
+[DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pkgconfig
+[DEP] poppler
 [DEP] popt
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

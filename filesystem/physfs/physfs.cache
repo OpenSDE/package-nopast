@@ -1,13 +1,14 @@
 
-[TIMESTAMP] 1134012351 Thu Dec  8 04:25:51 2005
-[BUILDTIME] 10 (9) ERROR
-[SIZE] 0.32 MB, 20 files
+[TIMESTAMP] 1297029156 Sun Feb  6 22:52:36 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.33 MB, 13 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] file
 [DEP] findutils
 [DEP] gawk
@@ -16,13 +17,10 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
-[DEP] paragui
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

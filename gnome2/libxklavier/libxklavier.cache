@@ -1,34 +1,69 @@
 
-[TIMESTAMP] 1134072223 Thu Dec  8 21:03:43 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.55 MB, 25 files
+[TIMESTAMP] 1297084076 Mon Feb  7 14:07:56 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.48 MB, 37 files
 
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
+[DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
 [DEP] imake
+[DEP] inputproto
+[DEP] iso-codes
+[DEP] json-glib
 [DEP] kbproto
+[DEP] libgdata
+[DEP] libglade
+[DEP] libice
+[DEP] libnotify
+[DEP] liboil
+[DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxi
 [DEP] libxkbfile
 [DEP] libxml
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] orbit2
+[DEP] pango
+[DEP] perl
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] vte
+[DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib

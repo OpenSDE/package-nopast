@@ -1,11 +1,13 @@
 
-[TIMESTAMP] 1204237780 Thu Feb 28 22:29:40 2008
-[BUILDTIME] 125 (5)
-[SIZE] 30.70 MB, 657 files
+[TIMESTAMP] 1297031502 Sun Feb  6 23:31:42 2011
+[BUILDTIME] 95 (5)
+[SIZE] 46.54 MB, 651 files
 
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] cups
 [DEP] diffutils
@@ -13,27 +15,53 @@
 [DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
+[DEP] freeglut
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] glib
 [DEP] glibc
 [DEP] grep
+[DEP] gtk+
+[DEP] imake
+[DEP] jbigkit
+[DEP] kbproto
+[DEP] libdrm
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libpthread-stubs
+[DEP] libsdl
 [DEP] libsm
+[DEP] libtiff
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
-[DEP] libxdmcp
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxmu
+[DEP] libxrandr
+[DEP] libxrender
 [DEP] libxt
+[DEP] libxxf86vm
+[DEP] linux-header
 [DEP] make
-[DEP] mktemp
+[DEP] mesa
 [DEP] openssl
+[DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
+[DEP] xproto
+[DEP] zlib

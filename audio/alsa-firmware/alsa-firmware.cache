@@ -1,22 +1,23 @@
 
-[TIMESTAMP] 1133969252 Wed Dec  7 16:27:32 2005
-[BUILDTIME] 10 (9)
-[SIZE] 3.58 MB, 83 files
+[TIMESTAMP] 1297018725 Sun Feb  6 19:58:45 2011
+[BUILDTIME] 65 (5)
+[SIZE] 8.76 MB, 147 files
 
+[DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

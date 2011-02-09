@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1296945539 Sat Feb  5 23:38:59 2011
-[BUILDTIME] 10 (5) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1297175252 Tue Feb  8 15:27:32 2011
+[BUILDTIME] 25 (5)
+[SIZE] 1.27 MB, 65 files
 
 [DEP] atk
 [DEP] bash
@@ -18,6 +18,7 @@
 [DEP] fixesproto
 [DEP] fontconfig
 [DEP] freetype
+[DEP] garcon
 [DEP] gawk
 [DEP] gcc
 [DEP] gdk-pixbuf
@@ -45,10 +46,10 @@
 [DEP] libxext
 [DEP] libxfce4ui
 [DEP] libxfce4util
-[DEP] libxfcegui4
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
+[DEP] libxkbfile
 [DEP] libxklavier
 [DEP] libxml
 [DEP] libxrandr
@@ -68,7 +69,9 @@
 [DEP] tar
 [DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xfce-utils
 [DEP] xfconf
+[DEP] xfprint
 [DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

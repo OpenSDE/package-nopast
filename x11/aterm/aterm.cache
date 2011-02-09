@@ -1,45 +1,34 @@
 
-[TIMESTAMP] 1133992061 Wed Dec  7 22:47:41 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.72 MB, 14 files
+[TIMESTAMP] 1297025395 Sun Feb  6 21:49:55 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.15 MB, 8 files
 
-[DEP] afterstep
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imake
-[DEP] libdrm
 [DEP] libice
-[DEP] libjpeg
-[DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
-[DEP] libtiff
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
-[DEP] libxinerama
 [DEP] libxmu
 [DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xextproto
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib

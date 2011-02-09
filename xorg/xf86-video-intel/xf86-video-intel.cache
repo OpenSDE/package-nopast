@@ -1,46 +1,49 @@
 
-[TIMESTAMP] 1182934239 Wed Jun 27 10:50:39 2007
-[BUILDTIME] 40 (5) ERROR
-[SIZE] 0.45 MB, 25 files
+[TIMESTAMP] 1297014312 Sun Feb  6 18:45:12 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.75 MB, 17 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] dri2proto
+[DEP] fhs
 [DEP] findutils
-[DEP] fontconfig
+[DEP] fixesproto
 [DEP] fontsproto
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] glproto
-[DEP] gnome-libs14
 [DEP] grep
+[DEP] inputproto
 [DEP] kbproto
 [DEP] libdrm
+[DEP] libpciaccess
 [DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
-[DEP] libxdmcp
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxv
 [DEP] libxvmc
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] panoramixproto
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] randrproto
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] util-macros
 [DEP] videoproto
+[DEP] xcb-util
 [DEP] xextproto
 [DEP] xf86-video-apm
 [DEP] xf86driproto

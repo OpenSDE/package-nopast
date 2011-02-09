@@ -1,30 +1,33 @@
 
-[TIMESTAMP] 1133994860 Wed Dec  7 23:34:20 2005
-[BUILDTIME] 255 (9)
-[SIZE] 8.91 MB, 257 files
+[TIMESTAMP] 1297025889 Sun Feb  6 21:58:09 2011
+[BUILDTIME] 120 (5)
+[SIZE] 10.30 MB, 308 files
 
 [DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imake
+[DEP] jbigkit
 [DEP] libdrm
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libtiff
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxrandr
@@ -33,15 +36,15 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] perl
 [DEP] randrproto
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

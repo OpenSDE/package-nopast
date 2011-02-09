@@ -1,25 +1,22 @@
 
-[TIMESTAMP] 1164923649 Thu Nov 30 23:54:09 2006
-[BUILDTIME] 0 (5) ERROR
-[SIZE] 0.01 MB, 7 files
+[TIMESTAMP] 1297115223 Mon Feb  7 22:47:03 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.03 MB, 10 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
-[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] lua
 [DEP] make
-[DEP] ncurses
 [DEP] patch
-[DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

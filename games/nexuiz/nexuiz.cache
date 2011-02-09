@@ -1,22 +1,26 @@
 
-[TIMESTAMP] 1133771649 Mon Dec  5 09:34:09 2005
-[BUILDTIME] 55 (5)
-[SIZE] 161.21 MB, 16 files
+[TIMESTAMP] 1297174986 Tue Feb  8 15:23:06 2011
+[BUILDTIME] 25 (5)
+[SIZE] 851.67 MB, 15 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] kbproto
 [DEP] libsdl
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
+[DEP] libxpm
 [DEP] libxxf86dga
 [DEP] libxxf86vm
 [DEP] linux-header
@@ -25,6 +29,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] unzip
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xf86dgaproto
 [DEP] xf86vidmodeproto

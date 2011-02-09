@@ -1,22 +1,19 @@
 
-[TIMESTAMP] 1134276279 Sun Dec 11 05:44:39 2005
-[BUILDTIME] 20 (9)
-[SIZE] 2.15 MB, 68 files
+[TIMESTAMP] 1297115529 Mon Feb  7 22:52:09 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.46 MB, 66 files
 
-[DEP] 00-dirtree
-[DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnue-common
 [DEP] grep
 [DEP] libdnet
 [DEP] libevent
@@ -24,20 +21,12 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
-[DEP] numpy
 [DEP] patch
-[DEP] perl
-[DEP] pil
-[DEP] python
+[DEP] pcre
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] texinfo
-[DEP] util-linux
-[DEP] wxpython
+[DEP] util-linux-ng
 [DEP] zlib
-[DEP] zope

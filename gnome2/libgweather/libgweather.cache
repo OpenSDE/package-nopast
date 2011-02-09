@@ -1,13 +1,14 @@
 
-[TIMESTAMP] 1221075728 Wed Sep 10 22:42:08 2008
-[BUILDTIME] 160 (5)
-[SIZE] 46.38 MB, 196 files
+[TIMESTAMP] 1297081512 Mon Feb  7 13:25:12 2011
+[BUILDTIME] 170 (5)
+[SIZE] 139.44 MB, 626 files
 
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
+[DEP] clutter
 [DEP] coreutils
 [DEP] dbus
 [DEP] dbus-glib
@@ -20,24 +21,42 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
-[DEP] gnome-vfs
+[DEP] gnome-icon-theme
+[DEP] gnutls
+[DEP] gobject-introspection
 [DEP] grep
 [DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] intltool
+[DEP] json-glib
 [DEP] kbproto
-[DEP] libcap
+[DEP] libgcrypt
+[DEP] libgdata
+[DEP] libglade
+[DEP] libgnome-keyring
+[DEP] libgpg-error
+[DEP] libnotify
+[DEP] liboil
 [DEP] libpng
+[DEP] libproxy
 [DEP] libpthread-stubs
+[DEP] librsvg
+[DEP] libsoup
+[DEP] libtasn1
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -47,19 +66,24 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] memprof
-[DEP] mktemp
-[DEP] openssl
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pixman
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] renderproto
 [DEP] sed
+[DEP] sqlite
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] vte
 [DEP] xproto
 [DEP] zlib

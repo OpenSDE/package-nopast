@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1291221810 Wed Dec  1 17:43:30 2010
+[TIMESTAMP] 1297031110 Sun Feb  6 23:25:10 2011
 [BUILDTIME] 5 (5)
-[SIZE] 0.77 MB, 90 files
+[SIZE] 0.77 MB, 92 files
 
 [DEP] atk
 [DEP] bash
@@ -22,6 +22,7 @@
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
 [DEP] gtk+
 [DEP] gtkdoc
@@ -34,7 +35,6 @@
 [DEP] libgcrypt
 [DEP] libglade
 [DEP] libgpg-error
-[DEP] libnotify
 [DEP] linux-header
 [DEP] make
 [DEP] orbit2

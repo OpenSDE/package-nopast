@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1243844759 Mon Jun  1 11:25:59 2009
+[TIMESTAMP] 1297015840 Sun Feb  6 19:10:40 2011
 [BUILDTIME] 0 (5)
-[SIZE] 0.09 MB, 24 files
+[SIZE] 0.09 MB, 23 files
 
 [DEP] bash
 [DEP] bzip2
@@ -10,9 +10,9 @@
 [DEP] fhs
 [DEP] findutils
 [DEP] gawk
+[DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

@@ -1,22 +1,23 @@
 
-[TIMESTAMP] 1134217667 Sat Dec 10 13:27:47 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.10 MB, 15 files
+[TIMESTAMP] 1297032122 Sun Feb  6 23:42:02 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.61 MB, 30 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libtool
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

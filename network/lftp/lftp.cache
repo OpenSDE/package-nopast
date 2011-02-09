@@ -1,15 +1,17 @@
 
-[TIMESTAMP] 1134284882 Sun Dec 11 08:08:02 2005
-[BUILDTIME] 50 (9)
-[SIZE] 1.35 MB, 43 files
+[TIMESTAMP] 1297120646 Tue Feb  8 00:17:26 2011
+[BUILDTIME] 80 (5)
+[SIZE] 2.37 MB, 35 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -21,13 +23,14 @@
 [DEP] libgpg-error
 [DEP] libtasn1
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
+[DEP] perl
+[DEP] pkgconfig
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

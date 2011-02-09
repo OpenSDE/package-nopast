@@ -1,22 +1,20 @@
 
-[TIMESTAMP] 1134142259 Fri Dec  9 16:30:59 2005
-[BUILDTIME] 40 (9)
-[SIZE] 3.94 MB, 320 files
+[TIMESTAMP] 1297092796 Mon Feb  7 16:33:16 2011
+[BUILDTIME] 55 (5)
+[SIZE] 4.39 MB, 313 files
 
-[DEP] alsa-lib
 [DEP] atk
-[DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] docbook-xml
-[DEP] esound
-[DEP] evolution
 [DEP] expat
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
@@ -24,43 +22,41 @@
 [DEP] gcc
 [DEP] gconf
 [DEP] gdbm
+[DEP] gdk-pixbuf
 [DEP] gettext
-[DEP] gjiten
-[DEP] glabels
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
-[DEP] gnome-games
-[DEP] gnome-keyring
-[DEP] gnome-libs14
+[DEP] gnome-doc-utils
 [DEP] gnome-panel
-[DEP] gnome-pilot
-[DEP] gnome-utils
 [DEP] gnome-vfs
-[DEP] gnome2-user-docs
-[DEP] gok
+[DEP] gossip
 [DEP] grep
-[DEP] gst-editor
-[DEP] gthumb
 [DEP] gtk+
-[DEP] howl
-[DEP] inputproto
 [DEP] kbproto
 [DEP] libart_lgpl23
 [DEP] libbonobo
 [DEP] libbonoboui
+[DEP] libcanberra
+[DEP] libgcrypt
 [DEP] libglade
 [DEP] libgnome
+[DEP] libgnome-keyring
 [DEP] libgnomecanvas
 [DEP] libgnomeui
+[DEP] libgpg-error
 [DEP] libice
-[DEP] libjpeg
+[DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
+[DEP] libtool
+[DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -70,25 +66,21 @@
 [DEP] libxrender
 [DEP] libxscrnsaver
 [DEP] linux-header
-[DEP] lock-keys-applet
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] netspeed_applet
 [DEP] openssl
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] popt
-[DEP] quick-lounge-applet
 [DEP] renderproto
 [DEP] scrnsaverproto
 [DEP] scrollkeeper
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

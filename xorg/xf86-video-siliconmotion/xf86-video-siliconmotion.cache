@@ -1,31 +1,40 @@
 
-[TIMESTAMP] 1133928968 Wed Dec  7 05:16:08 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.20 MB, 15 files
+[TIMESTAMP] 1297014447 Sun Feb  6 18:47:27 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.13 MB, 9 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] dri2proto
+[DEP] fhs
 [DEP] findutils
 [DEP] fontsproto
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] inputproto
+[DEP] kbproto
+[DEP] libpciaccess
+[DEP] libpthread-stubs
+[DEP] libxau
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] randrproto
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] util-macros
 [DEP] videoproto
 [DEP] xextproto
+[DEP] xf86-video-apm
+[DEP] xineramaproto
 [DEP] xorg-server
 [DEP] xproto

@@ -1,71 +1,72 @@
 
-[TIMESTAMP] 1134032512 Thu Dec  8 10:01:52 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.49 MB, 117 files
+[TIMESTAMP] 1297032278 Sun Feb  6 23:44:38 2011
+[BUILDTIME] 15 (5)
+[SIZE] 8.32 MB, 356 files
 
 [DEP] at-spi
 [DEP] atk
-[DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
+[DEP] compositeproto
 [DEP] coreutils
 [DEP] damageproto
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] doxygen
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
-[DEP] inputproto
+[DEP] intltool
 [DEP] kbproto
-[DEP] libart_lgpl23
 [DEP] libbonobo
-[DEP] libgnomecanvas
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
 [DEP] libxrandr
 [DEP] libxrender
-[DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] orbit2
 [DEP] pango
 [DEP] patch
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] popt
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

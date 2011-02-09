@@ -1,32 +1,37 @@
 
-[TIMESTAMP] 1134029110 Thu Dec  8 09:05:10 2005
-[BUILDTIME] 20 (9)
-[SIZE] 3.21 MB, 47 files
+[TIMESTAMP] 1297031339 Sun Feb  6 23:28:59 2011
+[BUILDTIME] 45 (5)
+[SIZE] 12.50 MB, 118 files
 
+[DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] lame
+[DEP] jack
 [DEP] libsdl
-[DEP] libx11
-[DEP] libxau
-[DEP] libxdmcp
 [DEP] libxext
+[DEP] libxv
+[DEP] libxvmc
 [DEP] linux-header
+[DEP] lzo
 [DEP] make
-[DEP] patch
 [DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] tetex
+[DEP] texi2html
+[DEP] util-linux-ng
+[DEP] videoproto
+[DEP] xextproto
 [DEP] xproto
+[DEP] xz
+[DEP] yasm
 [DEP] zlib

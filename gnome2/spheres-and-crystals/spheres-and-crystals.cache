@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134071971 Thu Dec  8 20:59:31 2005
-[BUILDTIME] 15 (9)
-[SIZE] 1.87 MB, 271 files
+[TIMESTAMP] 1297084056 Mon Feb  7 14:07:36 2011
+[BUILDTIME] 5 (5)
+[SIZE] 1.85 MB, 262 files
 
 [DEP] atk
 [DEP] autoconf
@@ -11,36 +11,37 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] librsvg
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto

@@ -1,11 +1,10 @@
 
-[TIMESTAMP] 1211554442 Fri May 23 16:54:02 2008
-[BUILDTIME] 100 (9)
+[TIMESTAMP] 1297010249 Sun Feb  6 17:37:29 2011
+[BUILDTIME] 5 (5)
 [SIZE] 0.10 MB, 13 files
 
 [DEP] bash
 [DEP] binutils
-[DEP] boehm-gc
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
@@ -17,8 +16,8 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

@@ -1,28 +1,31 @@
 
-[TIMESTAMP] 1134035840 Thu Dec  8 10:57:20 2005
-[BUILDTIME] 55 (9)
-[SIZE] 5.60 MB, 2848 files
+[TIMESTAMP] 1297033641 Mon Feb  7 00:07:21 2011
+[BUILDTIME] 55 (5)
+[SIZE] 11.72 MB, 5677 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
 [DEP] gettext
 [DEP] glibc
+[DEP] gnome-mime-data
 [DEP] grep
-[DEP] linux-header
+[DEP] icon-naming-utils
+[DEP] intltool
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] patch
 [DEP] perl
+[DEP] perl-libxml
 [DEP] perl-xml-parser
+[DEP] perl-xml-simple
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

@@ -1,27 +1,24 @@
 
-[TIMESTAMP] 1134026445 Thu Dec  8 08:20:45 2005
-[BUILDTIME] 10 (9)
-[SIZE] 1.00 MB, 15 files
+[TIMESTAMP] 1297030978 Sun Feb  6 23:22:58 2011
+[BUILDTIME] 0 (5)
+[SIZE] 1.16 MB, 13 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnue-common
 [DEP] grep
 [DEP] linux-header
-[DEP] mailman
 [DEP] make
 [DEP] nasm
-[DEP] numpy
-[DEP] pil
-[DEP] python
+[DEP] patch
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] wxpython
+[DEP] util-linux-ng

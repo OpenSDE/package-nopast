@@ -1,17 +1,17 @@
 
-[TIMESTAMP] 1147687782 Mon May 15 12:09:42 2006
-[BUILDTIME] 100 (9)
-[SIZE] 3.68 MB, 118 files
+[TIMESTAMP] 1297172887 Tue Feb  8 14:48:07 2011
+[BUILDTIME] 15 (5)
+[SIZE] 3.26 MB, 118 files
 
-[DEP] 00-dirtree
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] enlightenment16
+[DEP] fhs
 [DEP] findutils
 [DEP] freetype
 [DEP] freetype1
@@ -28,16 +28,14 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxmu
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
 [DEP] man
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] patch
 [DEP] pcre
 [DEP] perl
@@ -45,6 +43,8 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

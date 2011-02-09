@@ -1,39 +1,46 @@
 
-[TIMESTAMP] 1154897890 Sun Aug  6 20:58:10 2006
-[BUILDTIME] 30 (5)
-[SIZE] 2.06 MB, 469 files
+[TIMESTAMP] 1297178844 Tue Feb  8 16:27:24 2011
+[BUILDTIME] 20 (5)
+[SIZE] 3.46 MB, 113 files
 
-[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
+[DEP] intltool
 [DEP] kbproto
-[DEP] libice
+[DEP] libexo
+[DEP] libical
+[DEP] libnotify
 [DEP] libpng
-[DEP] libsm
+[DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
-[DEP] libxfce4mcs
 [DEP] libxfce4util
 [DEP] libxfcegui4
 [DEP] libxfixes
@@ -44,23 +51,25 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pango
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] popt
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xfce-mcs-manager
-[DEP] xfce-mcs-plugins
+[DEP] thunar
+[DEP] util-linux-ng
 [DEP] xfce-utils
 [DEP] xfce4-appfinder
+[DEP] xfce4-dev-tools
+[DEP] xfce4-mixer
 [DEP] xfce4-panel
 [DEP] xfce4-session
-[DEP] xfdesktop
+[DEP] xfce4-terminal
+[DEP] xfconf
+[DEP] xfprint
 [DEP] xfwm4
 [DEP] xproto
-[DEP] zlib

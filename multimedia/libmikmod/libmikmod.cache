@@ -1,19 +1,17 @@
 
-[TIMESTAMP] 1133968734 Wed Dec  7 16:18:54 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.92 MB, 24 files
+[TIMESTAMP] 1297018664 Sun Feb  6 19:57:44 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.87 MB, 16 files
 
 [DEP] alsa-lib
 [DEP] audiofile
-[DEP] autoconf
-[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
 [DEP] esound
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -21,10 +19,10 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
+[DEP] patch
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
+[DEP] util-linux-ng

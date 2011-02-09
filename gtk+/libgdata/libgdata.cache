@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1291294054 Thu Dec  2 13:47:34 2010
-[BUILDTIME] 45 (5)
-[SIZE] 5.80 MB, 206 files
+[TIMESTAMP] 1297081233 Mon Feb  7 13:20:33 2011
+[BUILDTIME] 75 (5)
+[SIZE] 5.76 MB, 206 files
 
 [DEP] atk
 [DEP] bash
@@ -37,6 +37,7 @@
 [DEP] intltool
 [DEP] json-glib
 [DEP] kbproto
+[DEP] libffi
 [DEP] libgcrypt
 [DEP] libglade
 [DEP] libgnome-keyring

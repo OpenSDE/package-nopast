@@ -1,21 +1,20 @@
 
-[TIMESTAMP] 1133753399 Mon Dec  5 04:29:59 2005
-[BUILDTIME] 40 (5)
-[SIZE] 14.59 MB, 2803 files
+[TIMESTAMP] 1297172585 Tue Feb  8 14:43:05 2011
+[BUILDTIME] 15 (5)
+[SIZE] 14.53 MB, 2791 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] compositeproto
 [DEP] coreutils
 [DEP] damageproto
 [DEP] diffutils
 [DEP] esound
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] freetype
@@ -31,9 +30,9 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxinerama
@@ -42,18 +41,16 @@
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pkgconfig
 [DEP] randrproto
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xbitmaps
 [DEP] xextproto
 [DEP] xf86vidmodeproto
-[DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

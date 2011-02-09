@@ -1,13 +1,16 @@
 
-[TIMESTAMP] 1134216999 Sat Dec 10 13:16:39 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.10 MB, 12 files
+[TIMESTAMP] 1297004542 Sun Feb  6 16:02:22 2011
+[BUILDTIME] 0 (3)
+[SIZE] 0.13 MB, 8 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133892729 Tue Dec  6 19:12:09 2005
-[BUILDTIME] 30 (9)
-[SIZE] 2.02 MB, 315 files
+[TIMESTAMP] 1297011516 Sun Feb  6 17:58:36 2011
+[BUILDTIME] 10 (5)
+[SIZE] 2.87 MB, 446 files
 
 [DEP] bash
 [DEP] binutils
@@ -9,21 +9,20 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnome-print10
 [DEP] grep
-[DEP] libdockapp
 [DEP] linux-header
-[DEP] magicpoint
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] patch
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

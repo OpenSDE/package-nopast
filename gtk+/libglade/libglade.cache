@@ -1,37 +1,46 @@
 
-[TIMESTAMP] 1134021568 Thu Dec  8 06:59:28 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.58 MB, 51 files
+[TIMESTAMP] 1297030374 Sun Feb  6 23:12:54 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.44 MB, 44 files
 
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
+[DEP] clutter
 [DEP] coreutils
-[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] docbook-xml
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
-[DEP] gnue-common
+[DEP] gobject-introspection
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
+[DEP] gtkdoc
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] json-glib
 [DEP] kbproto
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -41,19 +50,22 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] numpy
+[DEP] orbit2
 [DEP] pango
-[DEP] pil
+[DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] poppler
 [DEP] python
-[DEP] pyxml
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] wxpython
+[DEP] util-linux-ng
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

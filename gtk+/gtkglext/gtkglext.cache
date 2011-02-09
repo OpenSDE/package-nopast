@@ -1,38 +1,40 @@
 
-[TIMESTAMP] 1134024772 Thu Dec  8 07:52:52 2005
-[BUILDTIME] 25 (9)
-[SIZE] 2.06 MB, 99 files
+[TIMESTAMP] 1297030641 Sun Feb  6 23:17:21 2011
+[BUILDTIME] 30 (5)
+[SIZE] 1.90 MB, 89 files
 
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
-[DEP] inputproto
 [DEP] kbproto
 [DEP] libdrm
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -45,15 +47,15 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pango
+[DEP] patch
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib

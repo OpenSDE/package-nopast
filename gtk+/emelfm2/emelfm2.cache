@@ -1,9 +1,9 @@
 
-[TIMESTAMP] 1138871011 Thu Feb  2 10:03:31 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.96 MB, 88 files
+[TIMESTAMP] 1297190104 Tue Feb  8 19:35:04 2011
+[BUILDTIME] 120 (5)
+[SIZE] 1.39 MB, 111 files
 
-[DEP] 00-dirtree
+[DEP] alsa-tools
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -12,23 +12,30 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
+[DEP] file
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] geany
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -38,10 +45,12 @@
 [DEP] linux-header
 [DEP] make
 [DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] xine-ui
+[DEP] tsclient
+[DEP] util-linux-ng
 [DEP] xproto

@@ -1,14 +1,16 @@
 
-[TIMESTAMP] 1134244071 Sat Dec 10 20:47:51 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.19 MB, 28 files
+[TIMESTAMP] 1297110474 Mon Feb  7 21:27:54 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.16 MB, 11 files
 
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] gawk
+[DEP] fhs
+[DEP] findutils
 [DEP] gcc
 [DEP] glibc
 [DEP] gnutls
@@ -18,10 +20,10 @@
 [DEP] libgpg-error
 [DEP] libprelude
 [DEP] libtasn1
+[DEP] libtool
 [DEP] linux-header
 [DEP] make
 [DEP] pam
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] zlib

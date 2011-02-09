@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134217302 Sat Dec 10 13:21:42 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.13 MB, 25 files
+[TIMESTAMP] 1297107643 Mon Feb  7 20:40:43 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.08 MB, 14 files
 
 [DEP] autoconf
 [DEP] automake
@@ -10,7 +10,9 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] gettext
 [DEP] glibc
@@ -18,11 +20,9 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
 [DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

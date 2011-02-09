@@ -1,32 +1,81 @@
 
-[TIMESTAMP] 1176847533 Tue Apr 17 22:05:33 2007
-[BUILDTIME] 20 (9)
-[SIZE] 0.17 MB, 23 files
+[TIMESTAMP] 1297081103 Mon Feb  7 13:18:23 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.51 MB, 42 files
 
-[DEP] 00-dirtree
+[DEP] atk
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] check
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gconf110
+[DEP] gdk-pixbuf
+[DEP] gdk-pixbuf10
 [DEP] glib
+[DEP] glib12
 [DEP] glibc
+[DEP] gnome-common
+[DEP] gnome-doc-utils
+[DEP] gnome-libs14
+[DEP] gnomemm12
 [DEP] gnutls
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] gtk+
+[DEP] gtk+12
+[DEP] gtk+extra10
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkmm12
+[DEP] gtkspell
+[DEP] hal
+[DEP] imlib
+[DEP] json-glib
 [DEP] libgcrypt
+[DEP] libglade
+[DEP] libglade10
 [DEP] libgpg-error
 [DEP] libidn
+[DEP] libnotify
+[DEP] liboil
+[DEP] libprelude
+[DEP] librsvg
 [DEP] libtasn1
+[DEP] libtool
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] mt-st
+[DEP] mysql
+[DEP] oaf10
+[DEP] orbit10
+[DEP] orbit2
+[DEP] pango
+[DEP] patch
+[DEP] perl
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] vte
+[DEP] zlib

@@ -1,14 +1,14 @@
 
-[TIMESTAMP] 1165012723 Fri Dec  1 19:38:43 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.54 MB, 8 files
+[TIMESTAMP] 1297107806 Mon Feb  7 20:43:26 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.61 MB, 10 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -16,6 +16,8 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
+[DEP] patch
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] tetex

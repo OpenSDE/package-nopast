@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134157458 Fri Dec  9 20:44:18 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.18 MB, 46 files
+[TIMESTAMP] 1297096071 Mon Feb  7 17:27:51 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.23 MB, 49 files
 
 [DEP] bash
 [DEP] binutils
@@ -9,18 +9,23 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libusb
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] numpy
 [DEP] openobex
+[DEP] perl
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] wxpython

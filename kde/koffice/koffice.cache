@@ -1,52 +1,50 @@
 
-[TIMESTAMP] 1240062840 Sat Apr 18 16:54:00 2009
-[BUILDTIME] 660 (5)
-[SIZE] 35.37 MB, 1764 files
+[TIMESTAMP] 1297102021 Mon Feb  7 19:07:01 2011
+[BUILDTIME] 2955 (5)
+[SIZE] 40.93 MB, 2009 files
 
 [DEP] acl
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
-[DEP] bitstream-vera-fonts
 [DEP] boost
 [DEP] bzip2
-[DEP] cheapskatefonts
 [DEP] cmake
 [DEP] coreutils
-[DEP] cyrus-sasl2
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] dmalloc
+[DEP] docbook-xml
+[DEP] exiv2
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
 [DEP] font-bh-ttf
-[DEP] font-misc-ethiopic
 [DEP] fontconfig
 [DEP] freetype
-[DEP] fvwm
 [DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
 [DEP] gnome-libs14
-[DEP] gnome-print10
-[DEP] graphicsmagick
 [DEP] grep
+[DEP] icu4c
 [DEP] ilmbase
-[DEP] john-stracke-fonts
 [DEP] kdelibs
 [DEP] kdepimlibs
 [DEP] lcms
+[DEP] libdbusmenu-qt
 [DEP] libdrm
-[DEP] libexiv2
 [DEP] libgsf
+[DEP] libical
 [DEP] libice
+[DEP] libjpeg
 [DEP] libpng
+[DEP] libpqxx
 [DEP] libsm
-[DEP] libwpd
-[DEP] libwpg
+[DEP] libungif
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
@@ -56,31 +54,36 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxslt
 [DEP] libxt
 [DEP] libxtst
 [DEP] libxxf86vm
 [DEP] linux-header
-[DEP] magicpoint
 [DEP] make
 [DEP] mesa
 [DEP] nas
 [DEP] openexr
+[DEP] pcre
 [DEP] phonon
 [DEP] pkgconfig
+[DEP] poppler
 [DEP] qca2
 [DEP] qimageblitz
 [DEP] qt4
 [DEP] sed
+[DEP] shared-mime-info
+[DEP] soprano
+[DEP] sqlite
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] tex-ttf
-[DEP] util-linux
-[DEP] wv2
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

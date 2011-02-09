@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133963575 Wed Dec  7 14:52:55 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.25 MB, 26 files
+[TIMESTAMP] 1297017732 Sun Feb  6 19:42:12 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.15 MB, 16 files
 
 [DEP] alsa-lib
 [DEP] audiofile
@@ -12,6 +12,7 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] esound
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -22,10 +23,8 @@
 [DEP] libmad
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

@@ -1,33 +1,28 @@
 
-[TIMESTAMP] 1281083836 Fri Aug  6 10:37:16 2010
+[TIMESTAMP] 1297015293 Sun Feb  6 19:01:33 2011
 [BUILDTIME] 20 (5)
-[SIZE] 5.62 MB, 36 files
+[SIZE] 4.97 MB, 34 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] dmalloc
 [DEP] expat
 [DEP] fhs
-[DEP] file
 [DEP] findutils
-[DEP] fuse
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] libsepol
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
 [DEP] openssl
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] termcap
 [DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

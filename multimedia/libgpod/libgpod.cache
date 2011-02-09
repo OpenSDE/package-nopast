@@ -1,30 +1,72 @@
 
-[TIMESTAMP] 1180802809 Sat Jun  2 17:46:49 2007
-[BUILDTIME] 100 (9)
-[SIZE] 1.03 MB, 45 files
+[TIMESTAMP] 1297173132 Tue Feb  8 14:52:12 2011
+[BUILDTIME] 25 (5)
+[SIZE] 1.53 MB, 48 files
 
-[DEP] 00-dirtree
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
+[DEP] clutter-gtk
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] farsight2
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
+[DEP] gimp
 [DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] gst-plugins-base
+[DEP] gst-python
+[DEP] gstreamer
 [DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] json-glib
+[DEP] libffi
+[DEP] libgdata
+[DEP] libglade
+[DEP] libnice
+[DEP] libnotify
+[DEP] liboil
+[DEP] libpng
+[DEP] librsvg
 [DEP] libxml
+[DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] numpy
+[DEP] orbit2
+[DEP] pango
 [DEP] perl
+[DEP] perl-xml-parser
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
 [DEP] python
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
+[DEP] setuptools
 [DEP] sysfiles
+[DEP] taglib
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] vte
+[DEP] wxpython
+[DEP] xz
+[DEP] zlib

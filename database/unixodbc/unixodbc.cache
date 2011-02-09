@@ -1,55 +1,29 @@
 
-[TIMESTAMP] 1133776231 Mon Dec  5 10:50:31 2005
-[BUILDTIME] 295 (5)
-[SIZE] 3.65 MB, 134 files
+[TIMESTAMP] 1297180802 Tue Feb  8 17:00:02 2011
+[BUILDTIME] 50 (5)
+[SIZE] 0.84 MB, 35 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
 [DEP] bash
 [DEP] binutils
-[DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
-[DEP] fontconfig
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] imake
-[DEP] libdrm
-[DEP] libice
-[DEP] libpng
-[DEP] libsm
-[DEP] libx11
-[DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
-[DEP] libxext
-[DEP] libxfixes
-[DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
-[DEP] libxrender
-[DEP] libxt
-[DEP] libxxf86vm
+[DEP] libtool
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
-[DEP] patch
-[DEP] qt3
+[DEP] perl
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] zlib
+[DEP] util-linux-ng

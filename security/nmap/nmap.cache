@@ -1,52 +1,35 @@
 
-[TIMESTAMP] 1134193350 Sat Dec 10 06:42:30 2005
-[BUILDTIME] 45 (9)
-[SIZE] 2.45 MB, 30 files
+[TIMESTAMP] 1297104020 Mon Feb  7 19:40:20 2011
+[BUILDTIME] 35 (5)
+[SIZE] 11.61 MB, 466 files
 
-[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
-[DEP] expat
+[DEP] fhs
 [DEP] findutils
-[DEP] fontconfig
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
-[DEP] gtk+
-[DEP] inputproto
-[DEP] kbproto
+[DEP] joe
+[DEP] libcdio
 [DEP] libpcap
-[DEP] libpng
-[DEP] libx11
-[DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
-[DEP] libxext
-[DEP] libxfixes
-[DEP] libxi
-[DEP] libxinerama
-[DEP] libxrandr
-[DEP] libxrender
 [DEP] linux-header
+[DEP] lua
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] man
+[DEP] numpy
 [DEP] openssl
-[DEP] pango
 [DEP] pcre
-[DEP] pkgconfig
-[DEP] renderproto
+[DEP] pygobject
+[DEP] python
+[DEP] rpm
 [DEP] sed
+[DEP] shadow
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xproto
-[DEP] zlib
+[DEP] util-linux-ng
+[DEP] wxpython

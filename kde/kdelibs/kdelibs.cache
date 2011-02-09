@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1284811127 Sat Sep 18 13:58:47 2010
-[BUILDTIME] 1620 (5)
-[SIZE] 57.59 MB, 4414 files
+[TIMESTAMP] 1297025293 Sun Feb  6 21:48:13 2011
+[BUILDTIME] 2965 (5)
+[SIZE] 58.18 MB, 4412 files
 
 [DEP] acl
 [DEP] aspell
@@ -28,7 +28,6 @@
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
-[DEP] gnome-libs14
 [DEP] grep
 [DEP] ilmbase
 [DEP] inputproto
@@ -81,4 +80,5 @@
 [DEP] valgrind
 [DEP] xextproto
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

@@ -1,9 +1,9 @@
 
-[TIMESTAMP] 1190484610 Sat Sep 22 20:10:10 2007
-[BUILDTIME] 955 (5) ERROR
-[SIZE] 101.65 MB, 8075 files
+[TIMESTAMP] 1297021332 Sun Feb  6 20:42:12 2011
+[BUILDTIME] 4920 (5)
+[SIZE] 367.98 MB, 13134 files
 
-[DEP] 00-dirtree
+[DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -12,6 +12,7 @@
 [DEP] dbus
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] fontconfig
@@ -20,20 +21,15 @@
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
-[DEP] gnutls
 [DEP] grep
 [DEP] inputproto
 [DEP] kbproto
-[DEP] lcms
 [DEP] libdrm
-[DEP] libgcrypt
-[DEP] libgpg-error
 [DEP] libice
 [DEP] libjpeg
 [DEP] libmng
 [DEP] libpng
 [DEP] libsm
-[DEP] libtasn1
 [DEP] libtiff
 [DEP] libx11
 [DEP] libxau
@@ -46,13 +42,18 @@
 [DEP] libxinerama
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxt
+[DEP] libxtst
+[DEP] libxv
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] makedepend
 [DEP] mesa
 [DEP] mysql
+[DEP] nas
 [DEP] openssl
+[DEP] perl
 [DEP] pkgconfig
 [DEP] postgresql
 [DEP] randrproto
@@ -61,9 +62,8 @@
 [DEP] sqlite2
 [DEP] sysfiles
 [DEP] tar
-[DEP] unixodbc
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] videoproto
 [DEP] xextproto
-[DEP] xineramaproto
 [DEP] xproto
 [DEP] zlib

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1291208399 Wed Dec  1 13:59:59 2010
-[BUILDTIME] 95 (5)
-[SIZE] 10.77 MB, 377 files
+[TIMESTAMP] 1297025506 Sun Feb  6 21:51:46 2011
+[BUILDTIME] 160 (5)
+[SIZE] 10.82 MB, 377 files
 
 [DEP] atk
 [DEP] bash
@@ -35,6 +35,7 @@
 [DEP] json-glib
 [DEP] kbproto
 [DEP] libdrm
+[DEP] libffi
 [DEP] libpng
 [DEP] libpthread-stubs
 [DEP] libx11

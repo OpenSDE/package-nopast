@@ -1,27 +1,35 @@
 
-[TIMESTAMP] 1133888094 Tue Dec  6 17:54:54 2005
-[BUILDTIME] 10 (9)
-[SIZE] 1.64 MB, 60 files
+[TIMESTAMP] 1297029763 Sun Feb  6 23:02:43 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.84 MB, 75 files
 
 [DEP] alsa-lib
+[DEP] alsa-tools
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] docbook-xml
+[DEP] docbook-xsl
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
+[DEP] libxml
+[DEP] libxslt
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] udev
+[DEP] util-linux-ng
+[DEP] xmlto

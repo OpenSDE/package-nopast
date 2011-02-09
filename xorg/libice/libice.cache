@@ -1,26 +1,27 @@
 
-[TIMESTAMP] 1133898428 Tue Dec  6 20:47:08 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.26 MB, 26 files
+[TIMESTAMP] 1297011956 Sun Feb  6 18:05:56 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.46 MB, 22 files
 
 [DEP] bash
+[DEP] bigreqsproto
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libpthread-stubs
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] xtrans

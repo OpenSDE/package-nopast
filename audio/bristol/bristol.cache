@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1188456193 Thu Aug 30 08:43:13 2007
-[BUILDTIME] 65 (5)
-[SIZE] 10.48 MB, 806 files
+[TIMESTAMP] 1297080297 Mon Feb  7 13:04:57 2011
+[BUILDTIME] 40 (5)
+[SIZE] 6.60 MB, 1235 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] autoconf
 [DEP] bash
@@ -11,24 +10,27 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
+[DEP] gzip
 [DEP] jack
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
-[DEP] libxdmcp
+[DEP] libxext
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] perl
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xextproto
 [DEP] xproto

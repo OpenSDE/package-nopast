@@ -1,27 +1,27 @@
 
-[TIMESTAMP] 1134009512 Thu Dec  8 03:38:32 2005
-[BUILDTIME] 10 (9)
-[SIZE] 3.43 MB, 186 files
+[TIMESTAMP] 1297028771 Sun Feb  6 22:46:11 2011
+[BUILDTIME] 5 (5)
+[SIZE] 3.56 MB, 205 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] emacs
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libx11
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] texinfo
+[DEP] util-linux-ng
+[DEP] xemacs
+[DEP] xemacs-packages
 [DEP] zlib

@@ -1,11 +1,9 @@
 
-[TIMESTAMP] 1239572885 Mon Apr 13 00:48:05 2009
-[BUILDTIME] 110 (5)
-[SIZE] 20.43 MB, 875 files
+[TIMESTAMP] 1297170670 Tue Feb  8 14:11:10 2011
+[BUILDTIME] 75 (5)
+[SIZE] 20.30 MB, 873 files
 
-[DEP] alsa-lib
 [DEP] atk
-[DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bison
@@ -13,7 +11,6 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
-[DEP] esound
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -21,12 +18,12 @@
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] ggz-client-libs
 [DEP] ggz-gtk-client
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] gzip
@@ -39,15 +36,12 @@
 [DEP] libpthread-stubs
 [DEP] libsdl
 [DEP] libsdl_mixer
-[DEP] libselinux
-[DEP] libsepol
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -56,7 +50,6 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
 [DEP] pango
 [DEP] pixman

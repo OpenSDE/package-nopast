@@ -1,28 +1,31 @@
 
-[TIMESTAMP] 1133876106 Tue Dec  6 14:35:06 2005
-[BUILDTIME] 115 (9)
-[SIZE] 7.92 MB, 1156 files
+[TIMESTAMP] 1297003818 Sun Feb  6 15:50:18 2011
+[BUILDTIME] 195 (3)
+[SIZE] 16.23 MB, 1813 files
 
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bison
-[DEP] blackdown-jdk
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] emacs
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libtool
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] mono
-[DEP] net-tools
+[DEP] ncurses
 [DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] texinfo
+[DEP] tzdata
+[DEP] util-linux-ng

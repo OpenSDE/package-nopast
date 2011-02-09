@@ -1,33 +1,35 @@
 
-[TIMESTAMP] 1133910989 Wed Dec  7 00:16:29 2005
-[BUILDTIME] 55 (9)
-[SIZE] 7.67 MB, 1134 files
+[TIMESTAMP] 1297013197 Sun Feb  6 18:26:37 2011
+[BUILDTIME] 30 (5)
+[SIZE] 7.67 MB, 1126 files
 
 [DEP] bash
 [DEP] bdftopcf
+[DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] font-adobe
 [DEP] font-adobe-utopia
 [DEP] font-alias
-[DEP] font-bh-lucidatypewriter
-[DEP] font-bitstream
 [DEP] font-util
+[DEP] fontconfig
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] gzip
+[DEP] libpthread-stubs
+[DEP] linux-header
 [DEP] make
 [DEP] mkfontdir
 [DEP] mkfontscale
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] terminus-font
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xcb-proto
+[DEP] xproto

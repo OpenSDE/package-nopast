@@ -1,26 +1,26 @@
 
-[TIMESTAMP] 1152984688 Sat Jul 15 17:31:28 2006
-[BUILDTIME] 5 (5)
-[SIZE] 0.02 MB, 8 files
+[TIMESTAMP] 1297114275 Mon Feb  7 22:31:15 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.10 MB, 12 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
+[DEP] gawk
 [DEP] gcc
 [DEP] gettext
 [DEP] glibc
 [DEP] grep
+[DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

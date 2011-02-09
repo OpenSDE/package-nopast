@@ -1,35 +1,46 @@
 
-[TIMESTAMP] 1233753816 Wed Feb  4 15:23:36 2009
-[BUILDTIME] 645 (9)
-[SIZE] 41.68 MB, 96 files
+[TIMESTAMP] 1297165232 Tue Feb  8 12:40:32 2011
+[BUILDTIME] 855 (5)
+[SIZE] 55.74 MB, 108 files
 
-[DEP] alsa-lib
-[DEP] audiofile
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bluez-libs
 [DEP] bzip2
 [DEP] coreutils
+[DEP] curl
+[DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] esound
 [DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] gnutls
 [DEP] grep
+[DEP] kbproto
 [DEP] libgcrypt
 [DEP] libgpg-error
+[DEP] libidn
+[DEP] libjpeg
+[DEP] libpng
 [DEP] libsdl
 [DEP] libtasn1
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
 [DEP] linux-header
 [DEP] make
 [DEP] ncurses
+[DEP] openssl
 [DEP] perl
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] texi2html
+[DEP] texinfo
+[DEP] util-linux-ng
+[DEP] xproto
 [DEP] zlib

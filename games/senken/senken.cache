@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1133750732 Mon Dec  5 03:45:32 2005
-[BUILDTIME] 20 (5)
-[SIZE] 1.40 MB, 185 files
+[TIMESTAMP] 1297171943 Tue Feb  8 14:32:23 2011
+[BUILDTIME] 15 (5)
+[SIZE] 1.33 MB, 173 files
 
-[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -13,24 +12,29 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
-[DEP] libjpeg
+[DEP] kbproto
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsdl
 [DEP] libsdl_image
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -39,13 +43,12 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
-[DEP] zlib

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133980702 Wed Dec  7 19:38:22 2005
-[BUILDTIME] 30 (9)
-[SIZE] 6.20 MB, 198 files
+[TIMESTAMP] 1297019889 Sun Feb  6 20:18:09 2011
+[BUILDTIME] 30 (5)
+[SIZE] 8.21 MB, 211 files
 
 [DEP] bash
 [DEP] bdb
@@ -10,6 +10,8 @@
 [DEP] coreutils
 [DEP] cyrus-sasl2
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
@@ -21,7 +23,9 @@
 [DEP] openldap
 [DEP] openssl
 [DEP] pcre
+[DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] zlib

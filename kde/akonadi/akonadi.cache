@@ -1,18 +1,22 @@
 
-[TIMESTAMP] 1239979533 Fri Apr 17 17:45:33 2009
-[BUILDTIME] 55 (5)
-[SIZE] 1.98 MB, 144 files
+[TIMESTAMP] 1297092949 Mon Feb  7 16:35:49 2011
+[BUILDTIME] 190 (5)
+[SIZE] 2.16 MB, 50 files
 
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] boost
 [DEP] bzip2
+[DEP] cdparanoia
 [DEP] cmake
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
 [DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
@@ -21,16 +25,27 @@
 [DEP] kdelibs
 [DEP] libgd
 [DEP] libice
+[DEP] libpng
+[DEP] libsm
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxext
+[DEP] libxrender
 [DEP] libxslt
+[DEP] libxt
 [DEP] linux-header
 [DEP] make
+[DEP] nas
+[DEP] patch
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] qimageblitz
 [DEP] qt4
 [DEP] sed
 [DEP] shared-mime-info
+[DEP] soprano
+[DEP] sqlite
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134278354 Sun Dec 11 06:19:14 2005
-[BUILDTIME] 190 (9)
-[SIZE] 4.99 MB, 80 files
+[TIMESTAMP] 1297116010 Mon Feb  7 23:00:10 2011
+[BUILDTIME] 95 (5)
+[SIZE] 8.83 MB, 105 files
 
 [DEP] bash
 [DEP] binutils
@@ -9,46 +9,35 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
+[DEP] geany
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] libdrm
-[DEP] libelf
 [DEP] libfwbuilder
 [DEP] libice
 [DEP] libpng
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
-[DEP] libxfixes
-[DEP] libxft
-[DEP] libxinerama
 [DEP] libxml
-[DEP] libxmu
-[DEP] libxrandr
 [DEP] libxrender
 [DEP] libxslt
 [DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-snmp
-[DEP] net-tools
-[DEP] openssl
-[DEP] qt3
+[DEP] nas
+[DEP] phonon
+[DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] tcp_wrappers
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

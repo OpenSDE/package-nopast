@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1292253598 Mon Dec 13 16:19:58 2010
-[BUILDTIME] 55 (5)
-[SIZE] 1.79 MB, 119 files
+[TIMESTAMP] 1297169214 Tue Feb  8 13:46:54 2011
+[BUILDTIME] 60 (5)
+[SIZE] 1.79 MB, 118 files
 
 [DEP] atk
 [DEP] autoconf
@@ -36,9 +36,9 @@
 [DEP] gtkspell
 [DEP] hal
 [DEP] json-glib
+[DEP] libffi
 [DEP] libgdata
 [DEP] libglade
-[DEP] libgpod
 [DEP] libnice
 [DEP] libnotify
 [DEP] liboil

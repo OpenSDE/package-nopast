@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1296944191 Sat Feb  5 23:16:31 2011
-[BUILDTIME] 20 (5)
-[SIZE] 0.57 MB, 106 files
+[TIMESTAMP] 1297174726 Tue Feb  8 15:18:46 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.58 MB, 111 files
 
 [DEP] atk
 [DEP] bash
@@ -20,6 +20,7 @@
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] garcon
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
@@ -43,7 +44,6 @@
 [DEP] intltool
 [DEP] json-glib
 [DEP] kbproto
-[DEP] libgalago
 [DEP] libgdata
 [DEP] libglade
 [DEP] libgpod
@@ -59,7 +59,6 @@
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxfce4util
-[DEP] libxfcegui4
 [DEP] libxml
 [DEP] libxrender
 [DEP] linux-header
@@ -81,7 +80,6 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] udev
 [DEP] util-linux-ng
 [DEP] vte
 [DEP] xfconf

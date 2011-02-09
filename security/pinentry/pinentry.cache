@@ -1,64 +1,63 @@
 
-[TIMESTAMP] 1164610060 Mon Nov 27 08:47:40 2006
-[BUILDTIME] 10 (5)
-[SIZE] 1.16 MB, 12 files
+[TIMESTAMP] 1297025809 Sun Feb  6 21:56:49 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.83 MB, 12 files
 
-[DEP] 00-dirtree
 [DEP] atk
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glib12
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] gtk+12
 [DEP] imake
-[DEP] inputproto
 [DEP] kbproto
-[DEP] libdrm
+[DEP] libcap
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
-[DEP] libxft
 [DEP] libxi
 [DEP] libxinerama
-[DEP] libxmu
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
+[DEP] nas
 [DEP] ncurses
-[DEP] net-tools
 [DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] qt3
+[DEP] qt4
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto

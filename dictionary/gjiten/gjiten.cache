@@ -1,13 +1,10 @@
 
-[TIMESTAMP] 1191696544 Sat Oct  6 20:49:04 2007
-[BUILDTIME] 20 (5)
-[SIZE] 7.39 MB, 40 files
+[TIMESTAMP] 1297092635 Mon Feb  7 16:30:35 2011
+[BUILDTIME] 10 (5)
+[SIZE] 7.35 MB, 38 files
 
-[DEP] 00-dirtree
-[DEP] alsa-lib
 [DEP] at-spi
 [DEP] atk
-[DEP] audiofile
 [DEP] autoconf
 [DEP] bash
 [DEP] binutils
@@ -18,22 +15,19 @@
 [DEP] dbus-glib
 [DEP] diffutils
 [DEP] docbook-xml
-[DEP] docbook-xsl
-[DEP] esound
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] gnome-doc-utils
-[DEP] gnome-keyring
 [DEP] gnome-mime-data
 [DEP] gnome-vfs
 [DEP] grep
@@ -42,24 +36,27 @@
 [DEP] libart_lgpl23
 [DEP] libbonobo
 [DEP] libbonoboui
+[DEP] libcanberra
+[DEP] libgcrypt
 [DEP] libglade
 [DEP] libgnome
+[DEP] libgnome-keyring
 [DEP] libgnomecanvas
 [DEP] libgnomeui
+[DEP] libgpg-error
 [DEP] libice
-[DEP] libjpeg
+[DEP] libogg
 [DEP] libpng
 [DEP] libpthread-stubs
-[DEP] libselinux
-[DEP] libsepol
 [DEP] libsm
+[DEP] libtool
+[DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -67,16 +64,16 @@
 [DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
-[DEP] libxslt
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] mime-support
 [DEP] openssl
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] popt
 [DEP] renderproto
@@ -84,7 +81,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] w3m
 [DEP] xmlto
 [DEP] xproto

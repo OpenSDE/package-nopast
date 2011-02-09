@@ -1,13 +1,10 @@
 
-[TIMESTAMP] 1258742781 Fri Nov 20 19:46:21 2009
-[BUILDTIME] 90 (9)
-[SIZE] 2.88 MB, 184 files
+[TIMESTAMP] 1297109876 Mon Feb  7 21:17:56 2011
+[BUILDTIME] 65 (5)
+[SIZE] 4.41 MB, 213 files
 
-[DEP] alsa-lib
+[DEP] alacarte
 [DEP] atk
-[DEP] attr
-[DEP] audiofile
-[DEP] avahi
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -16,48 +13,34 @@
 [DEP] dbus
 [DEP] dbus-glib
 [DEP] diffutils
-[DEP] esound
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] gnome-desktop
-[DEP] gnome-keyring
+[DEP] gnome-icon-theme
 [DEP] gnome-libs14
-[DEP] gnome-menus
-[DEP] gnome-vfs
-[DEP] gnome-volume-manager
+[DEP] gnome-nettool
 [DEP] grep
-[DEP] gst-plugins-base
-[DEP] gstreamer
 [DEP] gtk+
 [DEP] imake
+[DEP] inputproto
 [DEP] intltool
 [DEP] kbproto
-[DEP] libart_lgpl23
-[DEP] libbonobo
-[DEP] libbonoboui
-[DEP] libcap
-[DEP] libglade
-[DEP] libgnome
-[DEP] libgnomecanvas
+[DEP] libcanberra
 [DEP] libgnomekbd
-[DEP] libgnomeui
 [DEP] libice
 [DEP] libnotify
 [DEP] libpng
 [DEP] libpthread-stubs
-[DEP] libselinux
-[DEP] libsepol
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
@@ -65,7 +48,6 @@
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -78,16 +60,15 @@
 [DEP] libxxf86misc
 [DEP] linux-header
 [DEP] make
-[DEP] memprof
-[DEP] mktemp
-[DEP] openssl
+[DEP] metacity
+[DEP] nautilus
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pixman
 [DEP] pkgconfig
-[DEP] popt
+[DEP] polkit
 [DEP] renderproto
 [DEP] sed
 [DEP] startup-notification

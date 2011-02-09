@@ -1,43 +1,79 @@
 
-[TIMESTAMP] 1134036318 Thu Dec  8 11:05:18 2005
-[BUILDTIME] 60 (9)
-[SIZE] 2.72 MB, 215 files
+[TIMESTAMP] 1297033734 Mon Feb  7 00:08:54 2011
+[BUILDTIME] 65 (5)
+[SIZE] 2.79 MB, 225 files
 
+[DEP] at-spi
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
 [DEP] cups
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] docbook-xml
+[DEP] docbook-xsl
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
+[DEP] gmime
+[DEP] gnome-keyring
+[DEP] gnome-vfs
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] gtk+
 [DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] intltool
+[DEP] json-glib
 [DEP] libart_lgpl23
+[DEP] libbonobo
+[DEP] libbonoboui
+[DEP] libcanberra
+[DEP] libglade
+[DEP] libgnome
+[DEP] libgnome-keyring
+[DEP] libgnomecanvas
 [DEP] libgnomecups
+[DEP] libgnomeui
+[DEP] libgtop
+[DEP] libnotify
 [DEP] libxml
+[DEP] libxslt
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
+[DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pkgconfig
-[DEP] popt
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

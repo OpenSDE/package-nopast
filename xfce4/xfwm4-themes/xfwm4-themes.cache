@@ -1,13 +1,13 @@
 
-[TIMESTAMP] 1186354088 Sun Aug  5 18:48:08 2007
-[BUILDTIME] 40 (9)
+[TIMESTAMP] 1297175338 Tue Feb  8 15:28:58 2011
+[BUILDTIME] 35 (5)
 [SIZE] 5.94 MB, 4151 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -15,9 +15,8 @@
 [DEP] grep
 [DEP] libxfce4util
 [DEP] make
-[DEP] mktemp
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xfwm4

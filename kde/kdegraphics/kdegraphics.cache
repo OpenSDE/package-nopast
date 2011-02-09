@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1240211423 Mon Apr 20 10:10:23 2009
-[BUILDTIME] 270 (5)
-[SIZE] 9.52 MB, 503 files
+[TIMESTAMP] 1297121091 Tue Feb  8 00:24:51 2011
+[BUILDTIME] 780 (5)
+[SIZE] 12.44 MB, 532 files
 
 [DEP] acl
 [DEP] attr
@@ -12,9 +12,10 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
 [DEP] djvulibre
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] exiv2
 [DEP] expat
 [DEP] fhs
@@ -31,7 +32,7 @@
 [DEP] kdebase-workspace
 [DEP] kdelibs
 [DEP] lcms
-[DEP] libexiv2
+[DEP] libdbusmenu-qt
 [DEP] libgphoto
 [DEP] libice
 [DEP] libjpeg
@@ -46,9 +47,11 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxt
 [DEP] libxtst
 [DEP] libxxf86vm
@@ -63,12 +66,15 @@
 [DEP] qt4
 [DEP] sane-backends
 [DEP] sed
+[DEP] shared-desktop-ontologies
+[DEP] shared-mime-info
 [DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xf86vidmodeproto
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

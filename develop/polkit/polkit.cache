@@ -1,59 +1,40 @@
 
-[TIMESTAMP] 1240072527 Sat Apr 18 19:35:27 2009
-[BUILDTIME] 30 (5)
-[SIZE] 1.97 MB, 138 files
+[TIMESTAMP] 1297019850 Sun Feb  6 20:17:30 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.86 MB, 107 files
 
-[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] cairo
 [DEP] coreutils
 [DEP] dbus
-[DEP] dbus-glib
 [DEP] diffutils
 [DEP] docbook-xml
 [DEP] docbook-xsl
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
-[DEP] file
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
-[DEP] gimp
 [DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] gst-plugins-base
-[DEP] gstreamer
-[DEP] gtk+
-[DEP] gtkdoc
-[DEP] gtkglext
-[DEP] gtkspell
-[DEP] hal
 [DEP] intltool
-[DEP] libglade
-[DEP] libnotify
-[DEP] liboil
-[DEP] librsvg
+[DEP] libffi
 [DEP] libxml
 [DEP] libxslt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] orbit2
 [DEP] pam
-[DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pkgconfig
-[DEP] poppler
-[DEP] pygobject
-[DEP] pygtk
+[DEP] python
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] vte
+[DEP] util-linux-ng
+[DEP] xz
+[DEP] zlib

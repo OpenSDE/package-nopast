@@ -1,15 +1,17 @@
 
-[TIMESTAMP] 1133955326 Wed Dec  7 12:35:26 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.64 MB, 90 files
+[TIMESTAMP] 1297016927 Sun Feb  6 19:28:47 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.65 MB, 88 files
 
 [DEP] bash
+[DEP] bigreqsproto
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] flex
 [DEP] gawk
 [DEP] gcc
@@ -18,6 +20,7 @@
 [DEP] grep
 [DEP] imake
 [DEP] libice
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxext
@@ -33,4 +36,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto

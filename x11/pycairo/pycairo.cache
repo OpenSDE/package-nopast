@@ -1,17 +1,15 @@
 
-[TIMESTAMP] 1158291141 Fri Sep 15 05:32:21 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.09 MB, 13 files
+[TIMESTAMP] 1297030786 Sun Feb  6 23:19:46 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.10 MB, 13 files
 
-[DEP] 00-dirtree
-[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
-[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
@@ -19,34 +17,24 @@
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] gnome-libs14
-[DEP] gnue-common
 [DEP] grep
-[DEP] gst-python
-[DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] numpy
-[DEP] pango
-[DEP] pil
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] python
-[DEP] rat
 [DEP] renderproto
 [DEP] sed
-[DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] wxpython
+[DEP] util-linux-ng
 [DEP] xproto

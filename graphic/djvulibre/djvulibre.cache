@@ -1,54 +1,35 @@
 
-[TIMESTAMP] 1134265114 Sun Dec 11 02:38:34 2005
-[BUILDTIME] 125 (9) ERROR
-[SIZE] 4.00 MB, 123 files
+[TIMESTAMP] 1297112966 Mon Feb  7 22:09:26 2011
+[BUILDTIME] 15 (5)
+[SIZE] 2.75 MB, 101 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] expat
+[DEP] fhs
 [DEP] findutils
-[DEP] fontconfig
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imake
-[DEP] kdelibs
-[DEP] libdrm
+[DEP] jbigkit
 [DEP] libice
 [DEP] libjpeg
-[DEP] libpng
-[DEP] libsm
 [DEP] libtiff
 [DEP] libx11
 [DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
-[DEP] libxfixes
-[DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
-[DEP] libxrender
-[DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
-[DEP] patch
-[DEP] qt3
 [DEP] sed
+[DEP] shadow
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xextproto
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib
+[DEP] xz

@@ -1,40 +1,60 @@
 
-[TIMESTAMP] 1240067977 Sat Apr 18 18:19:37 2009
-[BUILDTIME] 10 (5) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1297103582 Mon Feb  7 19:33:02 2011
+[BUILDTIME] 55 (5)
+[SIZE] 0.38 MB, 17 files
 
+[DEP] acl
+[DEP] attr
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
 [DEP] grep
 [DEP] kdebase-workspace
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
 [DEP] libice
+[DEP] libpng
+[DEP] libsm
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
+[DEP] libxcursor
 [DEP] libxdmcp
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
+[DEP] libxml
 [DEP] libxpm
+[DEP] libxrandr
 [DEP] libxrender
+[DEP] libxt
+[DEP] libxtst
 [DEP] linux-header
 [DEP] make
+[DEP] nas
 [DEP] phonon
+[DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
+[DEP] soprano
+[DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

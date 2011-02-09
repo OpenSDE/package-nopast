@@ -1,19 +1,21 @@
 
-[TIMESTAMP] 1134234131 Sat Dec 10 18:02:11 2005
-[BUILDTIME] 90 (9)
-[SIZE] 0.71 MB, 81 files
+[TIMESTAMP] 1297109711 Mon Feb  7 21:15:11 2011
+[BUILDTIME] 115 (5)
+[SIZE] 0.66 MB, 73 files
 
-[DEP] alsa-lib
 [DEP] atk
-[DEP] audiofile
+[DEP] atkmm
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
+[DEP] cairomm
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] esound
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
@@ -21,38 +23,44 @@
 [DEP] gcc
 [DEP] gconf
 [DEP] gconfmm
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
 [DEP] glibmm
-[DEP] glitz
-[DEP] gnome-keyring
 [DEP] gnome-vfs
 [DEP] gnome-vfsmm
 [DEP] grep
 [DEP] gtk+
 [DEP] gtkmm
-[DEP] howl
-[DEP] inputproto
 [DEP] kbproto
 [DEP] libart_lgpl23
 [DEP] libbonobo
 [DEP] libbonoboui
+[DEP] libcanberra
+[DEP] libgcrypt
 [DEP] libglade
 [DEP] libglademm
 [DEP] libgnome
+[DEP] libgnome-keyring
 [DEP] libgnomecanvas
 [DEP] libgnomecanvasmm
 [DEP] libgnomemm
 [DEP] libgnomeui
+[DEP] libgpg-error
 [DEP] libice
-[DEP] libjpeg
+[DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsigc++
 [DEP] libsm
+[DEP] libtool
+[DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -63,17 +71,17 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] orbit2
 [DEP] pango
+[DEP] pangomm
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] popt
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

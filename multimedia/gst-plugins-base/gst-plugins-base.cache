@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1158871831 Thu Sep 21 23:50:31 2006
-[BUILDTIME] 100 (9)
-[SIZE] 6.43 MB, 354 files
+[TIMESTAMP] 1297093156 Mon Feb  7 16:39:16 2011
+[BUILDTIME] 215 (5)
+[SIZE] 10.42 MB, 477 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] atk
 [DEP] bash
@@ -11,39 +10,57 @@
 [DEP] bzip2
 [DEP] cairo
 [DEP] cdparanoia
-[DEP] xorg-cf-files
+[DEP] clutter
 [DEP] coreutils
 [DEP] dbus
 [DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
+[DEP] gimp
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-libs14
 [DEP] gnome-vfs
+[DEP] gobject-introspection
 [DEP] grep
 [DEP] gstreamer
 [DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
 [DEP] imake
-[DEP] inputproto
+[DEP] iso-codes
+[DEP] json-glib
 [DEP] kbproto
+[DEP] libgdata
+[DEP] libglade
 [DEP] libice
+[DEP] libnotify
 [DEP] libogg
 [DEP] liboil
 [DEP] libpng
+[DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libsm
+[DEP] libtheora
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -51,22 +68,35 @@
 [DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxt
 [DEP] libxv
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] nas
+[DEP] numpy
 [DEP] orbit2
 [DEP] pango
+[DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] pygobject
 [DEP] pygtk
 [DEP] python
+[DEP] pyxml
+[DEP] qt4
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] videoproto
+[DEP] vte
+[DEP] wxpython
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib
+[DEP] xz

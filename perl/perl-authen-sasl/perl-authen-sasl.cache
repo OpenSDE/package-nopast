@@ -1,18 +1,20 @@
 
-[TIMESTAMP] 1134059475 Thu Dec  8 17:31:15 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.11 MB, 36 files
+[TIMESTAMP] 1297080642 Mon Feb  7 13:10:42 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.16 MB, 34 files
 
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] gawk
+[DEP] fhs
+[DEP] findutils
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] make
 [DEP] perl
+[DEP] perl-digest-hmacmd5
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

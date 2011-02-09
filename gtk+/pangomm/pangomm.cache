@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1222602597 Sun Sep 28 14:49:57 2008
-[BUILDTIME] 30 (5)
-[SIZE] 3.32 MB, 310 files
+[TIMESTAMP] 1297030124 Sun Feb  6 23:08:44 2011
+[BUILDTIME] 25 (5)
+[SIZE] 3.38 MB, 303 files
 
 [DEP] bash
 [DEP] binutils
@@ -10,8 +10,6 @@
 [DEP] cairomm
 [DEP] coreutils
 [DEP] diffutils
-[DEP] doxygen
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -22,8 +20,7 @@
 [DEP] glib
 [DEP] glibc
 [DEP] glibmm
-[DEP] glitz
-[DEP] graphviz
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] kbproto
 [DEP] libpng
@@ -32,15 +29,9 @@
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
-[DEP] libxdmcp
 [DEP] libxrender
-[DEP] libxslt
 [DEP] linux-header
-[DEP] ltmm
-[DEP] m4
-[DEP] magicpoint
 [DEP] make
-[DEP] mktemp
 [DEP] pango
 [DEP] perl
 [DEP] pixman
@@ -49,7 +40,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xemacs-beta
+[DEP] util-linux-ng
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

@@ -1,17 +1,22 @@
 
-[TIMESTAMP] 1239974203 Fri Apr 17 16:16:43 2009
-[BUILDTIME] 230 (5)
-[SIZE] 132.78 MB, 8214 files
+[TIMESTAMP] 1297094267 Mon Feb  7 16:57:47 2011
+[BUILDTIME] 515 (5)
+[SIZE] 14.76 MB, 1890 files
 
+[DEP] acl
 [DEP] alsa-lib
+[DEP] attica
+[DEP] attr
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
+[DEP] exiv2
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -25,39 +30,49 @@
 [DEP] gnome-libs14
 [DEP] grep
 [DEP] ilmbase
-[DEP] kdebase
 [DEP] kdebase-workspace
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
+[DEP] libdrm
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libsm
+[DEP] libssh
 [DEP] libungif
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
 [DEP] libxt
 [DEP] libxtst
+[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
+[DEP] mesa
 [DEP] nas
 [DEP] openexr
+[DEP] openslp
 [DEP] pcre
 [DEP] phonon
 [DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
+[DEP] shared-desktop-ontologies
+[DEP] shared-mime-info
 [DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
+[DEP] xz

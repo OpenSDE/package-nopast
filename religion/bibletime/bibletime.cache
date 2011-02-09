@@ -1,62 +1,47 @@
 
-[TIMESTAMP] 1133768892 Mon Dec  5 08:48:12 2005
-[BUILDTIME] 45 (5)
-[SIZE] 1.71 MB, 166 files
+[TIMESTAMP] 1297174218 Tue Feb  8 15:10:18 2011
+[BUILDTIME] 250 (5)
+[SIZE] 14.08 MB, 896 files
 
-[DEP] 00-dirtree
-[DEP] arts
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] clucene
+[DEP] cmake
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
 [DEP] expat
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gawk
 [DEP] gcc
-[DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] imake
-[DEP] kdelibs
-[DEP] libart_lgpl23
-[DEP] libdnet
-[DEP] libdrm
+[DEP] icu4c
 [DEP] libice
 [DEP] libidn
-[DEP] libjpeg
 [DEP] libpng
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
-[DEP] libxfixes
-[DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
 [DEP] libxrender
 [DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
+[DEP] nas
 [DEP] openssl
-[DEP] pcre
-[DEP] perl
-[DEP] qt3
+[DEP] phonon
+[DEP] qt4
 [DEP] sed
 [DEP] sword
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xproto
+[DEP] util-linux-ng
 [DEP] zlib

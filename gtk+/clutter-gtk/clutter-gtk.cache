@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1291569761 Sun Dec  5 18:22:41 2010
+[TIMESTAMP] 1297110763 Mon Feb  7 21:32:43 2011
 [BUILDTIME] 10 (5)
-[SIZE] 0.29 MB, 48 files
+[SIZE] 0.29 MB, 46 files
 
 [DEP] atk
 [DEP] autoconf
@@ -25,7 +25,6 @@
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] gconf
 [DEP] gdk-pixbuf
 [DEP] gimp
 [DEP] glib
@@ -44,6 +43,7 @@
 [DEP] json-glib
 [DEP] kbproto
 [DEP] libdrm
+[DEP] libffi
 [DEP] libgdata
 [DEP] libglade
 [DEP] libnotify
@@ -85,7 +85,6 @@
 [DEP] redland
 [DEP] renderproto
 [DEP] sed
-[DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux-ng

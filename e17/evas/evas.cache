@@ -1,50 +1,66 @@
 
-[TIMESTAMP] 1134013504 Thu Dec  8 04:45:04 2005
-[BUILDTIME] 55 (9)
-[SIZE] 1.91 MB, 55 files
+[TIMESTAMP] 1297116508 Mon Feb  7 23:08:28 2011
+[BUILDTIME] 105 (5)
+[SIZE] 1.99 MB, 111 files
 
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
 [DEP] directfb
 [DEP] edb
 [DEP] eet
+[DEP] eina
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
+[DEP] fribidi
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] glib
 [DEP] glibc
 [DEP] gnome-libs14
+[DEP] gnutls
 [DEP] grep
-[DEP] imake
+[DEP] jbigkit
+[DEP] kbproto
+[DEP] libcroco
+[DEP] libgcrypt
+[DEP] libgpg-error
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
-[DEP] libtool
+[DEP] libpthread-stubs
+[DEP] librsvg
+[DEP] libsm
+[DEP] libtasn1
+[DEP] libtiff
+[DEP] libungif
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
-[DEP] libxext
+[DEP] libxcb
+[DEP] libxml
 [DEP] libxrender
 [DEP] linux-header
 [DEP] m4
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pango
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] valgrind
-[DEP] xextproto
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

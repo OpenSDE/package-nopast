@@ -1,18 +1,19 @@
 
-[TIMESTAMP] 1134065854 Thu Dec  8 19:17:34 2005
-[BUILDTIME] 60 (9)
-[SIZE] 9.03 MB, 212 files
+[TIMESTAMP] 1297081770 Mon Feb  7 13:29:30 2011
+[BUILDTIME] 60 (5)
+[SIZE] 7.63 MB, 254 files
 
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] compositeproto
 [DEP] coreutils
+[DEP] damageproto
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] fontconfig
@@ -20,23 +21,32 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-doc-utils
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
-[DEP] inputproto
+[DEP] intltool
 [DEP] kbproto
+[DEP] libbonoboui
+[DEP] libcanberra
+[DEP] libgtop
 [DEP] libice
+[DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
+[DEP] libtool
+[DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -45,22 +55,19 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] popt
 [DEP] randrproto
 [DEP] renderproto
 [DEP] sed
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
-[DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib

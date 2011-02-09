@@ -1,14 +1,13 @@
 
-[TIMESTAMP] 1239990236 Fri Apr 17 20:43:56 2009
-[BUILDTIME] 105 (5)
-[SIZE] 3.27 MB, 37 files
+[TIMESTAMP] 1297095168 Mon Feb  7 17:12:48 2011
+[BUILDTIME] 40 (5)
+[SIZE] 1.91 MB, 37 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -31,9 +30,10 @@
 [DEP] linux-header
 [DEP] make
 [DEP] nas
+[DEP] phonon
 [DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] zlib
+[DEP] util-linux-ng

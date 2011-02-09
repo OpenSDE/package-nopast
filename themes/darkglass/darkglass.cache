@@ -1,18 +1,22 @@
 
-[TIMESTAMP] 1134227286 Sat Dec 10 16:08:06 2005
-[BUILDTIME] 5 (9)
+[TIMESTAMP] 1297108549 Mon Feb  7 20:55:49 2011
+[BUILDTIME] 0 (5)
 [SIZE] 0.30 MB, 18 files
 
-[DEP] 00-dirtree
 [DEP] bash
+[DEP] blueglass
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libpthread-stubs
 [DEP] make
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] xcursorgen
+[DEP] xproto

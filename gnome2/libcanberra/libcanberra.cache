@@ -1,14 +1,17 @@
 
-[TIMESTAMP] 1222700250 Mon Sep 29 17:57:30 2008
-[BUILDTIME] 45 (5)
-[SIZE] 0.45 MB, 58 files
+[TIMESTAMP] 1297031829 Sun Feb  6 23:37:09 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.35 MB, 61 files
 
 [DEP] alsa-lib
 [DEP] atk
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
+[DEP] clutter
 [DEP] coreutils
 [DEP] dbus-glib
 [DEP] diffutils
@@ -17,35 +20,27 @@
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
-[DEP] gimp
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
-[DEP] gnome-doc-utils
 [DEP] gnome-libs14
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] gst-plugins-base
-[DEP] gstreamer
 [DEP] gtk+
 [DEP] gtkdoc
 [DEP] gtkglext
+[DEP] gtkimageview
 [DEP] gtkspell
 [DEP] hal
+[DEP] json-glib
 [DEP] kbproto
-[DEP] libgalago
 [DEP] libglade
-[DEP] libgpod
-[DEP] libnotify
 [DEP] libogg
-[DEP] liboil
 [DEP] libpng
 [DEP] libpthread-stubs
-[DEP] librsvg
-[DEP] libsexy
 [DEP] libtool
 [DEP] libvorbis
 [DEP] libx11
@@ -54,18 +49,18 @@
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
-[DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] linux-header
 [DEP] lynx
+[DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] mime-support
+[DEP] mt-st
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
@@ -74,12 +69,13 @@
 [DEP] poppler
 [DEP] pygobject
 [DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] vino
-[DEP] vte
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

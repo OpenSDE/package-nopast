@@ -1,20 +1,22 @@
 
-[TIMESTAMP] 1134194965 Sat Dec 10 07:09:25 2005
-[BUILDTIME] 20 (9)
-[SIZE] 1.25 MB, 21 files
+[TIMESTAMP] 1297104108 Mon Feb  7 19:41:48 2011
+[BUILDTIME] 10 (5)
+[SIZE] 2.33 MB, 24 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] damageproto
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] gawk
 [DEP] gcc
+[DEP] geany
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] imake
 [DEP] inputproto
@@ -25,26 +27,27 @@
 [DEP] libvncserver
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
+[DEP] libxi
 [DEP] libxinerama
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] patch
+[DEP] openssl
+[DEP] pkgconfig
 [DEP] randrproto
 [DEP] recordproto
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
-[DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

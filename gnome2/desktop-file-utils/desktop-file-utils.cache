@@ -1,27 +1,28 @@
 
-[TIMESTAMP] 1134235005 Sat Dec 10 18:16:45 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.18 MB, 18 files
+[TIMESTAMP] 1297109748 Mon Feb  7 21:15:48 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.11 MB, 11 files
 
+[DEP] auctex
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] emacs
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
 [DEP] grep
+[DEP] libx11
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pkgconfig
-[DEP] popt
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xemacs
+[DEP] xemacs-packages

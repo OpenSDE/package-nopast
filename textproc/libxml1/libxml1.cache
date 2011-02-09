@@ -1,59 +1,48 @@
 
-[TIMESTAMP] 1134015908 Thu Dec  8 05:25:08 2005
-[BUILDTIME] 15 (9)
-[SIZE] 2.14 MB, 73 files
+[TIMESTAMP] 1297029330 Sun Feb  6 22:55:30 2011
+[BUILDTIME] 5 (5)
+[SIZE] 2.01 MB, 61 files
 
-[DEP] at-spi
+[DEP] atk
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] epiphany
-[DEP] evolution-data-server
+[DEP] fhs
 [DEP] findutils
-[DEP] gail
+[DEP] gawk
 [DEP] gcc
-[DEP] gconf
-[DEP] gimp
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
-[DEP] gmime
-[DEP] gnet
-[DEP] gnome-panel
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] gstreamer
 [DEP] gtk+
 [DEP] gtkdoc
-[DEP] gtkglext
-[DEP] gtksourceview
-[DEP] libbonobo
-[DEP] libbonoboui
-[DEP] libgda
-[DEP] libglade
-[DEP] libgnome
-[DEP] libgnomecanvas
-[DEP] libgnomeprint
-[DEP] libgnomeui
-[DEP] libgsf
-[DEP] librsvg
-[DEP] libsoup
-[DEP] libwnck
-[DEP] linphone
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] json-glib
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] pango
 [DEP] perl
 [DEP] pkgconfig
+[DEP] poppler
+[DEP] raptor
+[DEP] rasqal
 [DEP] readline
-[DEP] rhythmbox
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
+[DEP] util-linux-ng
 [DEP] zlib

@@ -1,29 +1,45 @@
 
-[TIMESTAMP] 1134020833 Thu Dec  8 06:47:13 2005
-[BUILDTIME] 55 (9)
-[SIZE] 2.46 MB, 111 files
+[TIMESTAMP] 1297030075 Sun Feb  6 23:07:55 2011
+[BUILDTIME] 45 (5)
+[SIZE] 2.26 MB, 105 files
 
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] json-glib
 [DEP] libidl
+[DEP] libtool
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] openssl
-[DEP] patch
+[DEP] pango
+[DEP] perl
 [DEP] pkgconfig
-[DEP] popt
+[DEP] poppler
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

@@ -1,21 +1,50 @@
 
-[TIMESTAMP] 1158873514 Fri Sep 22 00:18:34 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.86 MB, 89 files
+[TIMESTAMP] 1297031120 Sun Feb  6 23:25:20 2011
+[BUILDTIME] 5 (5)
+[SIZE] 1.95 MB, 148 files
 
-[DEP] 00-dirtree
+[DEP] alsa-tools
+[DEP] atk
 [DEP] bash
+[DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] geany
 [DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] grep
+[DEP] gtk+
+[DEP] intltool
+[DEP] kbproto
+[DEP] libffi
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxrender
+[DEP] linux-header
 [DEP] make
+[DEP] numpy
+[DEP] pango
+[DEP] perl
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] pygobject
 [DEP] pygtk
 [DEP] python
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] xproto

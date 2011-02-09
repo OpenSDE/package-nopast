@@ -1,6 +1,6 @@
 
-[TIMESTAMP] 1291146502 Tue Nov 30 20:48:22 2010
-[BUILDTIME] 20 (5)
+[TIMESTAMP] 1297021730 Sun Feb  6 20:48:50 2011
+[BUILDTIME] 30 (5)
 [SIZE] 3.38 MB, 232 files
 
 [DEP] autoconf
@@ -21,6 +21,7 @@
 [DEP] grep
 [DEP] jbigkit
 [DEP] kbproto
+[DEP] libffi
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libpthread-stubs

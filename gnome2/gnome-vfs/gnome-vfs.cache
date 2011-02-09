@@ -1,38 +1,60 @@
 
-[TIMESTAMP] 1134028346 Thu Dec  8 08:52:26 2005
-[BUILDTIME] 100 (9)
-[SIZE] 5.56 MB, 213 files
+[TIMESTAMP] 1297031266 Sun Feb  6 23:27:46 2011
+[BUILDTIME] 110 (5)
+[SIZE] 7.47 MB, 285 files
 
+[DEP] acl
+[DEP] atk
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] gnome-mime-data
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] howl
-[DEP] libbonobo
+[DEP] gtk+
+[DEP] gtkdoc
+[DEP] gtkglext
+[DEP] gtkimageview
+[DEP] gtkspell
+[DEP] hal
+[DEP] intltool
+[DEP] json-glib
+[DEP] libglade
 [DEP] libxml
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] orbit2
+[DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
 [DEP] pkgconfig
-[DEP] popt
+[DEP] poppler
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

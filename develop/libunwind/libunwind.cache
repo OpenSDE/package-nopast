@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1241001277 Wed Apr 29 13:34:37 2009
-[BUILDTIME] 40 (5)
-[SIZE] 0.24 MB, 44 files
+[TIMESTAMP] 1297004885 Sun Feb  6 16:08:05 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.54 MB, 58 files
 
 [DEP] bash
 [DEP] binutils
@@ -9,16 +9,14 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] fhs
-[DEP] file
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

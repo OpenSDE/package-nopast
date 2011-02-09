@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1284892062 Sun Sep 19 12:27:42 2010
-[BUILDTIME] 25 (5)
-[SIZE] 0.31 MB, 41 files
+[TIMESTAMP] 1297083810 Mon Feb  7 14:03:30 2011
+[BUILDTIME] 20 (5)
+[SIZE] 0.31 MB, 39 files
 
 [DEP] atk
 [DEP] autoconf
@@ -10,6 +10,7 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
+[DEP] clutter
 [DEP] coreutils
 [DEP] dbus
 [DEP] dbus-glib
@@ -22,28 +23,43 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gconf110
+[DEP] gdk-pixbuf
+[DEP] gdk-pixbuf10
 [DEP] gettext
 [DEP] glib
+[DEP] glib12
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-common
+[DEP] gnome-doc-utils
+[DEP] gnome-libs14
+[DEP] gnomemm12
+[DEP] gob
 [DEP] gobject-introspection
 [DEP] grep
 [DEP] gtk+
+[DEP] gtk+12
+[DEP] gtk+extra10
 [DEP] gtkdoc
 [DEP] gtkglext
 [DEP] gtkimageview
+[DEP] gtkmm12
 [DEP] gtkspell
 [DEP] hal
 [DEP] imake
+[DEP] imlib
+[DEP] json-glib
 [DEP] kbproto
+[DEP] libgdata
 [DEP] libglade
+[DEP] libglade10
 [DEP] libice
 [DEP] libnotify
 [DEP] liboil
 [DEP] libpng
+[DEP] libprelude
 [DEP] libpthread-stubs
 [DEP] librsvg
-[DEP] libselinux
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
@@ -59,8 +75,10 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] mysql
 [DEP] numpy
+[DEP] oaf10
+[DEP] orbit10
 [DEP] orbit2
 [DEP] pango
 [DEP] perl

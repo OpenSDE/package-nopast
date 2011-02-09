@@ -1,35 +1,37 @@
 
-[TIMESTAMP] 1134036512 Thu Dec  8 11:08:32 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.70 MB, 128 files
+[TIMESTAMP] 1297033783 Mon Feb  7 00:09:43 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.00 MB, 188 files
 
+[DEP] at-spi
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] gnue-common
+[DEP] gobject-introspection
 [DEP] grep
+[DEP] intltool
+[DEP] libbonoboui
+[DEP] libffi
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] numpy
 [DEP] perl
 [DEP] perl-xml-parser
-[DEP] pil
 [DEP] pkgconfig
+[DEP] pygobject
 [DEP] python
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] wxpython
+[DEP] util-linux-ng
+[DEP] zlib

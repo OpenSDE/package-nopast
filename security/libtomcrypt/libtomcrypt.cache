@@ -1,14 +1,14 @@
 
-[TIMESTAMP] 1166303714 Sat Dec 16 18:15:14 2006
-[BUILDTIME] 100 (9)
-[SIZE] 1.96 MB, 24 files
+[TIMESTAMP] 1297114258 Mon Feb  7 22:30:58 2011
+[BUILDTIME] 20 (5)
+[SIZE] 2.03 MB, 24 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -23,3 +23,4 @@
 [DEP] tar
 [DEP] tetex
 [DEP] tomsfastmath
+[DEP] util-linux-ng

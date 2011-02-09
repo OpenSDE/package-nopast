@@ -1,50 +1,47 @@
 
-[TIMESTAMP] 1133742867 Mon Dec  5 01:34:27 2005
-[BUILDTIME] 370 (5)
-[SIZE] 11.91 MB, 4062 files
+[TIMESTAMP] 1297170490 Tue Feb  8 14:08:10 2011
+[BUILDTIME] 330 (5)
+[SIZE] 20.51 MB, 596 files
 
-[DEP] 00-dirtree
+[DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imake
-[DEP] inputproto
 [DEP] libdrm
 [DEP] libice
 [DEP] libjpeg
 [DEP] libmikmod
 [DEP] libogg
 [DEP] libpng
-[DEP] libsdl
-[DEP] libsdl_gfx
-[DEP] libsm
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
-[DEP] libxmu
-[DEP] libxt
+[DEP] libxfixes
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
-[DEP] patch
-[DEP] perl
+[DEP] pcre
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xf86vidmodeproto
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

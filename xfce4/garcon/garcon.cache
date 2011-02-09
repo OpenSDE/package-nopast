@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1296944497 Sat Feb  5 23:21:37 2011
+[TIMESTAMP] 1297174691 Tue Feb  8 15:18:11 2011
 [BUILDTIME] 15 (5)
-[SIZE] 0.89 MB, 116 files
+[SIZE] 0.89 MB, 124 files
 
 [DEP] atk
 [DEP] bash
@@ -35,7 +35,6 @@
 [DEP] hal
 [DEP] intltool
 [DEP] json-glib
-[DEP] libgalago
 [DEP] libgdata
 [DEP] libglade
 [DEP] libgpod
@@ -44,7 +43,6 @@
 [DEP] liboil
 [DEP] librsvg
 [DEP] libxfce4util
-[DEP] libxfcegui4
 [DEP] linux-header
 [DEP] make
 [DEP] orbit2
@@ -60,8 +58,6 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] udev
 [DEP] util-linux-ng
 [DEP] vte
-[DEP] xfdesktop
 [DEP] zlib

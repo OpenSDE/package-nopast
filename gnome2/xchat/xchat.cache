@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134135988 Fri Dec  9 14:46:28 2005
-[BUILDTIME] 30 (9)
-[SIZE] 2.74 MB, 31 files
+[TIMESTAMP] 1297091514 Mon Feb  7 16:11:54 2011
+[BUILDTIME] 40 (5)
+[SIZE] 5.90 MB, 48 files
 
 [DEP] atk
 [DEP] bash
@@ -11,29 +11,35 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
-[DEP] gnue-common
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] kbproto
+[DEP] libbonoboui
+[DEP] libgnome
 [DEP] libpng
-[DEP] libtool
+[DEP] libpthread-stubs
+[DEP] librsvg
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -42,22 +48,20 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] numpy
 [DEP] openssl
 [DEP] pango
 [DEP] perl
-[DEP] pil
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] pygobject
 [DEP] python
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcl
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxpython
 [DEP] xproto
 [DEP] zlib
-[DEP] zope

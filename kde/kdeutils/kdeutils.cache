@@ -1,9 +1,10 @@
 
-[TIMESTAMP] 1239986115 Fri Apr 17 19:35:15 2009
-[BUILDTIME] 175 (5)
-[SIZE] 8.09 MB, 296 files
+[TIMESTAMP] 1297094848 Mon Feb  7 17:07:28 2011
+[BUILDTIME] 715 (5)
+[SIZE] 10.01 MB, 762 files
 
 [DEP] acl
+[DEP] attica
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
@@ -12,9 +13,9 @@
 [DEP] cmake
 [DEP] compositeproto
 [DEP] coreutils
-[DEP] cyrus-sasl2
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -27,12 +28,14 @@
 [DEP] glib
 [DEP] glibc
 [DEP] gmp
+[DEP] gnome-libs14
 [DEP] gnupth
 [DEP] grep
+[DEP] kdebase
 [DEP] kdebase-workspace
-[DEP] kdebindings
 [DEP] kdelibs
 [DEP] kdepimlibs
+[DEP] libdbusmenu-qt
 [DEP] libdrm
 [DEP] libice
 [DEP] libpng
@@ -47,9 +50,12 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
+[DEP] libxrandr
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxt
 [DEP] libxtst
 [DEP] libxxf86vm
@@ -67,11 +73,14 @@
 [DEP] qt4
 [DEP] renderproto
 [DEP] sed
+[DEP] shared-mime-info
 [DEP] sip
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxpython
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

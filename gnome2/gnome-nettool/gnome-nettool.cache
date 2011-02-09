@@ -1,36 +1,61 @@
 
-[TIMESTAMP] 1134049063 Thu Dec  8 14:37:43 2005
-[BUILDTIME] 20 (9)
-[SIZE] 1.07 MB, 87 files
+[TIMESTAMP] 1297080179 Mon Feb  7 13:02:59 2011
+[BUILDTIME] 25 (5)
+[SIZE] 1.69 MB, 165 files
 
+[DEP] alacarte
 [DEP] atk
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] docbook-xml
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gconf110
+[DEP] gdk-pixbuf
+[DEP] gdk-pixbuf10
 [DEP] gettext
 [DEP] glib
+[DEP] glib12
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-common
+[DEP] gnome-doc-utils
+[DEP] gnome-icon-theme
+[DEP] gnome-libs14
+[DEP] gnomemm12
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
+[DEP] gtk+12
+[DEP] gtk+extra10
+[DEP] gtkmm12
+[DEP] imlib
+[DEP] intltool
 [DEP] kbproto
-[DEP] libglade
+[DEP] libbonoboui
+[DEP] libcanberra
+[DEP] libgda
+[DEP] libglade10
+[DEP] libgtop
 [DEP] libpng
+[DEP] libprelude
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -38,20 +63,27 @@
 [DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxslt
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mysql
+[DEP] numpy
+[DEP] oaf10
+[DEP] orbit10
 [DEP] orbit2
 [DEP] pango
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] popt
+[DEP] pygobject
+[DEP] python
 [DEP] renderproto
+[DEP] scrollkeeper
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] wxpython
 [DEP] xproto
-[DEP] zlib

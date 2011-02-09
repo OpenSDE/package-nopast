@@ -1,15 +1,19 @@
 
-[TIMESTAMP] 1133969780 Wed Dec  7 16:36:20 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.59 MB, 20 files
+[TIMESTAMP] 1297018767 Sun Feb  6 19:59:27 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.57 MB, 17 files
 
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libpthread-stubs
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] xproto

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1236111620 Tue Mar  3 22:20:20 2009
+[TIMESTAMP] 1297114197 Mon Feb  7 22:29:57 2011
 [BUILDTIME] 0 (5)
-[SIZE] 0.33 MB, 10 files
+[SIZE] 1.00 MB, 90 files
 
 [DEP] bash
 [DEP] bzip2
@@ -9,12 +9,15 @@
 [DEP] diffutils
 [DEP] fhs
 [DEP] findutils
-[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] gst-python
+[DEP] numpy
+[DEP] pygobject
+[DEP] pyrexc
 [DEP] python
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] wxpython

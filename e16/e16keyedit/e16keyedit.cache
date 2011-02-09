@@ -1,32 +1,53 @@
 
-[TIMESTAMP] 1133760492 Mon Dec  5 06:28:12 2005
-[BUILDTIME] 5 (5)
-[SIZE] 0.05 MB, 12 files
+[TIMESTAMP] 1297172933 Tue Feb  8 14:48:53 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.05 MB, 7 files
 
-[DEP] 00-dirtree
+[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
 [DEP] enlightenment16
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] gdbm
-[DEP] glib12
+[DEP] gdk-pixbuf
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] gtk+12
-[DEP] imlib
+[DEP] gtk+
+[DEP] imake
+[DEP] kbproto
+[DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
+[DEP] libxinerama
+[DEP] libxrandr
+[DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] patch
+[DEP] pango
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto

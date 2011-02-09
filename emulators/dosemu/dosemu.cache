@@ -1,14 +1,16 @@
 
-[TIMESTAMP] 1134207963 Sat Dec 10 10:46:03 2005
-[BUILDTIME] 15 (9) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1297106112 Mon Feb  7 20:15:12 2011
+[BUILDTIME] 25 (5)
+[SIZE] 5.24 MB, 502 files
 
 [DEP] bash
+[DEP] bdftopcf
 [DEP] binutils
+[DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] gawk
@@ -18,22 +20,27 @@
 [DEP] grep
 [DEP] gzip
 [DEP] imake
+[DEP] joe
 [DEP] kbproto
 [DEP] libice
+[DEP] libpthread-stubs
+[DEP] libsdl
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] ncurses
-[DEP] net-tools
+[DEP] mkfontdir
+[DEP] mkfontscale
 [DEP] sed
 [DEP] slang
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xf86vidmodeproto
+[DEP] xorg-cf-files
 [DEP] xproto

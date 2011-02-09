@@ -1,13 +1,13 @@
 
-[TIMESTAMP] 1157145416 Sat Sep  2 00:16:56 2006
-[BUILDTIME] 100 (9)
-[SIZE] 1.87 MB, 173 files
+[TIMESTAMP] 1297173229 Tue Feb  8 14:53:49 2011
+[BUILDTIME] 25 (5)
+[SIZE] 2.10 MB, 192 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -17,7 +17,9 @@
 [DEP] gzip
 [DEP] make
 [DEP] perl
+[DEP] perl-gettext
 [DEP] perl-module-build
+[DEP] perl-term-readkey
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

@@ -1,16 +1,15 @@
 
-[TIMESTAMP] 1160652589 Thu Oct 12 14:29:49 2006
-[BUILDTIME] 100 (9)
+[TIMESTAMP] 1297185412 Tue Feb  8 18:16:52 2011
+[BUILDTIME] 0 (5)
 [SIZE] 0.05 MB, 7 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] gawk
 [DEP] gcc
 [DEP] glib12
 [DEP] glibc
@@ -18,7 +17,7 @@
 [DEP] gtk+12
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxi
 [DEP] linux-header

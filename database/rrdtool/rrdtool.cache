@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1255269336 Sun Oct 11 16:55:36 2009
-[BUILDTIME] 35 (5)
-[SIZE] 2.00 MB, 145 files
+[TIMESTAMP] 1297023631 Sun Feb  6 21:20:31 2011
+[BUILDTIME] 50 (5)
+[SIZE] 3.17 MB, 183 files
 
 [DEP] bash
 [DEP] binutils
@@ -9,8 +9,8 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
 [DEP] fhs
-[DEP] file
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
@@ -20,18 +20,30 @@
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] intltool
+[DEP] groff
+[DEP] kbproto
 [DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
 [DEP] libxml
+[DEP] libxrender
+[DEP] linux-header
+[DEP] lua
 [DEP] make
-[DEP] mktemp
-[DEP] openssl
 [DEP] pango
 [DEP] perl
 [DEP] pixman
 [DEP] pkgconfig
-[DEP] runit
+[DEP] python
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] tcl
+[DEP] tcp_wrappers
 [DEP] util-linux-ng
+[DEP] xproto
+[DEP] xz
+[DEP] zlib

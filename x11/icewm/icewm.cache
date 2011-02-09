@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1134143253 Fri Dec  9 16:47:33 2005
-[BUILDTIME] 40 (9)
-[SIZE] 2.41 MB, 379 files
+[TIMESTAMP] 1297092977 Mon Feb  7 16:36:17 2011
+[BUILDTIME] 15 (5)
+[SIZE] 2.17 MB, 333 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
@@ -20,16 +20,18 @@
 [DEP] grep
 [DEP] imake
 [DEP] imlib
-[DEP] kdelibs
+[DEP] jbigkit
+[DEP] kbproto
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libtiff
 [DEP] libungif
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxft
 [DEP] libxinerama
@@ -39,16 +41,15 @@
 [DEP] make
 [DEP] mkfontdir
 [DEP] mkfontscale
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pkgconfig
 [DEP] procps
 [DEP] randrproto
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
-[DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

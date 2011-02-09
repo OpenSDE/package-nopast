@@ -1,23 +1,22 @@
 
-[TIMESTAMP] 1165444896 Wed Dec  6 19:41:36 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.69 MB, 201 files
+[TIMESTAMP] 1297109517 Mon Feb  7 21:11:57 2011
+[BUILDTIME] 5 (5)
+[SIZE] 1.09 MB, 262 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] make
-[DEP] mktemp
 [DEP] mono
-[DEP] net-tools
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

@@ -1,33 +1,44 @@
 
-[TIMESTAMP] 1199829862 Wed Jan  9 00:04:22 2008
-[BUILDTIME] 25 (5)
-[SIZE] 0.25 MB, 39 files
+[TIMESTAMP] 1297116831 Mon Feb  7 23:13:51 2011
+[BUILDTIME] 35 (5)
+[SIZE] 0.82 MB, 66 files
 
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
 [DEP] binutils
-[DEP] boehm-gc
 [DEP] bzip2
 [DEP] coreutils
 [DEP] dbus
 [DEP] diffutils
 [DEP] ecore
+[DEP] eet
+[DEP] eina
 [DEP] evas
+[DEP] expat
 [DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
+[DEP] gnutls
 [DEP] grep
-[DEP] libtool
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libjpeg
+[DEP] libtasn1
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] perl
 [DEP] pkgconfig
 [DEP] sed
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
+[DEP] zlib

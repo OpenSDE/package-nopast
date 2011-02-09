@@ -1,18 +1,14 @@
 
-[TIMESTAMP] 1222773051 Tue Sep 30 14:10:51 2008
-[BUILDTIME] 305 (5)
-[SIZE] 43.99 MB, 196 files
+[TIMESTAMP] 1297109628 Mon Feb  7 21:13:48 2011
+[BUILDTIME] 345 (5)
+[SIZE] 35.18 MB, 174 files
 
-[DEP] alsa-lib
-[DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] e2fsprogs
-[DEP] esound
 [DEP] expat
 [DEP] ffmpeg
 [DEP] fhs
@@ -20,22 +16,23 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] gsm
-[DEP] isdn4k-utils
 [DEP] libogg
 [DEP] libsdl
 [DEP] libtheora
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] openssl
 [DEP] pkgconfig
 [DEP] ptlib
+[DEP] ruby
 [DEP] sed
 [DEP] speex
+[DEP] swig
 [DEP] sysfiles
 [DEP] tar
-[DEP] unixodbc
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] x264
+[DEP] xz

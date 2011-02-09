@@ -1,40 +1,64 @@
 
-[TIMESTAMP] 1157964539 Mon Sep 11 04:48:59 2006
-[BUILDTIME] 60 (5)
-[SIZE] 12.37 MB, 669 files
+[TIMESTAMP] 1297080562 Mon Feb  7 13:09:22 2011
+[BUILDTIME] 75 (5)
+[SIZE] 24.52 MB, 836 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
+[DEP] atk
+[DEP] attr
 [DEP] bash
 [DEP] binutils
+[DEP] bison
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] heimdal
+[DEP] gsm
+[DEP] gtk+
+[DEP] gtk+12
+[DEP] gzip
+[DEP] kbproto
+[DEP] libcap
 [DEP] libidn
 [DEP] libogg
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libtool
+[DEP] libusb
 [DEP] libvorbis
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] mpg321
 [DEP] ncurses
-[DEP] net-tools
 [DEP] newt
 [DEP] openssl
+[DEP] pango
+[DEP] pine
+[DEP] pixman
+[DEP] pkgconfig
 [DEP] popt
 [DEP] postgresql
+[DEP] renderproto
 [DEP] sed
 [DEP] slang
 [DEP] speex
 [DEP] sqlite2
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
+[DEP] xproto
 [DEP] zlib

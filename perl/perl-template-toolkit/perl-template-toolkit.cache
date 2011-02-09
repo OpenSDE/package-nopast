@@ -1,14 +1,14 @@
 
-[TIMESTAMP] 1138702132 Tue Jan 31 11:08:52 2006
-[BUILDTIME] 100 (9)
-[SIZE] 7.36 MB, 1388 files
+[TIMESTAMP] 1297114946 Mon Feb  7 22:42:26 2011
+[BUILDTIME] 0 (5)
+[SIZE] 2.00 MB, 153 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gcc
 [DEP] glibc
@@ -17,18 +17,6 @@
 [DEP] make
 [DEP] perl
 [DEP] perl-appconfig
-[DEP] perl-date-calc
-[DEP] perl-gd-graph3d
-[DEP] perl-image-info
-[DEP] perl-pod-pom
-[DEP] perl-text-autoformat
-[DEP] perl-text-reform
-[DEP] perl-tie-dbi
-[DEP] perl-xml-dom
-[DEP] perl-xml-parser
-[DEP] perl-xml-regexp
-[DEP] perl-xml-rss
-[DEP] perl-xml-xpath
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

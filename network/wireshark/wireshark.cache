@@ -1,10 +1,11 @@
 
-[TIMESTAMP] 1153211014 Tue Jul 18 10:23:34 2006
-[BUILDTIME] 100 (9)
-[SIZE] 26.21 MB, 208 files
+[TIMESTAMP] 1297114754 Mon Feb  7 22:39:14 2011
+[BUILDTIME] 760 (5)
+[SIZE] 54.56 MB, 304 files
 
-[DEP] 00-dirtree
+[DEP] adns
 [DEP] atk
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -12,31 +13,36 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] geoip
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] gnutls
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
+[DEP] iana-etc
 [DEP] kbproto
+[DEP] libcap
 [DEP] libgcrypt
 [DEP] libgpg-error
-[DEP] libice
 [DEP] libpcap
 [DEP] libpng
-[DEP] libsm
+[DEP] libpthread-stubs
+[DEP] libsmi
 [DEP] libtasn1
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -44,20 +50,20 @@
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] linux-header
+[DEP] lua
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] pango
 [DEP] patch
-[DEP] pcre
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
+[DEP] rpm
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

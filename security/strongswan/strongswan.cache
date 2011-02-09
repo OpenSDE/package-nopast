@@ -1,9 +1,10 @@
 
-[TIMESTAMP] 1134278805 Sun Dec 11 06:26:45 2005
-[BUILDTIME] 30 (9)
-[SIZE] 2.13 MB, 204 files
+[TIMESTAMP] 1297116146 Mon Feb  7 23:02:26 2011
+[BUILDTIME] 90 (5)
+[SIZE] 2.84 MB, 163 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -11,18 +12,50 @@
 [DEP] curl
 [DEP] cyrus-sasl2
 [DEP] diffutils
+[DEP] dovecot
+[DEP] fhs
+[DEP] findutils
+[DEP] flex
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gconf110
+[DEP] gdk-pixbuf10
+[DEP] glib12
 [DEP] glibc
 [DEP] gmp
+[DEP] gnet
+[DEP] gnet1
+[DEP] gnome-common
+[DEP] gnome-doc-utils
+[DEP] gnome-libs14
+[DEP] gnomemm12
+[DEP] gob
+[DEP] gperf
 [DEP] grep
+[DEP] gtk+12
+[DEP] gtk+extra10
+[DEP] gtkmm12
+[DEP] imlib
+[DEP] libglade10
 [DEP] libidn
+[DEP] libprelude
+[DEP] libpreludedb
+[DEP] libtool
 [DEP] linux-header
+[DEP] m4
 [DEP] make
+[DEP] mt-st
+[DEP] mysql
+[DEP] oaf10
 [DEP] openldap
 [DEP] openssl
+[DEP] orbit10
 [DEP] patch
+[DEP] perl
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] zlib

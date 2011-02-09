@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1134214054 Sat Dec 10 12:27:34 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.64 MB, 89 files
+[TIMESTAMP] 1297107265 Mon Feb  7 20:34:25 2011
+[BUILDTIME] 70 (5)
+[SIZE] 4.70 MB, 556 files
 
+[DEP] autoconf
 [DEP] bash
 [DEP] bdb
 [DEP] binutils
@@ -10,10 +11,14 @@
 [DEP] coreutils
 [DEP] cracklib
 [DEP] diffutils
+[DEP] docbook-xml
+[DEP] docbook-xsl
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
+[DEP] gawk
 [DEP] gcc
-[DEP] gdbm
+[DEP] gettext
 [DEP] glibc
 [DEP] gnutls
 [DEP] grep
@@ -21,13 +26,18 @@
 [DEP] libgpg-error
 [DEP] libprelude
 [DEP] libtasn1
+[DEP] libtool
+[DEP] libxml
+[DEP] libxslt
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mime-support
+[DEP] patch
+[DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] w3m
 [DEP] zlib

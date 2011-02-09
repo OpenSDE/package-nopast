@@ -1,39 +1,58 @@
 
-[TIMESTAMP] 1137624912 Wed Jan 18 22:55:12 2006
-[BUILDTIME] 100 (9)
-[SIZE] 27.41 MB, 2282 files
+[TIMESTAMP] 1297113572 Mon Feb  7 22:19:32 2011
+[BUILDTIME] 70 (5)
+[SIZE] 17.68 MB, 1230 files
 
-[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
-[DEP] glibc32
 [DEP] grep
 [DEP] gtk+
+[DEP] jbigkit
+[DEP] libice
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libsm
 [DEP] libtiff
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxml
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxslt
+[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] pango
 [DEP] patch
+[DEP] pixman
 [DEP] postgresql
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxwidgets
-[DEP] xorg
+[DEP] zlib

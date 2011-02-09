@@ -1,13 +1,15 @@
 
-[TIMESTAMP] 1134266565 Sun Dec 11 03:02:45 2005
-[BUILDTIME] 50 (9)
-[SIZE] 0.76 MB, 33 files
+[TIMESTAMP] 1297113297 Mon Feb  7 22:14:57 2011
+[BUILDTIME] 40 (5)
+[SIZE] 1.35 MB, 21 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] e2fsprogs
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] gawk
@@ -15,19 +17,20 @@
 [DEP] glibc
 [DEP] gnutls
 [DEP] grep
+[DEP] gss
 [DEP] libgcrypt
 [DEP] libgpg-error
 [DEP] libprelude
 [DEP] libtasn1
+[DEP] libtool
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] openssl
 [DEP] pam
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcp_wrappers
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

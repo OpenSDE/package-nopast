@@ -1,9 +1,9 @@
 
-[TIMESTAMP] 1189079079 Thu Sep  6 13:44:39 2007
-[BUILDTIME] 360 (5)
-[SIZE] 14.28 MB, 289 files
+[TIMESTAMP] 1297026424 Sun Feb  6 22:07:04 2011
+[BUILDTIME] 85 (5)
+[SIZE] 14.59 MB, 391 files
 
-[DEP] 00-dirtree
+[DEP] alsa-tools
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -11,22 +11,25 @@
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
+[DEP] crypto++
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] geany
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
+[DEP] jbigkit
 [DEP] libgd
 [DEP] libice
 [DEP] libjpeg
@@ -36,8 +39,9 @@
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -45,17 +49,20 @@
 [DEP] libxpm
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxxf86vm
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
 [DEP] pango
-[DEP] patch
+[DEP] perl
+[DEP] pixman
+[DEP] pkgconfig
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxwidgets
 [DEP] xorg-cf-files
 [DEP] zlib

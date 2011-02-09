@@ -1,22 +1,27 @@
 
-[TIMESTAMP] 1134062415 Thu Dec  8 18:20:15 2005
-[BUILDTIME] 10 (9) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1297081000 Mon Feb  7 13:16:40 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.51 MB, 298 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] flex
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] libelf
 [DEP] linux-header
+[DEP] m4
 [DEP] make
+[DEP] patch
+[DEP] pcre
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] zlib

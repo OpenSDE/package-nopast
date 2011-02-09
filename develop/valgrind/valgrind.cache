@@ -1,25 +1,36 @@
 
-[TIMESTAMP] 1133980450 Wed Dec  7 19:34:10 2005
-[BUILDTIME] 25 (9)
-[SIZE] 14.41 MB, 132 files
+[TIMESTAMP] 1297019803 Sun Feb  6 20:16:43 2011
+[BUILDTIME] 25 (5)
+[SIZE] 28.20 MB, 151 files
 
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] glib12
 [DEP] glibc
 [DEP] grep
-[DEP] imake
+[DEP] gtk+12
+[DEP] imlib
+[DEP] libprelude
+[DEP] libtool
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mysql
+[DEP] orbit10
+[DEP] patch
+[DEP] perl
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

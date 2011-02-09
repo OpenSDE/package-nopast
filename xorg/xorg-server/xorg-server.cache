@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1133906663 Tue Dec  6 23:04:23 2005
-[BUILDTIME] 555 (9)
-[SIZE] 33.44 MB, 1327 files
+[TIMESTAMP] 1297012965 Sun Feb  6 18:22:45 2011
+[BUILDTIME] 130 (5)
+[SIZE] 9.57 MB, 272 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bigreqsproto
 [DEP] binutils
@@ -11,55 +10,62 @@
 [DEP] compositeproto
 [DEP] coreutils
 [DEP] damageproto
+[DEP] dbus
 [DEP] diffutils
 [DEP] dmxproto
-[DEP] evieext
+[DEP] dri2proto
+[DEP] fhs
 [DEP] findutils
 [DEP] fixesproto
 [DEP] flex
-[DEP] fontconfig
+[DEP] font-util
 [DEP] fontsproto
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gdbm
+[DEP] glib
 [DEP] glibc
 [DEP] glproto
 [DEP] grep
+[DEP] hal
 [DEP] inputproto
 [DEP] kbproto
+[DEP] libdmx
 [DEP] libdrm
 [DEP] libfontenc
+[DEP] libgcrypt
+[DEP] libgpg-error
 [DEP] libice
-[DEP] liblbxutil
+[DEP] libpciaccess
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
 [DEP] libxaw
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxfont
 [DEP] libxi
 [DEP] libxkbfile
-[DEP] libxkbui
 [DEP] libxmu
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxres
 [DEP] libxt
-[DEP] libxxf86misc
+[DEP] libxtst
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] m4
 [DEP] make
 [DEP] mesa
-[DEP] mkfontscale
-[DEP] mktemp
-[DEP] ncurses
-[DEP] net-tools
-[DEP] panoramixproto
-[DEP] perl
+[DEP] mt-st
+[DEP] openssl
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] printproto
 [DEP] randrproto
 [DEP] recordproto
 [DEP] renderproto
@@ -68,15 +74,14 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] trapproto
-[DEP] util-linux
+[DEP] udev
+[DEP] util-linux-ng
 [DEP] videoproto
+[DEP] xcb-proto
 [DEP] xcmiscproto
 [DEP] xextproto
-[DEP] xf86bigfontproto
 [DEP] xf86dgaproto
 [DEP] xf86driproto
-[DEP] xf86miscproto
 [DEP] xf86vidmodeproto
 [DEP] xineramaproto
 [DEP] xproto

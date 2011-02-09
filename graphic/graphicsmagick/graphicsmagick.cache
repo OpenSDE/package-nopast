@@ -1,45 +1,45 @@
 
-[TIMESTAMP] 1163458194 Tue Nov 14 00:49:54 2006
-[BUILDTIME] 100 (5)
-[SIZE] 16.25 MB, 251 files
+[TIMESTAMP] 1297028152 Sun Feb  6 22:35:52 2011
+[BUILDTIME] 40 (5)
+[SIZE] 14.81 MB, 288 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] ghostscript
 [DEP] glibc
-[DEP] glibc32
 [DEP] grep
 [DEP] imake
+[DEP] jasper
+[DEP] jbigkit
 [DEP] lcms
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libtiff
+[DEP] libtool
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxml
+[DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

@@ -1,32 +1,40 @@
 
-[TIMESTAMP] 1133993009 Wed Dec  7 23:03:29 2005
-[BUILDTIME] 60 (9)
-[SIZE] 3.94 MB, 417 files
+[TIMESTAMP] 1297010003 Sun Feb  6 17:33:23 2011
+[BUILDTIME] 110 (5)
+[SIZE] 5.58 MB, 657 files
 
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glibc
+[DEP] gmp
 [DEP] grep
+[DEP] guile
+[DEP] gzip
 [DEP] libgcrypt
 [DEP] libgpg-error
 [DEP] libtasn1
+[DEP] libtool
 [DEP] linux-header
-[DEP] lzo
+[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
-[DEP] opencdk
 [DEP] perl
+[DEP] pkgconfig
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] texinfo
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1240144226 Sun Apr 19 15:30:26 2009
-[BUILDTIME] 145 (5)
-[SIZE] 32.88 MB, 2075 files
+[TIMESTAMP] 1297099645 Mon Feb  7 18:27:25 2011
+[BUILDTIME] 200 (5)
+[SIZE] 39.69 MB, 2151 files
 
 [DEP] automoc4
 [DEP] bash
@@ -9,7 +9,9 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -18,10 +20,11 @@
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] kde-i18n-de
 [DEP] kdeedu
+[DEP] kdegames
 [DEP] kdelibs
 [DEP] libice
 [DEP] libx11
@@ -35,8 +38,9 @@
 [DEP] libxrender
 [DEP] make
 [DEP] phonon
+[DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

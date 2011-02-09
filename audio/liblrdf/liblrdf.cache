@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134222821 Sat Dec 10 14:53:41 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.11 MB, 22 files
+[TIMESTAMP] 1297108442 Mon Feb  7 20:54:02 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.08 MB, 15 files
 
 [DEP] bash
 [DEP] binutils
@@ -9,22 +9,25 @@
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] ladspa
+[DEP] ladspa-swh-plugins
 [DEP] libidn
 [DEP] libxml
+[DEP] libxslt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] pkgconfig
 [DEP] raptor
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

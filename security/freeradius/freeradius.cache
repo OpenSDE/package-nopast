@@ -1,10 +1,8 @@
 
-[TIMESTAMP] 1134277688 Sun Dec 11 06:08:08 2005
-[BUILDTIME] 70 (9)
-[SIZE] 4.05 MB, 414 files
+[TIMESTAMP] 1297115967 Mon Feb  7 22:59:27 2011
+[BUILDTIME] 75 (5)
+[SIZE] 8.68 MB, 685 files
 
-[DEP] autoconf
-[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -12,6 +10,7 @@
 [DEP] cyrus-sasl2
 [DEP] diffutils
 [DEP] e2fsprogs
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -19,22 +18,29 @@
 [DEP] glibc
 [DEP] gnutls
 [DEP] grep
+[DEP] gst-python
 [DEP] libgcrypt
 [DEP] libgpg-error
+[DEP] libpcap
 [DEP] libprelude
 [DEP] libtasn1
 [DEP] libtool
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] mysql
-[DEP] net-tools
+[DEP] ncurses
+[DEP] numpy
 [DEP] openldap
 [DEP] openssl
 [DEP] pam
 [DEP] perl
+[DEP] pygobject
+[DEP] python
+[DEP] readline
 [DEP] sed
+[DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
-[DEP] unixodbc
+[DEP] util-linux-ng
+[DEP] wxpython
 [DEP] zlib

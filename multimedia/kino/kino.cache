@@ -1,55 +1,50 @@
 
-[TIMESTAMP] 1133741732 Mon Dec  5 01:15:32 2005
-[BUILDTIME] 45 (5)
-[SIZE] 2.33 MB, 116 files
+[TIMESTAMP] 1297170314 Tue Feb  8 14:05:14 2011
+[BUILDTIME] 85 (5)
+[SIZE] 7.76 MB, 498 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] atk
-[DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] esound
 [DEP] expat
+[DEP] ffmpeg
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] gconf
+[DEP] gdk-pixbuf
+[DEP] geany
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
-[DEP] gnome-keyring
-[DEP] gnome-vfs
 [DEP] grep
 [DEP] gtk+
+[DEP] gzip
 [DEP] imake
-[DEP] libart_lgpl23
+[DEP] kbproto
 [DEP] libavc1394
-[DEP] libbonobo
-[DEP] libbonoboui
 [DEP] libdv
 [DEP] libglade
-[DEP] libgnome
-[DEP] libgnomecanvas
-[DEP] libgnomeui
 [DEP] libice
-[DEP] libjpeg
+[DEP] libiec61883
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libraw1394
 [DEP] libsamplerate
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -60,19 +55,19 @@
 [DEP] libxv
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] openssl
-[DEP] orbit2
 [DEP] pango
-[DEP] pcmciautils
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] popt
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] udev
+[DEP] util-linux-ng
 [DEP] videoproto
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

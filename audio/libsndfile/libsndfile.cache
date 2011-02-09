@@ -1,27 +1,34 @@
 
-[TIMESTAMP] 1133957183 Wed Dec  7 13:06:23 2005
-[BUILDTIME] 45 (9)
-[SIZE] 1.25 MB, 51 files
+[TIMESTAMP] 1297017318 Sun Feb  6 19:35:18 2011
+[BUILDTIME] 35 (5)
+[SIZE] 1.24 MB, 43 files
 
 [DEP] alsa-lib
+[DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] flac
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] jack
+[DEP] libogg
+[DEP] libvorbis
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] patch
+[DEP] perl
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sqlite
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

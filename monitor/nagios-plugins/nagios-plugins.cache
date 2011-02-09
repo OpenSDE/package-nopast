@@ -1,16 +1,15 @@
 
-[TIMESTAMP] 1134275874 Sun Dec 11 05:37:54 2005
-[BUILDTIME] 25 (9)
-[SIZE] 1.09 MB, 88 files
+[TIMESTAMP] 1297115455 Mon Feb  7 22:50:55 2011
+[BUILDTIME] 25 (5)
+[SIZE] 1.11 MB, 75 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bind
 [DEP] binutils
-[DEP] bison
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -19,10 +18,8 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
+[DEP] mysql
 [DEP] nagios
-[DEP] net-tools
-[DEP] netkit-base
 [DEP] openssl
 [DEP] perl
 [DEP] perl-net-snmp
@@ -30,4 +27,5 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] zlib

@@ -1,15 +1,16 @@
 
-[TIMESTAMP] 1165167866 Sun Dec  3 18:44:26 2006
-[BUILDTIME] 40 (5)
-[SIZE] 1.00 MB, 154 files
+[TIMESTAMP] 1297011020 Sun Feb  6 17:50:20 2011
+[BUILDTIME] 65 (5)
+[SIZE] 1.19 MB, 168 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] curl
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -18,17 +19,22 @@
 [DEP] gnutls
 [DEP] grep
 [DEP] gss
+[DEP] gzip
 [DEP] libgcrypt
 [DEP] libgpg-error
+[DEP] libidn
 [DEP] libtasn1
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
+[DEP] perl
+[DEP] pkgconfig
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

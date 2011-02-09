@@ -1,41 +1,32 @@
 
-[TIMESTAMP] 1211549933 Fri May 23 15:38:53 2008
-[BUILDTIME] 100 (9)
-[SIZE] 2.50 MB, 211 files
+[TIMESTAMP] 1297112325 Mon Feb  7 21:58:45 2011
+[BUILDTIME] 25 (5)
+[SIZE] 2.61 MB, 212 files
 
-[DEP] autoconf
-[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] cvs
+[DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] etcnet
 [DEP] fhs
 [DEP] findutils
-[DEP] font-util
 [DEP] gawk
 [DEP] gcc
-[DEP] gconf
+[DEP] geany
 [DEP] gettext
-[DEP] gimp
 [DEP] glibc
 [DEP] gnutls
 [DEP] grep
-[DEP] gzip
-[DEP] intltool
+[DEP] keepalived
 [DEP] libgcrypt
 [DEP] libgpg-error
 [DEP] libprelude
-[DEP] libpreludedb
 [DEP] libtasn1
 [DEP] libtool
-[DEP] libxaw
 [DEP] linux-header
-[DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] numpy
 [DEP] openldap
 [DEP] openssl
 [DEP] perl
@@ -46,8 +37,6 @@
 [DEP] swig
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] util-macros
-[DEP] xorg-server
-[DEP] xtrans
+[DEP] util-linux-ng
+[DEP] wxpython
 [DEP] zlib

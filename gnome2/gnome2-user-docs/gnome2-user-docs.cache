@@ -1,23 +1,26 @@
 
-[TIMESTAMP] 1134123674 Fri Dec  9 11:21:14 2005
-[BUILDTIME] 5 (9)
-[SIZE] 2.14 MB, 168 files
+[TIMESTAMP] 1297086040 Mon Feb  7 14:40:40 2011
+[BUILDTIME] 0 (5)
+[SIZE] 2.06 MB, 160 files
 
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
 [DEP] docbook-xml
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
 [DEP] glibc
+[DEP] gnome-doc-utils
 [DEP] grep
+[DEP] libcanberra
+[DEP] libxml
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] scrollkeeper
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

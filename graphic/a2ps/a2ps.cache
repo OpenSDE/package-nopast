@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1134003317 Thu Dec  8 01:55:17 2005
-[BUILDTIME] 25 (9)
-[SIZE] 2.99 MB, 300 files
+[TIMESTAMP] 1297027722 Sun Feb  6 22:28:42 2011
+[BUILDTIME] 55 (5)
+[SIZE] 2.83 MB, 288 files
 
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] emacs
+[DEP] fhs
 [DEP] file
 [DEP] findutils
 [DEP] flex
@@ -22,10 +22,12 @@
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] net-tools
 [DEP] patch
 [DEP] perl
 [DEP] psutils
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] texinfo
+[DEP] util-linux-ng
+[DEP] xorg-cf-files

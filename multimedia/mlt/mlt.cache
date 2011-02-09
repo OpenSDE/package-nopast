@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1162645701 Sat Nov  4 14:08:21 2006
+[TIMESTAMP] 1297102453 Mon Feb  7 19:14:13 2011
 [BUILDTIME] 20 (5)
-[SIZE] 32.76 MB, 144 files
+[SIZE] 33.24 MB, 227 files
 
-[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -12,23 +11,26 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] ffmpeg
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
 [DEP] jack
 [DEP] kbproto
 [DEP] ladspa
 [DEP] libdv
+[DEP] libexif
 [DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libquicktime
 [DEP] libsamplerate
 [DEP] libsdl
@@ -36,17 +38,21 @@
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxml
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
 [DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] qt3
+[DEP] qt4
 [DEP] renderproto
 [DEP] sed
+[DEP] sox
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

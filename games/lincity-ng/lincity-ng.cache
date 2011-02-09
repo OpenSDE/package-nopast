@@ -1,15 +1,14 @@
 
-[TIMESTAMP] 1133740771 Mon Dec  5 00:59:31 2005
-[BUILDTIME] 65 (5)
-[SIZE] 22.00 MB, 1037 files
+[TIMESTAMP] 1297170165 Tue Feb  8 14:02:45 2011
+[BUILDTIME] 25 (5)
+[SIZE] 37.66 MB, 1684 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] freetype
 [DEP] gawk
@@ -20,32 +19,27 @@
 [DEP] imake
 [DEP] jam
 [DEP] libdrm
-[DEP] libjpeg
-[DEP] libmikmod
-[DEP] libogg
-[DEP] libpng
 [DEP] libsdl
 [DEP] libsdl_gfx
 [DEP] libsdl_image
 [DEP] libsdl_mixer
 [DEP] libsdl_ttf
-[DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxml
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] physfs
 [DEP] pkgconfig
 [DEP] sed
-[DEP] smpeg
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] zlib

@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1133768986 Mon Dec  5 08:49:46 2005
-[BUILDTIME] 10 (5) ERROR
-[SIZE] 0.01 MB, 7 files
+[TIMESTAMP] 1297174330 Tue Feb  8 15:12:10 2011
+[BUILDTIME] 50 (5)
+[SIZE] 9.90 MB, 7 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] flac
 [DEP] gawk
@@ -17,14 +17,15 @@
 [DEP] glibc
 [DEP] grep
 [DEP] libmad
-[DEP] libmpeg2
 [DEP] libogg
 [DEP] libsdl
 [DEP] libvorbis
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
+[DEP] nasm
 [DEP] sed
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] zlib

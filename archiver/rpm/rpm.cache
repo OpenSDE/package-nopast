@@ -1,35 +1,36 @@
 
-[TIMESTAMP] 1134016901 Thu Dec  8 05:41:41 2005
-[BUILDTIME] 170 (9) ERROR
-[SIZE] 7.65 MB, 226 files
+[TIMESTAMP] 1297029513 Sun Feb  6 22:58:33 2011
+[BUILDTIME] 130 (5)
+[SIZE] 23.47 MB, 229 files
 
-[DEP] 00-dirtree
-[DEP] autoconf
 [DEP] bash
 [DEP] beecrypt
 [DEP] binutils
-[DEP] bison
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] doxygen
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
-[DEP] libelf
+[DEP] joe
 [DEP] linux-header
-[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] patch
-[DEP] perl
+[DEP] neon
+[DEP] numpy
+[DEP] openssl
+[DEP] pkgconfig
+[DEP] popt
 [DEP] python
 [DEP] sed
+[DEP] shadow
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

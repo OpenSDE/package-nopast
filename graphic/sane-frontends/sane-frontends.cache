@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1133740498 Mon Dec  5 00:54:58 2005
-[BUILDTIME] 10 (5)
-[SIZE] 0.23 MB, 21 files
+[TIMESTAMP] 1297170108 Tue Feb  8 14:01:48 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.20 MB, 13 files
 
-[DEP] 00-dirtree
 [DEP] atk
 [DEP] bash
 [DEP] binutils
@@ -12,26 +11,34 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gimp
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
+[DEP] jbigkit
+[DEP] kbproto
 [DEP] libexif
 [DEP] libgphoto
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libtiff
+[DEP] libtool
 [DEP] libusb
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -40,13 +47,14 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pango
+[DEP] patch
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sane-backends
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] zlib
+[DEP] util-linux-ng
+[DEP] xproto

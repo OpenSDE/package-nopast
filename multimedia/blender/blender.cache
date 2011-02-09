@@ -1,42 +1,60 @@
 
-[TIMESTAMP] 1134168519 Fri Dec  9 23:48:39 2005
-[BUILDTIME] 225 (9)
-[SIZE] 9.11 MB, 14 files
+[TIMESTAMP] 1297099927 Mon Feb  7 18:32:07 2011
+[BUILDTIME] 155 (5)
+[SIZE] 15.33 MB, 7 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] freealut
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glibc
-[DEP] gnue-common
 [DEP] gnupth
 [DEP] grep
-[DEP] libcdaudio
+[DEP] ilmbase
+[DEP] imlib2
+[DEP] inputproto
+[DEP] kbproto
 [DEP] libdrm
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsdl
+[DEP] libtiff
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
 [DEP] libxxf86vm
 [DEP] linux-header
+[DEP] make
 [DEP] mesa
+[DEP] ncurses
 [DEP] numpy
-[DEP] pil
+[DEP] openal
+[DEP] openexr
+[DEP] patch
+[DEP] perl
 [DEP] pkgconfig
+[DEP] pygobject
 [DEP] python
 [DEP] scons
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] texi2html
+[DEP] util-linux-ng
 [DEP] wxpython
 [DEP] xproto
+[DEP] yasm
 [DEP] zlib
-[DEP] zope

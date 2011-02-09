@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1222772674 Tue Sep 30 14:04:34 2008
-[BUILDTIME] 110 (5)
-[SIZE] 12.26 MB, 194 files
+[TIMESTAMP] 1297107746 Mon Feb  7 20:42:26 2011
+[BUILDTIME] 115 (5)
+[SIZE] 12.84 MB, 191 files
 
 [DEP] alsa-lib
 [DEP] bash
@@ -11,7 +11,6 @@
 [DEP] coreutils
 [DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -19,19 +18,15 @@
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] libavc1394
-[DEP] libdc1394
-[DEP] libdv
 [DEP] libraw1394
 [DEP] libsdl
+[DEP] libv4l
 [DEP] linux-header
-[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] openssl
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] unixodbc
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

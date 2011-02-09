@@ -1,59 +1,70 @@
 
-[TIMESTAMP] 1134074140 Thu Dec  8 21:35:40 2005
-[BUILDTIME] 40 (9)
-[SIZE] 5.24 MB, 167 files
+[TIMESTAMP] 1297084685 Mon Feb  7 14:18:05 2011
+[BUILDTIME] 70 (5)
+[SIZE] 6.62 MB, 220 files
 
-[DEP] alsa-lib
 [DEP] aspell
 [DEP] atk
-[DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
 [DEP] docbook-xml
-[DEP] esound
+[DEP] enchant
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
 [DEP] gconf
+[DEP] gdk-pixbuf
+[DEP] geany
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] gmime
-[DEP] gnome-keyring
-[DEP] gnome-libs14
+[DEP] gnome-doc-utils
+[DEP] gnome-icon-theme
 [DEP] gnome-vfs
+[DEP] gossip
 [DEP] grep
 [DEP] gtk+
-[DEP] howl
-[DEP] inputproto
+[DEP] gtkhtml
+[DEP] hicolor-icon-theme
+[DEP] intltool
+[DEP] iso-codes
 [DEP] kbproto
 [DEP] libart_lgpl23
 [DEP] libbonobo
 [DEP] libbonoboui
+[DEP] libcanberra
 [DEP] libesmtp
+[DEP] libgcrypt
 [DEP] libgnome
+[DEP] libgnome-keyring
 [DEP] libgnomecanvas
-[DEP] libgnomeprint
-[DEP] libgnomeprintui
 [DEP] libgnomeui
-[DEP] libgtkhtml
+[DEP] libgpg-error
 [DEP] libice
-[DEP] libjpeg
+[DEP] libnotify
+[DEP] libogg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
+[DEP] libtool
+[DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -61,16 +72,15 @@
 [DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxslt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] orbit2
 [DEP] pango
-[DEP] pcre
 [DEP] perl
 [DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] popt
 [DEP] renderproto
@@ -78,6 +88,6 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
 [DEP] zlib

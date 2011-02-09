@@ -1,24 +1,46 @@
 
-[TIMESTAMP] 1134319541 Sun Dec 11 17:45:41 2005
-[BUILDTIME] 15 (9)
-[SIZE] 2.68 MB, 137 files
+[TIMESTAMP] 1297168817 Tue Feb  8 13:40:17 2011
+[BUILDTIME] 535 (5)
+[SIZE] 121.99 MB, 532 files
 
+[DEP] asciidoc
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
+[DEP] docbook-xml
+[DEP] docbook-xsl
 [DEP] expat
+[DEP] fhs
+[DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glibc
+[DEP] graphviz
 [DEP] grep
+[DEP] gst-python
 [DEP] libidn
+[DEP] libxml
+[DEP] libxslt
 [DEP] linux-header
 [DEP] make
+[DEP] numpy
 [DEP] openssl
+[DEP] perl
+[DEP] perl-error
+[DEP] pygobject
+[DEP] python
+[DEP] rrdtool
 [DEP] sed
+[DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
+[DEP] tcl
+[DEP] tk
+[DEP] util-linux-ng
+[DEP] wxpython
+[DEP] xmlto
 [DEP] zlib

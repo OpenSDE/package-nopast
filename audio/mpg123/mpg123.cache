@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1162442312 Thu Nov  2 05:38:32 2006
-[BUILDTIME] 10 (9)
-[SIZE] 0.21 MB, 8 files
+[TIMESTAMP] 1297034887 Mon Feb  7 00:28:07 2011
+[BUILDTIME] 20 (5)
+[SIZE] 0.42 MB, 27 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] audiofile
 [DEP] bash
@@ -12,18 +11,21 @@
 [DEP] coreutils
 [DEP] diffutils
 [DEP] esound
+[DEP] fhs
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] jack
 [DEP] libsdl
+[DEP] libtool
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

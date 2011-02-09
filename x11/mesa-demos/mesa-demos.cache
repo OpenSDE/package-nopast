@@ -1,25 +1,28 @@
 
-[TIMESTAMP] 1133953439 Wed Dec  7 12:03:59 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.04 MB, 8 files
+[TIMESTAMP] 1297016796 Sun Feb  6 19:26:36 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.05 MB, 8 files
 
-[DEP] 00-dirtree
 [DEP] bash
-[DEP] bigreqsproto
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] freeglut
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] libdrm
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxxf86vm
 [DEP] mesa
 [DEP] sed

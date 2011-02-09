@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134200009 Sat Dec 10 08:33:29 2005
-[BUILDTIME] 170 (9)
-[SIZE] 1.29 MB, 62 files
+[TIMESTAMP] 1297105132 Mon Feb  7 19:58:52 2011
+[BUILDTIME] 125 (5)
+[SIZE] 0.72 MB, 50 files
 
 [DEP] bash
 [DEP] bdb
@@ -9,10 +9,10 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] courier-authlib
-[DEP] dante
 [DEP] diffutils
-[DEP] gamin
+[DEP] fhs
 [DEP] findutils
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] gdbm
@@ -20,8 +20,6 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] pcre
 [DEP] perl
@@ -29,4 +27,4 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

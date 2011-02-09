@@ -1,5 +1,5 @@
 
-[TIMESTAMP] 1238419488 Mon Mar 30 16:24:48 2009
+[TIMESTAMP] 1297019437 Sun Feb  6 20:10:37 2011
 [BUILDTIME] 0 (5)
 [SIZE] 2.13 MB, 397 files
 
@@ -9,13 +9,11 @@
 [DEP] diffutils
 [DEP] fhs
 [DEP] findutils
-[DEP] gawk
+[DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] rake
 [DEP] ruby
-[DEP] rubygems
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

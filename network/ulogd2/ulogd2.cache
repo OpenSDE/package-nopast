@@ -1,14 +1,14 @@
 
-[TIMESTAMP] 1172443839 Sun Feb 25 23:50:39 2007
-[BUILDTIME] 20 (5)
-[SIZE] 0.13 MB, 39 files
+[TIMESTAMP] 1297110942 Mon Feb  7 21:35:42 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.37 MB, 69 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -16,10 +16,16 @@
 [DEP] grep
 [DEP] libnetfilter_conntrack
 [DEP] libnetfilter_log
+[DEP] libnfnetlink
+[DEP] libpcap
+[DEP] linux-header
 [DEP] make
-[DEP] mktemp
+[DEP] mysql
+[DEP] patch
 [DEP] pkgconfig
 [DEP] sed
+[DEP] sqlite
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] zlib

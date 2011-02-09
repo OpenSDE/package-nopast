@@ -1,5 +1,5 @@
 
-[TIMESTAMP] 1292247114 Mon Dec 13 14:31:54 2010
+[TIMESTAMP] 1297168337 Tue Feb  8 13:32:17 2011
 [BUILDTIME] 20 (5)
 [SIZE] 1.31 MB, 66 files
 
@@ -35,7 +35,6 @@
 [DEP] json-glib
 [DEP] libgdata
 [DEP] libglade
-[DEP] libgpod
 [DEP] libnotify
 [DEP] liboil
 [DEP] librsvg

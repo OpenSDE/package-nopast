@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134240060 Sat Dec 10 19:41:00 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.17 MB, 26 files
+[TIMESTAMP] 1297110214 Mon Feb  7 21:23:34 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.18 MB, 21 files
 
 [DEP] autoconf
 [DEP] bash
@@ -11,6 +11,7 @@
 [DEP] diffutils
 [DEP] dmalloc
 [DEP] eventlog
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
 [DEP] gawk
@@ -18,11 +19,10 @@
 [DEP] glib
 [DEP] glibc
 [DEP] grep
+[DEP] libnet
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] patch
 [DEP] perl
@@ -30,4 +30,5 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] tcp_wrappers
+[DEP] util-linux-ng

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134263114 Sun Dec 11 02:05:14 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.22 MB, 19 files
+[TIMESTAMP] 1297112809 Mon Feb  7 22:06:49 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.27 MB, 16 files
 
 [DEP] alsa-lib
 [DEP] audiofile
@@ -10,26 +10,32 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] file
+[DEP] faad
+[DEP] fhs
 [DEP] findutils
 [DEP] flac
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
-[DEP] libao
+[DEP] jack
 [DEP] libid3tag
 [DEP] libmad
 [DEP] libmikmod
+[DEP] libmpcdec
 [DEP] libogg
+[DEP] libsamplerate
+[DEP] libshout
+[DEP] libtheora
 [DEP] libvorbis
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pkgconfig
 [DEP] sed
+[DEP] speex
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

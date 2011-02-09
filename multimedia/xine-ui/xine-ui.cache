@@ -1,40 +1,40 @@
 
-[TIMESTAMP] 1134156090 Fri Dec  9 20:21:30 2005
-[BUILDTIME] 55 (9)
-[SIZE] 2.84 MB, 162 files
+[TIMESTAMP] 1297096014 Mon Feb  7 17:26:54 2011
+[BUILDTIME] 15 (5)
+[SIZE] 2.82 MB, 157 files
 
-[DEP] aalib
+[DEP] alsa-tools
 [DEP] bash
 [DEP] binutils
-[DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] geany
 [DEP] gettext
 [DEP] glibc
 [DEP] gnome-libs14
-[DEP] gpm
 [DEP] grep
+[DEP] hicolor-icon-theme
 [DEP] imake
 [DEP] inputproto
 [DEP] kbproto
-[DEP] libice
 [DEP] libidn
 [DEP] libpng
-[DEP] libsm
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxft
+[DEP] libxi
 [DEP] libxinerama
 [DEP] libxrender
 [DEP] libxt
@@ -42,24 +42,22 @@
 [DEP] libxv
 [DEP] libxxf86vm
 [DEP] linux-header
-[DEP] lirc
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] openssl
 [DEP] pkgconfig
 [DEP] readline
+[DEP] recordproto
 [DEP] renderproto
 [DEP] sed
-[DEP] slang
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] videoproto
 [DEP] xextproto
 [DEP] xf86vidmodeproto
 [DEP] xine-lib
 [DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

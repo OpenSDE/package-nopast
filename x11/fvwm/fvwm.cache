@@ -1,23 +1,57 @@
 
-[TIMESTAMP] 1134010532 Thu Dec  8 03:55:32 2005
-[BUILDTIME] 80 (9)
-[SIZE] 6.19 MB, 196 files
+[TIMESTAMP] 1297028884 Sun Feb  6 22:48:04 2011
+[BUILDTIME] 35 (5)
+[SIZE] 6.31 MB, 197 files
 
 [DEP] alsa-lib
 [DEP] audiofile
 [DEP] bash
 [DEP] bdb33
 [DEP] binutils
+[DEP] bitstream-vera-fonts
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] encodings
 [DEP] esound
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] font-adobe
+[DEP] font-adobe-utopia
+[DEP] font-adobe-utopia-type1
+[DEP] font-alias
+[DEP] font-arabic-misc
+[DEP] font-bh
+[DEP] font-bh-lucidatypewriter
+[DEP] font-bh-ttf
+[DEP] font-bh-type1
+[DEP] font-bitstream
+[DEP] font-bitstream-speedo
+[DEP] font-bitstream-type1
+[DEP] font-cronyx-cyrillic
+[DEP] font-cursor-misc
+[DEP] font-daewoo-misc
+[DEP] font-dec-misc
+[DEP] font-ibm-type1
+[DEP] font-isas-misc
+[DEP] font-jis-misc
+[DEP] font-micro-misc
+[DEP] font-misc-cyrillic
+[DEP] font-misc-ethiopic
+[DEP] font-misc-meltho
+[DEP] font-misc-misc
+[DEP] font-mutt-misc
+[DEP] font-schumacher-misc
+[DEP] font-screen-cyrillic
+[DEP] font-sony-misc
+[DEP] font-sun-misc
+[DEP] font-util
+[DEP] font-winitzki-cyrillic
+[DEP] font-xfree86-type1
 [DEP] fontconfig
+[DEP] freefonts
 [DEP] freetype
-[DEP] fribidi
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
@@ -28,13 +62,15 @@
 [DEP] gtk+12
 [DEP] imake
 [DEP] imlib
+[DEP] kbproto
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libstroke
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxft
 [DEP] libxi
@@ -44,9 +80,7 @@
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] perl
 [DEP] pkgconfig
 [DEP] readline
@@ -54,8 +88,9 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] terminus-font
+[DEP] util-linux-ng
 [DEP] xextproto
-[DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

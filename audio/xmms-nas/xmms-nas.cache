@@ -1,18 +1,19 @@
 
-[TIMESTAMP] 1134257439 Sun Dec 11 00:30:39 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.08 MB, 17 files
+[TIMESTAMP] 1297112372 Mon Feb  7 21:59:32 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.05 MB, 9 files
 
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] file
 [DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glib12
 [DEP] glibc
@@ -24,18 +25,18 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxi
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] nas
-[DEP] net-tools
 [DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
+[DEP] util-linux-ng
 [DEP] xmms
+[DEP] xorg-cf-files

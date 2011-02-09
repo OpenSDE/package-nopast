@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134137354 Fri Dec  9 15:09:14 2005
-[BUILDTIME] 115 (9)
-[SIZE] 0.83 MB, 116 files
+[TIMESTAMP] 1297091813 Mon Feb  7 16:16:53 2011
+[BUILDTIME] 80 (5)
+[SIZE] 0.58 MB, 97 files
 
 [DEP] bash
 [DEP] bdb
@@ -9,31 +9,25 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] gdbm
 [DEP] glibc
-[DEP] gnutls
 [DEP] grep
-[DEP] libgcrypt
-[DEP] libgpg-error
-[DEP] libprelude
-[DEP] libtasn1
 [DEP] libtool
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] mysql
-[DEP] net-tools
+[DEP] openldap
 [DEP] openssl
 [DEP] pam
 [DEP] perl
 [DEP] postgresql
 [DEP] procps
 [DEP] sed
-[DEP] shadow
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

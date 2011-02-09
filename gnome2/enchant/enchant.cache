@@ -1,27 +1,30 @@
 
-[TIMESTAMP] 1134127223 Fri Dec  9 12:20:23 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.38 MB, 45 files
+[TIMESTAMP] 1297083862 Mon Feb  7 14:04:22 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.79 MB, 34 files
 
 [DEP] aspell
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] gconf
 [DEP] glib
 [DEP] glibc
 [DEP] gnome-libs14
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] zlib

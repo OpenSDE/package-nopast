@@ -1,52 +1,63 @@
 
-[TIMESTAMP] 1240068793 Sat Apr 18 18:33:13 2009
-[BUILDTIME] 560 (5)
-[SIZE] 27.04 MB, 1538 files
+[TIMESTAMP] 1297103944 Mon Feb  7 19:39:04 2011
+[BUILDTIME] 1400 (5)
+[SIZE] 23.92 MB, 1589 files
 
 [DEP] acl
 [DEP] alsa-lib
+[DEP] attica
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
+[DEP] boost
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
-[DEP] cyrus-sasl2
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
+[DEP] ekg
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
+[DEP] font-bh-ttf
 [DEP] fontconfig
 [DEP] freetype
-[DEP] fvwm
 [DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
-[DEP] gmp
 [DEP] gnome-libs14
+[DEP] gpgme
 [DEP] grep
 [DEP] gsmlib
+[DEP] icu4c
 [DEP] kdebase
 [DEP] kdebase-workspace
 [DEP] kdelibs
 [DEP] kdepimlibs
-[DEP] koffice
+[DEP] libassuan
+[DEP] libdbusmenu-qt
+[DEP] libdrm
+[DEP] libgpg-error
 [DEP] libice
 [DEP] libidn
 [DEP] libpng
 [DEP] libsm
+[DEP] libungif
+[DEP] libv4l
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
@@ -54,8 +65,10 @@
 [DEP] libxslt
 [DEP] libxt
 [DEP] libxtst
+[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
+[DEP] mesa
 [DEP] nas
 [DEP] openssl
 [DEP] phonon
@@ -65,13 +78,15 @@
 [DEP] qt4
 [DEP] scrnsaverproto
 [DEP] sed
+[DEP] shared-desktop-ontologies
 [DEP] soprano
 [DEP] sqlite
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] valgrind
 [DEP] xmms
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

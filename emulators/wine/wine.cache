@@ -1,64 +1,79 @@
 
-[TIMESTAMP] 1134209859 Sat Dec 10 11:17:39 2005
-[BUILDTIME] 540 (9)
-[SIZE] 51.94 MB, 808 files
+[TIMESTAMP] 1297106492 Mon Feb  7 20:21:32 2011
+[BUILDTIME] 545 (5)
+[SIZE] 94.65 MB, 1716 files
 
 [DEP] alsa-lib
-[DEP] arts
 [DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] compositeproto
 [DEP] coreutils
 [DEP] cups
+[DEP] dbus
 [DEP] diffutils
 [DEP] esound
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fixesproto
 [DEP] flex
-[DEP] freeglut
+[DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] glib
 [DEP] glibc
+[DEP] gnutls
 [DEP] grep
+[DEP] gsm
+[DEP] hal
 [DEP] imake
 [DEP] inputproto
-[DEP] isdn4k-utils
 [DEP] jack
+[DEP] jbigkit
 [DEP] kbproto
 [DEP] lcms
 [DEP] libdrm
 [DEP] libexif
+[DEP] libgcrypt
+[DEP] libgpg-error
 [DEP] libgphoto
 [DEP] libice
 [DEP] libjpeg
+[DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
-[DEP] libungif
+[DEP] libtasn1
+[DEP] libtiff
+[DEP] libtool
 [DEP] libusb
+[DEP] libv4l
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
+[DEP] libxinerama
 [DEP] libxml
-[DEP] libxmu
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] libxslt
 [DEP] libxt
-[DEP] libxxf86dga
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] m4
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
+[DEP] mpg123
 [DEP] nas
 [DEP] ncurses
-[DEP] net-tools
+[DEP] openal
 [DEP] openssl
 [DEP] pkgconfig
 [DEP] prelink
@@ -68,10 +83,10 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] valgrind
 [DEP] xextproto
-[DEP] xf86dgaproto
 [DEP] xf86vidmodeproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

@@ -1,44 +1,70 @@
 
-[TIMESTAMP] 1180972889 Mon Jun  4 17:01:29 2007
-[BUILDTIME] 100 (9)
-[SIZE] 7.22 MB, 476 files
+[TIMESTAMP] 1297190338 Tue Feb  8 19:38:58 2011
+[BUILDTIME] 370 (5)
+[SIZE] 11.97 MB, 303 files
 
-[DEP] 00-dirtree
 [DEP] acl
 [DEP] attr
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
+[DEP] boost
 [DEP] bzip2
+[DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
+[DEP] docbook-xml
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
+[DEP] glib
 [DEP] glibc
 [DEP] gmp
 [DEP] grep
-[DEP] kdebase
+[DEP] kdebase-workspace
 [DEP] kdelibs
-[DEP] kdepim
-[DEP] libart_lgpl23
-[DEP] libidn
-[DEP] libjpeg
+[DEP] kdepimlibs
+[DEP] libdbusmenu-qt
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libice
+[DEP] libktorrent
 [DEP] libpng
+[DEP] libsm
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
+[DEP] libxi
+[DEP] libxml
+[DEP] libxpm
+[DEP] libxrender
+[DEP] libxscrnsaver
+[DEP] libxt
+[DEP] libxtst
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] nas
-[DEP] net-tools
-[DEP] pcre
-[DEP] perl
+[DEP] phonon
 [DEP] pkgconfig
-[DEP] qt3
+[DEP] qca2
+[DEP] qt4
 [DEP] sed
+[DEP] soprano
+[DEP] strigi
 [DEP] sysfiles
+[DEP] taglib
 [DEP] tar
-[DEP] util-linux
-[DEP] xorg
-[DEP] zlib
+[DEP] util-linux-ng
+[DEP] xz

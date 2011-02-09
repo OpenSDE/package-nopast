@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1238422609 Mon Mar 30 17:16:49 2009
+[TIMESTAMP] 1297021349 Sun Feb  6 20:42:29 2011
 [BUILDTIME] 0 (5)
-[SIZE] 0.82 MB, 70 files
+[SIZE] 0.81 MB, 70 files
 
 [DEP] bash
 [DEP] bzip2
@@ -9,11 +9,10 @@
 [DEP] diffutils
 [DEP] fhs
 [DEP] findutils
-[DEP] gawk
+[DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] ruby
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

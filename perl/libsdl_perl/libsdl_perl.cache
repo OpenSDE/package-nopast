@@ -1,16 +1,15 @@
 
-[TIMESTAMP] 1133739999 Mon Dec  5 00:46:39 2005
-[BUILDTIME] 15 (5)
-[SIZE] 0.90 MB, 56 files
+[TIMESTAMP] 1297169453 Tue Feb  8 13:50:53 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.83 MB, 67 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
@@ -25,8 +24,10 @@
 [DEP] libsdl_ttf
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make

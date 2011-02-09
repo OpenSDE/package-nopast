@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1240073078 Sat Apr 18 19:44:38 2009
-[BUILDTIME] 165 (5)
-[SIZE] 11.96 MB, 385 files
+[TIMESTAMP] 1297104419 Mon Feb  7 19:46:59 2011
+[BUILDTIME] 465 (5)
+[SIZE] 29.96 MB, 755 files
 
 [DEP] acl
 [DEP] attr
@@ -11,8 +11,9 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] ffmpeg
 [DEP] fhs
@@ -23,17 +24,18 @@
 [DEP] gamin
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] grep
 [DEP] kdelibs
 [DEP] kdemultimedia
 [DEP] lame
+[DEP] libdbusmenu-qt
 [DEP] libdvdread
 [DEP] libice
 [DEP] libmad
 [DEP] libmpcdec
-[DEP] libmusicbrainz
 [DEP] libogg
 [DEP] libpng
 [DEP] libsamplerate
@@ -48,9 +50,11 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxt
 [DEP] libxtst
 [DEP] linux-header
@@ -60,8 +64,11 @@
 [DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
+[DEP] shared-mime-info
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

@@ -1,20 +1,22 @@
 
-[TIMESTAMP] 1240216079 Mon Apr 20 11:27:59 2009
-[BUILDTIME] 205 (5)
-[SIZE] 7.50 MB, 384 files
+[TIMESTAMP] 1297164857 Tue Feb  8 12:34:17 2011
+[BUILDTIME] 730 (5)
+[SIZE] 12.12 MB, 914 files
 
 [DEP] acl
+[DEP] akonadi
 [DEP] apr
 [DEP] apr-util
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
+[DEP] boost
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -23,11 +25,13 @@
 [DEP] gamin
 [DEP] gawk
 [DEP] gcc
+[DEP] gettext
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] kdebase-workspace
 [DEP] kdelibs
+[DEP] kdesdk
+[DEP] libdbusmenu-qt
 [DEP] libice
 [DEP] libpng
 [DEP] libsm
@@ -39,19 +43,27 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxt
 [DEP] libxtst
 [DEP] linux-header
 [DEP] make
 [DEP] nas
 [DEP] phonon
+[DEP] pkgconfig
+[DEP] qimageblitz
+[DEP] qjson
 [DEP] qt4
 [DEP] sed
+[DEP] soprano
 [DEP] strigi
 [DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
+[DEP] zlib

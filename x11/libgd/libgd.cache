@@ -1,15 +1,16 @@
 
-[TIMESTAMP] 1133980163 Wed Dec  7 19:29:23 2005
-[BUILDTIME] 30 (9)
-[SIZE] 0.66 MB, 39 files
+[TIMESTAMP] 1297019757 Sun Feb  6 20:15:57 2011
+[BUILDTIME] 20 (5)
+[SIZE] 0.66 MB, 34 files
 
+[DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
@@ -22,15 +23,16 @@
 [DEP] libpng
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxpm
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

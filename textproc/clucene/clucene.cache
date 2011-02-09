@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1221803885 Fri Sep 19 08:58:05 2008
-[BUILDTIME] 105 (5)
-[SIZE] 4.47 MB, 153 files
+[TIMESTAMP] 1297023678 Sun Feb  6 21:21:18 2011
+[BUILDTIME] 45 (5)
+[SIZE] 4.37 MB, 153 files
 
 [DEP] bash
 [DEP] binutils
@@ -16,8 +16,7 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

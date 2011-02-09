@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1133991400 Wed Dec  7 22:36:40 2005
-[BUILDTIME] 25 (9)
-[SIZE] 1.05 MB, 142 files
+[TIMESTAMP] 1297025346 Sun Feb  6 21:49:06 2011
+[BUILDTIME] 15 (5)
+[SIZE] 1.03 MB, 139 files
 
 [DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] freeglut
 [DEP] gawk
@@ -22,8 +22,10 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
 [DEP] libxmu
 [DEP] libxt
@@ -31,12 +33,11 @@
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
 [DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files

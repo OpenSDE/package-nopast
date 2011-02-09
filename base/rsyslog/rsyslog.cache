@@ -1,8 +1,10 @@
 
-[TIMESTAMP] 1211554534 Fri May 23 16:55:34 2008
-[BUILDTIME] 100 (9)
-[SIZE] 0.41 MB, 30 files
+[TIMESTAMP] 1297110267 Mon Feb  7 21:24:27 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.48 MB, 34 files
 
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -15,10 +17,12 @@
 [DEP] glibc
 [DEP] grep
 [DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] perl
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

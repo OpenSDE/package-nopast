@@ -1,40 +1,41 @@
 
-[TIMESTAMP] 1133771969 Mon Dec  5 09:39:29 2005
-[BUILDTIME] 80 (5)
-[SIZE] 3.30 MB, 37 files
+[TIMESTAMP] 1297175033 Tue Feb  8 15:23:53 2011
+[BUILDTIME] 55 (5)
+[SIZE] 4.82 MB, 33 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imake
+[DEP] libdrm
 [DEP] libice
 [DEP] libsdl
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxxf86dga
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xf86dgaproto
 [DEP] xf86vidmodeproto
+[DEP] xorg-cf-files
 [DEP] xproto

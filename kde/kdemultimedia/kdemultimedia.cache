@@ -1,10 +1,11 @@
 
-[TIMESTAMP] 1240065844 Sat Apr 18 17:44:04 2009
-[BUILDTIME] 130 (5)
-[SIZE] 5.65 MB, 192 files
+[TIMESTAMP] 1297102957 Mon Feb  7 19:22:37 2011
+[BUILDTIME] 265 (5)
+[SIZE] 3.87 MB, 173 files
 
 [DEP] acl
 [DEP] alsa-lib
+[DEP] attica
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
@@ -13,9 +14,11 @@
 [DEP] cdparanoia
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
+[DEP] ffmpeg
 [DEP] fhs
 [DEP] findutils
 [DEP] flac
@@ -26,11 +29,14 @@
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
+[DEP] kdebase-workspace
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
+[DEP] libdrm
 [DEP] libice
 [DEP] libjpeg
-[DEP] libmusicbrainz
 [DEP] libogg
 [DEP] libpng
 [DEP] libsm
@@ -41,28 +47,34 @@
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxt
 [DEP] libxtst
+[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
+[DEP] mesa
 [DEP] nas
-[DEP] ncurses
 [DEP] pcre
 [DEP] phonon
 [DEP] pkgconfig
+[DEP] qimageblitz
 [DEP] qt4
 [DEP] sed
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xine-lib
-[DEP] xproto
+[DEP] xz

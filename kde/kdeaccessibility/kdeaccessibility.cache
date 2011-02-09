@@ -1,10 +1,9 @@
 
-[TIMESTAMP] 1240067688 Sat Apr 18 18:14:48 2009
-[BUILDTIME] 65 (5)
-[SIZE] 10.60 MB, 2279 files
+[TIMESTAMP] 1297103543 Mon Feb  7 19:32:23 2011
+[BUILDTIME] 50 (5)
+[SIZE] 7.25 MB, 2142 files
 
 [DEP] acl
-[DEP] alsa-lib
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
@@ -12,8 +11,9 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -27,6 +27,7 @@
 [DEP] grep
 [DEP] inputproto
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
 [DEP] libice
 [DEP] libpng
 [DEP] libsm
@@ -38,6 +39,7 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
@@ -47,11 +49,14 @@
 [DEP] make
 [DEP] nas
 [DEP] phonon
+[DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xproto
+[DEP] xz

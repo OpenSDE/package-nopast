@@ -1,37 +1,36 @@
 
-[TIMESTAMP] 1133912319 Wed Dec  7 00:38:39 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.81 MB, 16 files
+[TIMESTAMP] 1297013322 Sun Feb  6 18:28:42 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.81 MB, 9 files
 
 [DEP] bash
 [DEP] bdftopcf
+[DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] font-alias
 [DEP] font-arabic-misc
+[DEP] font-bh-ttf
 [DEP] font-cursor-misc
-[DEP] font-dec-misc
-[DEP] font-isas-misc
-[DEP] font-jis-misc
-[DEP] font-micro-misc
-[DEP] font-misc-misc
-[DEP] font-mutt-misc
-[DEP] font-schumacher-misc
-[DEP] font-sony-misc
-[DEP] font-sun-misc
+[DEP] font-util
+[DEP] fontconfig
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] gzip
+[DEP] libpthread-stubs
+[DEP] linux-header
 [DEP] make
 [DEP] mkfontdir
 [DEP] mkfontscale
-[DEP] mktemp
-[DEP] net-tools
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xcb-proto
+[DEP] xproto

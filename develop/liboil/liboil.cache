@@ -1,45 +1,25 @@
 
-[TIMESTAMP] 1164632377 Mon Nov 27 14:59:37 2006
-[BUILDTIME] 50 (5)
-[SIZE] 2.26 MB, 63 files
+[TIMESTAMP] 1297080344 Mon Feb  7 13:05:44 2011
+[BUILDTIME] 30 (5)
+[SIZE] 2.29 MB, 65 files
 
-[DEP] 00-dirtree
-[DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] cairo
 [DEP] coreutils
-[DEP] dbus-glib
 [DEP] diffutils
-[DEP] docbook-xml
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] gtk+
-[DEP] gtkdoc
-[DEP] gtkglext
-[DEP] gtkspell
-[DEP] libglade
-[DEP] libnotify
-[DEP] libxslt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] orbit2
-[DEP] pango
-[DEP] perl
 [DEP] pkgconfig
-[DEP] poppler
-[DEP] pygobject
-[DEP] pygtk
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] vte
+[DEP] util-linux-ng
+[DEP] xz

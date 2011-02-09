@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133897563 Tue Dec  6 20:32:43 2005
-[BUILDTIME] 230 (9)
-[SIZE] 7.71 MB, 1489 files
+[TIMESTAMP] 1297011886 Sun Feb  6 18:04:46 2011
+[BUILDTIME] 120 (5)
+[SIZE] 9.70 MB, 1141 files
 
 [DEP] bash
 [DEP] bigreqsproto
@@ -9,6 +9,7 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -16,18 +17,19 @@
 [DEP] grep
 [DEP] inputproto
 [DEP] kbproto
+[DEP] libpthread-stubs
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mt-st
+[DEP] patch
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
-[DEP] xcmiscproto
+[DEP] util-linux-ng
+[DEP] xcb-proto
 [DEP] xextproto
 [DEP] xf86bigfontproto
 [DEP] xproto

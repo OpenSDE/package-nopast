@@ -1,34 +1,41 @@
 
-[TIMESTAMP] 1134125412 Fri Dec  9 11:50:12 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.55 MB, 32 files
+[TIMESTAMP] 1297086535 Mon Feb  7 14:48:55 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.78 MB, 34 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fltk2
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] glib12
 [DEP] glibc
 [DEP] grep
-[DEP] gtk+12
+[DEP] inputproto
 [DEP] libjpeg
 [DEP] libpng
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcursor
 [DEP] libxext
+[DEP] libxfixes
+[DEP] libxft
 [DEP] libxi
+[DEP] libxinerama
+[DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] openssl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xproto
 [DEP] zlib

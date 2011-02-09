@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1239572700 Mon Apr 13 00:45:00 2009
+[TIMESTAMP] 1297091603 Mon Feb  7 16:13:23 2011
 [BUILDTIME] 40 (5)
-[SIZE] 1.65 MB, 107 files
+[SIZE] 1.60 MB, 105 files
 
 [DEP] atk
 [DEP] bash
@@ -18,12 +18,12 @@
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] geany
 [DEP] gettext
 [DEP] ggz-client-libs
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
@@ -33,15 +33,12 @@
 [DEP] libgpg-error
 [DEP] libpng
 [DEP] libpthread-stubs
-[DEP] libselinux
-[DEP] libsepol
 [DEP] libx11
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxcomposite
 [DEP] libxcursor
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -50,7 +47,6 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] pango
 [DEP] pixman
 [DEP] pkgconfig
@@ -61,4 +57,3 @@
 [DEP] util-linux-ng
 [DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib

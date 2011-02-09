@@ -1,55 +1,77 @@
 
-[TIMESTAMP] 1134007530 Thu Dec  8 03:05:30 2005
-[BUILDTIME] 15 (9) ERROR
-[SIZE] 0.29 MB, 26 files
+[TIMESTAMP] 1297034683 Mon Feb  7 00:24:43 2011
+[BUILDTIME] 65 (5)
+[SIZE] 2.27 MB, 177 files
 
+[DEP] alsa-tools
 [DEP] atk
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
+[DEP] damageproto
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] ffmpeg
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fixesproto
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] geany
+[DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
-[DEP] inputproto
+[DEP] imlib2
 [DEP] kbproto
 [DEP] lame
+[DEP] libglade
 [DEP] libice
-[DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsdl
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxinerama
+[DEP] libxml
 [DEP] libxmu
+[DEP] libxrandr
 [DEP] libxrender
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] man
 [DEP] pango
+[DEP] patch
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pixman
 [DEP] pkgconfig
-[DEP] prozilla
 [DEP] renderproto
+[DEP] scrollkeeper
 [DEP] sed
+[DEP] shadow
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] texi2html
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

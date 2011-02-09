@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1240063815 Sat Apr 18 17:10:15 2009
-[BUILDTIME] 140 (5)
-[SIZE] 6.20 MB, 262 files
+[TIMESTAMP] 1297102394 Mon Feb  7 19:13:14 2011
+[BUILDTIME] 215 (5)
+[SIZE] 3.49 MB, 140 files
 
 [DEP] acl
 [DEP] attr
@@ -12,14 +12,15 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
+[DEP] font-bh-ttf
 [DEP] fontconfig
 [DEP] freetype
-[DEP] fvwm
 [DEP] gamin
 [DEP] gawk
 [DEP] gcc
@@ -28,9 +29,7 @@
 [DEP] grep
 [DEP] kdelibs
 [DEP] kdepimlibs
-[DEP] koffice
-[DEP] libgcrypt
-[DEP] libgpg-error
+[DEP] libdbusmenu-qt
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
@@ -44,6 +43,7 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
@@ -57,11 +57,12 @@
 [DEP] phonon
 [DEP] pkgconfig
 [DEP] qt4
-[DEP] readline
 [DEP] ruby
 [DEP] sed
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz
 [DEP] zlib

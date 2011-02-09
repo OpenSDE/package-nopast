@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1293197369 Fri Dec 24 14:29:29 2010
+[TIMESTAMP] 1297174574 Tue Feb  8 15:16:14 2011
 [BUILDTIME] 10 (5)
-[SIZE] 0.73 MB, 99 files
+[SIZE] 0.86 MB, 109 files
 
 [DEP] atk
 [DEP] bash
@@ -43,7 +43,6 @@
 [DEP] liboil
 [DEP] librsvg
 [DEP] libxfce4util
-[DEP] libxfcegui4
 [DEP] linux-header
 [DEP] make
 [DEP] orbit2

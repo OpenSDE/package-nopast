@@ -1,28 +1,39 @@
 
-[TIMESTAMP] 1255207520 Sat Oct 10 23:45:20 2009
-[BUILDTIME] 105 (5)
-[SIZE] 11.84 MB, 286 files
+[TIMESTAMP] 1297112142 Mon Feb  7 21:55:42 2011
+[BUILDTIME] 235 (5)
+[SIZE] 7.66 MB, 720 files
 
+[DEP] attr
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
+[DEP] cyrus-sasl2
 [DEP] diffutils
 [DEP] fhs
-[DEP] file
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnutls
 [DEP] grep
+[DEP] libcap
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libprelude
+[DEP] libtasn1
+[DEP] libtool
+[DEP] linux-header
+[DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] openldap
 [DEP] openssl
+[DEP] pam
 [DEP] patch
 [DEP] pkgconfig
-[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] util-linux-ng
+[DEP] xfsprogs
+[DEP] zlib

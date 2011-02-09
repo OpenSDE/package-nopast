@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1134138211 Fri Dec  9 15:23:31 2005
-[BUILDTIME] 60 (9)
-[SIZE] 1.19 MB, 54 files
+[TIMESTAMP] 1297091988 Mon Feb  7 16:19:48 2011
+[BUILDTIME] 75 (5)
+[SIZE] 1.06 MB, 159 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bdb
 [DEP] binutils
@@ -11,24 +10,22 @@
 [DEP] coreutils
 [DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] file
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnutls
 [DEP] grep
+[DEP] gsasl
+[DEP] gss
 [DEP] libgcrypt
 [DEP] libgpg-error
 [DEP] libidn
-[DEP] libprelude
-[DEP] libtasn1
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] mysql
-[DEP] net-tools
 [DEP] openldap
 [DEP] openssl
 [DEP] pam
@@ -36,5 +33,6 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] udns
+[DEP] util-linux-ng
 [DEP] zlib

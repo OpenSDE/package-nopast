@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133975965 Wed Dec  7 18:19:25 2005
-[BUILDTIME] 70 (9)
-[SIZE] 6.12 MB, 168 files
+[TIMESTAMP] 1297019291 Sun Feb  6 20:08:11 2011
+[BUILDTIME] 40 (5)
+[SIZE] 5.21 MB, 132 files
 
 [DEP] alsa-lib
 [DEP] audiofile
@@ -9,10 +9,10 @@
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] esound
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -31,20 +31,22 @@
 [DEP] libvorbis
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xf86vidmodeproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

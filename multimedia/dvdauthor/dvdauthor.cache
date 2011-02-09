@@ -1,20 +1,25 @@
 
-[TIMESTAMP] 1134187352 Sat Dec 10 05:02:32 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.31 MB, 25 files
+[TIMESTAMP] 1297103446 Mon Feb  7 19:30:46 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.32 MB, 17 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
 [DEP] fribidi
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imagemagick
+[DEP] jbigkit
 [DEP] lcms
 [DEP] libdvdread
 [DEP] libice
@@ -22,18 +27,17 @@
 [DEP] libpng
 [DEP] libsm
 [DEP] libtiff
+[DEP] libtool
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxml
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

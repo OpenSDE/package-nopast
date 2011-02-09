@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1239978502 Fri Apr 17 17:28:22 2009
-[BUILDTIME] 260 (5)
-[SIZE] 14.37 MB, 435 files
+[TIMESTAMP] 1297094642 Mon Feb  7 17:04:02 2011
+[BUILDTIME] 235 (5)
+[SIZE] 14.53 MB, 555 files
 
+[DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -10,7 +11,6 @@
 [DEP] dbus
 [DEP] dbus-python
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -21,7 +21,6 @@
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] kdeutils
 [DEP] libdrm
 [DEP] libice
 [DEP] libpng
@@ -42,6 +41,7 @@
 [DEP] mesa
 [DEP] nas
 [DEP] numpy
+[DEP] phonon
 [DEP] pkgconfig
 [DEP] pygobject
 [DEP] python
@@ -50,5 +50,5 @@
 [DEP] sip
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] wxpython
-[DEP] zlib

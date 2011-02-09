@@ -1,14 +1,13 @@
 
-[TIMESTAMP] 1214759246 Sun Jun 29 20:07:26 2008
-[BUILDTIME] 60 (5)
-[SIZE] 4.37 MB, 362 files
+[TIMESTAMP] 1297097936 Mon Feb  7 17:58:56 2011
+[BUILDTIME] 115 (5)
+[SIZE] 6.93 MB, 250 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] fhs
 [DEP] findutils
 [DEP] flex
@@ -17,12 +16,16 @@
 [DEP] glib
 [DEP] glibc
 [DEP] grep
+[DEP] libsigc++
+[DEP] libtool
+[DEP] libxslt
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
+[DEP] mt-st
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xz

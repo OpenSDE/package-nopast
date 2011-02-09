@@ -1,20 +1,5 @@
 
-[TIMESTAMP] 1133855568 Tue Dec  6 08:52:48 2005
-[BUILDTIME] 20 (9)
-[SIZE] 6.59 MB, 1198 files
+[TIMESTAMP] 1296998883 Sun Feb  6 14:28:03 2011
+[BUILDTIME] 25 (1)
+[SIZE] 2.95 MB, 711 files
 
-[DEP] 00-dirtree
-[DEP] bash
-[DEP] binutils
-[DEP] bzip2
-[DEP] coreutils
-[DEP] diffutils
-[DEP] findutils
-[DEP] gcc
-[DEP] glibc
-[DEP] grep
-[DEP] make
-[DEP] patch
-[DEP] sed
-[DEP] sysfiles
-[DEP] tar

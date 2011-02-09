@@ -1,16 +1,16 @@
 
-[TIMESTAMP] 1134226981 Sat Dec 10 16:03:01 2005
-[BUILDTIME] 15 (9) ERROR
-[SIZE] 0.02 MB, 7 files
+[TIMESTAMP] 1297108520 Mon Feb  7 20:55:20 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.62 MB, 233 files
 
 [DEP] aalib
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -23,22 +23,22 @@
 [DEP] libpng
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxxf86dga
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] sed
 [DEP] slang
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] texinfo
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xf86dgaproto
 [DEP] xf86vidmodeproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

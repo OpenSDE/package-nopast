@@ -1,39 +1,29 @@
 
-[TIMESTAMP] 1133749148 Mon Dec  5 03:19:08 2005
-[BUILDTIME] 15 (5)
-[SIZE] 3.79 MB, 281 files
+[TIMESTAMP] 1297171800 Tue Feb  8 14:30:00 2011
+[BUILDTIME] 10 (5)
+[SIZE] 4.47 MB, 320 files
 
-[DEP] 00-dirtree
-[DEP] autoconf
-[DEP] automake
 [DEP] bash
 [DEP] binutils
+[DEP] bison
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] geany
+[DEP] gettext
 [DEP] glibc
 [DEP] grep
-[DEP] libmikmod
-[DEP] libogg
 [DEP] libpng
 [DEP] libsdl
 [DEP] libsdl_mixer
-[DEP] libvorbis
-[DEP] libx11
-[DEP] libxau
-[DEP] libxdmcp
-[DEP] libxext
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
 [DEP] sed
-[DEP] smpeg
 [DEP] sysfiles
 [DEP] tar
-[DEP] texinfo
+[DEP] util-linux-ng
 [DEP] zlib

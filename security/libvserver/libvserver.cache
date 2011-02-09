@@ -1,28 +1,23 @@
 
-[TIMESTAMP] 1152982332 Sat Jul 15 16:52:12 2006
+[TIMESTAMP] 1297115387 Mon Feb  7 22:49:47 2011
 [BUILDTIME] 10 (5)
-[SIZE] 0.03 MB, 10 files
+[SIZE] 0.12 MB, 19 files
 
-[DEP] autoconf
-[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] file
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] libtool
-[DEP] m4
+[DEP] linux-header
+[DEP] lucid
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

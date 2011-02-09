@@ -1,26 +1,27 @@
 
-[TIMESTAMP] 1239792310 Wed Apr 15 13:45:10 2009
-[BUILDTIME] 5 (5) ERROR
-[SIZE] 0.01 MB, 7 files
+[TIMESTAMP] 1297014249 Sun Feb  6 18:44:09 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.25 MB, 10 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] dri2proto
 [DEP] fhs
-[DEP] file
 [DEP] findutils
 [DEP] fontsproto
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] inputproto
+[DEP] kbproto
 [DEP] libpciaccess
 [DEP] libpthread-stubs
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] pixman
 [DEP] pkgconfig
 [DEP] randrproto
@@ -28,9 +29,11 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] util-macros
 [DEP] videoproto
 [DEP] xextproto
-[DEP] xf86dgaproto
+[DEP] xf86-video-apm
+[DEP] xineramaproto
 [DEP] xorg-server
 [DEP] xproto

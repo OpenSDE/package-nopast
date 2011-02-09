@@ -1,9 +1,10 @@
 
-[TIMESTAMP] 1240055437 Sat Apr 18 14:50:37 2009
-[BUILDTIME] 525 (5)
-[SIZE] 104.69 MB, 4379 files
+[TIMESTAMP] 1297099398 Mon Feb  7 18:23:18 2011
+[BUILDTIME] 1565 (5)
+[SIZE] 104.11 MB, 4197 files
 
 [DEP] acl
+[DEP] attica
 [DEP] attr
 [DEP] automoc4
 [DEP] bash
@@ -12,8 +13,9 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -27,8 +29,9 @@
 [DEP] gnome-libs14
 [DEP] gnupth
 [DEP] grep
-[DEP] kdebase
+[DEP] icu4c
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
 [DEP] libdrm
 [DEP] libice
 [DEP] libjpeg
@@ -44,9 +47,11 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
+[DEP] libxscrnsaver
 [DEP] libxslt
 [DEP] libxt
 [DEP] libxtst
@@ -60,11 +65,16 @@
 [DEP] phonon
 [DEP] pkgconfig
 [DEP] python
+[DEP] qimageblitz
 [DEP] qt4
 [DEP] readline
+[DEP] renderproto
 [DEP] sed
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xproto
+[DEP] xz
 [DEP] zlib

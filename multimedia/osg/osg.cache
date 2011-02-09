@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1280856655 Tue Aug  3 19:30:55 2010
-[BUILDTIME] 870 (9)
-[SIZE] 20.00 MB, 634 files
+[TIMESTAMP] 1297170072 Tue Feb  8 14:01:12 2011
+[BUILDTIME] 2325 (5)
+[SIZE] 25.23 MB, 727 files
 
 [DEP] atk
 [DEP] bash
@@ -18,9 +18,10 @@
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] gtk+
 [DEP] gtkglext
@@ -33,7 +34,6 @@
 [DEP] libpng
 [DEP] libpthread-stubs
 [DEP] librsvg
-[DEP] libsm
 [DEP] libtiff
 [DEP] libungif
 [DEP] libvncserver
@@ -41,7 +41,6 @@
 [DEP] libxau
 [DEP] libxcb
 [DEP] libxdamage
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxml
@@ -56,6 +55,7 @@
 [DEP] pixman
 [DEP] pkgconfig
 [DEP] poppler
+[DEP] qt4
 [DEP] randrproto
 [DEP] renderproto
 [DEP] sed

@@ -1,24 +1,23 @@
 
-[TIMESTAMP] 1134045922 Thu Dec  8 13:45:22 2005
-[BUILDTIME] 5 (9)
-[SIZE] 3.11 MB, 431 files
+[TIMESTAMP] 1297035108 Mon Feb  7 00:31:48 2011
+[BUILDTIME] 0 (5)
+[SIZE] 3.28 MB, 418 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] gcc
 [DEP] glibc
-[DEP] gnue-common
 [DEP] grep
 [DEP] linux-header
 [DEP] numpy
-[DEP] pil
+[DEP] pygobject
 [DEP] python
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] wxpython
-[DEP] zope

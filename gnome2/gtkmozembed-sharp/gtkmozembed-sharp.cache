@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134314821 Sun Dec 11 16:27:01 2005
-[BUILDTIME] 10 (9)
-[SIZE] 0.14 MB, 21 files
+[TIMESTAMP] 1297168547 Tue Feb  8 13:35:47 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.13 MB, 15 files
 
 [DEP] atk
 [DEP] autoconf
@@ -11,36 +11,58 @@
 [DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] dovecot
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gawk
 [DEP] gcc
+[DEP] gconf
+[DEP] gconf110
+[DEP] gdk-pixbuf
+[DEP] gdk-pixbuf10
 [DEP] glib
+[DEP] glib12
 [DEP] glibc
-[DEP] glitz
+[DEP] gnet
+[DEP] gnet1
+[DEP] gnome-common
+[DEP] gnome-doc-utils
 [DEP] gnome-libs14
+[DEP] gnomemm12
+[DEP] gob
 [DEP] grep
 [DEP] gtk+
+[DEP] gtk+12
+[DEP] gtk+extra10
 [DEP] gtk-sharp2
-[DEP] inputproto
+[DEP] gtkmm12
+[DEP] imlib
 [DEP] kbproto
+[DEP] libglade10
 [DEP] libpng
+[DEP] libprelude
+[DEP] libpreludedb
+[DEP] libpthread-stubs
 [DEP] libtool
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxrender
 [DEP] m4
 [DEP] make
-[DEP] mktemp
 [DEP] mono
-[DEP] net-tools
+[DEP] mysql
+[DEP] oaf10
+[DEP] orbit10
 [DEP] pango
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto

@@ -1,9 +1,10 @@
 
-[TIMESTAMP] 1134154886 Fri Dec  9 20:01:26 2005
-[BUILDTIME] 30 (9)
-[SIZE] 1.77 MB, 51 files
+[TIMESTAMP] 1297095147 Mon Feb  7 17:12:27 2011
+[BUILDTIME] 30 (5)
+[SIZE] 6.25 MB, 233 files
 
 [DEP] acl
+[DEP] attr
 [DEP] bash
 [DEP] bdb
 [DEP] binutils
@@ -11,19 +12,31 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] libgd
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxpm
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
+[DEP] pcre
+[DEP] postgresql
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] zlib

@@ -1,6 +1,6 @@
 
-[TIMESTAMP] 1291208176 Wed Dec  1 13:56:16 2010
-[BUILDTIME] 10 (5)
+[TIMESTAMP] 1297025324 Sun Feb  6 21:48:44 2011
+[BUILDTIME] 15 (5)
 [SIZE] 0.91 MB, 63 files
 
 [DEP] atk
@@ -28,6 +28,7 @@
 [DEP] gtkdoc
 [DEP] hal
 [DEP] imlib
+[DEP] libffi
 [DEP] libprelude
 [DEP] linux-header
 [DEP] m4

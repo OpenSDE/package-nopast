@@ -1,8 +1,9 @@
 
-[TIMESTAMP] 1240310251 Tue Apr 21 13:37:31 2009
+[TIMESTAMP] 1297172541 Tue Feb  8 14:42:21 2011
 [BUILDTIME] 5 (5)
-[SIZE] 0.30 MB, 36 files
+[SIZE] 0.10 MB, 20 files
 
+[DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -11,15 +12,14 @@
 [DEP] diffutils
 [DEP] fhs
 [DEP] findutils
-[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] kdelibs
 [DEP] linux-header
 [DEP] make
+[DEP] qimageblitz
 [DEP] sed
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

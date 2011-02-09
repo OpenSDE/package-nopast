@@ -1,27 +1,28 @@
 
-[TIMESTAMP] 1239826125 Wed Apr 15 23:08:45 2009
-[BUILDTIME] 90 (5)
-[SIZE] 2.21 MB, 103 files
+[TIMESTAMP] 1297024401 Sun Feb  6 21:33:21 2011
+[BUILDTIME] 180 (5)
+[SIZE] 2.75 MB, 114 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
+[DEP] clucene
 [DEP] cmake
 [DEP] coreutils
 [DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] exiv2
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
+[DEP] gamin
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] libexiv2
 [DEP] libice
 [DEP] libpng
 [DEP] libsm
@@ -41,5 +42,5 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

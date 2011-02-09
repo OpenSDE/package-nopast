@@ -1,9 +1,9 @@
 
-[TIMESTAMP] 1134030302 Thu Dec  8 09:25:02 2005
-[BUILDTIME] 25 (9)
-[SIZE] 1.93 MB, 92 files
+[TIMESTAMP] 1297031654 Sun Feb  6 23:34:14 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.81 MB, 83 files
 
-[DEP] at-spi
+[DEP] atk
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
@@ -11,67 +11,59 @@
 [DEP] bdb33
 [DEP] binutils
 [DEP] bzip2
+[DEP] cairo
+[DEP] clutter
 [DEP] coreutils
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] epiphany
-[DEP] evolution-data-server
+[DEP] fhs
 [DEP] findutils
-[DEP] gail
 [DEP] gawk
 [DEP] gcc
-[DEP] gconf
+[DEP] gdk-pixbuf
 [DEP] gettext
-[DEP] gimp
 [DEP] glib
 [DEP] glib12
 [DEP] glibc
-[DEP] gmime
-[DEP] gnet
 [DEP] gnome-libs14
-[DEP] gnome-panel
+[DEP] gobject-introspection
 [DEP] grep
-[DEP] gstreamer
 [DEP] gtk+
 [DEP] gtk+12
 [DEP] gtkdoc
 [DEP] gtkglext
-[DEP] gtksourceview
+[DEP] gtkimageview
+[DEP] gtkspell
 [DEP] guile
+[DEP] hal
 [DEP] indent
-[DEP] libbonobo
-[DEP] libbonoboui
-[DEP] libgda
+[DEP] json-glib
 [DEP] libglade
-[DEP] libgnome
-[DEP] libgnomecanvas
-[DEP] libgnomeprint
-[DEP] libgnomeui
-[DEP] libgsf
-[DEP] librsvg
-[DEP] libsoup
-[DEP] libwnck
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxi
 [DEP] libxml1
-[DEP] linphone
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] oaf10
 [DEP] orbit10
+[DEP] orbit2
 [DEP] pango
 [DEP] patch
 [DEP] perl
 [DEP] pkgconfig
+[DEP] poppler
 [DEP] popt
-[DEP] rhythmbox
+[DEP] pygobject
+[DEP] pygtk
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib

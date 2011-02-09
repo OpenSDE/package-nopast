@@ -1,52 +1,58 @@
 
-[TIMESTAMP] 1134006781 Thu Dec  8 02:53:01 2005
-[BUILDTIME] 195 (9)
-[SIZE] 17.68 MB, 636 files
+[TIMESTAMP] 1297028440 Sun Feb  6 22:40:40 2011
+[BUILDTIME] 100 (5)
+[SIZE] 35.69 MB, 1362 files
 
-[DEP] autoconf
-[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
+[DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] ghostscript
+[DEP] glib
 [DEP] glibc
-[DEP] graphviz
+[DEP] gnome-libs14
 [DEP] grep
+[DEP] ilmbase
 [DEP] imake
 [DEP] jasper
 [DEP] jbigkit
+[DEP] kbproto
 [DEP] lcms
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libtiff
 [DEP] libtool
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxml
+[DEP] libxrender
 [DEP] libxt
 [DEP] linux-header
-[DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] openexr
 [DEP] perl
+[DEP] pixman
 [DEP] pkgconfig
+[DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

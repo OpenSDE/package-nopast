@@ -1,25 +1,23 @@
 
-[TIMESTAMP] 1164923667 Thu Nov 30 23:54:27 2006
+[TIMESTAMP] 1297115231 Mon Feb  7 22:47:11 2011
 [BUILDTIME] 0 (5)
-[SIZE] 0.26 MB, 8 files
+[SIZE] 0.03 MB, 8 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] lua
 [DEP] make
-[DEP] ncurses
 [DEP] openldap
 [DEP] patch
 [DEP] pkgconfig
-[DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar

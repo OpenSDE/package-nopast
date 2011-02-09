@@ -1,40 +1,38 @@
 
-[TIMESTAMP] 1134256447 Sun Dec 11 00:14:07 2005
-[BUILDTIME] 35 (9)
-[SIZE] 2.93 MB, 285 files
+[TIMESTAMP] 1297109491 Mon Feb  7 21:11:31 2011
+[BUILDTIME] 20 (5)
+[SIZE] 3.85 MB, 591 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnue-common
+[DEP] gmp
 [DEP] grep
 [DEP] guile
 [DEP] imake
-[DEP] java-dirtree
-[DEP] jikes
+[DEP] libtool
 [DEP] linux-header
+[DEP] lua
 [DEP] make
-[DEP] mktemp
-[DEP] mono
-[DEP] net-tools
 [DEP] numpy
-[DEP] ocaml
+[DEP] pcre
 [DEP] perl
 [DEP] php
-[DEP] pil
+[DEP] pygobject
 [DEP] python
 [DEP] ruby
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcl
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxpython
+[DEP] xorg-cf-files
+[DEP] zlib

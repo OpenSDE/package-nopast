@@ -1,38 +1,41 @@
 
-[TIMESTAMP] 1134012014 Thu Dec  8 04:20:14 2005
-[BUILDTIME] 60 (9)
-[SIZE] 3.29 MB, 234 files
+[TIMESTAMP] 1297029100 Sun Feb  6 22:51:40 2011
+[BUILDTIME] 50 (5)
+[SIZE] 2.93 MB, 268 files
 
-[DEP] autoconf
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
+[DEP] kbproto
 [DEP] libjpeg
 [DEP] libpng
-[DEP] libsdl
-[DEP] libvncserver
+[DEP] libpthread-stubs
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] linux-header
 [DEP] make
 [DEP] man
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mesa
 [DEP] perl
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] sysfsutils
 [DEP] tar
-[DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xextproto
+[DEP] xproto
+[DEP] xz
 [DEP] zlib

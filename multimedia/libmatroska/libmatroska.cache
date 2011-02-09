@@ -1,20 +1,22 @@
 
-[TIMESTAMP] 1134201926 Sat Dec 10 09:05:26 2005
-[BUILDTIME] 20 (9) ERROR
-[SIZE] 2.32 MB, 40 files
+[TIMESTAMP] 1297105424 Mon Feb  7 20:03:44 2011
+[BUILDTIME] 25 (5)
+[SIZE] 2.49 MB, 40 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] libebml
-[DEP] linux-header
 [DEP] make
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng

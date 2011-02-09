@@ -1,14 +1,14 @@
 
-[TIMESTAMP] 1133979851 Wed Dec  7 19:24:11 2005
-[BUILDTIME] 45 (9)
-[SIZE] 1.24 MB, 66 files
+[TIMESTAMP] 1297019714 Sun Feb  6 20:15:14 2011
+[BUILDTIME] 15 (5)
+[SIZE] 1.17 MB, 57 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -17,6 +17,7 @@
 [DEP] grep
 [DEP] gtk+12
 [DEP] imake
+[DEP] jbigkit
 [DEP] libice
 [DEP] libjpeg
 [DEP] libpng
@@ -25,17 +26,16 @@
 [DEP] libungif
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxi
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xextproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

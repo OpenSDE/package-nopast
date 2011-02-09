@@ -1,20 +1,23 @@
 
-[TIMESTAMP] 1153758939 Mon Jul 24 18:35:39 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.45 MB, 64 files
+[TIMESTAMP] 1297180855 Tue Feb  8 17:00:55 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.46 MB, 66 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] flup
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] gst-python
+[DEP] numpy
+[DEP] pygobject
 [DEP] python
 [DEP] sed
 [DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
+[DEP] wxpython

@@ -1,52 +1,34 @@
 
-[TIMESTAMP] 1134037606 Thu Dec  8 11:26:46 2005
-[BUILDTIME] 20 (9)
-[SIZE] 4.21 MB, 140 files
+[TIMESTAMP] 1297034027 Mon Feb  7 00:13:47 2011
+[BUILDTIME] 15 (5)
+[SIZE] 4.29 MB, 232 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
-[DEP] docbook-xml
-[DEP] expat
+[DEP] docbook-xsl
+[DEP] fhs
 [DEP] findutils
-[DEP] fontconfig
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] imake
-[DEP] libdrm
 [DEP] libice
-[DEP] libpng
-[DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
-[DEP] libxext
-[DEP] libxfixes
-[DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
-[DEP] libxrender
+[DEP] libxcb
+[DEP] libxml
 [DEP] libxslt
-[DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
 [DEP] popt
-[DEP] qt3
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] zlib

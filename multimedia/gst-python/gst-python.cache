@@ -1,16 +1,15 @@
 
-[TIMESTAMP] 1157417091 Tue Sep  5 02:44:51 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.63 MB, 56 files
+[TIMESTAMP] 1297114140 Mon Feb  7 22:29:00 2011
+[BUILDTIME] 20 (5)
+[SIZE] 1.09 MB, 82 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] flup
 [DEP] gawk
 [DEP] gcc
 [DEP] glib
@@ -18,17 +17,19 @@
 [DEP] grep
 [DEP] gst-plugins-base
 [DEP] gstreamer
+[DEP] libffi
 [DEP] libxml
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mt-st
+[DEP] numpy
 [DEP] pkgconfig
-[DEP] pygtk
+[DEP] pygobject
 [DEP] python
 [DEP] sed
-[DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] wxpython
+[DEP] xz
 [DEP] zlib

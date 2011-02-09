@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134246385 Sat Dec 10 21:26:25 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.83 MB, 87 files
+[TIMESTAMP] 1297110782 Mon Feb  7 21:33:02 2011
+[BUILDTIME] 5 (5)
+[SIZE] 1.23 MB, 101 files
 
 [DEP] bash
 [DEP] bdb
@@ -10,11 +10,14 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] iptables
 [DEP] linux-header
 [DEP] m4
 [DEP] make

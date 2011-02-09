@@ -1,19 +1,30 @@
 
-[TIMESTAMP] 1133953067 Wed Dec  7 11:57:47 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.34 MB, 21 files
+[TIMESTAMP] 1297015241 Sun Feb  6 19:00:41 2011
+[BUILDTIME] 15 (5)
+[SIZE] 1.59 MB, 21 files
 
-[DEP] 00-dirtree
 [DEP] bash
-[DEP] bzflag
+[DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
 [DEP] gawk
 [DEP] gcc
-[DEP] gettext
 [DEP] glibc
 [DEP] grep
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxxf86dga
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] nasm
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] xf86dgaproto
+[DEP] xf86vidmodeproto
+[DEP] xproto

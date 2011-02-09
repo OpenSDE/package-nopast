@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1240053895 Sat Apr 18 14:24:55 2009
-[BUILDTIME] 30 (5)
-[SIZE] 22.75 MB, 3512 files
+[TIMESTAMP] 1297098626 Mon Feb  7 18:10:26 2011
+[BUILDTIME] 80 (5)
+[SIZE] 109.97 MB, 4815 files
 
 [DEP] acl
 [DEP] attr
@@ -11,8 +11,8 @@
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -23,10 +23,12 @@
 [DEP] gcc
 [DEP] glib
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] kdebase-runtime
 [DEP] kdebase-workspace
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
 [DEP] libdrm
 [DEP] libice
 [DEP] libpng
@@ -40,6 +42,7 @@
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxft
+[DEP] libxi
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrender
@@ -54,8 +57,10 @@
 [DEP] pkgconfig
 [DEP] qt4
 [DEP] sed
+[DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
+[DEP] xz

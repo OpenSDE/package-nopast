@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1240124954 Sun Apr 19 10:09:14 2009
-[BUILDTIME] 25 (5)
-[SIZE] 1.22 MB, 14 files
+[TIMESTAMP] 1297108491 Mon Feb  7 20:54:51 2011
+[BUILDTIME] 20 (5)
+[SIZE] 1.21 MB, 13 files
 
 [DEP] alsa-lib
+[DEP] alsa-tools
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
-[DEP] e2fsprogs
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -33,13 +33,12 @@
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] nas
 [DEP] patch
+[DEP] phonon
 [DEP] qt4
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
-[DEP] zlib

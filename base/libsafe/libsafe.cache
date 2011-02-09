@@ -1,21 +1,19 @@
 
-[TIMESTAMP] 1133876709 Tue Dec  6 14:45:09 2005
-[BUILDTIME] 5 (9)
-[SIZE] 0.09 MB, 15 files
+[TIMESTAMP] 1297007965 Sun Feb  6 16:59:25 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.04 MB, 8 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnutls
 [DEP] grep
-[DEP] libgcrypt
-[DEP] libgpg-error
-[DEP] libprelude
-[DEP] libtasn1
 [DEP] linux-header
 [DEP] make
 [DEP] patch

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1133947393 Wed Dec  7 10:23:13 2005
-[BUILDTIME] 15 (9)
-[SIZE] 0.49 MB, 36 files
+[TIMESTAMP] 1297016158 Sun Feb  6 19:15:58 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.40 MB, 21 files
 
 [DEP] autoconf
 [DEP] automake
@@ -10,6 +10,7 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -18,8 +19,6 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
 [DEP] perl
 [DEP] sed

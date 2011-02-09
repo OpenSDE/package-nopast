@@ -1,5 +1,5 @@
 
-[TIMESTAMP] 1291472675 Sat Dec  4 15:24:35 2010
+[TIMESTAMP] 1297107054 Mon Feb  7 20:30:54 2011
 [BUILDTIME] 10 (5)
 [SIZE] 0.44 MB, 63 files
 
@@ -27,6 +27,7 @@
 [DEP] gtk+
 [DEP] intltool
 [DEP] kbproto
+[DEP] libffi
 [DEP] libpng
 [DEP] libpthread-stubs
 [DEP] libx11

@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134135357 Fri Dec  9 14:35:57 2005
-[BUILDTIME] 35 (9)
-[SIZE] 0.97 MB, 85 files
+[TIMESTAMP] 1297091064 Mon Feb  7 16:04:24 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.95 MB, 77 files
 
 [DEP] a52dec
 [DEP] alsa-lib
@@ -9,9 +9,9 @@
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -29,7 +29,7 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxi
 [DEP] libxinerama
@@ -41,16 +41,14 @@
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
 [DEP] patch
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] videoproto
 [DEP] xextproto
 [DEP] xf86vidmodeproto
-[DEP] xineramaproto
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

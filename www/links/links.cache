@@ -1,17 +1,17 @@
 
-[TIMESTAMP] 1134267171 Sun Dec 11 03:12:51 2005
-[BUILDTIME] 40 (9)
-[SIZE] 2.94 MB, 21 files
+[TIMESTAMP] 1297113478 Mon Feb  7 22:17:58 2011
+[BUILDTIME] 15 (5)
+[SIZE] 2.79 MB, 8 files
 
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] directfb
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -19,19 +19,15 @@
 [DEP] gpm
 [DEP] grep
 [DEP] imake
+[DEP] jbigkit
 [DEP] libjpeg
 [DEP] libpng
-[DEP] libsdl
 [DEP] libtiff
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
-[DEP] libxext
+[DEP] libxcb
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
-[DEP] ncurses
-[DEP] net-tools
 [DEP] openssl
 [DEP] perl
 [DEP] pkgconfig
@@ -39,5 +35,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

@@ -1,21 +1,24 @@
 
-[TIMESTAMP] 1239973790 Fri Apr 17 16:09:50 2009
-[BUILDTIME] 705 (5)
-[SIZE] 259.19 MB, 2155 files
+[TIMESTAMP] 1297094097 Mon Feb  7 16:54:57 2011
+[BUILDTIME] 2175 (5)
+[SIZE] 107.37 MB, 2519 files
 
+[DEP] acl
+[DEP] akonadi
+[DEP] attica
+[DEP] attr
 [DEP] automoc4
 [DEP] bash
 [DEP] binutils
 [DEP] bluez-libs
-[DEP] boehm-gc
 [DEP] bzip2
 [DEP] cmake
 [DEP] compositeproto
 [DEP] coreutils
 [DEP] damageproto
+[DEP] dbus
 [DEP] diffutils
-[DEP] e2fsprogs
-[DEP] eet
+[DEP] docbook-xml
 [DEP] expat
 [DEP] fhs
 [DEP] findutils
@@ -33,10 +36,13 @@
 [DEP] kbproto
 [DEP] kdebase
 [DEP] kdelibs
+[DEP] libdbusmenu-qt
 [DEP] libdrm
 [DEP] libice
+[DEP] libjpeg
 [DEP] libpng
 [DEP] libpthread-stubs
+[DEP] libraw1394
 [DEP] libsm
 [DEP] libusb
 [DEP] libx11
@@ -52,11 +58,11 @@
 [DEP] libxi
 [DEP] libxinerama
 [DEP] libxkbfile
-[DEP] libxklavier
 [DEP] libxml
 [DEP] libxpm
 [DEP] libxrandr
 [DEP] libxrender
+[DEP] libxres
 [DEP] libxscrnsaver
 [DEP] libxt
 [DEP] libxtst
@@ -69,6 +75,7 @@
 [DEP] nas
 [DEP] numpy
 [DEP] pam
+[DEP] pciutils
 [DEP] perl
 [DEP] phonon
 [DEP] pkgconfig
@@ -80,19 +87,20 @@
 [DEP] renderproto
 [DEP] scrnsaverproto
 [DEP] sed
+[DEP] shadow
+[DEP] shared-desktop-ontologies
 [DEP] soprano
 [DEP] strigi
 [DEP] sysfiles
-[DEP] sysfsutils
 [DEP] sysvinit
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] wxpython
 [DEP] xdm
 [DEP] xextproto
 [DEP] xf86miscproto
-[DEP] xineramaproto
 [DEP] xmms
 [DEP] xorg-server
 [DEP] xproto
+[DEP] xz
 [DEP] zlib

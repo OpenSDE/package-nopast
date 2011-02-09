@@ -1,25 +1,29 @@
 
-[TIMESTAMP] 1189181927 Fri Sep  7 12:18:47 2007
-[BUILDTIME] 5 (5)
+[TIMESTAMP] 1297013276 Sun Feb  6 18:27:56 2011
+[BUILDTIME] 0 (5)
 [SIZE] 0.53 MB, 15 files
 
-[DEP] 00-dirtree
 [DEP] bash
+[DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] font-util
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
 [DEP] libpthread-stubs
+[DEP] linux-header
 [DEP] make
 [DEP] mkfontdir
 [DEP] mkfontscale
-[DEP] mktemp
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xcb-proto
 [DEP] xproto

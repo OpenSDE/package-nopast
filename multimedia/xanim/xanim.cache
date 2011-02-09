@@ -1,13 +1,16 @@
 
-[TIMESTAMP] 1134007136 Thu Dec  8 02:58:56 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.87 MB, 32 files
+[TIMESTAMP] 1297028465 Sun Feb  6 22:41:05 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.92 MB, 31 files
 
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
@@ -15,7 +18,7 @@
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
 [DEP] libxext
 [DEP] libxt
 [DEP] linux-header
@@ -24,6 +27,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
 [DEP] xextproto
 [DEP] xproto
 [DEP] zlib

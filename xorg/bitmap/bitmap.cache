@@ -1,18 +1,17 @@
 
-[TIMESTAMP] 1189271150 Sat Sep  8 13:05:50 2007
-[BUILDTIME] 5 (5)
-[SIZE] 0.15 MB, 28 files
+[TIMESTAMP] 1297013025 Sun Feb  6 18:23:45 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.16 MB, 28 files
 
-[DEP] 00-dirtree
 [DEP] bash
+[DEP] beforelight
 [DEP] bigreqsproto
 [DEP] binutils
 [DEP] bzip2
-[DEP] compositeproto
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] fontconfig
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
@@ -25,22 +24,18 @@
 [DEP] libxau
 [DEP] libxaw
 [DEP] libxcb
-[DEP] libxdmcp
 [DEP] libxext
 [DEP] libxmu
-[DEP] libxp
 [DEP] libxpm
 [DEP] libxt
 [DEP] linux-header
 [DEP] make
-[DEP] mktemp
 [DEP] pkgconfig
-[DEP] printproto
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xbitmaps
-[DEP] xdm
+[DEP] xcb-proto
 [DEP] xextproto
 [DEP] xproto

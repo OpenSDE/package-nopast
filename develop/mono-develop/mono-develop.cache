@@ -1,36 +1,30 @@
 
-[TIMESTAMP] 1189089463 Thu Sep  6 16:37:43 2007
-[BUILDTIME] 50 (5)
-[SIZE] 9.16 MB, 195 files
+[TIMESTAMP] 1297168638 Tue Feb  8 13:37:18 2011
+[BUILDTIME] 30 (5)
+[SIZE] 20.03 MB, 331 files
 
-[DEP] 00-dirtree
 [DEP] bash
-[DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] firefox
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
-[DEP] glib
 [DEP] glibc
 [DEP] gnome-libs14
 [DEP] gnome-sharp
 [DEP] grep
+[DEP] gtk+
 [DEP] gtk-sharp2
-[DEP] gtkmozembed-sharp
-[DEP] gtksourceview-sharp
-[DEP] linux-header
+[DEP] librsvg
 [DEP] make
-[DEP] mktemp
 [DEP] mono
-[DEP] mono-doc
-[DEP] perl
-[DEP] perl-xml-parser
+[DEP] mono-addins
 [DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

@@ -1,44 +1,48 @@
 
-[TIMESTAMP] 1134294684 Sun Dec 11 10:51:24 2005
-[BUILDTIME] 285 (9)
-[SIZE] 14.47 MB, 243 files
+[TIMESTAMP] 1297163983 Tue Feb  8 12:19:43 2011
+[BUILDTIME] 80 (5)
+[SIZE] 14.63 MB, 179 files
 
 [DEP] bash
-[DEP] bc
 [DEP] binutils
 [DEP] bzip2
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] curl
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] glew
 [DEP] glibc
 [DEP] grep
 [DEP] imake
 [DEP] libdrm
 [DEP] libice
 [DEP] libidn
+[DEP] libpthread-stubs
 [DEP] libsdl
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
+[DEP] libxmu
+[DEP] libxt
 [DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
 [DEP] mesa
-[DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] openssl
 [DEP] perl
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
 [DEP] zlib

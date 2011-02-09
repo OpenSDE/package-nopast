@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134256671 Sun Dec 11 00:17:51 2005
-[BUILDTIME] 20 (9)
-[SIZE] 7.09 MB, 319 files
+[TIMESTAMP] 1297112238 Mon Feb  7 21:57:18 2011
+[BUILDTIME] 25 (5)
+[SIZE] 8.19 MB, 327 files
 
 [DEP] atk
 [DEP] attr
@@ -9,31 +9,34 @@
 [DEP] binutils
 [DEP] bzip2
 [DEP] cairo
-[DEP] xorg-cf-files
 [DEP] coreutils
 [DEP] diffutils
 [DEP] expat
+[DEP] fhs
 [DEP] file
+[DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] ggz-client-libs
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
 [DEP] grep
 [DEP] gtk+
 [DEP] imake
-[DEP] inputproto
 [DEP] kbproto
-[DEP] libdnet
 [DEP] libice
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
@@ -43,14 +46,15 @@
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
-[DEP] net-tools
 [DEP] pango
 [DEP] patch
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
 [DEP] shared-mime-info
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
-[DEP] zlib

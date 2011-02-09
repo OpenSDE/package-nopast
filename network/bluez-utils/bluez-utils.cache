@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1134157643 Fri Dec  9 20:47:23 2005
-[BUILDTIME] 20 (9)
-[SIZE] 0.42 MB, 54 files
+[TIMESTAMP] 1297096104 Mon Feb  7 17:28:24 2011
+[BUILDTIME] 30 (5)
+[SIZE] 0.94 MB, 48 files
 
 [DEP] alsa-lib
 [DEP] bash
@@ -11,21 +11,28 @@
 [DEP] coreutils
 [DEP] dbus
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
+[DEP] flac
 [DEP] flex
-[DEP] fuse
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
+[DEP] gnome-libs14
 [DEP] grep
+[DEP] gst-plugins-base
+[DEP] gstreamer
+[DEP] libogg
+[DEP] libsndfile
 [DEP] libusb
+[DEP] libvorbis
+[DEP] libxml
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
-[DEP] openobex
+[DEP] pkgconfig
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng

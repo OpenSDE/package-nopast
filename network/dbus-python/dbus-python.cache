@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1164632058 Mon Nov 27 14:54:18 2006
-[BUILDTIME] 10 (5)
-[SIZE] 0.48 MB, 31 files
+[TIMESTAMP] 1297080239 Mon Feb  7 13:03:59 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.47 MB, 32 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
@@ -11,8 +10,8 @@
 [DEP] dbus
 [DEP] dbus-glib
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] gawk
 [DEP] gcc
 [DEP] glib
 [DEP] glibc

@@ -1,25 +1,29 @@
 
-[TIMESTAMP] 1153756602 Mon Jul 24 17:56:42 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.20 MB, 37 files
+[TIMESTAMP] 1297180875 Tue Feb  8 17:01:15 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.21 MB, 42 files
 
-[DEP] 00-dirtree
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
-[DEP] flup
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
+[DEP] gst-python
 [DEP] linux-header
 [DEP] mysql
-[DEP] openssl
+[DEP] numpy
+[DEP] pygobject
+[DEP] pyrexc
 [DEP] python
 [DEP] sed
 [DEP] setuptools
 [DEP] sysfiles
 [DEP] tar
+[DEP] trac
+[DEP] wxpython
 [DEP] zlib

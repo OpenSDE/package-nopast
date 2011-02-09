@@ -1,13 +1,13 @@
 
-[TIMESTAMP] 1284675228 Fri Sep 17 00:13:48 2010
-[BUILDTIME] 5 (5)
+[TIMESTAMP] 1297024478 Sun Feb  6 21:34:38 2011
+[BUILDTIME] 10 (5)
 [SIZE] 0.15 MB, 14 files
 
 [DEP] bash
+[DEP] binutils
 [DEP] bzip2
 [DEP] cmake
 [DEP] coreutils
-[DEP] dbus
 [DEP] diffutils
 [DEP] expat
 [DEP] fhs

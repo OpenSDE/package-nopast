@@ -1,39 +1,73 @@
 
-[TIMESTAMP] 1134154659 Fri Dec  9 19:57:39 2005
-[BUILDTIME] 55 (9)
-[SIZE] 4.34 MB, 160 files
+[TIMESTAMP] 1297095107 Mon Feb  7 17:11:47 2011
+[BUILDTIME] 60 (5)
+[SIZE] 3.20 MB, 135 files
 
+[DEP] atk
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
-[DEP] bison
 [DEP] bluez-libs
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cairo
 [DEP] coreutils
 [DEP] diffutils
+[DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] flex
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
+[DEP] geany
 [DEP] gettext
-[DEP] glib12
+[DEP] glib
 [DEP] glibc
 [DEP] grep
-[DEP] gtk+12
+[DEP] gtk+
 [DEP] imake
+[DEP] intltool
+[DEP] kbproto
+[DEP] libical
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libusb
 [DEP] libx11
 [DEP] libxau
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxext
+[DEP] libxfixes
 [DEP] libxi
+[DEP] libxinerama
 [DEP] libxpm
+[DEP] libxrandr
+[DEP] libxrender
 [DEP] linux-header
 [DEP] m4
 [DEP] make
-[DEP] mktemp
-[DEP] net-tools
+[DEP] mysql
+[DEP] ncurses
+[DEP] pango
+[DEP] pcsc-lite
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] postgresql
+[DEP] readline
+[DEP] renderproto
 [DEP] sed
+[DEP] sqlite
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
 [DEP] xproto
+[DEP] xz
+[DEP] zlib
