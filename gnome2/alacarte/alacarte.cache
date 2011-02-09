@@ -1,0 +1,39 @@
+
+[TIMESTAMP] 1297035033 Mon Feb  7 00:30:33 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.50 MB, 136 files
+
+[DEP] at-spi
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gconf
+[DEP] gdk-pixbuf
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] gnome-icon-theme
+[DEP] gnome-menus
+[DEP] grep
+[DEP] gtk+
+[DEP] intltool
+[DEP] libbonoboui
+[DEP] linux-header
+[DEP] make
+[DEP] numpy
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] wxpython

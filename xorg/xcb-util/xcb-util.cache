@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1297011993 Sun Feb  6 18:06:33 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.30 MB, 71 files
+
+[DEP] bash
+[DEP] bigreqsproto
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gperf
+[DEP] grep
+[DEP] libpthread-stubs
+[DEP] libxau
+[DEP] libxcb
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xproto

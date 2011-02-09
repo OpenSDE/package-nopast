@@ -1,0 +1,46 @@
+
+[TIMESTAMP] 1297023790 Sun Feb  6 21:23:10 2011
+[BUILDTIME] 25 (5)
+[SIZE] 2.02 MB, 101 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] dmalloc
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] gmp
+[DEP] grep
+[DEP] libidn
+[DEP] libtool
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mpfr
+[DEP] mysql
+[DEP] openssl
+[DEP] perl
+[DEP] pkgconfig
+[DEP] postgresql
+[DEP] raptor
+[DEP] rasqal
+[DEP] sed
+[DEP] sqlite
+[DEP] sqlite2
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xz
+[DEP] zlib

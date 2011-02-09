@@ -1,0 +1,36 @@
+
+[TIMESTAMP] 1297023737 Sun Feb  6 21:22:17 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.74 MB, 48 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] gmp
+[DEP] grep
+[DEP] libidn
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mpfr
+[DEP] openssl
+[DEP] pcre
+[DEP] pkgconfig
+[DEP] raptor
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xz

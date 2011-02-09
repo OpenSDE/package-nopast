@@ -1,0 +1,56 @@
+
+[TIMESTAMP] 1297034982 Mon Feb  7 00:29:42 2011
+[BUILDTIME] 20 (5)
+[SIZE] 1.43 MB, 27 files
+
+[DEP] automoc4
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] gconf
+[DEP] glib
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] kdelibs
+[DEP] libice
+[DEP] liboping
+[DEP] libprelude
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdmcp
+[DEP] libxext
+[DEP] libxft
+[DEP] libxpm
+[DEP] libxrender
+[DEP] linux-header
+[DEP] make
+[DEP] numpy
+[DEP] orbit2
+[DEP] patch
+[DEP] perl
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] popt
+[DEP] pygobject
+[DEP] python
+[DEP] qt4
+[DEP] sed
+[DEP] shared-desktop-ontologies
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] wxpython
+[DEP] zlib
