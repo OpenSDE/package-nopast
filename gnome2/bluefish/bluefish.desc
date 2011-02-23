@@ -33,9 +33,9 @@
 
 [L] GPL
 [S] Stable
-[V] 2.0.2
+[V] 2.0.3
 [P] X -----5---9 220.200
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 1782366245 bluefish-2.0.2.tar.bz2 http://www.bennewitz.com/bluefish/stable/source/
+[D] 891055893 bluefish-2.0.3.tar.bz2 http://www.bennewitz.com/bluefish/stable/source/
