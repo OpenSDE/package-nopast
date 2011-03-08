@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1299608033 Tue Mar  8 19:13:53 2011
+[BUILDTIME] 15 (5)
+[SIZE] 1.29 MB, 16 files
+
+[DEP] acl
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libxml
+[DEP] linux-header
+[DEP] make
+[DEP] openssl
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xz
+[DEP] zlib
