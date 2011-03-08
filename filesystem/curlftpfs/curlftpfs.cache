@@ -1,0 +1,32 @@
+
+[TIMESTAMP] 1299503025 Mon Mar  7 14:03:45 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.06 MB, 7 files
+
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] fuse
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] heimdal
+[DEP] linux-header
+[DEP] make
+[DEP] openldap
+[DEP] openssl
+[DEP] pkgconfig
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
