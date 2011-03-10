@@ -31,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.37.1
+[V] 2.6.37.2
 [P] X -?---5---9 102.060
 
 [D] 908167249 linux-2.6.37.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/
-[D] 4153272482 patch-2.6.37.1.bz2 http://kernel.org/pub/linux/kernel/v2.6/
+[D] 2796219395 patch-2.6.37.2.bz2 http://kernel.org/pub/linux/kernel/v2.6/
