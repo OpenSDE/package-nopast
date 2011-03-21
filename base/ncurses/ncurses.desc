@@ -33,7 +33,16 @@
 
 [L] MIT
 [S] Stable
-[V] 5.7
+[V] 5.7-20110205
 [P] X -1-3-----9 104.000
 
 [D] 45974054 ncurses-5.7.tar.gz ftp://ftp.gnu.org/pub/gnu/ncurses/
+# Official upstream patches
+# Important: Preserve the order of the patches!
+[D] 3584404045 ncurses-5.7-20110108-patch.sh.bz2 ftp://invisible-island.net/ncurses/5.7/
+[D] 1456438889 ncurses-5.7-20110115.patch.gz ftp://invisible-island.net/ncurses/5.7/
+[D] 1612109863 ncurses-5.7-20110122.patch.gz ftp://invisible-island.net/ncurses/5.7/
+[D] 484099338 ncurses-5.7-20110205.patch.gz ftp://invisible-island.net/ncurses/5.7/
+# Official patches that strangely do not apply
+#[D] 3579303398 ncurses-5.7-20110212.patch.gz ftp://invisible-island.net/ncurses/5.7/
+#[D] 2288570124 ncurses-5.7-20110220.patch.gz ftp://invisible-island.net/ncurses/5.7/
