@@ -1,65 +1,65 @@
 
-[TIMESTAMP] 1141678875 Mon Mar  6 22:01:15 2006
-[BUILDTIME] 100 (9)
-[SIZE] 4.82 MB, 122 files
+[TIMESTAMP] 1300455676 Fri Mar 18 14:41:16 2011
+[BUILDTIME] 70 (5)
+[SIZE] 1.60 MB, 136 files
 
-[DEP] 00-dirtree
-[DEP] alsa-lib
+[DEP] alsa-tools
 [DEP] atk
-[DEP] audiofile
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
 [DEP] cairo
 [DEP] coreutils
-[DEP] curl
+[DEP] dbus
+[DEP] dbus-glib
 [DEP] diffutils
-[DEP] esound
+[DEP] emacs
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
-[DEP] flac
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
+[DEP] gdk-pixbuf
 [DEP] gettext
 [DEP] glib
 [DEP] glibc
-[DEP] glitz
+[DEP] gnome-libs14
 [DEP] grep
 [DEP] gtk+
-[DEP] inputproto
-[DEP] jack
 [DEP] kbproto
-[DEP] libglade
-[DEP] libogg
+[DEP] libice
+[DEP] libmcs
+[DEP] libmowgli
 [DEP] libpng
-[DEP] libsamplerate
-[DEP] libsndfile
-[DEP] libvorbis
+[DEP] libpthread-stubs
+[DEP] libselinux
+[DEP] libsm
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
+[DEP] libxdamage
 [DEP] libxdmcp
 [DEP] libxext
 [DEP] libxfixes
 [DEP] libxi
 [DEP] libxinerama
-[DEP] libxml
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] linux-header
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] pango
+[DEP] pixman
 [DEP] pkgconfig
 [DEP] renderproto
 [DEP] sed
 [DEP] sysfiles
-[DEP] taglib
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] xproto
-[DEP] zlib
+[DEP] xz
