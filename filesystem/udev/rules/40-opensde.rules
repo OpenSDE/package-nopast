@@ -1,9 +1,9 @@
 # vi: set ft=conf :
 
 # console (NAME)
-KERNEL=="pty[pqrstuvwxyzabcdef][0123456789abcdef]",	NAME="pty/m%m"
-KERNEL=="tty[pqrstuvwxyzabcdef][0123456789abcdef]",	NAME="pty/s%m"
-KERNEL=="tty[0-9]*",		NAME="vc/%n"
+KERNEL=="pty[pqrstuvwxyzabcdef][0123456789abcdef]",	SYMLINK+="pty/m%m"	
+KERNEL=="tty[pqrstuvwxyzabcdef][0123456789abcdef]",	SYMLINK+="pty/s%m"
+KERNEL=="tty[0-9]*",		SYMLINK+="vc/%n"
 
 # video group
 KERNEL=="pmu",			GROUP="video"
