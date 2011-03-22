@@ -1,0 +1,43 @@
+
+[TIMESTAMP] 1300793289 Tue Mar 22 12:28:09 2011
+[BUILDTIME] 30 (5)
+[SIZE] 1.10 MB, 139 files
+
+[DEP] alsa-lib
+[DEP] alsa-tools
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fftw3
+[DEP] fhs
+[DEP] findutils
+[DEP] flac
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnome-games
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] gst-python
+[DEP] jack
+[DEP] libogg
+[DEP] libsamplerate
+[DEP] libsndfile
+[DEP] libvorbis
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] numpy
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] swig
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] wxpython
+[DEP] xz
