@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1300791119 Tue Mar 22 11:51:59 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.16 MB, 24 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] doxygen
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xz
