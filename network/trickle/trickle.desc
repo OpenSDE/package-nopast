@@ -31,6 +31,8 @@
 
 [C] extra/network
 
+[F] NOPARALLEL
+
 [L] BSD
 [S] Stable
 [V] 1.07
