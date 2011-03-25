@@ -34,7 +34,7 @@
 [L] MIT
 [S] Stable
 [V] 5.7-20110205
-[P] X -1-3-----9 104.000
+[P] X 01-3-----9 104.000
 
 [D] 45974054 ncurses-5.7.tar.gz ftp://ftp.gnu.org/pub/gnu/ncurses/
 # Official upstream patches
