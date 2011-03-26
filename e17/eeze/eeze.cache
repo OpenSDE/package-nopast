@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1300974852 Thu Mar 24 14:54:12 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.10 MB, 17 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] ecore
+[DEP] eina
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] git
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] subversion
+[DEP] sysfiles
+[DEP] tar
+[DEP] udev
+[DEP] util-linux-ng
+[DEP] xz
