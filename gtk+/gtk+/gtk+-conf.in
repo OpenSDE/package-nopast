@@ -35,3 +35,6 @@ var_append confopt " " "--disable-gtktest"
 flistdel="$flistdel|$prefix/share/icons/hicolor/icon-theme.cache"
 # exclude hicolor directory
 var_append flistdel '|' "$prefix/share/icons/hicolor$"
+
+# include sub-package definitions
+. $base/package/*/glib/glib-conf.in
