@@ -1,43 +1,28 @@
 
-[TIMESTAMP] 1297106952 Mon Feb  7 20:29:12 2011
-[BUILDTIME] 225 (5)
-[SIZE] 19.91 MB, 556 files
+[TIMESTAMP] 1301498235 Wed Mar 30 17:17:15 2011
+[BUILDTIME] 115 (5)
+[SIZE] 17.19 MB, 526 files
 
-[DEP] apache
-[DEP] apr
-[DEP] apr-util
 [DEP] bash
 [DEP] binutils
 [DEP] bison
 [DEP] bzip2
 [DEP] coreutils
-[DEP] curl
-[DEP] cyrus-sasl2
 [DEP] diffutils
 [DEP] fhs
 [DEP] findutils
-[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
 [DEP] grep
-[DEP] iana-etc
-[DEP] libidn
-[DEP] libjpeg
-[DEP] libmcrypt
-[DEP] libpng
-[DEP] libtool
 [DEP] libxml
 [DEP] linux-header
 [DEP] make
 [DEP] ncurses
-[DEP] openldap
 [DEP] openssl
 [DEP] patch
-[DEP] pcre
-[DEP] perl
 [DEP] pkgconfig
-[DEP] postgresql
+[DEP] runit
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
