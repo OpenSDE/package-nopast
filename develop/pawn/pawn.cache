@@ -1,7 +1,7 @@
 
-[TIMESTAMP] 1297173240 Tue Feb  8 14:54:00 2011
-[BUILDTIME] 5 (5)
-[SIZE] 0.28 MB, 9 files
+[TIMESTAMP] 1301609040 Fri Apr  1 00:04:00 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.29 MB, 12 files
 
 [DEP] bash
 [DEP] binutils
@@ -16,7 +16,6 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] patch
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
