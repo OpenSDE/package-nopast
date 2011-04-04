@@ -1,0 +1,48 @@
+
+[TIMESTAMP] 1301778625 Sat Apr  2 23:10:25 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.18 MB, 34 files
+
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] gmp
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] jack
+[DEP] libidn
+[DEP] libssh2
+[DEP] libtool
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] lv2core
+[DEP] mpfr
+[DEP] numpy
+[DEP] openssl
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] pil
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] raptor
+[DEP] rasqal
+[DEP] redland
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] wxpython
+[DEP] zlib
+[DEP] zope
