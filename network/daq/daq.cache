@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1301907502 Mon Apr  4 10:58:22 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.70 MB, 39 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libdnet
+[DEP] libnetfilter_queue
+[DEP] libnfnetlink
+[DEP] libnl
+[DEP] libpcap
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
