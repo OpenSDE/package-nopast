@@ -26,8 +26,9 @@
 [C] extra/tool
 
 [L] BSD
-[S] Stable
-[V] 1.0.6
+[S] Alpha
+[V] test
 [P] X -----5---9 800.000
 
-[D] 1070216539 pgspy-1.0.6.tar.gz http://pgfoundry.org/frs/download.php/2132/
+#[D] 1070216539 pgspy-1.0.6.tar.gz http://pgfoundry.org/frs/download.php/2132/
+[D] 0 pgspy-test.tgz http://www.jefftrout.com/
