@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1301918905 Mon Apr  4 14:08:25 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.34 MB, 26 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] grep
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libselinux
+[DEP] libsepol
+[DEP] linux-header
+[DEP] lvm2
+[DEP] make
+[DEP] mktemp
+[DEP] sed
+[DEP] shadow
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
