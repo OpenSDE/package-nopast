@@ -1,16 +1,17 @@
 
-[TIMESTAMP] 1147250444 Wed May 10 10:40:44 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.09 MB, 15 files
+[TIMESTAMP] 1301916907 Mon Apr  4 13:35:07 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.40 MB, 25 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
-[DEP] device-mapper
 [DEP] diffutils
-[DEP] e2fsprogs
+[DEP] fhs
+[DEP] file
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -19,12 +20,18 @@
 [DEP] grep
 [DEP] libgcrypt
 [DEP] libgpg-error
+[DEP] libselinux
+[DEP] libsepol
 [DEP] linux-header
+[DEP] lvm2
+[DEP] m4
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
+[DEP] ncurses
+[DEP] perl
+[DEP] pkgconfig
 [DEP] popt
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
