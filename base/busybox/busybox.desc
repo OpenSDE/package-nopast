@@ -34,4 +34,4 @@
 
 [D] 2179714866 busybox-1.18.3.tar.bz2 http://busybox.net/downloads/
 [D] 1665646922 busybox-1.18.3-buildsys.patch http://busybox.net/downloads/fixes-1.18.3/
-[D] 3561935220 busybox-1.18.3-wget.patch http://busybox.net/downloads/fixes-1.18.3/
+[D] 2568519886 busybox-1.18.3-wget-2.patch !http://busybox.net/downloads/fixes-1.18.3/busybox-1.18.3-wget.patch
