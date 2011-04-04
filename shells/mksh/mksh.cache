@@ -1,0 +1,21 @@
+
+[TIMESTAMP] 1301792018 Sun Apr  3 02:53:38 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.43 MB, 9 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cpio
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] sed
+[DEP] sysfiles
+[DEP] util-linux-ng
