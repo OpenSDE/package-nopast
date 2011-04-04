@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1301778276 Sat Apr  2 23:04:36 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.13 MB, 14 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] linux-header
+[DEP] numpy
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] pil
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] wxpython
+[DEP] zope
