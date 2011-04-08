@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1302282522 Fri Apr  8 19:08:42 2011
+[BUILDTIME] 15 (5)
+[SIZE] 5.35 MB, 316 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gst-python
+[DEP] linux-header
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] wxpython
