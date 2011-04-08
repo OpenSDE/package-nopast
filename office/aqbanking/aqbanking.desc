@@ -26,6 +26,7 @@
 
 [C] extra/tool extra/office extra/development
 [F] NOPARALLEL
+[F] LIBTOOL-QUIRK
 
 [L] GPL
 [S] Stable
