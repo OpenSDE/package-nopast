@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1302351965 Sat Apr  9 14:26:05 2011
+[BUILDTIME] 180 (5)
+[SIZE] 17.95 MB, 522 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] icu4c
+[DEP] libidn
+[DEP] libssh2
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] openssl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
