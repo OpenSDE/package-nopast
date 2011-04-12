@@ -1,0 +1,40 @@
+
+[TIMESTAMP] 1302623193 Tue Apr 12 17:46:33 2011
+[BUILDTIME] 75 (5)
+[SIZE] 2.50 MB, 171 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] djv
+[DEP] fhs
+[DEP] findutils
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] libsdl
+[DEP] libtool
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] mt-st
+[DEP] ncurses
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
+[DEP] xproto
