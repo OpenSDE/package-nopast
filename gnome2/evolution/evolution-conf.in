@@ -34,3 +34,6 @@ if pkginstalled openldap; then
 	var_append GCC_WRAPPER_APPEND ' ' "-I$root/$( pkgprefix includedir openldap )"
 	var_append GCC_WRAPPER_APPEND ' ' "-L$root/$( pkgprefix libdir openldap )"
 fi
+
+# workaround for implicit declaration of functions which have been deprecated in gtk+
+var_append CC_WRAPPER_REMOVE ' ' '-DGTK_DISABLE_DEPRECATED'
