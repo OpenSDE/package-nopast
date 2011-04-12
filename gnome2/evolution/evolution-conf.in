@@ -12,26 +12,17 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-# NSS
-nsspkg=
-for x in firefox seamonkey; do
-	if pkginstalled $x; then
-		nsspkg=$x
-		break
-	fi
-done
-
-if [ "$nsspkg" ]; then
-	nssinc=${root}$( pkgprefix includedir $nsspkg )
-	nsslib=${root}$( pkgprefix libdir $nsspkg )
-	nssid=$nsspkg-$( pkgprefix ver $nsspkg )
-
+# NSS support
+if pkginstalled -f nss; then
 	var_append confopt ' ' "--enable-nss=yes"
 	var_append confopt ' ' "--enable-smime=yes"
-	var_append confopt ' ' "--with-nss-includes=$nssinc/$nssid"
-	var_append confopt ' ' "--with-nss-libs=$nsslib/$nssid"
-	var_append confopt ' ' "--with-nspr-includes=$nssinc/$nssid/nspr"
-	var_append confopt ' ' "--with-nspr-libs=$nsslib/$nssid/nspr"
+	var_append confopt ' ' "--with-nss-includes=$( pkgprefix -r includedir nss )"
+	var_append confopt ' ' "--with-nss-libs=$( pkgprefix -r libdir nss)"
+
+	# nss depends on nspr
+	pkgprefix -t nspr
+	var_append confopt ' ' "--with-nspr-includes=$( pkgprefix -r includedir nspr)"
+	var_append confopt ' ' "--with-nspr-libs=$( pkgprefix -r libdir nspr)"
 else
 	var_append confopt ' ' "--disable-nss"
 fi
