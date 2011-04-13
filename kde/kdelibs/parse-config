@@ -26,8 +26,6 @@ if hasflag KDE; then
 
 	var_append cmakeopt " " '-DCMAKE_BUILD_TYPE=Release'
 
-	. $base/package/*/*/cmake-conf.in
-
 	var_append flistdel '|' 'opt/kde/share/mime/.*'
 fi
 

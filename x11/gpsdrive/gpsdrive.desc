@@ -39,6 +39,4 @@
 [V] 2.11
 [P] X -----5---9 194.500
 
-[O] . $base/package/*/*/cmake-conf.in
-
 [D] 2486059047 gpsdrive-2.11.tar.gz http://gpsdrive.de/packages/
