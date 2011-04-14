@@ -24,6 +24,8 @@
 
 [C] extra/graphic
 
+[F] NOPARALLEL
+
 [L] GPL
 [S] Stable
 [V] 2.5
