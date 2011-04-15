@@ -36,6 +36,7 @@ flistdel="$flistdel|$prefix/share/icons/.*/icon-theme.cache"
 # exclude icon directories
 var_append flistdel '|' "$prefix/share/icons/hicolor$"
 var_append flistdel '|' "$prefix/share/icons/HighContrastLargePrintInverse$"
+var_append flistdel '|' "$prefix/share/icons/gnome$"
 
 # include sub-package definitions
 . $base/package/*/glib/glib-conf.in
