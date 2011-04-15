@@ -1,9 +1,8 @@
 
-[TIMESTAMP] 1144799587 Wed Apr 12 01:53:07 2006
-[BUILDTIME] 100 (9)
-[SIZE] 0.09 MB, 25 files
+[TIMESTAMP] 1302864387 Fri Apr 15 12:46:27 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.27 MB, 17 files
 
-[DEP] 00-dirtree
 [DEP] autoconf
 [DEP] automake
 [DEP] bash
@@ -11,55 +10,65 @@
 [DEP] bzip2
 [DEP] coreutils
 [DEP] curl
+[DEP] dbus
 [DEP] diffutils
+[DEP] e_dbus
 [DEP] ecore
 [DEP] edje
 [DEP] eet
+[DEP] efreet
+[DEP] eina
+[DEP] eio
+[DEP] elementary
 [DEP] embryo
-[DEP] epeg
-[DEP] epsilon
-[DEP] etox
+[DEP] ethumb
 [DEP] evas
-[DEP] ewl
 [DEP] expat
+[DEP] fhs
 [DEP] findutils
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
-[DEP] gimp
-[DEP] gimp-print
+[DEP] gettext
+[DEP] git
 [DEP] glib
 [DEP] glibc
-[DEP] glibmm
+[DEP] gnutls
 [DEP] grep
-[DEP] gtk+
-[DEP] gtkglext
-[DEP] gtkglextmm
-[DEP] imlib2
+[DEP] libexif
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libidn
 [DEP] libjpeg
-[DEP] libpng
-[DEP] libtool
+[DEP] libssh2
+[DEP] libtasn1
 [DEP] libx11
 [DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxdamage
 [DEP] libxext
 [DEP] libxfixes
+[DEP] libxi
 [DEP] libxinerama
 [DEP] libxp
 [DEP] libxrandr
 [DEP] libxrender
 [DEP] libxscrnsaver
+[DEP] libxtst
 [DEP] linux-header
+[DEP] lua
 [DEP] m4
 [DEP] make
 [DEP] mktemp
-[DEP] net-tools
 [DEP] openssl
 [DEP] perl
+[DEP] pkgconfig
 [DEP] sed
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
 [DEP] zlib
