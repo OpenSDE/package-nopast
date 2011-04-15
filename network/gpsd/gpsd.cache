@@ -1,0 +1,38 @@
+
+[TIMESTAMP] 1302813610 Thu Apr 14 22:40:10 2011
+[BUILDTIME] 25 (5)
+[SIZE] 1.89 MB, 75 files
+
+[DEP] aubio
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] docbook-xml
+[DEP] docbook-xsl
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gst-python
+[DEP] libusb
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] phonon
+[DEP] pkgconfig
+[DEP] pygobject
+[DEP] python
+[DEP] qt4
+[DEP] sed
+[DEP] setuptools
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] wxpython
