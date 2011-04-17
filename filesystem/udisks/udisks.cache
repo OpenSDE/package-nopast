@@ -1,0 +1,45 @@
+
+[TIMESTAMP] 1302787892 Thu Apr 14 15:31:32 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.81 MB, 57 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] dbus-glib
+[DEP] diffutils
+[DEP] docbook-xsl
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] intltool
+[DEP] libatasmart
+[DEP] libselinux
+[DEP] libsepol
+[DEP] libxml
+[DEP] libxslt
+[DEP] linux-header
+[DEP] lvm2
+[DEP] make
+[DEP] mktemp
+[DEP] parted
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pkgconfig
+[DEP] polkit
+[DEP] sed
+[DEP] sg3-utils
+[DEP] soprano
+[DEP] sysfiles
+[DEP] tar
+[DEP] udev
+[DEP] usbutils
+[DEP] util-linux-ng
