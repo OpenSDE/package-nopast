@@ -19,7 +19,7 @@
 [T] FFmpeg is a complete solution to record, convert and stream audio and
 [T] video. It includes libavcodec, the leading audio/video codec library.
 
-[U] http://ffmpeg.mplayerhq.hu/
+[U] http://ffmpeg.org/
 
 [A] Many - see the CREDITS file
 [M] The OpenSDE Community <list@opensde.org>
@@ -32,4 +32,4 @@
 [V] 0.6.2
 [P] X -----5---9 142.600
 
-[D] 2099288929 ffmpeg-0.6.2.tar.bz2 http://ffmpeg.mplayerhq.hu/releases/
+[D] 2099288929 ffmpeg-0.6.2.tar.bz2 http://ffmpeg.org/releases/
