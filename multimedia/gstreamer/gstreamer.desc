@@ -35,8 +35,8 @@
 [L] LGPL
 [S] Stable
 [V] 0.10.32
-[P] X -----5---9 155.400
+[P] X -----5---9 127.000
 
-[O] . $base/package/*/*/gtk+-conf.in
+[O] . $base/package/*/*/glib-conf.in
 
 [D] 3266646496 gstreamer-0.10.32.tar.bz2 http://gstreamer.freedesktop.org/src/gstreamer/
