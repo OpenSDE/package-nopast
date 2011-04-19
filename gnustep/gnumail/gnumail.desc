@@ -32,7 +32,7 @@
 [V] 1.2.0pre3
 [P] X -----5---9 162.500
 
-[O] hook_add preconf 5 ". /$(pkgprefix gnustep-make)/System/Library/Makefiles/GNUstep.sh"
+[O] . $base/package/*/*/gnustep-conf.in
 
 [D] 492832242 GNUMail-1.2.0pre3.tar.gz !http://www.collaboration-world.com/cgi-bin/project/download.cgi/GNUMail-1.2.0pre3.tar.gz?rid=110
 
