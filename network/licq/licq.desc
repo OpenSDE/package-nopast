@@ -30,10 +30,10 @@
 
 [L] GPL
 [S] Stable
-[V] 1.3.9
+[V] 1.5.0
 [P] O -----5---9 203.900
 
 [O] var_append GCC_WRAPPER_INSERT ' ' "-ffriend-injection"
 
-[D] 2459995203 licq-1.3.9.tar.bz2 http://dl.sourceforge.net/sourceforge/licq/
+[D] 601608206 licq-1.5.0.tar.bz2 http://dl.sourceforge.net/sourceforge/licq/
 

@@ -1,59 +1,65 @@
 
-[TIMESTAMP] 1134286291 Sun Dec 11 08:31:31 2005
-[BUILDTIME] 155 (9) ERROR
-[SIZE] 6.03 MB, 687 files
+[TIMESTAMP] 1303209015 Tue Apr 19 12:30:15 2011
+[BUILDTIME] 200 (5)
+[SIZE] 9.16 MB, 953 files
 
 [DEP] bash
 [DEP] binutils
+[DEP] boost
 [DEP] bzip2
-[DEP] xorg-cf-files
+[DEP] cairo
+[DEP] cdk
+[DEP] cmake
+[DEP] compositeproto
 [DEP] coreutils
+[DEP] cyrus-sasl2
 [DEP] diffutils
-[DEP] expat
-[DEP] gamin
-[DEP] file
+[DEP] fhs
+[DEP] findutils
+[DEP] fixesproto
 [DEP] fontconfig
 [DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] gettext
+[DEP] glib
 [DEP] glibc
+[DEP] gloox
+[DEP] gmp
 [DEP] gpgme
 [DEP] grep
-[DEP] imake
-[DEP] kdelibs
-[DEP] libart_lgpl23
-[DEP] libdrm
+[DEP] kbproto
+[DEP] libaosd
+[DEP] libassuan
 [DEP] libgpg-error
 [DEP] libice
-[DEP] libidn
 [DEP] libpng
+[DEP] libpthread-stubs
 [DEP] libsm
 [DEP] libx11
 [DEP] libxau
-[DEP] libxcursor
-[DEP] libxdmcp
+[DEP] libxcb
+[DEP] libxcomposite
 [DEP] libxext
 [DEP] libxfixes
-[DEP] libxft
-[DEP] libxinerama
-[DEP] libxmu
-[DEP] libxrandr
 [DEP] libxrender
 [DEP] libxscrnsaver
-[DEP] libxt
-[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] make
-[DEP] mesa
-[DEP] mktemp
-[DEP] net-tools
+[DEP] ncurses
 [DEP] openssl
-[DEP] qt3
+[DEP] pango
+[DEP] patch
+[DEP] pixman
+[DEP] pkgconfig
+[DEP] qt4
+[DEP] renderproto
 [DEP] scrnsaverproto
 [DEP] sed
+[DEP] subversion
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xextproto
+[DEP] xosd
 [DEP] xproto
-[DEP] zlib
