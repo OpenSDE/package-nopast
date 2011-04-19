@@ -24,7 +24,7 @@
 [T] - The ManageSieve Service which implements the ManageSieve protocol through
 [T]   which users can remotely manage Sieve scripts on the server.
 
-[U] http://pigeonhole.dovecot.org/ 
+[U] http://pigeonhole.dovecot.org/
 [U] http://wiki2.dovecot.org/Pigeonhole
 
 [A] Stephan Bosch <stephan@rename-it.nl>
@@ -34,7 +34,7 @@
 
 [L] LGPL
 [S] Beta
-[V] 0.2.2
+[V] 0.2.3
 [P] X -----5---9 800.000
 
-[D] 1681947097 dovecot-2.0-pigeonhole-0.2.2.tar.gz http://www.rename-it.nl/dovecot/2.0/
+[D] 1360295780 dovecot-2.0-pigeonhole-0.2.3.tar.gz http://www.rename-it.nl/dovecot/2.0/
