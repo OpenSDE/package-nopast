@@ -1,37 +1,60 @@
 
-[TIMESTAMP] 1133757392 Mon Dec  5 05:36:32 2005
-[BUILDTIME] 1280 (5)
-[SIZE] 50.21 MB, 1346 files
+[TIMESTAMP] 1303183353 Tue Apr 19 05:22:33 2011
+[BUILDTIME] 1225 (5)
+[SIZE] 49.01 MB, 1811 files
 
-[DEP] 00-dirtree
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
+[DEP] curl
+[DEP] desktop-file-utils
 [DEP] diffutils
+[DEP] expat
 [DEP] fftw3
+[DEP] fhs
+[DEP] file
 [DEP] findutils
 [DEP] flex
+[DEP] fltk1
+[DEP] fontconfig
+[DEP] freetype
 [DEP] gawk
 [DEP] gcc
 [DEP] glibc
-[DEP] gnuplot
-[DEP] gperf
+[DEP] graphicsmagick
 [DEP] grep
 [DEP] hdf5
+[DEP] imake
+[DEP] lapack
+[DEP] libdrm
+[DEP] libidn
+[DEP] libssh2
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdamage
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxxf86vm
 [DEP] linux-header
 [DEP] m4
 [DEP] make
+[DEP] mesa
 [DEP] mktemp
 [DEP] ncurses
-[DEP] net-tools
 [DEP] openssl
+[DEP] pcre
 [DEP] perl
+[DEP] pkgconfig
 [DEP] readline
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] tetex
 [DEP] texinfo
-[DEP] util-linux
+[DEP] util-linux-ng
+[DEP] xorg-cf-files
+[DEP] xproto
 [DEP] zlib
