@@ -1,0 +1,47 @@
+
+[TIMESTAMP] 1303203828 Tue Apr 19 11:03:48 2011
+[BUILDTIME] 55 (5)
+[SIZE] 2.42 MB, 9 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] fox
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] grep
+[DEP] jbigkit
+[DEP] kbproto
+[DEP] libdrm
+[DEP] libjpeg
+[DEP] libpng
+[DEP] libpthread-stubs
+[DEP] libtiff
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcursor
+[DEP] libxdamage
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxrandr
+[DEP] libxrender
+[DEP] libxxf86vm
+[DEP] linux-header
+[DEP] make
+[DEP] mesa
+[DEP] mktemp
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] xproto
+[DEP] zlib
