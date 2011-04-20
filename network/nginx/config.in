@@ -20,6 +20,9 @@ if pkgcheck nginx X; then
 		bool "RRD Graph Module"	SDECFG_PKG_NGINX_ADDON_MOD_RRDGRAPH 0
 	fi
 
+	# upload module
+	bool "Upload Module"	SDECFG_PKG_NGINX_ADDON_MOD_UPLOAD 0
+
 	menu_end
 fi
 
