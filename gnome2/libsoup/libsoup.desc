@@ -32,9 +32,9 @@
 
 [L] LGPL
 [S] Stable
-[V] 2.32.2
+[V] 2.34.0
 [P] X -----5---9 149.000
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 2487576804 libsoup-2.32.2.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.32/
+[D] 1770346052 libsoup-2.34.0.tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.34/
