@@ -1,0 +1,39 @@
+
+[TIMESTAMP] 1303386806 Thu Apr 21 13:53:26 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.38 MB, 62 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] gnome-libs14
+[DEP] gnutls
+[DEP] grep
+[DEP] intltool
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libproxy
+[DEP] libselinux
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
