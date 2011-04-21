@@ -28,4 +28,6 @@
 [V] 1.2.7
 [P] X -----5---9 165.000
 
+[O] . $base/package/*/*/gtk+-conf.in
+
 [D] 1186002798 webkit-1.2.7.tar.gz http://www.webkitgtk.org/
