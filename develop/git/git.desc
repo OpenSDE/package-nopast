@@ -13,13 +13,18 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] The Linus Torvalds version control system for kernels
+[I] An efficient distributed version control system
 
-[T] Yet another strange version control systems for linux kernel use.
+[T] Git is a free & open source, distributed version control system designed
+[T] to handle everything from small to very large projects with speed and
+[T] efficiency.
 
-[U] http://git.or.cz/
+[U] http://git-scm.com/
 
-[A] Linus Torvalds et. al.
+[A] Junio C Hamano (current maintainer)
+[A] Shawn O. Pearce
+[A] Linus Torvalds (original author)
+[A] and many others (http://git-scm.com/about)
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/development
