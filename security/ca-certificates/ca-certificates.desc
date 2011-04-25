@@ -26,7 +26,7 @@
 
 [L] PublicDomain
 [S] Stable
-[V] 1.73
+[V] 1.74
 [P] X -----5---9 800.000
 
-[D] 378570741 ca-certificates-1.73.tar.bz2 cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot mozilla/security/nss/lib/ckfw/builtins/certdata.txt -r 1.73
+[D] 2573160190 ca-certificates-1.74.tar.bz2 cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot mozilla/security/nss/lib/ckfw/builtins/certdata.txt -r 1.74
