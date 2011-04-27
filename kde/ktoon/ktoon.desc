@@ -24,12 +24,13 @@
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/multimedia
+[F] NOPARALLEL
 [F] KDE
 
 [L] GPL
 [S] Beta
-[V] 0.7.3
+[V] 0.9a-git04
 [P] X -----5---9 800.000
 
-[D] 2558885490 ktoonsrc-0.7.3.tar.gz http://download.berlios.de/ktoon/
+[D] 4191913573 ktoon-0.9a-git04.tar.gz http://download.berlios.de/ktoon/
 
