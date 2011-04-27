@@ -1,0 +1,38 @@
+
+[TIMESTAMP] 1303942498 Thu Apr 28 00:14:58 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.02 MB, 48 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] gmp
+[DEP] gnutls
+[DEP] gpgme
+[DEP] grep
+[DEP] libassuan
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libnl
+[DEP] libpcap
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] make
+[DEP] nettle
+[DEP] openvas-libraries
+[DEP] patch
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sqlite
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
