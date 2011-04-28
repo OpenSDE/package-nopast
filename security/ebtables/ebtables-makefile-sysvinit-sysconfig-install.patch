@@ -1,0 +1,20 @@
+Description: Only install sysvinit script and ebtables-config when INITDIR or SYSCONFIGDIR are defined
+
+--- ./Makefile.orig	2011-02-07 18:18:23.994696283 +0100
++++ ./Makefile	2011-02-07 18:52:16.226697310 +0100
+@@ -157,9 +157,15 @@
+ 	cat ebtables-save | sed 's/__EXEC_PATH__/$(tmp1)/g' > ebtables-save_
+ 	install -m 0755 -o root -g root ebtables-save_ $(DESTDIR)$(BINDIR)/ebtables-save
+ 	cat ebtables.sysv | sed 's/__EXEC_PATH__/$(tmp1)/g' | sed 's/__SYSCONFIG__/$(tmp2)/g' > ebtables.sysv_
++ifdef $(INITDIR)
++	install -d -m 0755 -o root -g root $(DESTDIR)$(INITDIR)
+ 	install -m 0755 -o root -g root ebtables.sysv_ $(DESTDIR)$(INITDIR)/ebtables
++endif
++ifdef $(SYSCONFIGDIR)
+ 	cat ebtables-config | sed 's/__SYSCONFIG__/$(tmp2)/g' > ebtables-config_
++	install -d -m 0600 -o root -g root $(DESTDIR)$(SYSCONFIGDIR)
+ 	install -m 0600 -o root -g root ebtables-config_ $(DESTDIR)$(SYSCONFIGDIR)/ebtables-config
++endif
+ 	rm -f ebtables-save_ ebtables.sysv_ ebtables-config_
+ 
+ $(MANDIR)/man8/ebtables.8: ebtables.8
