@@ -1,0 +1,35 @@
+
+[TIMESTAMP] 1304031571 Fri Apr 29 00:59:31 2011
+[BUILDTIME] 15 (5)
+[SIZE] 0.45 MB, 15 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] doxygen
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gmp
+[DEP] gnutls
+[DEP] grep
+[DEP] libtasn1
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] nettle
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
