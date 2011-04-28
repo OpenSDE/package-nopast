@@ -23,6 +23,9 @@ if pkgcheck nginx X; then
 	# upload module
 	bool "Upload Module"	SDECFG_PKG_NGINX_ADDON_MOD_UPLOAD 0
 
+	# http echo module
+	bool "HTTP Echo Module"	SDECFG_PKG_NGINX_ADDON_MOD_HTTPECHO 0
+
 	menu_end
 fi
 
