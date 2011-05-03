@@ -1,23 +1,42 @@
 
-[TIMESTAMP] 1297006005 Sun Feb  6 16:26:45 2011
-[BUILDTIME] 10 (5)
-[SIZE] 0.58 MB, 78 files
+[TIMESTAMP] 1304356108 Mon May  2 19:08:28 2011
+[BUILDTIME] 15 (5)
+[SIZE] 1.54 MB, 210 files
 
+[DEP] acl
+[DEP] attr
+[DEP] autoconf
+[DEP] automake
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] distribute
 [DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
+[DEP] glib
 [DEP] glibc
+[DEP] gobject-introspection
+[DEP] gperf
 [DEP] grep
+[DEP] libffi
+[DEP] libselinux
+[DEP] libtool
+[DEP] libusb
 [DEP] linux-header
+[DEP] m4
 [DEP] make
+[DEP] mktemp
 [DEP] patch
+[DEP] perl
+[DEP] pkgconfig
+[DEP] python
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] usbutils
 [DEP] util-linux-ng
+[DEP] zlib
