@@ -26,9 +26,9 @@
 
 [L] MIT
 [S] Stable
-[V] 0.5
+[V] 0.6.1
 [P] X -----5---9 209.400
 
 [CV-URL] http://go-mono.com/sources/
 
-[D] 3206317934 mono-addins-0.5.tar.bz2 http://ftp.novell.com/pub/mono/sources/mono-addins/
+[D] 1568026810 mono-addins-0.6.1.tar.bz2 http://ftp.novell.com/pub/mono/sources/mono-addins/
