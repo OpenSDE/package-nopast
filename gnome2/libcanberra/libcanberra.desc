@@ -21,13 +21,13 @@
 [A] Lennart Poettering <mzyvopnaoreen@0pointer.de>
 [M] Aldas Nabazas <aldas@opensde.org>
 
-[C] extra/base extra/desktop/gnome
+[C] extra/base extra/desktop
 
 [L] GPL
 [S] Stable
 [V] 0.26
 [P] X -----5---9 143.400
 
-[O] . $base/package/*/*/gnome2-conf.in
+[O] . $base/package/*/*/gtk+-conf.in
 
 [D] 3356781993 libcanberra-0.26.tar.gz http://0pointer.de/lennart/projects/libcanberra/
