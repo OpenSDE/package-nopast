@@ -12,13 +12,25 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] An IM Client
+[I] An Instant Messaging Client Suite
 
-[T] Gaim is an all-in-one IM client that resembles AIM. Gaim lets you use
-[T] AIM, ICQ, Yahoo, MSN, IRC, Jabber, Napster, Zephyr, and Gadu-Gadu, all at
-[T] once. Gaim is NOT endorsed by or affiliated with AOL, Yahoo, MSN or Napster.
+[T] Pidgin is a chat program which lets you log in to accounts on multiple chat
+[T] networks simultaneously. This means that you can be chatting with friends
+[T] on MSN, talking to a friend on Google Talk, and sitting in a Yahoo chat
+[T] room all at the same time.
+[T]
+[T] Finch is a console-based IM program for that lets you sign on to AIM, Jabber,
+[T] MSN, Yahoo!, and other IM networks
+[T]
+[T] libpurple is a library used for developing IM programs.
+[T]
+[T] Pidgin is compatible with the following chat networks out of the box: AIM,
+[T] ICQ, Google Talk, Jabber/XMPP, MSN Messenger, Yahoo!, Bonjour, Gadu-Gadu,
+[T] IRC, Novell GroupWise Messenger, QQ, Lotus Sametime, SILC, SIMPLE, MXit,
+[T] MySpaceIM, and Zephyr.
 
-[U] http://gaim.sourceforge.net/
+
+[U] http://www.pidgin.im/
 
 [A] Sean Egan (lead developer) <sean.egan@binghamton.edu>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
