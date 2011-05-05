@@ -42,7 +42,7 @@
 [V] 2.7.11
 [P] X -----5---9 220.180
 
-[O] . $base/package/*/*/gnome2-or-gtk-conf.in
+[O] . $base/package/*/*/gtk+-conf.in
 
 [D] 3048550198 pidgin-2.7.11.tar.bz2 http://dl.sourceforge.net/sourceforge/pidgin/
 
