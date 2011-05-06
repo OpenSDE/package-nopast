@@ -33,8 +33,8 @@
 
 [L] BSD
 [S] Stable
-[V] 2.20
+[V] 2.21
 [P] X -----5---9 120.080
 
-[D] 3721570915 libcap-2.20.tar.bz2 http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/
+[D] 3270126875 libcap-2.21.tar.bz2 http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/
 [D] 1403010116 capfaq-0.2.txt http://www.kernel.org/pub/linux/libs/security/linux-privs/kernel-2.4/
