@@ -23,6 +23,7 @@
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/tool
+[F] LDAP-QUIRK
 
 [L] GPL
 [S] Stable
