@@ -29,13 +29,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.18.3
+[V] 1.18.4
 [P] X -?---5---9 102.001
 
-[D] 2179714866 busybox-1.18.3.tar.bz2 http://busybox.net/downloads/
-[D] 1665646922 busybox-1.18.3-buildsys.patch http://busybox.net/downloads/fixes-1.18.3/
-[D] 2568519886 busybox-1.18.3-wget-2.patch !http://busybox.net/downloads/fixes-1.18.3/busybox-1.18.3-wget.patch
-[D] 2333850698 busybox-1.18.3-cksum.patch http://busybox.net/downloads/fixes-1.18.3/
-[D] 3635185533 busybox-1.18.3-klogd.patch http://busybox.net/downloads/fixes-1.18.3/
-[D] 2908696707 busybox-1.18.3-menuconfig.patch http://busybox.net/downloads/fixes-1.18.3/
-[D] 3637398864 busybox-1.18.3-modutils24.patch http://busybox.net/downloads/fixes-1.18.3/
+[D] 3954480063 busybox-1.18.4.tar.bz2 http://busybox.net/downloads/
