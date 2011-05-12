@@ -1,0 +1,58 @@
+
+[TIMESTAMP] 1305207999 Thu May 12 15:46:39 2011
+[BUILDTIME] 0 (5)
+[SIZE] 0.02 MB, 14 files
+
+[DEP] authkit
+[DEP] bash
+[DEP] beaker
+[DEP] bzip2
+[DEP] cheetah
+[DEP] coreutils
+[DEP] decorator
+[DEP] diffutils
+[DEP] distribute
+[DEP] fhs
+[DEP] findutils
+[DEP] flup
+[DEP] formencode
+[DEP] gcc
+[DEP] git
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] kid
+[DEP] lxml
+[DEP] mako
+[DEP] nose
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] pida
+[DEP] pil
+[DEP] pygments
+[DEP] pygobject
+[DEP] pylons
+[DEP] pyrexc
+[DEP] python
+[DEP] python-mysqldb
+[DEP] python-virtualenv
+[DEP] rat
+[DEP] routes
+[DEP] sed
+[DEP] simplejson
+[DEP] sqlalchemy
+[DEP] sysfiles
+[DEP] tagpy
+[DEP] tar
+[DEP] tempita
+[DEP] trac
+[DEP] trac-doxygen
+[DEP] trac-webadmin
+[DEP] weberror
+[DEP] webhelpers
+[DEP] webob
+[DEP] webtest
+[DEP] wxpython
+[DEP] zope-interface
