@@ -32,9 +32,9 @@
 
 [L] GPL
 [S] Stable
-[V] 2.10.12
+[V] 2.12.3
 [P] X -----5---9 158.200
 
 [O] . $base/package/*/*/gnome2-conf.in
 
-[D] 241228243 gthumb-2.10.12.tar.gz http://ftp.gnome.org/pub/gnome/sources/gthumb/2.10/
+[D] 1506416119 gthumb-2.12.3.tar.gz http://ftp.gnome.org/pub/gnome/sources/gthumb/2.12/
