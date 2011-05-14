@@ -1,0 +1,39 @@
+
+[TIMESTAMP] 1304714118 Fri May  6 22:35:18 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.23 MB, 49 files
+
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] distribute
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] gst-python
+[DEP] libtool
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] pil
+[DEP] pygobject
+[DEP] pygtk
+[DEP] python
+[DEP] sed
+[DEP] swig
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] wxpython
+[DEP] zope-interface
