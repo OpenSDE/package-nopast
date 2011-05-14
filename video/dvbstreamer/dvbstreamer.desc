@@ -26,6 +26,8 @@
 
 [C] extra/multimedia
 
+[F] LIBTOOL-QUIRK
+
 [L] GPL
 [S] Stable
 [V] 2.1.0
