@@ -12,13 +12,17 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Open source web browser engine
+[I] The new GTK+ port of the WebKit open source web browser engine
 
-[T] WebKit is an open source web browser engine.
+[T] WebKit/GTK+ is the new GTK+ port of the WebKit, an open-source web content
+[T] engine that powers numerous applications such as web browsers, email
+[T] clients, feed readers, web and text editors.
 
-[U] http://www.webkit.org
+[U] http://www.webkitgtk.org/
+[U] http://www.webkit.org/
 
-[A] Webkit
+[A] The WebKitGtk+ Project
+[A] The WebKit Project
 [M] Aldas Nabazas <baldzius@gmail.com>
 
 [C] base/system
