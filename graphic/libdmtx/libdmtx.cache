@@ -1,0 +1,48 @@
+
+[TIMESTAMP] 1305478614 Sun May 15 18:56:54 2011
+[BUILDTIME] 10 (5)
+[SIZE] 0.31 MB, 22 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fftw3
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imagemagick
+[DEP] jbigkit
+[DEP] lcms
+[DEP] libice
+[DEP] libjpeg
+[DEP] libsm
+[DEP] libtiff
+[DEP] libtool
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxext
+[DEP] libxt
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
