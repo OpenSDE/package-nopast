@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1305372619 Sat May 14 13:30:19 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.29 MB, 14 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bluez
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] libical
+[DEP] libusb
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] openobex
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
