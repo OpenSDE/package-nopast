@@ -25,9 +25,9 @@
 
 [L] LGPL
 [S] Stable
-[V] 1.3.13
+[V] 1.4.0
 [P] X -----5---9 165.000
 
 [O] . $base/package/*/*/gtk+-conf.in
 
-[D] 2327000999 webkit-1.3.13.tar.gz http://www.webkitgtk.org/
+[D] 3033855113 webkit-1.4.0.tar.gz http://www.webkitgtk.org/
