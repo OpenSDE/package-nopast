@@ -27,6 +27,7 @@
 
 [C] extra/network
 [F] QT3-PLUGIN
+[F] NOPARALLEL
 
 [L] GPL
 [S] Stable
