@@ -20,7 +20,8 @@
 [T] DAQ supports PCAP, AFPACKET, NFQ, IPQ, IPFW, and DUMP and is needed by
 [T] Snort >= 2.9.
 
-[U] http://www.snort.org/downloads/801
+[U] http://www.snort.org/
+[U] http://vrt-blog.snort.org/2010/08/snort-29-essentials-daq.html
 
 [A] Sourcefire, Inc.
 [M] Christian Wiese <chris@opensde.org>
