@@ -16,7 +16,7 @@
 if hasflag KDE; then
 	if [ "$prefix_auto" = 1 ] ; then
 		if [ "$pkg" == "automoc4" ]; then
-			prefix="${SDECFG_PKG_KDE_CORE_PREFIX:-opt/kde}"
+			prefix="${SDECFG_PKG_KDE_CORE_PREFIX:-usr}"
 		else
 			pkgprefix -t automoc4
 			prefix=`pkgprefix automoc4`
