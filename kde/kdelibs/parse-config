@@ -25,6 +25,7 @@ if hasflag KDE; then
 	fi
 
 	var_append cmakeopt " " '-DCMAKE_BUILD_TYPE=Release'
+	var_append cmakeopt " " '-DSYSCONF_INSTALL_DIR=$root$sysconfdir'
 
 	# do not run update-mime-info to avoid shared files
 	var_append cmakeopt ' ' '-DUPDATE_MIME_DATABASE_EXECUTABLE=/bin/true'
