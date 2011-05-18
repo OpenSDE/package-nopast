@@ -1,0 +1,32 @@
+
+[TIMESTAMP] 1305564221 Mon May 16 18:43:41 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.30 MB, 50 files
+
+[DEP] automoc4
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cmake
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] lapack
+[DEP] libselinux
+[DEP] linux-header
+[DEP] make
+[DEP] pkgconfig
+[DEP] polkit
+[DEP] qt4
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
