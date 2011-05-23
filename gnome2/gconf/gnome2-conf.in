@@ -29,7 +29,6 @@ fi
 
 # include sub-package definitions
 . $base/package/*/gtk+/gtk+-conf.in
-. $base/package/*/scrollkeeper/scrollkeeper-pkg.conf
 . $base/package/*/gconf/gconf-pkg.conf
 . $base/package/*/gstreamer/gstreamer-pkg.conf
 
