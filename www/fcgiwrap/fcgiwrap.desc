@@ -16,7 +16,7 @@
 
 [T] fcgiwrap is a simple server for running CGI applications over FastCGI.
 [T] Its primary purpose is to provide clean CGI support to Nginx, and other web
-[T] servers that only provide FastCGI supportC by default.
+[T] servers that only provide FastCGI support by default.
 
 [U] http://nginx.localdomain.pl/wiki/FcgiWrap
 
