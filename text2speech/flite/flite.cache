@@ -1,15 +1,15 @@
 
-[TIMESTAMP] 1133782984 Mon Dec  5 12:43:04 2005
-[BUILDTIME] 45 (5)
-[SIZE] 24.35 MB, 56 files
+[TIMESTAMP] 1306500439 Fri May 27 14:47:19 2011
+[BUILDTIME] 25 (5)
+[SIZE] 62.24 MB, 67 files
 
-[DEP] 00-dirtree
 [DEP] alsa-lib
 [DEP] bash
 [DEP] binutils
 [DEP] bzip2
 [DEP] coreutils
 [DEP] diffutils
+[DEP] fhs
 [DEP] findutils
 [DEP] gawk
 [DEP] gcc
@@ -17,8 +17,8 @@
 [DEP] grep
 [DEP] linux-header
 [DEP] make
-[DEP] net-tools
-[DEP] patch
+[DEP] mktemp
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
+[DEP] util-linux-ng
