@@ -13,10 +13,6 @@
 # the Free Software Foundation; version 2 of the License. A copy of the
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
-if [ "$prefix_auto" = 1 ]; then
-	prefix="opt/gnue"
-	set_confopt
-fi
 
 if [ "$pkg" != "gnue-common" ]; then
 	pyinstopt=''
