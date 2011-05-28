@@ -13,6 +13,6 @@
 # --- SDE-COPYRIGHT-NOTE-END ---
 
 if hasflag SETUPTOOLS; then
-	var_append pyconfopt ' ' '--single-version-externally-managed'
-	var_append pyconfopt ' ' "--root=$root/"
+	var_append pyinstopt ' ' '--single-version-externally-managed'
+	var_append pyinstopt ' ' "--root=$root/"
 fi
