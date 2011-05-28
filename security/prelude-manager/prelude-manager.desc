@@ -35,4 +35,6 @@
 [V] 1.0.1
 [P] X -----5---9 200.600
 
+[O] . $base/package/*/*/prelude-conf.in
+
 [D] 3335885810 prelude-manager-1.0.1.tar.gz http://www.prelude-ids.com/download/releases/prelude-manager/
