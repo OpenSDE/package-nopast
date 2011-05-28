@@ -16,12 +16,9 @@
 
 if hasflag E17; then
 	if [ "$prefix_auto" = 1 ] ; then
-		if [ "$pkg" == eina ]; then
-			prefix="opt/e17"
-			set_confopt
-		elif pkginstalled eina ; then
+		if [ "$pkg" != "eina" ]; then
 			pkgprefix -t eina
-			prefix=`pkgprefix eina`
+			prefix=$( pkgprefix eina )
 			set_confopt
 		fi
 	fi
