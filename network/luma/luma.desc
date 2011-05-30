@@ -12,7 +12,8 @@
 [COPY] the Free Software Foundation; version 2 of the License. A copy of the
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
-[I] GUI for accessing and managing LDAP servers
+
+[I] A Qt based User Interface for accessing and managing LDAP servers
 
 [T] Luma is a graphical utility for accessing and managing data stored
 [T] on LDAP servers. It is written in Python, using PyQt and python-ldap.
@@ -21,12 +22,16 @@
 
 [U] http://luma.sourceforge.net/
 
-[A] Wido Depping <widod@users.sourceforge.net>
-[M] Christian Wiese <jeru@ixplanet.org>
+[A] Christian Forfang
+[A] Einar Uvslokk <einar.uvslokk@linux.com>
+[A] Johannes Harestad
+[A] Per Ove Ringdal
+[A] Simen Natvig <simen.natvig@gmail.com>
+[A] Sondre Frisvold
+[A] Wido Depping <widod@users.sourceforge.net> (original author 2.x)
+[M] Christian Wiese <chris@opensde.org>
 
 [C] extra/network
-
-[E] pyqt python-ldap
 
 [L] GPL
 
