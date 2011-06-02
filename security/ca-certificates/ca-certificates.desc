@@ -29,4 +29,4 @@
 [V] 1.74
 [P] X -----5---9 800.000
 
-[D] 2573160190 ca-certificates-1.74.tar.bz2 cvs://:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot mozilla/security/nss/lib/ckfw/builtins/certdata.txt -r 1.74
+[D] 1839132082 ca-certificates-1.74.txt !http://mxr.mozilla.org/security/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
