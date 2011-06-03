@@ -26,6 +26,8 @@
 
 [C] extra/tool
 
+[F] NOPARALLEL
+
 [L] GPL
 [S] Stable
 [V] 0.0.23
