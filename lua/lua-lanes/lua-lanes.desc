@@ -30,7 +30,8 @@
 
 [L] MIT
 [S] Beta
-[V] 2.0.10
+[V] 2.2.0
 [P] X -----5---9 800.000
 
-[D] 3802051634 lanes-2.0.10.tgz http://luaforge.net/frs/download.php/4775/
+[D] 658910979 lua-lanes-2.2.0.tar.gz !https://github.com/LuaLanes/lanes/tarball/v2.2.0
+#[D] 3802051634 lanes-2.0.10.tgz http://luaforge.net/frs/download.php/4775/
