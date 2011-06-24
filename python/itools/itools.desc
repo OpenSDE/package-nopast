@@ -18,10 +18,10 @@
 [T] Itools is a Python package that encapsulates several Python tools
 [T] for developing flexible web applications.
 
-[U] http://www.ikaaro.org/itools
+[U] http://www.hforge.org/itools
 
 [A] itaapy.com
-[M] christian wiese <jeru@ixpalnet.org>
+[M] Christian Wiese <chris@opensde.org>
 
 [C] extra/development
 
