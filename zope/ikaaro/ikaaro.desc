@@ -18,10 +18,10 @@
 [T] Content Management System built on top of the Zope Application Server
 [T] using the itools python extension.
 
-[U] http://www.ikaaro.org/ikaaro
+[U] http://www.hforge.org/ikaaro
 
 [A] Juan David Ibáñez Palomar  <jdavid@itaapy.com>.
-[M] christian wiese <jeru@ixpalnet.org>
+[M] Christian Wiese <chris@opensde.org>
 
 [C] extra/development
 
