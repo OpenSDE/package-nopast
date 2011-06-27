@@ -12,14 +12,14 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] A Lua 5.1 interface for the yajl JSON library
+[I] A Lua 5.1 interface to the yajl JSON library
 
-[T] lua-yajl provides a Lua 5.1 interface for the yail JSON library. 
+[T] lua-yajl provides a Lua 5.1 interface to the yajl JSON library.
 
 [U] http://github.com/brimworks/lua-yajl/
 
-[A] Brian Maher
-[M] The OpenSDE Community <list@opensde.org>
+[A] Brian Maher <maherb@brimworks.com>
+[M] Christian Wiese <chris@opensde.org>
 
 [C] extra/development
 [F] LUA
