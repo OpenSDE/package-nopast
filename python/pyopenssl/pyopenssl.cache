@@ -1,0 +1,22 @@
+
+[TIMESTAMP] 1309879460 Tue Jul  5 17:24:20 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.52 MB, 28 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] openssl
+[DEP] python
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
