@@ -28,6 +28,8 @@
 
 [C] extra/development
 
+[F] FPIC-QUIRK
+
 [L] ISC
 [S] Stable
 [V] 1.1.0
