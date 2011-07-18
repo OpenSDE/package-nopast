@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1306926740 Wed Jun  1 13:12:20 2011
+[BUILDTIME] 10 (5)
+[SIZE] 2.07 MB, 225 files
+
+[DEP] alsa-lib
+[DEP] bash
+[DEP] binutils
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] jack
+[DEP] linux-header
+[DEP] make
+[DEP] patch
+[DEP] portaudio
+[DEP] sed
+[DEP] sysfiles
+[DEP] unzip
