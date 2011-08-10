@@ -37,9 +37,9 @@
 
 [L] GPL
 [S] Stable
-[V] 3.7.6.2
+[V] 3.7.6.3
 [P] X -----5---9 120.090
 
 [CV-URL] http://www.sqlite.org/download.html
 
-[D] 218812814 sqlite-autoconf-3070602.tar.gz http://www.sqlite.org/
+[D] 4028027353 sqlite-autoconf-3070603.tar.gz http://www.sqlite.org/
