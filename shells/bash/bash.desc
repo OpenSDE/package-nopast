@@ -41,7 +41,7 @@
 
 [L] GPL
 [S] Stable
-[V] 4.1.10
+[V] 4.1.11
 [P] X -1-3-----9 106.500
 
 [D] 3731287378 bash-4.1.tar.gz     ftp://ftp.gnu.org/pub/gnu/bash/
@@ -55,3 +55,4 @@
 [D] 2291479201 bash41-008.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-008
 [D] 606108911 bash41-009.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-009
 [D] 4198673759 bash41-010.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-010
+[D] 3894237091 bash41-011.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-011
