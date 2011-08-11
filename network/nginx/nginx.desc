@@ -51,4 +51,4 @@
 [D] 1775959278 nginx-1.0.4.tar.gz http://nginx.org/download/
 [D] 2799334071 nginx-mod_rrd_graph-0.2.0.tar.gz !http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz
 [D] 417317636 nginx_upload_module-2.2.0.tar.gz http://www.grid.net.ru/nginx/download/
-[D] 3043925941 echo-nginx-module-v0.36rc2.tar.gz !https://github.com/agentzh/echo-nginx-module/tarball/v0.36rc2
+[D] 2748022907 echo-nginx-module-v0.36.tar.gz !https://github.com/agentzh/echo-nginx-module/tarball/v0.36
