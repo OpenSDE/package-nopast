@@ -32,7 +32,7 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.38.6
+[V] 2.6.38.7
 
 # in theory we only need the initial headers (stage 0) however some arches
 # generate some and need a compiler to do so (SPARC) so we do rebuild them
@@ -40,4 +40,4 @@
 [P] X 01-------9 100.300
 
 [D] 1335928488 linux-2.6.38.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/
-[D] 261956544 patch-2.6.38.6.bz2 http://kernel.org/pub/linux/kernel/v2.6/
+[D] 574338001 patch-2.6.38.7.bz2 http://kernel.org/pub/linux/kernel/v2.6/
