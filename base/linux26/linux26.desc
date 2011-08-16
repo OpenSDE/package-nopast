@@ -31,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.39.3
+[V] 2.6.39.4
 [P] X -?---5---9 102.060
 
 [D] 2893205553 linux-2.6.39.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/
-[D] 3432482531 patch-2.6.39.3.bz2 http://kernel.org/pub/linux/kernel/v2.6/
+[D] 1490735735 patch-2.6.39.4.bz2 http://kernel.org/pub/linux/kernel/v2.6/
