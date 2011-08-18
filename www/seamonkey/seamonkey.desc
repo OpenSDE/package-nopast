@@ -37,9 +37,9 @@
 
 [L] MPL
 [S] Stable
-[V] 2.0.13
+[V] 2.0.14
 [P] X -----5---9 153.000
 
 [O] . $base/package/*/*/mozilla-conf.in
 
-[D] 2295942374 seamonkey-2.0.13.source.tar.bz2 http://mozilla.osuosl.org/pub/mozilla.org/seamonkey/releases/2.0.13/source/
+[D] 4157160921 seamonkey-2.0.14.source.tar.bz2 ftp://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/2.0.14/source/
