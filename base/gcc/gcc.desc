@@ -35,8 +35,8 @@
 
 [L] GPL
 [S] Stable
-[V] 4.4.6
+[V] 4.6.1
 [P] X 012--5---9 102.300
 
-[D] 3529612672 gcc-4.4.6.tar.bz2 ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.4.6/
+[D] 1895751934 gcc-4.6.1.tar.bz2 ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.6.1/
 [D] 271646925 ecj-4.5.jar ftp://sourceware.org/pub/java/
