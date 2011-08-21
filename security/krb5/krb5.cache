@@ -1,0 +1,34 @@
+
+[TIMESTAMP] 1307075334 Fri Jun  3 06:28:54 2011
+[BUILDTIME] 75 (5)
+[SIZE] 3.58 MB, 144 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] distribute
+[DEP] e2fsprogs
+[DEP] fhs
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gzip
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] openldap
+[DEP] openssl
+[DEP] perl
+[DEP] python
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
