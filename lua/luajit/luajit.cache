@@ -1,0 +1,23 @@
+
+[TIMESTAMP] 1314711530 Tue Aug 30 15:38:50 2011
+[BUILDTIME] 10 (5)
+[SIZE] 1.41 MB, 28 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] lua
+[DEP] make
+[DEP] ncurses
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
