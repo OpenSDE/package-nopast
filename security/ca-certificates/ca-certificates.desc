@@ -26,7 +26,7 @@
 
 [L] PublicDomain
 [S] Stable
-[V] 1.74
+[V] 1.78
 [P] X -----5---9 800.000
 
-[D] 1839132082 ca-certificates-1.74.txt !http://mxr.mozilla.org/security/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
+[D] 3971645789 ca-certificates-1.78.txt !http://mxr.mozilla.org/security/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1
