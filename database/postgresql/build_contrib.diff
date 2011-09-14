@@ -14,14 +14,23 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
---- ./GNUmakefile.in.orig	2011-09-08 23:13:27.000000000 +0200
-+++ ./GNUmakefile.in	2011-09-14 13:52:24.616084457 +0200
-@@ -8,7 +8,7 @@
- top_builddir = .
- include $(top_builddir)/src/Makefile.global
+--- ./GNUmakefile.in.orig	2011-09-14 14:30:08.888084448 +0200
++++ ./GNUmakefile.in	2011-09-14 14:31:10.616084684 +0200
+@@ -16,7 +16,7 @@
+ docs:
+ 	$(MAKE) -C doc all
  
--$(call recurse,all install,src config)
+-$(call recurse,world,doc src config contrib,all)
 +$(call recurse,world,src config contrib,all)
+ world:
+ 	+@echo "PostgreSQL, contrib, and documentation successfully made. Ready to install."
  
- all:
- 	+@echo "All of PostgreSQL successfully made. Ready to install."
+@@ -32,7 +32,7 @@
+ install-docs:
+ 	$(MAKE) -C doc install
+ 
+-$(call recurse,install-world,doc src config contrib,install)
++$(call recurse,install-world,src config contrib,install)
+ install-world:
+ 	+@echo "PostgreSQL, contrib, and documentation installation complete."
+ 
