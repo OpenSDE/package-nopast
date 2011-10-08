@@ -30,4 +30,6 @@
 [V] 1.2.3
 [P] X -----5---9 800.000
 
+[O] . $base/package/*/*/skaware-conf.in
+
 [D] 1340015361 skalibs-1.2.3.tar.gz http://www.skarnet.org/software/skalibs/
