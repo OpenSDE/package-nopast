@@ -26,5 +26,14 @@ skaware_conf() {
 	echo "$CC" > conf-compile/conf-dynld
 	echo "$STRIP -R .note -R .comment -R .note.GNU-stack" > conf-compile/conf-stripbins
 	echo "$STRIP -x -R .note -R .comment -R .note.GNU-stack" > conf-compile/conf-striplibs
+
+	# configure packages that depend on skalibs
+	if [ ! $pkg = "skalibs" ]; then
+		pkgprefix -t skalibs
+		echo "$( pkgprefix -r libdir skalibs )" > conf-compile/path-library
+		echo "$( pkgprefix -r libdir skalibs )" > conf-compile/path-library.so
+		echo "$( pkgprefix -r includedir skalibs )" > conf-compile/path-include
+		echo "$( pkgprefix -r skalibs )/sysdeps" > conf-compile/import
+	fi
 }
 hook_add preconf 1 'skaware_conf'
