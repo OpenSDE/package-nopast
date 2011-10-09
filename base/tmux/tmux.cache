@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1318165493 Sun Oct  9 15:04:53 2011
+[BUILDTIME] 100 (9)
+[SIZE] 0.39 MB, 8 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libevent
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
