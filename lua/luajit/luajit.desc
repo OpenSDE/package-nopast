@@ -34,6 +34,8 @@
 [V] 2.0.0-beta8
 [P] X -?---5---9 109.801
 
+[CV-URL] http://luajit.org/download.html
+
 [D] 956904827 LuaJIT-2.0.0-beta8.tar.gz http://luajit.org/download/
 # official hotfixes
 [D] 4123238250 LuaJit-2.0.0-beta8-hotfix1.patch !http://luajit.org/download/beta8_hotfix1.patch
