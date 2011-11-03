@@ -22,7 +22,7 @@
 [T] a hash database, and 5 bytes for a B+ tree database. Furthermore, the
 [T] scalability of Tokyo Cabinet is great. The database size can be up to 8EB.
 
-[U] http://1978th.net/tokyocabinet/
+[U] http://fallabs.com/tokyocabinet/
 
 [A] Mikio Hirabayashi <mikio@users.sourceforge.net>
 [M] Alejandro Mery <amery@opensde.org>
@@ -34,4 +34,4 @@
 [V] 1.4.47
 [P] X -?---5---9 300.000
 
-[D] 2487468103 tokyocabinet-1.4.47.tar.gz http://1978th.net/tokyocabinet/
+[D] 2487468103 tokyocabinet-1.4.47.tar.gz http://fallabs.com/tokyocabinet/
