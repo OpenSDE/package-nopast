@@ -16,7 +16,7 @@
 
 [T] Lua Binding of Tokyo Cabinet
 
-[U] http://1978th.net/tokyocabinet/luadoc/
+[U] http://fallabs.com/tokyocabinet/luadoc/
 
 [A] Mikio Hirabayashi <mikio@users.sourceforge.net>
 [M] Alejandro Mery <amery@opensde.net>
@@ -29,4 +29,4 @@
 [V] 1.10
 [P] X -?---5---9 800.000
 
-[D] 2644210644 tokyocabinet-lua-1.10.tar.gz http://1978th.net/tokyocabinet/luapkg/
+[D] 2644210644 tokyocabinet-lua-1.10.tar.gz http://fallabs.com/tokyocabinet/luapkg/
