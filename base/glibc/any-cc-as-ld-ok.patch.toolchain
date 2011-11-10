@@ -18,10 +18,9 @@
 At toolchain stage we only install glibc headers, so any version of gcc, as
 and ld are ok for us.
 
-diff -ruN glibc-2.11.2-orig/configure glibc-2.11.2/configure
---- glibc-2.11.2-orig/configure	2010-05-19 22:38:20.000000000 +0200
-+++ glibc-2.11.2/configure	2010-09-01 19:45:45.848092507 +0200
-@@ -4864,9 +4864,9 @@
+--- glibc-2.14.1/configure.orig	2011-10-07 11:48:55.000000000 +0200
++++ glibc-2.14.1/configure	2011-11-10 18:23:48.900099502 +0100
+@@ -4760,9 +4760,9 @@
    ac_prog_version=`$AS --version 2>&1 | sed -n 's/^.*GNU assembler.* \([0-9]*\.[0-9.]*\).*$/\1/p'`
    case $ac_prog_version in
      '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
@@ -32,8 +31,8 @@ diff -ruN glibc-2.11.2-orig/configure glibc-2.11.2/configure
 +    XXX) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
  
    esac
-   { $as_echo "$as_me:$LINENO: result: $ac_prog_version" >&5
-@@ -4927,9 +4927,9 @@
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_prog_version" >&5
+@@ -4823,9 +4823,9 @@
    ac_prog_version=`$LD --version 2>&1 | sed -n 's/^.*GNU ld.* \([0-9][0-9]*\.[0-9.]*\).*$/\1/p'`
    case $ac_prog_version in
      '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
@@ -44,8 +43,8 @@ diff -ruN glibc-2.11.2-orig/configure glibc-2.11.2/configure
 +    XXX) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
  
    esac
-   { $as_echo "$as_me:$LINENO: result: $ac_prog_version" >&5
-@@ -5045,9 +5045,9 @@
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_prog_version" >&5
+@@ -4939,9 +4939,9 @@
    ac_prog_version=`$CC -v 2>&1 | sed -n 's/^.*version \([egcygnustpi-]*[0-9.]*\).*$/\1/p'`
    case $ac_prog_version in
      '') ac_prog_version="v. ?.??, bad"; ac_verc_fail=yes;;
@@ -56,33 +55,29 @@ diff -ruN glibc-2.11.2-orig/configure glibc-2.11.2/configure
 +    XXX) ac_prog_version="$ac_prog_version, bad"; ac_verc_fail=yes;;
  
    esac
-   { $as_echo "$as_me:$LINENO: result: $ac_prog_version" >&5
-diff -ruN glibc-2.11.2-orig/nptl/sysdeps/pthread/configure glibc-2.11.2/nptl/sysdeps/pthread/configure
---- glibc-2.11.2-orig/nptl/sysdeps/pthread/configure	2010-05-19 22:38:20.000000000 +0200
-+++ glibc-2.11.2/nptl/sysdeps/pthread/configure	2010-09-01 19:49:38.564420017 +0200
-@@ -3,14 +3,14 @@
- if test "x$libc_cv_gcc___thread" != xyes; then
-   { { $as_echo "$as_me:$LINENO: error: compiler support for __thread is required" >&5
- $as_echo "$as_me: error: compiler support for __thread is required" >&2;}
--   { (exit 1); exit 1; }; }
-+  }
- fi
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_prog_version" >&5
+--- glibc-2.14.1/nptl/sysdeps/pthread/configure.orig	2011-10-07 11:48:55.000000000 +0200
++++ glibc-2.14.1/nptl/sysdeps/pthread/configure	2011-11-10 18:33:29.760099780 +0100
+@@ -128,22 +128,6 @@
+ } # ac_fn_c_try_link
+ # This file is generated from configure.in by Autoconf.  DO NOT EDIT!
  
- if test "x${libc_cv_visibility_attribute}" != xyes ||
-    test "x${libc_cv_broken_visibility_attribute}" != xno; then
-   { { $as_echo "$as_me:$LINENO: error: working compiler support for visibility attribute is required" >&5
- $as_echo "$as_me: error: working compiler support for visibility attribute is required" >&2;}
--   { (exit 1); exit 1; }; }
-+  }
- fi
+-if test "x$libc_cv_gcc___thread" != xyes; then
+-  as_fn_error $? "compiler support for __thread is required" "$LINENO" 5
+-fi
+-
+-if test "x${libc_cv_visibility_attribute}" != xyes ||
+-   test "x${libc_cv_broken_visibility_attribute}" != xno; then
+-  as_fn_error $? "working compiler support for visibility attribute is required" "$LINENO" 5
+-fi
+-
+-if test "x$libc_cv_asm_cfi_directives" != xyes; then
+-    case "$base_machine" in
+-    i386 | x86_64 | powerpc | s390)
+-      as_fn_error $? "CFI directive support in assembler is required" "$LINENO" 5 ;;
+-    *) ;;
+-  esac
+-fi
  
- if test "x$libc_cv_asm_cfi_directives" != xyes; then
-@@ -18,7 +18,7 @@
-     i386 | x86_64 | powerpc | s390)
-       { { $as_echo "$as_me:$LINENO: error: CFI directive support in assembler is required" >&5
- $as_echo "$as_me: error: CFI directive support in assembler is required" >&2;}
--   { (exit 1); exit 1; }; } ;;
-+      } ;;
-     *) ;;
-   esac
- fi
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for forced unwind support" >&5

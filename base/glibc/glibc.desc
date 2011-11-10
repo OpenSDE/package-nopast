@@ -33,8 +33,8 @@
 
 [L] GPL
 [S] Stable
-[V] 2.13
+[V] 2.14
 [P] X 01---5---9 101.600
 
-[D] 3619450188 glibc-2.13.tar.bz2 http://ftp.gnu.org/gnu/glibc/
-[D] 3649139458 glibc-ports-2.13.tar.bz2 http://ftp.gnu.org/gnu/glibc/
+[D] 3922420920 glibc-2.14.tar.bz2 http://ftp.gnu.org/gnu/glibc/
+[D] 3052977586 glibc-ports-2.14.tar.bz2 http://ftp.gnu.org/gnu/glibc/
