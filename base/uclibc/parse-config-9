@@ -178,8 +178,8 @@ if [ "$SDECFG_LIBC" == "uclibc" ]; then
 	case "$pkg" in
 		linux24*)
 			pkg_uclibc_pkg=linux24 ;;
-		linux26*|linux-header)
-			pkg_uclibc_pkg=linux26 ;;
+		linux*|linux-header)
+			pkg_uclibc_pkg=linux ;;
 		*)
 			pkg_uclibc_pkg=${pkg//-/_} ;;
 	esac
