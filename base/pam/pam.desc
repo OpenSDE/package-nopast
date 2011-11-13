@@ -23,6 +23,7 @@
 [T] module is to be attatched is dependent upon the local system setup and
 [T] is at the discretion of the local system administrator.
 
+[U] https://fedorahosted.org/linux-pam/
 [U] http://www.kernel.org/pub/linux/libs/pam/
 
 [A] Andrew Morgan <morgan@kernel.org>
@@ -33,8 +34,11 @@
 
 [L] GPL
 [S] Stable
-[V] 1.1.4
+[V] 1.1.5
 [P] X -1-3-5---9 178.700
 
-[D] 3871533660 Linux-PAM-1.1.4.tar.bz2 http://www.kernel.org/pub/linux/libs/pam/library/
-[D] 193999600 Linux-PAM-1.1.4-docs.tar.bz2 http://www.kernel.org/pub/linux/libs/pam//documentation/
+[D] 16443860 Linux-PAM-1.1.5.tar.bz2 https://fedorahosted.org/releases/l/i/linux-pam/
+[D] 1877583525 Linux-PAM-1.1.5-docs.tar.bz2 https://fedorahosted.org/releases/l/i/linux-pam/
+# 2011-11-10: kernel.org upstream still down
+#[D] 3871533660 Linux-PAM-1.1.4.tar.bz2 http://www.kernel.org/pub/linux/libs/pam/library/
+#[D] 193999600 Linux-PAM-1.1.4-docs.tar.bz2 http://www.kernel.org/pub/linux/libs/pam//documentation/
