@@ -68,38 +68,6 @@ index 18a7383..ec425bf 100644
  
    now(&first);
  
-diff --git a/hier.c b/hier.c
-index 3d66beb..5083582 100644
---- a/hier.c
-+++ b/hier.c
-@@ -2,11 +2,12 @@
- 
- void hier()
- {
--  c("/","etc","leapsecs.dat",-1,-1,0644);
-+  d("/var/state","clockspeed",-1,-1,0755);
-+
-+  c("/","var/state/clockspeed","leapsecs.dat",-1,-1,0644);
- 
-   h(auto_home,-1,-1,0755);
- 
--  d(auto_home,"etc",-1,-1,0755);
-   d(auto_home,"bin",-1,-1,0755);
-   d(auto_home,"man",-1,-1,0755);
-   d(auto_home,"man/man1",-1,-1,0755);
-diff --git a/leapsecs_read.c b/leapsecs_read.c
-index c8f975f..5266e60 100644
---- a/leapsecs_read.c
-+++ b/leapsecs_read.c
-@@ -17,7 +17,7 @@ int leapsecs_read()
-   int i;
-   struct tai u;
- 
--  fd = open("/etc/leapsecs.dat",O_RDONLY | O_NDELAY);
-+  fd = open("/var/state/clockspeed/leapsecs.dat",O_RDONLY | O_NDELAY);
-   if (fd == -1) {
-     if (errno != ENOENT) return -1;
-     if (leapsecs) free(leapsecs);
 -- 
 1.6.6.2
 
