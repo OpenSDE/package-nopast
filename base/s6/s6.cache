@@ -1,0 +1,22 @@
+
+[TIMESTAMP] 1318191419 Sun Oct  9 22:16:59 2011
+[BUILDTIME] 5 (5)
+[SIZE] 0.48 MB, 76 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] execline
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] sed
+[DEP] skalibs
+[DEP] sysfiles
+[DEP] tar
