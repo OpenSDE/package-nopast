@@ -41,18 +41,27 @@
 
 [L] GPL
 [S] Stable
-[V] 4.1.11
+[V] 4.2.20
 [P] X -1-3-----9 106.500
 
-[D] 3731287378 bash-4.1.tar.gz     ftp://ftp.gnu.org/pub/gnu/bash/
-[D] 3920063530 bash41-001.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-001
-[D] 3029560787 bash41-002.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-002
-[D] 3220429699 bash41-003.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-003
-[D] 3169156716 bash41-004.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-004
-[D] 1030436811 bash41-005.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-005
-[D] 2480490944 bash41-006.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-006
-[D] 4104930282 bash41-007.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-007
-[D] 2291479201 bash41-008.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-008
-[D] 606108911 bash41-009.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-009
-[D] 4198673759 bash41-010.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-010
-[D] 3894237091 bash41-011.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.1-patches/bash41-011
+[D] 1638391797 bash-4.2.tar.gz ftp://ftp.gnu.org/pub/gnu/bash/
+[D] 14484477 bash42-001.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-001
+[D] 470570674 bash42-002.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-002
+[D] 904887438 bash42-003.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-003
+[D] 2502188749 bash42-004.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-004
+[D] 829178142 bash42-005.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-005
+[D] 3266942496 bash42-006.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-006
+[D] 2220491048 bash42-007.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-007
+[D] 2848058309 bash42-008.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-008
+[D] 2188852718 bash42-009.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-009
+[D] 3197565006 bash42-010.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-010
+[D] 2410105050 bash42-011.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-011
+[D] 1807920519 bash42-012.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-012
+[D] 1874116079 bash42-013.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-013
+[D] 759674196 bash42-014.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-014
+[D] 1143024497 bash42-015.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-015
+[D] 2631145629 bash42-016.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-016
+[D] 536402849 bash42-017.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-017
+[D] 3602593963 bash42-018.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-018
+[D] 4169604893 bash42-019.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-019
+[D] 3495096412 bash42-020.patch !ftp://ftp.gnu.org/gnu/bash/bash-4.2-patches/bash42-020
