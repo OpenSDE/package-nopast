@@ -20,7 +20,7 @@
 [T]
 [T] Glibc comes with it's own copy if these tools and data files
 
-[U] http://www.twinsun.com/tz/tz-link.htm
+[U] http://www.iana.org/time-zones
 
 [A] Arthur David Olson
 [M] Alejandro Mery <amery@opensde.org>
@@ -29,8 +29,8 @@
 
 [L] PublicDomain
 [S] Stable
-[V] 2011g
+[V] 2011n
 [P] X -1---5---9 200.000
 
-[D] 2398017361 tzcode2011g.tar.gz ftp://elsie.nci.nih.gov/pub/
-[D] 2471140360 tzdata2011g.tar.gz ftp://elsie.nci.nih.gov/pub/
+[D] 1763293245 tzcode2011i.tar.gz http://www.iana.org/time-zones/repository/releases/
+[D] 2828626534 tzdata2011n.tar.gz http://www.iana.org/time-zones/repository/releases/
