@@ -29,8 +29,8 @@
 
 [L] GPL
 [S] Stable
-[V] 8.4.0
+[V] 9.0.0
 [P] X -----5---9 125.000
 
-[D] 1548751674 pg_filedump-8.4.0.tar http://sources.redhat.com/rhdb/tools/
+[D] 3061698391 pg_filedump-9.0.0.tar.gz http://pgfoundry.org/frs/download.php/2922/
 
