@@ -21,7 +21,7 @@
 [T] Supports online restart/upgrade without dropping client connections.
 [T] Supports protocol V3 only, so backend version must be >= 7.4.x
 
-[U] https://developer.skype.com/SkypeGarage/DbProjects/PgBouncer
+[U] http://pgfoundry.org/projects/pgbouncer
 
 [A] Marko Kreen and others <markokr@gmail.com>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
@@ -30,7 +30,7 @@
 
 [L] BSD
 [S] Stable
-[V] 1.4.1
+[V] 1.4.2
 [P] X -----5---9 800.000
 
-[D] 3184826428 pgbouncer-1.4.1.tgz http://pgfoundry.org/frs/download.php/2987/
+[D] 3184826428 pgbouncer-1.4.2.tgz http://pgfoundry.org/frs/download.php/2987/
