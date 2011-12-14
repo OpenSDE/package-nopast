@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1323878458 Wed Dec 14 17:00:58 2011
+[BUILDTIME] 25 (5)
+[SIZE] 0.68 MB, 27 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libgd
+[DEP] libjpeg
+[DEP] libpng
+[DEP] make
+[DEP] openssl
+[DEP] pcre
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
+[DEP] zlib
