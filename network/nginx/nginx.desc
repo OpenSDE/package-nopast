@@ -41,14 +41,14 @@
 
 [C] extra/network
 
-[L] GPL
+[L] BSD
 [S] Stable
-[V] 1.0.5
+[V] 1.0.10
 [P] X -?---5---9 800.000
 
 [CV-URL] http://nginx.org/en/download.html
 
-[D] 3109644152 nginx-1.0.5.tar.gz http://nginx.org/download/
+[D] 3783184021 nginx-1.0.10.tar.gz http://nginx.org/download/
 [D] 2799334071 nginx-mod_rrd_graph-0.2.0.tar.gz !http://wiki.nginx.org/images/9/9d/Mod_rrd_graph-0.2.0.tar.gz
 [D] 417317636 nginx_upload_module-2.2.0.tar.gz http://www.grid.net.ru/nginx/download/
 [D] 2748022907 echo-nginx-module-v0.36.tar.gz !https://github.com/agentzh/echo-nginx-module/tarball/v0.36
