@@ -27,6 +27,8 @@
 
 [C] extra/library
 
+[F] FPIC-QUIRK
+
 [L] PublicDomain
 [S] Stable
 [V] 0.60
