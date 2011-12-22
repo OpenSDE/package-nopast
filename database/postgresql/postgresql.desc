@@ -38,5 +38,5 @@
 [V] 9.1.2
 [P] X -----5---9 126.000
 
-[D] 2030237456 postgresql-9.1.2.tar.bz2 http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v9.1.2/
+[D] 2030237456 postgresql-9.1.2.tar.bz2 http://ftp.postgresql.org/pub/source/v9.1.2/ 
 
