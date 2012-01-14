@@ -14,12 +14,14 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] Utilities for use with the ext2 filesystem
+[I] Utilities for the ext2/3/4 filesystem
 
-[T] The filesystem utilities for the EXT2 filesystem, including
-[T] e2fsck, mke2fs, dumpe2fs, fsck, and others.
+[T] e2fsprogs provides the filesystem utilities for use with the ext2
+[T] filesystem, but it also supports its successors the ext3 and ext4
+[T] filesystems.
 
 [U] http://e2fsprogs.sourceforge.net
+[U] http://ext4.wiki.kernel.org/
 
 [A] Theodore T'so <tytso@users.sourceforge.net>
 [M] The OpenSDE Community <list@opensde.org>
