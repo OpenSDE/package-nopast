@@ -1,0 +1,16 @@
+
+[TIMESTAMP] 1326834981 Tue Jan 17 22:16:21 2012
+[BUILDTIME] 0 (5)
+[SIZE] 0.71 MB, 7 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] sed
