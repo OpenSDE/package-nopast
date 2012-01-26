@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1327601719 Thu Jan 26 19:15:19 2012
+[BUILDTIME] 0 (5)
+[SIZE] 0.09 MB, 7 files
+
+[DEP] apache
+[DEP] apr
+[DEP] apr-util
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
