@@ -29,9 +29,9 @@
 
 [L] ISC
 [S] Stable
-[V] 0.13
+[V] 0.14
 [P] X -?---5---9 109.000
 
 [O] . $base/package/*/*/skaware-conf.in
 
-[D] 4068832215 s6-portable-utils-0.13.tar.gz http://www.skarnet.org/software/s6-portable-utils/
+[D] 3156989992 s6-portable-utils-0.14.tar.gz http://www.skarnet.org/software/s6-portable-utils/
