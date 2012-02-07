@@ -29,6 +29,11 @@ if pkgcheck nginx X; then
 	# nginx devel kit
 	bool "Nginx Development Kit (NDK)"	SDECFG_PKG_NGINX_ADDON_MOD_NDK 0
 
+	# lua module
+	if pkgcheck lua X -o pkgcheck luajit X; then
+		bool "Lua Module"	SDECFG_PKG_NGINX_ADDON_MOD_LUA 0
+	fi
+
 	menu_end
 fi
 
