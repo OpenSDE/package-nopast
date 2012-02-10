@@ -41,9 +41,9 @@
 
 [L] GPL
 [S] Stable
-[V] 3.0.18-rt34
+[V] 3.0.20-rt36
 [P] X -?---5---9 102.060
 
 [D] 3975143779 linux-3.0.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v3.0/
-[D] 1820688491 patch-3.0.18.bz2 http://kernel.org/pub/linux/kernel/v3.0/
-[D] 337155464 patch-3.0.18-rt34.patch.bz2 http://www.kernel.org/pub/linux/kernel/projects/rt/3.0/
+[D] 39961898 patch-3.0.20.bz2 http://kernel.org/pub/linux/kernel/v3.0/
+[D] 2994287044 patch-3.0.20-rt36.patch.bz2 http://www.kernel.org/pub/linux/kernel/projects/rt/3.0/
