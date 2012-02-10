@@ -30,7 +30,7 @@
 [C] extra/desktop/enlightenment extra/multimedia
 [F] FPIC-QUIRK E17
 
-[L] GPL
+[L] BSD
 [S] Stable
 [V] 1.1.0
 [P] X -?---5---9 201.000
