@@ -33,7 +33,7 @@
 
 [L] MIT
 [S] Stable
-[V] 5.9-20120121
+[V] 5.9-20120211
 [P] X 01-3-----9 104.000
 
 [D] 4009676220 ncurses-5.9.tar.gz ftp://invisible-island.net/ncurses/
@@ -44,3 +44,6 @@
 [D] 300234261 ncurses-5.9-20120107.patch.gz ftp://invisible-island.net/ncurses/5.9/
 [D] 762757501 ncurses-5.9-20120114.patch.gz ftp://invisible-island.net/ncurses/5.9/
 [D] 2281228969 ncurses-5.9-20120121.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 592315666 ncurses-5.9-20120128.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 3088388999 ncurses-5.9-20120204.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 2440877517 ncurses-5.9-20120211.patch.gz ftp://invisible-island.net/ncurses/5.9/
