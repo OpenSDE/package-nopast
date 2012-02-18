@@ -32,7 +32,7 @@
 
 [L] BSD
 [S] Stable
-[V] 2.8.5
+[V] 3.0.3
 [P] X -?---5---9 120.100
 
-[D] 2278584629 libarchive-2.8.5.tar.gz http://libarchive.googlecode.com/files/
+[D] 2872469384 libarchive-3.0.3.tar.gz http://github.com/downloads/libarchive/libarchive/
