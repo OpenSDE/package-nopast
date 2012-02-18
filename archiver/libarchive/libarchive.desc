@@ -22,6 +22,7 @@
 [T] utilities which are feature- and performance-competitive with other
 [T] tar and cpio implementations.
 
+[U] http://libarchive.github.com/
 [U] http://libarchive.googlecode.com/
 
 [A] Tim Kientzle <kientzle@freebsd.org>
