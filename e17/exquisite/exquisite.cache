@@ -1,0 +1,46 @@
+
+[TIMESTAMP] 1329663700 Sun Feb 19 16:01:40 2012
+[BUILDTIME] 0 (5)
+[SIZE] 0.83 MB, 25 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] ecore
+[DEP] edje
+[DEP] eet
+[DEP] eina
+[DEP] embryo
+[DEP] evas
+[DEP] expat
+[DEP] fhs
+[DEP] findutils
+[DEP] fontconfig
+[DEP] freetype
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] libjpeg
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxcomposite
+[DEP] libxdamage
+[DEP] libxext
+[DEP] libxfixes
+[DEP] libxi
+[DEP] libxrender
+[DEP] linux-header
+[DEP] lua
+[DEP] make
+[DEP] openssl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib
