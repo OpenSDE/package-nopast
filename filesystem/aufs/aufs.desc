@@ -25,7 +25,7 @@
 
 [L] GPL
 [S] Stable
-[V] 3.0-20110822
+[V] 3.0-20120109
 [P] X -----5---9 800.000
 
-[D] 136840037 aufs3.0-20110822-standalone.tar.gz !http://aufs.git.sourceforge.net/git/gitweb.cgi?p=aufs/aufs3-standalone.git;a=snapshot;h=6863df6a08eadd745dfa47bf8b09e3dd29cc992b;sf=tgz
+[D] 645662658 aufs3-standalone-3.0-20120109.tar.gz !https://github.com/morfoh/aufs3-standalone/tarball/aufs3-standalone-3.0-20120109
