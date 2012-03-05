@@ -13,8 +13,11 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-if atstage cross; then
-	#export PKG_CONFIG_DEBUG_SPEW=yes
+if atstage toolchain; then
+	export PKG_CONFIG_PATH=$(ls -1d \
+		"$base/build/$SDECFG_ID"/TOOLCHAIN/tools.cross/{,X11}/{lib,share}/pkgconfig/ \
+		2> /dev/null | tr '\n' ':' | sed -e 's|/\+:|:|g' -e 's|/\+|/|g' -e 's|:$||')
+elif atstage cross; then
 	export PKG_CONFIG_SYSROOT_DIR="$base/build/$SDECFG_ID"
 	export PKG_CONFIG_PATH=$(ls -1d \
 		"$PKG_CONFIG_SYSROOT_DIR"/{,usr,usr/X11*,usr/local,opt/*}/{lib,lib64,share}/pkgconfig/ \
