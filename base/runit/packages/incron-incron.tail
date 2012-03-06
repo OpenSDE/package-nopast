@@ -1,0 +1,4 @@
+run	D_sbindir/incrond -n
+user	incron
+
+log	incron
