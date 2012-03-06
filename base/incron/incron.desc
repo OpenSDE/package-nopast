@@ -12,13 +12,13 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] A cron ibased on filesystem events.
+[I] A cron based on filesystem events.
 
 [T] An "inotify cron" system. It consists of a daemon and a table manipulator.
 [T] You can use it a similar way as the regular cron. The difference is that
 [T] the inotify cron handles filesystem events rather than time periods.
 
-[U] http://inotify.aiken.cz/download/incron
+[U] http://incron.aiken.cz
 
 [A] Lukas Jelinek <lukas@aiken.cz>
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
