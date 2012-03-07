@@ -21,7 +21,7 @@
 [T] Nimbus Roman, and Bitstream Vera Serif and Mono a substitute
 [T] for Courier New, Cumberland, Courier, Nimbus Mono L, and Bitstream Vera Sans Mono.
 
-[U] https://www.redhat.com/f/fonts/
+[U] https://fedorahosted.org/liberation-fonts/
 
 [A] Red Hat
 [M] Nagy Karoly Gabriel <nagy.karoly@opensde.org>
@@ -30,7 +30,7 @@
 
 [L] GPL
 [S] Stable
-[V] 3
+[V] 1.07.2
 [P] X -?---5---9 800.000
 
-[D] 579771183 liberation-fonts-ttf-3.tar.gz https://www.redhat.com/f/fonts/
+[D] 2962209205 liberation-fonts-ttf-1.07.2.tar.gz https://fedorahosted.org/releases/l/i/liberation-fonts/
