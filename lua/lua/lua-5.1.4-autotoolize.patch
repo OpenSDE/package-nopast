@@ -14,7 +14,7 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-From f1783ee6cbde1588ecc738c159cf5422aa19455e Mon Sep 17 00:00:00 2001
+From 279c71a79496ebe58e172b21785fa32ad7e22bc5 Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Wed, 13 May 2009 12:10:32 +0300
 Subject: [PATCH 01/11] lua-5.1.4: Autotoolize
@@ -2193,7 +2193,7 @@ index 0000000..bab7eac
 1.7.2.3
 
 
-From b31e392457852b7785504b346101dd448fc182ca Mon Sep 17 00:00:00 2001
+From 52ba6d11a1c3e85ad152f2e833c1ff2d1d0e9e5e Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Thu, 6 Jan 2011 21:11:47 +0200
 Subject: [PATCH 02/11] Use $(builldir) instead of $(srcdir) when referencing luaconf.h.template
@@ -2225,7 +2225,7 @@ index 6fbf296..5bcad35 100644
 1.7.2.3
 
 
-From 14b2a0aa4e2822b706dcb73efaa3c3f5c7a35ceb Mon Sep 17 00:00:00 2001
+From eed2ae9864b785d60a6a54d7731d458336a5d4e1 Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Fri, 7 Jan 2011 08:58:41 +0200
 Subject: [PATCH 03/11] Fix version numbers to 5.1.4, change pkgname to autotoolized-lua
@@ -2261,7 +2261,7 @@ index f6f0909..2c4ef36 100644
 1.7.2.3
 
 
-From 30c8b60c38ea68fa7a999525f8018158b47bf0d2 Mon Sep 17 00:00:00 2001
+From 52de8b940e13efcd4af39d2aa49c03e1866fa59f Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Fri, 7 Jan 2011 09:12:12 +0200
 Subject: [PATCH 04/11] Run tests with make check
@@ -2312,7 +2312,7 @@ index bab7eac..4e911f8 100644
 1.7.2.3
 
 
-From e41697ebef11e00dceaaafb4cbdb521c1d9ec1ba Mon Sep 17 00:00:00 2001
+From e8014e2b86d292c389786d17ed47f95ec16d88e5 Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Fri, 7 Jan 2011 09:12:25 +0200
 Subject: [PATCH 05/11] Don't try to distribute MANIFEST
@@ -2335,7 +2335,7 @@ index e5b0801..b6021ad 100644
 1.7.2.3
 
 
-From a5e2ed6a3d766f6805bd972cd77100665b02f264 Mon Sep 17 00:00:00 2001
+From 878b8f863c74c3d41b136b94e1f8ff6457277110 Mon Sep 17 00:00:00 2001
 From: Petri Lehtinen <petri@digip.org>
 Date: Sat, 7 May 2011 20:22:00 +0300
 Subject: [PATCH 06/11] Add missing test/run-test.sh
@@ -2361,7 +2361,7 @@ index 0000000..b93321e
 1.7.2.3
 
 
-From 6df1b7b5e6cee1dc685affe4c01ebeaa2f5590a7 Mon Sep 17 00:00:00 2001
+From 50e3f03eb499fe3ae1803b940a853e73840c8fed Mon Sep 17 00:00:00 2001
 From: Christian Wiese <chris@opensde.org>
 Date: Tue, 21 Feb 2012 22:32:05 +0100
 Subject: [PATCH 07/11] fix to not link liblua and luac against libreadline
@@ -2440,7 +2440,7 @@ index 5bcad35..ee7e2db 100644
 1.7.2.3
 
 
-From 32ab5945d3b630b04c7403e49c7e138b5622f08b Mon Sep 17 00:00:00 2001
+From 0242330833b5624a074e0a8f720d9b0ef5c97cf5 Mon Sep 17 00:00:00 2001
 From: Christian Wiese <chris@opensde.org>
 Date: Wed, 22 Feb 2012 22:37:22 +0100
 Subject: [PATCH 08/11] fix to not explicitely link against ncurses
@@ -2478,31 +2478,7 @@ index 5729acc..f5dfbc5 100644
 1.7.2.3
 
 
-From 91648f1e4d63d9141cb653b60fbf63d5447081b8 Mon Sep 17 00:00:00 2001
-From: Christian Wiese <chris@opensde.org>
-Date: Thu, 23 Feb 2012 14:35:07 +0100
-Subject: [PATCH 09/11] changed to not prefix package name and dropped tarname in AC_INIT
-
----
- configure.ac |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git lua-5.1.4/configure.ac lua-5.1.4-autotoolize/configure.ac
-index f5dfbc5..136ec63 100644
---- lua-5.1.4/configure.ac
-+++ lua-5.1.4-autotoolize/configure.ac
-@@ -1,5 +1,5 @@
- AC_PREREQ(2.59)
--AC_INIT([Autotoolized Lua], [5.1.4], [], [autotolized-lua])
-+AC_INIT([lua], [5.1.4], [])
- 
- AC_CONFIG_HEADERS([config.h])
- AC_CONFIG_SRCDIR([src/lapi.c])
--- 
-1.7.2.3
-
-
-From 58db0df23fd7011a7eafe8327e4715af3be7a7ee Mon Sep 17 00:00:00 2001
+From d46d8635280f76f3ff427a674b0ee6b85dedb7f1 Mon Sep 17 00:00:00 2001
 From: Christian Wiese <chris@opensde.org>
 Date: Thu, 23 Feb 2012 14:37:06 +0100
 Subject: [PATCH 10/11] fix to install docs when running make install
@@ -2512,7 +2488,7 @@ Subject: [PATCH 10/11] fix to install docs when running make install
  1 files changed, 8 insertions(+), 3 deletions(-)
 
 diff --git lua-5.1.4/doc/Makefile.am lua-5.1.4-autotoolize/doc/Makefile.am
-index 24b4044..821266d 100644
+index 24b4044..db8c13c 100644
 --- lua-5.1.4/doc/Makefile.am
 +++ lua-5.1.4-autotoolize/doc/Makefile.am
 @@ -1,5 +1,10 @@
@@ -2522,7 +2498,7 @@ index 24b4044..821266d 100644
 -	contents.html  lua.1   luac.html  lua.html     manual.html \
 -	logo.gif       luac.1  lua.css    readme.html
 \ No newline at end of file
-+docdir = $(datadir)/doc/@PACKAGE@
++docdir = $(datadir)/doc/lua
 +doc_DATA = \
 +	contents.html lua.html luac.html manual.html readme.html \
 +	lua.css manual.css \
@@ -2534,7 +2510,7 @@ index 24b4044..821266d 100644
 1.7.2.3
 
 
-From ad34c5b973dcaa4163d504b5f0e796fc398bc8b3 Mon Sep 17 00:00:00 2001
+From 520e9ab108a2c47a1ed51e401597a5c2a4d05387 Mon Sep 17 00:00:00 2001
 From: Christian Wiese <chris@opensde.org>
 Date: Thu, 23 Feb 2012 14:45:21 +0100
 Subject: [PATCH 11/11] improved to install COPYRIGHT HISTORY INSTALL README file into docdir
@@ -2544,12 +2520,12 @@ Subject: [PATCH 11/11] improved to install COPYRIGHT HISTORY INSTALL README file
  1 files changed, 1 insertions(+), 0 deletions(-)
 
 diff --git lua-5.1.4/doc/Makefile.am lua-5.1.4-autotoolize/doc/Makefile.am
-index 821266d..8700167 100644
+index db8c13c..72dbc31 100644
 --- lua-5.1.4/doc/Makefile.am
 +++ lua-5.1.4-autotoolize/doc/Makefile.am
 @@ -2,6 +2,7 @@ man1_MANS = lua.1 luac.1
  
- docdir = $(datadir)/doc/@PACKAGE@
+ docdir = $(datadir)/doc/lua
  doc_DATA = \
 +	../COPYRIGHT ../HISTORY ../INSTALL ../README \
  	contents.html lua.html luac.html manual.html readme.html \
