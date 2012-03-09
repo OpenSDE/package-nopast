@@ -106,6 +106,15 @@ auto_config() {
 		echo > .config.$arch
 	fi
 
+	# inject CONFIG_INITRAMFS_SOURCE if set
+	if [ -n "$SDECFG_PKG_LINUX_EARLY_FILE" ]; then
+		x="$SDECFG_PKG_LINUX_EARLY_FILE"
+		expr "$x" : '/*' > /dev/null || x="$base/$x"
+
+		sed -i '/CONFIG_INITRAMFS_SOURCE/d;' .config.$arch
+		echo "CONFIG_INITRAMFS_SOURCE=\"$x\"" >> .config.$arch
+	fi
+
 	if [ -s .config.$arch ]; then
 		# apply $arch specific rules
 		#
