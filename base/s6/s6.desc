@@ -27,9 +27,9 @@
 
 [L] ISC
 [S] Stable
-[V] 0.15
+[V] 0.16
 [P] X -?---5---9 108.900
 
 [O] . $base/package/*/*/skaware-conf.in
 
-[D] 2667294654 s6-0.15.tar.gz http://www.skarnet.org/software/s6/
+[D] 764917216 s6-0.16.tar.gz http://www.skarnet.org/software/s6/
