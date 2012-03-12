@@ -32,9 +32,9 @@
 
 [L] ISC
 [S] Stable
-[V] 1.1.2
+[V] 1.1.3
 [P] X -?---5---9 108.800
 
 [O] . $base/package/*/*/skaware-conf.in
 
-[D] 1136390739 execline-1.1.2.tar.gz http://www.skarnet.org/software/execline/
+[D] 2743927502 execline-1.1.3.tar.gz http://www.skarnet.org/software/execline/
