@@ -38,3 +38,5 @@
 [P] X -----5---9 800.000
 
 [D] 3672041578 elfutils-0.153.tar.bz2 https://fedorahosted.org/releases/e/l/elfutils/0.153/
+[D] 4125756208 elfutils-portability.patch https://fedorahosted.org/releases/e/l/elfutils/0.153/
+[D] 2315075130 elfutils-robustify.patch https://fedorahosted.org/releases/e/l/elfutils/0.153/
