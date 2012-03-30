@@ -37,9 +37,6 @@ main() {
 		fi
 
 		cmd="gui_menu x 'X11 Configuration Menu'
-		'Run XcfgT2 (the T2 LiveCD auto configuration)'
-			'gui_cmd XcfgT2 xcfgt2'
-
 		'Run X -configure (automated config)'
 			'gui_cmd Xorg Xorg -configure ; mv -v /root/xorg.conf.new /etc/X11/xorg.conf'"
 
