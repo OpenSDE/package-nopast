@@ -12,7 +12,7 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] A window manager that lets you say good-bye to the rodent
+[I] A tiling window manager for the X Window System
 
 [T] Ratpoison is a simple window manager with no large library dependencies,
 [T] no fancy graphics, no window decorations, and no rodent dependence.
