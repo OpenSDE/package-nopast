@@ -27,9 +27,9 @@
 
 [L] ISC
 [S] Stable
-[V] 1.2.6
+[V] 1.2.7
 [P] X -?---5---9 108.700
 
 [O] . $base/package/*/*/skaware-conf.in
 
-[D] 2492907368 skalibs-1.2.6.tar.gz http://www.skarnet.org/software/skalibs/
+[D] 71659419 skalibs-1.2.7.tar.gz http://www.skarnet.org/software/skalibs/
