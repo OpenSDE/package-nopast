@@ -1,0 +1,27 @@
+
+[TIMESTAMP] 1336138219 Fri May  4 15:30:19 2012
+[BUILDTIME] 0 (5)
+[SIZE] 1.04 MB, 222 files
+
+[DEP] fhs
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] groff
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] opensp
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo
