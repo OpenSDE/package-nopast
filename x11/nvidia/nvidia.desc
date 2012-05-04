@@ -33,9 +33,9 @@
 
 [L] Free-to-use
 [S] Stable
-[V] 295.40
+[V] 295.49
 [P] X -----5---9 131.300
 
-[D] 1347387049 NVIDIA-Linux-x86_64-295.40.run http://us.download.nvidia.com/XFree86/Linux-x86_64/295.40/
-[D] 1372984111 NVIDIA-Linux-x86-295.40.run http://us.download.nvidia.com/XFree86/Linux-x86/295.40/
+[D] 3882777531 NVIDIA-Linux-x86_64-295.49.run http://us.download.nvidia.com/XFree86/Linux-x86_64/295.49/
+[D] 3209092137 NVIDIA-Linux-x86-295.49.run http://us.download.nvidia.com/XFree86/Linux-x86/295.49/
 [D] 3170993828 NVIDIA-Linux-ia64-1.0-5336-pkg1.run ftp://download.nvidia.com/XFree86/Linux-ia64/1.0-5336/
