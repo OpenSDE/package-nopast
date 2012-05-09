@@ -28,9 +28,9 @@
 
 [L] MPL
 [S] Stable
-[V] 3.6.28
+[V] 12.0
 [P] X -----5---9 144.500
 
 [O] . $base/package/*/*/mozilla-conf.in
 
-[D] 2132533949 firefox-3.6.28.source.tar.bz2 http://releases.mozilla.org/pub/mozilla.org/firefox/releases/latest-3.6/source/
+[D] 2743436787 firefox-12.0.source.tar.bz2 http://releases.mozilla.org/pub/mozilla.org/firefox/releases/12.0/source/
