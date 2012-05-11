@@ -27,7 +27,7 @@
 [T] abstract services and classes of the Common C++ libraries rather than
 [T] having to access low level system services directly.
 
-[U] http://www.gnu.org/software/commonc++/
+[U] http://www.gnu.org/software/commoncpp/
 
 [A] David Sugar and Daniel Silverstone
 [M] The OpenSDE Community <list@opensde.org>
