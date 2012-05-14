@@ -18,7 +18,7 @@
 [T] create file differences/patches to both binary and text files. It uses memory
 [T] files as file abstraction to achieve both performance and portability.
 
-[U] http://www.xmailserver.org
+[U] http://www.xmailserver.org/xdiff-lib.html
 
 [A] Davide Libenzi
 [M] The OpenSDE Community <list@opensde.org>
@@ -30,4 +30,4 @@
 [V] 0.23
 [P] X -----5---9 800.000
 
-[D] 0 libxdiff-0.23.tar.gz http://www.xmailserver.org/
+[D] 3746604832 libxdiff-0.23.tar.gz http://www.xmailserver.org/
