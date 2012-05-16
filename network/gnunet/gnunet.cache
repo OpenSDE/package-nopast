@@ -1,0 +1,62 @@
+
+[TIMESTAMP] 1337181314 Wed May 16 17:15:14 2012
+[BUILDTIME] 90 (5)
+[SIZE] 4.27 MB, 329 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] curl
+[DEP] cyrus-sasl2
+[DEP] diffutils
+[DEP] distribute
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glibc
+[DEP] gmp
+[DEP] gnutls
+[DEP] grep
+[DEP] gst-python
+[DEP] imake
+[DEP] libextractor
+[DEP] libgcrypt
+[DEP] libgpg-error
+[DEP] libice
+[DEP] libidn
+[DEP] libmicrohttpd
+[DEP] libssh2
+[DEP] libtasn1
+[DEP] libtool
+[DEP] libunistring
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mysql
+[DEP] nettle
+[DEP] openldap
+[DEP] openssl
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] perl
+[DEP] pil
+[DEP] pygobject
+[DEP] python
+[DEP] sed
+[DEP] sqlite
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] wxpython
+[DEP] xorg-cf-files
+[DEP] zlib
+[DEP] zope-interface
