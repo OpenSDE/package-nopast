@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1337996562 Sat May 26 03:42:42 2012
+[BUILDTIME] 10 (5)
+[SIZE] 0.94 MB, 9 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] kyotocabinet
+[DEP] linux-header
+[DEP] lua
+[DEP] make
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib
