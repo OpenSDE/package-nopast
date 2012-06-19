@@ -34,6 +34,9 @@ if pkgcheck nginx X; then
 		bool "Lua Module"	SDECFG_PKG_NGINX_ADDON_MOD_LUA 0
 	fi
 
+	# syslog support
+	bool "Nginx Syslog Patch"	SDECFG_PKG_NGINX_ADDON_SYSLOG_PATCH 0
+
 	menu_end
 fi
 
