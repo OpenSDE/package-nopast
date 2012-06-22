@@ -19,7 +19,7 @@
 [T] This package contains various utilities for inspecting and
 [T] setting of devices connected to the PCI bus.
 
-[U] http://mj.ucw.cz/pciutils.html
+[U] http://mj.ucw.cz/sw/pciutils/
 
 [A] Martin Mares <mj@suse.cz>
 [M] Alejandro Mery <amery@opensde.org>
