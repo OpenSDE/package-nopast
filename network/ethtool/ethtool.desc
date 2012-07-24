@@ -40,7 +40,7 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.36
+[V] 2.6.39
 [P] X -?---5---9 184.400
 
-[D] 3559859722 ethtool-2.6.36.tar.gz http://www.kernel.org/pub/software/network/ethtool/
+[D] 3625626871 ethtool-2.6.39.tar.bz2 http://www.kernel.org/pub/software/network/ethtool/
