@@ -32,9 +32,11 @@
 
 [L] GPL
 [S] Stable
-[V] 6.2.002
+[V] 6.2.004
 [P] X -1---5---9 104.100
 
 [D] 1753266045 readline-6.2.tar.gz http://ftp.gnu.org/pub/gnu/readline/
 [D] 1452570886 readline-6.2-001.patch !http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-001
 [D] 2717970794 readline-6.2-002.patch !http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-002
+[D] 2346444235 readline-6.2-003.patch !http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-003
+[D] 3220074086 readline-6.2-004.patch !http://ftp.gnu.org/gnu/readline/readline-6.2-patches/readline62-004
