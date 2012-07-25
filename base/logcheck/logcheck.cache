@@ -1,0 +1,19 @@
+
+[TIMESTAMP] 1343220715 Wed Jul 25 14:51:55 2012
+[BUILDTIME] 0 (5)
+[SIZE] 0.45 MB, 216 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
