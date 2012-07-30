@@ -22,7 +22,7 @@
 [T] databases as a single cluster. repmgr includes two components:
 [T] repmgr: command program that performs tasks and then exits
 [T] repmgrd: management and monitoring daemon that watches
-[T] the cluster and can automate remote actions. 
+[T] the cluster and can automate remote actions.
 
 [U] http://www.repmgr.org
 
@@ -35,7 +35,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.1.0
+[V] 1.2.0
 [P] X -----5---9 800.000
 
-[D] 706072059 repmgr-1.1.0.tar.gz http://www.repmgr.org/download/
+[D] 3746707921 repmgr-1.2.0.tar.gz http://www.repmgr.org/download/
