@@ -1,0 +1,44 @@
+
+[TIMESTAMP] 1343751789 Tue Jul 31 18:23:09 2012
+[BUILDTIME] 40 (5)
+[SIZE] 5.89 MB, 242 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] distribute
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gst-python
+[DEP] gtk-perl10
+[DEP] linux-header
+[DEP] lua
+[DEP] make
+[DEP] mono
+[DEP] mt-st
+[DEP] paste
+[DEP] pastedeploy
+[DEP] pastescript
+[DEP] perl
+[DEP] pil
+[DEP] pygobject
+[DEP] pygtk
+[DEP] python
+[DEP] ruby
+[DEP] sed
+[DEP] sun-jdk-6
+[DEP] sysfiles
+[DEP] tar
+[DEP] tcl
+[DEP] util-linux
+[DEP] wxpython
+[DEP] xapian-core
+[DEP] zlib
+[DEP] zope-interface
