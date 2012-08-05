@@ -29,12 +29,21 @@ index 44a2a21..4e70f80 100644
  
  #ifndef SPUFS_MAGIC
  #define SPUFS_MAGIC 0x23c9b64e
-@@ -841,7 +842,8 @@
+@@ -625,6 +626,7 @@
+   sigset_t prev_mask;
+   int has_vforked;
+   int parent_pid, child_pid;
++  struct timespec t;
+ 
+   block_child_signals (&prev_mask);
+ 
+@@ -841,7 +843,9 @@
  				    "LCFF: no VFORK_DONE "
  				    "support, sleeping a bit\n");
  
 -	      usleep (10000);
-+	      const struct timespec t = {0, 10000000L};
++	      t.tv_sec = 0;
++	      t.tv_nsec = 10000000L;
 +	      nanosleep(&t, NULL);
  
  	      /* Pretend we've seen a PTRACE_EVENT_VFORK_DONE event,
