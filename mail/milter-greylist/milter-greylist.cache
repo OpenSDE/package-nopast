@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1350376700 Tue Oct 16 10:38:20 2012
+[BUILDTIME] 5 (5)
+[SIZE] 0.24 MB, 11 files
+
+[DEP] bash
+[DEP] bdb
+[DEP] binutils
+[DEP] bison
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] libmilter
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] runit
+[DEP] sed
+[DEP] sendmail
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux-ng
