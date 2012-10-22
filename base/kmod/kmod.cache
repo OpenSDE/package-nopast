@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1350935084 Mon Oct 22 21:44:44 2012
+[BUILDTIME] 5 (3)
+[SIZE] 0.42 MB, 31 files
+
+[DEP] autoconf
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] perl
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] xz
+[DEP] zlib
