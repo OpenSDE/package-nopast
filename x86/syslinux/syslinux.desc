@@ -34,8 +34,8 @@
 
 [L] GPL
 [S] Stable
-[V] 4.06-pre7
+[V] 4.06
 [P] X -?---5---9 179.500
 
-[D] 537223541 syslinux-4.06-pre7.tar.bz2 http://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/4.06/
+[D] 399156817 syslinux-4.06.tar.bz2 http://www.kernel.org/pub/linux/utils/boot/syslinux/
 
