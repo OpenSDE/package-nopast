@@ -40,6 +40,9 @@ CONFIG_UNIX=y
 CONFIG_SYSFS_DEPRECATED=n
 CONFIG_SYSFS_DEPRECATED_V2=n
 
+# no kgdb support by default
+CONFIG_KGDB=n
+
 # no debugging by default
 CONFIG_DEBUG_.*=n
 CONFIG_.*_DEBUG=n
