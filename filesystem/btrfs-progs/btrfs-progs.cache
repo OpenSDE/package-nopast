@@ -1,0 +1,28 @@
+
+[TIMESTAMP] 1352121543 Mon Nov  5 14:19:03 2012
+[BUILDTIME] 5 (5)
+[SIZE] 2.72 MB, 26 files
+
+[DEP] acl
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] e2fsprogs
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gzip
+[DEP] linux-header
+[DEP] make
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] zlib
