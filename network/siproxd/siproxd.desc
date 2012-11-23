@@ -12,13 +12,13 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] siproxd - SIP proxy/masquerading daemon
+[I] A SIP proxy/masquerading daemon
 
 [T] Siproxd is a proxy/masquerading daemon for the SIP protocol. It allows
 [T] SIP clients (softphones & hardphones) to work behind an IP masquerading
 [T] firewall or router.
 
-[U] http://downloads.sourceforge.net/project/siproxd/0.8.1
+[U] http://siproxd.sourceforge.net
 
 [A] Thomas Ries <tries@users.sourceforge.net>
 [M] The OpenSDE Community <list@opensde.org>
