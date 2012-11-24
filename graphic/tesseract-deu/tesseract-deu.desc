@@ -31,7 +31,7 @@
 
 [L] APL
 [S] Stable
-[V] 3.00
+[V] 3.02
 [P] X -----5---9 800.000
 
-[D] 543348914 tesseract-deu.traineddata.gz !http://tesseract-ocr.googlecode.com/files/deu.traineddata.gz
+[D] 591066434 tesseract-ocr-3.02.deu.tar.gz http://tesseract-ocr.googlecode.com/files/
