@@ -29,9 +29,10 @@
 
 [L] GPL
 [S] Beta
-[V] 0.3-beta15
+[V] 0.3-beta15-52
 [P] X -----5---9 184.700
 
 [D] 1404863576 hddtemp-0.3-beta15.tar.bz2 http://download.savannah.gnu.org/releases/hddtemp/
+[D] 2557577094 hddtemp_0.3-beta15-52.diff.gz http://ftp.de.debian.org/debian/pool/main/h/hddtemp/
 [D] 485792790 hddtemp-2007-11-14.db !http://download.savannah.gnu.org/releases/hddtemp/hddtemp.db
 
