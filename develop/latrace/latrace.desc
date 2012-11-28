@@ -24,6 +24,8 @@
 
 [C] extra/development
 
+[F] NOPARALLEL
+
 [L] GPL
 [S] Stable
 [V] 0.5.11
