@@ -34,4 +34,6 @@
 [V] 3.02
 [P] X -----5---9 800.000
 
+[O] . $base/package/*/tesseract-ocr/tesseract-lang-conf.in
+
 [D] 591066434 tesseract-ocr-3.02.deu.tar.gz http://tesseract-ocr.googlecode.com/files/
