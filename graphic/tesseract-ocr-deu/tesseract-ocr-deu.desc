@@ -12,14 +12,10 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] tesseract-ocr language files for German
+[I] German language data for the Tesseract OCR Engine
 
-[T] The Tesseract OCR engine was one of the top 3 engines in the 1995 UNLV
-[T] Accuracy test. Between 1995 and 2006 it had little work done on it, but
-[T] since then it has been improved extensively by Google and is probably one
-[T] of the most accurate open source OCR engines available. Combined with the
-[T] Leptonica Image Processing Library it can read a wide variety of image
-[T] formats and convert them to text in over 40 languages.
+[T] This package provides the german language data for the Tesseract OCR
+[T] engine.
 
 [U] http://tesseract-ocr.googlecode.com/
 
