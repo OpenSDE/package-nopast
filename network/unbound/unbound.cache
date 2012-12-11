@@ -1,0 +1,29 @@
+
+[TIMESTAMP] 1355229963 Tue Dec 11 13:46:03 2012
+[BUILDTIME] 85 (5)
+[SIZE] 5.74 MB, 27 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] expat
+[DEP] fhs
+[DEP] file
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] ldns
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] openssl
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
