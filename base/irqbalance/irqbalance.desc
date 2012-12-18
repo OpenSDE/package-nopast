@@ -12,14 +12,20 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- SDE-COPYRIGHT-NOTE-END ---
 
-[I] IRQBALANCE - handholding your interrupts for power and performance
+[I] A Linux utility tasked with distributing hardware interrupts across CPUs
 
-[T] irqbalance is a daemon that evenly distributes IRQ load across
-[T] multiple CPUs for enhanced performance.
+[T] Irqbalance is the Linux utility tasked with making sure that interrupts
+[T] from your hardware devices are handled in as efficient a manner as possible
+[T] (meaning every cpu handles some of the interrupt work), while at the same
+[T] time making sure that no single cpu is tasked with a inappropriately large
+[T] amount of this work. Irqbalance constantly analyzes the amuont of work
+[T] interrupts require on your system and balances interrupt handling across
+[T] all of your systems cpus in a fair manner, keeping system performance more
+[T] predictable and constant.
 
-[U] https://irqbalance.org/releases
+[U] http://irqbalance.googlecode.com
 
-[A] arjan@linux.intel.com
+[A] Arjan van de Ven <arjanvandeven@gmail.com>
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] base/system
@@ -29,4 +35,4 @@
 [V] 0.56
 [P] X -----5---9 800.000
 
-[D] 4082118880 irqbalance-0.56.tar.bz2 https://irqbalance.org/releases/
+[D] 4082118880 irqbalance-0.56.tbz2 http://irqbalance.googlecode.com/files/
