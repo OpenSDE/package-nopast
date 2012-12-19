@@ -26,7 +26,7 @@
 
 [L] GPL
 [S] Stable
-[V] 3.0-20120411
+[V] 3.x-rcN-20120411
 [P] X -----5---9 800.000
 
-[D] 2187838307 aufs-util-3.0-20120411.tar.gz !https://github.com/morfoh/aufs-util/tarball/aufs-util-3.0-20120411
+[D] 1763806654 aufs-util-3.x-rcN-20120411.tar.gz !https://github.com/morfoh/aufs-util/tarball/aufs-util-3.x-rcN-20120411
