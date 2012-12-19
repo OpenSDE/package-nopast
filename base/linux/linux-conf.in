@@ -214,7 +214,7 @@ lx_grabextraversion () {
 	fi
 }
 lx_injectextraversion () {
-	local version_header=linux/version.h
+	local version_header=generated/uapi/linux/version.h
 	local rerun=
 
 	if [ -f include/linux/utsrelease.h ]; then
