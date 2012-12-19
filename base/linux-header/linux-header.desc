@@ -32,12 +32,12 @@
 
 [L] GPL
 [S] Stable
-[V] 3.4.56
+[V] 3.10.4
 
 # in theory we only need the initial headers (stage 0) however some arches
 # generate some and need a compiler to do so (SPARC) so we do rebuild them
 # in stage 1 ...
 [P] X 01-------9 100.300
 
-[D] 4068848805 linux-3.4.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v3.0/
-[D] 1588791326 patch-3.4.56.bz2 http://kernel.org/pub/linux/kernel/v3.0/
+[D] 502805126 linux-3.10.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v3.0/
+[D] 1321313175 patch-3.10.4.bz2 http://kernel.org/pub/linux/kernel/v3.0/
