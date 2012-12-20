@@ -20,6 +20,8 @@
 [T] device arrays using the "md" driver in Linux, also
 [T] known as Software RAID arrays
 
+[U] http://neil.brown.name/blog/mdadm
+
 [A] Neil Brown
 [M] Alejandro Mery <amery@opensde.org>
 
