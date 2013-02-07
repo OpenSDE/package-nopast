@@ -6,7 +6,7 @@
 [DEP] bash
 [DEP] bison
 [DEP] bzip2
-[DEP] cloog-ppl
+[DEP] cloog
 [DEP] coreutils
 [DEP] diffutils
 [DEP] fhs
