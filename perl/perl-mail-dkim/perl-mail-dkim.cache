@@ -1,0 +1,22 @@
+
+[TIMESTAMP] 1360188453 Wed Feb  6 23:07:33 2013
+[BUILDTIME] 0 (5)
+[SIZE] 0.21 MB, 42 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] perl
+[DEP] perl-net-dns
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
