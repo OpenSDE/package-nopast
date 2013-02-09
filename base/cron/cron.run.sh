@@ -21,7 +21,7 @@ if [ "$1" = "-mail-to-root" ] ; then
 	exit
 fi
 
-x="$( hostname > /dev/null )"
+x="$( hostname 2> /dev/null )"
 echo "Output of the daily cron at ${x:-localhost}."
 echo "Local time is `date | tr -s ' '`."
 echo
