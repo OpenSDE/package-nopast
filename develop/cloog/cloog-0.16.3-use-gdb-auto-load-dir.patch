@@ -1,0 +1,38 @@
+Do not put gdb python plugin directly into $libdir
+
+Placing files like 'libisl.so.7.0.0-gdb.py' into '$libdir' results in
+warnings when running 'ldconfig' because it is not an ELF file.
+A common place where to put gdb plugins is '$datadir/gdb/auto-load$libdir'
+like '/usr/share/gdb/auto-load/usr/lib'.
+
+Note:
+
+This patch assumes that gdb and gcc are using the same prefix!
+
+--- a/isl/Makefile.am	2013-02-11 15:59:59.276023102 +0100
++++ b/isl/Makefile.am	2013-02-11 16:04:04.802994331 +0100
+@@ -258,6 +258,6 @@
+ 	case $$libisl in \
+ 	'') echo Cannot find isl library name. GDB bindings not installed.;; \
+ 	*) echo $(INSTALL_DATA) $(srcdir)/isl.py \
+-		$(DESTDIR)$(libdir)/$$libisl-gdb.py; \
+-	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(libdir)"; \
+-	$(INSTALL_DATA) $(srcdir)/isl.py $(DESTDIR)$(libdir)/$$libisl-gdb.py; esac
++		$(DESTDIR)$(datadir)/gdb/auto-load$(libdir)/$$libisl-gdb.py; \
++	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(datadir)/gdb/auto-load$(libdir)"; \
++	$(INSTALL_DATA) $(srcdir)/isl.py $(DESTDIR)$(datadir)/gdb/auto-load$(libdir)/$$libisl-gdb.py; esac
+--- a/isl/Makefile.in	2013-02-11 16:00:11.990994074 +0100
++++ b/isl/Makefile.in	2013-02-11 16:03:32.413771959 +0100
+@@ -2189,9 +2189,9 @@
+ 	case $$libisl in \
+ 	'') echo Cannot find isl library name. GDB bindings not installed.;; \
+ 	*) echo $(INSTALL_DATA) $(srcdir)/isl.py \
+-		$(DESTDIR)$(libdir)/$$libisl-gdb.py; \
+-	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(libdir)"; \
+-	$(INSTALL_DATA) $(srcdir)/isl.py $(DESTDIR)$(libdir)/$$libisl-gdb.py; esac
++		$(DESTDIR)$(datadir)/gdb/auto-load$(libdir)/$$libisl-gdb.py; \
++	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(datadir)/gdb/auto-load$(libdir)"; \
++	$(INSTALL_DATA) $(srcdir)/isl.py $(DESTDIR)$(datadir)/gdb/auto-load$(libdir)/$$libisl-gdb.py; esac
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
