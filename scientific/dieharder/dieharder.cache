@@ -1,0 +1,24 @@
+
+[TIMESTAMP] 1357722758 Wed Jan  9 10:12:38 2013
+[BUILDTIME] 20 (5)
+[SIZE] 3.23 MB, 62 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] gsl
+[DEP] linux-header
+[DEP] make
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
