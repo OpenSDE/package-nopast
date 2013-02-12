@@ -1,0 +1,60 @@
+Do not put gdb python plugin directly into $libdir
+
+Placing files like 'libstdc++.so.6.0.17-gdb.py' into '$libdir' results in
+warnings when running 'ldconfig' because it is not an ELF file.
+A common place where to put gdb plugins is '$datadir/gdb/auto-load$libdir'
+like '/usr/share/gdb/auto-load/usr/lib'.
+
+Note:
+
+This patch assumes that gdb and gcc are using the same prefix!
+
+--- a/libstdc++-v3/python/Makefile.am	2013-02-11 11:21:56.256542983 +0100
++++ b/libstdc++-v3/python/Makefile.am	2013-02-11 14:00:22.742531876 +0100
+@@ -38,10 +38,10 @@
+ 
+ gdb.py: hook.in Makefile
+ 	sed -e 's,@pythondir@,$(pythondir),' \
+-	    -e 's,@toolexeclibdir@,$(toolexeclibdir),' < $(srcdir)/hook.in > $@
++	    -e 's,@toolexeclibdir@,$(datadir)/gdb/auto-load$(toolexeclibdir),' < $(srcdir)/hook.in > $@
+ 
+ install-data-local: gdb.py
+-	@$(mkdir_p) $(DESTDIR)$(toolexeclibdir)
++	@$(mkdir_p) $(DESTDIR)$(datadir)/gdb/auto-load$(toolexeclibdir)
+ ## We want to install gdb.py as SOMETHING-gdb.py.  SOMETHING is the
+ ## full name of the final library.  We want to ignore symlinks, the
+ ## .la file, and any previous -gdb.py file.  This is inherently
+@@ -59,5 +59,5 @@
+ 	    esac; \
+ 	  done; \
+ 	cd $$here; \
+-	echo " $(INSTALL_DATA) gdb.py $(DESTDIR)$(toolexeclibdir)/$$libname-gdb.py"; \
+-	$(INSTALL_DATA) gdb.py $(DESTDIR)$(toolexeclibdir)/$$libname-gdb.py
++	echo " $(INSTALL_DATA) gdb.py $(DESTDIR)$(datadir)/gdb/auto-load$(toolexeclibdir)/$$libname-gdb.py"; \
++	$(INSTALL_DATA) gdb.py $(DESTDIR)$(datadir)/gdb/auto-load$(toolexeclibdir)/$$libname-gdb.py
+--- a/libstdc++-v3/python/Makefile.in	2013-02-11 11:21:59.428241462 +0100
++++ b/libstdc++-v3/python/Makefile.in	2013-02-11 14:00:05.000008051 +0100
+@@ -493,10 +493,10 @@
+ 
+ gdb.py: hook.in Makefile
+ 	sed -e 's,@pythondir@,$(pythondir),' \
+-	    -e 's,@toolexeclibdir@,$(toolexeclibdir),' < $(srcdir)/hook.in > $@
++	    -e 's,@toolexeclibdir@,$(datadir)/gdb/auto-load$(toolexeclibdir),' < $(srcdir)/hook.in > $@
+ 
+ install-data-local: gdb.py
+-	@$(mkdir_p) $(DESTDIR)$(toolexeclibdir)
++	@$(mkdir_p) $(DESTDIR)$(datadir)/gdb/auto-load$(toolexeclibdir)
+ 	@here=`pwd`; cd $(DESTDIR)$(toolexeclibdir); \
+ 	  for file in libstdc++*; do \
+ 	    case $$file in \
+@@ -509,8 +509,8 @@
+ 	    esac; \
+ 	  done; \
+ 	cd $$here; \
+-	echo " $(INSTALL_DATA) gdb.py $(DESTDIR)$(toolexeclibdir)/$$libname-gdb.py"; \
+-	$(INSTALL_DATA) gdb.py $(DESTDIR)$(toolexeclibdir)/$$libname-gdb.py
++	echo " $(INSTALL_DATA) gdb.py $(DESTDIR)$(datadir)/gdb/auto-load$(toolexeclibdir)/$$libname-gdb.py"; \
++	$(INSTALL_DATA) gdb.py $(DESTDIR)$(datadir)/gdb/auto-load$(toolexeclibdir)/$$libname-gdb.py
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
