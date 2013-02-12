@@ -1,0 +1,109 @@
+Check sys/sdt.h with AC_CHECK_HEADERS
+
+The original patch was backported to gcc 4.7.2!
+
+see: http://patchwork.ozlabs.org/patch/207141/ for the original patch
+------------------------------------------------------------------------------
+2012-12-18  Christian Bruel  <christian.bruel@st.com>
+
+	* configure.ac: Check sys/sdt.h with AC_CHECK_HEADERS.
+	* configure: Regenerate.
+	* config.in: Regenerat.e
+------------------------------------------------------------------------------
+
+--- a/gcc/configure
++++ b/gcc/configure
+@@ -8286,7 +8286,7 @@ fi
+ 
+ for ac_header in limits.h stddef.h string.h strings.h stdlib.h time.h iconv.h \
+ 		 fcntl.h unistd.h sys/file.h sys/time.h sys/mman.h \
+-		 sys/resource.h sys/param.h sys/times.h sys/stat.h \
++		 sys/resource.h sys/param.h sys/times.h sys/sdt.h sys/stat.h \
+ 		 direct.h malloc.h langinfo.h ldfcn.h locale.h wchar.h
+ do :
+   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+@@ -26716,20 +26716,6 @@ $as_echo "#define TARGET_LIBC_PROVIDES_SSP 1" >>co
+ 
+ fi
+ 
+-# Test for <sys/sdt.h> on the target.
+-
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking sys/sdt.h in the target C library" >&5
+-$as_echo_n "checking sys/sdt.h in the target C library... " >&6; }
+-have_sys_sdt_h=no
+-if test -f $target_header_dir/sys/sdt.h; then
+-  have_sys_sdt_h=yes
+-
+-$as_echo "#define HAVE_SYS_SDT_H 1" >>confdefs.h
+-
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $have_sys_sdt_h" >&5
+-$as_echo "$have_sys_sdt_h" >&6; }
+-
+ # Check if TFmode long double should be used by default or not.
+ # Some glibc targets used DFmode long double, but with glibc 2.4
+ # and later they can use TFmode.
+--- a/gcc/configure.ac
++++ b/gcc/configure.ac
+@@ -940,7 +940,7 @@ ACX_HEADER_STRING
+ AC_HEADER_SYS_WAIT
+ AC_CHECK_HEADERS(limits.h stddef.h string.h strings.h stdlib.h time.h iconv.h \
+ 		 fcntl.h unistd.h sys/file.h sys/time.h sys/mman.h \
+-		 sys/resource.h sys/param.h sys/times.h sys/stat.h \
++		 sys/resource.h sys/param.h sys/times.h sys/sdt.h sys/stat.h \
+ 		 direct.h malloc.h langinfo.h ldfcn.h locale.h wchar.h)
+ 
+ # Check for thread headers.
+@@ -4718,17 +4718,6 @@ if test x$gcc_cv_libc_provides_ssp = xyes; then
+ 	    [Define if your target C library provides stack protector support])
+ fi
+ 
+-# Test for <sys/sdt.h> on the target.
+-GCC_TARGET_TEMPLATE([HAVE_SYS_SDT_H])
+-AC_MSG_CHECKING(sys/sdt.h in the target C library)
+-have_sys_sdt_h=no
+-if test -f $target_header_dir/sys/sdt.h; then
+-  have_sys_sdt_h=yes
+-  AC_DEFINE(HAVE_SYS_SDT_H, 1,
+-            [Define if your target C library provides sys/sdt.h])
+-fi
+-AC_MSG_RESULT($have_sys_sdt_h)
+-
+ # Check if TFmode long double should be used by default or not.
+ # Some glibc targets used DFmode long double, but with glibc 2.4
+ # and later they can use TFmode.
+--- a/gcc/config.in
++++ b/gcc/config.in
+@@ -465,6 +465,12 @@
+ #endif
+ 
+ 
++/* Define if your assembler supports SPARC4 instructions. */
++#ifndef USED_FOR_TARGET
++#undef HAVE_AS_SPARC4
++#endif
++
++
+ /* Define if your assembler and linker support GOTDATA_OP relocs. */
+ #ifndef USED_FOR_TARGET
+ #undef HAVE_AS_SPARC_GOTDATA_OP
+@@ -1210,7 +1216,7 @@
+ #endif
+ 
+ 
+-/* Define if your PowerPC64 linker supports a large TOC. */
++/* Define if your AIX linker supports a large TOC. */
+ #ifndef USED_FOR_TARGET
+ #undef HAVE_LD_LARGE_TOC
+ #endif
+@@ -1447,7 +1453,10 @@
+ 
+ 
+ /* Define if your target C library provides sys/sdt.h */
++#ifndef USED_FOR_TARGET
+ #undef HAVE_SYS_SDT_H
++#endif
++
+ 
+ /* Define to 1 if you have the <sys/stat.h> header file. */
+ #ifndef USED_FOR_TARGET
