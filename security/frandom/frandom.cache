@@ -1,0 +1,18 @@
+
+[TIMESTAMP] 1357723029 Wed Jan  9 10:17:09 2013
+[BUILDTIME] 0 (5)
+[SIZE] 0.01 MB, 7 files
+
+[DEP] bash
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] fhs
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] runit
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
