@@ -18,7 +18,7 @@
 [T] full-featured, open-source indexing and searching API.
 [T] CLucene is faster than lucene as it is written in C++.
 
-[U] http://clucence.sourceforge.net
+[U] http://clucene.sourceforge.net
 
 [A] klink1190 <ustramooner AT hotmail.com>
 [M] Aldas Nabazas <aldas@opensde.net>
