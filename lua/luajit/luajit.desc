@@ -38,4 +38,4 @@
 
 [D] 495130945 LuaJIT-2.0.1.tar.gz http://luajit.org/download/
 # official hotfixes
-#[D] 4123238250 LuaJit-2.0.0-hotfix1.patch !http://luajit.org/download/beta8_hotfix1.patch
+[D] 4238368421 LuaJIT-2.0.1-hotfix1.patch !http://luajit.org/download/v2.0.1_hotfix1.patch
