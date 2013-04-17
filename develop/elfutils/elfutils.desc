@@ -34,9 +34,9 @@
 
 [L] GPL
 [S] Beta
-[V] 0.153
+[V] 0.155
 [P] X -?---5---9 102.000
 
-[D] 3672041578 elfutils-0.153.tar.bz2 https://fedorahosted.org/releases/e/l/elfutils/0.153/
-[D] 4125756208 elfutils-portability.patch https://fedorahosted.org/releases/e/l/elfutils/0.153/
-[D] 2315075130 elfutils-robustify.patch https://fedorahosted.org/releases/e/l/elfutils/0.153/
+[D] 2509460593 elfutils-0.155.tar.bz2 https://fedorahosted.org/releases/e/l/elfutils/0.155/
+[D] 4125756208 elfutils-0.155-portability.patch !https://fedorahosted.org/releases/e/l/elfutils/0.153/elfutils-portability.patch
+[D] 2315075130 elfutils-0.155-robustify.patch !https://fedorahosted.org/releases/e/l/elfutils/0.153/elfutils-robustify.patch
