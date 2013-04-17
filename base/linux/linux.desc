@@ -31,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 3.4.40
+[V] 3.4.41
 [P] X -?---5---9 102.060
 
 [D] 4068848805 linux-3.4.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v3.0/
-[D] 823726078 patch-3.4.40.bz2 http://kernel.org/pub/linux/kernel/v3.0/
+[D] 3459454471 patch-3.4.41.bz2 http://kernel.org/pub/linux/kernel/v3.0/
