@@ -33,12 +33,12 @@
 
 [L] LGPL MIT
 [S] Stable
-[V] 2.2.0
+[V] 2.2.1
 [P] X -----5---9 194.300
 
 [CV-URL] http://www.dovecot.org/download.html
 
-[D] 717176319 dovecot-2.2.0.tar.gz http://dovecot.org/releases/2.2/
+[D] 887488322 dovecot-2.2.1.tar.gz http://dovecot.org/releases/2.2/
 # development version
 #[D] 831575579 dovecot-2.2-82ce71d8625c.tar.bz2 !http://hg.dovecot.org/dovecot-2.2/archive/82ce71d8625c.tar.bz2
 #[D] 2417517696 dovecot-unicodedata-2012-08-08.txt !http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
