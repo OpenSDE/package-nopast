@@ -1,0 +1,154 @@
+From 737b3b4f4d1ecdff6597f5f299bdef6873147bf8 Mon Sep 17 00:00:00 2001
+From: Christian Wiese <christian.wiese@securepoint.de>
+Date: Thu, 25 Apr 2013 16:27:56 +0200
+Subject: [PATCH] common: add global variable for foreground operation
+
+---
+ common/common.c  |    1 +
+ include/common.h |    3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/common/common.c b/common/common.c
+index ef680b0..e02190a 100644
+--- a/common/common.c
++++ b/common/common.c
+@@ -32,6 +32,7 @@
+ #include "nut_version.h"
+ const char *UPS_VERSION = NUT_VERSION_MACRO;
+ 
++	int	foreground = 0;
+ 	int	nut_debug_level = 0;
+ 	int	nut_log_level = 0;
+ 	static	int	upslog_flags = UPSLOG_STDERR;
+diff --git a/include/common.h b/include/common.h
+index d044d52..a67c176 100644
+--- a/include/common.h
++++ b/include/common.h
+@@ -52,6 +52,9 @@ void open_syslog(const char *progname);
+ /* close ttys and become a daemon */
+ void background(void);
+ 
++/* do not detach from controlling tty and run in foreground */
++extern int foreground;
++
+ /* do this here to keep pwd/grp stuff out of the main files */
+ struct passwd *get_user_pwent(const char *name);
+ 
+-- 
+1.7.10.2
+
+
+From 7201d2536e3ca96a617d38c8c1e680200fcdf83e Mon Sep 17 00:00:00 2001
+From: Christian Wiese <christian.wiese@securepoint.de>
+Date: Thu, 25 Apr 2013 16:29:21 +0200
+Subject: [PATCH] drivers: add command line option to not detach from
+ controlling tty
+
+This is needed to run the standalone driver by a supervise service like
+daemontools, runit, s6 etc. without getting all the noise when using
+the -D option for debugging.
+
+The original default behavoir, which detaches from the controlling tty
+and running in background has been preserved.
+
+To run a driver in foreground you have to use the -f command option.
+---
+ drivers/main.c |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/main.c b/drivers/main.c
+index 7c2fc55..42f6ec9 100644
+--- a/drivers/main.c
++++ b/drivers/main.c
+@@ -89,6 +89,7 @@ static void help_msg(void)
+ 	printf("  -a <id>        - autoconfig using ups.conf section <id>\n");
+ 	printf("                 - note: -x after -a overrides ups.conf settings\n\n");
+ 
++	printf("  -f             - run in foreground\n");
+ 	printf("  -V             - print version, then exit\n");
+ 	printf("  -L             - print parseable list of driver variables\n");
+ 	printf("  -D             - raise debugging level\n");
+@@ -488,7 +489,7 @@ int main(int argc, char **argv)
+ 	/* build the driver's extra (-x) variable table */
+ 	upsdrv_makevartable();
+ 
+-	while ((i = getopt(argc, argv, "+a:kDhx:Lqr:u:Vi:")) != -1) {
++	while ((i = getopt(argc, argv, "+a:fkDhx:Lqr:u:Vi:")) != -1) {
+ 		switch (i) {
+ 			case 'a':
+ 				upsname = optarg;
+@@ -499,6 +500,9 @@ int main(int argc, char **argv)
+ 					fatalx(EXIT_FAILURE, "Error: Section %s not found in ups.conf",
+ 						optarg);
+ 				break;
++			case 'f':
++				foreground = 1;
++				break;
+ 			case 'D':
+ 				nut_debug_level++;
+ 				break;
+@@ -668,7 +672,7 @@ int main(int argc, char **argv)
+ 	if (dstate_getinfo("ups.serial") != NULL)
+ 		dstate_setinfo("device.serial", "%s", dstate_getinfo("ups.serial"));
+ 
+-	if (nut_debug_level == 0) {
++	if ((nut_debug_level == 0) && (!foreground)) {
+ 		background();
+ 		writepid(pidfn);	/* PID changes when backgrounding */
+ 	}
+-- 
+1.7.10.2
+
+
+From 285bc3c90146b24508ebbcab21c8ebab3d990f63 Mon Sep 17 00:00:00 2001
+From: Christian Wiese <christian.wiese@securepoint.de>
+Date: Thu, 25 Apr 2013 16:38:17 +0200
+Subject: [PATCH] upsd: add command line option to not detach from controlling
+ tty
+
+This is needed to run upsd by a supervise service like daemontools, runit, s6
+etc. without getting all the noise when using the -D option for debugging.
+
+The original default behavoir, which detaches from the controlling tty and
+running in background has been preserved.
+
+To run upsd in foreground you have to use the -f command option.
+---
+ server/upsd.c |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/server/upsd.c b/server/upsd.c
+index f8d9c7e..86964c0 100644
+--- a/server/upsd.c
++++ b/server/upsd.c
+@@ -819,6 +819,7 @@ static void help(const char *progname)
+ 	printf("		 - reload: reread configuration files\n");
+ 	printf("		 - stop: stop process and exit\n");
+ 	printf("  -D		raise debugging level\n");
++	printf("  -f		run in foreground\n");
+ 	printf("  -h		display this help\n");
+ 	printf("  -r <dir>	chroots to <dir>\n");
+ 	printf("  -q		raise log level threshold\n");
+@@ -936,6 +937,10 @@ int main(int argc, char **argv)
+ 				nut_debug_level++;
+ 				break;
+ 
++			case 'f':
++				foreground = 1;
++				break;
++
+ 			case '4':
+ 				opt_af = AF_INET;
+ 				break;
+@@ -1023,7 +1028,7 @@ int main(int argc, char **argv)
+ 	/* handle upsd.users */
+ 	user_load();
+ 
+-	if (!nut_debug_level) {
++	if ((!nut_debug_level) && (!foreground)) {
+ 		background();
+ 		writepid(pidfn);
+ 	} else {
+-- 
+1.7.10.2
+
