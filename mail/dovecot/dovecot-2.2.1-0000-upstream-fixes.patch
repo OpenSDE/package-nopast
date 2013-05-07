@@ -1009,3 +1009,253 @@ index da07e9b..9560cc4 100644
 -- 
 1.7.10.2
 
+
+From ebc36aca877984a309ee676da1f88d0d9a87e0c2 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 2 May 2013 16:20:02 +0300
+Subject: [PATCH] example-config: Typofix
+
+
+diff --git a/doc/example-config/dovecot.conf b/doc/example-config/dovecot.conf
+index 16b0b0b..5697661 100644
+--- a/doc/example-config/dovecot.conf
++++ b/doc/example-config/dovecot.conf
+@@ -47,7 +47,7 @@
+ # these networks. Typically you'd specify your IMAP proxy servers here.
+ #login_trusted_networks =
+ 
+-# Sepace separated list of login access check sockets (e.g. tcpwrap)
++# Space separated list of login access check sockets (e.g. tcpwrap)
+ #login_access_sockets = 
+ 
+ # With proxy_maybe=yes if proxy destination matches any of these IPs, don't do
+-- 
+1.7.10.2
+
+
+From d47967d36496b7e75f3152f917b8e51ef88affd7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 2 May 2013 18:11:56 +0300
+Subject: [PATCH] imap: Fixed using literals for URLs in CATENATE.
+
+
+diff --git a/src/imap/cmd-append.c b/src/imap/cmd-append.c
+index 9153e52..b825692 100644
+--- a/src/imap/cmd-append.c
++++ b/src/imap/cmd-append.c
+@@ -349,6 +349,30 @@ static void cmd_append_finish_catenate(struct client_command_context *cmd)
+ 	}
+ }
+ 
++static bool catenate_args_can_stop(struct cmd_append_context *ctx,
++				   const struct imap_arg *args)
++{
++	/* eat away literal_sizes from URLs */
++	while (args->type != IMAP_ARG_EOL) {
++		if (imap_arg_atom_equals(args, "TEXT"))
++			return TRUE;
++		if (!imap_arg_atom_equals(args, "URL")) {
++			/* error - handle it later */
++			return TRUE;
++		}
++		args++;
++		if (args->type == IMAP_ARG_LITERAL_SIZE ||
++		    args->type == IMAP_ARG_LITERAL_SIZE_NONSYNC) {
++			if (args->type == IMAP_ARG_LITERAL_SIZE)
++				cmd_append_send_literal_continue(ctx->client);
++			imap_parser_read_last_literal(ctx->save_parser);
++			return FALSE;
++		}
++		args++;
++	}
++	return TRUE;
++}
++
+ static bool cmd_append_continue_catenate(struct client_command_context *cmd)
+ {
+ 	struct client *client = cmd->client;
+@@ -368,10 +392,12 @@ static bool cmd_append_continue_catenate(struct client_command_context *cmd)
+ 	   it's fine that this would need to fully fit into input buffer
+ 	   (although clients attempting to DoS could simply insert an extra
+ 	   {1+} between the URLs) */
+-	ret = imap_parser_read_args(ctx->save_parser, 0,
+-				    IMAP_PARSE_FLAG_LITERAL_SIZE |
+-				    IMAP_PARSE_FLAG_LITERAL8 |
+-				    IMAP_PARSE_FLAG_INSIDE_LIST, &args);
++	do {
++		ret = imap_parser_read_args(ctx->save_parser, 0,
++					    IMAP_PARSE_FLAG_LITERAL_SIZE |
++					    IMAP_PARSE_FLAG_LITERAL8 |
++					    IMAP_PARSE_FLAG_INSIDE_LIST, &args);
++	} while (ret > 0 && !catenate_args_can_stop(ctx, args));
+ 	if (ret == -1) {
+ 		msg = imap_parser_get_error(ctx->save_parser, &fatal);
+ 		if (fatal)
+@@ -630,8 +656,11 @@ static bool cmd_append_finish_parsing(struct client_command_context *cmd)
+ 	return cmd_sync(cmd, sync_flags, imap_flags, str_c(msg));
+ }
+ 
+-static bool cmd_append_args_can_stop(const struct imap_arg *args)
++static bool cmd_append_args_can_stop(struct cmd_append_context *ctx,
++				     const struct imap_arg *args)
+ {
++	const struct imap_arg *cat_list;
++
+ 	if (args->type == IMAP_ARG_EOL)
+ 		return TRUE;
+ 
+@@ -645,8 +674,8 @@ static bool cmd_append_args_can_stop(const struct imap_arg *args)
+ 	    args->type == IMAP_ARG_LITERAL_SIZE_NONSYNC)
+ 		return TRUE;
+ 	if (imap_arg_atom_equals(args, "CATENATE") &&
+-	    args[1].type == IMAP_ARG_LIST)
+-		return TRUE;
++	    imap_arg_get_list(&args[1], &cat_list))
++		return catenate_args_can_stop(ctx, cat_list);
+ 	return FALSE;
+ }
+ 
+@@ -680,7 +709,7 @@ static bool cmd_append_parse_new_msg(struct client_command_context *cmd)
+ 		ret = imap_parser_read_args(ctx->save_parser, arg_min_count++,
+ 					    IMAP_PARSE_FLAG_LITERAL_SIZE |
+ 					    IMAP_PARSE_FLAG_LITERAL8, &args);
+-	} while (ret > 0 && !cmd_append_args_can_stop(args));
++	} while (ret > 0 && !cmd_append_args_can_stop(ctx, args));
+ 	if (ret == -1) {
+ 		if (!ctx->failed) {
+ 			msg = imap_parser_get_error(ctx->save_parser, &fatal);
+-- 
+1.7.10.2
+
+
+From a2a529c6dbe1fc2b4e71e456c7cd3fc53b18bee7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 2 May 2013 18:18:26 +0300
+Subject: [PATCH] imap: Don't allow empty CATENATE () list.
+
+
+diff --git a/src/imap/cmd-append.c b/src/imap/cmd-append.c
+index b825692..a7e2b31 100644
+--- a/src/imap/cmd-append.c
++++ b/src/imap/cmd-append.c
+@@ -586,6 +586,10 @@ cmd_append_handle_args(struct client_command_context *cmd,
+ 	if (cat_list == NULL) {
+ 		/* normal APPEND */
+ 		return 1;
++	} else if (cat_list->type == IMAP_ARG_EOL) {
++		/* zero parts */
++		client_send_command_error(cmd, "Empty CATENATE list.");
++		return -1;
+ 	} else if ((ret = cmd_append_catenate(cmd, cat_list, nonsync_r)) < 0) {
+ 		/* invalid parameters, abort immediately */
+ 		return -1;
+@@ -734,6 +738,8 @@ static bool cmd_append_parse_new_msg(struct client_command_context *cmd)
+ 	ret = cmd_append_handle_args(cmd, args, &nonsync);
+ 	if (ret < 0) {
+ 		/* invalid parameters, abort immediately */
++		if (ctx->catenate)
++			client->input_skip_line = TRUE;
+ 		cmd_append_finish(ctx);
+ 		return TRUE;
+ 	}
+-- 
+1.7.10.2
+
+
+From b422c981522d9adda053424a5b837b1c5f06a991 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 2 May 2013 18:29:50 +0300
+Subject: [PATCH] imap-urlauth-worker: Fixed a crash (by removing unnecessary
+ code)
+
+
+diff --git a/src/imap-urlauth/imap-urlauth-worker.c b/src/imap-urlauth/imap-urlauth-worker.c
+index 6d94a8f..49a3d59 100644
+--- a/src/imap-urlauth/imap-urlauth-worker.c
++++ b/src/imap-urlauth/imap-urlauth-worker.c
+@@ -54,7 +54,7 @@ struct client {
+ 	struct io *io, *ctrl_io;
+ 	struct istream *input, *ctrl_input;
+ 	struct ostream *output, *ctrl_output;
+-	struct timeout *to_idle, *to_delay;
++	struct timeout *to_idle;
+ 
+ 	char *access_user;
+ 	ARRAY_TYPE(string) access_apps;
+@@ -245,8 +245,6 @@ static void client_destroy(struct client *client)
+ 		io_remove(&client->ctrl_io);
+ 	if (client->to_idle != NULL)
+ 		timeout_remove(&client->to_idle);
+-	if (client->to_delay != NULL)
+-		timeout_remove(&client->to_delay);
+ 
+ 	if (client->input != NULL)
+ 		i_stream_destroy(&client->input);
+@@ -605,7 +603,6 @@ client_handle_user_command(struct client *client, const char *cmd,
+ 			i_debug("User %s doesn't exist", input.username);
+ 
+ 		client_send_line(client, "NO");
+-		timeout_remove(&client->to_delay);
+ 		return 1;
+ 	}
+ 
+@@ -669,7 +666,7 @@ static bool client_handle_input(struct client *client)
+ 	const char *line, *cmd, *error;
+ 	int ret;
+ 
+-	if (client->url != NULL || client->to_delay != NULL) {
++	if (client->url != NULL) {
+ 		/* we're still processing a URL. wait until it's
+ 		   finished. */
+ 		io_remove(&client->io);
+-- 
+1.7.10.2
+
+
+From c35d09cecd4de0fa69514814d26ead0cd8776972 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 2 May 2013 18:32:47 +0300
+Subject: [PATCH] lib-imap-urlauth: Don't try to access garbage memory on
+ error handling path.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth.c b/src/lib-imap-urlauth/imap-urlauth.c
+index 2a557a2..0019f0e 100644
+--- a/src/lib-imap-urlauth/imap-urlauth.c
++++ b/src/lib-imap-urlauth/imap-urlauth.c
+@@ -362,6 +362,7 @@ int imap_urlauth_fetch_parsed(struct imap_urlauth_context *uctx,
+ 	unsigned char mailbox_key[IMAP_URLAUTH_KEY_LEN];
+ 	int ret;
+ 
++	*mpurl_r = NULL;
+ 	*error_r = NULL;
+ 	*error_code_r = MAIL_ERROR_NONE;
+ 
+-- 
+1.7.10.2
+
+
+From 769728fec2c3a87695f3c26e5fc3773cb5618a9f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Fri, 3 May 2013 17:17:15 +0300
+Subject: [PATCH] quota-status: Return 554 instead of 552 on quota failures.
+ This is because RFC 5321/2821 recommends that 552 is
+ treated the same as 452.
+
+
+diff --git a/src/plugins/quota/quota-status.c b/src/plugins/quota/quota-status.c
+index 23a0070..bfac5e7 100644
+--- a/src/plugins/quota/quota-status.c
++++ b/src/plugins/quota/quota-status.c
+@@ -107,7 +107,7 @@ static void client_handle_request(struct quota_client *client)
+ 			/* over quota */
+ 			value = mail_user_plugin_getenv(user, "quota_status_overquota");
+ 			if (value == NULL)
+-				value = t_strdup_printf("552 5.2.2 %s\n\n", error);
++				value = t_strdup_printf("554 5.2.2 %s\n\n", error);
+ 		}
+ 		mail_user_unref(&user);
+ 		mail_storage_service_user_free(&service_user);
+-- 
+1.7.10.2
+
