@@ -1259,3 +1259,848 @@ index 23a0070..bfac5e7 100644
 -- 
 1.7.10.2
 
+
+From c366e44efb27db7c57dde1b4f3580b879a65a761 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 14:58:55 +0300
+Subject: [PATCH] acl: Mailbox creation ignored ACLs (due to API changes in
+ v2.2). The created mailbox couldn't have been accessed
+ however.
+
+
+diff --git a/src/plugins/acl/acl-mailbox.c b/src/plugins/acl/acl-mailbox.c
+index 6ed4bc9..1630af5 100644
+--- a/src/plugins/acl/acl-mailbox.c
++++ b/src/plugins/acl/acl-mailbox.c
+@@ -118,8 +118,23 @@ acl_mailbox_create(struct mailbox *box, const struct mailbox_update *update,
+ 	struct acl_mailbox *abox = ACL_CONTEXT(box);
+ 	int ret;
+ 
+-	/* we already checked permissions in list.mailbox_create_dir().
+-	   ignore ACLs in this mailbox until creation is complete, because
++	/* we're looking up CREATE permission from our parent's rights */
++	ret = acl_mailbox_list_have_right(box->list, box->name, TRUE,
++					  ACL_STORAGE_RIGHT_CREATE, NULL);
++	if (ret <= 0) {
++		if (ret < 0) {
++			mail_storage_set_internal_error(box->storage);
++			return -1;
++		}
++		/* Note that if user didn't have LOOKUP permission to parent
++		   mailbox, this may reveal the mailbox's existence to user.
++		   Can't help it. */
++		mail_storage_set_error(box->storage, MAIL_ERROR_PERM,
++				       MAIL_ERRSTR_NO_PERMISSION);
++		return -1;
++	}
++
++	/* ignore ACLs in this mailbox until creation is complete, because
+ 	   super.create() may call e.g. mailbox_open() which will fail since
+ 	   we haven't yet copied ACLs to this mailbox. */
+ 	abox->skip_acl_checks = TRUE;
+-- 
+1.7.10.2
+
+
+From 31e39a37524bd48fea0af0dc8169a7eb46231a29 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 14:59:27 +0300
+Subject: [PATCH] acl: Optionally get default ACL's for private/shared
+ namespaces from user's INBOX. This probably should be the
+ default always, but better not break anyone's existing
+ setup until v2.3.0. So for now there's a setting for this:
+ plugin { acl_defaults_from_inbox = yes }
+
+
+diff --git a/src/plugins/acl/acl-api-private.h b/src/plugins/acl/acl-api-private.h
+index 90a83eb..852dc31 100644
+--- a/src/plugins/acl/acl-api-private.h
++++ b/src/plugins/acl/acl-api-private.h
+@@ -81,6 +81,7 @@ extern const char *const all_mailbox_rights[];
+ const char *const *
+ acl_backend_mask_get_names(struct acl_backend *backend,
+ 			   const struct acl_mask *mask, pool_t pool);
++struct acl_object *acl_backend_get_default_object(struct acl_backend *backend);
+ int acl_backend_get_default_rights(struct acl_backend *backend,
+ 				   const struct acl_mask **mask_r);
+ void acl_rights_write_id(string_t *dest, const struct acl_rights *right);
+diff --git a/src/plugins/acl/acl-backend-vfile.c b/src/plugins/acl/acl-backend-vfile.c
+index ccf1655..ce8f2ae 100644
+--- a/src/plugins/acl/acl-backend-vfile.c
++++ b/src/plugins/acl/acl-backend-vfile.c
+@@ -284,7 +284,7 @@ acl_backend_vfile_object_init_parent(struct acl_backend *backend,
+ 	}
+ 	if (parent == NULL) {
+ 		/* use the root */
+-		parent = "";
++		parent = acl_backend_get_default_object(backend)->name;
+ 	}
+ 	return acl_backend_vfile_object_init(backend, parent);
+ }
+diff --git a/src/plugins/acl/acl-backend.c b/src/plugins/acl/acl-backend.c
+index c1b4451..3e562a6 100644
+--- a/src/plugins/acl/acl-backend.c
++++ b/src/plugins/acl/acl-backend.c
+@@ -4,6 +4,7 @@
+ #include "hash.h"
+ #include "mail-storage-settings.h"
+ #include "mailbox-list.h"
++#include "mail-namespace.h"
+ #include "mail-user.h"
+ #include "acl-cache.h"
+ #include "acl-api-private.h"
+@@ -157,17 +158,35 @@ unsigned int acl_backend_lookup_right(struct acl_backend *backend,
+ 	return acl_cache_right_lookup(backend->cache, right);
+ }
+ 
++struct acl_object *acl_backend_get_default_object(struct acl_backend *backend)
++{
++	struct mail_user *user = mailbox_list_get_user(backend->list);
++	struct mail_namespace *ns = mailbox_list_get_namespace(backend->list);
++	const char *default_name = "";
++
++	if (backend->default_aclobj != NULL)
++		return backend->default_aclobj;
++
++	/* FIXME: this should probably be made default in v2.3 */
++	if (mail_user_plugin_getenv(user, "acl_defaults_from_inbox") != NULL) {
++		if (ns->type == MAIL_NAMESPACE_TYPE_PRIVATE ||
++		    ns->type == MAIL_NAMESPACE_TYPE_SHARED)
++			default_name = "INBOX";
++	}
++	backend->default_aclobj =
++		acl_object_init_from_name(backend, default_name);
++	return backend->default_aclobj;
++}
++
+ int acl_backend_get_default_rights(struct acl_backend *backend,
+ 				   const struct acl_mask **mask_r)
+ {
+-	if (backend->default_aclobj == NULL) {
+-		backend->default_aclobj =
+-			acl_object_init_from_name(backend, "");
+-	}
+-	if (backend->v.object_refresh_cache(backend->default_aclobj) < 0)
++	struct acl_object *aclobj = acl_backend_get_default_object(backend);
++
++	if (backend->v.object_refresh_cache(aclobj) < 0)
+ 		return -1;
+ 
+-	*mask_r = acl_cache_get_my_rights(backend->cache, "");
++	*mask_r = acl_cache_get_my_rights(backend->cache, aclobj->name);
+ 	if (*mask_r == NULL)
+ 		*mask_r = backend->default_aclmask;
+ 	return 0;
+-- 
+1.7.10.2
+
+
+From 0ee2c2bc34bee983d109094fe19dc6ac23b5660f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 15:04:57 +0300
+Subject: [PATCH] namespace { prefix="" list=no } should never be listed.
+
+
+diff --git a/src/lib-storage/list/mailbox-list-iter.c b/src/lib-storage/list/mailbox-list-iter.c
+index 6abba65..da95178 100644
+--- a/src/lib-storage/list/mailbox-list-iter.c
++++ b/src/lib-storage/list/mailbox-list-iter.c
+@@ -256,6 +256,9 @@ static bool ns_match_next(struct ns_list_iterate_context *ctx,
+ 		/* non-listable namespace matches only with exact prefix */
+ 		if (strncmp(ns->prefix, pattern, ns->prefix_len) != 0)
+ 			return FALSE;
++		/* prefix="" list=no is never listed */
++		if (ns->prefix_len == 0)
++			return FALSE;
+ 	}
+ 
+ 	prefix_without_sep = t_strndup(ns->prefix, len);
+-- 
+1.7.10.2
+
+
+From dba8e2552b0e4fba4c41b99c7cc2e54bfe2cf492 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 15:17:49 +0300
+Subject: [PATCH] maildir++: Fixed mail_shared_explicit_inbox=no
+
+
+diff --git a/src/lib-storage/list/mailbox-list-maildir-iter.c b/src/lib-storage/list/mailbox-list-maildir-iter.c
+index 6e2df66..30506a0 100644
+--- a/src/lib-storage/list/mailbox-list-maildir-iter.c
++++ b/src/lib-storage/list/mailbox-list-maildir-iter.c
+@@ -372,6 +372,7 @@ maildir_fill_readdir(struct maildir_list_iterate_context *ctx,
+ 	struct mail_namespace *ns = list->ns;
+ 	DIR *dirp;
+ 	struct dirent *d;
++	const char *vname;
+ 	int ret = 0;
+ 
+ 	dirp = opendir(ctx->dir);
+@@ -409,8 +410,8 @@ maildir_fill_readdir(struct maildir_list_iterate_context *ctx,
+ 		return maildir_fill_inbox(ctx, glob, "INBOX", update_only);
+ 	} else if ((ns->flags & NAMESPACE_FLAG_INBOX_ANY) != 0) {
+ 		/* show shared INBOX. */
+-		return maildir_fill_inbox(ctx, glob,
+-			t_strconcat(ns->prefix, "INBOX", NULL), update_only);
++		vname = mailbox_list_get_vname(ns->list, "INBOX");
++		return maildir_fill_inbox(ctx, glob, vname, update_only);
+ 	} else {
+ 		return 0;
+ 	}
+-- 
+1.7.10.2
+
+
+From bbdd76d381da01400db1879fd7fa2e2cb8e5e38a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 16:43:29 +0300
+Subject: [PATCH] lib-index: The previous assert-crashfix didn't actually fix
+ the problem.
+
+
+diff --git a/src/lib-index/mail-transaction-log-view.c b/src/lib-index/mail-transaction-log-view.c
+index 852fe08..707ad6b 100644
+--- a/src/lib-index/mail-transaction-log-view.c
++++ b/src/lib-index/mail-transaction-log-view.c
+@@ -95,24 +95,18 @@ int mail_transaction_log_view_set(struct mail_transaction_log_view *view,
+ 	}
+ 
+ 	for (file = view->log->files; file != NULL; file = file->next) {
+-		if (file->hdr.prev_file_seq == min_file_seq)
++		if (file->hdr.prev_file_seq == max_file_seq)
+ 			break;
+ 	}
+-	if (file != NULL && min_file_offset == file->hdr.prev_file_offset) {
++	if (file != NULL && max_file_offset == file->hdr.prev_file_offset) {
+ 		/* we can skip to the next file. we've delayed checking for
+ 		   min_file_seq <= max_file_seq until now, because it's not
+ 		   really an error to specify the same position twice (even if
+ 		   in "wrong" order) */
+ 		i_assert(min_file_seq <= max_file_seq ||
+-			 file->hdr.file_seq <= max_file_seq);
+-		min_file_seq = file->hdr.file_seq;
+-		min_file_offset = 0;
+-
+-		if (min_file_seq > max_file_seq) {
+-			/* empty view */
+-			max_file_seq = min_file_seq;
+-			max_file_offset = min_file_offset;
+-		}
++			 min_file_seq <= file->hdr.file_seq);
++		max_file_seq = file->hdr.file_seq;
++		max_file_offset = file->hdr.hdr_size;
+ 	} else {
+ 		i_assert(min_file_seq <= max_file_seq);
+ 	}
+@@ -126,16 +120,6 @@ int mail_transaction_log_view_set(struct mail_transaction_log_view *view,
+ 		return -1;
+ 	}
+ 
+-	if (min_file_offset > 0 && file != NULL &&
+-	    min_file_offset < file->hdr.hdr_size) {
+-		/* log file offset is probably corrupted in the index file. */
+-		mail_transaction_log_view_set_corrupted(view,
+-			"file_seq=%u, min_file_offset (%"PRIuUOFF_T
+-			") < hdr_size (%u)",
+-			min_file_seq, min_file_offset, file->hdr.hdr_size);
+-		return -1;
+-	}
+-
+ 	view->tail = view->head = file = NULL;
+ 	for (seq = min_file_seq; seq <= max_file_seq; seq++) {
+ 		if (file == NULL || file->hdr.file_seq != seq) {
+@@ -200,7 +184,23 @@ int mail_transaction_log_view_set(struct mail_transaction_log_view *view,
+ 			max_file_offset = min_file_offset;
+ 		}
+ 	}
+-	i_assert(min_file_offset >= view->tail->hdr.hdr_size);
++
++	if (min_file_offset < view->tail->hdr.hdr_size) {
++		/* log file offset is probably corrupted in the index file. */
++		mail_transaction_log_view_set_corrupted(view,
++			"file_seq=%u, min_file_offset (%"PRIuUOFF_T
++			") < hdr_size (%u)",
++			min_file_seq, min_file_offset, view->tail->hdr.hdr_size);
++		return -1;
++	}
++	if (max_file_offset < view->head->hdr.hdr_size) {
++		/* log file offset is probably corrupted in the index file. */
++		mail_transaction_log_view_set_corrupted(view,
++			"file_seq=%u, min_file_offset (%"PRIuUOFF_T
++			") < hdr_size (%u)",
++			max_file_seq, max_file_offset, view->head->hdr.hdr_size);
++		return -1;
++	}
+ 
+ 	/* we have all of them. update refcounts. */
+ 	mail_transaction_log_view_unref_all(view);
+-- 
+1.7.10.2
+
+
+From cabf0e30e0a51e54566c3229826ae6478744b103 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 17:27:36 +0300
+Subject: [PATCH] doveadm_mail_iter_init(): Removed unnecessarily returning
+ transaction. If it's needed in future just add a new
+ doveadm_mail_iter_get_transaction().
+
+
+diff --git a/src/doveadm/doveadm-mail-altmove.c b/src/doveadm/doveadm-mail-altmove.c
+index f9fc505..a7d9843 100644
+--- a/src/doveadm/doveadm-mail-altmove.c
++++ b/src/doveadm/doveadm-mail-altmove.c
+@@ -20,13 +20,12 @@ cmd_altmove_box(struct doveadm_mail_cmd_context *ctx,
+ 		struct mail_search_args *search_args, bool reverse)
+ {
+ 	struct doveadm_mail_iter *iter;
+-	struct mailbox_transaction_context *trans;
+ 	struct mail *mail;
+ 	enum modify_type modify_type =
+ 		!reverse ? MODIFY_ADD : MODIFY_REMOVE;
+ 
+ 	if (doveadm_mail_iter_init(ctx, info, search_args, 0, NULL,
+-				   &trans, &iter) < 0)
++				   &iter) < 0)
+ 		return -1;
+ 
+ 	while (doveadm_mail_iter_next(iter, &mail)) {
+diff --git a/src/doveadm/doveadm-mail-copymove.c b/src/doveadm/doveadm-mail-copymove.c
+index 3eb16cc..3be9904 100644
+--- a/src/doveadm/doveadm-mail-copymove.c
++++ b/src/doveadm/doveadm-mail-copymove.c
+@@ -25,14 +25,13 @@ cmd_copy_box(struct copy_cmd_context *ctx, struct mailbox *destbox,
+ 	     const struct mailbox_info *info)
+ {
+ 	struct doveadm_mail_iter *iter;
+-	struct mailbox_transaction_context *trans;
+ 	struct mailbox_transaction_context *desttrans;
+ 	struct mail_save_context *save_ctx;
+ 	struct mail *mail;
+ 	int ret = 0;
+ 
+ 	if (doveadm_mail_iter_init(&ctx->ctx, info, ctx->ctx.search_args, 0,
+-				   NULL, &trans, &iter) < 0)
++				   NULL, &iter) < 0)
+ 		return -1;
+ 
+ 	/* use a separately committed transaction for each mailbox.
+diff --git a/src/doveadm/doveadm-mail-expunge.c b/src/doveadm/doveadm-mail-expunge.c
+index 452d3de..8aca907 100644
+--- a/src/doveadm/doveadm-mail-expunge.c
++++ b/src/doveadm/doveadm-mail-expunge.c
+@@ -22,13 +22,12 @@ cmd_expunge_box(struct doveadm_mail_cmd_context *_ctx,
+ 	struct expunge_cmd_context *ctx = (struct expunge_cmd_context *)_ctx;
+ 	struct doveadm_mail_iter *iter;
+ 	struct mailbox *box;
+-	struct mailbox_transaction_context *trans;
+ 	struct mail *mail;
+ 	enum mail_error error;
+ 	int ret = 0;
+ 
+ 	if (doveadm_mail_iter_init(_ctx, info, search_args, 0, NULL,
+-				   &trans, &iter) < 0)
++				   &iter) < 0)
+ 		return -1;
+ 
+ 	while (doveadm_mail_iter_next(iter, &mail)) {
+diff --git a/src/doveadm/doveadm-mail-fetch.c b/src/doveadm/doveadm-mail-fetch.c
+index c918e39..3ade84d 100644
+--- a/src/doveadm/doveadm-mail-fetch.c
++++ b/src/doveadm/doveadm-mail-fetch.c
+@@ -507,13 +507,12 @@ static int
+ cmd_fetch_box(struct fetch_cmd_context *ctx, const struct mailbox_info *info)
+ {
+ 	struct doveadm_mail_iter *iter;
+-	struct mailbox_transaction_context *trans;
+ 	int ret = 0;
+ 
+ 	if (doveadm_mail_iter_init(&ctx->ctx, info, ctx->ctx.search_args,
+ 				   ctx->wanted_fields,
+ 				   array_idx(&ctx->header_fields, 0),
+-				   &trans, &iter) < 0)
++				   &iter) < 0)
+ 		return -1;
+ 
+ 	while (doveadm_mail_iter_next(iter, &ctx->mail)) {
+diff --git a/src/doveadm/doveadm-mail-import.c b/src/doveadm/doveadm-mail-import.c
+index a7727a2..59c79d8 100644
+--- a/src/doveadm/doveadm-mail-import.c
++++ b/src/doveadm/doveadm-mail-import.c
+@@ -103,13 +103,12 @@ cmd_import_box(struct import_cmd_context *ctx, struct mail_user *dest_user,
+ 	       struct mail_search_args *search_args)
+ {
+ 	struct doveadm_mail_iter *iter;
+-	struct mailbox_transaction_context *trans;
+ 	struct mailbox *box;
+ 	struct mail *mail;
+ 	int ret = 0;
+ 
+ 	if (doveadm_mail_iter_init(&ctx->ctx, info, search_args, 0, NULL,
+-				   &trans, &iter) < 0)
++				   &iter) < 0)
+ 		return -1;
+ 
+ 	if (doveadm_mail_iter_next(iter, &mail)) {
+diff --git a/src/doveadm/doveadm-mail-iter.c b/src/doveadm/doveadm-mail-iter.c
+index e97c8a8..52470b4 100644
+--- a/src/doveadm/doveadm-mail-iter.c
++++ b/src/doveadm/doveadm-mail-iter.c
+@@ -21,7 +21,6 @@ int doveadm_mail_iter_init(struct doveadm_mail_cmd_context *ctx,
+ 			   struct mail_search_args *search_args,
+ 			   enum mail_fetch_field wanted_fields,
+ 			   const char *const *wanted_headers,
+-			   struct mailbox_transaction_context **trans_r,
+ 			   struct doveadm_mail_iter **iter_r)
+ {
+ 	struct doveadm_mail_iter *iter;
+@@ -49,8 +48,6 @@ int doveadm_mail_iter_init(struct doveadm_mail_cmd_context *ctx,
+ 	iter->t = mailbox_transaction_begin(iter->box, 0);
+ 	iter->search_ctx = mailbox_search_init(iter->t, search_args, NULL,
+ 					       wanted_fields, headers_ctx);
+-
+-	*trans_r = iter->t;
+ 	*iter_r = iter;
+ 	return 0;
+ }
+@@ -128,3 +125,8 @@ bool doveadm_mail_iter_next(struct doveadm_mail_iter *iter,
+ {
+ 	return mailbox_search_next(iter->search_ctx, mail_r);
+ }
++
++struct mailbox *doveadm_mail_iter_get_mailbox(struct doveadm_mail_iter *iter)
++{
++	return iter->box;
++}
+diff --git a/src/doveadm/doveadm-mail-iter.h b/src/doveadm/doveadm-mail-iter.h
+index f311fa8..fa33782 100644
+--- a/src/doveadm/doveadm-mail-iter.h
++++ b/src/doveadm/doveadm-mail-iter.h
+@@ -11,13 +11,13 @@ int doveadm_mail_iter_init(struct doveadm_mail_cmd_context *ctx,
+ 			   struct mail_search_args *search_args,
+ 			   enum mail_fetch_field wanted_fields,
+ 			   const char *const *wanted_headers,
+-			   struct mailbox_transaction_context **trans_r,
+ 			   struct doveadm_mail_iter **iter_r) ATTR_NULL(5);
+ int doveadm_mail_iter_deinit(struct doveadm_mail_iter **iter);
+ int doveadm_mail_iter_deinit_sync(struct doveadm_mail_iter **iter);
+ int doveadm_mail_iter_deinit_keep_box(struct doveadm_mail_iter **iter,
+ 				      struct mailbox **box_r);
+ void doveadm_mail_iter_deinit_rollback(struct doveadm_mail_iter **iter);
++struct mailbox *doveadm_mail_iter_get_mailbox(struct doveadm_mail_iter *iter);
+ 
+ bool doveadm_mail_iter_next(struct doveadm_mail_iter *iter,
+ 			    struct mail **mail_r);
+diff --git a/src/doveadm/doveadm-mail-search.c b/src/doveadm/doveadm-mail-search.c
+index b6d7331..97a6933 100644
+--- a/src/doveadm/doveadm-mail-search.c
++++ b/src/doveadm/doveadm-mail-search.c
+@@ -15,16 +15,15 @@ cmd_search_box(struct doveadm_mail_cmd_context *ctx,
+ {
+ 	struct doveadm_mail_iter *iter;
+ 	struct mailbox *box;
+-	struct mailbox_transaction_context *trans;
+ 	struct mail *mail;
+ 	struct mailbox_metadata metadata;
+ 	const char *guid_str;
+ 	int ret = 0;
+ 
+ 	if (doveadm_mail_iter_init(ctx, info, ctx->search_args, 0, NULL,
+-				   &trans, &iter) < 0)
++				   &iter) < 0)
+ 		return -1;
+-	box = mailbox_transaction_get_mailbox(trans);
++	box = doveadm_mail_iter_get_mailbox(iter);
+ 
+ 	if (mailbox_get_metadata(box, MAILBOX_METADATA_GUID, &metadata) < 0) {
+ 		ret = -1;
+-- 
+1.7.10.2
+
+
+From f6b7f1619435fc5aec8a689ca67058dff94288fa Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 17:30:07 +0300
+Subject: [PATCH] doveadm: If search query attempts to access nonexistent
+ mailbox, just ignore it. Most importantly running a query
+ for multiple users wouldn't be an error if the mailbox
+ existed only for some users. It's probably cleaner to then
+ always just ignore the nonexistent mailboxes.
+
+
+diff --git a/src/doveadm/doveadm-mail-iter.c b/src/doveadm/doveadm-mail-iter.c
+index 52470b4..e3fc33f 100644
+--- a/src/doveadm/doveadm-mail-iter.c
++++ b/src/doveadm/doveadm-mail-iter.c
+@@ -25,6 +25,8 @@ int doveadm_mail_iter_init(struct doveadm_mail_cmd_context *ctx,
+ {
+ 	struct doveadm_mail_iter *iter;
+ 	struct mailbox_header_lookup_ctx *headers_ctx;
++	const char *errstr;
++	enum mail_error error;
+ 
+ 	iter = i_new(struct doveadm_mail_iter, 1);
+ 	iter->ctx = ctx;
+@@ -33,8 +35,13 @@ int doveadm_mail_iter_init(struct doveadm_mail_cmd_context *ctx,
+ 	iter->search_args = search_args;
+ 
+ 	if (mailbox_sync(iter->box, MAILBOX_SYNC_FLAG_FULL_READ) < 0) {
+-		i_error("Syncing mailbox %s failed: %s", info->vname,
+-			mailbox_get_last_error(iter->box, NULL));
++		errstr = mailbox_get_last_error(iter->box, &error);
++		if (error == MAIL_ERROR_NOTFOUND) {
++			/* just ignore this mailbox */
++			*iter_r = iter;
++			return 0;
++		}
++		i_error("Syncing mailbox %s failed: %s", info->vname, errstr);
+ 		doveadm_mail_failed_mailbox(ctx, iter->box);
+ 		mailbox_free(&iter->box);
+ 		i_free(iter);
+@@ -58,13 +65,17 @@ doveadm_mail_iter_deinit_transaction(struct doveadm_mail_iter *iter,
+ {
+ 	int ret = 0;
+ 
+-	if (mailbox_search_deinit(&iter->search_ctx) < 0) {
+-		i_error("Searching mailbox %s failed: %s",
+-			mailbox_get_vname(iter->box),
+-			mailbox_get_last_error(iter->box, NULL));
+-		ret = -1;
++	if (iter->search_ctx != NULL) {
++		if (mailbox_search_deinit(&iter->search_ctx) < 0) {
++			i_error("Searching mailbox %s failed: %s",
++				mailbox_get_vname(iter->box),
++				mailbox_get_last_error(iter->box, NULL));
++			ret = -1;
++		}
+ 	}
+-	if (commit) {
++	if (iter->t == NULL)
++		;
++	else if (commit) {
+ 		if (mailbox_transaction_commit(&iter->t) < 0) {
+ 			i_error("Committing mailbox %s failed: %s",
+ 				mailbox_get_vname(iter->box),
+@@ -123,6 +134,8 @@ void doveadm_mail_iter_deinit_rollback(struct doveadm_mail_iter **_iter)
+ bool doveadm_mail_iter_next(struct doveadm_mail_iter *iter,
+ 			    struct mail **mail_r)
+ {
++	if (iter->search_ctx == NULL)
++		return FALSE;
+ 	return mailbox_search_next(iter->search_ctx, mail_r);
+ }
+ 
+-- 
+1.7.10.2
+
+
+From 9943d869c5c9796ec8cbdc05adf14a52ca58d8de Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 18:35:36 +0300
+Subject: [PATCH] lib-imap-urlauth: Don't try to access garbage memory on
+ error handling paths.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 8cee33d..9801822 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -150,7 +150,7 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	const char *error, *errormsg = NULL, *bpstruct = NULL;
+ 	bool debug = ufetch->uctx->user->mail_debug, success;
+ 	enum mail_error error_code;
+-	struct imap_msgpart_url *mpurl;
++	struct imap_msgpart_url *mpurl = NULL;
+ 	int ret;
+ 
+ 	ufetch->pending_requests--;
+diff --git a/src/lib-imap-urlauth/imap-urlauth.c b/src/lib-imap-urlauth/imap-urlauth.c
+index 0019f0e..d4ef76c 100644
+--- a/src/lib-imap-urlauth/imap-urlauth.c
++++ b/src/lib-imap-urlauth/imap-urlauth.c
+@@ -227,7 +227,7 @@ int imap_urlauth_generate(struct imap_urlauth_context *uctx,
+ 	enum imap_url_parse_flags url_flags =
+ 		IMAP_URL_PARSE_ALLOW_URLAUTH;
+ 	struct imap_url *url;
+-	struct imap_msgpart_url *mpurl;
++	struct imap_msgpart_url *mpurl = NULL;
+ 	struct mailbox *box;
+ 	const char *error;
+ 	enum mail_error error_code;
+@@ -284,7 +284,8 @@ int imap_urlauth_generate(struct imap_urlauth_context *uctx,
+ 	if ((ret = imap_msgpart_url_create(user, url, &mpurl, &error)) < 0 ||
+ 	    imap_msgpart_url_verify(mpurl, &error) <= 0) {
+ 		*error_r = t_strdup_printf("Invalid URL: %s", error);
+-		imap_msgpart_url_free(&mpurl);
++		if (mpurl != NULL)
++			imap_msgpart_url_free(&mpurl);
+ 		return ret;
+ 	}
+ 	box = imap_msgpart_url_get_mailbox(mpurl);
+-- 
+1.7.10.2
+
+
+From 57fb26d8580d1856a9347425f40a8dda03cb0a79 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 19:48:32 +0300
+Subject: [PATCH] lib-imap: imap_parser_read_args() shouldn't append multiple
+ EOLs when calling multiple times.
+
+
+diff --git a/src/lib-imap/imap-parser.c b/src/lib-imap/imap-parser.c
+index 33fcf90..0c48da8 100644
+--- a/src/lib-imap/imap-parser.c
++++ b/src/lib-imap/imap-parser.c
+@@ -711,11 +711,7 @@ static int finish_line(struct imap_parser *parser, unsigned int count,
+ 
+ 	arg = array_append_space(&parser->root_list);
+ 	arg->type = IMAP_ARG_EOL;
+-
+-	if (!parser->eol)
+-		parser->args_added_extra_eol = TRUE;
+-	else
+-		i_assert(!parser->literal_size_return);
++	parser->args_added_extra_eol = TRUE;
+ 
+ 	*args_r = array_get(&parser->root_list, &count);
+ 	return ret;
+-- 
+1.7.10.2
+
+
+From 72f915906b61b0e82624d9f604adc4688db2f640 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 19:49:18 +0300
+Subject: [PATCH] imap: Don't hang in APPEND when giving it invalid
+ parameters.
+
+
+diff --git a/src/imap/cmd-append.c b/src/imap/cmd-append.c
+index a7e2b31..91376c1 100644
+--- a/src/imap/cmd-append.c
++++ b/src/imap/cmd-append.c
+@@ -708,12 +708,13 @@ static bool cmd_append_parse_new_msg(struct client_command_context *cmd)
+ 	/* parse the entire line up to the first message literal, or in case
+ 	   the input buffer is full of MULTIAPPEND CATENATE URLs, parse at
+ 	   least until the beginning of the next message */
+-	arg_min_count = 1;
++	arg_min_count = 0;
+ 	do {
+-		ret = imap_parser_read_args(ctx->save_parser, arg_min_count++,
++		ret = imap_parser_read_args(ctx->save_parser, ++arg_min_count,
+ 					    IMAP_PARSE_FLAG_LITERAL_SIZE |
+ 					    IMAP_PARSE_FLAG_LITERAL8, &args);
+-	} while (ret > 0 && !cmd_append_args_can_stop(ctx, args));
++	} while (ret >= (int)arg_min_count &&
++		 !cmd_append_args_can_stop(ctx, args));
+ 	if (ret == -1) {
+ 		if (!ctx->failed) {
+ 			msg = imap_parser_get_error(ctx->save_parser, &fatal);
+-- 
+1.7.10.2
+
+
+From 40309d92b95e9824170fc51a1160ada8cdec8fdb Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 19:49:55 +0300
+Subject: [PATCH] imap: Fixed assert-crash on invalid APPEND parameters.
+
+
+diff --git a/src/imap/cmd-append.c b/src/imap/cmd-append.c
+index 91376c1..947b959 100644
+--- a/src/imap/cmd-append.c
++++ b/src/imap/cmd-append.c
+@@ -501,9 +501,8 @@ cmd_append_handle_args(struct client_command_context *cmd,
+ 		ctx->binary_input = args->literal8;
+ 		valid = TRUE;
+ 	}
+-	/* we parsed the args only up to here. */
+-	i_assert(IMAP_ARG_IS_EOL(&args[1]));
+-
++	if (!IMAP_ARG_IS_EOL(&args[1]))
++		valid = FALSE;
+ 	if (!valid) {
+ 		client->input_skip_line = TRUE;
+ 		if (!ctx->failed)
+-- 
+1.7.10.2
+
+
+From 14508b41d6ece32d3fa835f368011b97374e7cf7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 19:51:07 +0300
+Subject: [PATCH] imap: Don't eat away the next command if CATENATE fails.
+
+
+diff --git a/src/imap/cmd-append.c b/src/imap/cmd-append.c
+index 947b959..bc13535 100644
+--- a/src/imap/cmd-append.c
++++ b/src/imap/cmd-append.c
+@@ -324,7 +324,6 @@ cmd_append_catenate(struct client_command_context *cmd,
+ 	}
+ 	if (!ctx->failed)
+ 		client_send_command_error(cmd, "Invalid arguments.");
+-	cmd->client->input_skip_line = TRUE;
+ 	return -1;
+ }
+ 
+@@ -431,9 +430,6 @@ static bool cmd_append_continue_catenate(struct client_command_context *cmd)
+ 
+ 	/* TEXT <literal> */
+ 
+-	/* after literal comes CRLF, if we fail make sure we eat it away */
+-	client->input_skip_line = TRUE;
+-
+ 	if (!nonsync) {
+ 		if (ctx->failed) {
+ 			/* tagline was already sent, we can abort here */
+@@ -738,8 +734,6 @@ static bool cmd_append_parse_new_msg(struct client_command_context *cmd)
+ 	ret = cmd_append_handle_args(cmd, args, &nonsync);
+ 	if (ret < 0) {
+ 		/* invalid parameters, abort immediately */
+-		if (ctx->catenate)
+-			client->input_skip_line = TRUE;
+ 		cmd_append_finish(ctx);
+ 		return TRUE;
+ 	}
+-- 
+1.7.10.2
+
+
+From 9a9ed402e6f5e0110f28cb2dff5db78682826479 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 20:15:58 +0300
+Subject: [PATCH] imap: Fixed URLFETCH assert-crashes due to output_cmd_lock
+ not being cleared.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index 86f1d05..d8c2e7f 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -43,7 +43,14 @@ static void cmd_urlfetch_finish(struct client_command_context *cmd)
+ 		imap_urlauth_fetch_deinit(&ctx->ufetch);
+ 
+ 	if (ctx->failed) {
+-		client_send_internal_error(cmd);
++		if (cmd->client->output_cmd_lock == cmd) {
++			/* failed in the middle of a literal.
++			   we need to disconnect. */
++			cmd->client->output_cmd_lock = NULL;
++			client_disconnect(cmd->client, "URLFETCH failed");
++		} else {
++			client_send_internal_error(cmd);
++		}
+ 		return;
+ 	}
+ 
+@@ -147,12 +154,12 @@ static bool cmd_urlfetch_continue(struct client_command_context *cmd)
+ 		client_send_line(client, ")");
+ 	else
+ 		client_send_line(client, "");
++	client->output_cmd_lock = NULL;
+ 
+ 	if (imap_urlauth_fetch_continue(ctx->ufetch)) {
+ 		/* waiting for imap urlauth service */
+ 		cmd->state = CLIENT_COMMAND_STATE_WAIT_EXTERNAL;
+ 		cmd->func = cmd_urlfetch_cancel;
+-		client->output_cmd_lock = NULL;
+ 
+ 		/* retrieve next url */
+ 		return FALSE;
+-- 
+1.7.10.2
+
+
+From 9bb3ca1fe8560d8cee51f64097324a9d0935626f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 20:20:43 +0300
+Subject: [PATCH] imap: URLFETCH leaked istream on failures.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index d8c2e7f..92f17b9 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -39,6 +39,8 @@ static void cmd_urlfetch_finish(struct client_command_context *cmd)
+ 		return;
+ 	ctx->finished = TRUE;
+ 
++	if (ctx->input != NULL)
++		i_stream_unref(&ctx->input);
+ 	if (ctx->ufetch != NULL)
+ 		imap_urlauth_fetch_deinit(&ctx->ufetch);
+ 
+@@ -225,7 +227,7 @@ static int cmd_urlfetch_url_sucess(struct client_command_context *cmd,
+ 	if (reply->input != NULL) {
+ 		ctx->input = reply->input;
+ 		ctx->size = reply->size;
+-		i_stream_ref(reply->input);
++		i_stream_ref(ctx->input);
+ 
+ 		ret = cmd_urlfetch_transfer_literal(cmd);
+ 		if (ret < 0) {
+-- 
+1.7.10.2
+
+
+From e37d7cac7729284fb791b4c0016899f52929e157 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 20:21:27 +0300
+Subject: [PATCH] imap: URLFETCH sometimes failed thinking it didn't receive
+ all of the message data.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index 92f17b9..5ddfb5f 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -116,7 +116,7 @@ static int cmd_urlfetch_transfer_literal(struct client_command_context *cmd)
+ 		client_disconnect(client, "URLFETCH failed");
+ 		return -1;
+ 	}
+-	if (!ctx->input->eof) {
++	if (i_stream_have_bytes_left(ctx->input)) {
+ 		o_stream_set_flush_pending(client->output, TRUE);
+ 		return 0;
+ 	}
+-- 
+1.7.10.2
+
+
+From 0c4653587c1d4cfcd212379c154e82af7be8ad00 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 6 May 2013 23:59:41 +0300
+Subject: [PATCH] lib-index: Previous commit sometimes broke scanning
+ transaction log view. If min_file_seq+offset pointed to the
+ end of the previous file that no longer existed, we didn't
+ just skip over it.
+
+
+diff --git a/src/lib-index/mail-transaction-log-view.c b/src/lib-index/mail-transaction-log-view.c
+index 707ad6b..ca51aea 100644
+--- a/src/lib-index/mail-transaction-log-view.c
++++ b/src/lib-index/mail-transaction-log-view.c
+@@ -95,6 +95,17 @@ int mail_transaction_log_view_set(struct mail_transaction_log_view *view,
+ 	}
+ 
+ 	for (file = view->log->files; file != NULL; file = file->next) {
++		if (file->hdr.prev_file_seq == min_file_seq)
++			break;
++	}
++
++	if (file != NULL && min_file_offset == file->hdr.prev_file_offset) {
++		/* we can (and sometimes must) skip to the next file */
++		min_file_seq = file->hdr.file_seq;
++		min_file_offset = file->hdr.hdr_size;
++	}
++
++	for (file = view->log->files; file != NULL; file = file->next) {
+ 		if (file->hdr.prev_file_seq == max_file_seq)
+ 			break;
+ 	}
+-- 
+1.7.10.2
+
