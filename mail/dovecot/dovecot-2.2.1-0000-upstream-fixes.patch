@@ -2104,3 +2104,893 @@ index 707ad6b..ca51aea 100644
 -- 
 1.7.10.2
 
+
+From 67b54367fff8348b1108391baa349a0230c3a839 Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Mon, 13 May 2013 23:06:31 +0200
+Subject: [PATCH] Fix out of source build of manpages
+
+
+diff --git a/doc/man/Makefile.am b/doc/man/Makefile.am
+index 4db8cfd..c18e6c3 100644
+--- a/doc/man/Makefile.am
++++ b/doc/man/Makefile.am
+@@ -85,4 +85,4 @@ CLEANFILES = $(nodist_man1_MANS)
+ 
+ .1.in.1: $(man_includefiles) Makefile
+ 	$(SHELL) $(srcdir)/sed.sh $(srcdir) $(rundir) $(pkgsysconfdir) \
+-		< $(srcdir)/$< > $@
++		< $< > $@
+-- 
+1.7.10.2
+
+
+From 2c4e0324c5aabbcfab02c3b0589d26c24650c535 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 14:00:21 +0300
+Subject: [PATCH] login-proxy: Don't crash if connect() succeeds but login
+ fails with timeout.
+
+
+diff --git a/src/login-common/login-proxy-state.h b/src/login-common/login-proxy-state.h
+index 65e8fbb..eb08e6b 100644
+--- a/src/login-common/login-proxy-state.h
++++ b/src/login-common/login-proxy-state.h
+@@ -6,8 +6,9 @@
+ struct login_proxy_record {
+ 	struct ip_addr ip;
+ 	unsigned int port;
+-	unsigned int num_waiting_connections;
+ 
++	/* these are tracking connect()s, not necessarily logins: */
++	unsigned int num_waiting_connections;
+ 	struct timeval last_failure;
+ 	struct timeval last_success;
+ };
+diff --git a/src/login-common/login-proxy.c b/src/login-common/login-proxy.c
+index 9290883..1fdb2cf 100644
+--- a/src/login-common/login-proxy.c
++++ b/src/login-common/login-proxy.c
+@@ -254,7 +254,8 @@ static void proxy_connect_timeout(struct login_proxy *proxy)
+ {
+ 	errno = ETIMEDOUT;
+ 	proxy_log_connect_error(proxy);
+-	proxy_fail_connect(proxy);
++	if (!proxy->connected)
++		proxy_fail_connect(proxy);
+ 	login_proxy_free(&proxy);
+ }
+ 
+-- 
+1.7.10.2
+
+
+From 110d79c741c2173cd187cb0e47c1c56fbbb3fe0b Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 14:02:36 +0300
+Subject: [PATCH] login-proxy: If login fails with timeout, log what the
+ proxying state was.
+
+
+diff --git a/src/login-common/login-proxy.c b/src/login-common/login-proxy.c
+index 1fdb2cf..d2833e2 100644
+--- a/src/login-common/login-proxy.c
++++ b/src/login-common/login-proxy.c
+@@ -208,8 +208,9 @@ proxy_log_connect_error(struct login_proxy *proxy)
+ 		str_printfa(str, "connect(%s, %u) failed: %m",
+ 			    proxy->host, proxy->port);
+ 	} else {
+-		str_printfa(str, "Login for %s:%u timed out",
+-			    proxy->host, proxy->port);
++		str_printfa(str, "Login for %s:%u timed out in state=%u",
++			    proxy->host, proxy->port,
++			    proxy->client->proxy_state);
+ 	}
+ 	str_printfa(str, " (after %u secs",
+ 		    (unsigned int)(ioloop_time - proxy->created.tv_sec));
+-- 
+1.7.10.2
+
+
+From 942e14b174ea3e1a7b00e945c918c8ed936336fa Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 14:14:16 +0300
+Subject: [PATCH] configure: Fixed checking for struct sockpeercred with
+ OpenBSD <5.3
+
+
+diff --git a/configure.ac b/configure.ac
+index a67d511..b9c1ce5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -433,7 +433,10 @@ AC_CHECK_FUNCS(fcntl flock lockf inet_aton sigaction getpagesize madvise \
+ 	       walkcontext dirfd clearenv malloc_usable_size glob fallocate \
+ 	       posix_fadvise getpeereid getpeerucred)
+ 
+-AC_CHECK_TYPES([struct sockpeercred],,,[#include <sys/socket.h>])
++AC_CHECK_TYPES([struct sockpeercred],,,[
++#include <sys/types.h>
++#include <sys/socket.h>
++])
+ 
+ AC_SEARCH_LIBS(clock_gettime, rt, [
+   AC_DEFINE(HAVE_CLOCK_GETTIME,, Define if you have the clock_gettime function)
+-- 
+1.7.10.2
+
+
+From eb3938ec8bf9db181964917253eae94477cac2a7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 16:32:30 +0300
+Subject: [PATCH] pop3: Added pop3_deleted_flag setting.
+
+
+diff --git a/doc/example-config/conf.d/20-pop3.conf b/doc/example-config/conf.d/20-pop3.conf
+index be64c2c..ded9fa9 100644
+--- a/doc/example-config/conf.d/20-pop3.conf
++++ b/doc/example-config/conf.d/20-pop3.conf
+@@ -59,6 +59,13 @@ protocol pop3 {
+   #   rename: Append a temporary -2, -3, etc. counter after the UIDL.
+   #pop3_uidl_duplicates = allow
+ 
++  # This option changes POP3 behavior so that it's not possible to actually
++  # delete mails via POP3, only hide them from future POP3 sessions. The mails
++  # will still be counted towards user's quota until actually deleted via IMAP.
++  # Use e.g. "$POP3Deleted" as the value (it will be visible as IMAP keyword).
++  # Make sure you can legally archive mails before enabling this setting.
++  #pop3_deleted_flag =
++
+   # POP3 logout format string:
+   #  %i - total number of bytes read from client
+   #  %o - total number of bytes sent to client
+diff --git a/src/pop3/pop3-client.c b/src/pop3/pop3-client.c
+index e99f7bd..6de571c 100644
+--- a/src/pop3/pop3-client.c
++++ b/src/pop3/pop3-client.c
+@@ -141,6 +141,7 @@ static int read_mailbox(struct client *client, uint32_t *failed_uid_r)
+         struct mailbox_status status;
+         struct mailbox_transaction_context *t;
+ 	struct mail_search_args *search_args;
++	struct mail_search_arg *sarg;
+ 	struct mail_search_context *ctx;
+ 	struct mail *mail;
+ 	uoff_t size;
+@@ -158,7 +159,17 @@ static int read_mailbox(struct client *client, uint32_t *failed_uid_r)
+ 	t = mailbox_transaction_begin(client->mailbox, 0);
+ 
+ 	search_args = mail_search_build_init();
+-	mail_search_build_add_all(search_args);
++	if (client->deleted_kw != NULL) {
++		sarg = mail_search_build_add(search_args, SEARCH_KEYWORDS);
++		sarg->match_not = TRUE;
++		sarg->value.str = p_strdup(search_args->pool,
++					   client->set->pop3_deleted_flag);
++		i_array_init(&client->all_seqs, 32);
++	} else {
++		mail_search_build_add_all(search_args);
++	}
++	mail_search_args_init(search_args, client->mailbox, TRUE, NULL);
++
+ 	ctx = mailbox_search_init(t, search_args, pop3_sort_program,
+ 				  client->set->pop3_fast_size_lookups ? 0 :
+ 				  MAIL_FETCH_VIRTUAL_SIZE, NULL);
+@@ -175,6 +186,8 @@ static int read_mailbox(struct client *client, uint32_t *failed_uid_r)
+ 			*failed_uid_r = mail->uid;
+ 			break;
+ 		}
++		if (array_is_created(&client->all_seqs))
++			seq_range_array_add(&client->all_seqs, mail->seq);
+ 		msgnum_to_seq_map_add(&msgnum_to_seq_map, client, mail, msgnum);
+ 
+ 		if ((mail_get_flags(mail) & MAIL_SEEN) != 0)
+@@ -197,7 +210,13 @@ static int read_mailbox(struct client *client, uint32_t *failed_uid_r)
+ 			array_free(&msgnum_to_seq_map);
+ 		return ret;
+ 	}
+-	i_assert(msgnum == client->messages_count);
++	i_assert(msgnum <= client->messages_count);
++	client->messages_count = msgnum;
++
++	if (!array_is_created(&client->all_seqs)) {
++		i_array_init(&client->all_seqs, 1);
++		seq_range_array_add_range(&client->all_seqs, 1, msgnum);
++	}
+ 
+ 	client->trans = t;
+ 	client->message_sizes =
+@@ -211,6 +230,26 @@ static int read_mailbox(struct client *client, uint32_t *failed_uid_r)
+ 	return 1;
+ }
+ 
++static int init_pop3_deleted_flag(struct client *client, const char **error_r)
++{
++	const char *deleted_keywords[2];
++
++	if (client->set->pop3_deleted_flag[0] == '\0')
++		return 0;
++
++	deleted_keywords[0] = client->set->pop3_deleted_flag;
++	deleted_keywords[1] = NULL;
++	if (mailbox_keywords_create(client->mailbox, deleted_keywords,
++				    &client->deleted_kw) < 0) {
++		*error_r = t_strdup_printf(
++			"pop3_deleted_flags: Invalid keyword '%s': %s",
++			client->set->pop3_deleted_flag,
++			mailbox_get_last_error(client->mailbox, NULL));
++		return -1;
++	}
++	return 0;
++}
++
+ static int init_mailbox(struct client *client, const char **error_r)
+ {
+ 	uint32_t failed_uid = 0, last_failed_uid = 0;
+@@ -392,7 +431,8 @@ int client_create(int fd_in, int fd_out, const char *session_id,
+ 	}
+ 	client->mail_set = mail_storage_get_settings(storage);
+ 
+-	if (init_mailbox(client, &errmsg) < 0) {
++	if (init_pop3_deleted_flag(client, &errmsg) < 0 ||
++	    init_mailbox(client, &errmsg) < 0) {
+ 		i_error("Couldn't init INBOX: %s", errmsg);
+ 		client_destroy(client, "Mailbox init failed");
+ 		return -1;
+@@ -553,6 +593,9 @@ static void client_default_destroy(struct client *client, const char *reason)
+ 		   message sizes. */
+ 		(void)mailbox_transaction_commit(&client->trans);
+ 	}
++	array_free(&client->all_seqs);
++	if (client->deleted_kw != NULL)
++		mailbox_keywords_unref(&client->deleted_kw);
+ 	if (client->mailbox != NULL)
+ 		mailbox_free(&client->mailbox);
+ 	if (client->anvil_sent) {
+diff --git a/src/pop3/pop3-client.h b/src/pop3/pop3-client.h
+index 5c3bfe5..f8e6c35 100644
+--- a/src/pop3/pop3-client.h
++++ b/src/pop3/pop3-client.h
+@@ -1,6 +1,8 @@
+ #ifndef POP3_CLIENT_H
+ #define POP3_CLIENT_H
+ 
++#include "seq-range-array.h"
++
+ struct client;
+ struct mail_storage;
+ 
+@@ -48,6 +50,7 @@ struct client {
+ 	struct mail_namespace *inbox_ns;
+ 	struct mailbox *mailbox;
+ 	struct mailbox_transaction_context *trans;
++	struct mail_keywords *deleted_kw;
+ 
+ 	struct timeout *to_session_dotlock_refresh;
+ 	struct dotlock *session_dotlock;
+@@ -63,6 +66,9 @@ struct client {
+ 	uoff_t deleted_size;
+ 	uint32_t last_seen_pop3_msn, lowest_retr_pop3_msn;
+ 
++	/* All sequences currently visible in the mailbox. */
++	ARRAY_TYPE(seq_range) all_seqs;
++
+ 	/* [msgnum] contains mail seq. anything after it has seq = msgnum+1 */
+ 	uint32_t *msgnum_to_seq_map;
+ 	uint32_t msgnum_to_seq_map_count;
+diff --git a/src/pop3/pop3-commands.c b/src/pop3/pop3-commands.c
+index a617f94..29e1d44 100644
+--- a/src/pop3/pop3-commands.c
++++ b/src/pop3/pop3-commands.c
+@@ -196,11 +196,12 @@ static struct mail_search_args *
+ pop3_search_build(struct client *client, uint32_t seq)
+ {
+ 	struct mail_search_args *search_args;
++	struct mail_search_arg *sarg;
+ 
+ 	search_args = mail_search_build_init();
+ 	if (seq == 0) {
+-		mail_search_build_add_seqset(search_args,
+-					     1, client->messages_count);
++		sarg = mail_search_build_add(search_args, SEARCH_SEQSET);
++		sarg->value.seqset = client->all_seqs;
+ 	} else {
+ 		mail_search_build_add_seqset(search_args, seq, seq);
+ 	}
+@@ -222,6 +223,15 @@ static int client_verify_ordering(struct client *client,
+ 	return 0;
+ }
+ 
++static void client_expunge(struct client *client, struct mail *mail)
++{
++	if (client->deleted_kw != NULL)
++		mail_update_keywords(mail, MODIFY_ADD, client->deleted_kw);
++	else
++		mail_expunge(mail);
++	client->expunged_count++;
++}
++
+ bool client_update_mails(struct client *client)
+ {
+ 	struct mail_search_args *search_args;
+@@ -250,8 +260,7 @@ bool client_update_mails(struct client *client)
+ 		bit = 1 << (msgnum % CHAR_BIT);
+ 		if (client->deleted_bitmask != NULL &&
+ 		    (client->deleted_bitmask[msgnum / CHAR_BIT] & bit) != 0) {
+-			mail_expunge(mail);
+-			client->expunged_count++;
++			client_expunge(client, mail);
+ 		} else if (client->seen_bitmask != NULL &&
+ 			   (client->seen_bitmask[msgnum / CHAR_BIT] & bit) != 0) {
+ 			mail_update_flags(mail, MODIFY_ADD, MAIL_SEEN);
+diff --git a/src/pop3/pop3-settings.c b/src/pop3/pop3-settings.c
+index 2f3fbff..d9dc69a 100644
+--- a/src/pop3/pop3-settings.c
++++ b/src/pop3/pop3-settings.c
+@@ -71,6 +71,7 @@ static const struct setting_define pop3_setting_defines[] = {
+ 	DEF(SET_STR, pop3_client_workarounds),
+ 	DEF(SET_STR, pop3_logout_format),
+ 	DEF(SET_ENUM, pop3_uidl_duplicates),
++	DEF(SET_STR, pop3_deleted_flag),
+ 
+ 	SETTING_DEFINE_LIST_END
+ };
+@@ -86,7 +87,8 @@ static const struct pop3_settings pop3_default_settings = {
+ 	.pop3_fast_size_lookups = FALSE,
+ 	.pop3_client_workarounds = "",
+ 	.pop3_logout_format = "top=%t/%p, retr=%r/%b, del=%d/%m, size=%s",
+-	.pop3_uidl_duplicates = "allow:rename"
++	.pop3_uidl_duplicates = "allow:rename",
++	.pop3_deleted_flag = ""
+ };
+ 
+ static const struct setting_parser_info *pop3_setting_dependencies[] = {
+diff --git a/src/pop3/pop3-settings.h b/src/pop3/pop3-settings.h
+index e9bd2ba..90cbf77 100644
+--- a/src/pop3/pop3-settings.h
++++ b/src/pop3/pop3-settings.h
+@@ -23,6 +23,7 @@ struct pop3_settings {
+ 	const char *pop3_client_workarounds;
+ 	const char *pop3_logout_format;
+ 	const char *pop3_uidl_duplicates;
++	const char *pop3_deleted_flag;
+ 
+ 	enum pop3_client_workarounds parsed_workarounds;
+ };
+-- 
+1.7.10.2
+
+
+From 14aacf975309dc3be388fd067e652a8ec1efc4a3 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 16:46:08 +0300
+Subject: [PATCH] example-config: Moved imap_* and pop3_* settings outside
+ protocol section. There's no need to keep them inside
+ protocol {}, and in case of pop3_uidl_format=%m setting
+ it's actually harmful.
+
+
+diff --git a/doc/example-config/conf.d/20-imap.conf b/doc/example-config/conf.d/20-imap.conf
+index 9de1318..689b0ea 100644
+--- a/doc/example-config/conf.d/20-imap.conf
++++ b/doc/example-config/conf.d/20-imap.conf
+@@ -2,60 +2,60 @@
+ ## IMAP specific settings
+ ##
+ 
+-protocol imap {
+-  # Maximum IMAP command line length. Some clients generate very long command
+-  # lines with huge mailboxes, so you may need to raise this if you get
+-  # "Too long argument" or "IMAP command line too large" errors often.
+-  #imap_max_line_length = 64k
++# Maximum IMAP command line length. Some clients generate very long command
++# lines with huge mailboxes, so you may need to raise this if you get
++# "Too long argument" or "IMAP command line too large" errors often.
++#imap_max_line_length = 64k
++
++# IMAP logout format string:
++#  %i - total number of bytes read from client
++#  %o - total number of bytes sent to client
++#imap_logout_format = in=%i out=%o
++
++# Override the IMAP CAPABILITY response. If the value begins with '+',
++# add the given capabilities on top of the defaults (e.g. +XFOO XBAR).
++#imap_capability = 
++
++# How long to wait between "OK Still here" notifications when client is
++# IDLEing.
++#imap_idle_notify_interval = 2 mins
++
++# ID field names and values to send to clients. Using * as the value makes
++# Dovecot use the default value. The following fields have default values
++# currently: name, version, os, os-version, support-url, support-email.
++#imap_id_send = 
++
++# ID fields sent by client to log. * means everything.
++#imap_id_log =
++
++# Workarounds for various client bugs:
++#   delay-newmail:
++#     Send EXISTS/RECENT new mail notifications only when replying to NOOP
++#     and CHECK commands. Some clients ignore them otherwise, for example OSX
++#     Mail (<v2.1). Outlook Express breaks more badly though, without this it
++#     may show user "Message no longer in server" errors. Note that OE6 still
++#     breaks even with this workaround if synchronization is set to
++#     "Headers Only".
++#   tb-extra-mailbox-sep:
++#     Thunderbird gets somehow confused with LAYOUT=fs (mbox and dbox) and
++#     adds extra '/' suffixes to mailbox names. This option causes Dovecot to
++#     ignore the extra '/' instead of treating it as invalid mailbox name.
++#   tb-lsub-flags:
++#     Show \Noselect flags for LSUB replies with LAYOUT=fs (e.g. mbox).
++#     This makes Thunderbird realize they aren't selectable and show them
++#     greyed out, instead of only later giving "not selectable" popup error.
++#
++# The list is space-separated.
++#imap_client_workarounds = 
+ 
+-  # Maximum number of IMAP connections allowed for a user from each IP address.
+-  # NOTE: The username is compared case-sensitively.
+-  #mail_max_userip_connections = 10
++# Host allowed in URLAUTH URLs sent by client. "*" allows all.
++#imap_urlauth_host =
+ 
++protocol imap {
+   # Space separated list of plugins to load (default is global mail_plugins).
+   #mail_plugins = $mail_plugins
+ 
+-  # IMAP logout format string:
+-  #  %i - total number of bytes read from client
+-  #  %o - total number of bytes sent to client
+-  #imap_logout_format = in=%i out=%o
+-
+-  # Override the IMAP CAPABILITY response. If the value begins with '+',
+-  # add the given capabilities on top of the defaults (e.g. +XFOO XBAR).
+-  #imap_capability = 
+-
+-  # How long to wait between "OK Still here" notifications when client is
+-  # IDLEing.
+-  #imap_idle_notify_interval = 2 mins
+-
+-  # ID field names and values to send to clients. Using * as the value makes
+-  # Dovecot use the default value. The following fields have default values
+-  # currently: name, version, os, os-version, support-url, support-email.
+-  #imap_id_send = 
+-
+-  # ID fields sent by client to log. * means everything.
+-  #imap_id_log =
+-
+-  # Workarounds for various client bugs:
+-  #   delay-newmail:
+-  #     Send EXISTS/RECENT new mail notifications only when replying to NOOP
+-  #     and CHECK commands. Some clients ignore them otherwise, for example OSX
+-  #     Mail (<v2.1). Outlook Express breaks more badly though, without this it
+-  #     may show user "Message no longer in server" errors. Note that OE6 still
+-  #     breaks even with this workaround if synchronization is set to
+-  #     "Headers Only".
+-  #   tb-extra-mailbox-sep:
+-  #     Thunderbird gets somehow confused with LAYOUT=fs (mbox and dbox) and
+-  #     adds extra '/' suffixes to mailbox names. This option causes Dovecot to
+-  #     ignore the extra '/' instead of treating it as invalid mailbox name.
+-  #   tb-lsub-flags:
+-  #     Show \Noselect flags for LSUB replies with LAYOUT=fs (e.g. mbox).
+-  #     This makes Thunderbird realize they aren't selectable and show them
+-  #     greyed out, instead of only later giving "not selectable" popup error.
+-  #
+-  # The list is space-separated.
+-  #imap_client_workarounds = 
++  # Maximum number of IMAP connections allowed for a user from each IP address.
++  # NOTE: The username is compared case-sensitively.
++  #mail_max_userip_connections = 10
+ }
+-
+-# Host allowed in URLAUTH URLs sent by client. "*" allows all.
+-#imap_urlauth_host =
+diff --git a/doc/example-config/conf.d/20-pop3.conf b/doc/example-config/conf.d/20-pop3.conf
+index ded9fa9..50470e9 100644
+--- a/doc/example-config/conf.d/20-pop3.conf
++++ b/doc/example-config/conf.d/20-pop3.conf
+@@ -2,97 +2,97 @@
+ ## POP3 specific settings
+ ##
+ 
+-protocol pop3 {
+-  # Don't try to set mails non-recent or seen with POP3 sessions. This is
+-  # mostly intended to reduce disk I/O. With maildir it doesn't move files
+-  # from new/ to cur/, with mbox it doesn't write Status-header.
+-  #pop3_no_flag_updates = no
++# Don't try to set mails non-recent or seen with POP3 sessions. This is
++# mostly intended to reduce disk I/O. With maildir it doesn't move files
++# from new/ to cur/, with mbox it doesn't write Status-header.
++#pop3_no_flag_updates = no
+ 
+-  # Support LAST command which exists in old POP3 specs, but has been removed
+-  # from new ones. Some clients still wish to use this though. Enabling this
+-  # makes RSET command clear all \Seen flags from messages.
+-  #pop3_enable_last = no
++# Support LAST command which exists in old POP3 specs, but has been removed
++# from new ones. Some clients still wish to use this though. Enabling this
++# makes RSET command clear all \Seen flags from messages.
++#pop3_enable_last = no
+ 
+-  # If mail has X-UIDL header, use it as the mail's UIDL.
+-  #pop3_reuse_xuidl = no
++# If mail has X-UIDL header, use it as the mail's UIDL.
++#pop3_reuse_xuidl = no
+ 
+-  # Allow only one POP3 session to run simultaneously for the same user.
+-  #pop3_lock_session = no
++# Allow only one POP3 session to run simultaneously for the same user.
++#pop3_lock_session = no
+ 
+-  # POP3 requires message sizes to be listed as if they had CR+LF linefeeds.
+-  # Many POP3 servers violate this by returning the sizes with LF linefeeds,
+-  # because it's faster to get. When this setting is enabled, Dovecot still
+-  # tries to do the right thing first, but if that requires opening the
+-  # message, it fallbacks to the easier (but incorrect) size.
+-  #pop3_fast_size_lookups = no
++# POP3 requires message sizes to be listed as if they had CR+LF linefeeds.
++# Many POP3 servers violate this by returning the sizes with LF linefeeds,
++# because it's faster to get. When this setting is enabled, Dovecot still
++# tries to do the right thing first, but if that requires opening the
++# message, it fallbacks to the easier (but incorrect) size.
++#pop3_fast_size_lookups = no
+ 
+-  # POP3 UIDL (unique mail identifier) format to use. You can use following
+-  # variables, along with the variable modifiers described in
+-  # doc/wiki/Variables.txt (e.g. %Uf for the filename in uppercase)
+-  #
+-  #  %v - Mailbox's IMAP UIDVALIDITY
+-  #  %u - Mail's IMAP UID
+-  #  %m - MD5 sum of the mailbox headers in hex (mbox only)
+-  #  %f - filename (maildir only)
+-  #  %g - Mail's GUID
+-  #
+-  # If you want UIDL compatibility with other POP3 servers, use:
+-  #  UW's ipop3d         : %08Xv%08Xu
+-  #  Courier             : %f or %v-%u (both might be used simultaneosly)
+-  #  Cyrus (<= 2.1.3)    : %u
+-  #  Cyrus (>= 2.1.4)    : %v.%u
+-  #  Dovecot v0.99.x     : %v.%u
+-  #  tpop3d              : %Mf
+-  #
+-  # Note that Outlook 2003 seems to have problems with %v.%u format which was
+-  # Dovecot's default, so if you're building a new server it would be a good
+-  # idea to change this. %08Xu%08Xv should be pretty fail-safe.
+-  #
+-  #pop3_uidl_format = %08Xu%08Xv
++# POP3 UIDL (unique mail identifier) format to use. You can use following
++# variables, along with the variable modifiers described in
++# doc/wiki/Variables.txt (e.g. %Uf for the filename in uppercase)
++#
++#  %v - Mailbox's IMAP UIDVALIDITY
++#  %u - Mail's IMAP UID
++#  %m - MD5 sum of the mailbox headers in hex (mbox only)
++#  %f - filename (maildir only)
++#  %g - Mail's GUID
++#
++# If you want UIDL compatibility with other POP3 servers, use:
++#  UW's ipop3d         : %08Xv%08Xu
++#  Courier             : %f or %v-%u (both might be used simultaneosly)
++#  Cyrus (<= 2.1.3)    : %u
++#  Cyrus (>= 2.1.4)    : %v.%u
++#  Dovecot v0.99.x     : %v.%u
++#  tpop3d              : %Mf
++#
++# Note that Outlook 2003 seems to have problems with %v.%u format which was
++# Dovecot's default, so if you're building a new server it would be a good
++# idea to change this. %08Xu%08Xv should be pretty fail-safe.
++#
++#pop3_uidl_format = %08Xu%08Xv
+ 
+-  # Permanently save UIDLs sent to POP3 clients, so pop3_uidl_format changes
+-  # won't change those UIDLs. Currently this works only with Maildir.
+-  #pop3_save_uidl = no
++# Permanently save UIDLs sent to POP3 clients, so pop3_uidl_format changes
++# won't change those UIDLs. Currently this works only with Maildir.
++#pop3_save_uidl = no
+ 
+-  # What to do about duplicate UIDLs if they exist?
+-  #   allow: Show duplicates to clients.
+-  #   rename: Append a temporary -2, -3, etc. counter after the UIDL.
+-  #pop3_uidl_duplicates = allow
++# What to do about duplicate UIDLs if they exist?
++#   allow: Show duplicates to clients.
++#   rename: Append a temporary -2, -3, etc. counter after the UIDL.
++#pop3_uidl_duplicates = allow
+ 
+-  # This option changes POP3 behavior so that it's not possible to actually
+-  # delete mails via POP3, only hide them from future POP3 sessions. The mails
+-  # will still be counted towards user's quota until actually deleted via IMAP.
+-  # Use e.g. "$POP3Deleted" as the value (it will be visible as IMAP keyword).
+-  # Make sure you can legally archive mails before enabling this setting.
+-  #pop3_deleted_flag =
++# This option changes POP3 behavior so that it's not possible to actually
++# delete mails via POP3, only hide them from future POP3 sessions. The mails
++# will still be counted towards user's quota until actually deleted via IMAP.
++# Use e.g. "$POP3Deleted" as the value (it will be visible as IMAP keyword).
++# Make sure you can legally archive mails before enabling this setting.
++#pop3_deleted_flag =
+ 
+-  # POP3 logout format string:
+-  #  %i - total number of bytes read from client
+-  #  %o - total number of bytes sent to client
+-  #  %t - number of TOP commands
+-  #  %p - number of bytes sent to client as a result of TOP command
+-  #  %r - number of RETR commands
+-  #  %b - number of bytes sent to client as a result of RETR command
+-  #  %d - number of deleted messages
+-  #  %m - number of messages (before deletion)
+-  #  %s - mailbox size in bytes (before deletion)
+-  #  %u - old/new UIDL hash. may help finding out if UIDLs changed unexpectedly
+-  #pop3_logout_format = top=%t/%p, retr=%r/%b, del=%d/%m, size=%s
++# POP3 logout format string:
++#  %i - total number of bytes read from client
++#  %o - total number of bytes sent to client
++#  %t - number of TOP commands
++#  %p - number of bytes sent to client as a result of TOP command
++#  %r - number of RETR commands
++#  %b - number of bytes sent to client as a result of RETR command
++#  %d - number of deleted messages
++#  %m - number of messages (before deletion)
++#  %s - mailbox size in bytes (before deletion)
++#  %u - old/new UIDL hash. may help finding out if UIDLs changed unexpectedly
++#pop3_logout_format = top=%t/%p, retr=%r/%b, del=%d/%m, size=%s
+ 
+-  # Maximum number of POP3 connections allowed for a user from each IP address.
+-  # NOTE: The username is compared case-sensitively.
+-  #mail_max_userip_connections = 10
++# Workarounds for various client bugs:
++#   outlook-no-nuls:
++#     Outlook and Outlook Express hang if mails contain NUL characters.
++#     This setting replaces them with 0x80 character.
++#   oe-ns-eoh:
++#     Outlook Express and Netscape Mail breaks if end of headers-line is
++#     missing. This option simply sends it if it's missing.
++# The list is space-separated.
++#pop3_client_workarounds = 
+ 
++protocol pop3 {
+   # Space separated list of plugins to load (default is global mail_plugins).
+   #mail_plugins = $mail_plugins
+ 
+-  # Workarounds for various client bugs:
+-  #   outlook-no-nuls:
+-  #     Outlook and Outlook Express hang if mails contain NUL characters.
+-  #     This setting replaces them with 0x80 character.
+-  #   oe-ns-eoh:
+-  #     Outlook Express and Netscape Mail breaks if end of headers-line is
+-  #     missing. This option simply sends it if it's missing.
+-  # The list is space-separated.
+-  #pop3_client_workarounds = 
++  # Maximum number of POP3 connections allowed for a user from each IP address.
++  # NOTE: The username is compared case-sensitively.
++  #mail_max_userip_connections = 10
+ }
+-- 
+1.7.10.2
+
+
+From 2aa4f8006da495916ccea58bf7e2339dd486508b Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 22:23:27 +0300
+Subject: [PATCH] Avoid strict aliasing warnings.
+
+
+diff --git a/src/lib/hash.h b/src/lib/hash.h
+index ead59a1..44c172a 100644
+--- a/src/lib/hash.h
++++ b/src/lib/hash.h
+@@ -82,13 +82,20 @@ void *hash_table_lookup(const struct hash_table *table, const void *key) ATTR_PU
+ bool hash_table_lookup_full(const struct hash_table *table,
+ 			    const void *lookup_key,
+ 			    void **orig_key_r, void **value_r);
+-#define hash_table_lookup_full(table, lookup_key, orig_key_r, value_r) \
++#ifndef __cplusplus
++#  define hash_table_lookup_full(table, lookup_key, orig_key_r, value_r) \
+ 	hash_table_lookup_full((table)._table, \
+ 		(void *)((const char *)(lookup_key) + COMPILE_ERROR_IF_TYPES2_NOT_COMPATIBLE((table)._const_key, (table)._key, lookup_key)), \
+-		(void **)(void *)((orig_key_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._keyp, orig_key_r) + \
++		(void *)((orig_key_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._keyp, orig_key_r) + \
+ 			COMPILE_ERROR_IF_TRUE(sizeof(*orig_key_r) != sizeof(void *))), \
+-		(void **)(void *)((value_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._valuep, value_r) + \
++		(void *)((value_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._valuep, value_r) + \
+ 			COMPILE_ERROR_IF_TRUE(sizeof(*value_r) != sizeof(void *))))
++#else
++/* C++ requires (void **) casting, but that's not possible with strict
++   aliasing, so .. we'll just disable the type checks */
++#  define hash_table_lookup_full(table, lookup_key, orig_key_r, value_r) \
++	hash_table_lookup_full((table)._table, lookup_key, orig_key_r, value_r)
++#endif
+ 
+ /* Insert/update node in hash table. The difference is that hash_table_insert()
+    replaces the key in table to given one, while hash_table_update() doesnt. */
+@@ -119,12 +126,20 @@ struct hash_iterate_context *hash_table_iterate_init(struct hash_table *table);
+ 	hash_table_iterate_init((table)._table)
+ bool hash_table_iterate(struct hash_iterate_context *ctx,
+ 			void **key_r, void **value_r);
+-#define hash_table_iterate(ctx, table, key_r, value_r) \
++#ifndef __cplusplus
++#  define hash_table_iterate(ctx, table, key_r, value_r) \
+ 	hash_table_iterate(ctx, \
+-		(void **)(void *)((key_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._keyp, key_r) + \
++		(void *)((key_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._keyp, key_r) + \
+ 			COMPILE_ERROR_IF_TRUE(sizeof(*key_r) != sizeof(void *)) + \
+ 			COMPILE_ERROR_IF_TRUE(sizeof(*value_r) != sizeof(void *))), \
+-		(void **)(void *)((value_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._valuep, value_r)))
++		(void *)((value_r) + COMPILE_ERROR_IF_TYPES_NOT_COMPATIBLE((table)._valuep, value_r)))
++#else
++/* C++ requires (void **) casting, but that's not possible with strict
++   aliasing, so .. we'll just disable the type checks */
++#  define hash_table_iterate(ctx, table, key_r, value_r) \
++	hash_table_iterate(ctx, key_r, value_r)
++#endif
++
+ void hash_table_iterate_deinit(struct hash_iterate_context **ctx);
+ 
+ /* Hash table isn't resized, and removed nodes aren't removed from
+diff --git a/src/plugins/fts-lucene/lucene-wrapper.cc b/src/plugins/fts-lucene/lucene-wrapper.cc
+index 1597e03..c57b676 100644
+--- a/src/plugins/fts-lucene/lucene-wrapper.cc
++++ b/src/plugins/fts-lucene/lucene-wrapper.cc
+@@ -1322,11 +1322,10 @@ lucene_index_search_multi(struct lucene_index *index,
+ 
+ 	BooleanQuery mailbox_query;
+ 	struct hash_iterate_context *iter;
+-	wchar_t *key;
+-	struct fts_result *value;
++	void *key, *value;
+ 	iter = hash_table_iterate_init(guids);
+ 	while (hash_table_iterate(iter, guids, &key, &value)) {
+-		Term *term = _CLNEW Term(_T("box"), key);
++		Term *term = _CLNEW Term(_T("box"), (wchar_t *)key);
+ 		TermQuery *q = _CLNEW TermQuery(term);
+ 		mailbox_query.add(q, true, BooleanClause::SHOULD);
+ 	}
+-- 
+1.7.10.2
+
+
+From 13bcdd36670bd342e9f56ae303bcefa0484aff6c Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 14 May 2013 23:34:38 +0300
+Subject: [PATCH] auth passwd-file: If we fail to open passwd-file, log a
+ request error directly. Instead of one error message and
+ another info message.
+
+
+diff --git a/src/auth/db-passwd-file.c b/src/auth/db-passwd-file.c
+index c43a4e0..eeda7bc 100644
+--- a/src/auth/db-passwd-file.c
++++ b/src/auth/db-passwd-file.c
+@@ -164,7 +164,8 @@ passwd_file_new(struct db_passwd_file *db, const char *expanded_path)
+ 	return pw;
+ }
+ 
+-static bool passwd_file_open(struct passwd_file *pw, bool startup)
++static int passwd_file_open(struct passwd_file *pw, bool startup,
++			    const char **error_r)
+ {
+ 	const char *no_args = NULL;
+ 	struct istream *input;
+@@ -176,20 +177,20 @@ static bool passwd_file_open(struct passwd_file *pw, bool startup)
+ 
+ 	fd = open(pw->path, O_RDONLY);
+ 	if (fd == -1) {
+-		if (errno == EACCES) {
+-			i_error("passwd-file %s: %s", pw->path,
+-				eacces_error_get("open", pw->path));
+-		} else {
+-			i_error("passwd-file %s: Can't open file: %m",
+-				pw->path);
++		if (errno == EACCES)
++			*error_r = eacces_error_get("open", pw->path);
++		else {
++			*error_r = t_strdup_printf("open(%s) failed: %m",
++						   pw->path);
+ 		}
+-		return FALSE;
++		return -1;
+ 	}
+ 
+ 	if (fstat(fd, &st) != 0) {
+-		i_error("passwd-file %s: fstat() failed: %m", pw->path);
++		*error_r = t_strdup_printf("fstat(%s) failed: %m",
++					   pw->path);
+ 		i_close_fd(&fd);
+-		return FALSE;
++		return -1;
+ 	}
+ 
+ 	pw->fd = fd;
+@@ -229,7 +230,7 @@ static bool passwd_file_open(struct passwd_file *pw, bool startup)
+ 		i_debug("passwd-file %s: Read %u users in %u secs",
+ 			pw->path, hash_table_count(pw->users), time_secs);
+ 	}
+-	return TRUE;
++	return 0;
+ }
+ 
+ static void passwd_file_close(struct passwd_file *pw)
+@@ -256,30 +257,37 @@ static void passwd_file_free(struct passwd_file *pw)
+ 	i_free(pw);
+ }
+ 
+-static bool passwd_file_sync(struct passwd_file *pw)
++static int passwd_file_sync(struct auth_request *request,
++			    struct passwd_file *pw)
+ {
+ 	struct stat st;
++	const char *error;
+ 
+ 	if (stat(pw->path, &st) < 0) {
+ 		/* with variables don't give hard errors, or errors about
+ 		   nonexistent files */
+ 		if (errno == EACCES) {
+-			i_error("passwd-file %s: %s", pw->path,
+-				eacces_error_get("stat", pw->path));
+-		} else if (errno != ENOENT) {
+-			i_error("passwd-file %s: stat() failed: %m", pw->path);
++			auth_request_log_error(request, "passwd-file",
++				"%s", eacces_error_get("stat", pw->path));
++		} else {
++			auth_request_log_error(request, "passwd-file",
++				"stat(%s) failed: %m", pw->path);
+ 		}
+ 
+ 		if (pw->db->default_file != pw)
+ 			passwd_file_free(pw);
+-		return FALSE;
++		return -1;
+ 	}
+ 
+ 	if (st.st_mtime != pw->stamp || st.st_size != pw->size) {
+ 		passwd_file_close(pw);
+-		return passwd_file_open(pw, FALSE);
++		if (passwd_file_open(pw, FALSE, &error) < 0) {
++			auth_request_log_error(request, "passwd-file",
++				"%s", error);
++			return -1;
++		}
+ 	}
+-	return TRUE;
++	return 0;
+ }
+ 
+ static struct db_passwd_file *db_passwd_file_find(const char *path)
+@@ -359,9 +367,12 @@ db_passwd_file_init(const char *path, bool userdb, bool debug)
+ 
+ void db_passwd_file_parse(struct db_passwd_file *db)
+ {
++	const char *error;
++
+ 	if (db->default_file != NULL && db->default_file->stamp == 0) {
+ 		/* no variables, open the file immediately */
+-		(void)passwd_file_open(db->default_file, TRUE);
++		if (passwd_file_open(db->default_file, TRUE, &error) < 0)
++			i_error("passwd-file: %s", error);
+ 	}
+ }
+ 
+@@ -421,7 +432,6 @@ db_passwd_file_lookup(struct db_passwd_file *db, struct auth_request *request,
+ 	struct passwd_user *pu;
+ 	const struct var_expand_table *table;
+ 	string_t *username, *dest;
+-	const char *path;
+ 
+ 	if (!db->vars)
+ 		pw = db->default_file;
+@@ -437,11 +447,8 @@ db_passwd_file_lookup(struct db_passwd_file *db, struct auth_request *request,
+ 		}
+ 	}
+ 
+-	path = t_strdup(pw->path);
+-	if (!passwd_file_sync(pw)) {
++	if (passwd_file_sync(request, pw) < 0) {
+ 		/* pw may be freed now */
+-		auth_request_log_info(request, "passwd-file",
+-				      "no passwd file: %s", path);
+ 		return NULL;
+ 	}
+ 
+-- 
+1.7.10.2
+
