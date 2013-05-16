@@ -2994,3 +2994,906 @@ index c43a4e0..eeda7bc 100644
 -- 
 1.7.10.2
 
+
+From 3098ef40cba6126700c24074a24eaa9dfd8252b2 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 12:48:21 +0300
+Subject: [PATCH] example-config: auth-*.conf.ext should say they're included
+ by 10-auth.conf
+
+
+diff --git a/doc/example-config/conf.d/auth-checkpassword.conf.ext b/doc/example-config/conf.d/auth-checkpassword.conf.ext
+index 02efae3..b2fb13a 100644
+--- a/doc/example-config/conf.d/auth-checkpassword.conf.ext
++++ b/doc/example-config/conf.d/auth-checkpassword.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for checkpassword users. Included from auth.conf.
++# Authentication for checkpassword users. Included from 10-auth.conf.
+ #
+ # <doc/wiki/AuthDatabase.CheckPassword.txt>
+ 
+diff --git a/doc/example-config/conf.d/auth-deny.conf.ext b/doc/example-config/conf.d/auth-deny.conf.ext
+index f2d897d..ce3f1cf 100644
+--- a/doc/example-config/conf.d/auth-deny.conf.ext
++++ b/doc/example-config/conf.d/auth-deny.conf.ext
+@@ -1,4 +1,4 @@
+-# Deny access for users. Included from auth.conf.
++# Deny access for users. Included from 10-auth.conf.
+ 
+ # Users can be (temporarily) disabled by adding a passdb with deny=yes.
+ # If the user is found from that database, authentication will fail.
+diff --git a/doc/example-config/conf.d/auth-dict.conf.ext b/doc/example-config/conf.d/auth-dict.conf.ext
+index e6e42db..0be4847 100644
+--- a/doc/example-config/conf.d/auth-dict.conf.ext
++++ b/doc/example-config/conf.d/auth-dict.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication via dict backend. Included from auth.conf.
++# Authentication via dict backend. Included from 10-auth.conf.
+ #
+ # <doc/wiki/AuthDatabase.Dict.txt>
+ 
+diff --git a/doc/example-config/conf.d/auth-ldap.conf.ext b/doc/example-config/conf.d/auth-ldap.conf.ext
+index 3e5c51f..5db32fa 100644
+--- a/doc/example-config/conf.d/auth-ldap.conf.ext
++++ b/doc/example-config/conf.d/auth-ldap.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for LDAP users. Included from auth.conf.
++# Authentication for LDAP users. Included from 10-auth.conf.
+ #
+ # <doc/wiki/AuthDatabase.LDAP.txt>
+ 
+diff --git a/doc/example-config/conf.d/auth-master.conf.ext b/doc/example-config/conf.d/auth-master.conf.ext
+index 8e5107f..2cf128f 100644
+--- a/doc/example-config/conf.d/auth-master.conf.ext
++++ b/doc/example-config/conf.d/auth-master.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for master users. Included from auth.conf.
++# Authentication for master users. Included from 10-auth.conf.
+ 
+ # By adding master=yes setting inside a passdb you make the passdb a list
+ # of "master users", who can log in as anyone else.
+diff --git a/doc/example-config/conf.d/auth-passwdfile.conf.ext b/doc/example-config/conf.d/auth-passwdfile.conf.ext
+index 5554957..c89d28c 100644
+--- a/doc/example-config/conf.d/auth-passwdfile.conf.ext
++++ b/doc/example-config/conf.d/auth-passwdfile.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for passwd-file users. Included from auth.conf.
++# Authentication for passwd-file users. Included from 10-auth.conf.
+ #
+ # passwd-like file with specified location.
+ # <doc/wiki/AuthDatabase.PasswdFile.txt>
+diff --git a/doc/example-config/conf.d/auth-sql.conf.ext b/doc/example-config/conf.d/auth-sql.conf.ext
+index 9ba585b..ccbea86 100644
+--- a/doc/example-config/conf.d/auth-sql.conf.ext
++++ b/doc/example-config/conf.d/auth-sql.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for SQL users. Included from auth.conf.
++# Authentication for SQL users. Included from 10-auth.conf.
+ #
+ # <doc/wiki/AuthDatabase.SQL.txt>
+ 
+diff --git a/doc/example-config/conf.d/auth-static.conf.ext b/doc/example-config/conf.d/auth-static.conf.ext
+index 238d517..90890c5 100644
+--- a/doc/example-config/conf.d/auth-static.conf.ext
++++ b/doc/example-config/conf.d/auth-static.conf.ext
+@@ -1,4 +1,4 @@
+-# Static passdb. Included from auth.conf.
++# Static passdb. Included from 10-auth.conf.
+ 
+ # This can be used for situations where Dovecot doesn't need to verify the
+ # username or the password, or if there is a single password for all users:
+diff --git a/doc/example-config/conf.d/auth-system.conf.ext b/doc/example-config/conf.d/auth-system.conf.ext
+index 260c080..23f943c 100644
+--- a/doc/example-config/conf.d/auth-system.conf.ext
++++ b/doc/example-config/conf.d/auth-system.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for system users. Included from auth.conf.
++# Authentication for system users. Included from 10-auth.conf.
+ #
+ # <doc/wiki/PasswordDatabase.txt>
+ # <doc/wiki/UserDatabase.txt>
+diff --git a/doc/example-config/conf.d/auth-vpopmail.conf.ext b/doc/example-config/conf.d/auth-vpopmail.conf.ext
+index 355237d..f2da976 100644
+--- a/doc/example-config/conf.d/auth-vpopmail.conf.ext
++++ b/doc/example-config/conf.d/auth-vpopmail.conf.ext
+@@ -1,4 +1,4 @@
+-# Authentication for vpopmail users. Included from auth.conf.
++# Authentication for vpopmail users. Included from 10-auth.conf.
+ #
+ # <doc/wiki/AuthDatabase.VPopMail.txt>
+ 
+-- 
+1.7.10.2
+
+
+From 68f86f89ba6ade74b215a65cc35dc0877241ccd8 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 12:50:03 +0300
+Subject: [PATCH] example-config: Removed dovecot-db.conf.ext since Berkeley
+ DB support is never built in.
+
+
+diff --git a/doc/example-config/dovecot-db.conf.ext b/doc/example-config/dovecot-db.conf.ext
+deleted file mode 100644
+index 165dc13..0000000
+--- a/doc/example-config/dovecot-db.conf.ext
++++ /dev/null
+@@ -1,11 +0,0 @@
+-# Example DB_CONFIG for Berkeley DB. Typically dict_db_config setting is used
+-# to point to this file.
+-# http://www.oracle.com/technology/documentation/berkeley-db/db/ref/env/db_config.html
+-
+-# Maximum number of simultaneous transactions.
+-set_tx_max 1000
+-
+-# http://www.oracle.com/technology/documentation/berkeley-db/db/ref/lock/max.html
+-#set_lk_max_locks 1000
+-#set_lk_max_lockers 1000
+-#set_lk_max_objects 1000
+-- 
+1.7.10.2
+
+
+From 43e1226ce6ef93aaaf1fb51789949ec6464eee13 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 12:50:29 +0300
+Subject: [PATCH] Makefile: Removed dovecot-db.conf.ext
+
+
+diff --git a/doc/example-config/Makefile.am b/doc/example-config/Makefile.am
+index d609f06..5a2dd8b 100644
+--- a/doc/example-config/Makefile.am
++++ b/doc/example-config/Makefile.am
+@@ -12,7 +12,6 @@ README: README.in Makefile
+ exampledir = $(docdir)/example-config
+ example_DATA = \
+ 	dovecot.conf \
+-	dovecot-db.conf.ext \
+ 	dovecot-dict-auth.conf.ext \
+ 	dovecot-dict-sql.conf.ext \
+ 	dovecot-ldap.conf.ext \
+-- 
+1.7.10.2
+
+
+From 2dcba78690d3e7282afdf0012c98ea08924c49da Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 12:52:29 +0300
+Subject: [PATCH] example-config: Added comment how all *.conf.ext files are
+ accessed typically.
+
+
+diff --git a/doc/example-config/dovecot-dict-auth.conf.ext b/doc/example-config/dovecot-dict-auth.conf.ext
+index 7e79d3c..50617bb 100644
+--- a/doc/example-config/dovecot-dict-auth.conf.ext
++++ b/doc/example-config/dovecot-dict-auth.conf.ext
+@@ -1,3 +1,5 @@
++# This file is commonly accessed via dict {} section in dovecot.conf
++
+ # Dictionary URI
+ #uri = 
+ 
+diff --git a/doc/example-config/dovecot-dict-sql.conf.ext b/doc/example-config/dovecot-dict-sql.conf.ext
+index 674a25f..a9a903f 100644
+--- a/doc/example-config/dovecot-dict-sql.conf.ext
++++ b/doc/example-config/dovecot-dict-sql.conf.ext
+@@ -1,3 +1,5 @@
++# This file is commonly accessed via dict {} section in dovecot.conf
++
+ #connect = host=localhost dbname=mails user=testuser password=pass
+ 
+ # CREATE TABLE quota (
+diff --git a/doc/example-config/dovecot-ldap.conf.ext b/doc/example-config/dovecot-ldap.conf.ext
+index 7dcc748..1ca6733 100644
+--- a/doc/example-config/dovecot-ldap.conf.ext
++++ b/doc/example-config/dovecot-ldap.conf.ext
+@@ -1,3 +1,6 @@
++# This file is commonly accessed via passdb {} or userdb {} section in
++# conf.d/auth-ldap.conf.ext
++
+ # This file is opened as root, so it should be owned by root and mode 0600.
+ #
+ # http://wiki2.dovecot.org/AuthDatabase/LDAP
+diff --git a/doc/example-config/dovecot-sql.conf.ext b/doc/example-config/dovecot-sql.conf.ext
+index b650c57..77e8187 100644
+--- a/doc/example-config/dovecot-sql.conf.ext
++++ b/doc/example-config/dovecot-sql.conf.ext
+@@ -1,3 +1,6 @@
++# This file is commonly accessed via passdb {} or userdb {} section in
++# conf.d/auth-sql.conf.ext
++
+ # This file is opened as root, so it should be owned by root and mode 0600.
+ #
+ # http://wiki2.dovecot.org/AuthDatabase/SQL
+-- 
+1.7.10.2
+
+
+From 36faafec8112b7f76ec89597510925ca85873acd Mon Sep 17 00:00:00 2001
+From: Florian Zeitz <florob@babelmonkeys.de>
+Date: Sat, 11 May 2013 17:08:12 +0200
+Subject: [PATCH] liblib: Fix Unicode decomposition
+
+
+diff --git a/src/lib/test-unichar.c b/src/lib/test-unichar.c
+index abb6357..b7bb258 100644
+--- a/src/lib/test-unichar.c
++++ b/src/lib/test-unichar.c
+@@ -2,11 +2,15 @@
+ 
+ #include "test-lib.h"
+ #include "str.h"
++#include "buffer.h"
+ #include "unichar.h"
+ 
+ void test_unichar(void)
+ {
+-	static const char *overlong_utf8 = "\xf8\x80\x95\x81\xa1";
++	static const char overlong_utf8[] = "\xf8\x80\x95\x81\xa1";
++	static const char collate_in[] = "\xc3\xbc \xc2\xb3";
++	static const char collate_exp[] = "U\xcc\x88 3";
++	buffer_t *collate_out;
+ 	unichar_t chr, chr2;
+ 	string_t *str = t_str_new(16);
+ 
+@@ -18,6 +22,13 @@ void test_unichar(void)
+ 		test_assert(uni_utf8_get_char(str_c(str), &chr2) > 0);
+ 		test_assert(chr2 == chr);
+ 	}
++
++	collate_out = buffer_create_dynamic(default_pool, 32);
++	uni_utf8_to_decomposed_titlecase(collate_in, sizeof(collate_in),
++					 collate_out);
++	test_assert(!strcmp(collate_out->data, collate_exp));
++	buffer_free(&collate_out);
++
+ 	test_assert(!uni_utf8_str_is_valid(overlong_utf8));
+ 	test_assert(uni_utf8_get_char(overlong_utf8, &chr2) < 0);
+ 	test_end();
+diff --git a/src/lib/unichar.c b/src/lib/unichar.c
+index b0c50f5..97b0aaf 100644
+--- a/src/lib/unichar.c
++++ b/src/lib/unichar.c
+@@ -287,7 +287,7 @@ static void uni_ucs4_decompose_hangul_utf8(unichar_t chr, buffer_t *output)
+ 
+ static bool uni_ucs4_decompose_multi_utf8(unichar_t chr, buffer_t *output)
+ {
+-	const uint16_t *value;
++	const uint32_t *value;
+ 	unsigned int idx;
+ 
+ 	if (chr < multidecomp_keys[0] || chr > 0xffff)
+diff --git a/src/lib/unicodemap.pl b/src/lib/unicodemap.pl
+index c18c273..2c1bf7a 100755
+--- a/src/lib/unicodemap.pl
++++ b/src/lib/unicodemap.pl
+@@ -30,14 +30,14 @@ while (<>) {
+       push @titlecase32_keys, $code;
+       push @titlecase32_values, $value;
+     }
+-  } elsif ($decomp =~ /\<[^>]*> (.+)/) {
++  } elsif ($decomp =~ /(?:\<[^>]*> )?(.+)/) {
+     # decompositions
+     my $decomp_codes = $1;
+     if ($decomp_codes =~ /^([0-9A-Z]*)$/i) {
+       # unicharacter decomposition. use separate lists for this
+       my $value = eval("0x$1");
+-      if ($value > 0xffff) {
+-	print STDERR "Error: We've assumed decomposition codes are max. 16bit\n";
++      if ($value > 0xffffffff) {
++	print STDERR "Error: We've assumed decomposition codes are max. 32bit\n";
+ 	exit 1;
+       }
+       if ($code <= 0xff) {
+@@ -61,8 +61,8 @@ while (<>) {
+ 
+       foreach my $dcode (split(" ", $decomp_codes)) {
+ 	my $value = eval("0x$dcode");
+-	if ($value > 0xffff) {
+-	  print STDERR "Error: We've assumed decomposition codes are max. 16bit\n";
++	if ($value > 0xffffffff) {
++	  print STDERR "Error: We've assumed decomposition codes are max. 32bit\n";
+ 	  exit 1;
+ 	}
+ 	push @multidecomp_values, $value;
+@@ -78,7 +78,7 @@ sub print_list {
+   my $last = $#list;
+   my $n = 0;
+   foreach my $key (@list) {
+-    printf("0x%04x", $key);
++    printf("0x%05x", $key);
+     last if ($n == $last);
+     print ",";
+     
+@@ -137,7 +137,7 @@ print "static const uint16_t uni16_decomp_keys[] = {\n\t";
+ print_list(\@uni16_decomp_keys);
+ print "\n};\n";
+ 
+-print "static const uint16_t uni16_decomp_values[] = {\n\t";
++print "static const uint32_t uni16_decomp_values[] = {\n\t";
+ print_list(\@uni16_decomp_values);
+ print "\n};\n";
+ 
+@@ -145,7 +145,7 @@ print "static const uint32_t uni32_decomp_keys[] = {\n\t";
+ print_list(\@uni32_decomp_keys);
+ print "\n};\n";
+ 
+-print "static const uint16_t uni32_decomp_values[] = {\n\t";
++print "static const uint32_t uni32_decomp_values[] = {\n\t";
+ print_list(\@uni32_decomp_values);
+ print "\n};\n";
+ 
+@@ -157,6 +157,6 @@ print "static const uint16_t multidecomp_offsets[] = {\n\t";
+ print_list(\@multidecomp_offsets);
+ print "\n};\n";
+ 
+-print "static const uint16_t multidecomp_values[] = {\n\t";
++print "static const uint32_t multidecomp_values[] = {\n\t";
+ print_list(\@multidecomp_values);
+ print "\n};\n";
+-- 
+1.7.10.2
+
+
+From b92f8fd079ad5aae050cc1e560d1f3bf0a4fd14f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 13:20:43 +0300
+Subject: [PATCH] lib-storage: Added mail_always_cache_fields setting.
+
+
+diff --git a/src/lib-storage/index/index-storage.c b/src/lib-storage/index/index-storage.c
+index a4c1061..c5c1380 100644
+--- a/src/lib-storage/index/index-storage.c
++++ b/src/lib-storage/index/index-storage.c
+@@ -65,6 +65,10 @@ static void index_cache_register_defaults(struct mailbox *box)
+ 		set_cache_decisions("mail_cache_fields",
+ 				    set->mail_cache_fields,
+ 				    MAIL_CACHE_DECISION_TEMP);
++		set_cache_decisions("mail_always_cache_fields",
++				    set->mail_always_cache_fields,
++				    MAIL_CACHE_DECISION_YES |
++				    MAIL_CACHE_DECISION_FORCED);
+ 		set_cache_decisions("mail_never_cache_fields",
+ 				    set->mail_never_cache_fields,
+ 				    MAIL_CACHE_DECISION_NO |
+diff --git a/src/lib-storage/mail-storage-settings.c b/src/lib-storage/mail-storage-settings.c
+index 3eb3aa5..67f724d 100644
+--- a/src/lib-storage/mail-storage-settings.c
++++ b/src/lib-storage/mail-storage-settings.c
+@@ -33,6 +33,7 @@ static const struct setting_define mail_storage_setting_defines[] = {
+ 	DEF(SET_STR_VARS, mail_attribute_dict),
+ 	DEF(SET_UINT, mail_prefetch_count),
+ 	DEF(SET_STR, mail_cache_fields),
++	DEF(SET_STR, mail_always_cache_fields),
+ 	DEF(SET_STR, mail_never_cache_fields),
+ 	DEF(SET_UINT, mail_cache_min_mail_count),
+ 	DEF(SET_TIME, mailbox_idle_check_interval),
+@@ -69,6 +70,7 @@ const struct mail_storage_settings mail_storage_default_settings = {
+ 	.mail_attribute_dict = "",
+ 	.mail_prefetch_count = 0,
+ 	.mail_cache_fields = "flags",
++	.mail_always_cache_fields = "",
+ 	.mail_never_cache_fields = "imap.envelope",
+ 	.mail_cache_min_mail_count = 0,
+ 	.mailbox_idle_check_interval = 30,
+diff --git a/src/lib-storage/mail-storage-settings.h b/src/lib-storage/mail-storage-settings.h
+index aa599f6..aeeadc8 100644
+--- a/src/lib-storage/mail-storage-settings.h
++++ b/src/lib-storage/mail-storage-settings.h
+@@ -18,6 +18,7 @@ struct mail_storage_settings {
+ 	const char *mail_attribute_dict;
+ 	unsigned int mail_prefetch_count;
+ 	const char *mail_cache_fields;
++	const char *mail_always_cache_fields;
+ 	const char *mail_never_cache_fields;
+ 	unsigned int mail_cache_min_mail_count;
+ 	unsigned int mailbox_idle_check_interval;
+-- 
+1.7.10.2
+
+
+From 20bd7d25419ab4e4bca7d7eef0ba11f50110cb71 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 13:34:59 +0300
+Subject: [PATCH] lib-index: Fixed mail_cache_register_fields() decision
+ updates. Normally this shouldn't matter, except when
+ mail_*cache_fields settings have been used.
+
+
+diff --git a/src/lib-index/mail-cache-fields.c b/src/lib-index/mail-cache-fields.c
+index 347486e..3cbfc4a 100644
+--- a/src/lib-index/mail-cache-fields.c
++++ b/src/lib-index/mail-cache-fields.c
+@@ -74,8 +74,8 @@ mail_cache_field_update(struct mail_cache *cache,
+ 	i_assert(newfield->type < MAIL_CACHE_FIELD_COUNT);
+ 
+ 	orig = &cache->fields[newfield->idx];
+-	if (newfield->decision != MAIL_CACHE_DECISION_NO &&
+-	    orig->field.decision != newfield->decision) {
++	if ((newfield->decision & MAIL_CACHE_DECISION_FORCED) != 0 ||
++	    newfield->decision > orig->field.decision) {
+ 		orig->field.decision = newfield->decision;
+ 		orig->decision_dirty = TRUE;
+ 	}
+-- 
+1.7.10.2
+
+
+From 22531ca1ad97537cf96085fe9aac0ba19d7e55aa Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 13:36:43 +0300
+Subject: [PATCH] lib-index: Don't mark field decisions dirty when registering
+ initial cache fields.
+
+
+diff --git a/src/lib-index/mail-cache-fields.c b/src/lib-index/mail-cache-fields.c
+index 3cbfc4a..084331e 100644
+--- a/src/lib-index/mail-cache-fields.c
++++ b/src/lib-index/mail-cache-fields.c
+@@ -70,18 +70,26 @@ mail_cache_field_update(struct mail_cache *cache,
+ 			const struct mail_cache_field *newfield)
+ {
+ 	struct mail_cache_field_private *orig;
++	bool initial_registering;
+ 
+ 	i_assert(newfield->type < MAIL_CACHE_FIELD_COUNT);
+ 
++	/* are we still doing the initial cache field registering for
++	   internal fields and for mail_*cache_fields settings? */
++	initial_registering = cache->file_fields_count == 0;
++
+ 	orig = &cache->fields[newfield->idx];
+ 	if ((newfield->decision & MAIL_CACHE_DECISION_FORCED) != 0 ||
+-	    newfield->decision > orig->field.decision) {
++	    ((orig->field.decision & MAIL_CACHE_DECISION_FORCED) == 0 &&
++	     newfield->decision > orig->field.decision)) {
+ 		orig->field.decision = newfield->decision;
+-		orig->decision_dirty = TRUE;
++		if (!initial_registering)
++			orig->decision_dirty = TRUE;
+ 	}
+ 	if (orig->field.last_used < newfield->last_used) {
+ 		orig->field.last_used = newfield->last_used;
+-		orig->decision_dirty = TRUE;
++		if (!initial_registering)
++			orig->decision_dirty = TRUE;
+ 	}
+ 	if (orig->decision_dirty)
+ 		cache->field_header_write_pending = TRUE;
+-- 
+1.7.10.2
+
+
+From 8449d1499abda0d5e0667a2a95298d4863a45265 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 13:44:01 +0300
+Subject: [PATCH] lib-storage: Allow mail_*cache_fields settings to specify
+ any hdr.* fields. Also the fields were previously set only
+ once globally, so if the process served multiple users, it
+ wouldn't have been possible to use per-user values for
+ these fields.
+
+
+diff --git a/src/lib-storage/index/index-storage.c b/src/lib-storage/index/index-storage.c
+index c5c1380..727767f 100644
+--- a/src/lib-storage/index/index-storage.c
++++ b/src/lib-storage/index/index-storage.c
+@@ -28,27 +28,35 @@
+ struct index_storage_module index_storage_module =
+ 	MODULE_CONTEXT_INIT(&mail_storage_module_register);
+ 
+-static void set_cache_decisions(const char *set, const char *fields,
++static void set_cache_decisions(struct mail_cache *cache,
++				const char *set, const char *fields,
+ 				enum mail_cache_decision_type dec)
+ {
++	struct mail_cache_field field;
+ 	const char *const *arr;
+-	int i;
++	unsigned int idx;
+ 
+ 	if (fields == NULL || *fields == '\0')
+ 		return;
+ 
+ 	for (arr = t_strsplit_spaces(fields, " ,"); *arr != NULL; arr++) {
+-		for (i = 0; i < MAIL_INDEX_CACHE_FIELD_COUNT; i++) {
+-			if (strcasecmp(global_cache_fields[i].name,
+-				       *arr) == 0) {
+-				global_cache_fields[i].decision = dec;
+-				break;
+-			}
+-		}
+-		if (i == MAIL_INDEX_CACHE_FIELD_COUNT) {
+-			i_error("%s: Invalid cache field name '%s', ignoring ",
++		const char *name = *arr;
++
++		idx = mail_cache_register_lookup(cache, name);
++		if (idx != UINT_MAX) {
++			field = *mail_cache_register_get_field(cache, idx);
++		} else if (strncasecmp(name, "hdr.", 4) == 0) {
++			memset(&field, 0, sizeof(field));
++			field.name = name;
++			field.type = MAIL_CACHE_FIELD_HEADER;
++		} else {
++			i_error("%s: Unknown cache field name '%s', ignoring",
+ 				set, *arr);
++			continue;
+ 		}
++
++		field.decision = dec;
++		mail_cache_register_fields(cache, &field, 1);
+ 	}
+ }
+ 
+@@ -56,30 +64,24 @@ static void index_cache_register_defaults(struct mailbox *box)
+ {
+ 	struct index_mailbox_context *ibox = INDEX_STORAGE_CONTEXT(box);
+ 	const struct mail_storage_settings *set = box->storage->set;
+-	static bool initialized = FALSE;
+ 	struct mail_cache *cache = box->cache;
+ 
+-	if (!initialized) {
+-		initialized = TRUE;
+-
+-		set_cache_decisions("mail_cache_fields",
+-				    set->mail_cache_fields,
+-				    MAIL_CACHE_DECISION_TEMP);
+-		set_cache_decisions("mail_always_cache_fields",
+-				    set->mail_always_cache_fields,
+-				    MAIL_CACHE_DECISION_YES |
+-				    MAIL_CACHE_DECISION_FORCED);
+-		set_cache_decisions("mail_never_cache_fields",
+-				    set->mail_never_cache_fields,
+-				    MAIL_CACHE_DECISION_NO |
+-				    MAIL_CACHE_DECISION_FORCED);
+-	}
+-
+ 	ibox->cache_fields = i_malloc(sizeof(global_cache_fields));
+ 	memcpy(ibox->cache_fields, global_cache_fields,
+ 	       sizeof(global_cache_fields));
+ 	mail_cache_register_fields(cache, ibox->cache_fields,
+ 				   MAIL_INDEX_CACHE_FIELD_COUNT);
++	set_cache_decisions(cache, "mail_cache_fields",
++			    set->mail_cache_fields,
++			    MAIL_CACHE_DECISION_TEMP);
++	set_cache_decisions(cache, "mail_always_cache_fields",
++			    set->mail_always_cache_fields,
++			    MAIL_CACHE_DECISION_YES |
++			    MAIL_CACHE_DECISION_FORCED);
++	set_cache_decisions(cache, "mail_never_cache_fields",
++			    set->mail_never_cache_fields,
++			    MAIL_CACHE_DECISION_NO |
++			    MAIL_CACHE_DECISION_FORCED);
+ }
+ 
+ void index_storage_lock_notify(struct mailbox *box,
+-- 
+1.7.10.2
+
+
+From e73e2223cf1a42d87c1fcd8ede02998a69036415 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 14:28:04 +0300
+Subject: [PATCH] quota-status: If quota_status_* settings are set, don't free
+ them before using.
+
+
+diff --git a/src/plugins/quota/quota-status.c b/src/plugins/quota/quota-status.c
+index bfac5e7..bff7540 100644
+--- a/src/plugins/quota/quota-status.c
++++ b/src/plugins/quota/quota-status.c
+@@ -109,6 +109,7 @@ static void client_handle_request(struct quota_client *client)
+ 			if (value == NULL)
+ 				value = t_strdup_printf("554 5.2.2 %s\n\n", error);
+ 		}
++		value = t_strdup(value); /* user's pool is being freed */
+ 		mail_user_unref(&user);
+ 		mail_storage_service_user_free(&service_user);
+ 	}
+-- 
+1.7.10.2
+
+
+From eee84842f41ed4e0753fb49199ea930f9e2b613a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 15:06:24 +0300
+Subject: [PATCH] Added asserts to binary searches to make sure we don't go to
+ infinite loop. Using idx=left+(right-left)/2 would have
+ worked also to allow 4GB sizes, but since none of the
+ places in the code are likely to reach 2GB we might as well
+ just add an assert. (Also if they do reach 2GB, it could be
+ possible that they could reach also above 4GB and cause
+ problems. Better to see an early error.)
+
+
+diff --git a/src/lib-index/mail-index-map.c b/src/lib-index/mail-index-map.c
+index e1275dc..a735c3c 100644
+--- a/src/lib-index/mail-index-map.c
++++ b/src/lib-index/mail-index-map.c
+@@ -514,6 +514,7 @@ static uint32_t mail_index_bsearch_uid(struct mail_index_map *map,
+ 	idx = left_idx;
+ 	right_idx = I_MIN(map->hdr.messages_count, uid);
+ 
++	i_assert(right_idx < INT_MAX);
+ 	while (left_idx < right_idx) {
+ 		idx = (left_idx + right_idx) / 2;
+ 
+diff --git a/src/lib-index/mail-index-transaction-update.c b/src/lib-index/mail-index-transaction-update.c
+index f7887bf..aae27e2 100644
+--- a/src/lib-index/mail-index-transaction-update.c
++++ b/src/lib-index/mail-index-transaction-update.c
+@@ -402,6 +402,7 @@ mail_index_transaction_get_flag_update_pos(struct mail_index_transaction *t,
+ 
+ 	updates = array_get(&t->updates, &count);
+ 	i_assert(left_idx <= right_idx && right_idx <= count);
++	i_assert(count < INT_MAX);
+ 
+ 	/* find the first update with either overlapping range,
+ 	   or the update which will come after our insert */
+diff --git a/src/lib-storage/index/index-sort-string.c b/src/lib-storage/index/index-sort-string.c
+index 0f1f486..17270d3 100644
+--- a/src/lib-storage/index/index-sort-string.c
++++ b/src/lib-storage/index/index-sort-string.c
+@@ -382,6 +382,7 @@ index_sort_bsearch(struct sort_string_context *ctx, const char *key,
+ 	int ret;
+ 
+ 	nodes = array_get_modifiable(&ctx->nonzero_nodes, &right_idx);
++	i_assert(right_idx < INT_MAX);
+ 	idx = left_idx = start_idx;
+ 	while (left_idx < right_idx) {
+ 		idx = (left_idx + right_idx) / 2;
+diff --git a/src/lib/bsearch-insert-pos.c b/src/lib/bsearch-insert-pos.c
+index 7bb9e53..d9feebf 100644
+--- a/src/lib/bsearch-insert-pos.c
++++ b/src/lib/bsearch-insert-pos.c
+@@ -13,6 +13,8 @@ bool bsearch_insert_pos(const void *key, const void *base, unsigned int nmemb,
+ 	unsigned int idx, left_idx, right_idx;
+ 	int ret;
+ 
++	i_assert(nmemb < INT_MAX);
++
+ 	idx = 0; left_idx = 0; right_idx = nmemb;
+ 	while (left_idx < right_idx) {
+ 		idx = (left_idx + right_idx) / 2;
+diff --git a/src/lib/bsearch-insert-pos.h b/src/lib/bsearch-insert-pos.h
+index 64b547b..52552d0 100644
+--- a/src/lib/bsearch-insert-pos.h
++++ b/src/lib/bsearch-insert-pos.h
+@@ -5,6 +5,7 @@
+ #define BINARY_NUMBER_SEARCH(data, count, value, idx_r) \
+ 	unsigned int idx, left_idx, right_idx;        \
+ 						      \
++	i_assert((count) < INT_MAX);                  \
+ 	idx = 0; left_idx = 0; right_idx = (count);   \
+ 	while (left_idx < right_idx) {                \
+ 		idx = (left_idx + right_idx) / 2;     \
+diff --git a/src/lib/seq-range-array.c b/src/lib/seq-range-array.c
+index 132fc22..c1a1af9 100644
+--- a/src/lib/seq-range-array.c
++++ b/src/lib/seq-range-array.c
+@@ -12,6 +12,7 @@ seq_range_lookup(const ARRAY_TYPE(seq_range) *array,
+ 	unsigned int idx, left_idx, right_idx, count;
+ 
+ 	data = array_get(array, &count);
++	i_assert(count < INT_MAX);
+ 
+ 	idx = 0; left_idx = 0; right_idx = count;
+ 	while (left_idx < right_idx) {
+@@ -198,6 +199,7 @@ bool seq_range_array_remove(ARRAY_TYPE(seq_range) *array, uint32_t seq)
+ 
+ 	/* somewhere in the middle, array is sorted so find it with
+ 	   binary search */
++	i_assert(count < INT_MAX);
+ 	left_idx = 0; right_idx = count;
+ 	while (left_idx < right_idx) {
+ 		idx = (left_idx + right_idx) / 2;
+-- 
+1.7.10.2
+
+
+From f8034a3a01bb4ad01255fa9f059422dc9381b2d1 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 15:26:47 +0300
+Subject: [PATCH] maildir: Fixed handling over 26 keywords in a mailbox.
+
+
+diff --git a/src/lib-storage/index/maildir/maildir-sync-index.c b/src/lib-storage/index/maildir/maildir-sync-index.c
+index 6869489..299da72 100644
+--- a/src/lib-storage/index/maildir/maildir-sync-index.c
++++ b/src/lib-storage/index/maildir/maildir-sync-index.c
+@@ -390,10 +390,11 @@ maildir_sync_mail_keywords(struct maildir_index_sync_context *ctx, uint32_t seq)
+ 	old_indexes = array_get(&ctx->idx_keywords, &old_count);
+ 	have_indexonly_keywords = FALSE;
+ 	for (i = old_count; i > 0; i--) {
+-		if (old_indexes[i-1] < MAILDIR_MAX_KEYWORDS)
+-			break;
+-		have_indexonly_keywords = TRUE;
+-		array_delete(&ctx->idx_keywords, i-1, 1);
++		if (maildir_keywords_idx_char(ctx->keywords_sync_ctx,
++					      old_indexes[i-1]) == '\0') {
++			have_indexonly_keywords = TRUE;
++			array_delete(&ctx->idx_keywords, i-1, 1);
++		}
+ 	}
+ 
+ 	if (!have_indexonly_keywords) {
+-- 
+1.7.10.2
+
+
+From 8db81610a50c448d483fb4bf6f4d1ee25ebeb797 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 15:35:10 +0300
+Subject: [PATCH] imap: Return how long SELECT or EXAMINE command took to
+ answer. Could be useful to know sometimes if there's a
+ large maildir where a lot files need to be rename()d.
+
+
+diff --git a/src/imap/cmd-select.c b/src/imap/cmd-select.c
+index 46d07b9..966ed2f 100644
+--- a/src/imap/cmd-select.c
++++ b/src/imap/cmd-select.c
+@@ -2,6 +2,7 @@
+ 
+ #include "imap-common.h"
+ #include "seq-range-array.h"
++#include "time-util.h"
+ #include "imap-commands.h"
+ #include "mail-search-build.h"
+ #include "imap-search-args.h"
+@@ -16,6 +17,7 @@ struct imap_select_context {
+ 	struct mail_namespace *ns;
+ 	struct mailbox *box;
+ 
++	struct timeval start_time;
+ 	struct imap_fetch_context *fetch_ctx;
+ 
+ 	uint32_t qresync_uid_validity;
+@@ -198,14 +200,24 @@ static void select_context_free(struct imap_select_context *ctx)
+ 
+ static void cmd_select_finish(struct imap_select_context *ctx, int ret)
+ {
++	const char *resp_code;
++	struct timeval end_time;
++	int time_msecs;
++
+ 	if (ret < 0) {
+ 		if (ctx->box != NULL)
+ 			mailbox_free(&ctx->box);
+ 		ctx->cmd->client->mailbox = NULL;
+ 	} else {
+-		client_send_tagline(ctx->cmd, mailbox_is_readonly(ctx->box) ?
+-				    "OK [READ-ONLY] Select completed." :
+-				    "OK [READ-WRITE] Select completed.");
++		resp_code = mailbox_is_readonly(ctx->box) ?
++			"READ-ONLY" : "READ-WRITE";
++		if (gettimeofday(&end_time, NULL) < 0)
++			memset(&end_time, 0, sizeof(end_time));
++		time_msecs = timeval_diff_msecs(&end_time, &ctx->start_time);
++		client_send_tagline(ctx->cmd, t_strdup_printf(
++			"OK [%s] %s completed (%d.%03d secs).", resp_code,
++			ctx->cmd->client->mailbox_examined ? "Examine" : "Select",
++			time_msecs/1000, time_msecs%1000));
+ 	}
+ 	select_context_free(ctx);
+ }
+@@ -398,6 +410,7 @@ bool cmd_select_full(struct client_command_context *cmd, bool readonly)
+ 	ctx = p_new(cmd->pool, struct imap_select_context, 1);
+ 	ctx->cmd = cmd;
+ 	ctx->ns = client_find_namespace(cmd, &mailbox);
++	(void)gettimeofday(&ctx->start_time, NULL);
+ 	if (ctx->ns == NULL) {
+ 		close_selected_mailbox(client);
+ 		return TRUE;
+-- 
+1.7.10.2
+
+
+From 62c9b86b3a5eef87c553cbbee4769fda183f730f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 16:10:48 +0300
+Subject: [PATCH] lib-storage: Don't lose INBOX's \Subscribed flag when
+ returning it is delayed.
+
+
+diff --git a/src/lib-storage/list/mailbox-list-iter.c b/src/lib-storage/list/mailbox-list-iter.c
+index da95178..9d2b8a9 100644
+--- a/src/lib-storage/list/mailbox-list-iter.c
++++ b/src/lib-storage/list/mailbox-list-iter.c
+@@ -597,9 +597,12 @@ mailbox_list_ns_iter_try_next(struct mailbox_list_iterate_context *_ctx,
+ 	if (info != NULL) {
+ 		if (strcasecmp(info->vname, "INBOX") == 0 && ctx->inbox_list) {
+ 			/* delay sending INBOX reply. we already saved its
+-			   flags at init stage, except for \Noinferiors */
++			   flags at init stage, except for \Noinferiors
++			   and subscription states */
+ 			ctx->inbox_info.flags |=
+-				(info->flags & MAILBOX_NOINFERIORS);
++				(info->flags & (MAILBOX_NOINFERIORS |
++						MAILBOX_SUBSCRIBED |
++						MAILBOX_CHILD_SUBSCRIBED));
+ 			return FALSE;
+ 		}
+ 		if (strncasecmp(info->vname, "INBOX", 5) == 0 &&
+-- 
+1.7.10.2
+
+
+From efef70a8310a915cdc7e896106159f1923574055 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 17:09:36 +0300
+Subject: [PATCH] layout=fs: Always return INBOX uppercased when listing
+ mailboxes.
+
+
+diff --git a/src/lib-storage/list/mailbox-list-fs-iter.c b/src/lib-storage/list/mailbox-list-fs-iter.c
+index 9aabf0a..1688264 100644
+--- a/src/lib-storage/list/mailbox-list-fs-iter.c
++++ b/src/lib-storage/list/mailbox-list-fs-iter.c
+@@ -682,6 +682,7 @@ fs_list_entry(struct fs_list_iterate_context *ctx,
+ 			return 0;
+ 		}
+ 		inbox_flags_set(ctx, child_dir_match);
++		ctx->info.vname = "INBOX"; /* always return uppercased */
+ 		ctx->inbox_found = TRUE;
+ 	} else if (strcmp(storage_name, "INBOX") == 0 &&
+ 		   (ns->flags & NAMESPACE_FLAG_INBOX_USER) != 0) {
+-- 
+1.7.10.2
+
+
+From 8a37bc920230ceac1f72d0628e7aa05e5ae0431a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 17:10:28 +0300
+Subject: [PATCH] mbox: If save's input stream fails, fail saving instead of
+ ignoring the error.
+
+
+diff --git a/src/lib-storage/index/mbox/mbox-save.c b/src/lib-storage/index/mbox/mbox-save.c
+index 9880083..ff84725 100644
+--- a/src/lib-storage/index/mbox/mbox-save.c
++++ b/src/lib-storage/index/mbox/mbox-save.c
+@@ -635,6 +635,11 @@ int mbox_save_continue(struct mail_save_context *_ctx)
+ 	}
+ 	if (ret == 0)
+ 		return 0;
++	if (ctx->input->stream_errno != 0) {
++		i_error("read(%s) failed: %m", i_stream_get_name(ctx->input));
++		ctx->failed = TRUE;
++		return -1;
++	}
+ 
+ 	i_assert(ctx->last_char == '\n');
+ 
+-- 
+1.7.10.2
+
+
+From e6237e5511e0dc0a5ab2c3aaaa4ec43968a9c345 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 15 May 2013 17:18:29 +0300
+Subject: [PATCH] mbox: Fixed committing transaction after a previous save had
+ failed.
+
+
+diff --git a/src/lib-storage/index/mbox/mbox-save.c b/src/lib-storage/index/mbox/mbox-save.c
+index ff84725..218f290 100644
+--- a/src/lib-storage/index/mbox/mbox-save.c
++++ b/src/lib-storage/index/mbox/mbox-save.c
+@@ -715,6 +715,13 @@ int mbox_save_finish(struct mail_save_context *_ctx)
+ 		ctx->mail_offset = (uoff_t)-1;
+ 	}
+ 
++	if (ctx->seq != 0) {
++		mail_index_expunge(ctx->trans, ctx->seq);
++		/* currently we can't just drop pending cache updates for this
++		   one specific record, so we'll reset the whole cache
++		   transaction. */
++		mail_cache_transaction_reset(ctx->ctx.transaction->cache_trans);
++	}
+ 	index_save_context_free(_ctx);
+ 	return ctx->failed ? -1 : 0;
+ }
+-- 
+1.7.10.2
+
