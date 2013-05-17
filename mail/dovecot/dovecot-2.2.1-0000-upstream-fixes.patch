@@ -3022,16 +3022,6 @@ index f2d897d..ce3f1cf 100644
  
  # Users can be (temporarily) disabled by adding a passdb with deny=yes.
  # If the user is found from that database, authentication will fail.
-diff --git a/doc/example-config/conf.d/auth-dict.conf.ext b/doc/example-config/conf.d/auth-dict.conf.ext
-index e6e42db..0be4847 100644
---- a/doc/example-config/conf.d/auth-dict.conf.ext
-+++ b/doc/example-config/conf.d/auth-dict.conf.ext
-@@ -1,4 +1,4 @@
--# Authentication via dict backend. Included from auth.conf.
-+# Authentication via dict backend. Included from 10-auth.conf.
- #
- # <doc/wiki/AuthDatabase.Dict.txt>
- 
 diff --git a/doc/example-config/conf.d/auth-ldap.conf.ext b/doc/example-config/conf.d/auth-ldap.conf.ext
 index 3e5c51f..5db32fa 100644
 --- a/doc/example-config/conf.d/auth-ldap.conf.ext
