@@ -337,3 +337,37 @@ index 462815a..3dab919 100644
 -- 
 1.7.10.2
 
+
+From b926a5783dc35da61af12d6a4de992ff2964b0e7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 21 May 2013 17:09:37 +0300
+Subject: [PATCH] auth: Fixed crash if LDAP query returned multiple results.
+
+
+diff --git a/src/auth/db-ldap.c b/src/auth/db-ldap.c
+index 955e2e6..c61af85 100644
+--- a/src/auth/db-ldap.c
++++ b/src/auth/db-ldap.c
+@@ -825,8 +825,10 @@ static void db_ldap_request_free(struct ldap_request *request, LDAPMessage *res)
+ 
+ 		if (srequest->result == res)
+ 			res = NULL;
+-		if (srequest->result != NULL)
++		if (srequest->result != NULL) {
+ 			ldap_msgfree(srequest->result);
++			srequest->result = NULL;
++		}
+ 
+ 		if (array_is_created(&srequest->named_results)) {
+ 			array_foreach(&srequest->named_results, named_res) {
+@@ -835,6 +837,7 @@ static void db_ldap_request_free(struct ldap_request *request, LDAPMessage *res)
+ 				if (named_res->result != NULL)
+ 					ldap_msgfree(named_res->result);
+ 			}
++			array_clear(&srequest->named_results);
+ 		}
+ 	}
+ 	if (res != NULL)
+-- 
+1.7.10.2
+
