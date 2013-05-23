@@ -371,3 +371,773 @@ index 955e2e6..c61af85 100644
 -- 
 1.7.10.2
 
+
+From adc71ee1cfc1eaa18b88c15c3eac475bac740076 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Tue, 21 May 2013 22:55:12 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed local URLAUTH fetches that didn't
+ immediately finish handling content. Local requests are now
+ also properly counted.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 9801822..eb438a7 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -55,8 +55,10 @@ static void imap_urlauth_fetch_abort_local(struct imap_urlauth_fetch *ufetch)
+ {
+ 	struct imap_urlauth_fetch_url *url, *url_next;
+ 
+-	if (ufetch->local_url != NULL)
++	if (ufetch->local_url != NULL) {
++		ufetch->pending_requests--;
+ 		imap_msgpart_url_free(&ufetch->local_url);
++	}
+ 
+ 	i_free_and_null(ufetch->pending_reply.url);
+ 	i_free_and_null(ufetch->pending_reply.bodypartstruct);
+@@ -153,7 +155,6 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	struct imap_msgpart_url *mpurl = NULL;
+ 	int ret;
+ 
+-	ufetch->pending_requests--;
+ 	success = TRUE;
+ 
+ 	if (debug)
+@@ -226,6 +227,7 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	}
+ 
+ 	if (!success && ret < 0) {
++		ufetch->pending_requests--;
+ 		(void)ufetch->callback(NULL, TRUE, ufetch->context);
+ 		imap_urlauth_fetch_fail(ufetch);
+ 		return;
+@@ -242,12 +244,14 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	reply.size = mpresult.size;
+ 	reply.input = mpresult.input;
+ 
+-	ret = ufetch->callback(&reply, ufetch->pending_requests == 0,
++	ret = ufetch->callback(&reply, ufetch->pending_requests == 1,
+ 			       ufetch->context);
+ 	if (ret == 0) {
+ 		ufetch->local_url = mpurl;
+ 		ufetch->waiting = TRUE;
+ 	} else {
++		ufetch->pending_requests--;
++
+ 		if (mpurl != NULL)
+ 			imap_msgpart_url_free(&mpurl);
+ 		if (ret < 0)
+@@ -302,26 +306,30 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 			   enum imap_urlauth_fetch_flags url_flags)
+ {
++	struct imap_urlauth_context *uctx = ufetch->uctx;
+ 	enum imap_url_parse_flags url_parse_flags =
+ 		IMAP_URL_PARSE_ALLOW_URLAUTH;
+-	struct imap_urlauth_context *uctx = ufetch->uctx;
+ 	struct mail_user *mail_user = uctx->user;
+-	struct imap_url *imap_url = NULL;
++	struct imap_url *imap_url;
+ 	const char *error, *errormsg;
+ 
+-	ufetch->failed = FALSE;
+-	ufetch->pending_requests++;
+-
+ 	/* parse the url */
+ 	if (imap_url_parse(url, NULL, url_parse_flags, &imap_url, &error) < 0) {
+ 		errormsg = t_strdup_printf(
+ 			"Failed to fetch URLAUTH \"%s\": %s", url, error);
+ 		if (mail_user->mail_debug)
+ 			i_debug("%s", errormsg);
++		ufetch->pending_requests++;
+ 		imap_urlauth_fetch_error(ufetch, url, url_flags, errormsg);
+-	
++		return 1;
++	}
++
++	ufetch->failed = FALSE;
++	ufetch->pending_requests++;
++
+ 	/* if access user and target user match, handle fetch request locally */
+-	} else if (strcmp(mail_user->username, imap_url->userid) == 0) {
++	if (imap_url->userid != NULL &&
++		strcmp(mail_user->username, imap_url->userid) == 0) {
+ 
+ 		if (ufetch->waiting) {
+ 			struct imap_urlauth_fetch_url *url_local;
+@@ -352,15 +360,11 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 		(void)imap_urlauth_request_new(uctx->conn, imap_url->userid,
+ 				url, url_flags,
+ 				imap_urlauth_fetch_request_callback, ufetch);
+-	}
+-
+-	if (ufetch->pending_requests > 0) {
+ 		i_assert(uctx->conn != NULL);
+ 		if (imap_urlauth_connection_connect(uctx->conn) < 0)
+ 			return -1;
+-		return 0;
+ 	}
+-	return 1;
++	return (ufetch->pending_requests > 0 ? 0 : 1);
+ }
+ 
+ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+@@ -377,8 +381,10 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 		return ufetch->pending_requests > 0;
+ 	} 
+ 
+-	if (ufetch->local_url != NULL)
++	if (ufetch->local_url != NULL) {
++		ufetch->pending_requests--;
+ 		imap_msgpart_url_free(&ufetch->local_url);
++	}
+ 	ufetch->waiting = FALSE;
+ 
+ 	/* handle pending remote reply */
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.h b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+index 27a96f2..3c5275c 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.h
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+@@ -31,7 +31,7 @@ struct imap_urlauth_fetch_reply {
+ 
+ /* Callback to handle fetch reply. Returns 1 if handled completely and ready
+    for next reply, 0 if not all data was processed, and -1 for error. If a
+-   callback returns 0, imap_urlauth_connection_continue() must be called once
++   callback returns 0, imap_urlauth_fetch_continue() must be called once
+    new replies may be processed. If this is the last request to yield a reply,
+    argument last is TRUE. The callback must not call
+    imap_urlauth_fetch_deinit(). */
+@@ -45,7 +45,7 @@ imap_urlauth_fetch_init(struct imap_urlauth_context *uctx,
+ void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **_ufetch);
+ 
+ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+-			   enum imap_urlauth_fetch_flags flags);
++			   enum imap_urlauth_fetch_flags url_flags);
+ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch);
+ 
+ #endif
+-- 
+1.7.10.2
+
+
+From b65589285715ab3ecbde9053948e96d6d0b0daa5 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Tue, 21 May 2013 22:55:17 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed resuming in URLAUTH fetch handler.
+ Fixed URLAUTH fetch handler to properly resume the URLAUTH
+ connection, even when it is deinitialized.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index eb438a7..18cd342 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -48,7 +48,8 @@ struct imap_urlauth_fetch {
+ 	} pending_reply;
+ 
+ 	unsigned int failed:1;
+-	unsigned int waiting:1;
++	unsigned int waiting_local:1;
++	unsigned int waiting_service:1;
+ };
+ 
+ static void imap_urlauth_fetch_abort_local(struct imap_urlauth_fetch *ufetch)
+@@ -112,6 +113,10 @@ void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **_ufetch)
+ 	*_ufetch = NULL;
+ 
+ 	imap_urlauth_fetch_abort(ufetch);
++
++	/* dont leave the connection in limbo; make sure resume is called */
++	if (ufetch->waiting_service)
++		imap_urlauth_connection_continue(ufetch->uctx->conn);
+ 	i_free(ufetch);
+ }
+ 
+@@ -137,7 +142,7 @@ imap_urlauth_fetch_error(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	} T_END;
+ 
+ 	if (ret == 0)
+-		ufetch->waiting = TRUE;
++		ufetch->waiting_local = TRUE;
+ 	else if (ret < 0)
+ 		imap_urlauth_fetch_fail(ufetch);
+ }
+@@ -248,7 +253,7 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 			       ufetch->context);
+ 	if (ret == 0) {
+ 		ufetch->local_url = mpurl;
+-		ufetch->waiting = TRUE;
++		ufetch->waiting_local = TRUE;
+ 	} else {
+ 		ufetch->pending_requests--;
+ 
+@@ -267,7 +272,7 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 		(struct imap_urlauth_fetch *)context;
+ 	int ret = 1;
+ 
+-	if (ufetch->waiting && reply != NULL) {
++	if (ufetch->waiting_local && reply != NULL) {
+ 		i_assert(ufetch->pending_reply.url == NULL);
+ 		ufetch->pending_reply.url = i_strdup(reply->url);
+ 		ufetch->pending_reply.flags = reply->flags;
+@@ -284,7 +289,7 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 		return 0;
+ 	}
+ 
+-	ufetch->waiting = FALSE;
++	ufetch->waiting_local = FALSE;
+ 	ufetch->pending_requests--;
+ 
+ 	if (!ufetch->failed) {
+@@ -297,6 +302,8 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 		if (!ufetch->failed)
+ 			imap_urlauth_fetch_abort_local(ufetch);
+ 		ufetch->failed = TRUE;
++	} else if (ret == 0) {
++		ufetch->waiting_service = TRUE;
+ 	}
+ 	if (ret != 0)
+ 		imap_urlauth_fetch_deinit(&ufetch);
+@@ -331,7 +338,7 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	if (imap_url->userid != NULL &&
+ 		strcmp(mail_user->username, imap_url->userid) == 0) {
+ 
+-		if (ufetch->waiting) {
++		if (ufetch->waiting_local) {
+ 			struct imap_urlauth_fetch_url *url_local;
+ 
+ 			url_local = i_new(struct imap_urlauth_fetch_url, 1);
+@@ -375,17 +382,22 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 	if (ufetch->failed)
+ 		return FALSE;
+ 
+-	if (!ufetch->waiting) {
++	if (!ufetch->waiting_local && !ufetch->waiting_service)
++		return ufetch->pending_requests > 0;
++
++	if (!ufetch->waiting_local) {
+ 		/* not waiting for local request handling */
++		ufetch->waiting_service = FALSE;
+ 		imap_urlauth_connection_continue(ufetch->uctx->conn);
+ 		return ufetch->pending_requests > 0;
+ 	} 
+ 
++	/* finished local request */
+ 	if (ufetch->local_url != NULL) {
+ 		ufetch->pending_requests--;
+ 		imap_msgpart_url_free(&ufetch->local_url);
+ 	}
+-	ufetch->waiting = FALSE;
++	ufetch->waiting_local = FALSE;
+ 
+ 	/* handle pending remote reply */
+ 	if (ufetch->pending_reply.url != NULL) {
+@@ -419,11 +431,9 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 			imap_urlauth_fetch_fail(ufetch);
+ 			return FALSE;
+ 		} 
+-		
+-		imap_urlauth_connection_continue(ufetch->uctx->conn);
+ 
+ 		if (ret == 0) {
+-			ufetch->waiting = TRUE;
++			ufetch->waiting_service = TRUE;
+ 			return TRUE;
+ 		}
+ 	}
+@@ -440,7 +450,7 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 			       &ufetch->local_urls_tail, url);
+ 		i_free(url->url);
+ 		i_free(url);
+-		if (ufetch->waiting) 
++		if (ufetch->waiting_local) 
+ 			return TRUE;
+ 		url = url_next;
+ 	}
+-- 
+1.7.10.2
+
+
+From 421ec8d0a4072b5f0d2aa63c5aef354a7a1dd659 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Tue, 21 May 2013 22:55:23 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed deinitialization of the URLAUTH
+ fetch handler. Added reference counting to make sure
+ callbacks will not deinitialize the handler prematurely.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index 2826cb0..c3fac61 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -284,7 +284,6 @@ cmd_urlfetch_url_callback(struct imap_urlauth_fetch_reply *reply,
+ 
+ 	if ((last && cmd->state == CLIENT_COMMAND_STATE_WAIT_EXTERNAL) ||
+ 	    ret < 0) {
+-		ctx->ufetch = NULL;
+ 		cmd_urlfetch_finish(cmd);
+ 		client_command_free(&cmd);
+ 	}
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 18cd342..0ba4dfa 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -22,6 +22,7 @@ struct imap_urlauth_fetch_url {
+ };
+ 
+ struct imap_urlauth_fetch {
++	unsigned int refcount;
+ 	struct imap_urlauth_context *uctx;
+ 
+ 	imap_urlauth_fetch_callback_t *callback;
+@@ -100,17 +101,28 @@ imap_urlauth_fetch_init(struct imap_urlauth_context *uctx,
+ 	struct imap_urlauth_fetch *ufetch;
+ 
+ 	ufetch = i_new(struct imap_urlauth_fetch, 1);
++	ufetch->refcount = 1;
+ 	ufetch->uctx = uctx;
+ 	ufetch->callback = callback;
+ 	ufetch->context = context;
+ 	return ufetch;
+ }
+ 
+-void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **_ufetch)
++static void imap_urlauth_fetch_ref(struct imap_urlauth_fetch *ufetch)
++{
++	i_assert(ufetch->refcount > 0);
++	ufetch->refcount++;
++}
++
++static void imap_urlauth_fetch_unref(struct imap_urlauth_fetch **_ufetch)
+ {
+ 	struct imap_urlauth_fetch *ufetch = *_ufetch;
+ 
++	i_assert(ufetch->refcount > 0);
++
+ 	*_ufetch = NULL;
++	if (--ufetch->refcount > 0)
++		return;
+ 
+ 	imap_urlauth_fetch_abort(ufetch);
+ 
+@@ -120,6 +132,11 @@ void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **_ufetch)
+ 	i_free(ufetch);
+ }
+ 
++void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **_ufetch)
++{
++	imap_urlauth_fetch_unref(_ufetch);
++}
++
+ static void
+ imap_urlauth_fetch_error(struct imap_urlauth_fetch *ufetch, const char *url,
+ 			 enum imap_urlauth_fetch_flags url_flags,
+@@ -232,6 +249,8 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	}
+ 
+ 	if (!success && ret < 0) {
++		if (mpurl != NULL)
++			imap_msgpart_url_free(&mpurl);
+ 		ufetch->pending_requests--;
+ 		(void)ufetch->callback(NULL, TRUE, ufetch->context);
+ 		imap_urlauth_fetch_fail(ufetch);
+@@ -292,6 +311,8 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 	ufetch->waiting_local = FALSE;
+ 	ufetch->pending_requests--;
+ 
++	imap_urlauth_fetch_ref(ufetch);
++
+ 	if (!ufetch->failed) {
+ 		bool last = ufetch->pending_requests == 0 || reply == NULL;
+ 		ret = ufetch->callback(reply, last, ufetch->context);
+@@ -305,8 +326,8 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 	} else if (ret == 0) {
+ 		ufetch->waiting_service = TRUE;
+ 	}
+-	if (ret != 0)
+-		imap_urlauth_fetch_deinit(&ufetch);
++	
++	imap_urlauth_fetch_unref(&ufetch);
+ 	return ret;
+ }
+ 
+@@ -319,6 +340,7 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	struct mail_user *mail_user = uctx->user;
+ 	struct imap_url *imap_url;
+ 	const char *error, *errormsg;
++	int ret = 0;
+ 
+ 	/* parse the url */
+ 	if (imap_url_parse(url, NULL, url_parse_flags, &imap_url, &error) < 0) {
+@@ -327,13 +349,17 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 		if (mail_user->mail_debug)
+ 			i_debug("%s", errormsg);
+ 		ufetch->pending_requests++;
++		imap_urlauth_fetch_ref(ufetch);
+ 		imap_urlauth_fetch_error(ufetch, url, url_flags, errormsg);
++		imap_urlauth_fetch_unref(&ufetch);
+ 		return 1;
+ 	}
+ 
+ 	ufetch->failed = FALSE;
+ 	ufetch->pending_requests++;
+ 
++	imap_urlauth_fetch_ref(ufetch);
++
+ 	/* if access user and target user match, handle fetch request locally */
+ 	if (imap_url->userid != NULL &&
+ 		strcmp(mail_user->username, imap_url->userid) == 0) {
+@@ -364,17 +390,22 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 
+ 	/* create request for url */
+ 	if (imap_url != NULL && imap_url->userid != NULL) {
++		i_assert(uctx->conn != NULL);
+ 		(void)imap_urlauth_request_new(uctx->conn, imap_url->userid,
+ 				url, url_flags,
+ 				imap_urlauth_fetch_request_callback, ufetch);
+ 		i_assert(uctx->conn != NULL);
+ 		if (imap_urlauth_connection_connect(uctx->conn) < 0)
+-			return -1;
++			ret = -1;
+ 	}
+-	return (ufetch->pending_requests > 0 ? 0 : 1);
++	if (ret >= 0)
++		ret = (ufetch->pending_requests > 0 ? 0 : 1);
++
++	imap_urlauth_fetch_unref(&ufetch);
++	return ret;
+ }
+ 
+-bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
++static bool imap_urlauth_fetch_do_continue(struct imap_urlauth_fetch *ufetch)
+ {
+ 	struct imap_urlauth_fetch_url *url, *url_next;
+ 	int ret;
+@@ -390,7 +421,7 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 		ufetch->waiting_service = FALSE;
+ 		imap_urlauth_connection_continue(ufetch->uctx->conn);
+ 		return ufetch->pending_requests > 0;
+-	} 
++	}
+ 
+ 	/* finished local request */
+ 	if (ufetch->local_url != NULL) {
+@@ -457,3 +488,15 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 
+ 	return ufetch->pending_requests > 0;
+ }
++
++bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
++{
++	bool pending;
++
++	imap_urlauth_fetch_ref(ufetch);
++	pending = imap_urlauth_fetch_do_continue(ufetch);
++	imap_urlauth_fetch_unref(&ufetch);
++
++	return pending;
++}
++
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.h b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+index 3c5275c..55398af 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.h
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+@@ -33,8 +33,7 @@ struct imap_urlauth_fetch_reply {
+    for next reply, 0 if not all data was processed, and -1 for error. If a
+    callback returns 0, imap_urlauth_fetch_continue() must be called once
+    new replies may be processed. If this is the last request to yield a reply,
+-   argument last is TRUE. The callback must not call
+-   imap_urlauth_fetch_deinit(). */
++   argument last is TRUE. */
+ typedef int
+ imap_urlauth_fetch_callback_t(struct imap_urlauth_fetch_reply *reply,
+ 			      bool last, void *context);
+@@ -42,7 +41,7 @@ imap_urlauth_fetch_callback_t(struct imap_urlauth_fetch_reply *reply,
+ struct imap_urlauth_fetch *
+ imap_urlauth_fetch_init(struct imap_urlauth_context *uctx,
+ 			imap_urlauth_fetch_callback_t *callback, void *context);
+-void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **_ufetch);
++void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **ufetch);
+ 
+ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 			   enum imap_urlauth_fetch_flags url_flags);
+-- 
+1.7.10.2
+
+
+From 6547c94d39f42d25dc07f50d52f4e6cd8b57d91c Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 21 May 2013 22:57:06 +0300
+Subject: [PATCH] *-login: If auth failed with a specified reason, the reason
+ wasn't actually shown to client.
+
+
+diff --git a/src/login-common/client-common-auth.c b/src/login-common/client-common-auth.c
+index 356d1c4..485a7d3 100644
+--- a/src/login-common/client-common-auth.c
++++ b/src/login-common/client-common-auth.c
+@@ -538,7 +538,7 @@ sasl_callback(struct client *client, enum sasl_server_reply sasl_reply,
+ 		} else {
+ 			client_auth_result(client,
+ 				CLIENT_AUTH_RESULT_AUTHFAILED_REASON, NULL,
+-				AUTH_FAILED_MSG);
++				data);
+ 		}
+ 
+ 		if (!client->destroyed)
+-- 
+1.7.10.2
+
+
+From e5c91a786027aef441b2d63ec25835bb3b664be7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 22 May 2013 14:56:41 +0300
+Subject: [PATCH] dsync: Don't notify replicator process about successful
+ dsync if the dsync failed.
+
+
+diff --git a/src/doveadm/dsync/doveadm-dsync.c b/src/doveadm/dsync/doveadm-dsync.c
+index 1568302..73cfe60 100644
+--- a/src/doveadm/dsync/doveadm-dsync.c
++++ b/src/doveadm/dsync/doveadm-dsync.c
+@@ -949,7 +949,7 @@ cmd_dsync_server_run(struct doveadm_mail_cmd_context *_ctx,
+ 		o_stream_close(_ctx->conn->output);
+ 	}
+ 
+-	if (ctx->replicator_notify)
++	if (ctx->replicator_notify && _ctx->exit_code == 0)
+ 		dsync_replicator_notify(ctx, sync_type, str_c(state_str));
+ 	return _ctx->exit_code == 0 ? 0 : -1;
+ }
+-- 
+1.7.10.2
+
+
+From 711b2555ff0257b17f155d783ac3053e21b7ecd7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 22 May 2013 15:16:22 +0300
+Subject: [PATCH] dsync: Fixed unsubscribing from mailbox within same session
+ as the mailbox's deletion.
+
+
+diff --git a/src/doveadm/dsync/dsync-brain-mailbox-tree.c b/src/doveadm/dsync/dsync-brain-mailbox-tree.c
+index 6354038..fb13444 100644
+--- a/src/doveadm/dsync/dsync-brain-mailbox-tree.c
++++ b/src/doveadm/dsync/dsync-brain-mailbox-tree.c
+@@ -395,8 +395,8 @@ dsync_brain_mailbox_tree_add_delete(struct dsync_mailbox_tree *tree,
+ 	name = dsync_mailbox_node_get_full_name(tree, node);
+ 	other_node = dsync_mailbox_tree_get(other_tree, name);
+ 
+-	if (!guid_128_is_empty(other_node->mailbox_guid) ||
+-	    (other_node->existence == DSYNC_MAILBOX_NODE_EXISTS &&
++	if (other_node->existence == DSYNC_MAILBOX_NODE_EXISTS &&
++	    (!guid_128_is_empty(other_node->mailbox_guid) ||
+ 	     other_del->type != DSYNC_MAILBOX_DELETE_TYPE_MAILBOX)) {
+ 		/* other side has already created a new mailbox or
+ 		   directory with this name, we can't delete it */
+-- 
+1.7.10.2
+
+
+From 9eeaa264e047900b8f3ce836c95e2256cf35de76 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 22 May 2013 15:44:05 +0300
+Subject: [PATCH] lib-storage: Optimize SEARCH_MODSEQ query if it's higher
+ than HIGHESTMODSEQ.
+
+
+diff --git a/src/lib-storage/index/index-search.c b/src/lib-storage/index/index-search.c
+index 9278b6d..0f10a04 100644
+--- a/src/lib-storage/index/index-search.c
++++ b/src/lib-storage/index/index-search.c
+@@ -904,12 +904,13 @@ static void search_limit_lowwater(struct index_search_context *ctx,
+ 		*first_seq = seq1;
+ }
+ 
+-static bool search_limit_by_flags(struct index_search_context *ctx,
+-				  struct mail_search_arg *args,
+-				  uint32_t *seq1, uint32_t *seq2)
++static bool search_limit_by_hdr(struct index_search_context *ctx,
++				struct mail_search_arg *args,
++				uint32_t *seq1, uint32_t *seq2)
+ {
+ 	const struct mail_index_header *hdr;
+ 	enum mail_flags pvt_flags_mask;
++	uint64_t highest_modseq;
+ 
+ 	hdr = mail_index_get_header(ctx->view);
+ 	/* we can't trust that private view's header is fully up to date,
+@@ -918,12 +919,23 @@ static bool search_limit_by_flags(struct index_search_context *ctx,
+ 		mailbox_get_private_flags_mask(ctx->box);
+ 
+ 	for (; args != NULL; args = args->next) {
+-		if (args->type != SEARCH_FLAGS) {
+-			if (args->type == SEARCH_ALL) {
+-				if (args->match_not)
+-					return FALSE;
++		switch (args->type) {
++		case SEARCH_ALL:
++			if (args->match_not) {
++				/* NOT ALL - pointless noop query */
++				return FALSE;
+ 			}
+ 			continue;
++		case SEARCH_MODSEQ:
++			/* MODSEQ higher than current HIGHESTMODSEQ? */
++			highest_modseq = mail_index_modseq_get_highest(ctx->view);
++			if (args->value.modseq->modseq > highest_modseq)
++				return FALSE;
++			continue;
++		default:
++			continue;
++		case SEARCH_FLAGS:
++			break;
+ 		}
+ 		if ((args->value.flags & MAIL_SEEN) != 0 &&
+ 		    (pvt_flags_mask & MAIL_SEEN) == 0) {
+@@ -995,8 +1007,10 @@ static void search_get_seqset(struct index_search_context *ctx,
+ 		return;
+ 	}
+ 
+-	/* UNSEEN and DELETED in root search level may limit the range */
+-	if (!search_limit_by_flags(ctx, args, &ctx->seq1, &ctx->seq2)) {
++	/* See if this search query can never match based on data in index's
++	   header. We'll scan only the root level args, which is usually
++	   enough. */
++	if (!search_limit_by_hdr(ctx, args, &ctx->seq1, &ctx->seq2)) {
+ 		/* no matches */
+ 		ctx->seq1 = 1;
+ 		ctx->seq2 = 0;
+-- 
+1.7.10.2
+
+
+From fd553002dbc884a1c38fadde0c5aa2a62dc0cbf5 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 22 May 2013 15:57:13 +0300
+Subject: [PATCH] *-login: ssl=required should imply
+ disable_plaintext_auth=yes
+
+
+diff --git a/src/imap-login/client.c b/src/imap-login/client.c
+index 55f38fd..c5d7097 100644
+--- a/src/imap-login/client.c
++++ b/src/imap-login/client.c
+@@ -12,6 +12,7 @@
+ #include "imap-id.h"
+ #include "imap-resp-code.h"
+ #include "master-service.h"
++#include "master-service-ssl-settings.h"
+ #include "master-auth.h"
+ #include "client.h"
+ #include "client-authenticate.h"
+@@ -64,7 +65,8 @@ static const char *get_capability(struct client *client)
+ 
+ 	if (client_is_tls_enabled(client) && !client->tls)
+ 		str_append(cap_str, " STARTTLS");
+-	if (client->set->disable_plaintext_auth && !client->secured)
++	if (!client->secured & (client->set->disable_plaintext_auth ||
++				strcmp(client->ssl_set->ssl, "required") == 0))
+ 		str_append(cap_str, " LOGINDISABLED");
+ 
+ 	client_authenticate_get_capabilities(client, cap_str);
+diff --git a/src/login-common/client-common-auth.c b/src/login-common/client-common-auth.c
+index 485a7d3..99c7f34 100644
+--- a/src/login-common/client-common-auth.c
++++ b/src/login-common/client-common-auth.c
+@@ -615,7 +615,8 @@ int client_auth_begin(struct client *client, const char *mech_name,
+ 
+ bool client_check_plaintext_auth(struct client *client, bool pass_sent)
+ {
+-	if (client->secured || !client->set->disable_plaintext_auth)
++	if (client->secured || (!client->set->disable_plaintext_auth &&
++				strcmp(client->ssl_set->ssl, "required") != 0))
+ 		return TRUE;
+ 
+ 	if (client->set->auth_verbose) {
+-- 
+1.7.10.2
+
+
+From 2918910f33939a19322897061ebfb4b0865aa801 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 22 May 2013 15:59:38 +0300
+Subject: [PATCH] *-login: If ssl=required, don't list any SASL mechanisms
+ before STARTTLS.
+
+
+diff --git a/src/login-common/sasl-server.c b/src/login-common/sasl-server.c
+index 78735a6..3fbc560 100644
+--- a/src/login-common/sasl-server.c
++++ b/src/login-common/sasl-server.c
+@@ -13,6 +13,7 @@
+ #include "auth-client.h"
+ #include "ssl-proxy.h"
+ #include "master-service.h"
++#include "master-service-ssl-settings.h"
+ #include "master-interface.h"
+ #include "master-auth.h"
+ #include "client-common.h"
+@@ -38,7 +39,8 @@ sasl_server_get_advertised_mechs(struct client *client, unsigned int *count_r)
+ 	unsigned int i, j, count;
+ 
+ 	mech = auth_client_get_available_mechs(auth_client, &count);
+-	if (count == 0) {
++	if (count == 0 || (!client->secured &&
++			   strcmp(client->ssl_set->ssl, "required") == 0)) {
+ 		*count_r = 0;
+ 		return NULL;
+ 	}
+-- 
+1.7.10.2
+
+
+From 43eeeb4d96640c49ad342e050f7590aca7ad21d6 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 23 May 2013 17:36:54 +0300
+Subject: [PATCH] lib-http: Added ssl_cert|key|key_password settings to be
+ passed to ssl-iostream. These are used for sending client's
+ SSL certificate.
+
+
+diff --git a/src/lib-http/http-client.c b/src/lib-http/http-client.c
+index b6846f0..f153b51 100644
+--- a/src/lib-http/http-client.c
++++ b/src/lib-http/http-client.c
+@@ -86,6 +86,9 @@ struct http_client *http_client_init(const struct http_client_settings *set)
+ 	client->set.ssl_ca = p_strdup(pool, set->ssl_ca);
+ 	client->set.ssl_crypto_device = p_strdup(pool, set->ssl_crypto_device);
+ 	client->set.ssl_allow_invalid_cert = set->ssl_allow_invalid_cert;
++	client->set.ssl_cert = p_strdup(pool, set->ssl_cert);
++	client->set.ssl_key = p_strdup(pool, set->ssl_key);
++	client->set.ssl_key_password = p_strdup(pool, set->ssl_key_password);
+ 	client->set.max_idle_time_msecs = set->max_idle_time_msecs;
+ 	client->set.max_parallel_connections =
+ 		(set->max_parallel_connections > 0 ? set->max_parallel_connections : 1);
+@@ -197,6 +200,9 @@ int http_client_init_ssl_ctx(struct http_client *client, const char **error_r)
+ 	ssl_set.ca = client->set.ssl_ca;
+ 	ssl_set.verify_remote_cert = TRUE;
+ 	ssl_set.crypto_device = client->set.ssl_crypto_device;
++	ssl_set.cert = client->set.ssl_cert;
++	ssl_set.key = client->set.ssl_key;
++	ssl_set.key_password = client->set.ssl_key_password;
+ 	ssl_set.verbose = client->set.debug;
+ 	ssl_set.verbose_invalid_cert = client->set.debug;
+ 
+diff --git a/src/lib-http/http-client.h b/src/lib-http/http-client.h
+index 69cb448..9c8d131 100644
+--- a/src/lib-http/http-client.h
++++ b/src/lib-http/http-client.h
+@@ -36,6 +36,8 @@ struct http_client_settings {
+ 	const char *ssl_ca_dir, *ssl_ca_file, *ssl_ca;
+ 	const char *ssl_crypto_device;
+ 	bool ssl_allow_invalid_cert;
++	/* user cert */
++	const char *ssl_cert, *ssl_key, *ssl_key_password;
+ 
+ 	const char *rawlog_dir;
+ 
+-- 
+1.7.10.2
+
