@@ -2191,3 +2191,1540 @@ index 5a84b0e..956a570 100644
 -- 
 1.7.10.2
 
+
+From bdd2a13e6d7292808def824df21f6372411f1064 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 27 May 2013 20:18:35 +0300
+Subject: [PATCH] dbox: Return cached pop3.order=0 as empty string instead to
+ fix sorting problems.
+
+
+diff --git a/src/lib-storage/index/dbox-common/dbox-mail.c b/src/lib-storage/index/dbox-common/dbox-mail.c
+index 90bf176..46ee6b0 100644
+--- a/src/lib-storage/index/dbox-common/dbox-mail.c
++++ b/src/lib-storage/index/dbox-common/dbox-mail.c
+@@ -176,7 +176,7 @@ dbox_get_cached_metadata(struct dbox_mail *mail, enum dbox_metadata_key key,
+ 		else {
+ 			i_assert(str_len(str) == sizeof(order));
+ 			memcpy(&order, str_data(str), sizeof(order));
+-			*value_r = dec2str(order);
++			*value_r = order == 0 ? "" : dec2str(order);
+ 		}
+ 		return 0;
+ 	}
+-- 
+1.7.10.2
+
+
+From 638eb02fbd1830b9500320ce5e1900972486511f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 27 May 2013 20:44:05 +0300
+Subject: [PATCH] lib-index: Create ext-intro records using the latest sizes,
+ not initial sizes.
+
+
+diff --git a/src/lib-index/mail-index-transaction-export.c b/src/lib-index/mail-index-transaction-export.c
+index 5c15c04..f890752 100644
+--- a/src/lib-index/mail-index-transaction-export.c
++++ b/src/lib-index/mail-index-transaction-export.c
+@@ -86,6 +86,7 @@ static void log_append_ext_intro(struct mail_index_export_context *ctx,
+ {
+ 	struct mail_index_transaction *t = ctx->trans;
+ 	const struct mail_index_registered_ext *rext;
++	const struct mail_index_ext *ext;
+         struct mail_transaction_ext_intro *intro, *resizes;
+ 	buffer_t *buf;
+ 	uint32_t idx;
+@@ -120,12 +121,19 @@ static void log_append_ext_intro(struct mail_index_export_context *ctx,
+ 		/* generate a new intro structure */
+ 		intro = buffer_append_space_unsafe(buf, sizeof(*intro));
+ 		intro->ext_id = idx;
+-		intro->hdr_size = rext->hdr_size;
+-		intro->record_size = rext->record_size;
+-		intro->record_align = rext->record_align;
++		if (idx == (uint32_t)-1) {
++			intro->hdr_size = rext->hdr_size;
++			intro->record_size = rext->record_size;
++			intro->record_align = rext->record_align;
++			intro->name_size = strlen(rext->name);
++		} else {
++			ext = array_idx(&t->view->index->map->extensions, idx);
++			intro->hdr_size = ext->hdr_size;
++			intro->record_size = ext->record_size;
++			intro->record_align = ext->record_align;
++			intro->name_size = 0;
++		}
+ 		intro->flags = MAIL_TRANSACTION_EXT_INTRO_FLAG_NO_SHRINK;
+-		intro->name_size = idx != (uint32_t)-1 ? 0 :
+-			strlen(rext->name);
+ 	}
+ 	if (reset_id != 0) {
+ 		/* we're going to reset this extension in this transaction */
+-- 
+1.7.10.2
+
+
+From e8dcf6b8e76d0f1d76d8f10431957386a557eda5 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 27 May 2013 20:44:56 +0300
+Subject: [PATCH] lib-index: Fixed resizing header when old&new sizes were the
+ same when aligned.
+
+
+diff --git a/src/lib-index/mail-index-sync-ext.c b/src/lib-index/mail-index-sync-ext.c
+index d9f034c..68c2a2d 100644
+--- a/src/lib-index/mail-index-sync-ext.c
++++ b/src/lib-index/mail-index-sync-ext.c
+@@ -289,6 +289,13 @@ sync_ext_resize(const struct mail_transaction_ext_intro *u,
+ 				   new_size - old_size);
+ 		ext->hdr_size = u->hdr_size;
+ 		modified = TRUE;
++	} else {
++		if (ext->hdr_size != u->hdr_size) {
++			/* aligned sizes were the same, but the actual sizes
++			   had changed */
++			ext->hdr_size = u->hdr_size;
++			modified = TRUE;
++		}
+ 	}
+ 
+ 	if (ext->record_align < u->record_align ||
+-- 
+1.7.10.2
+
+
+From 9b6d57eef75710f25f87150c951385de789fa66e Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 27 May 2013 20:45:08 +0300
+Subject: [PATCH] lib-index: Added mail_index_ext_resize_hdr()
+
+
+diff --git a/src/lib-index/mail-index-transaction-update.c b/src/lib-index/mail-index-transaction-update.c
+index aae27e2..fa88b85 100644
+--- a/src/lib-index/mail-index-transaction-update.c
++++ b/src/lib-index/mail-index-transaction-update.c
+@@ -717,7 +717,7 @@ void mail_index_ext_resize(struct mail_index_transaction *t, uint32_t ext_id,
+ 			   uint16_t record_align)
+ {
+ 	struct mail_transaction_ext_intro intro;
+-	uint32_t old_record_size, old_record_align;
++	uint32_t old_record_size, old_record_align, old_header_size;
+ 
+ 	memset(&intro, 0, sizeof(intro));
+ 
+@@ -730,17 +730,20 @@ void mail_index_ext_resize(struct mail_index_transaction *t, uint32_t ext_id,
+ 		rext = array_idx(&t->view->index->extensions, ext_id);
+ 		old_record_size = rext->record_size;
+ 		old_record_align = rext->record_align;
++		old_header_size = rext->hdr_size;
+ 	} else {
+ 		const struct mail_index_ext *ext;
+ 
+ 		ext = array_idx(&t->view->map->extensions, intro.ext_id);
+ 		old_record_size = ext->record_size;
+ 		old_record_align = ext->record_align;
++		old_header_size = ext->hdr_size;
+ 	}
+ 
+ 	/* allow only header size changes if extension records have already
+ 	   been changed in transaction */
+ 	i_assert(!array_is_created(&t->ext_rec_updates) ||
++		 record_size == (uint16_t)-1 ||
+ 		 (old_record_size == record_size &&
+ 		  old_record_align == record_align));
+ 
+@@ -749,13 +752,26 @@ void mail_index_ext_resize(struct mail_index_transaction *t, uint32_t ext_id,
+ 	if (!array_is_created(&t->ext_resizes))
+ 		i_array_init(&t->ext_resizes, ext_id + 2);
+ 
+-	intro.hdr_size = hdr_size;
+-	intro.record_size = record_size;
+-	intro.record_align = record_align;
++	intro.hdr_size = hdr_size != (uint32_t)-1 ? hdr_size : old_header_size;
++	if (record_size != (uint16_t)-1) {
++		i_assert(record_align != (uint16_t)-1);
++		intro.record_size = record_size;
++		intro.record_align = record_align;
++	} else {
++		i_assert(record_align == (uint16_t)-1);
++		intro.record_size = old_record_size;
++		intro.record_align = old_record_align;
++	}
+ 	intro.name_size = 1;
+ 	array_idx_set(&t->ext_resizes, ext_id, &intro);
+ }
+ 
++void mail_index_ext_resize_hdr(struct mail_index_transaction *t,
++			       uint32_t ext_id, uint32_t hdr_size)
++{
++	mail_index_ext_resize(t, ext_id, hdr_size, (uint16_t)-1, (uint16_t)-1);
++}
++
+ void mail_index_ext_reset(struct mail_index_transaction *t, uint32_t ext_id,
+ 			  uint32_t reset_id, bool clear_data)
+ {
+diff --git a/src/lib-index/mail-index.h b/src/lib-index/mail-index.h
+index 1a10843..e3a3362 100644
+--- a/src/lib-index/mail-index.h
++++ b/src/lib-index/mail-index.h
+@@ -555,6 +555,9 @@ bool mail_index_ext_lookup(struct mail_index *index, const char *name,
+ void mail_index_ext_resize(struct mail_index_transaction *t, uint32_t ext_id,
+ 			   uint32_t hdr_size, uint16_t record_size,
+ 			   uint16_t record_align);
++/* Resize header, keeping the old record size. */
++void mail_index_ext_resize_hdr(struct mail_index_transaction *t,
++			       uint32_t ext_id, uint32_t hdr_size);
+ 
+ /* Reset extension. Any updates for this extension which were issued before the
+    writer had seen this reset are discarded. reset_id is used to figure this
+-- 
+1.7.10.2
+
+
+From d62c4a3e4c326b39e0b511ceff80dbcab65ab6af Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Mon, 27 May 2013 21:03:14 +0300
+Subject: [PATCH] dbox: Don't cache pop3.uidl|order unless index header
+ indicates there are those. They exist only when doing a
+ migration, so it's pretty wasteful storing "doesn't exist"
+ for all other installations.
+
+
+diff --git a/src/doveadm/doveadm-dump-index.c b/src/doveadm/doveadm-dump-index.c
+index e0dbdc1..d197430 100644
+--- a/src/doveadm/doveadm-dump-index.c
++++ b/src/doveadm/doveadm-dump-index.c
+@@ -36,10 +36,14 @@ struct mbox_index_header {
+ struct sdbox_index_header {
+ 	uint32_t rebuild_count;
+ 	guid_128_t mailbox_guid;
++	uint8_t flags;
++	uint8_t unused[3];
+ };
+ struct mdbox_index_header {
+ 	uint32_t map_uid_validity;
+ 	guid_128_t mailbox_guid;
++	uint8_t flags;
++	uint8_t unused[3];
+ };
+ struct mdbox_mail_index_record {
+ 	uint32_t map_uid;
+@@ -122,11 +126,18 @@ static void dump_extension_header(struct mail_index *index,
+ 				  const struct mail_index_ext *ext)
+ {
+ 	const void *data;
++	void *buf;
+ 
+ 	if (strcmp(ext->name, MAIL_INDEX_EXT_KEYWORDS) == 0)
+ 		return;
+ 
++	/* add some padding, since we don't bother to handle undersized
++	   headers correctly */
++	buf = t_malloc0(ext->hdr_size + 128);
+ 	data = CONST_PTR_OFFSET(index->map->hdr_base, ext->hdr_offset);
++	memcpy(buf, data, ext->hdr_size);
++	data = buf;
++
+ 	if (strcmp(ext->name, "hdr-vsize") == 0) {
+ 		const struct index_vsize_header *hdr = data;
+ 
+@@ -164,6 +175,7 @@ static void dump_extension_header(struct mail_index *index,
+ 		printf(" - map_uid_validity .. = %u\n", hdr->map_uid_validity);
+ 		printf(" - mailbox_guid ...... = %s\n",
+ 		       guid_128_to_string(hdr->mailbox_guid));
++		printf(" - flags ............. = 0x%x\n", hdr->flags);
+ 	} else if (strcmp(ext->name, "dbox-hdr") == 0) {
+ 		const struct sdbox_index_header *hdr = data;
+ 
+@@ -171,6 +183,7 @@ static void dump_extension_header(struct mail_index *index,
+ 		printf(" - rebuild_count . = %u\n", hdr->rebuild_count);
+ 		printf(" - mailbox_guid .. = %s\n",
+ 		       guid_128_to_string(hdr->mailbox_guid));
++		printf(" - flags ......... = 0x%x\n", hdr->flags);
+ 	} else if (strcmp(ext->name, "modseq") == 0) {
+ 		const struct mail_index_modseq_header *hdr = data;
+ 
+@@ -241,8 +254,9 @@ static void dump_extensions(struct mail_index *index)
+ 		printf("record_offset = %u\n", ext->record_offset);
+ 		printf("record_size . = %u\n", ext->record_size);
+ 		printf("record_align  = %u\n", ext->record_align);
+-		if (ext->hdr_size > 0)
++		if (ext->hdr_size > 0) T_BEGIN {
+ 			dump_extension_header(index, ext);
++		} T_END;
+ 	}
+ }
+ 
+diff --git a/src/lib-storage/index/dbox-common/dbox-save.c b/src/lib-storage/index/dbox-common/dbox-save.c
+index 1aaa676..ae6ec39 100644
+--- a/src/lib-storage/index/dbox-common/dbox-save.c
++++ b/src/lib-storage/index/dbox-common/dbox-save.c
+@@ -163,10 +163,12 @@ void dbox_save_write_metadata(struct mail_save_context *_ctx,
+ 		i_assert(strchr(mdata->pop3_uidl, '\n') == NULL);
+ 		str_printfa(str, "%c%s\n", DBOX_METADATA_POP3_UIDL,
+ 			    mdata->pop3_uidl);
++		ctx->have_pop3_uidls = TRUE;
+ 	}
+ 	if (mdata->pop3_order != 0) {
+ 		str_printfa(str, "%c%u\n", DBOX_METADATA_POP3_ORDER,
+ 			    mdata->pop3_order);
++		ctx->have_pop3_orders = TRUE;
+ 	}
+ 
+ 	guid = mdata->guid;
+@@ -193,3 +195,32 @@ void dbox_save_write_metadata(struct mail_save_context *_ctx,
+ 	str_append_c(str, '\n');
+ 	o_stream_nsend(output, str_data(str), str_len(str));
+ }
++
++void dbox_save_update_header_flags(struct dbox_save_context *ctx,
++				   struct mail_index_view *sync_view,
++				   uint32_t ext_id,
++				   unsigned int flags_offset)
++{
++	const void *data;
++	size_t data_size;
++	uint8_t old_flags = 0, flags;
++
++	mail_index_get_header_ext(sync_view, ext_id, &data, &data_size);
++	if (flags_offset < data_size)
++		old_flags = *((const uint8_t *)data + flags_offset);
++	else {
++		/* grow old dbox header */
++		mail_index_ext_resize_hdr(ctx->trans, ext_id, flags_offset+1);
++	}
++
++	flags = old_flags;
++	if (ctx->have_pop3_uidls)
++		flags |= DBOX_INDEX_HEADER_FLAG_HAVE_POP3_UIDLS;
++	if (ctx->have_pop3_orders)
++		flags |= DBOX_INDEX_HEADER_FLAG_HAVE_POP3_ORDERS;
++	if (flags != old_flags) {
++		/* flags changed, update them */
++		mail_index_update_header_ext(ctx->trans, ext_id,
++					     flags_offset, &flags, 1);
++	}
++}
+diff --git a/src/lib-storage/index/dbox-common/dbox-save.h b/src/lib-storage/index/dbox-common/dbox-save.h
+index 5af8f3b..7b16d1c 100644
+--- a/src/lib-storage/index/dbox-common/dbox-save.h
++++ b/src/lib-storage/index/dbox-common/dbox-save.h
+@@ -16,6 +16,8 @@ struct dbox_save_context {
+ 
+ 	unsigned int failed:1;
+ 	unsigned int finished:1;
++	unsigned int have_pop3_uidls:1;
++	unsigned int have_pop3_orders:1;
+ };
+ 
+ void dbox_save_begin(struct dbox_save_context *ctx, struct istream *input);
+@@ -29,4 +31,9 @@ void dbox_save_write_metadata(struct mail_save_context *ctx,
+ 
+ void dbox_save_add_to_index(struct dbox_save_context *ctx);
+ 
++void dbox_save_update_header_flags(struct dbox_save_context *ctx,
++				   struct mail_index_view *sync_view,
++				   uint32_t ext_id,
++				   unsigned int flags_offset);
++
+ #endif
+diff --git a/src/lib-storage/index/dbox-common/dbox-storage.c b/src/lib-storage/index/dbox-common/dbox-storage.c
+index 0acda1a..7e5b5e2 100644
+--- a/src/lib-storage/index/dbox-common/dbox-storage.c
++++ b/src/lib-storage/index/dbox-common/dbox-storage.c
+@@ -336,3 +336,16 @@ int dbox_verify_alt_storage(struct mailbox_list *list)
+ 		return -1;
+ 	return 0;
+ }
++
++bool dbox_header_have_flag(struct mailbox *box, uint32_t ext_id,
++			   unsigned int flags_offset, uint8_t flag)
++{
++	const void *data;
++	size_t data_size;
++	uint8_t flags = 0;
++
++	mail_index_get_header_ext(box->view, ext_id, &data, &data_size);
++	if (flags_offset < data_size)
++		flags = *((const uint8_t *)data + flags_offset);
++	return (flags & flag) != 0;
++}
+diff --git a/src/lib-storage/index/dbox-common/dbox-storage.h b/src/lib-storage/index/dbox-common/dbox-storage.h
+index 6a541ef..f4b56ea 100644
+--- a/src/lib-storage/index/dbox-common/dbox-storage.h
++++ b/src/lib-storage/index/dbox-common/dbox-storage.h
+@@ -23,6 +23,13 @@ struct dbox_save_context;
+ /* Flag specifies if the message should be in primary or alternative storage */
+ #define DBOX_INDEX_FLAG_ALT MAIL_INDEX_MAIL_FLAG_BACKEND
+ 
++enum dbox_index_header_flags {
++	/* messages' metadata contain POP3 UIDLs */
++	DBOX_INDEX_HEADER_FLAG_HAVE_POP3_UIDLS	= 0x01,
++	/* messages' metadata contain POP3 orders */
++	DBOX_INDEX_HEADER_FLAG_HAVE_POP3_ORDERS	= 0x02
++};
++
+ struct dbox_storage_vfuncs {
+ 	/* dbox file has zero references now. it should be either freed or
+ 	   left open in case it's accessed again soon */
+@@ -67,5 +74,7 @@ int dbox_mailbox_open(struct mailbox *box);
+ int dbox_mailbox_create(struct mailbox *box,
+ 			const struct mailbox_update *update, bool directory);
+ int dbox_verify_alt_storage(struct mailbox_list *list);
++bool dbox_header_have_flag(struct mailbox *box, uint32_t ext_id,
++			   unsigned int flags_offset, uint8_t flag);
+ 
+ #endif
+diff --git a/src/lib-storage/index/dbox-multi/mdbox-mail.c b/src/lib-storage/index/dbox-multi/mdbox-mail.c
+index 62f6d7e..fe1f519 100644
+--- a/src/lib-storage/index/dbox-multi/mdbox-mail.c
++++ b/src/lib-storage/index/dbox-multi/mdbox-mail.c
+@@ -21,6 +21,7 @@ int mdbox_mail_lookup(struct mdbox_mailbox *mbox, struct mail_index_view *view,
+ 	struct mdbox_index_header hdr;
+ 	const void *data;
+ 	uint32_t uid, cur_map_uid_validity;
++	bool need_resize;
+ 
+ 	mail_index_lookup_ext(view, seq, mbox->ext_id, &data, NULL);
+ 	dbox_rec = data;
+@@ -34,7 +35,7 @@ int mdbox_mail_lookup(struct mdbox_mailbox *mbox, struct mail_index_view *view,
+ 	}
+ 
+ 	if (mbox->map_uid_validity == 0) {
+-		if (mdbox_read_header(mbox, &hdr) < 0)
++		if (mdbox_read_header(mbox, &hdr, &need_resize) < 0)
+ 			return -1;
+ 		mbox->map_uid_validity = hdr.map_uid_validity;
+ 	}
+@@ -190,9 +191,26 @@ mdbox_mail_get_special(struct mail *_mail, enum mail_fetch_field field,
+ 		*value_r = p_strdup_printf(mail->imail.mail.data_pool, "%u",
+ 					   refcount);
+ 		return 0;
++	case MAIL_FETCH_UIDL_BACKEND:
++		if (!dbox_header_have_flag(&mbox->box, mbox->hdr_ext_id,
++				offsetof(struct mdbox_index_header, flags),
++				DBOX_INDEX_HEADER_FLAG_HAVE_POP3_UIDLS)) {
++			*value_r = "";
++			return 0;
++		}
++		break;
++	case MAIL_FETCH_POP3_ORDER:
++		if (!dbox_header_have_flag(&mbox->box, mbox->hdr_ext_id,
++				offsetof(struct mdbox_index_header, flags),
++				DBOX_INDEX_HEADER_FLAG_HAVE_POP3_ORDERS)) {
++			*value_r = "";
++			return 0;
++		}
++		break;
+ 	default:
+-		return dbox_mail_get_special(_mail, field, value_r);
++		break;
+ 	}
++	return dbox_mail_get_special(_mail, field, value_r);
+ }
+ 
+ static void
+diff --git a/src/lib-storage/index/dbox-multi/mdbox-save.c b/src/lib-storage/index/dbox-multi/mdbox-save.c
+index 06e31e1..8929cdc 100644
+--- a/src/lib-storage/index/dbox-multi/mdbox-save.c
++++ b/src/lib-storage/index/dbox-multi/mdbox-save.c
+@@ -314,6 +314,10 @@ int mdbox_transaction_save_commit_pre(struct mail_save_context *_ctx)
+ 		return -1;
+ 	}
+ 
++	/* update dbox header flags */
++	dbox_save_update_header_flags(&ctx->ctx, ctx->sync_ctx->sync_view,
++		ctx->mbox->hdr_ext_id, offsetof(struct mdbox_index_header, flags));
++
+ 	/* assign UIDs for new messages */
+ 	hdr = mail_index_get_header(ctx->sync_ctx->sync_view);
+ 	mail_index_append_finish_uids(ctx->ctx.trans, hdr->next_uid,
+diff --git a/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c b/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c
+index 14864c8..96542f4 100644
+--- a/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c
++++ b/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c
+@@ -58,6 +58,9 @@ struct mdbox_storage_rebuild_context {
+ 	struct mailbox_list *default_list;
+ 
+ 	struct rebuild_msg_mailbox prev_msg;
++
++	unsigned int have_pop3_uidls:1;
++	unsigned int have_pop3_orders:1;
+ };
+ 
+ static struct mdbox_storage_rebuild_context *
+@@ -126,6 +129,15 @@ static int mdbox_rebuild_msg_uid_cmp(struct mdbox_rebuild_msg *const *m1,
+ 	return 0;
+ }
+ 
++static void rebuild_scan_metadata(struct mdbox_storage_rebuild_context *ctx,
++				  struct dbox_file *file)
++{
++	if (dbox_file_metadata_get(file, DBOX_METADATA_POP3_UIDL) != NULL)
++		ctx->have_pop3_uidls = TRUE;
++	if (dbox_file_metadata_get(file, DBOX_METADATA_POP3_ORDER) != NULL)
++		ctx->have_pop3_orders = TRUE;
++}
++
+ static int rebuild_file_mails(struct mdbox_storage_rebuild_context *ctx,
+ 			      struct dbox_file *file, uint32_t file_id)
+ {
+@@ -177,6 +189,7 @@ static int rebuild_file_mails(struct mdbox_storage_rebuild_context *ctx,
+ 			ret = 0;
+ 			break;
+ 		}
++		rebuild_scan_metadata(ctx, file);
+ 
+ 		rec = p_new(ctx->pool, struct mdbox_rebuild_msg, 1);
+ 		rec->file_id = file_id;
+@@ -476,7 +489,8 @@ mdbox_rebuild_get_header(struct mail_index_view *view, uint32_t hdr_ext_id,
+ 	memcpy(hdr_r, data, I_MIN(data_size, sizeof(*hdr_r)));
+ }
+ 
+-static void mdbox_header_update(struct index_rebuild_context *rebuild_ctx,
++static void mdbox_header_update(struct mdbox_storage_rebuild_context *ctx,
++				struct index_rebuild_context *rebuild_ctx,
+ 				struct mdbox_mailbox *mbox)
+ {
+ 	struct mdbox_index_header hdr, backup_hdr;
+@@ -502,6 +516,11 @@ static void mdbox_header_update(struct index_rebuild_context *rebuild_ctx,
+ 	/* update map's uid-validity */
+ 	hdr.map_uid_validity = mdbox_map_get_uid_validity(mbox->storage->map);
+ 
++	if (ctx->have_pop3_uidls)
++		hdr.flags |= DBOX_INDEX_HEADER_FLAG_HAVE_POP3_UIDLS;
++	if (ctx->have_pop3_orders)
++		hdr.flags |= DBOX_INDEX_HEADER_FLAG_HAVE_POP3_ORDERS;
++
+ 	/* and write changes */
+ 	mail_index_update_header_ext(rebuild_ctx->trans, mbox->hdr_ext_id, 0,
+ 				     &hdr, sizeof(hdr));
+@@ -545,7 +564,7 @@ rebuild_mailbox(struct mdbox_storage_rebuild_context *ctx,
+ 	}
+ 
+ 	rebuild_ctx = index_index_rebuild_init(&mbox->box, view, trans);
+-	mdbox_header_update(rebuild_ctx, mbox);
++	mdbox_header_update(ctx, rebuild_ctx, mbox);
+ 	rebuild_mailbox_multi(ctx, rebuild_ctx, mbox, view, trans);
+ 	index_index_rebuild_deinit(&rebuild_ctx, dbox_get_uidvalidity_next);
+ 
+@@ -643,6 +662,7 @@ static int rebuild_restore_msg(struct mdbox_storage_rebuild_context *ctx,
+ 			mailbox = mailbox_list_get_vname(ctx->default_list, mailbox);
+ 			mailbox = t_strdup(mailbox);
+ 		}
++		rebuild_scan_metadata(ctx, file);
+ 	}
+ 	dbox_file_unref(&file);
+ 	if (ret <= 0 || deleted) {
+diff --git a/src/lib-storage/index/dbox-multi/mdbox-storage.c b/src/lib-storage/index/dbox-multi/mdbox-storage.c
+index a6be1f4..bb81b66 100644
+--- a/src/lib-storage/index/dbox-multi/mdbox-storage.c
++++ b/src/lib-storage/index/dbox-multi/mdbox-storage.c
+@@ -197,7 +197,7 @@ static void mdbox_mailbox_close(struct mailbox *box)
+ }
+ 
+ int mdbox_read_header(struct mdbox_mailbox *mbox,
+-		      struct mdbox_index_header *hdr)
++		      struct mdbox_index_header *hdr, bool *need_resize_r)
+ {
+ 	const void *data;
+ 	size_t data_size;
+@@ -216,6 +216,7 @@ int mdbox_read_header(struct mdbox_mailbox *mbox,
+ 	}
+ 	memset(hdr, 0, sizeof(*hdr));
+ 	memcpy(hdr, data, I_MIN(data_size, sizeof(*hdr)));
++	*need_resize_r = data_size < sizeof(*hdr);
+ 	return 0;
+ }
+ 
+@@ -224,8 +225,9 @@ void mdbox_update_header(struct mdbox_mailbox *mbox,
+ 			 const struct mailbox_update *update)
+ {
+ 	struct mdbox_index_header hdr, new_hdr;
++	bool need_resize;
+ 
+-	if (mdbox_read_header(mbox, &hdr) < 0)
++	if (mdbox_read_header(mbox, &hdr, &need_resize) < 0)
+ 		memset(&hdr, 0, sizeof(hdr));
+ 
+ 	new_hdr = hdr;
+@@ -239,6 +241,10 @@ void mdbox_update_header(struct mdbox_mailbox *mbox,
+ 
+ 	new_hdr.map_uid_validity =
+ 		mdbox_map_get_uid_validity(mbox->storage->map);
++	if (need_resize) {
++		mail_index_ext_resize_hdr(trans, mbox->hdr_ext_id,
++					  sizeof(new_hdr));
++	}
+ 	if (memcmp(&hdr, &new_hdr, sizeof(hdr)) != 0) {
+ 		mail_index_update_header_ext(trans, mbox->hdr_ext_id, 0,
+ 					     &new_hdr, sizeof(new_hdr));
+@@ -365,14 +371,15 @@ static int
+ mdbox_mailbox_get_guid(struct mdbox_mailbox *mbox, guid_128_t guid_r)
+ {
+ 	struct mdbox_index_header hdr;
++	bool need_resize;
+ 
+-	if (mdbox_read_header(mbox, &hdr) < 0)
++	if (mdbox_read_header(mbox, &hdr, &need_resize) < 0)
+ 		memset(&hdr, 0, sizeof(hdr));
+ 
+ 	if (guid_128_is_empty(hdr.mailbox_guid)) {
+ 		/* regenerate it */
+ 		if (mdbox_write_index_header(&mbox->box, NULL, NULL) < 0 ||
+-		    mdbox_read_header(mbox, &hdr) < 0)
++		    mdbox_read_header(mbox, &hdr, &need_resize) < 0)
+ 			return -1;
+ 	}
+ 	memcpy(guid_r, hdr.mailbox_guid, GUID_128_SIZE);
+diff --git a/src/lib-storage/index/dbox-multi/mdbox-storage.h b/src/lib-storage/index/dbox-multi/mdbox-storage.h
+index 3afa0f9..4310500 100644
+--- a/src/lib-storage/index/dbox-multi/mdbox-storage.h
++++ b/src/lib-storage/index/dbox-multi/mdbox-storage.h
+@@ -17,6 +17,8 @@
+ struct mdbox_index_header {
+ 	uint32_t map_uid_validity;
+ 	guid_128_t mailbox_guid;
++	uint8_t flags; /* enum dbox_index_header_flags */
++	uint8_t unused[3];
+ };
+ 
+ struct mdbox_storage {
+@@ -69,7 +71,7 @@ int mdbox_mail_lookup(struct mdbox_mailbox *mbox, struct mail_index_view *view,
+ 		      uint32_t seq, uint32_t *map_uid_r);
+ uint32_t dbox_get_uidvalidity_next(struct mailbox_list *list);
+ int mdbox_read_header(struct mdbox_mailbox *mbox,
+-		      struct mdbox_index_header *hdr);
++		      struct mdbox_index_header *hdr, bool *need_resize_r);
+ void mdbox_update_header(struct mdbox_mailbox *mbox,
+ 			 struct mail_index_transaction *trans,
+ 			 const struct mailbox_update *update) ATTR_NULL(3);
+diff --git a/src/lib-storage/index/dbox-single/sdbox-mail.c b/src/lib-storage/index/dbox-single/sdbox-mail.c
+index 2c6956f..1f0383a 100644
+--- a/src/lib-storage/index/dbox-single/sdbox-mail.c
++++ b/src/lib-storage/index/dbox-single/sdbox-mail.c
+@@ -65,6 +65,7 @@ static int
+ sdbox_mail_get_special(struct mail *_mail, enum mail_fetch_field field,
+ 		       const char **value_r)
+ {
++	struct sdbox_mailbox *mbox = (struct sdbox_mailbox *)_mail->box;
+ 	struct dbox_mail *mail = (struct dbox_mail *)_mail;
+ 	struct stat st;
+ 
+@@ -82,9 +83,26 @@ sdbox_mail_get_special(struct mail *_mail, enum mail_fetch_field field,
+ 		*value_r = p_strdup_printf(mail->imail.mail.data_pool, "%lu",
+ 					   (unsigned long)st.st_nlink);
+ 		return 0;
++	case MAIL_FETCH_UIDL_BACKEND:
++		if (!dbox_header_have_flag(&mbox->box, mbox->hdr_ext_id,
++				offsetof(struct sdbox_index_header, flags),
++				DBOX_INDEX_HEADER_FLAG_HAVE_POP3_UIDLS)) {
++			*value_r = "";
++			return 0;
++		}
++		break;
++	case MAIL_FETCH_POP3_ORDER:
++		if (!dbox_header_have_flag(&mbox->box, mbox->hdr_ext_id,
++				offsetof(struct sdbox_index_header, flags),
++				DBOX_INDEX_HEADER_FLAG_HAVE_POP3_ORDERS)) {
++			*value_r = "";
++			return 0;
++		}
++		break;
+ 	default:
+-		return dbox_mail_get_special(_mail, field, value_r);
++		break;
+ 	}
++	return dbox_mail_get_special(_mail, field, value_r);
+ }
+ 
+ int sdbox_mail_open(struct dbox_mail *mail, uoff_t *offset_r,
+diff --git a/src/lib-storage/index/dbox-single/sdbox-save.c b/src/lib-storage/index/dbox-single/sdbox-save.c
+index 6c2b36a..f8be4a1 100644
+--- a/src/lib-storage/index/dbox-single/sdbox-save.c
++++ b/src/lib-storage/index/dbox-single/sdbox-save.c
+@@ -289,6 +289,10 @@ int sdbox_transaction_save_commit_pre(struct mail_save_context *_ctx)
+ 		return -1;
+ 	}
+ 
++	/* update dbox header flags */
++	dbox_save_update_header_flags(&ctx->ctx, ctx->sync_ctx->sync_view,
++		ctx->mbox->hdr_ext_id, offsetof(struct sdbox_index_header, flags));
++
+ 	/* assign UIDs for new messages */
+ 	hdr = mail_index_get_header(ctx->sync_ctx->sync_view);
+ 	mail_index_append_finish_uids(ctx->ctx.trans, hdr->next_uid,
+diff --git a/src/lib-storage/index/dbox-single/sdbox-storage.c b/src/lib-storage/index/dbox-single/sdbox-storage.c
+index 6e14f74..708a973 100644
+--- a/src/lib-storage/index/dbox-single/sdbox-storage.c
++++ b/src/lib-storage/index/dbox-single/sdbox-storage.c
+@@ -138,7 +138,8 @@ sdbox_mailbox_alloc(struct mail_storage *storage, struct mailbox_list *list,
+ }
+ 
+ int sdbox_read_header(struct sdbox_mailbox *mbox,
+-		      struct sdbox_index_header *hdr, bool log_error)
++		      struct sdbox_index_header *hdr, bool log_error,
++		      bool *need_resize_r)
+ {
+ 	struct mail_index_view *view;
+ 	const void *data;
+@@ -173,6 +174,7 @@ int sdbox_read_header(struct sdbox_mailbox *mbox,
+ 		}
+ 	}
+ 	mail_index_view_close(&view);
++	*need_resize_r = data_size < sizeof(*hdr);
+ 	return ret;
+ }
+ 
+@@ -181,8 +183,9 @@ static void sdbox_update_header(struct sdbox_mailbox *mbox,
+ 				const struct mailbox_update *update)
+ {
+ 	struct sdbox_index_header hdr, new_hdr;
++	bool need_resize;
+ 
+-	if (sdbox_read_header(mbox, &hdr, TRUE) < 0)
++	if (sdbox_read_header(mbox, &hdr, TRUE, &need_resize) < 0)
+ 		memset(&hdr, 0, sizeof(hdr));
+ 
+ 	new_hdr = hdr;
+@@ -194,6 +197,10 @@ static void sdbox_update_header(struct sdbox_mailbox *mbox,
+ 		guid_128_generate(new_hdr.mailbox_guid);
+ 	}
+ 
++	if (need_resize) {
++		mail_index_ext_resize_hdr(trans, mbox->hdr_ext_id,
++					  sizeof(new_hdr));
++	}
+ 	if (memcmp(&hdr, &new_hdr, sizeof(hdr)) != 0) {
+ 		mail_index_update_header_ext(trans, mbox->hdr_ext_id, 0,
+ 					     &new_hdr, sizeof(new_hdr));
+@@ -278,8 +285,10 @@ void sdbox_set_mailbox_corrupted(struct mailbox *box)
+ {
+ 	struct sdbox_mailbox *mbox = (struct sdbox_mailbox *)box;
+ 	struct sdbox_index_header hdr;
++	bool need_resize;
+ 
+-	if (sdbox_read_header(mbox, &hdr, TRUE) < 0 || hdr.rebuild_count == 0)
++	if (sdbox_read_header(mbox, &hdr, TRUE, &need_resize) < 0 ||
++	    hdr.rebuild_count == 0)
+ 		mbox->corrupted_rebuild_count = 1;
+ 	else
+ 		mbox->corrupted_rebuild_count = hdr.rebuild_count;
+@@ -314,6 +323,7 @@ static int sdbox_mailbox_open(struct mailbox *box)
+ {
+ 	struct sdbox_mailbox *mbox = (struct sdbox_mailbox *)box;
+ 	struct sdbox_index_header hdr;
++	bool need_resize;
+ 
+ 	if (sdbox_mailbox_alloc_index(mbox) < 0)
+ 		return -1;
+@@ -332,17 +342,17 @@ static int sdbox_mailbox_open(struct mailbox *box)
+ 	}
+ 
+ 	/* get/generate mailbox guid */
+-	if (sdbox_read_header(mbox, &hdr, FALSE) < 0) {
++	if (sdbox_read_header(mbox, &hdr, FALSE, &need_resize) < 0) {
+ 		/* looks like the mailbox is corrupted */
+ 		(void)sdbox_sync(mbox, SDBOX_SYNC_FLAG_FORCE);
+-		if (sdbox_read_header(mbox, &hdr, TRUE) < 0)
++		if (sdbox_read_header(mbox, &hdr, TRUE, &need_resize) < 0)
+ 			memset(&hdr, 0, sizeof(hdr));
+ 	}
+ 
+ 	if (guid_128_is_empty(hdr.mailbox_guid)) {
+ 		/* regenerate it */
+ 		if (sdbox_mailbox_create_indexes(box, NULL, NULL) < 0 ||
+-		    sdbox_read_header(mbox, &hdr, TRUE) < 0)
++		    sdbox_read_header(mbox, &hdr, TRUE, &need_resize) < 0)
+ 			return -1;
+ 	}
+ 	memcpy(mbox->mailbox_guid, hdr.mailbox_guid,
+diff --git a/src/lib-storage/index/dbox-single/sdbox-storage.h b/src/lib-storage/index/dbox-single/sdbox-storage.h
+index 3078333..b16a238 100644
+--- a/src/lib-storage/index/dbox-single/sdbox-storage.h
++++ b/src/lib-storage/index/dbox-single/sdbox-storage.h
+@@ -13,6 +13,8 @@ struct sdbox_index_header {
+ 	/* increased every time a full mailbox rebuild is done */
+ 	uint32_t rebuild_count;
+ 	guid_128_t mailbox_guid;
++	uint8_t flags; /* enum dbox_index_header_flags */
++	uint8_t unused[3];
+ };
+ 
+ struct sdbox_storage {
+@@ -37,7 +39,8 @@ int sdbox_mail_open(struct dbox_mail *mail, uoff_t *offset_r,
+ 		    struct dbox_file **file_r);
+ 
+ int sdbox_read_header(struct sdbox_mailbox *mbox,
+-		      struct sdbox_index_header *hdr, bool log_error);
++		      struct sdbox_index_header *hdr, bool log_error,
++		      bool *need_resize_r);
+ void sdbox_set_mailbox_corrupted(struct mailbox *box);
+ 
+ struct mail_save_context *
+diff --git a/src/lib-storage/index/dbox-single/sdbox-sync-rebuild.c b/src/lib-storage/index/dbox-single/sdbox-sync-rebuild.c
+index e989982..11634b0 100644
+--- a/src/lib-storage/index/dbox-single/sdbox-sync-rebuild.c
++++ b/src/lib-storage/index/dbox-single/sdbox-sync-rebuild.c
+@@ -140,8 +140,9 @@ static void sdbox_sync_update_header(struct index_rebuild_context *ctx)
+ {
+ 	struct sdbox_mailbox *mbox = (struct sdbox_mailbox *)ctx->box;
+ 	struct sdbox_index_header hdr;
++	bool need_resize;
+ 
+-	if (sdbox_read_header(mbox, &hdr, FALSE) < 0)
++	if (sdbox_read_header(mbox, &hdr, FALSE, &need_resize) < 0)
+ 		memset(&hdr, 0, sizeof(hdr));
+ 	if (guid_128_is_empty(hdr.mailbox_guid))
+ 		guid_128_generate(hdr.mailbox_guid);
+@@ -187,9 +188,10 @@ int sdbox_sync_index_rebuild(struct sdbox_mailbox *mbox, bool force)
+ 	struct mail_index_view *view;
+ 	struct mail_index_transaction *trans;
+ 	struct sdbox_index_header hdr;
++	bool need_resize;
+ 	int ret;
+ 
+-	if (!force && sdbox_read_header(mbox, &hdr, FALSE) == 0) {
++	if (!force && sdbox_read_header(mbox, &hdr, FALSE, &need_resize) == 0) {
+ 		if (hdr.rebuild_count != mbox->corrupted_rebuild_count &&
+ 		    hdr.rebuild_count != 0) {
+ 			/* already rebuilt by someone else */
+diff --git a/src/lib-storage/index/dbox-single/sdbox-sync.c b/src/lib-storage/index/dbox-single/sdbox-sync.c
+index b99299c..b39090a 100644
+--- a/src/lib-storage/index/dbox-single/sdbox-sync.c
++++ b/src/lib-storage/index/dbox-single/sdbox-sync.c
+@@ -164,10 +164,11 @@ sdbox_refresh_header(struct sdbox_mailbox *mbox, bool retry, bool log_error)
+ {
+ 	struct mail_index_view *view;
+ 	struct sdbox_index_header hdr;
++	bool need_resize;
+ 	int ret;
+ 
+ 	view = mail_index_view_open(mbox->box.index);
+-	ret = sdbox_read_header(mbox, &hdr, log_error);
++	ret = sdbox_read_header(mbox, &hdr, log_error, &need_resize);
+ 	mail_index_view_close(&view);
+ 
+ 	if (ret < 0 && retry) {
+-- 
+1.7.10.2
+
+
+From a935cfb9ab515bad875f1e5f709c4fc766a4546c Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 28 May 2013 01:03:58 +0300
+Subject: [PATCH] lib-fs: Added fs_get_root_driver()
+
+
+diff --git a/src/lib-fs/fs-api.c b/src/lib-fs/fs-api.c
+index 45fa37d..9b1d633 100644
+--- a/src/lib-fs/fs-api.c
++++ b/src/lib-fs/fs-api.c
+@@ -140,6 +140,13 @@ void fs_deinit(struct fs **_fs)
+ 	str_free(&last_error);
+ }
+ 
++const char *fs_get_root_driver(struct fs *fs)
++{
++	while (fs->parent != NULL)
++		fs = fs->parent;
++	return fs->name;
++}
++
+ struct fs_file *fs_file_init(struct fs *fs, const char *path, int mode_flags)
+ {
+ 	struct fs_file *file;
+diff --git a/src/lib-fs/fs-api.h b/src/lib-fs/fs-api.h
+index 54c852c..d2d9a1d 100644
+--- a/src/lib-fs/fs-api.h
++++ b/src/lib-fs/fs-api.h
+@@ -92,6 +92,9 @@ int fs_init(const char *driver, const char *args,
+ 	    struct fs **fs_r, const char **error_r);
+ void fs_deinit(struct fs **fs);
+ 
++/* Returns the root fs's driver name (bypassing all wrapper fses) */
++const char *fs_get_root_driver(struct fs *fs);
++
+ struct fs_file *fs_file_init(struct fs *fs, const char *path, int mode_flags);
+ void fs_file_deinit(struct fs_file **file);
+ 
+-- 
+1.7.10.2
+
+
+From 8777469d6d3c6446b192ad5dcfb8c1a3bfde9711 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 28 May 2013 16:30:19 +0300
+Subject: [PATCH] auth: If blocking userdb returns no fields, don't crash when
+ trying to cache the result.
+
+
+diff --git a/src/auth/userdb-blocking.c b/src/auth/userdb-blocking.c
+index f76fc43..fdd24f7 100644
+--- a/src/auth/userdb-blocking.c
++++ b/src/auth/userdb-blocking.c
+@@ -36,8 +36,8 @@ static bool user_callback(const char *reply, void *context)
+ 		args = "";
+ 	}
+ 
++	request->userdb_reply = auth_fields_init(request->pool);
+ 	if (*args != '\0') {
+-		request->userdb_reply = auth_fields_init(request->pool);
+ 		auth_fields_import(request->userdb_reply, args, 0);
+ 		if (auth_fields_exists(request->userdb_reply, "tempfail"))
+ 			request->userdb_lookup_failed = TRUE;
+-- 
+1.7.10.2
+
+
+From 27e5e1bf843d1f928a51cad542f6e42edf413148 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 28 May 2013 16:30:38 +0300
+Subject: [PATCH] auth: Fixed caching empty userdb result.
+
+
+diff --git a/src/auth/auth-request.c b/src/auth/auth-request.c
+index 593eec9..53153af 100644
+--- a/src/auth/auth-request.c
++++ b/src/auth/auth-request.c
+@@ -32,6 +32,7 @@
+ #define AUTH_DNS_DEFAULT_TIMEOUT_MSECS (1000*10)
+ #define AUTH_DNS_WARN_MSECS 500
+ #define CACHED_PASSWORD_SCHEME "SHA1"
++#define AUTH_REQUEST_KEY_IGNORE " "
+ 
+ struct auth_request_proxy_dns_lookup_ctx {
+ 	struct auth_request *request;
+@@ -923,6 +924,11 @@ static void auth_request_userdb_save_cache(struct auth_request *request,
+ 		auth_fields_append(request->userdb_reply, str,
+ 				   AUTH_FIELD_FLAG_CHANGED,
+ 				   AUTH_FIELD_FLAG_CHANGED);
++		if (str_len(str) == 0) {
++			/* no userdb fields. but we can't save an empty string,
++			   since that means "user unknown". */
++			str_append(str, AUTH_REQUEST_KEY_IGNORE);
++		}
+ 		cache_value = str_c(str);
+ 	}
+ 	/* last_success has no meaning with userdb */
+@@ -1503,6 +1509,8 @@ void auth_request_set_userdb_field(struct auth_request *request,
+ 			warned = TRUE;
+ 		}
+ 		name = "system_groups_user";
++	} else if (strcmp(name, AUTH_REQUEST_KEY_IGNORE) == 0) {
++		return;
+ 	}
+ 
+ 	auth_fields_add(request->userdb_reply, name, value, 0);
+-- 
+1.7.10.2
+
+
+From 2ecae26a666bc9e4013ac938b434d6f1d48be451 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 28 May 2013 17:10:03 +0300
+Subject: [PATCH] doveadm-server: Pass local/remote_ip/port to passdb lookups
+ so proxy_maybe works.
+
+
+diff --git a/src/doveadm/client-connection.c b/src/doveadm/client-connection.c
+index 0afca75..08c3a87 100644
+--- a/src/doveadm/client-connection.c
++++ b/src/doveadm/client-connection.c
+@@ -166,6 +166,10 @@ static bool client_handle_command(struct client_connection *conn, char **args)
+ 
+ 	memset(&input, 0, sizeof(input));
+ 	input.service = "doveadm";
++	input.local_ip = conn->local_ip;
++	input.remote_ip = conn->remote_ip;
++	input.local_port = conn->local_port;
++	input.remote_port = conn->remote_port;
+ 
+ 	for (argc = 0; args[argc] != NULL; argc++)
+ 		args[argc] = str_tabunescape(args[argc]);
+@@ -390,7 +394,6 @@ struct client_connection *
+ client_connection_create(int fd, int listen_fd, bool ssl)
+ {
+ 	struct client_connection *conn;
+-	unsigned int port;
+ 	pool_t pool;
+ 
+ 	pool = pool_alloconly_create("doveadm client", 1024*16);
+@@ -402,8 +405,8 @@ client_connection_create(int fd, int listen_fd, bool ssl)
+ 	conn->output = o_stream_create_fd(fd, (size_t)-1, FALSE);
+ 	o_stream_set_no_error_handling(conn->output, TRUE);
+ 
+-	(void)net_getsockname(fd, &conn->local_ip, &port);
+-	(void)net_getpeername(fd, &conn->remote_ip, &port);
++	(void)net_getsockname(fd, &conn->local_ip, &conn->local_port);
++	(void)net_getpeername(fd, &conn->remote_ip, &conn->remote_port);
+ 
+ 	if (client_connection_read_settings(conn) < 0) {
+ 		client_connection_destroy(&conn);
+diff --git a/src/doveadm/client-connection.h b/src/doveadm/client-connection.h
+index 020cf86..9cf3c3f 100644
+--- a/src/doveadm/client-connection.h
++++ b/src/doveadm/client-connection.h
+@@ -12,6 +12,7 @@ struct client_connection {
+ 	struct ostream *output;
+ 	struct ssl_iostream *ssl_iostream;
+ 	struct ip_addr local_ip, remote_ip;
++	unsigned int local_port, remote_port;
+ 	const struct doveadm_settings *set;
+ 
+ 	unsigned int handshaked:1;
+diff --git a/src/doveadm/doveadm-mail-server.c b/src/doveadm/doveadm-mail-server.c
+index da0fe49..4460cac 100644
+--- a/src/doveadm/doveadm-mail-server.c
++++ b/src/doveadm/doveadm-mail-server.c
+@@ -190,6 +190,10 @@ doveadm_mail_server_user_get_host(struct doveadm_mail_cmd_context *ctx,
+ 
+ 	memset(&info, 0, sizeof(info));
+ 	info.service = master_service_get_name(master_service);
++	info.local_ip = input->local_ip;
++	info.remote_ip = input->remote_ip;
++	info.local_port = input->local_port;
++	info.remote_port = input->remote_port;
+ 
+ 	pool = pool_alloconly_create("auth lookup", 1024);
+ 	auth_conn = mail_storage_service_get_auth_conn(ctx->storage_service);
+-- 
+1.7.10.2
+
+
+From d376b3ff4bad22dd772b26b4cc240525d1f98102 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 28 May 2013 17:30:42 +0300
+Subject: [PATCH] auth: Keep auth_request referenced during DNS lookup. If the
+ underlying auth connection gets closed, there's nothing
+ else referencing the auth_request.
+
+
+diff --git a/src/auth/auth-request.c b/src/auth/auth-request.c
+index 53153af..0c00c9a 100644
+--- a/src/auth/auth-request.c
++++ b/src/auth/auth-request.c
+@@ -1656,6 +1656,7 @@ auth_request_proxy_dns_callback(const struct dns_lookup_result *result,
+ 	}
+ 	if (ctx->callback != NULL)
+ 		ctx->callback(result->ret == 0, request);
++	auth_request_unref(&request);
+ }
+ 
+ static int auth_request_proxy_host_lookup(struct auth_request *request,
+@@ -1683,12 +1684,14 @@ static int auth_request_proxy_host_lookup(struct auth_request *request,
+ 
+ 	ctx = p_new(request->pool, struct auth_request_proxy_dns_lookup_ctx, 1);
+ 	ctx->request = request;
++	auth_request_ref(request);
+ 
+ 	if (dns_lookup(host, &dns_set, auth_request_proxy_dns_callback, ctx,
+ 		       &ctx->dns_lookup) < 0) {
+ 		/* failed early */
+ 		request->internal_failure = TRUE;
+ 		auth_request_proxy_finish_failure(request);
++		auth_request_unref(&request);
+ 		return -1;
+ 	}
+ 	ctx->callback = callback;
+-- 
+1.7.10.2
+
+
+From ebb91c7f3d907b98730356f50169aa8c89db3b4d Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Tue, 28 May 2013 18:18:45 +0300
+Subject: [PATCH] auth ldap: If ldap debug_level>0, log how long
+ initialization took.
+
+
+diff --git a/src/auth/db-ldap.c b/src/auth/db-ldap.c
+index c61af85..77706f1 100644
+--- a/src/auth/db-ldap.c
++++ b/src/auth/db-ldap.c
+@@ -10,6 +10,7 @@
+ #include "hash.h"
+ #include "aqueue.h"
+ #include "str.h"
++#include "time-util.h"
+ #include "env-util.h"
+ #include "var-expand.h"
+ #include "settings.h"
+@@ -1099,11 +1100,17 @@ static void db_ldap_set_options(struct ldap_connection *conn)
+ 
+ int db_ldap_connect(struct ldap_connection *conn)
+ {
++	bool debug = atoi(conn->set.debug_level) > 0;
++	struct timeval start, end;
+ 	int ret;
+ 
+ 	if (conn->conn_state != LDAP_CONN_STATE_DISCONNECTED)
+ 		return 0;
+ 
++	if (debug) {
++		if (gettimeofday(&start, NULL) < 0)
++			memset(&start, 0, sizeof(start));
++	}
+ 	i_assert(conn->pending_count == 0);
+ 	if (conn->ld == NULL) {
+ 		if (conn->set.uris != NULL) {
+@@ -1170,6 +1177,12 @@ int db_ldap_connect(struct ldap_connection *conn)
+ 		if (db_ldap_bind(conn) < 0)
+ 			return -1;
+ 	}
++	if (debug) {
++		if (gettimeofday(&end, NULL) == 0) {
++			int msecs = timeval_diff_msecs(&end, &start);
++			i_debug("LDAP initialization took %d msecs", msecs);
++		}
++	}
+ 
+ 	db_ldap_get_fd(conn);
+ 	conn->io = io_add(conn->fd, IO_READ, ldap_input, conn);
+-- 
+1.7.10.2
+
+
+From 30dd5a7cc9c7c991c29eeea52455de307b1eb3f6 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 03:18:04 +0300
+Subject: [PATCH] Fixed compiling with gcc v3.3 and older. Perhaps the check
+ needs to be also for somewhat newer versions?..
+
+
+diff --git a/src/lib/macros.h b/src/lib/macros.h
+index c5e4fed..921055e 100644
+--- a/src/lib/macros.h
++++ b/src/lib/macros.h
+@@ -142,7 +142,7 @@
+ #endif
+ 
+ /* Macros to provide type safety for callback functions' context parameters */
+-#ifdef __GNUC__
++#if (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ > 3))
+ #  define CALLBACK_TYPECHECK(callback, type) \
+ 	(COMPILE_ERROR_IF_TRUE(!__builtin_types_compatible_p( \
+ 		typeof(&callback), type)) ? 1 : 0)
+-- 
+1.7.10.2
+
+
+From e27ba5f2b2252e1ec35b330e1c52c663447ef219 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 03:23:40 +0300
+Subject: [PATCH] lib-storage: Don't try to mkdir() empty directory with
+ INDEX=MEMORY
+
+
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index 49a4c46..fd7b18d 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -1454,6 +1454,8 @@ int mailbox_list_mkdir_missing_index_root(struct mailbox_list *list)
+ 					 &index_dir);
+ 	if (ret <= 0)
+ 		return ret;
++	if (index_dir[0] == '\0')
++		return 0;
+ 	ret = mailbox_list_get_root_path(list, MAILBOX_LIST_PATH_TYPE_MAILBOX,
+ 					 &root_dir);
+ 	if (ret <= 0)
+-- 
+1.7.10.2
+
+
+From 0c3b2aa76d3eb8b46982a3be79ee6017bb932a31 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 03:26:41 +0300
+Subject: [PATCH] lib-storage: Reverted previous change after all.
+
+
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index fd7b18d..49a4c46 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -1454,8 +1454,6 @@ int mailbox_list_mkdir_missing_index_root(struct mailbox_list *list)
+ 					 &index_dir);
+ 	if (ret <= 0)
+ 		return ret;
+-	if (index_dir[0] == '\0')
+-		return 0;
+ 	ret = mailbox_list_get_root_path(list, MAILBOX_LIST_PATH_TYPE_MAILBOX,
+ 					 &root_dir);
+ 	if (ret <= 0)
+-- 
+1.7.10.2
+
+
+From 71c056c5d04a6eba8c6437b101b6f8d3ec4ebfb6 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 03:27:09 +0300
+Subject: [PATCH] lib-storage: If INDEX=MEMORY, return index root dir as
+ nonexistent instead of as "".
+
+
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index 49a4c46..5eedf04 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -1271,8 +1271,15 @@ bool mailbox_list_set_get_root_path(const struct mailbox_list_settings *set,
+ 			set->control_dir : set->root_dir;
+ 		break;
+ 	case MAILBOX_LIST_PATH_TYPE_INDEX:
+-		path = set->index_dir != NULL ?
+-			set->index_dir : set->root_dir;
++		if (set->index_dir != NULL) {
++			if (set->index_dir[0] == '\0') {
++				/* in-memory indexes */
++				return 0;
++			}
++			path = set->index_dir;
++		} else {
++			path = set->root_dir;
++		}
+ 		break;
+ 	case MAILBOX_LIST_PATH_TYPE_INDEX_PRIVATE:
+ 		path = set->index_pvt_dir;
+-- 
+1.7.10.2
+
+
+From a661e145eb2f5a269cb487397c0025779b19f1a0 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 03:47:38 +0300
+Subject: [PATCH] lib-index: Fixed mail_cache_lookup_headers() when fields
+ were still in memory buffer.
+
+
+diff --git a/src/lib-index/mail-cache-lookup.c b/src/lib-index/mail-cache-lookup.c
+index 39f3eb0..02c3e3d 100644
+--- a/src/lib-index/mail-cache-lookup.c
++++ b/src/lib-index/mail-cache-lookup.c
+@@ -434,17 +434,18 @@ int mail_cache_lookup_field(struct mail_cache_view *view, buffer_t *dest_buf,
+ }
+ 
+ struct header_lookup_data {
+-	uint32_t offset;
+ 	uint32_t data_size;
++	const unsigned char *data;
+ };
+ 
+ struct header_lookup_line {
+ 	uint32_t line_num;
+-        struct header_lookup_data *data;
++	struct header_lookup_data *data;
+ };
+ 
+ struct header_lookup_context {
+ 	struct mail_cache_view *view;
++	pool_t pool;
+ 	ARRAY(struct header_lookup_line) lines;
+ };
+ 
+@@ -461,7 +462,8 @@ static void header_lines_save(struct header_lookup_context *ctx,
+ 	uint32_t data_size = field->size;
+ 	struct header_lookup_line hdr_line;
+         struct header_lookup_data *hdr_data;
+-	unsigned int i, lines_count;
++	void *data_dup;
++	unsigned int i, lines_count, pos;
+ 
+ 	/* data = { line_nums[], 0, "headers" } */
+ 	for (i = 0; data_size >= sizeof(uint32_t); i++) {
+@@ -470,10 +472,13 @@ static void header_lines_save(struct header_lookup_context *ctx,
+ 			break;
+ 	}
+ 	lines_count = i;
++	pos = (lines_count+1) * sizeof(uint32_t);
+ 
+-	hdr_data = t_new(struct header_lookup_data, 1);
+-	hdr_data->offset = field->offset + (lines_count+1) * sizeof(uint32_t);
++	hdr_data = p_new(ctx->pool, struct header_lookup_data, 1);
+ 	hdr_data->data_size = data_size;
++	hdr_data->data = data_dup = data_size == 0 ? NULL :
++		p_malloc(ctx->pool, data_size);
++	memcpy(data_dup, CONST_PTR_OFFSET(field->data, pos), data_size);
+ 
+ 	for (i = 0; i < lines_count; i++) {
+ 		hdr_line.line_num = lines[i];
+@@ -491,14 +496,13 @@ static int header_lookup_line_cmp(const struct header_lookup_line *l1,
+ static int
+ mail_cache_lookup_headers_real(struct mail_cache_view *view, string_t *dest,
+ 			       uint32_t seq, unsigned int field_idxs[],
+-			       unsigned int fields_count)
++			       unsigned int fields_count, pool_t *pool_r)
+ {
+ 	struct mail_cache *cache = view->cache;
+ 	struct mail_cache_lookup_iterate_ctx iter;
+ 	struct mail_cache_iterate_field field;
+ 	struct header_lookup_context ctx;
+ 	struct header_lookup_line *lines;
+-	const void *data;
+ 	const unsigned char *p, *start, *end;
+ 	uint8_t *field_state;
+ 	unsigned int i, count, max_field = 0;
+@@ -507,6 +511,8 @@ mail_cache_lookup_headers_real(struct mail_cache_view *view, string_t *dest,
+ 	buffer_t *buf;
+ 	int ret;
+ 
++	*pool_r = NULL;
++
+ 	if (fields_count == 0)
+ 		return 1;
+ 
+@@ -534,6 +540,7 @@ mail_cache_lookup_headers_real(struct mail_cache_view *view, string_t *dest,
+ 	/* lookup the fields */
+ 	memset(&ctx, 0, sizeof(ctx));
+ 	ctx.view = view;
++	ctx.pool = *pool_r = pool_alloconly_create("mail cache headers", 1024);
+ 	t_array_init(&ctx.lines, 32);
+ 
+ 	mail_cache_lookup_iter_init(view, seq, &iter);
+@@ -563,17 +570,7 @@ mail_cache_lookup_headers_real(struct mail_cache_view *view, string_t *dest,
+ 
+ 	/* then start filling dest buffer from the headers */
+ 	for (i = 0; i < count; i++) {
+-		ret = mail_cache_map(cache, lines[i].data->offset,
+-				     lines[i].data->data_size, &data);
+-		if (ret <= 0) {
+-			if (ret < 0)
+-				return -1;
+-
+-			mail_cache_set_corrupted(cache,
+-				"header record unexpectedly points outside file");
+-			return -1;
+-		}
+-		start = data;
++		start = lines[i].data->data;
+ 		end = start + lines[i].data->data_size;
+ 
+ 		/* find the end of the (multiline) header */
+@@ -589,7 +586,7 @@ mail_cache_lookup_headers_real(struct mail_cache_view *view, string_t *dest,
+ 
+ 		/* if there are more lines for this header, the following lines
+ 		   continue after this one. so skip this line. */
+-		lines[i].data->offset += hdr_size;
++		lines[i].data->data += hdr_size;
+ 		lines[i].data->data_size -= hdr_size;
+ 	}
+ 	return 1;
+@@ -599,11 +596,15 @@ int mail_cache_lookup_headers(struct mail_cache_view *view, string_t *dest,
+ 			      uint32_t seq, unsigned int field_idxs[],
+ 			      unsigned int fields_count)
+ {
++	pool_t pool;
+ 	int ret;
+ 
+ 	T_BEGIN {
+ 		ret = mail_cache_lookup_headers_real(view, dest, seq,
+-						     field_idxs, fields_count);
++						     field_idxs, fields_count,
++						     &pool);
++		if (pool != NULL)
++			pool_unref(&pool);
+ 	} T_END;
+ 	return ret;
+ }
+-- 
+1.7.10.2
+
+
+From 105cc5415b3c517af47846cf8849cddf58de84d1 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 12:33:17 +0300
+Subject: [PATCH] dsync: Fixed dsync handshaking since recent change.
+
+
+diff --git a/src/doveadm/dsync/dsync-ibc-stream.c b/src/doveadm/dsync/dsync-ibc-stream.c
+index ef9a1af..31d2c6a 100644
+--- a/src/doveadm/dsync/dsync-ibc-stream.c
++++ b/src/doveadm/dsync/dsync-ibc-stream.c
+@@ -73,7 +73,7 @@ static const struct {
+ 	  .chr = 'H',
+ 	  .required_keys = "hostname",
+ 	  .optional_keys = "sync_ns_prefix sync_box sync_box_guid sync_type "
+-	  	"debug sync_visible_namespaces exclude_mailboxes"
++	  	"debug sync_visible_namespaces exclude_mailboxes "
+ 	  	"send_mail_requests backup_send backup_recv lock_timeout"
+ 	},
+ 	{ .name = "mailbox_state",
+-- 
+1.7.10.2
+
+
+From 49fbfb8325c40cd30d422e490bec308aa0986ec4 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 12:44:15 +0300
+Subject: [PATCH] lib-settings: Support also "seconds" and "minutes" (instead
+ of just secs/mins)
+
+
+diff --git a/src/lib-settings/settings-parser.c b/src/lib-settings/settings-parser.c
+index 3a0d2c3..74cdc05 100644
+--- a/src/lib-settings/settings-parser.c
++++ b/src/lib-settings/settings-parser.c
+@@ -362,12 +362,14 @@ int settings_get_time(const char *str, unsigned int *secs_r,
+ 	switch (i_toupper(*p)) {
+ 	case 'S':
+ 		multiply = 1;
+-		if (strncasecmp(p, "secs", strlen(p)) == 0)
++		if (strncasecmp(p, "secs", strlen(p)) == 0 ||
++		    strncasecmp(p, "seconds", strlen(p)) == 0)
+ 			p = "";
+ 		break;
+ 	case 'M':
+ 		multiply = 60;
+-		if (strncasecmp(p, "mins", strlen(p)) == 0)
++		if (strncasecmp(p, "mins", strlen(p)) == 0 ||
++		    strncasecmp(p, "minutes", strlen(p)) == 0)
+ 			p = "";
+ 		break;
+ 	case 'H':
+-- 
+1.7.10.2
+
+
+From 5efe0f11679e0af5f910b268f1f5000bb8f9f7c0 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 29 May 2013 16:40:50 +0300
+Subject: [PATCH] lib-imap: imap_append_string_for_humans() returned broken
+ output for whitespace-only input. This returned broken IMAP
+ ENVELOPEs, especially for subjects that contained only
+ whitespace. Since the broken output returned a huge
+ literal, it basically caused the IMAP client to hang.
+
+
+diff --git a/src/lib-imap/Makefile.am b/src/lib-imap/Makefile.am
+index 4382270..3d9f1a2 100644
+--- a/src/lib-imap/Makefile.am
++++ b/src/lib-imap/Makefile.am
+@@ -44,6 +44,7 @@ test_programs = \
+ 	test-imap-bodystructure \
+ 	test-imap-match \
+ 	test-imap-parser \
++	test-imap-quote \
+ 	test-imap-url \
+ 	test-imap-utf7 \
+ 	test-imap-util
+@@ -68,6 +69,10 @@ test_imap_parser_SOURCES = test-imap-parser.c
+ test_imap_parser_LDADD = imap-parser.lo imap-arg.lo $(test_libs)
+ test_imap_parser_DEPENDENCIES = $(test_deps)
+ 
++test_imap_quote_SOURCES = test-imap-quote.c
++test_imap_quote_LDADD = imap-quote.lo $(test_libs)
++test_imap_quote_DEPENDENCIES = $(test_deps)
++
+ test_imap_url_SOURCES = test-imap-url.c
+ test_imap_url_LDADD = imap-url.lo  $(test_libs)
+ test_imap_url_DEPENDENCIES = $(test_deps)
+diff --git a/src/lib-imap/imap-quote.c b/src/lib-imap/imap-quote.c
+index 7234df6..73dd5d4 100644
+--- a/src/lib-imap/imap-quote.c
++++ b/src/lib-imap/imap-quote.c
+@@ -119,7 +119,7 @@ void imap_append_string_for_humans(string_t *dest,
+ 				   const unsigned char *src, size_t size)
+ {
+ 	size_t i, pos, remove_count = 0;
+-	bool last_lwsp = TRUE, modify = FALSE;
++	bool whitespace_prefix = TRUE, last_lwsp = TRUE, modify = FALSE;
+ 
+ 	/* first check if there is anything to change */
+ 	for (i = 0; i < size; i++) {
+@@ -155,8 +155,10 @@ void imap_append_string_for_humans(string_t *dest,
+ 			last_lwsp = FALSE;
+ 			break;
+ 		}
++		if (!last_lwsp)
++			whitespace_prefix = FALSE;
+ 	}
+-	if (last_lwsp && i > 0) {
++	if (last_lwsp && i > 0 && !whitespace_prefix) {
+ 		modify = TRUE;
+ 		remove_count++;
+ 	}
+@@ -168,11 +170,16 @@ void imap_append_string_for_humans(string_t *dest,
+ 		str_append_c(dest, '"');
+ 		return;
+ 	}
++	if (size == remove_count) {
++		/* contained only whitespace */
++		str_append(dest, "\"\"");
++		return;
++	}
+ 
+ 	str_printfa(dest, "{%"PRIuSIZE_T"}\r\n", size - remove_count);
+ 	pos = str_len(dest);
+ 
+-	last_lwsp = TRUE;
++	last_lwsp = TRUE; whitespace_prefix = TRUE;
+ 	for (i = 0; i < size; i++) {
+ 		switch (src[i]) {
+ 		case 0:
+@@ -193,8 +200,10 @@ void imap_append_string_for_humans(string_t *dest,
+ 			str_append_c(dest, src[i]);
+ 			break;
+ 		}
++		if (!last_lwsp)
++			whitespace_prefix = FALSE;
+ 	}
+-	if (last_lwsp)
++	if (last_lwsp && i > 0 && !whitespace_prefix)
+ 		str_truncate(dest, str_len(dest)-1);
+ 	i_assert(str_len(dest) - pos == size - remove_count);
+ }
+diff --git a/src/lib-imap/test-imap-quote.c b/src/lib-imap/test-imap-quote.c
+new file mode 100644
+index 0000000..3edb1dd
+--- /dev/null
++++ b/src/lib-imap/test-imap-quote.c
+@@ -0,0 +1,47 @@
++/* Copyright (c) 2013 Dovecot authors, see the included COPYING file */
++
++#include "lib.h"
++#include "str.h"
++#include "imap-quote.h"
++#include "test-common.h"
++
++static void test_imap_append_string_for_humans(void)
++{
++	static struct {
++		const char *input, *output;
++	} tests[] = {
++		{ "", "\"\"" },
++		{ " ", "\"\"" },
++		{ "  ", "\"\"" },
++		{ "\t", "\"\"" },
++		{ " \t", "\"\"" },
++		{ " \t ", "\"\"" },
++		{ " foo", "{3}\r\nfoo" },
++		{ "\tfoo", "{3}\r\nfoo" },
++		{ "\t \tfoo", "{3}\r\nfoo" },
++		{ " foo ", "{3}\r\nfoo" },
++		{ " foo  ", "{3}\r\nfoo" },
++		{ " foo  \t  \t", "{3}\r\nfoo" }
++	};
++	string_t *str = t_str_new(128);
++	unsigned int i;
++
++	test_begin("imap_append_string_for_humans()");
++
++	for (i = 0; i < N_ELEMENTS(tests); i++) {
++		str_truncate(str, 0);
++		imap_append_string_for_humans(str, (const void *)tests[i].input,
++					      strlen(tests[i].input));
++		test_assert(strcmp(tests[i].output, str_c(str)) == 0);
++	}
++	test_end();
++}
++
++int main(void)
++{
++	static void (*test_functions[])(void) = {
++		test_imap_append_string_for_humans,
++		NULL
++	};
++	return test_run(test_functions);
++}
+-- 
+1.7.10.2
+
