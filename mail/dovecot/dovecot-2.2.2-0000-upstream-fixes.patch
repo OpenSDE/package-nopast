@@ -3728,3 +3728,1682 @@ index 0000000..3edb1dd
 -- 
 1.7.10.2
 
+
+From c04c98b2f0353eb054623b7529ec3b22bf324fd1 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 17:45:27 +0300
+Subject: [PATCH] var_expand(): Added %N, which is the same as %H except based
+ on MD5. This gives a better distribution of values than %H.
+
+
+diff --git a/src/lib/var-expand.c b/src/lib/var-expand.c
+index baec1e2..0e8ec6a 100644
+--- a/src/lib/var-expand.c
++++ b/src/lib/var-expand.c
+@@ -88,6 +88,29 @@ static const char *m_str_hash(const char *str, struct var_expand_context *ctx)
+ }
+ 
+ static const char *
++m_str_newhash(const char *str, struct var_expand_context *ctx)
++{
++	string_t *hash = t_str_new(20);
++	unsigned char result[MD5_RESULTLEN];
++	unsigned int value;
++
++	md5_get_digest(str, strlen(str), result);
++	memcpy(&value, result, sizeof(value));
++
++	if (ctx->width != 0) {
++		value %= ctx->width;
++		ctx->width = 0;
++	}
++
++	str_printfa(hash, "%x", value);
++	while ((int)str_len(hash) < ctx->offset)
++		str_insert(hash, 0, "0");
++        ctx->offset = 0;
++
++	return str_c(hash);
++}
++
++static const char *
+ m_str_md5(const char *str, struct var_expand_context *ctx ATTR_UNUSED)
+ {
+ 	unsigned char digest[16];
+@@ -132,6 +155,7 @@ static const struct var_expand_modifier modifiers[] = {
+ 	{ 'X', m_str_hex },
+ 	{ 'R', m_str_reverse },
+ 	{ 'H', m_str_hash },
++	{ 'N', m_str_newhash },
+ 	{ 'M', m_str_md5 },
+ 	{ 'D', m_str_ldap_dn },
+ 	{ 'T', m_str_trim },
+-- 
+1.7.10.2
+
+
+From 112d8e9c40646e286ac3d005436b17acca48540c Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:03:38 +0300
+Subject: [PATCH] lib-imap-urlauth: Made sure callbacks from URLAUTH service
+ connection are executed only once.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-connection.c b/src/lib-imap-urlauth/imap-urlauth-connection.c
+index 2f8df0b..80598f9 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-connection.c
++++ b/src/lib-imap-urlauth/imap-urlauth-connection.c
+@@ -320,9 +320,13 @@ static void imap_urlauth_request_free(struct imap_urlauth_request *urlreq)
+ void imap_urlauth_request_abort(struct imap_urlauth_connection *conn,
+ 				struct imap_urlauth_request *urlreq)
+ {
+-	if (urlreq->callback != NULL) {
++	imap_urlauth_request_callback_t *callback;
++
++	callback = urlreq->callback;
++	urlreq->callback = NULL;
++	if (callback != NULL) {
+ 		T_BEGIN {
+-			urlreq->callback(NULL, urlreq->context);
++			callback(NULL, urlreq->context);
+ 		} T_END;
+ 	}
+ 
+@@ -331,7 +335,6 @@ void imap_urlauth_request_abort(struct imap_urlauth_connection *conn,
+ 	    conn->targets_head->requests_head == urlreq) {
+ 		/* cannot just drop pending request without breaking
+ 		   protocol state */
+-		urlreq->callback = NULL;
+ 		return;
+ 	}
+ 	imap_urlauth_request_free(urlreq);
+@@ -343,22 +346,26 @@ imap_urlauth_request_fail(struct imap_urlauth_connection *conn,
+ 			  const char *error)
+ {
+ 	struct imap_urlauth_fetch_reply reply;
++	imap_urlauth_request_callback_t *callback;
+ 
+-	memset(&reply, 0, sizeof(reply));
+-	reply.url = urlreq->url;
+-	reply.flags = urlreq->flags;
+-	reply.succeeded = FALSE;
+-	reply.error = error;
++	callback = urlreq->callback;
++	urlreq->callback = NULL;
++	if (callback != NULL) {
++		memset(&reply, 0, sizeof(reply));
++		reply.url = urlreq->url;
++		reply.flags = urlreq->flags;
++		reply.succeeded = FALSE;
++		reply.error = error;
+ 
+-	if (urlreq->callback != NULL) T_BEGIN {
+-		(void)urlreq->callback(&reply, urlreq->context);
+-	} T_END;
++		T_BEGIN {
++			(void)callback(&reply, urlreq->context);
++		} T_END;
++	}
+ 
+ 	if (conn->state == IMAP_URLAUTH_STATE_REQUEST_PENDING &&
+ 	    conn->targets_head != NULL &&
+ 	    conn->targets_head->requests_head == urlreq) {
+ 		/* cannot just drop pending request without breaking protocol state */
+-		urlreq->callback = NULL;
+ 		return;
+ 	}
+ 
+@@ -617,6 +624,7 @@ imap_urlauth_connection_read_literal(struct imap_urlauth_connection *conn)
+ {
+ 	struct imap_urlauth_request *urlreq = conn->targets_head->requests_head;
+ 	struct imap_urlauth_fetch_reply reply;
++	imap_urlauth_request_callback_t *callback;
+ 	int ret;
+ 
+ 	i_assert(conn->reading_literal);
+@@ -643,8 +651,10 @@ imap_urlauth_connection_read_literal(struct imap_urlauth_connection *conn)
+ 	reply.succeeded = TRUE;
+ 
+ 	ret = 1;
+-	if (urlreq->callback != NULL) T_BEGIN {
+-		ret = urlreq->callback(&reply, urlreq->context);
++	callback = urlreq->callback;
++	urlreq->callback = NULL;
++	if (callback != NULL) T_BEGIN {
++		ret = callback(&reply, urlreq->context);
+ 	} T_END;
+ 
+ 	if (reply.input != NULL)
+-- 
+1.7.10.2
+
+
+From cced625278063273ff1fab87844d5a4e038fd1ae Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:03:46 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed URLAUTH connection resume after
+ error.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-connection.c b/src/lib-imap-urlauth/imap-urlauth-connection.c
+index 80598f9..42a4fc3 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-connection.c
++++ b/src/lib-imap-urlauth/imap-urlauth-connection.c
+@@ -317,6 +317,21 @@ static void imap_urlauth_request_free(struct imap_urlauth_request *urlreq)
+ 	i_free(urlreq);
+ }
+ 
++static void imap_urlauth_request_drop(struct imap_urlauth_connection *conn,
++				struct imap_urlauth_request *urlreq)
++{
++	if ((conn->state == IMAP_URLAUTH_STATE_REQUEST_PENDING ||
++			conn->state == IMAP_URLAUTH_STATE_REQUEST_WAIT) &&
++	    conn->targets_head != NULL &&
++	    conn->targets_head->requests_head == urlreq) {
++		/* cannot just drop pending request without breaking
++		   protocol state */
++		return;
++	}
++	imap_urlauth_request_free(urlreq);
++
++}
++
+ void imap_urlauth_request_abort(struct imap_urlauth_connection *conn,
+ 				struct imap_urlauth_request *urlreq)
+ {
+@@ -330,14 +345,7 @@ void imap_urlauth_request_abort(struct imap_urlauth_connection *conn,
+ 		} T_END;
+ 	}
+ 
+-	if (conn->state == IMAP_URLAUTH_STATE_REQUEST_PENDING &&
+-	    conn->targets_head != NULL &&
+-	    conn->targets_head->requests_head == urlreq) {
+-		/* cannot just drop pending request without breaking
+-		   protocol state */
+-		return;
+-	}
+-	imap_urlauth_request_free(urlreq);
++	imap_urlauth_request_drop(conn, urlreq);
+ }
+ 
+ static void
+@@ -347,6 +355,7 @@ imap_urlauth_request_fail(struct imap_urlauth_connection *conn,
+ {
+ 	struct imap_urlauth_fetch_reply reply;
+ 	imap_urlauth_request_callback_t *callback;
++	int ret = 1;
+ 
+ 	callback = urlreq->callback;
+ 	urlreq->callback = NULL;
+@@ -358,18 +367,19 @@ imap_urlauth_request_fail(struct imap_urlauth_connection *conn,
+ 		reply.error = error;
+ 
+ 		T_BEGIN {
+-			(void)callback(&reply, urlreq->context);
++			ret = callback(&reply, urlreq->context);
+ 		} T_END;
+ 	}
+ 
+-	if (conn->state == IMAP_URLAUTH_STATE_REQUEST_PENDING &&
+-	    conn->targets_head != NULL &&
+-	    conn->targets_head->requests_head == urlreq) {
+-		/* cannot just drop pending request without breaking protocol state */
+-		return;
++	imap_urlauth_request_drop(conn, urlreq);
++
++	if (ret < 0) {
++		/* Drop any related requests upon error */
++		imap_urlauth_request_abort_by_context(conn, urlreq->context);
+ 	}
+ 
+-	imap_urlauth_request_free(urlreq);
++	if (ret != 0)
++		imap_urlauth_connection_continue(conn);
+ }
+ 
+ static void
+@@ -714,6 +724,7 @@ static int imap_urlauth_input_pending(struct imap_urlauth_connection *conn)
+ 			    param[6] != '\0') {
+ 				error = param+6;
+ 			}
++			conn->state = IMAP_URLAUTH_STATE_REQUEST_WAIT;
+ 			imap_urlauth_request_fail(conn,
+ 				conn->targets_head->requests_head, error);
+ 			return 1;
+-- 
+1.7.10.2
+
+
+From 10d17ff202bc77c09c1c2eb52bb331bcff726a24 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:03:53 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed URLAUTH fetch reference counting for
+ when requests are aborted at deinit.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 0ba4dfa..6174ff0 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -121,11 +121,14 @@ static void imap_urlauth_fetch_unref(struct imap_urlauth_fetch **_ufetch)
+ 	i_assert(ufetch->refcount > 0);
+ 
+ 	*_ufetch = NULL;
+-	if (--ufetch->refcount > 0)
++	if (ufetch->refcount-1 > 0)
+ 		return;
+ 
+ 	imap_urlauth_fetch_abort(ufetch);
+ 
++	ufetch->refcount--;
++	i_assert(ufetch->refcount == 0);
++
+ 	/* dont leave the connection in limbo; make sure resume is called */
+ 	if (ufetch->waiting_service)
+ 		imap_urlauth_connection_continue(ufetch->uctx->conn);
+-- 
+1.7.10.2
+
+
+From 29150fb06a67df940253fd08e6c7f468c40e57e4 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:04:10 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed pending_request counter difference
+ between locally and remotely fetched URLAUTHs.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 6174ff0..674447a 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -121,15 +121,15 @@ static void imap_urlauth_fetch_unref(struct imap_urlauth_fetch **_ufetch)
+ 	i_assert(ufetch->refcount > 0);
+ 
+ 	*_ufetch = NULL;
+-	if (ufetch->refcount-1 > 0)
++	if (--ufetch->refcount > 0)
+ 		return;
+ 
++	ufetch->refcount++;
+ 	imap_urlauth_fetch_abort(ufetch);
+-
+ 	ufetch->refcount--;
+ 	i_assert(ufetch->refcount == 0);
+ 
+-	/* dont leave the connection in limbo; make sure resume is called */
++	/* dont leave the connection in limbo; make sure continue is called */
+ 	if (ufetch->waiting_service)
+ 		imap_urlauth_connection_continue(ufetch->uctx->conn);
+ 	i_free(ufetch);
+@@ -161,10 +161,12 @@ imap_urlauth_fetch_error(struct imap_urlauth_fetch *ufetch, const char *url,
+ 				       ufetch->context);
+ 	} T_END;
+ 
+-	if (ret == 0)
++	if (ret == 0) {
+ 		ufetch->waiting_local = TRUE;
+-	else if (ret < 0)
++		ufetch->pending_requests++;
++	} else if (ret < 0) {
+ 		imap_urlauth_fetch_fail(ufetch);
++	}
+ }
+ 
+ static void
+@@ -251,10 +253,11 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 		}
+ 	}
+ 
++	ufetch->pending_requests--;
++
+ 	if (!success && ret < 0) {
+ 		if (mpurl != NULL)
+ 			imap_msgpart_url_free(&mpurl);
+-		ufetch->pending_requests--;
+ 		(void)ufetch->callback(NULL, TRUE, ufetch->context);
+ 		imap_urlauth_fetch_fail(ufetch);
+ 		return;
+@@ -271,13 +274,13 @@ imap_urlauth_fetch_local(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	reply.size = mpresult.size;
+ 	reply.input = mpresult.input;
+ 
+-	ret = ufetch->callback(&reply, ufetch->pending_requests == 1,
++	ret = ufetch->callback(&reply, ufetch->pending_requests == 0,
+ 			       ufetch->context);
+ 	if (ret == 0) {
+ 		ufetch->local_url = mpurl;
+ 		ufetch->waiting_local = TRUE;
++		ufetch->pending_requests++;
+ 	} else {
+-		ufetch->pending_requests--;
+ 
+ 		if (mpurl != NULL)
+ 			imap_msgpart_url_free(&mpurl);
+@@ -328,6 +331,7 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 		ufetch->failed = TRUE;
+ 	} else if (ret == 0) {
+ 		ufetch->waiting_service = TRUE;
++		ufetch->pending_requests++;
+ 	}
+ 	
+ 	imap_urlauth_fetch_unref(&ufetch);
+@@ -416,8 +420,13 @@ static bool imap_urlauth_fetch_do_continue(struct imap_urlauth_fetch *ufetch)
+ 	if (ufetch->failed)
+ 		return FALSE;
+ 
+-	if (!ufetch->waiting_local && !ufetch->waiting_service)
++	if (!ufetch->waiting_local && !ufetch->waiting_service) {
++		/* not currently waiting for anything */
+ 		return ufetch->pending_requests > 0;
++	}
++
++	/* we finished a request */
++	ufetch->pending_requests--;
+ 
+ 	if (!ufetch->waiting_local) {
+ 		/* not waiting for local request handling */
+@@ -428,7 +437,6 @@ static bool imap_urlauth_fetch_do_continue(struct imap_urlauth_fetch *ufetch)
+ 
+ 	/* finished local request */
+ 	if (ufetch->local_url != NULL) {
+-		ufetch->pending_requests--;
+ 		imap_msgpart_url_free(&ufetch->local_url);
+ 	}
+ 	ufetch->waiting_local = FALSE;
+@@ -468,6 +476,7 @@ static bool imap_urlauth_fetch_do_continue(struct imap_urlauth_fetch *ufetch)
+ 
+ 		if (ret == 0) {
+ 			ufetch->waiting_service = TRUE;
++			ufetch->pending_requests++;
+ 			return TRUE;
+ 		}
+ 	}
+-- 
+1.7.10.2
+
+
+From acda9675cf40208c6fc2425e6bbc40b1791a6d47 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:04:17 +0300
+Subject: [PATCH] lib-imap-urlauth: Fixed handling of URLAUTH service
+ connection resume after pending local request. This was
+ erroneously removed in an earlier commit.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 674447a..2393811 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -311,6 +311,7 @@ imap_urlauth_fetch_request_callback(struct imap_urlauth_fetch_reply *reply,
+ 		ufetch->pending_reply.size = reply->size;
+ 		ufetch->pending_reply.succeeded = reply->succeeded;
+ 		ufetch->pending_reply.binary_has_nuls = reply->binary_has_nuls;
++		ufetch->waiting_service = TRUE;
+ 		return 0;
+ 	}
+ 
+@@ -479,6 +480,9 @@ static bool imap_urlauth_fetch_do_continue(struct imap_urlauth_fetch *ufetch)
+ 			ufetch->pending_requests++;
+ 			return TRUE;
+ 		}
++
++		ufetch->waiting_service = FALSE;
++		imap_urlauth_connection_continue(ufetch->uctx->conn);
+ 	}
+ 
+ 	/* handle pending local urls */
+-- 
+1.7.10.2
+
+
+From 71b14a4768fb9cdee53531487d28f5800d295741 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:04:52 +0300
+Subject: [PATCH] imap: Fixed segfault in URLFETCH command. Command would be
+ cleaned up while requests were still pending, causing a
+ segfault once a request finished. Added API determining
+ whether the URLAUTH fetch interface still has pending
+ requests.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index c3fac61..0fdfb7b 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -357,7 +357,6 @@ bool cmd_urlfetch(struct client_command_context *cmd)
+ 	const struct cmd_urlfetch_url *url;
+ 	const struct imap_arg *args;
+ 	struct cmd_urlfetch_url *ufurl;
+-	int ret;
+ 
+ 	if (client->urlauth_ctx == NULL) {
+ 		client_send_command_error(cmd, "URLAUTH disabled.");
+@@ -387,17 +386,16 @@ bool cmd_urlfetch(struct client_command_context *cmd)
+ 	ctx->ufetch = imap_urlauth_fetch_init(client->urlauth_ctx,
+ 					      cmd_urlfetch_url_callback, cmd);
+ 
+-	ret = 1;
+ 	array_foreach(&urls, url) {
+-		ret = imap_urlauth_fetch_url(ctx->ufetch, url->url, url->flags);
+-		if (ret < 0) {
++		if (imap_urlauth_fetch_url(ctx->ufetch, url->url, url->flags) < 0) {
+ 			/* fatal error */
+ 			ctx->failed = TRUE;
+ 			break;
+ 		}
+ 	}
+ 
+-	if (ret != 0 && cmd->client->output_cmd_lock != cmd) {
++	if ((ctx->failed || !imap_urlauth_fetch_is_pending(ctx->ufetch))
++		&& cmd->client->output_cmd_lock != cmd) {
+ 		/* finished */
+ 		cmd_urlfetch_finish(cmd);
+ 		return TRUE;
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index 2393811..b0836bd 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -516,3 +516,7 @@ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch)
+ 	return pending;
+ }
+ 
++bool imap_urlauth_fetch_is_pending(struct imap_urlauth_fetch *ufetch)
++{
++	return ufetch->pending_requests > 0;
++}
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.h b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+index 55398af..8d39381 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.h
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+@@ -45,6 +45,8 @@ void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **ufetch);
+ 
+ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 			   enum imap_urlauth_fetch_flags url_flags);
++
+ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch);
++bool imap_urlauth_fetch_is_pending(struct imap_urlauth_fetch *ufetch);
+ 
+ #endif
+-- 
+1.7.10.2
+
+
+From 0f01b2b099e4007a572a4f762d4a7407f7d436a0 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Thu, 30 May 2013 18:04:58 +0300
+Subject: [PATCH] lib-imap-urlauth: Added API for using the fetch interface
+ with an already parsed IMAP URL object.
+
+
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.c b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+index b0836bd..0af33f6 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.c
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.c
+@@ -348,7 +348,6 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 	struct mail_user *mail_user = uctx->user;
+ 	struct imap_url *imap_url;
+ 	const char *error, *errormsg;
+-	int ret = 0;
+ 
+ 	/* parse the url */
+ 	if (imap_url_parse(url, NULL, url_parse_flags, &imap_url, &error) < 0) {
+@@ -363,6 +362,18 @@ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 		return 1;
+ 	}
+ 
++	return imap_urlauth_fetch_url_parsed(ufetch, url, imap_url, url_flags);
++}
++
++int imap_urlauth_fetch_url_parsed(struct imap_urlauth_fetch *ufetch,
++			   const char *url, struct imap_url *imap_url,
++			   enum imap_urlauth_fetch_flags url_flags)
++{
++	struct imap_urlauth_context *uctx = ufetch->uctx;
++	struct mail_user *mail_user = uctx->user;
++	const char *error, *errormsg;
++	int ret = 0;
++
+ 	ufetch->failed = FALSE;
+ 	ufetch->pending_requests++;
+ 
+diff --git a/src/lib-imap-urlauth/imap-urlauth-fetch.h b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+index 8d39381..116a477 100644
+--- a/src/lib-imap-urlauth/imap-urlauth-fetch.h
++++ b/src/lib-imap-urlauth/imap-urlauth-fetch.h
+@@ -1,6 +1,7 @@
+ #ifndef IMAP_URLAUTH_FETCH_H
+ #define IMAP_URLAUTH_FETCH_H
+ 
++struct imap_url;
+ struct imap_urlauth_context;
+ struct imap_urlauth_fetch;
+ 
+@@ -45,6 +46,9 @@ void imap_urlauth_fetch_deinit(struct imap_urlauth_fetch **ufetch);
+ 
+ int imap_urlauth_fetch_url(struct imap_urlauth_fetch *ufetch, const char *url,
+ 			   enum imap_urlauth_fetch_flags url_flags);
++int imap_urlauth_fetch_url_parsed(struct imap_urlauth_fetch *ufetch,
++			   const char *url, struct imap_url *imap_url,
++			   enum imap_urlauth_fetch_flags url_flags);
+ 
+ bool imap_urlauth_fetch_continue(struct imap_urlauth_fetch *ufetch);
+ bool imap_urlauth_fetch_is_pending(struct imap_urlauth_fetch *ufetch);
+-- 
+1.7.10.2
+
+
+From ebdbf44ab6898eb0a685f0d0aa82d5af0ce823ec Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 19:03:05 +0300
+Subject: [PATCH] lib-index: Fixed a broken assert.
+
+
+diff --git a/src/lib-index/mail-index-transaction-export.c b/src/lib-index/mail-index-transaction-export.c
+index f890752..44fe5e3 100644
+--- a/src/lib-index/mail-index-transaction-export.c
++++ b/src/lib-index/mail-index-transaction-export.c
+@@ -113,7 +113,7 @@ static void log_append_ext_intro(struct mail_index_export_context *ctx,
+ 		/* we're resizing the extension. use the resize struct. */
+ 		intro = &resizes[ext_id];
+ 
+-		i_assert(intro->ext_id == idx);
++		i_assert(intro->ext_id == idx || idx == (uint32_t)-1);
+ 		intro->name_size = idx != (uint32_t)-1 ? 0 :
+ 			strlen(rext->name);
+ 		buffer_append(buf, intro, sizeof(*intro));
+-- 
+1.7.10.2
+
+
+From 3706e34ef1ceee7c07a4e53c084d7bec39706f62 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 21:45:13 +0300
+Subject: [PATCH] layout=index: Allow mailbox create/delete/rename during
+ mailbox list iteration.
+
+
+diff --git a/src/lib-storage/list/mailbox-list-index-iter.c b/src/lib-storage/list/mailbox-list-index-iter.c
+index 659f7ff..2f69163 100644
+--- a/src/lib-storage/list/mailbox-list-index-iter.c
++++ b/src/lib-storage/list/mailbox-list-index-iter.c
+@@ -59,7 +59,8 @@ mailbox_list_index_iter_init(struct mailbox_list *list,
+ 		ctx->info.ns = list->ns;
+ 		ctx->path = str_new(pool, 128);
+ 		ctx->next_node = ilist->mailbox_tree;
+-		ilist->iter_refcount++;
++		ctx->mailbox_pool = ilist->mailbox_pool;
++		pool_ref(ctx->mailbox_pool);
+ 	}
+ 	return &ctx->ctx;
+ }
+@@ -188,10 +189,8 @@ int mailbox_list_index_iter_deinit(struct mailbox_list_iterate_context *_ctx)
+ 
+ 	if (ctx->backend_ctx != NULL)
+ 		ret = ilist->module_ctx.super.iter_deinit(ctx->backend_ctx);
+-	else {
+-		i_assert(ilist->iter_refcount > 0);
+-		ilist->iter_refcount--;
+-	}
++	else
++		pool_unref(&ctx->mailbox_pool);
+ 
+ 	pool_unref(&ctx->info_pool);
+ 	pool_unref(&_ctx->pool);
+diff --git a/src/lib-storage/list/mailbox-list-index.c b/src/lib-storage/list/mailbox-list-index.c
+index 61391ea..7fb1b09 100644
+--- a/src/lib-storage/list/mailbox-list-index.c
++++ b/src/lib-storage/list/mailbox-list-index.c
+@@ -23,17 +23,25 @@ void mailbox_list_index_set_index_error(struct mailbox_list *list)
+ 	mail_index_reset_error(ilist->index);
+ }
+ 
++static void mailbox_list_index_init_pool(struct mailbox_list_index *ilist)
++{
++	ilist->mailbox_pool = pool_alloconly_create("mailbox list index", 4096);
++	hash_table_create_direct(&ilist->mailbox_names, ilist->mailbox_pool, 0);
++	hash_table_create_direct(&ilist->mailbox_hash, ilist->mailbox_pool, 0);
++}
++
+ void mailbox_list_index_reset(struct mailbox_list_index *ilist)
+ {
+-	i_assert(ilist->iter_refcount == 0);
++	hash_table_destroy(&ilist->mailbox_names);
++	hash_table_destroy(&ilist->mailbox_hash);
++	pool_unref(&ilist->mailbox_pool);
+ 
+-	hash_table_clear(ilist->mailbox_names, TRUE);
+-	hash_table_clear(ilist->mailbox_hash, TRUE);
+-	p_clear(ilist->mailbox_pool);
+ 	ilist->mailbox_tree = NULL;
+ 	ilist->highest_name_id = 0;
+ 	ilist->sync_log_file_seq = 0;
+ 	ilist->sync_log_file_offset = 0;
++
++	mailbox_list_index_init_pool(ilist);
+ }
+ 
+ static int mailbox_list_index_index_open(struct mailbox_list *list)
+@@ -300,8 +308,6 @@ int mailbox_list_index_parse(struct mailbox_list *list,
+ 	const struct mail_index_header *hdr;
+ 	const char *error;
+ 
+-	i_assert(ilist->iter_refcount == 0);
+-
+ 	hdr = mail_index_get_header(view);
+ 	if (!force &&
+ 	    hdr->log_file_seq == ilist->sync_log_file_seq &&
+@@ -357,11 +363,6 @@ int mailbox_list_index_refresh(struct mailbox_list *list)
+ 	struct mail_index_view *view;
+ 	int ret;
+ 
+-	if (ilist->iter_refcount > 0) {
+-		/* someone's already iterating. don't break them. */
+-		return 0;
+-	}
+-
+ 	if (mailbox_list_index_index_open(list) < 0)
+ 		return -1;
+ 	if (mail_index_refresh(ilist->index) < 0) {
+@@ -608,10 +609,7 @@ static void mailbox_list_index_init_finish(struct mailbox_list *list)
+ 	ilist->subs_hdr_ext_id = mail_index_ext_register(ilist->index, "subs",
+ 							 sizeof(uint32_t), 0,
+ 							 sizeof(uint32_t));
+-
+-	ilist->mailbox_pool = pool_alloconly_create("mailbox list index", 4096);
+-	hash_table_create_direct(&ilist->mailbox_names, ilist->mailbox_pool, 0);
+-	hash_table_create_direct(&ilist->mailbox_hash, ilist->mailbox_pool, 0);
++	mailbox_list_index_init_pool(ilist);
+ 
+ 	mailbox_list_index_status_init_finish(list);
+ }
+diff --git a/src/lib-storage/list/mailbox-list-index.h b/src/lib-storage/list/mailbox-list-index.h
+index 6b350aa..7bf99c2 100644
+--- a/src/lib-storage/list/mailbox-list-index.h
++++ b/src/lib-storage/list/mailbox-list-index.h
+@@ -87,10 +87,6 @@ struct mailbox_list_index {
+ 	struct mail_index *index;
+ 	uint32_t ext_id, msgs_ext_id, hmodseq_ext_id, subs_hdr_ext_id;
+ 
+-	/* Number of iterations going on. Don't refresh mailbox list while
+-	   any iterations are going on. */
+-	int iter_refcount;
+-
+ 	pool_t mailbox_pool;
+ 	/* uin32_t id => name */
+ 	HASH_TABLE(void *, char *) mailbox_names;
+@@ -115,6 +111,7 @@ struct mailbox_list_index {
+ struct mailbox_list_index_iterate_context {
+ 	struct mailbox_list_iterate_context ctx;
+ 	struct mailbox_list_iterate_context *backend_ctx;
++	pool_t mailbox_pool;
+ 
+ 	struct mailbox_info info;
+ 	pool_t info_pool;
+-- 
+1.7.10.2
+
+
+From b54f404e8d6bc929a8947075d4376f2597b24556 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 22:26:14 +0300
+Subject: [PATCH] auth: Fixed error handling for proxy host dns_lookup()
+
+
+diff --git a/src/auth/auth-worker-server.c b/src/auth/auth-worker-server.c
+index 00be552..0521ef5 100644
+--- a/src/auth/auth-worker-server.c
++++ b/src/auth/auth-worker-server.c
+@@ -393,6 +393,13 @@ auth_worker_call(pool_t pool, const char *data,
+ 	struct auth_worker_connection *conn;
+ 	struct auth_worker_request *request;
+ 
++	if (worker_request_queue == NULL) {
++		/* we're deinitializing */
++		callback(t_strdup_printf("FAIL\t%d",
++			PASSDB_RESULT_INTERNAL_FAILURE), context);
++		return NULL;
++	}
++
+ 	request = p_new(pool, struct auth_worker_request, 1);
+ 	request->created = ioloop_time;
+ 	request->data = p_strdup(pool, data);
+-- 
+1.7.10.2
+
+
+From a1000fe6b7696d74860d7f873769d8958495da70 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 22:27:23 +0300
+Subject: [PATCH] Reverted previous wrong commit.
+
+
+diff --git a/src/auth/auth-worker-server.c b/src/auth/auth-worker-server.c
+index 0521ef5..00be552 100644
+--- a/src/auth/auth-worker-server.c
++++ b/src/auth/auth-worker-server.c
+@@ -393,13 +393,6 @@ auth_worker_call(pool_t pool, const char *data,
+ 	struct auth_worker_connection *conn;
+ 	struct auth_worker_request *request;
+ 
+-	if (worker_request_queue == NULL) {
+-		/* we're deinitializing */
+-		callback(t_strdup_printf("FAIL\t%d",
+-			PASSDB_RESULT_INTERNAL_FAILURE), context);
+-		return NULL;
+-	}
+-
+ 	request = p_new(pool, struct auth_worker_request, 1);
+ 	request->created = ioloop_time;
+ 	request->data = p_strdup(pool, data);
+-- 
+1.7.10.2
+
+
+From 5f80f96983e8965202abc4839e484d53b338279c Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 22:27:57 +0300
+Subject: [PATCH] auth: Fixed error handling for proxy host dns_lookup()
+
+
+diff --git a/src/auth/auth-request.c b/src/auth/auth-request.c
+index 0c00c9a..09e21de 100644
+--- a/src/auth/auth-request.c
++++ b/src/auth/auth-request.c
+@@ -1689,9 +1689,6 @@ static int auth_request_proxy_host_lookup(struct auth_request *request,
+ 	if (dns_lookup(host, &dns_set, auth_request_proxy_dns_callback, ctx,
+ 		       &ctx->dns_lookup) < 0) {
+ 		/* failed early */
+-		request->internal_failure = TRUE;
+-		auth_request_proxy_finish_failure(request);
+-		auth_request_unref(&request);
+ 		return -1;
+ 	}
+ 	ctx->callback = callback;
+-- 
+1.7.10.2
+
+
+From 795b1c07e2ef8f76fc469d6c1a60658037a70c89 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 30 May 2013 22:44:54 +0300
+Subject: [PATCH] imap: URLFETCH's tagged reply wasn't sent while TCP corked.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index 0fdfb7b..33f9b2d 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -255,10 +255,11 @@ cmd_urlfetch_url_callback(struct imap_urlauth_fetch_reply *reply,
+ 			  bool last, void *context)
+ {
+ 	struct client_command_context *cmd = context;
++	struct client *client = cmd->client;
+ 	struct cmd_urlfetch_context *ctx = cmd->context;
+ 	int ret;
+ 
+-	o_stream_cork(cmd->client->output);
++	o_stream_cork(client->output);
+ 	if (reply == NULL) {
+ 		/* fatal failure */
+ 		ctx->failed = TRUE;
+@@ -273,20 +274,20 @@ cmd_urlfetch_url_callback(struct imap_urlauth_fetch_reply *reply,
+ 		str_append(response, "* URLFETCH ");
+ 		imap_append_astring(response, reply->url);
+ 		str_append(response, " NIL");
+-		client_send_line(cmd->client, str_c(response));
++		client_send_line(client, str_c(response));
+ 		if (reply->error != NULL) {
+-			client_send_line(cmd->client, t_strdup_printf(
++			client_send_line(client, t_strdup_printf(
+ 				"* NO %s.", reply->error));
+ 		}
+ 		ret = 1;
+ 	}
+-	o_stream_uncork(cmd->client->output);
+ 
+ 	if ((last && cmd->state == CLIENT_COMMAND_STATE_WAIT_EXTERNAL) ||
+ 	    ret < 0) {
+ 		cmd_urlfetch_finish(cmd);
+ 		client_command_free(&cmd);
+ 	}
++	o_stream_uncork(client->output);
+ 	return ret;
+ }
+ 
+-- 
+1.7.10.2
+
+
+From 767257f47cbc2d5397dfe36c8cb788fdb8e9854b Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Fri, 31 May 2013 02:29:49 +0300
+Subject: [PATCH] imap: URLFETCH's URL callback would prematurely uncork the
+ output stream when called for a local URL.
+
+
+diff --git a/src/imap/cmd-urlfetch.c b/src/imap/cmd-urlfetch.c
+index 33f9b2d..c544255 100644
+--- a/src/imap/cmd-urlfetch.c
++++ b/src/imap/cmd-urlfetch.c
+@@ -22,6 +22,7 @@ struct cmd_urlfetch_context {
+ 	unsigned int failed:1;
+ 	unsigned int finished:1;
+ 	unsigned int extended:1;
++	unsigned int in_io_handler:1;
+ };
+ 
+ struct cmd_urlfetch_url {
+@@ -132,6 +133,7 @@ static bool cmd_urlfetch_continue(struct client_command_context *cmd)
+ 	struct client *client = cmd->client;
+ 	struct cmd_urlfetch_context *ctx =
+ 		(struct cmd_urlfetch_context *)cmd->context;
++	bool urls_pending;
+ 	int ret = 1;
+ 
+ 	if (cmd->cancel)
+@@ -158,7 +160,11 @@ static bool cmd_urlfetch_continue(struct client_command_context *cmd)
+ 		client_send_line(client, "");
+ 	client->output_cmd_lock = NULL;
+ 
+-	if (imap_urlauth_fetch_continue(ctx->ufetch)) {
++	ctx->in_io_handler = TRUE;
++	urls_pending = imap_urlauth_fetch_continue(ctx->ufetch);
++	ctx->in_io_handler = FALSE;
++
++	if (urls_pending) {
+ 		/* waiting for imap urlauth service */
+ 		cmd->state = CLIENT_COMMAND_STATE_WAIT_EXTERNAL;
+ 		cmd->func = cmd_urlfetch_cancel;
+@@ -257,9 +263,11 @@ cmd_urlfetch_url_callback(struct imap_urlauth_fetch_reply *reply,
+ 	struct client_command_context *cmd = context;
+ 	struct client *client = cmd->client;
+ 	struct cmd_urlfetch_context *ctx = cmd->context;
++	bool in_io_handler = ctx->in_io_handler;
+ 	int ret;
+ 
+-	o_stream_cork(client->output);
++	if (!in_io_handler)
++		o_stream_cork(client->output);
+ 	if (reply == NULL) {
+ 		/* fatal failure */
+ 		ctx->failed = TRUE;
+@@ -287,7 +295,8 @@ cmd_urlfetch_url_callback(struct imap_urlauth_fetch_reply *reply,
+ 		cmd_urlfetch_finish(cmd);
+ 		client_command_free(&cmd);
+ 	}
+-	o_stream_uncork(client->output);
++	if (!in_io_handler)
++		o_stream_uncork(client->output);
+ 	return ret;
+ }
+ 
+@@ -387,6 +396,7 @@ bool cmd_urlfetch(struct client_command_context *cmd)
+ 	ctx->ufetch = imap_urlauth_fetch_init(client->urlauth_ctx,
+ 					      cmd_urlfetch_url_callback, cmd);
+ 
++	ctx->in_io_handler = TRUE;
+ 	array_foreach(&urls, url) {
+ 		if (imap_urlauth_fetch_url(ctx->ufetch, url->url, url->flags) < 0) {
+ 			/* fatal error */
+@@ -394,6 +404,7 @@ bool cmd_urlfetch(struct client_command_context *cmd)
+ 			break;
+ 		}
+ 	}
++	ctx->in_io_handler = FALSE;
+ 
+ 	if ((ctx->failed || !imap_urlauth_fetch_is_pending(ctx->ufetch))
+ 		&& cmd->client->output_cmd_lock != cmd) {
+-- 
+1.7.10.2
+
+
+From 77a4bb6374029af5945e604d504645caa8ebb5bf Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Fri, 31 May 2013 17:05:13 +0300
+Subject: [PATCH] lib-imap-client: Connect and command timeouts are now
+ configurable. Also use the same connect timeout for the DNS
+ lookup's timeout.
+
+
+diff --git a/src/lib-imap-client/imapc-client.c b/src/lib-imap-client/imapc-client.c
+index 3e979b7..b5592d3 100644
+--- a/src/lib-imap-client/imapc-client.c
++++ b/src/lib-imap-client/imapc-client.c
+@@ -59,6 +59,11 @@ imapc_client_init(const struct imapc_client_settings *set)
+ 		p_strdup(pool, set->temp_path_prefix);
+ 	client->set.rawlog_dir = p_strdup(pool, set->rawlog_dir);
+ 	client->set.max_idle_time = set->max_idle_time;
++	client->set.connect_timeout_msecs = set->connect_timeout_msecs != 0 ?
++		set->connect_timeout_msecs :
++		IMAPC_DEFAULT_CONNECT_TIMEOUT_MSECS;
++	client->set.cmd_timeout_msecs = set->cmd_timeout_msecs != 0 ?
++		set->cmd_timeout_msecs : IMAPC_DEFAULT_COMMAND_TIMEOUT_MSECS;
+ 
+ 	if (set->ssl_mode != IMAPC_CLIENT_SSL_MODE_NONE) {
+ 		client->set.ssl_mode = set->ssl_mode;
+diff --git a/src/lib-imap-client/imapc-client.h b/src/lib-imap-client/imapc-client.h
+index 9f59cd6..516763e 100644
+--- a/src/lib-imap-client/imapc-client.h
++++ b/src/lib-imap-client/imapc-client.h
+@@ -49,6 +49,9 @@ enum imapc_client_ssl_mode {
+ 	IMAPC_CLIENT_SSL_MODE_STARTTLS
+ };
+ 
++#define IMAPC_DEFAULT_CONNECT_TIMEOUT_MSECS (1000*30)
++#define IMAPC_DEFAULT_COMMAND_TIMEOUT_MSECS (1000*60*5)
++
+ struct imapc_client_settings {
+ 	const char *host;
+ 	unsigned int port;
+@@ -68,6 +71,12 @@ struct imapc_client_settings {
+ 	const char *rawlog_dir;
+ 	const char *ssl_crypto_device;
+ 	bool debug;
++
++	/* Timeout for logging in. 0 = default. */
++	unsigned int connect_timeout_msecs;
++	/* Timeout for IMAP commands. Reset every time more data is being
++	   sent or received. 0 = default. */
++	unsigned int cmd_timeout_msecs;
+ };
+ 
+ struct imapc_command_reply {
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index 391a133..11331b1 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -20,9 +20,6 @@
+ #include <unistd.h>
+ #include <ctype.h>
+ 
+-#define IMAPC_DNS_LOOKUP_TIMEOUT_MSECS (1000*30)
+-#define IMAPC_CONNECT_TIMEOUT_MSECS (1000*30)
+-#define IMAPC_COMMAND_TIMEOUT_MSECS (1000*60*5)
+ #define IMAPC_MAX_INLINE_LITERAL_SIZE (1024*32)
+ 
+ enum imapc_input_state {
+@@ -1238,11 +1235,11 @@ static void imapc_connection_timeout(struct imapc_connection *conn)
+ 	case IMAPC_CONNECTION_STATE_CONNECTING:
+ 		i_error("imapc(%s): connect(%s, %u) timed out after %u seconds",
+ 			conn->name, net_ip2addr(ip), conn->client->set.port,
+-			IMAPC_CONNECT_TIMEOUT_MSECS/1000);
++			conn->client->set.connect_timeout_msecs/1000);
+ 		break;
+ 	case IMAPC_CONNECTION_STATE_AUTHENTICATING:
+ 		i_error("imapc(%s): Authentication timed out after %u seconds",
+-			conn->name, IMAPC_CONNECT_TIMEOUT_MSECS/1000);
++			conn->name, conn->client->set.connect_timeout_msecs/1000);
+ 		break;
+ 	default:
+ 		i_unreached();
+@@ -1307,7 +1304,7 @@ static void imapc_connection_connect_next_ip(struct imapc_connection *conn)
+ 				    conn);
+ 	conn->io = io_add(fd, IO_WRITE, imapc_connection_connected, conn);
+ 	conn->parser = imap_parser_create(conn->input, NULL, (size_t)-1);
+-	conn->to = timeout_add(IMAPC_CONNECT_TIMEOUT_MSECS,
++	conn->to = timeout_add(conn->client->set.connect_timeout_msecs,
+ 			       imapc_connection_timeout, conn);
+ 	conn->to_output = timeout_add(conn->client->set.max_idle_time*1000,
+ 				      imapc_connection_reset_idle, conn);
+@@ -1364,7 +1361,7 @@ void imapc_connection_connect(struct imapc_connection *conn,
+ 	memset(&dns_set, 0, sizeof(dns_set));
+ 	dns_set.dns_client_socket_path =
+ 		conn->client->set.dns_client_socket_path;
+-	dns_set.timeout_msecs = IMAPC_DNS_LOOKUP_TIMEOUT_MSECS;
++	dns_set.timeout_msecs = conn->client->set.connect_timeout_msecs;
+ 
+ 	imapc_connection_set_state(conn, IMAPC_CONNECTION_STATE_CONNECTING);
+ 	if (conn->ips_count == 0 &&
+@@ -1679,7 +1676,7 @@ static void imapc_connection_cmd_send(struct imapc_command *cmd)
+ 		/* add timeout for commands if there's not one yet
+ 		   (pre-login has its own timeout) */
+ 		if (conn->to == NULL) {
+-			conn->to = timeout_add(IMAPC_COMMAND_TIMEOUT_MSECS,
++			conn->to = timeout_add(conn->client->set.cmd_timeout_msecs,
+ 					       imapc_command_timeout, conn);
+ 		}
+ 	}
+-- 
+1.7.10.2
+
+
+From 3460b521fa83e569d086a1b11a1fe446acc71c83 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Fri, 31 May 2013 17:36:19 +0300
+Subject: [PATCH] imapc: Empty imapc_user expands to namespace's owner, or
+ with public namespaces to user itself. The main idea is
+ that with shared namespaces it now expands to the shared
+ username, allowing shared mailbox access via imapc.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-storage.c b/src/lib-storage/index/imapc/imapc-storage.c
+index 4a3e034..24a0972 100644
+--- a/src/lib-storage/index/imapc/imapc-storage.c
++++ b/src/lib-storage/index/imapc/imapc-storage.c
+@@ -230,7 +230,12 @@ imapc_storage_create(struct mail_storage *_storage,
+ 		return -1;
+ 	}
+ 	set.port = storage->set->imapc_port;
+-	set.username = storage->set->imapc_user;
++	if (storage->set->imapc_user[0] != '\0')
++		set.username = storage->set->imapc_user;
++	else if (ns->owner != NULL)
++		set.username = ns->owner->username;
++	else
++		set.username = ns->user->username;
+ 	set.master_user = storage->set->imapc_master_user;
+ 	set.password = storage->set->imapc_password;
+ 	if (*set.password == '\0') {
+-- 
+1.7.10.2
+
+
+From a3907994b6e72c9c52f3f5b32cac884fc73fbf17 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Fri, 31 May 2013 17:36:45 +0300
+Subject: [PATCH] imapc: Changed imapc_user setting's default to empty.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-settings.c b/src/lib-storage/index/imapc/imapc-settings.c
+index dc234d9..feabe02 100644
+--- a/src/lib-storage/index/imapc/imapc-settings.c
++++ b/src/lib-storage/index/imapc/imapc-settings.c
+@@ -36,7 +36,7 @@ static const struct imapc_settings imapc_default_settings = {
+ 	.imapc_host = "",
+ 	.imapc_port = 143,
+ 
+-	.imapc_user = "%u",
++	.imapc_user = "",
+ 	.imapc_master_user = "",
+ 	.imapc_password = "",
+ 
+-- 
+1.7.10.2
+
+
+From 74d88d2320db446cf48345c3bbe76f83a193011a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 02:25:54 +0300
+Subject: [PATCH] Make sure errno is preserved in non-delayed signal handlers.
+ The current code didn't have any signal handlers that
+ modified errno, so this doesn't fix any bugs.
+
+
+diff --git a/src/lib/lib-signals.c b/src/lib/lib-signals.c
+index b0c7c2c..7043ef3 100644
+--- a/src/lib/lib-signals.c
++++ b/src/lib/lib-signals.c
+@@ -97,6 +97,7 @@ static void sig_handler(int signo)
+ #endif
+ {
+ 	struct signal_handler *h;
++	int saved_errno;
+ 	char c = 0;
+ 
+ #if defined(SI_NOINFO) || !defined(SA_SIGINFO)
+@@ -123,21 +124,20 @@ static void sig_handler(int signo)
+ 	/* remember that we're inside a signal handler which might have been
+ 	   called at any time. don't do anything that's unsafe. we might also
+ 	   get interrupted by another signal while inside this handler. */
++	saved_errno = errno;
+ 	for (h = signal_handlers[signo]; h != NULL; h = h->next) {
+ 		if ((h->flags & LIBSIG_FLAG_DELAYED) == 0)
+ 			h->handler(si, h->context);
+ 		else if (pending_signals[signo].si_signo == 0) {
+ 			pending_signals[signo] = *si;
+ 			if (!have_pending_signals) {
+-				int saved_errno = errno;
+-
+ 				if (write(sig_pipe_fd[1], &c, 1) != 1)
+ 					i_error("write(sigpipe) failed: %m");
+ 				have_pending_signals = TRUE;
+-				errno = saved_errno;
+ 			}
+ 		}
+ 	}
++	errno = saved_errno;
+ }
+ 
+ #ifdef SA_SIGINFO
+-- 
+1.7.10.2
+
+
+From e87f8ec304a61f21573e0770d9f6663d7581a183 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 02:56:25 +0300
+Subject: [PATCH] lib-storage: Empty mailbox name isn't valid.
+
+
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index 5eedf04..cdf3201 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -1188,10 +1188,14 @@ mailbox_list_is_valid_fs_name(struct mailbox_list *list, const char *name,
+ bool mailbox_list_is_valid_name(struct mailbox_list *list,
+ 				const char *name, const char **error_r)
+ {
+-	if (*name == '\0' && *list->ns->prefix != '\0') {
+-		/* an ugly way to get to mailbox root (e.g. Maildir/ when
+-		   it's not the INBOX) */
+-		return TRUE;
++	if (*name == '\0') {
++		if (*list->ns->prefix != '\0') {
++			/* an ugly way to get to mailbox root (e.g. Maildir/
++			   when it's not the INBOX) */
++			return TRUE;
++		}
++		*error_r = "Name is empty";
++		return FALSE;
+ 	}
+ 
+ 	return mailbox_list_is_valid_fs_name(list, name, error_r);
+-- 
+1.7.10.2
+
+
+From 9e886f3af392e924ce444d8bf2bb626cb7ad97f3 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 02:56:57 +0300
+Subject: [PATCH] lib-imap-client: Ask CAPABILITY again after STARTTLS
+
+
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index 11331b1..3229885 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -115,6 +115,8 @@ struct imapc_connection {
+ 	unsigned int idle_plus_waiting:1;
+ };
+ 
++static void imapc_connection_capability_cb(const struct imapc_command_reply *reply,
++					   void *context);
+ static int imapc_connection_output(struct imapc_connection *conn);
+ static int imapc_connection_ssl_init(struct imapc_connection *conn);
+ static void imapc_command_free(struct imapc_command *cmd);
+@@ -752,6 +754,7 @@ imapc_connection_starttls_cb(const struct imapc_command_reply *reply,
+ 			     void *context)
+ {
+ 	struct imapc_connection *conn = context;
++	struct imapc_command *cmd;
+ 
+ 	if (reply->state != IMAPC_COMMAND_STATE_OK) {
+ 		imapc_connection_input_error(conn, "STARTTLS failed: %s",
+@@ -761,8 +764,13 @@ imapc_connection_starttls_cb(const struct imapc_command_reply *reply,
+ 
+ 	if (imapc_connection_ssl_init(conn) < 0)
+ 		imapc_connection_disconnect(conn);
+-	else
+-		imapc_connection_authenticate(conn);
++	else {
++		/* get updated capabilities */
++		cmd = imapc_connection_cmd(conn, imapc_connection_capability_cb,
++					   conn);
++		imapc_command_set_flags(cmd, IMAPC_COMMAND_FLAG_PRELOGIN);
++		imapc_command_send(cmd, "CAPABILITY");
++	}
+ }
+ 
+ static void imapc_connection_starttls(struct imapc_connection *conn)
+-- 
+1.7.10.2
+
+
+From ad62819046dbc7c3442bec8b050c54266be88d30 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 03:06:54 +0300
+Subject: [PATCH] imapc: Don't assert-crash when trying to access
+ imapc_list_prefix itself.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index 52fbd3a..9a644c9 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -225,9 +225,14 @@ imapc_list_get_vname(struct mailbox_list *_list, const char *storage_name)
+ 		/* ACL plugin does these lookups */
+ 	} else if (*prefix != '\0' && strcasecmp(storage_name, "INBOX") != 0) {
+ 		prefix_len = strlen(prefix);
+-		i_assert(strncmp(prefix, storage_name, prefix_len) == 0 &&
+-			 storage_name[prefix_len] == list->sep);
+-		storage_name += prefix_len+1;
++		i_assert(strncmp(prefix, storage_name, prefix_len) == 0);
++		storage_name += prefix_len;
++		if (storage_name[0] == '\0') {
++			/* we're looking up the prefix itself */
++		} else {
++			i_assert(storage_name[0] == list->sep);
++			storage_name++;
++		}
+ 	}
+ 	return mailbox_list_default_get_vname(_list, storage_name);
+ }
+-- 
+1.7.10.2
+
+
+From 646c37b5e2e5b575381a63b2a6b1bd311831cd19 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 03:20:15 +0300
+Subject: [PATCH] imapc: Fixed mailbox deletion.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-storage.c b/src/lib-storage/index/imapc/imapc-storage.c
+index 24a0972..0e575f1 100644
+--- a/src/lib-storage/index/imapc/imapc-storage.c
++++ b/src/lib-storage/index/imapc/imapc-storage.c
+@@ -666,6 +666,12 @@ static void imapc_mailbox_get_selected_status(struct imapc_mailbox *mbox,
+ 		status_r->permanent_flags = mbox->permanent_flags;
+ }
+ 
++static int imapc_mailbox_delete(struct mailbox *box)
++{
++	box->delete_skip_empty_check = TRUE;
++	return index_storage_mailbox_delete(box);
++}
++
+ static int imapc_mailbox_get_status(struct mailbox *box,
+ 				    enum mailbox_status_items items,
+ 				    struct mailbox_status *status_r)
+@@ -906,7 +912,7 @@ struct mailbox imapc_mailbox = {
+ 		index_storage_mailbox_free,
+ 		imapc_mailbox_create,
+ 		imapc_mailbox_update,
+-		index_storage_mailbox_delete,
++		imapc_mailbox_delete,
+ 		index_storage_mailbox_rename,
+ 		imapc_mailbox_get_status,
+ 		imapc_mailbox_get_metadata,
+diff --git a/src/lib-storage/index/index-storage.c b/src/lib-storage/index/index-storage.c
+index 727767f..50da9e6 100644
+--- a/src/lib-storage/index/index-storage.c
++++ b/src/lib-storage/index/index-storage.c
+@@ -691,13 +691,15 @@ int index_storage_mailbox_delete(struct mailbox *box)
+ 	if (mailbox_mark_index_deleted(box, TRUE) < 0)
+ 		return -1;
+ 
+-	if (mailbox_sync(box, MAILBOX_SYNC_FLAG_FULL_READ) < 0)
+-		return -1;
+-	mailbox_get_open_status(box, STATUS_MESSAGES, &status);
+-	if (status.messages != 0) {
+-		mail_storage_set_error(box->storage, MAIL_ERROR_EXISTS,
+-			"New mails were added to mailbox during deletion");
+-		return -1;
++	if (!box->delete_skip_empty_check || box->deleting_must_be_empty) {
++		if (mailbox_sync(box, MAILBOX_SYNC_FLAG_FULL_READ) < 0)
++			return -1;
++		mailbox_get_open_status(box, STATUS_MESSAGES, &status);
++		if (status.messages != 0) {
++			mail_storage_set_error(box->storage, MAIL_ERROR_EXISTS,
++				"New mails were added to mailbox during deletion");
++			return -1;
++		}
+ 	}
+ 
+ 	ret_guid = mailbox_get_metadata(box, MAILBOX_METADATA_GUID, &metadata);
+diff --git a/src/lib-storage/mail-storage-private.h b/src/lib-storage/mail-storage-private.h
+index 4b50d5f..1c31c14 100644
+--- a/src/lib-storage/mail-storage-private.h
++++ b/src/lib-storage/mail-storage-private.h
+@@ -320,6 +320,9 @@ struct mailbox {
+ 	unsigned int deleting:1;
+ 	/* Delete mailbox only if it's empty */
+ 	unsigned int deleting_must_be_empty:1;
++	/* The backend wants to skip checking if there are 0 messages before
++	   calling mailbox_list.delete_mailbox() */
++	unsigned int delete_skip_empty_check:1;
+ 	/* Mailbox was already marked as deleted within this allocation. */
+ 	unsigned int marked_deleted:1;
+ 	/* TRUE if this is an INBOX for this user */
+-- 
+1.7.10.2
+
+
+From 1c5aef7a7151cc73bed3250f94d7b582e253afa2 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 03:37:21 +0300
+Subject: [PATCH] imapc: Allow accessing the imapc_list_prefix itself.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index 9a644c9..590a986 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -208,8 +208,8 @@ imapc_list_get_storage_name(struct mailbox_list *_list, const char *vname)
+ 
+ 	storage_name = mailbox_list_default_get_storage_name(_list, vname);
+ 	if (*prefix != '\0' && strcasecmp(storage_name, "INBOX") != 0) {
+-		storage_name = t_strdup_printf("%s%c%s", prefix, list->sep,
+-					       storage_name);
++		storage_name = storage_name[0] == '\0' ? prefix :
++			t_strdup_printf("%s%c%s", prefix, list->sep, storage_name);
+ 	}
+ 	return storage_name;
+ }
+-- 
+1.7.10.2
+
+
+From f05974d5a38cfa0b233f139cc2b68468f160baff Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 03:48:07 +0300
+Subject: [PATCH] imapc: Return correct mailbox list flags for the imapc
+ prefix mailbox itself.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index 590a986..c46c241 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -370,8 +370,11 @@ static int imapc_list_refresh(struct imapc_mailbox_list *list)
+ 	if (*list->storage->set->imapc_list_prefix == '\0')
+ 		pattern = "*";
+ 	else {
+-		pattern = t_strdup_printf("%s%c*",
+-			list->storage->set->imapc_list_prefix, list->sep);
++		/* list "prefix*" instead of "prefix.*". this may return a bit
++		   more than we want, but we're also interested in the flags
++		   of the prefix itself. */
++		pattern = t_strdup_printf("%s*",
++			list->storage->set->imapc_list_prefix);
+ 	}
+ 
+ 	cmd = imapc_list_simple_context_init(&ctx, list);
+-- 
+1.7.10.2
+
+
+From af84cdabd2579094aab11b93c3070057cbbcf643 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 04:06:48 +0300
+Subject: [PATCH] lib-storage: If mailbox autocreate fails with "already
+ exists", ignore the error. This check was supposed to have
+ been already there, but it was checking for the wrong
+ error.
+
+
+diff --git a/src/lib-storage/mail-storage.c b/src/lib-storage/mail-storage.c
+index bd4cd71..9ecbd47 100644
+--- a/src/lib-storage/mail-storage.c
++++ b/src/lib-storage/mail-storage.c
+@@ -731,7 +731,7 @@ static int mailbox_autocreate(struct mailbox *box)
+ 
+ 	if (mailbox_create(box, NULL, FALSE) < 0) {
+ 		errstr = mailbox_get_last_error(box, &error);
+-		if (error != MAIL_ERROR_NOTFOUND) {
++		if (error != MAIL_ERROR_EXISTS) {
+ 			mail_storage_set_critical(box->storage,
+ 				"Failed to autocreate mailbox %s: %s",
+ 				box->vname, errstr);
+-- 
+1.7.10.2
+
+
+From c4b775dfdbb181ea72c865aea83fea1c7e731382 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 04:17:40 +0300
+Subject: [PATCH] imapc: If imapc_list_prefix is set, don't skip it in
+ filesystem paths. Most importantly this fixes the index
+ path when accessing the imapc_list_prefix mailbox itself
+ (so the indexes won't be in the mail root dir, where they
+ don't get deleted when mailbox is deleted).
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index c46c241..b95df95 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -272,12 +272,37 @@ static const char *
+ imapc_list_get_fs_name(struct imapc_mailbox_list *list, const char *name)
+ {
+ 	struct mailbox_list *fs_list = imapc_list_get_fs(list);
++	struct mail_namespace *ns = list->list.ns;
+ 	const char *vname;
++	char ns_sep = mail_namespace_get_sep(ns);
+ 
+ 	if (name == NULL)
+-		return name;
++		return NULL;
+ 
+ 	vname = mailbox_list_get_vname(&list->list, name);
++	if (list->storage->set->imapc_list_prefix[0] != '\0') {
++		/* put back the prefix, so it gets included in the filesystem. */
++		unsigned int vname_len = strlen(vname);
++
++		if (ns->prefix_len > 0) {
++			/* skip over the namespace prefix */
++			i_assert(strncmp(vname, ns->prefix, ns->prefix_len-1) == 0);
++			if (vname_len == ns->prefix_len-1)
++				vname = "";
++			else {
++				i_assert(vname[ns->prefix_len-1] == ns_sep);
++				vname += ns->prefix_len;
++			}
++		}
++		if (vname[0] == '\0') {
++			vname = t_strconcat(ns->prefix,
++				list->storage->set->imapc_list_prefix, NULL);
++		} else {
++			vname = t_strdup_printf("%s%s%c%s", ns->prefix,
++						list->storage->set->imapc_list_prefix,
++						ns_sep, vname);
++		}
++	}
+ 	return mailbox_list_get_storage_name(fs_list, vname);
+ }
+ 
+-- 
+1.7.10.2
+
+
+From d4503fcbbfbcd468c5cdd9b053f6966d10ccc3db Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 15:33:58 +0300
+Subject: [PATCH] lmtp: Give the DATA input stream a name, so the raw mailbox
+ gets a name and doesn't fail.
+
+
+diff --git a/src/lmtp/commands.c b/src/lmtp/commands.c
+index 3dc9539..4de117f 100644
+--- a/src/lmtp/commands.c
++++ b/src/lmtp/commands.c
+@@ -771,6 +771,7 @@ static struct istream *client_get_input(struct client *client)
+ 	inputs[2] = NULL;
+ 
+ 	cinput = i_stream_create_concat(inputs);
++	i_stream_set_name(cinput, "<lmtp DATA>");
+ 	i_stream_unref(&inputs[0]);
+ 	i_stream_unref(&inputs[1]);
+ 	return cinput;
+-- 
+1.7.10.2
+
+
+From ec8acf28b7718c09a14e6c8b59d320d295f50729 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 17:08:19 +0300
+Subject: [PATCH] lib-fs: If fs_default_copy() fails, close the copy stream
+ immediately. The stream's origin may already be freed by
+ the time the fs_file_close() is trying to close the stream.
+
+
+diff --git a/src/lib-fs/fs-api.c b/src/lib-fs/fs-api.c
+index 9b1d633..73f4d3d 100644
+--- a/src/lib-fs/fs-api.c
++++ b/src/lib-fs/fs-api.c
+@@ -552,12 +552,16 @@ int fs_default_copy(struct fs_file *src, struct fs_file *dest)
+ 		errno = dest->copy_input->stream_errno;
+ 		fs_set_error(dest->fs, "read(%s) failed: %m",
+ 			     i_stream_get_name(dest->copy_input));
++		i_stream_unref(&dest->copy_input);
++		fs_write_stream_abort(dest, &dest->copy_output);
+ 		return -1;
+ 	}
+ 	if (dest->copy_output->stream_errno != 0) {
+ 		errno = dest->copy_output->stream_errno;
+ 		fs_set_error(dest->fs, "write(%s) failed: %m",
+ 			     o_stream_get_name(dest->copy_output));
++		i_stream_unref(&dest->copy_input);
++		fs_write_stream_abort(dest, &dest->copy_output);
+ 		return -1;
+ 	}
+ 	if (!dest->copy_input->eof) {
+-- 
+1.7.10.2
+
+
+From 55ae6c6cb0b2aa639a35f73ba6f202642b01e754 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 17:11:55 +0300
+Subject: [PATCH] lib-index: Avoid memcpy()ing data over itself.
+
+
+diff --git a/src/lib-index/mail-index-transaction-finish.c b/src/lib-index/mail-index-transaction-finish.c
+index 7d4c829..f990d2d 100644
+--- a/src/lib-index/mail-index-transaction-finish.c
++++ b/src/lib-index/mail-index-transaction-finish.c
+@@ -293,8 +293,10 @@ static void expunges_convert_to_uids(struct mail_index_transaction *t)
+ 		expunges[dest].uid =
+ 			mail_index_transaction_get_uid(t, expunges[src].uid);
+ 		if (expunges[dest-1].uid != expunges[dest].uid) {
+-			memcpy(expunges[dest].guid_128, expunges[src].guid_128,
+-			       sizeof(expunges[dest].guid_128));
++			if (dest != src) {
++				memcpy(expunges[dest].guid_128, expunges[src].guid_128,
++				       sizeof(expunges[dest].guid_128));
++			}
+ 			dest++;
+ 		}
+ 	}
+-- 
+1.7.10.2
+
+
+From bc5f152cafb5ccf45fc0049badb16bb2154ec28f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sat, 1 Jun 2013 17:17:47 +0300
+Subject: [PATCH] lda/lmtp: If mail delivery fails with tempfail, don't
+ fallback to saving to INBOX.
+
+
+diff --git a/src/lda/main.c b/src/lda/main.c
+index 447168f..4ed8a31 100644
+--- a/src/lda/main.c
++++ b/src/lda/main.c
+@@ -436,14 +436,17 @@ int main(int argc, char *argv[])
+ 	lda_set_dest_addr(&ctx, user, destaddr_source);
+ 
+ 	if (mail_deliver(&ctx, &storage) < 0) {
+-		if (storage == NULL) {
++		if (storage != NULL) {
++			errstr = mail_storage_get_last_error(storage, &error);
++		} else if (ctx.tempfail_error != NULL) {
++			errstr = ctx.tempfail_error;
++			error = MAIL_ERROR_TEMP;
++		} else {
+ 			/* This shouldn't happen */
+ 			i_error("BUG: Saving failed to unknown storage");
+ 			return EX_TEMPFAIL;
+ 		}
+ 
+-		errstr = mail_storage_get_last_error(storage, &error);
+-
+ 		if (stderr_rejection) {
+ 			/* write to stderr also for tempfails so that MTA
+ 			   can log the reason if it wants to. */
+diff --git a/src/lib-lda/mail-deliver.c b/src/lib-lda/mail-deliver.c
+index 069f878..458dcd2 100644
+--- a/src/lib-lda/mail-deliver.c
++++ b/src/lib-lda/mail-deliver.c
+@@ -371,6 +371,20 @@ const char *mail_deliver_get_new_message_id(struct mail_deliver_context *ctx)
+ 			       count++, ctx->set->hostname);
+ }
+ 
++static bool mail_deliver_is_tempfailed(struct mail_deliver_context *ctx,
++				       struct mail_storage *storage)
++{
++	enum mail_error error;
++
++	if (ctx->tempfail_error != NULL)
++		return TRUE;
++	if (storage != NULL) {
++		(void)mail_storage_get_last_error(storage, &error);
++		return error == MAIL_ERROR_TEMP;
++	}
++	return FALSE;
++}
++
+ int mail_deliver(struct mail_deliver_context *ctx,
+ 		 struct mail_storage **storage_r)
+ {
+@@ -390,12 +404,16 @@ int mail_deliver(struct mail_deliver_context *ctx,
+ 			ret = 0;
+ 		}
+ 		duplicate_deinit(&ctx->dup_ctx);
++		if (ret < 0 && mail_deliver_is_tempfailed(ctx, *storage_r))
++			return -1;
+ 	}
+ 
+ 	if (ret < 0 && !ctx->tried_default_save) {
+ 		/* plugins didn't handle this. save into the default mailbox. */
+ 		ret = mail_deliver_save(ctx, ctx->dest_mailbox_name, 0, NULL,
+ 					storage_r);
++		if (ret < 0 && mail_deliver_is_tempfailed(ctx, *storage_r))
++			return -1;
+ 	}
+ 	if (ret < 0 && strcasecmp(ctx->dest_mailbox_name, "INBOX") != 0) {
+ 		/* still didn't work. try once more to save it
+diff --git a/src/lib-lda/mail-deliver.h b/src/lib-lda/mail-deliver.h
+index fbc2941..f0646a2 100644
+--- a/src/lib-lda/mail-deliver.h
++++ b/src/lib-lda/mail-deliver.h
+@@ -48,6 +48,10 @@ struct mail_deliver_context {
+ 	/* mail_deliver_log() caches the var expand table here */
+ 	struct var_expand_table *var_expand_table;
+ 
++	/* Error message for a temporary failure. This is necessary only when
++	   there is no storage where to get the error message from. */
++	const char *tempfail_error;
++
+ 	bool tried_default_save;
+ 	bool saved_mail;
+ 	bool save_dest_mail;
+diff --git a/src/lmtp/commands.c b/src/lmtp/commands.c
+index 4de117f..8d8baa0 100644
+--- a/src/lmtp/commands.c
++++ b/src/lmtp/commands.c
+@@ -694,13 +694,7 @@ client_deliver(struct client *client, const struct mail_recipient *rcpt,
+ 		client_send_line(client, "250 2.0.0 <%s> %s Saved",
+ 				 rcpt->address, client->state.session_id);
+ 		ret = 0;
+-	} else if (storage == NULL) {
+-		/* This shouldn't happen */
+-		i_error("BUG: Saving failed to unknown storage");
+-		client_send_line(client, ERRSTR_TEMP_MAILBOX_FAIL,
+-				 rcpt->address);
+-		ret = -1;
+-	} else {
++	} else if (storage != NULL) {
+ 		error = mail_storage_get_last_error(storage, &mail_error);
+ 		if (mail_error == MAIL_ERROR_NOSPACE) {
+ 			client_send_line(client, "%s <%s> %s",
+@@ -712,6 +706,16 @@ client_deliver(struct client *client, const struct mail_recipient *rcpt,
+ 					 rcpt->address, error);
+ 		}
+ 		ret = -1;
++	} else if (dctx.tempfail_error != NULL) {
++		client_send_line(client, "451 4.2.0 <%s> %s",
++				 rcpt->address, dctx.tempfail_error);
++		ret = -1;
++	} else {
++		/* This shouldn't happen */
++		i_error("BUG: Saving failed to unknown storage");
++		client_send_line(client, ERRSTR_TEMP_MAILBOX_FAIL,
++				 rcpt->address);
++		ret = -1;
+ 	}
+ 	return ret;
+ }
+-- 
+1.7.10.2
+
