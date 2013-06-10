@@ -5407,3 +5407,1771 @@ index 4de117f..8d8baa0 100644
 -- 
 1.7.10.2
 
+
+From 30c6f2d3af999d5463dd5bafd4fd326ef909f3c3 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 15:08:59 +0300
+Subject: [PATCH] lib-http: Don't create a new HTTP connection when there is
+ already one connecting.
+
+
+diff --git a/src/lib-http/http-client-peer.c b/src/lib-http/http-client-peer.c
+index 88237d8..12618d0 100644
+--- a/src/lib-http/http-client-peer.c
++++ b/src/lib-http/http-client-peer.c
+@@ -147,7 +147,7 @@ http_client_peer_next_request(struct http_client_peer *peer)
+ 		   finished connecting successfully. */
+ 		new_connections = 0;
+ 	} else if (num_urgent == 0) {
+-		new_connections = 1;
++		new_connections = connecting == 0 ? 1 : 0;
+ 	} else {
+ 		new_connections = (num_urgent > connecting ? num_urgent - connecting : 0);
+ 	}
+-- 
+1.7.10.2
+
+
+From 7f20b65ede32ee3f81f56aa8dfc8baaaa60af5ef Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 15:43:42 +0300
+Subject: [PATCH] lib-http: Mark the HTTP connection connected only after SSL
+ handshake is finished.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index bf0d80a..127eb40 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -665,6 +665,7 @@ http_client_connection_ssl_handshaked(const char **error_r, void *context)
+ 		*error_r = error;
+ 		return -1;
+ 	}
++	http_client_connection_ready(conn);
+ 	return 0;
+ }
+ 
+@@ -703,8 +704,6 @@ http_client_connection_ssl_init(struct http_client_connection *conn,
+ 			conn->conn.name, ssl_iostream_get_last_error(conn->ssl_iostream));
+ 		return -1;
+ 	}
+-
+-	http_client_connection_ready(conn);
+ 	return 0;
+ }
+ 
+-- 
+1.7.10.2
+
+
+From 79cc711c13e2161a577d0f670c521abc15f46cad Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 16:19:38 +0300
+Subject: [PATCH] lib-http: Added connect and request timeout settings.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index 127eb40..f40b1cd 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -8,6 +8,7 @@
+ #include "ioloop.h"
+ #include "istream.h"
+ #include "ostream.h"
++#include "time-util.h"
+ #include "iostream-rawlog.h"
+ #include "iostream-ssl.h"
+ #include "http-response-parser.h"
+@@ -202,6 +203,17 @@ http_client_connection_check_idle(struct http_client_connection *conn)
+ }
+ 
+ static void
++http_client_connection_request_timeout(struct http_client_connection *conn)
++{
++	unsigned int msecs = conn->client->set.request_timeout_msecs;
++
++	http_client_connection_abort_temp_error(&conn,
++		HTTP_CLIENT_REQUEST_ERROR_TIMED_OUT, t_strdup_printf(
++		"No response for request in %u.%03u secs",
++		msecs/1000, msecs%1000));
++}
++
++static void
+ http_client_connection_continue_timeout(struct http_client_connection *conn)
+ {
+ 	struct http_client_request *const *req_idx;
+@@ -249,6 +261,11 @@ bool http_client_connection_next_request(struct http_client_connection *conn)
+ 	if (conn->to_idle != NULL)
+ 		timeout_remove(&conn->to_idle);
+ 
++	if (conn->client->set.request_timeout_msecs > 0 &&
++	    conn->to_requests == NULL) {
++		conn->to_requests = timeout_add(conn->client->set.request_timeout_msecs,
++						http_client_connection_request_timeout, conn);
++	}
+ 	req->conn = conn;
+ 	conn->payload_continue = FALSE;
+ 	if (conn->peer->no_payload_sync)
+@@ -293,14 +310,26 @@ static void http_client_connection_destroy(struct connection *_conn)
+ 	struct http_client_connection *conn =
+ 		(struct http_client_connection *)_conn;
+ 	const char *error;
++	unsigned int msecs;
+ 
+ 	conn->closing = TRUE;
+ 	conn->connected = FALSE;
+ 
+ 	switch (_conn->disconnect_reason) {
+ 	case CONNECTION_DISCONNECT_CONNECT_TIMEOUT:
+-		http_client_peer_connection_failure(conn->peer, t_strdup_printf(
+-			"connect(%s) failed: Connection timed out", _conn->name));
++		if (conn->connected_timestamp.tv_sec == 0) {
++			msecs = timeval_diff_msecs(&ioloop_timeval,
++						   &conn->connect_start_timestamp);
++			http_client_peer_connection_failure(conn->peer, t_strdup_printf(
++				"connect(%s) failed: Connection timed out in %u.%03u secs",
++				_conn->name, msecs/1000, msecs%1000));
++		} else {
++			msecs = timeval_diff_msecs(&ioloop_timeval,
++						   &conn->connected_timestamp);
++			http_client_peer_connection_failure(conn->peer, t_strdup_printf(
++				"SSL handshaking to %s failed: Connection timed out in %u.%03u secs",
++				_conn->name, msecs/1000, msecs%1000));
++		}
+ 		break;
+ 	case CONNECTION_DISCONNECT_CONN_CLOSED:
+ 		/* retry pending requests if possible */
+@@ -453,6 +482,8 @@ static void http_client_connection_input(struct connection *_conn)
+ 		http_client_payload_finished(conn);
+ 		finished++;
+ 	}
++	if (conn->to_requests != NULL)
++		timeout_reset(conn->to_requests);
+ 
+ 	/* get first waiting request */
+ 	if (array_count(&conn->request_wait_list) > 0) {
+@@ -560,6 +591,9 @@ static void http_client_connection_input(struct connection *_conn)
+ 			req = req_idx[0];
+ 			no_payload = (strcmp(req->method, "HEAD") == 0);
+ 		} else {
++			/* no more requests waiting for the connection */
++			if (conn->to_requests != NULL)
++				timeout_remove(&conn->to_requests);
+ 			req = NULL;
+ 			no_payload = FALSE;
+ 		}
+@@ -597,6 +631,9 @@ static int http_client_connection_output(struct http_client_connection *conn)
+ 	const char *error;
+ 	int ret;
+ 
++	if (conn->to_requests != NULL)
++		timeout_reset(conn->to_requests);
++
+ 	if ((ret = o_stream_flush(output)) <= 0) {
+ 		if (ret < 0) {
+ 			http_client_connection_abort_temp_error(&conn,
+@@ -635,6 +672,8 @@ http_client_connection_ready(struct http_client_connection *conn)
+ 
+ 	conn->connected = TRUE;
+ 	conn->peer->last_connect_failed = FALSE;
++	if (conn->to_connect != NULL)
++		timeout_remove(&conn->to_connect);
+ 
+ 	if (conn->client->set.rawlog_dir != NULL &&
+ 		stat(conn->client->set.rawlog_dir, &st) == 0) {
+@@ -718,6 +757,7 @@ http_client_connection_connected(struct connection *_conn, bool success)
+ 		http_client_peer_connection_failure(conn->peer, t_strdup_printf(
+ 			"connect(%s) failed: %m", _conn->name));
+ 	} else {
++		conn->connected_timestamp = ioloop_timeval;
+ 		http_client_connection_debug(conn, "Connected");
+ 		if (conn->peer->addr.https_name != NULL) {
+ 			if (http_client_connection_ssl_init(conn, &error) < 0) {
+@@ -758,12 +798,32 @@ http_client_connection_delayed_connect_error(struct http_client_connection *conn
+ 	http_client_connection_unref(&conn);
+ }
+ 
++static void http_client_connect_timeout(struct http_client_connection *conn)
++{
++	conn->conn.disconnect_reason = CONNECTION_DISCONNECT_CONNECT_TIMEOUT;
++	http_client_connection_destroy(&conn->conn);
++}
++
+ static void http_client_connection_connect(struct http_client_connection *conn)
+ {
++	unsigned int msecs;
++
++	conn->connect_start_timestamp = ioloop_timeval;
+ 	if (connection_client_connect(&conn->conn) < 0) {
+ 		conn->connect_errno = errno;
+ 		conn->to_input = timeout_add_short(0,
+ 			http_client_connection_delayed_connect_error, conn);
++		return;
++	}
++
++	/* don't use connection.h timeout because we want this timeout
++	   to include also the SSL handshake */
++	msecs = conn->client->set.connect_timeout_msecs;
++	if (msecs == 0)
++		msecs = conn->client->set.request_timeout_msecs;
++	if (msecs > 0) {
++		conn->to_connect =
++			timeout_add(msecs, http_client_connect_timeout, conn);
+ 	}
+ }
+ 
+@@ -831,6 +891,10 @@ void http_client_connection_unref(struct http_client_connection **_conn)
+ 		ssl_iostream_unref(&conn->ssl_iostream);
+ 	connection_deinit(&conn->conn);
+ 
++	if (conn->to_requests != NULL)
++		timeout_remove(&conn->to_requests);
++	if (conn->to_connect != NULL)
++		timeout_remove(&conn->to_connect);
+ 	if (conn->to_input != NULL)
+ 		timeout_remove(&conn->to_input);
+ 	if (conn->to_idle != NULL)
+@@ -855,6 +919,10 @@ void http_client_connection_unref(struct http_client_connection **_conn)
+ 
+ void http_client_connection_switch_ioloop(struct http_client_connection *conn)
+ {
++	if (conn->to_requests != NULL)
++		conn->to_requests = io_loop_move_timeout(&conn->to_requests);
++	if (conn->to_connect != NULL)
++		conn->to_requests = io_loop_move_timeout(&conn->to_connect);
+ 	if (conn->to_input != NULL)
+ 		conn->to_input = io_loop_move_timeout(&conn->to_input);
+ 	if (conn->to_idle != NULL)
+diff --git a/src/lib-http/http-client-private.h b/src/lib-http/http-client-private.h
+index 4d7aa64..023f8e9 100644
+--- a/src/lib-http/http-client-private.h
++++ b/src/lib-http/http-client-private.h
+@@ -134,10 +134,13 @@ struct http_client_connection {
+ 
+ 	unsigned int id; // DEBUG: identify parallel connections
+ 	int connect_errno;
++	struct timeval connect_start_timestamp;
++	struct timeval connected_timestamp;
+ 
+ 	struct ssl_iostream *ssl_iostream;
+ 	struct http_response_parser *http_parser;
+-	struct timeout *to_input, *to_idle, *to_response;
++	struct timeout *to_connect, *to_input, *to_idle, *to_response;
++	struct timeout *to_requests;
+ 
+ 	struct http_client_request *pending_request;
+ 	struct istream *incoming_payload;
+diff --git a/src/lib-http/http-client.c b/src/lib-http/http-client.c
+index f153b51..aa94853 100644
+--- a/src/lib-http/http-client.c
++++ b/src/lib-http/http-client.c
+@@ -96,6 +96,8 @@ struct http_client *http_client_init(const struct http_client_settings *set)
+ 		(set->max_pipelined_requests > 0 ? set->max_pipelined_requests : 1);
+ 	client->set.max_attempts = set->max_attempts;
+ 	client->set.max_redirects = set->max_redirects;
++	client->set.request_timeout_msecs = set->request_timeout_msecs;
++	client->set.connect_timeout_msecs = set->connect_timeout_msecs;
+ 	client->set.debug = set->debug;
+ 
+ 	client->conn_list = http_client_connection_list_init();
+diff --git a/src/lib-http/http-client.h b/src/lib-http/http-client.h
+index 9c8d131..8a2c31e 100644
+--- a/src/lib-http/http-client.h
++++ b/src/lib-http/http-client.h
+@@ -57,6 +57,13 @@ struct http_client_settings {
+ 	/* maximum number of attempts for a request */
+ 	unsigned int max_attempts;
+ 
++	/* max time to wait for HTTP request to finish before retrying
++	   (default = unlimited) */
++	unsigned int request_timeout_msecs;
++	/* max time to wait for connect() (and SSL handshake) to finish before
++	   retrying (default = request_timeout_msecs) */
++	unsigned int connect_timeout_msecs;
++
+ 	bool debug;
+ };
+ 
+-- 
+1.7.10.2
+
+
+From 82ee63360c34a556271bc3132109caba873eaed0 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 16:28:16 +0300
+Subject: [PATCH] lib-http: When receiving 1xx response while waiting for 100,
+ don't restart timeout. The 100 response is missing only
+ from HTTP/1.0 requests, which also didn't allow any 1xx
+ responses. So if a 1xx response is returned, a 100 response
+ is definitely also coming.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index f40b1cd..b4c8b23 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -542,9 +542,6 @@ static void http_client_connection_input(struct connection *_conn)
+ 			/* ignore them for now */
+ 			http_client_connection_debug(conn,
+ 				"Got unexpected %u response; ignoring", response->status);
+-			/* restart timeout */
+-			conn->to_response =	timeout_add(HTTP_CLIENT_CONTINUE_TIMEOUT_MSECS,
+-				http_client_connection_continue_timeout, conn);
+ 			continue;
+ 		} 
+ 
+-- 
+1.7.10.2
+
+
+From 6e737f6bb0e3d83c24905259608454a92a68a5a3 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 16:40:01 +0300
+Subject: [PATCH] lib-http: After peer has received 100 response, don't add
+ ambiguity timeout anymore. The server should be sending the
+ 100 responses then, and long delays shouldn't be confused
+ with them being missing.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index b4c8b23..7282401 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -295,7 +295,7 @@ bool http_client_connection_next_request(struct http_client_connection *conn)
+ 	   (Continue) status code, the client SHOULD NOT wait for an indefinite
+ 	   period before sending the payload body.
+ 	 */
+-	if (req->payload_sync) {
++	if (req->payload_sync && !conn->peer->seen_100_response) {
+ 		i_assert(req->payload_chunked || req->payload_size > 0);
+ 		i_assert(conn->to_response == NULL);
+ 		conn->to_response =	timeout_add(HTTP_CLIENT_CONTINUE_TIMEOUT_MSECS,
+@@ -529,6 +529,8 @@ static void http_client_connection_input(struct connection *_conn)
+ 					"Got 100-continue response after timeout");
+ 				return;
+ 			}
++			conn->peer->no_payload_sync = FALSE;
++			conn->peer->seen_100_response = TRUE;
+ 			conn->payload_continue = TRUE;
+ 			http_client_connection_debug(conn,
+ 				"Got expected 100-continue response");
+diff --git a/src/lib-http/http-client-private.h b/src/lib-http/http-client-private.h
+index 023f8e9..396fc07 100644
+--- a/src/lib-http/http-client-private.h
++++ b/src/lib-http/http-client-private.h
+@@ -121,6 +121,7 @@ struct http_client_peer {
+ 
+ 	unsigned int destroyed:1;        /* peer is being destroyed */
+ 	unsigned int no_payload_sync:1;  /* expect: 100-continue failed before */
++	unsigned int seen_100_response:1;/* expect: 100-continue succeeded before */
+ 	unsigned int last_connect_failed:1;
+ };
+ 
+-- 
+1.7.10.2
+
+
+From 22139460f7cb9ff8eb7d9ea614829a617bf478cd Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 17:14:49 +0300
+Subject: [PATCH] dsync: If unexpected changes happened during sync, log a
+ warning and exit with code 2. This was done by v2.1 dsync,
+ but the code got temporarily lost in v2.2.
+
+
+diff --git a/src/doveadm/dsync/doveadm-dsync.c b/src/doveadm/dsync/doveadm-dsync.c
+index a1e6e9d..4957a3c 100644
+--- a/src/doveadm/dsync/doveadm-dsync.c
++++ b/src/doveadm/dsync/doveadm-dsync.c
+@@ -291,7 +291,8 @@ static bool paths_are_equal(struct mail_user *user1, struct mail_user *user2,
+ 
+ static int
+ cmd_dsync_run_local(struct dsync_cmd_context *ctx, struct mail_user *user,
+-		    struct dsync_brain *brain, struct dsync_ibc *ibc2)
++		    struct dsync_brain *brain, struct dsync_ibc *ibc2,
++		    bool *changes_during_sync_r)
+ {
+ 	struct dsync_brain *brain2;
+ 	struct mail_user *user2;
+@@ -357,6 +358,7 @@ cmd_dsync_run_local(struct dsync_cmd_context *ctx, struct mail_user *user,
+ 		brain2_running = dsync_brain_run(brain2, &changed2);
+ 	}
+ 	mail_user_unref(&user2);
++	*changes_during_sync_r = dsync_brain_has_unexpected_changes(brain2);
+ 	if (dsync_brain_deinit(&brain2) < 0) {
+ 		ctx->ctx.exit_code = EX_TEMPFAIL;
+ 		return -1;
+@@ -490,6 +492,7 @@ cmd_dsync_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 	struct dsync_brain_settings set;
+ 	enum dsync_brain_flags brain_flags;
+ 	bool remote_errors_logged = FALSE;
++	bool changes_during_sync = FALSE;
+ 	int status = 0, ret = 0;
+ 
+ 	memset(&set, 0, sizeof(set));
+@@ -540,7 +543,8 @@ cmd_dsync_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 					brain_flags, &set);
+ 
+ 	if (ctx->run_type == DSYNC_RUN_TYPE_LOCAL) {
+-		if (cmd_dsync_run_local(ctx, user, brain, ibc2) < 0)
++		if (cmd_dsync_run_local(ctx, user, brain, ibc2,
++					&changes_during_sync) < 0)
+ 			ret = -1;
+ 	} else {
+ 		cmd_dsync_run_remote(user);
+@@ -552,6 +556,11 @@ cmd_dsync_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 		doveadm_print(str_c(state_str));
+ 	}
+ 
++	if (dsync_brain_has_unexpected_changes(brain) || changes_during_sync) {
++		i_warning("Mailbox changes caused a desync. "
++			  "You may want to run dsync again.");
++		ctx->ctx.exit_code = 2;
++	}
+ 	if (dsync_brain_deinit(&brain) < 0) {
+ 		ctx->ctx.exit_code = EX_TEMPFAIL;
+ 		ret = -1;
+diff --git a/src/doveadm/dsync/dsync-brain.c b/src/doveadm/dsync/dsync-brain.c
+index 803c447..a6b4bd4 100644
+--- a/src/doveadm/dsync/dsync-brain.c
++++ b/src/doveadm/dsync/dsync-brain.c
+@@ -513,3 +513,8 @@ bool dsync_brain_has_failed(struct dsync_brain *brain)
+ {
+ 	return brain->failed;
+ }
++
++bool dsync_brain_has_unexpected_changes(struct dsync_brain *brain)
++{
++	return brain->changes_during_sync;
++}
+diff --git a/src/doveadm/dsync/dsync-brain.h b/src/doveadm/dsync/dsync-brain.h
+index 6d7c218..c280908 100644
+--- a/src/doveadm/dsync/dsync-brain.h
++++ b/src/doveadm/dsync/dsync-brain.h
+@@ -67,5 +67,7 @@ bool dsync_brain_has_failed(struct dsync_brain *brain);
+ void dsync_brain_get_state(struct dsync_brain *brain, string_t *output);
+ /* Returns the sync type that was used. Mainly useful with slave brain. */
+ enum dsync_brain_sync_type dsync_brain_get_sync_type(struct dsync_brain *brain);
++/* Returns TRUE if there were any unexpected changes during the sync. */
++bool dsync_brain_has_unexpected_changes(struct dsync_brain *brain);
+ 
+ #endif
+-- 
+1.7.10.2
+
+
+From 91eaf566ceb82890e157a50e697ab808077564f5 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 17:48:48 +0300
+Subject: [PATCH] lib-imap: Added imap_utf7_is_valid()
+
+
+diff --git a/src/lib-imap/imap-utf7.c b/src/lib-imap/imap-utf7.c
+index e499156..4c58a91 100644
+--- a/src/lib-imap/imap-utf7.c
++++ b/src/lib-imap/imap-utf7.c
+@@ -271,3 +271,22 @@ int imap_utf7_to_utf8(const char *src, string_t *dest)
+ 	}
+ 	return 0;
+ }
++
++bool imap_utf7_is_valid(const char *src)
++{
++	const char *p;
++	int ret;
++
++	for (p = src; *p != '\0'; p++) {
++		if (*p == '&' || (unsigned char)*p >= 0x80) {
++			/* slow scan */
++			T_BEGIN {
++				string_t *tmp = t_str_new(128);
++				ret = imap_utf7_to_utf8(p, tmp);
++			} T_END;
++			if (ret < 0)
++				return FALSE;
++		}
++	}
++	return TRUE;
++}
+diff --git a/src/lib-imap/imap-utf7.h b/src/lib-imap/imap-utf7.h
+index f41b8db..5d7875f 100644
+--- a/src/lib-imap/imap-utf7.h
++++ b/src/lib-imap/imap-utf7.h
+@@ -8,5 +8,7 @@ int t_imap_utf8_to_utf7(const char *src, const char **dest_r);
+ /* Convert IMAP-UTF-7 string to UTF-8. Returns 0 if ok, -1 if src isn't
+    valid IMAP-UTF-7. */
+ int imap_utf7_to_utf8(const char *src, string_t *dest);
++/* Returns TRUE if the string is valid IMAP-UTF-7 string. */
++bool imap_utf7_is_valid(const char *src);
+ 
+ #endif
+diff --git a/src/lib-imap/test-imap-utf7.c b/src/lib-imap/test-imap-utf7.c
+index 93360de..e08dbf3 100644
+--- a/src/lib-imap/test-imap-utf7.c
++++ b/src/lib-imap/test-imap-utf7.c
+@@ -8,53 +8,46 @@
+ 
+ static void test_imap_utf7(void)
+ {
+-	static const char *to_utf7[] = {
+-		"&&x&&", "&-&-x&-&-",
+-		"~peter/mail/台北/日本語", "~peter/mail/&U,BTFw-/&ZeVnLIqe-",
+-		"tietäjä", "tiet&AOQ-j&AOQ-",
+-		"p\xe4\xe4", NULL,
+-		NULL
+-	};
+-	static const char *invalid_utf7[] = {
+-		"&Jjo!",
+-		"&U,BTFw-&ZeVnLIqe-",
+-		NULL
++	static struct test {
++		const char *utf8;
++		const char *mutf7;
++	} tests[] = {
++		{ "&&x&&", "&-&-x&-&-" },
++		{ "~peter/mail/台北/日本語", "~peter/mail/&U,BTFw-/&ZeVnLIqe-" },
++		{ "tietäjä", "tiet&AOQ-j&AOQ-" },
++		{ "p\xe4\xe4", NULL },
++		{ NULL, "&" },
++		{ NULL, "&Jjo" },
++		{ NULL, "&Jjo!" },
++		{ NULL, "&U,BTFw-&ZeVnLIqe-" }
+ 	};
+ 	string_t *src, *dest;
+ 	const char *orig_src;
+ 	unsigned int i, j;
+ 	unichar_t chr;
+-	bool success, all_success = TRUE;
+ 
+ 	src = t_str_new(256);
+ 	dest = t_str_new(256);
+ 
+-	for (i = 0; to_utf7[i] != NULL; i += 2) {
+-		str_truncate(dest, 0);
+-		if (imap_utf8_to_utf7(to_utf7[i], dest) < 0)
+-			success = to_utf7[i+1] == NULL;
+-		else {
+-			success = to_utf7[i+1] != NULL &&
+-				strcmp(to_utf7[i+1], str_c(dest)) == 0;
++	test_begin("imap mutf7");
++	for (i = 0; i < N_ELEMENTS(tests); i++) {
++		if (tests[i].utf8 != NULL) {
++			str_truncate(dest, 0);
++			if (imap_utf8_to_utf7(tests[i].utf8, dest) < 0)
++				test_assert(tests[i].mutf7 == NULL);
++			else
++				test_assert(null_strcmp(tests[i].mutf7, str_c(dest)) == 0);
+ 		}
+-		if (!success) {
+-			test_out(t_strdup_printf("imap_utf8_to_utf7(%d)", i/2),
+-				 FALSE);
+-			all_success = FALSE;
+-		} else if (to_utf7[i+1] != NULL) {
++		if (tests[i].mutf7 != NULL) {
+ 			str_truncate(dest, 0);
+-			if (imap_utf7_to_utf8(to_utf7[i+1], dest) < 0 ||
+-			    strcmp(to_utf7[i], str_c(dest)) != 0) {
+-				test_out(t_strdup_printf("imap_utf7_to_utf8(%d)", i/2),
+-					 FALSE);
+-				all_success = FALSE;
+-			}
++			if (imap_utf7_to_utf8(tests[i].mutf7, dest) < 0)
++				test_assert(tests[i].utf8 == NULL);
++			else
++				test_assert(null_strcmp(tests[i].utf8, str_c(dest)) == 0);
++			test_assert(imap_utf7_is_valid(tests[i].mutf7) != (tests[i].utf8 == NULL));
+ 		}
+ 	}
+-	if (all_success)
+-		test_out("imap_utf8_to_utf7()", TRUE);
+ 
+-	success = TRUE;
+ 	for (chr = 0xffff; chr <= 0x10010; chr++) {
+ 		for (i = 1; i <= 10; i++) {
+ 			str_truncate(src, 0);
+@@ -70,28 +63,12 @@ static void test_imap_utf7(void)
+ 			orig_src = t_strdup(str_c(src));
+ 			str_truncate(src, 0);
+ 
+-			if (imap_utf8_to_utf7(orig_src, dest) < 0)
+-				success = FALSE;
+-			else if (imap_utf7_to_utf8(str_c(dest), src) < 0)
+-				success = FALSE;
+-			else
+-				success = strcmp(str_c(src), orig_src) == 0;
+-			if (!success)
+-				goto end;
+-		}
+-	}
+-end:
+-	test_out("imap_utf7_to_utf8(reverse)", success);
+-	for (i = 0; invalid_utf7[i] != NULL; i++) {
+-		str_truncate(dest, 0);
+-		if (imap_utf7_to_utf8(invalid_utf7[i], dest) == 0) {
+-			test_out(t_strdup_printf("imap_utf7_to_utf8(invalid.%d)", i),
+-				 FALSE);
+-			all_success = FALSE;
++			test_assert(imap_utf8_to_utf7(orig_src, dest) == 0);
++			test_assert(imap_utf7_to_utf8(str_c(dest), src) == 0);
++			test_assert(strcmp(str_c(src), orig_src) == 0);
+ 		}
+ 	}
+-	if (all_success)
+-		test_out("imap_utf7_to_utf8(invalid)", TRUE);
++	test_end();
+ }
+ 
+ int main(void)
+-- 
+1.7.10.2
+
+
+From 5c30c1fbd7aa58f252f08f7526ff0d39bf3b32ff Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 17:49:46 +0300
+Subject: [PATCH] lib-imap: Make sure imap_utf7_to_utf8() doesn't access
+ invalid input string out of bounds.
+
+
+diff --git a/src/lib-imap/imap-utf7.c b/src/lib-imap/imap-utf7.c
+index 4c58a91..bc9c033 100644
+--- a/src/lib-imap/imap-utf7.c
++++ b/src/lib-imap/imap-utf7.c
+@@ -179,8 +179,10 @@ static int mbase64_decode_to_utf8(string_t *dest, const char **_src)
+ 
+ 	while (*src != '-') {
+ 		input[0] = imap_b64dec[(uint8_t)src[0]];
++		if (input[0] == 0xff)
++			return -1;
+ 		input[1] = imap_b64dec[(uint8_t)src[1]];
+-		if (input[0] == 0xff || input[1] == 0xff)
++		if (input[1] == 0xff)
+ 			return -1;
+ 
+ 		output[outpos % 4] = (input[0] << 2) | (input[1] >> 4);
+-- 
+1.7.10.2
+
+
+From a4f74888f251919ca4b313b9cf5835eba32dabce Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 18:15:22 +0300
+Subject: [PATCH] lib-storage: mailbox_list_settings.broken_char wasn't
+ escaping 8bit chars correctly.
+
+
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index cdf3201..4db5433 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -637,7 +637,7 @@ mailbox_list_escape_broken_name(struct mailbox_list *list,
+ 	for (; *vname != '\0'; vname++) {
+ 		if (*vname == '&' || (unsigned char)*vname >= 0x80) {
+ 			str_printfa(str, "%c%02x", list->set.broken_char,
+-				    *vname);
++				    (unsigned char)*vname);
+ 		} else {
+ 			str_append_c(str, *vname);
+ 		}
+-- 
+1.7.10.2
+
+
+From f00ed2b3f3744c82d19f4739b383e871f35fc693 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Wed, 5 Jun 2013 18:21:55 +0300
+Subject: [PATCH] dsync: Set broken_char to a control char, so invalid mailbox
+ names are handled properly. The dsync will now fail if
+ there are invalid mailbox names (e.g. valid UTF8 when they
+ should have been mUTF7), instead of simply printing
+ "mailbox doesn't exist" error and exiting with 0.
+
+
+diff --git a/src/doveadm/dsync/doveadm-dsync.c b/src/doveadm/dsync/doveadm-dsync.c
+index 4957a3c..cd28ed2 100644
+--- a/src/doveadm/dsync/doveadm-dsync.c
++++ b/src/doveadm/dsync/doveadm-dsync.c
+@@ -19,7 +19,7 @@
+ #include "mail-storage-service.h"
+ #include "mail-user.h"
+ #include "mail-namespace.h"
+-#include "mailbox-list.h"
++#include "mailbox-list-private.h"
+ #include "doveadm-settings.h"
+ #include "doveadm-mail.h"
+ #include "doveadm-print.h"
+@@ -38,6 +38,12 @@
+ 
+ #define DSYNC_COMMON_GETOPT_ARGS "+dEfg:l:m:n:Nr:Rs:Ux:"
+ #define DSYNC_REMOTE_CMD_EXIT_WAIT_SECS 30
++/* The broken_char is mainly set to get a proper error message when trying to
++   convert a mailbox with a name that can't be used properly translated between
++   vname/storage_name and would otherwise be mixed up with a normal "mailbox
++   doesn't exist" error message. This could be any control character, since
++   none of them are allowed to be created in regular mailbox names. */
++#define DSYNC_LIST_BROKEN_CHAR '\003'
+ 
+ enum dsync_run_type {
+ 	DSYNC_RUN_TYPE_LOCAL,
+@@ -279,6 +285,15 @@ static bool mirror_get_remote_cmd(struct dsync_cmd_context *ctx,
+ 	return TRUE;
+ }
+ 
++static void doveadm_user_init_dsync(struct mail_user *user)
++{
++	struct mail_namespace *ns;
++
++	user->dsyncing = TRUE;
++	for (ns = user->namespaces; ns != NULL; ns = ns->next)
++		ns->list->set.broken_char = DSYNC_LIST_BROKEN_CHAR;
++}
++
+ static bool paths_are_equal(struct mail_user *user1, struct mail_user *user2,
+ 			    enum mailbox_list_path_type type)
+ {
+@@ -322,7 +337,7 @@ cmd_dsync_run_local(struct dsync_cmd_context *ctx, struct mail_user *user,
+ 		ctx->ctx.exit_code = ret == -1 ? EX_TEMPFAIL : EX_CONFIG;
+ 		return -1;
+ 	}
+-	user2->dsyncing = TRUE;
++	doveadm_user_init_dsync(user2);
+ 
+ 	if (mail_namespaces_get_root_sep(user->namespaces) !=
+ 	    mail_namespaces_get_root_sep(user2->namespaces)) {
+@@ -504,8 +519,7 @@ cmd_dsync_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 		/* array is NULL-terminated in init() */
+ 		set.exclude_mailboxes = array_idx(&ctx->exclude_mailboxes, 0);
+ 	}
+-
+-	user->dsyncing = TRUE;
++	doveadm_user_init_dsync(user);
+ 
+ 	if (ctx->namespace_prefix != NULL) {
+ 		set.sync_ns = mail_namespace_find(user->namespaces,
+@@ -946,7 +960,7 @@ cmd_dsync_server_run(struct doveadm_mail_cmd_context *_ctx,
+ 		ctx->output = _ctx->conn->output;
+ 		o_stream_nsend(ctx->output, "\n+\n", 3);
+ 	}
+-	user->dsyncing = TRUE;
++	doveadm_user_init_dsync(user);
+ 
+ 	i_set_failure_prefix("dsync-remote(%s): ", user->username);
+ 
+-- 
+1.7.10.2
+
+
+From 4abad751dcb2519e037ac351d6ed92e14211a97b Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 05:58:16 +0300
+Subject: [PATCH] lib-http: Fixed previous patch setting connection connected
+ only after SSL handshake. This just caused crashes. The
+ main point was anyway to include the SSL handshake as part
+ of the connect_timeout_msecs. Apparently the easiest way is
+ to set it immediately connected and delay removing the
+ timeout.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index 7282401..b966b97 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -671,7 +671,10 @@ http_client_connection_ready(struct http_client_connection *conn)
+ 
+ 	conn->connected = TRUE;
+ 	conn->peer->last_connect_failed = FALSE;
+-	if (conn->to_connect != NULL)
++
++	if (conn->to_connect != NULL &&
++	    (conn->ssl_iostream == NULL ||
++	     ssl_iostream_is_handshaked(conn->ssl_iostream)))
+ 		timeout_remove(&conn->to_connect);
+ 
+ 	if (conn->client->set.rawlog_dir != NULL &&
+@@ -703,7 +706,8 @@ http_client_connection_ssl_handshaked(const char **error_r, void *context)
+ 		*error_r = error;
+ 		return -1;
+ 	}
+-	http_client_connection_ready(conn);
++	if (conn->to_connect != NULL)
++		timeout_remove(&conn->to_connect);
+ 	return 0;
+ }
+ 
+@@ -742,6 +746,8 @@ http_client_connection_ssl_init(struct http_client_connection *conn,
+ 			conn->conn.name, ssl_iostream_get_last_error(conn->ssl_iostream));
+ 		return -1;
+ 	}
++
++	http_client_connection_ready(conn);
+ 	return 0;
+ }
+ 
+-- 
+1.7.10.2
+
+
+From 4bf1d4c6899c959491245f3b2f88134716fd5d41 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 06:32:58 +0300
+Subject: [PATCH] lib-http: Treat connect() timeouts as retryable errors.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index b966b97..6ef4a18 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -320,16 +320,18 @@ static void http_client_connection_destroy(struct connection *_conn)
+ 		if (conn->connected_timestamp.tv_sec == 0) {
+ 			msecs = timeval_diff_msecs(&ioloop_timeval,
+ 						   &conn->connect_start_timestamp);
+-			http_client_peer_connection_failure(conn->peer, t_strdup_printf(
++			error = t_strdup_printf(
+ 				"connect(%s) failed: Connection timed out in %u.%03u secs",
+-				_conn->name, msecs/1000, msecs%1000));
++				_conn->name, msecs/1000, msecs%1000);
+ 		} else {
+ 			msecs = timeval_diff_msecs(&ioloop_timeval,
+ 						   &conn->connected_timestamp);
+-			http_client_peer_connection_failure(conn->peer, t_strdup_printf(
++			error = t_strdup_printf(
+ 				"SSL handshaking to %s failed: Connection timed out in %u.%03u secs",
+-				_conn->name, msecs/1000, msecs%1000));
++				_conn->name, msecs/1000, msecs%1000);
+ 		}
++		http_client_connection_retry_requests(conn,
++			HTTP_CLIENT_REQUEST_ERROR_TIMED_OUT, error);
+ 		break;
+ 	case CONNECTION_DISCONNECT_CONN_CLOSED:
+ 		/* retry pending requests if possible */
+-- 
+1.7.10.2
+
+
+From 1735fc06f205ab96211bef87e8452a563f04e90b Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 06:55:34 +0300
+Subject: [PATCH] imapc: Index dirs were being wrongly deleted when
+ imapc_list_prefix was set.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index b95df95..abf30c6 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -361,7 +361,9 @@ static void imapc_list_delete_unused_indexes(struct imapc_mailbox_list *list)
+ 	struct mailbox_list *fs_list = imapc_list_get_fs(list);
+ 	struct mailbox_list_iterate_context *iter;
+ 	const struct mailbox_info *info;
+-	const char *fs_name;
++	const char *imapc_list_prefix = list->storage->set->imapc_list_prefix;
++	unsigned int imapc_list_prefix_len = strlen(imapc_list_prefix);
++	const char *fs_name, *vname;
+ 
+ 	if (fs_list == NULL)
+ 		return;
+@@ -370,13 +372,33 @@ static void imapc_list_delete_unused_indexes(struct imapc_mailbox_list *list)
+ 				      MAILBOX_LIST_ITER_RAW_LIST |
+ 				      MAILBOX_LIST_ITER_NO_AUTO_BOXES |
+ 				      MAILBOX_LIST_ITER_RETURN_NO_FLAGS);
+-	while ((info = mailbox_list_iter_next(iter)) != NULL) {
+-		if (mailbox_tree_lookup(list->mailboxes, info->vname) == NULL) {
++	while ((info = mailbox_list_iter_next(iter)) != NULL) T_BEGIN {
++		vname = info->vname;
++		if (imapc_list_prefix_len > 0) {
++			/* skip over the namespace prefix */
++			i_assert(strncmp(vname, fs_list->ns->prefix,
++					 fs_list->ns->prefix_len) == 0);
++			vname += fs_list->ns->prefix_len;
++			/* skip over the imapc list prefix */
++			i_assert(strncmp(vname, imapc_list_prefix,
++					 imapc_list_prefix_len) == 0);
++			vname += imapc_list_prefix_len;
++			if (vname[0] != '\0') {
++				i_assert(vname[0] == mail_namespace_get_sep(fs_list->ns));
++				vname++;
++			}
++			/* put back the namespace prefix */
++			if (fs_list->ns->prefix_len > 0) {
++				vname = t_strconcat(fs_list->ns->prefix,
++						    vname, NULL);
++			}
++		}
++		if (mailbox_tree_lookup(list->mailboxes, vname) == NULL) {
+ 			fs_name = mailbox_list_get_storage_name(fs_list,
+ 								info->vname);
+ 			(void)fs_list->v.delete_mailbox(fs_list, fs_name);
+ 		}
+-	}
++	} T_END;
+ 	(void)mailbox_list_iter_deinit(&iter);
+ }
+ 
+-- 
+1.7.10.2
+
+
+From c4bcfe61acf37f5176755e20dcb444d470470214 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 08:56:07 +0300
+Subject: [PATCH] lib-imap-client: If SELECT/EXAMINE fails, set the connection
+ as not being selected.
+
+
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index 3229885..de2177c 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -1047,6 +1047,13 @@ static int imapc_connection_input_tagged(struct imapc_connection *conn)
+ 		imapc_connection_disconnect(conn);
+ 	}
+ 
++	if (reply.state == IMAPC_COMMAND_STATE_NO &&
++	    (cmd->flags & IMAPC_COMMAND_FLAG_SELECT) != 0 &&
++	    conn->selected_box != NULL) {
++		/* EXAMINE/SELECT failed: mailbox is no longer selected */
++		imapc_connection_unselect(conn->selected_box);
++	}
++
+ 	imapc_connection_input_reset(conn);
+ 	imapc_command_reply_free(cmd, &reply);
+ 	imapc_command_send_more(conn);
+-- 
+1.7.10.2
+
+
+From f815388c419a146412a30763e2945f860dbd2730 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 08:56:19 +0300
+Subject: [PATCH] lib-imap-client: Added support for UNSELECT capability.
+
+
+diff --git a/src/lib-imap-client/imapc-client.c b/src/lib-imap-client/imapc-client.c
+index b5592d3..b282990 100644
+--- a/src/lib-imap-client/imapc-client.c
++++ b/src/lib-imap-client/imapc-client.c
+@@ -23,6 +23,7 @@ const struct imapc_capability_name imapc_capability_names[] = {
+ 	{ "X-GM-EXT-1", IMAPC_CAPABILITY_X_GM_EXT_1 },
+ 	{ "CONDSTORE", IMAPC_CAPABILITY_CONDSTORE },
+ 	{ "NAMESPACE", IMAPC_CAPABILITY_NAMESPACE },
++	{ "UNSELECT", IMAPC_CAPABILITY_UNSELECT },
+ 
+ 	{ "IMAP4REV1", IMAPC_CAPABILITY_IMAP4REV1 },
+ 	{ NULL, 0 }
+diff --git a/src/lib-imap-client/imapc-client.h b/src/lib-imap-client/imapc-client.h
+index 516763e..e099c93 100644
+--- a/src/lib-imap-client/imapc-client.h
++++ b/src/lib-imap-client/imapc-client.h
+@@ -22,6 +22,7 @@ enum imapc_capability {
+ 	IMAPC_CAPABILITY_X_GM_EXT_1	= 0x80,
+ 	IMAPC_CAPABILITY_CONDSTORE	= 0x100,
+ 	IMAPC_CAPABILITY_NAMESPACE	= 0x200,
++	IMAPC_CAPABILITY_UNSELECT	= 0x400,
+ 
+ 	IMAPC_CAPABILITY_IMAP4REV1	= 0x40000000
+ };
+-- 
+1.7.10.2
+
+
+From 05ce3c7cdaed5bcfaa9a780489e67f91ef8497df Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 08:57:13 +0300
+Subject: [PATCH] imapc: When deleting a mailbox, unselect the current one
+ just in case they're the same.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index abf30c6..e04fa99 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -682,9 +682,20 @@ imapc_list_delete_mailbox(struct mailbox_list *_list, const char *name)
+ {
+ 	struct imapc_mailbox_list *list = (struct imapc_mailbox_list *)_list;
+ 	struct mailbox_list *fs_list = imapc_list_get_fs(list);
++	enum imapc_capability capa;
+ 	struct imapc_command *cmd;
+ 	struct imapc_simple_context ctx;
+ 
++	capa = imapc_client_get_capabilities(list->storage->client);
++
++	cmd = imapc_list_simple_context_init(&ctx, list);
++	imapc_command_set_flags(cmd, IMAPC_COMMAND_FLAG_SELECT);
++	if ((capa & IMAPC_CAPABILITY_UNSELECT) != 0)
++		imapc_command_sendf(cmd, "UNSELECT");
++	else
++		imapc_command_sendf(cmd, "SELECT \"~~~\"");
++	imapc_simple_run(&ctx);
++
+ 	cmd = imapc_list_simple_context_init(&ctx, list);
+ 	imapc_command_sendf(cmd, "DELETE %s", name);
+ 	imapc_simple_run(&ctx);
+-- 
+1.7.10.2
+
+
+From 857621dc473effc032d818fb2584843a2957a81a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 09:47:39 +0300
+Subject: [PATCH] lib-imap-client: When server sends BYE before disconnection,
+ log it as the reason.
+
+
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index de2177c..886e7b9 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -92,6 +92,7 @@ struct imapc_connection {
+ 
+ 	struct imapc_client_mailbox *selecting_box, *selected_box;
+ 	enum imapc_connection_state state;
++	char *disconnect_reason;
+ 
+ 	enum imapc_capability capabilities;
+ 	char **capabilities_list;
+@@ -159,6 +160,8 @@ static void imapc_connection_unref(struct imapc_connection **_conn)
+ 	if (--conn->refcount > 0)
+ 		return;
+ 
++	i_assert(conn->disconnect_reason == NULL);
++
+ 	if (conn->capabilities_list != NULL)
+ 		p_strsplit_free(default_pool, conn->capabilities_list);
+ 	array_free(&conn->cmd_send_queue);
+@@ -299,8 +302,13 @@ static void imapc_connection_set_state(struct imapc_connection *conn,
+ 	case IMAPC_CONNECTION_STATE_DISCONNECTED:
+ 		memset(&reply, 0, sizeof(reply));
+ 		reply.state = IMAPC_COMMAND_STATE_DISCONNECTED;
+-		reply.text_without_resp = reply.text_full =
+-			"Disconnected from server";
++		reply.text_full = "Disconnected from server";
++		if (conn->disconnect_reason != NULL) {
++			reply.text_full = t_strdup_printf("%s: %s",
++				reply.text_full, conn->disconnect_reason);
++			i_free_and_null(conn->disconnect_reason);
++		}
++		reply.text_without_resp = reply.text_full;
+ 		imapc_login_callback(conn, &reply);
+ 
+ 		conn->idling = FALSE;
+@@ -899,6 +907,9 @@ static int imapc_connection_input_untagged(struct imapc_connection *conn)
+ 		value = imap_args_to_str(imap_args);
+ 		if (imapc_connection_parse_capability(conn, value) < 0)
+ 			return -1;
++	} else if (strcasecmp(name, "BYE") == 0) {
++		i_free(conn->disconnect_reason);
++		conn->disconnect_reason = i_strdup(imap_args_to_str(imap_args));
+ 	}
+ 
+ 	reply.name = name;
+@@ -1120,7 +1131,10 @@ static void imapc_connection_input(struct imapc_connection *conn)
+ 
+ 	if (ret < 0) {
+ 		/* disconnected */
+-		if (conn->ssl_iostream == NULL) {
++		if (conn->disconnect_reason != NULL) {
++			i_error("imapc(%s): Server disconnected with message: %s",
++				conn->name, conn->disconnect_reason);
++		} else if (conn->ssl_iostream == NULL) {
+ 			i_error("imapc(%s): Server disconnected unexpectedly",
+ 				conn->name);
+ 		} else {
+-- 
+1.7.10.2
+
+
+From 471057eaf6ddfb261467e597f33fc7309275330a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 10:52:14 +0300
+Subject: [PATCH] imapc: If imapc isn't the inbox=yes namespace, do the login
+ and initial LIST in background.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index e04fa99..c5986bb 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -140,7 +140,7 @@ static void imapc_untagged_list(const struct imapc_untagged_reply *reply,
+ 	const struct imap_arg *args = reply->args;
+ 	const char *sep, *name;
+ 
+-	if (list->sep == '\0') {
++	if (storage->root_sep == '\0') {
+ 		/* we haven't asked for the separator yet.
+ 		   lets see if this is the reply for its request. */
+ 		if (args[0].type == IMAP_ARG_EOL ||
+@@ -149,8 +149,8 @@ static void imapc_untagged_list(const struct imapc_untagged_reply *reply,
+ 			return;
+ 
+ 		/* we can't handle NIL separator yet */
+-		list->sep = sep == NULL ? '/' : sep[0];
+-		mailbox_tree_set_separator(list->mailboxes, list->sep);
++		storage->root_sep = sep == NULL ? '/' : sep[0];
++		mailbox_tree_set_separator(list->mailboxes, storage->root_sep);
+ 	} else {
+ 		(void)imapc_list_update_tree(list, list->mailboxes, args);
+ 	}
+@@ -163,7 +163,7 @@ static void imapc_untagged_lsub(const struct imapc_untagged_reply *reply,
+ 	const struct imap_arg *args = reply->args;
+ 	struct mailbox_node *node;
+ 
+-	if (list->sep == '\0') {
++	if (storage->root_sep == '\0') {
+ 		/* we haven't asked for the separator yet */
+ 		return;
+ 	}
+@@ -192,11 +192,14 @@ void imapc_list_register_callbacks(struct imapc_mailbox_list *list)
+ static char imapc_list_get_hierarchy_sep(struct mailbox_list *_list)
+ {
+ 	struct imapc_mailbox_list *list = (struct imapc_mailbox_list *)_list;
++	char sep;
+ 
+-	/* storage should have looked this up when it was created */
+-	i_assert(list->sep != '\0');
+-
+-	return list->sep;
++	if (imapc_storage_try_get_root_sep(list->storage, &sep) < 0) {
++		/* we can't really fail here. just return a common separator
++		   and keep failing all list commands until it succeeds. */
++		return '/';
++	}
++	return sep;
+ }
+ 
+ static const char *
+@@ -209,7 +212,9 @@ imapc_list_get_storage_name(struct mailbox_list *_list, const char *vname)
+ 	storage_name = mailbox_list_default_get_storage_name(_list, vname);
+ 	if (*prefix != '\0' && strcasecmp(storage_name, "INBOX") != 0) {
+ 		storage_name = storage_name[0] == '\0' ? prefix :
+-			t_strdup_printf("%s%c%s", prefix, list->sep, storage_name);
++			t_strdup_printf("%s%c%s", prefix,
++			mailbox_list_get_hierarchy_sep(_list),
++			storage_name);
+ 	}
+ 	return storage_name;
+ }
+@@ -230,7 +235,8 @@ imapc_list_get_vname(struct mailbox_list *_list, const char *storage_name)
+ 		if (storage_name[0] == '\0') {
+ 			/* we're looking up the prefix itself */
+ 		} else {
+-			i_assert(storage_name[0] == list->sep);
++			i_assert(storage_name[0] ==
++				 mailbox_list_get_hierarchy_sep(_list));
+ 			storage_name++;
+ 		}
+ 	}
+@@ -408,8 +414,12 @@ static int imapc_list_refresh(struct imapc_mailbox_list *list)
+ 	struct imapc_simple_context ctx;
+ 	struct mailbox_node *node;
+ 	const char *pattern;
++	char sep;
+ 
+-	i_assert(list->sep != '\0');
++	if (imapc_storage_try_get_root_sep(list->storage, &sep) < 0) {
++		mailbox_list_set_internal_error(&list->list);
++		return -1;
++	}
+ 
+ 	if (list->refreshed_mailboxes)
+ 		return 0;
+@@ -427,7 +437,7 @@ static int imapc_list_refresh(struct imapc_mailbox_list *list)
+ 	cmd = imapc_list_simple_context_init(&ctx, list);
+ 	imapc_command_sendf(cmd, "LIST \"\" %s", pattern);
+ 	mailbox_tree_deinit(&list->mailboxes);
+-	list->mailboxes = mailbox_tree_init(list->sep);
++	list->mailboxes = mailbox_tree_init(sep);
+ 	mailbox_tree_set_parents_nonexistent(list->mailboxes);
+ 	imapc_simple_run(&ctx);
+ 
+@@ -505,7 +515,10 @@ imapc_list_iter_init(struct mailbox_list *_list, const char *const *patterns,
+ 		return _ctx;
+ 	}
+ 
+-	sep = mailbox_list_get_hierarchy_sep(_list);
++	if (imapc_storage_try_get_root_sep(list->storage, &sep) < 0) {
++		mailbox_list_set_internal_error(_list);
++		ret = -1;
++	}
+ 
+ 	pool = pool_alloconly_create("mailbox list imapc iter", 1024);
+ 	ctx = p_new(pool, struct imapc_mailbox_list_iterate_context, 1);
+@@ -623,23 +636,25 @@ imapc_list_subscriptions_refresh(struct mailbox_list *_src_list,
+ 	struct imapc_simple_context ctx;
+ 	struct imapc_command *cmd;
+ 	const char *pattern;
+-	char sep;
++	char src_sep, dest_sep;
+ 
+ 	i_assert(src_list->tmp_subscriptions == NULL);
+ 
+ 	if (src_list->refreshed_subscriptions) {
+ 		if (dest_list->subscriptions == NULL) {
+-			sep = mailbox_list_get_hierarchy_sep(dest_list);
++			dest_sep = mailbox_list_get_hierarchy_sep(dest_list);
+ 			dest_list->subscriptions =
+-				mailbox_tree_init(sep);
++				mailbox_tree_init(dest_sep);
+ 		}
+ 		return 0;
+ 	}
+ 
+-	if (src_list->sep == '\0')
+-		(void)mailbox_list_get_hierarchy_sep(_src_list);
++	if (imapc_storage_try_get_root_sep(src_list->storage, &src_sep) < 0) {
++		mailbox_list_set_internal_error(dest_list);
++		return -1;
++	}
+ 
+-	src_list->tmp_subscriptions = mailbox_tree_init(src_list->sep);
++	src_list->tmp_subscriptions = mailbox_tree_init(src_sep);
+ 
+ 	cmd = imapc_list_simple_context_init(&ctx, src_list);
+ 	if (*src_list->storage->set->imapc_list_prefix == '\0')
+@@ -647,7 +662,7 @@ imapc_list_subscriptions_refresh(struct mailbox_list *_src_list,
+ 	else {
+ 		pattern = t_strdup_printf("%s%c*",
+ 				src_list->storage->set->imapc_list_prefix,
+-				src_list->sep);
++				src_sep);
+ 	}
+ 	imapc_command_sendf(cmd, "LSUB \"\" %s", pattern);
+ 	imapc_simple_run(&ctx);
+@@ -763,8 +778,12 @@ int imapc_list_get_mailbox_flags(struct mailbox_list *_list, const char *name,
+ 	struct imapc_simple_context sctx;
+ 	struct mailbox_node *node;
+ 	const char *vname;
++	char sep;
+ 
+-	i_assert(list->sep != '\0');
++	if (imapc_storage_try_get_root_sep(list->storage, &sep) < 0) {
++		mailbox_list_set_internal_error(_list);
++		return -1;
++	}
+ 
+ 	vname = mailbox_list_get_vname(_list, name);
+ 	if (!list->refreshed_mailboxes) {
+diff --git a/src/lib-storage/index/imapc/imapc-list.h b/src/lib-storage/index/imapc/imapc-list.h
+index a764f21..d3bc242 100644
+--- a/src/lib-storage/index/imapc/imapc-list.h
++++ b/src/lib-storage/index/imapc/imapc-list.h
+@@ -13,7 +13,6 @@ struct imapc_mailbox_list {
+ 	struct mailbox_list *index_list;
+ 
+ 	struct mailbox_tree_context *mailboxes, *tmp_subscriptions;
+-	char sep;
+ 
+ 	unsigned int iter_count;
+ 
+diff --git a/src/lib-storage/index/imapc/imapc-storage.c b/src/lib-storage/index/imapc/imapc-storage.c
+index 0e575f1..cae2e6b 100644
+--- a/src/lib-storage/index/imapc/imapc-storage.c
++++ b/src/lib-storage/index/imapc/imapc-storage.c
+@@ -180,36 +180,61 @@ static void imapc_storage_untagged_cb(const struct imapc_untagged_reply *reply,
+ 	}
+ }
+ 
+-static int
+-imapc_storage_get_hierarchy_sep(struct imapc_storage *storage,
+-				const char **error_r)
++static void imapc_storage_sep_verify(struct imapc_storage *storage)
+ {
+-	struct imapc_command *cmd;
+-	struct imapc_simple_context sctx;
+ 	const char *imapc_list_prefix = storage->set->imapc_list_prefix;
+ 
+-	imapc_simple_context_init(&sctx, storage);
+-	cmd = imapc_client_cmd(storage->client, imapc_simple_callback, &sctx);
+-	imapc_command_send(cmd, "LIST \"\" \"\"");
+-	imapc_simple_run(&sctx);
+-
+-	if (sctx.ret < 0) {
+-		*error_r = t_strdup_printf("LIST failed: %s",
+-			mail_storage_get_last_error(&storage->storage, NULL));
+-		return -1;
++	if (storage->root_sep == '\0') {
++		mail_storage_set_critical(&storage->storage,
++			"imapc: LIST didn't return hierarchy separator");
++	} else if (imapc_list_prefix[0] != '\0' &&
++		   imapc_list_prefix[strlen(imapc_list_prefix)-1] == storage->root_sep) {
++		mail_storage_set_critical(&storage->storage,
++			"imapc_list_prefix must not end with hierarchy separator");
+ 	}
++}
+ 
+-	if (storage->list->sep == '\0') {
+-		*error_r = "LIST didn't return hierarchy separator";
+-		return -1;
++static void imapc_storage_sep_callback(const struct imapc_command_reply *reply,
++				       void *context)
++{
++	struct imapc_storage *storage = context;
++
++	storage->root_sep_pending = FALSE;
++	if (reply->state == IMAPC_COMMAND_STATE_OK)
++		imapc_storage_sep_verify(storage);
++	else if (reply->state == IMAPC_COMMAND_STATE_NO)
++		imapc_copy_error_from_reply(storage, MAIL_ERROR_PARAMS, reply);
++	else {
++		mail_storage_set_critical(&storage->storage,
++			"imapc: Command failed: %s", reply->text_full);
+ 	}
++	imapc_client_stop(storage->client);
++}
+ 
+-	if (imapc_list_prefix[0] != '\0' &&
+-	    imapc_list_prefix[strlen(imapc_list_prefix)-1] == storage->list->sep) {
+-		*error_r = "imapc_list_prefix must not end with hierarchy separator";
+-		return -1;
++static void imapc_storage_send_hierarcy_sep_lookup(struct imapc_storage *storage)
++{
++	struct imapc_command *cmd;
++
++	if (storage->root_sep_pending)
++		return;
++	storage->root_sep_pending = TRUE;
++
++	cmd = imapc_client_cmd(storage->client,
++			       imapc_storage_sep_callback, storage);
++	imapc_command_send(cmd, "LIST \"\" \"\"");
++}
++
++int imapc_storage_try_get_root_sep(struct imapc_storage *storage, char *sep_r)
++{
++	if (storage->root_sep == '\0') {
++		imapc_storage_send_hierarcy_sep_lookup(storage);
++		while (storage->root_sep_pending)
++			imapc_client_run(storage->client);
++		if (storage->root_sep == '\0')
++			return -1;
+ 	}
+-	return sctx.ret;
++	*sep_r = storage->root_sep;
++	return 0;
+ }
+ 
+ static int
+@@ -220,6 +245,7 @@ imapc_storage_create(struct mail_storage *_storage,
+ 	struct imapc_storage *storage = (struct imapc_storage *)_storage;
+ 	struct imapc_client_settings set;
+ 	string_t *str;
++	char sep;
+ 
+ 	storage->set = mail_storage_get_driver_settings(_storage);
+ 
+@@ -279,10 +305,19 @@ imapc_storage_create(struct mail_storage *_storage,
+ 					imapc_untagged_status);
+ 	imapc_storage_register_untagged(storage, "NAMESPACE",
+ 					imapc_untagged_namespace);
+-	/* connect to imap server and get the hierarchy separator. */
+-	if (imapc_storage_get_hierarchy_sep(storage, error_r) < 0) {
+-		imapc_client_deinit(&storage->client);
+-		return -1;
++	/* start connecting to imap server and get the hierarchy separator. */
++	imapc_client_login(storage->client, NULL, NULL);
++	imapc_storage_send_hierarcy_sep_lookup(storage);
++	if ((ns->flags & NAMESPACE_FLAG_INBOX_USER) != 0) {
++		/* we're using imapc for the INBOX namespace. wait and make
++		   sure we can successfully access the IMAP server (so if the
++		   username is invalid we don't just keep failing every
++		   command). */
++		if (imapc_storage_try_get_root_sep(storage, &sep) < 0) {
++			imapc_client_deinit(&storage->client);
++			*error_r = "Failed to access imapc backend";
++			return -1;
++		}
+ 	}
+ 	return 0;
+ }
+@@ -302,10 +337,7 @@ static void imapc_storage_add_list(struct mail_storage *_storage,
+ 	struct imapc_mailbox_list *list = (struct imapc_mailbox_list *)_list;
+ 
+ 	i_assert(storage->list != NULL);
+-	i_assert(storage->list->sep != '\0');
+-
+ 	list->storage = storage;
+-	list->sep = storage->list->sep;
+ }
+ 
+ void imapc_storage_register_untagged(struct imapc_storage *storage,
+diff --git a/src/lib-storage/index/imapc/imapc-storage.h b/src/lib-storage/index/imapc/imapc-storage.h
+index 941d7dc..77485cf 100644
+--- a/src/lib-storage/index/imapc/imapc-storage.h
++++ b/src/lib-storage/index/imapc/imapc-storage.h
+@@ -47,6 +47,7 @@ struct imapc_storage {
+ 	struct ioloop *root_ioloop;
+ 	struct imapc_mailbox_list *list;
+ 	struct imapc_client *client;
++	char root_sep;
+ 
+ 	struct imapc_mailbox *cur_status_box;
+ 	struct mailbox_status *cur_status;
+@@ -56,6 +57,7 @@ struct imapc_storage {
+ 	ARRAY(struct imapc_storage_event_callback) untagged_callbacks;
+ 
+ 	unsigned int namespaces_requested:1;
++	unsigned int root_sep_pending:1;
+ };
+ 
+ struct imapc_mail_cache {
+@@ -128,6 +130,7 @@ void imapc_transaction_save_rollback(struct mail_save_context *ctx);
+ void imapc_storage_run(struct imapc_storage *storage);
+ void imapc_mail_cache_free(struct imapc_mail_cache *cache);
+ int imapc_mailbox_select(struct imapc_mailbox *mbox);
++int imapc_storage_try_get_root_sep(struct imapc_storage *storage, char *sep_r);
+ 
+ void imapc_copy_error_from_reply(struct imapc_storage *storage,
+ 				 enum mail_error default_error,
+-- 
+1.7.10.2
+
+
+From 8d951ad71dfd0f020936af0233e28102133dd2a3 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 10:55:27 +0300
+Subject: [PATCH] imapc: Minor code cleanup
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-list.c b/src/lib-storage/index/imapc/imapc-list.c
+index c5986bb..4835040 100644
+--- a/src/lib-storage/index/imapc/imapc-list.c
++++ b/src/lib-storage/index/imapc/imapc-list.c
+@@ -29,7 +29,6 @@ static struct {
+ 	{ "\\NonExistent", MAILBOX_NONEXISTENT },
+ 	{ "\\NoInferiors", MAILBOX_NOINFERIORS },
+ 	{ "\\Subscribed", MAILBOX_SUBSCRIBED },
+-	{ "\\Subscribed", MAILBOX_SUBSCRIBED },
+ 	{ "\\All", MAILBOX_SPECIALUSE_ALL },
+ 	{ "\\Archive", MAILBOX_SPECIALUSE_ARCHIVE },
+ 	{ "\\Drafts", MAILBOX_SPECIALUSE_DRAFTS },
+-- 
+1.7.10.2
+
+
+From 0fe9d6d52f2c3908776a992540722a8acecee10a Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 11:16:05 +0300
+Subject: [PATCH] lib-storage: Renamed mailbox_list_get_closest_storage() to
+ ..._get_default_storage() This function wasn't previously
+ used by anyone.
+
+
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index 4db5433..a4b06b1 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -781,7 +781,7 @@ int mailbox_list_get_storage(struct mailbox_list **list, const char *vname,
+ 	}
+ }
+ 
+-void mailbox_list_get_closest_storage(struct mailbox_list *list,
++void mailbox_list_get_default_storage(struct mailbox_list *list,
+ 				      struct mail_storage **storage)
+ {
+ 	*storage = list->ns->storage;
+diff --git a/src/lib-storage/mailbox-list.h b/src/lib-storage/mailbox-list.h
+index fb4096f..f3f4d94 100644
+--- a/src/lib-storage/mailbox-list.h
++++ b/src/lib-storage/mailbox-list.h
+@@ -171,7 +171,7 @@ struct mail_user *
+ mailbox_list_get_user(const struct mailbox_list *list) ATTR_PURE;
+ int mailbox_list_get_storage(struct mailbox_list **list, const char *vname,
+ 			     struct mail_storage **storage_r);
+-void mailbox_list_get_closest_storage(struct mailbox_list *list,
++void mailbox_list_get_default_storage(struct mailbox_list *list,
+ 				      struct mail_storage **storage);
+ char mailbox_list_get_hierarchy_sep(struct mailbox_list *list);
+ 
+-- 
+1.7.10.2
+
+
+From 93b0ff02b0e5630a9b2db365f5335b36d93477f9 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 11:40:27 +0300
+Subject: [PATCH] Avoid using mail_namespace.storage directly.
+
+
+diff --git a/src/doveadm/doveadm-mail-altmove.c b/src/doveadm/doveadm-mail-altmove.c
+index a7d9843..5e1b864 100644
+--- a/src/doveadm/doveadm-mail-altmove.c
++++ b/src/doveadm/doveadm-mail-altmove.c
+@@ -40,12 +40,13 @@ cmd_altmove_box(struct doveadm_mail_cmd_context *ctx,
+ }
+ 
+ static int
+-ns_purge(struct doveadm_mail_cmd_context *ctx, struct mail_namespace *ns)
++ns_purge(struct doveadm_mail_cmd_context *ctx, struct mail_namespace *ns,
++	 struct mail_storage *storage)
+ {
+-	if (mail_storage_purge(ns->storage) < 0) {
++	if (mail_storage_purge(storage) < 0) {
+ 		i_error("Purging namespace '%s' failed: %s", ns->prefix,
+-			mail_storage_get_last_error(ns->storage, NULL));
+-		doveadm_mail_failed_storage(ctx, ns->storage);
++			mail_storage_get_last_error(storage, NULL));
++		doveadm_mail_failed_storage(ctx, storage);
+ 		return -1;
+ 	}
+ 	return 0;
+@@ -62,7 +63,7 @@ cmd_altmove_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 	const struct mailbox_info *info;
+ 	struct mail_namespace *ns, *prev_ns = NULL;
+ 	ARRAY(struct mail_storage *) purged_storages;
+-	struct mail_storage *const *storages;
++	struct mail_storage *const *storages, *ns_storage, *prev_storage = NULL;
+ 	unsigned int i, count;
+ 	int ret = 0;
+ 
+@@ -70,13 +71,15 @@ cmd_altmove_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 	iter = doveadm_mailbox_list_iter_init(_ctx, user, _ctx->search_args,
+ 					      iter_flags);
+ 	while ((info = doveadm_mailbox_list_iter_next(iter)) != NULL) T_BEGIN {
+-		if (info->ns != prev_ns) {
+-			if (prev_ns != NULL) {
+-				if (ns_purge(_ctx, prev_ns) < 0)
++		ns_storage = mail_namespace_get_default_storage(info->ns);
++		if (ns_storage != prev_storage) {
++			if (prev_storage != NULL) {
++				if (ns_purge(_ctx, prev_ns, prev_storage) < 0)
+ 					ret = -1;
+ 				array_append(&purged_storages,
+-					     &prev_ns->storage, 1);
++					     &prev_storage, 1);
+ 			}
++			prev_storage = ns_storage;
+ 			prev_ns = info->ns;
+ 		}
+ 		if (cmd_altmove_box(_ctx, info, _ctx->search_args, ctx->reverse) < 0)
+@@ -85,10 +88,10 @@ cmd_altmove_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 	if (doveadm_mailbox_list_iter_deinit(&iter) < 0)
+ 		ret = -1;
+ 
+-	if (prev_ns != NULL) {
+-		if (ns_purge(_ctx, prev_ns) < 0)
++	if (prev_storage != NULL) {
++		if (ns_purge(_ctx, prev_ns, prev_storage) < 0)
+ 			ret = -1;
+-		array_append(&purged_storages, &prev_ns->storage, 1);
++		array_append(&purged_storages, &prev_storage, 1);
+ 	}
+ 
+ 	/* make sure all private storages have been purged */
+@@ -97,14 +100,15 @@ cmd_altmove_run(struct doveadm_mail_cmd_context *_ctx, struct mail_user *user)
+ 		if (ns->type != MAIL_NAMESPACE_TYPE_PRIVATE)
+ 			continue;
+ 
++		ns_storage = mail_namespace_get_default_storage(ns);
+ 		for (i = 0; i < count; i++) {
+-			if (ns->storage == storages[i])
++			if (ns_storage == storages[i])
+ 				break;
+ 		}
+ 		if (i == count) {
+-			if (ns_purge(_ctx, ns) < 0)
++			if (ns_purge(_ctx, ns, ns_storage) < 0)
+ 				ret = -1;
+-			array_append(&purged_storages, &ns->storage, 1);
++			array_append(&purged_storages, &ns_storage, 1);
+ 			storages = array_get(&purged_storages, &count);
+ 		}
+ 	}
+diff --git a/src/doveadm/doveadm-mail.c b/src/doveadm/doveadm-mail.c
+index 695885b..d035893 100644
+--- a/src/doveadm/doveadm-mail.c
++++ b/src/doveadm/doveadm-mail.c
+@@ -107,6 +107,7 @@ static int
+ cmd_purge_run(struct doveadm_mail_cmd_context *ctx, struct mail_user *user)
+ {
+ 	struct mail_namespace *ns;
++	struct mail_storage *storage;
+ 	int ret = 0;
+ 
+ 	for (ns = user->namespaces; ns != NULL; ns = ns->next) {
+@@ -114,10 +115,11 @@ cmd_purge_run(struct doveadm_mail_cmd_context *ctx, struct mail_user *user)
+ 		    ns->alias_for != NULL)
+ 			continue;
+ 
+-		if (mail_storage_purge(ns->storage) < 0) {
++		storage = mail_namespace_get_default_storage(ns);
++		if (mail_storage_purge(storage) < 0) {
+ 			i_error("Purging namespace '%s' failed: %s", ns->prefix,
+-				mail_storage_get_last_error(ns->storage, NULL));
+-			doveadm_mail_failed_storage(ctx, ns->storage);
++				mail_storage_get_last_error(storage, NULL));
++			doveadm_mail_failed_storage(ctx, storage);
+ 			ret = -1;
+ 		}
+ 	}
+diff --git a/src/lib-storage/index/shared/shared-list.c b/src/lib-storage/index/shared/shared-list.c
+index d7806fa..a218d78 100644
+--- a/src/lib-storage/index/shared/shared-list.c
++++ b/src/lib-storage/index/shared/shared-list.c
+@@ -51,8 +51,7 @@ shared_get_storage(struct mailbox_list **list, const char *vname,
+ 			return -1;
+ 	}
+ 	*list = ns->list;
+-	*storage_r = ns->storage;
+-	return 0;
++	return mailbox_list_get_storage(list, vname, storage_r);
+ }
+ 
+ static char shared_list_get_hierarchy_sep(struct mailbox_list *list ATTR_UNUSED)
+@@ -66,7 +65,8 @@ shared_list_get_path(struct mailbox_list *list, const char *name,
+ {
+ 	struct mail_namespace *ns = list->ns;
+ 
+-	if (list->ns->storage == NULL || name == NULL ||
++	if (mail_namespace_get_default_storage(list->ns) == NULL ||
++	    name == NULL ||
+ 	    shared_storage_get_namespace(&ns, &name) < 0) {
+ 		/* we don't have a directory we can use. */
+ 		*path_r = NULL;
+diff --git a/src/lib-storage/index/shared/shared-storage.c b/src/lib-storage/index/shared/shared-storage.c
+index e17d912..a6a76f3 100644
+--- a/src/lib-storage/index/shared/shared-storage.c
++++ b/src/lib-storage/index/shared/shared-storage.c
+@@ -346,7 +346,8 @@ int shared_storage_get_namespace(struct mail_namespace **_ns,
+ 	*_ns = new_ns;
+ 	if (_storage->class_flags == 0) {
+ 		/* flags are unset if we were using "auto" storage */
+-		_storage->class_flags = new_ns->storage->class_flags;
++		_storage->class_flags =
++			mail_namespace_get_default_storage(new_ns)->class_flags;
+ 	}
+ 
+ 	mail_user_add_namespace(user, &new_ns);
+diff --git a/src/lib-storage/mail-storage.c b/src/lib-storage/mail-storage.c
+index 9ecbd47..f52b353 100644
+--- a/src/lib-storage/mail-storage.c
++++ b/src/lib-storage/mail-storage.c
+@@ -655,8 +655,8 @@ struct mailbox *mailbox_alloc(struct mailbox_list *list, const char *vname,
+ 	}
+ 
+ 	if (mailbox_list_get_storage(&new_list, vname, &storage) < 0) {
+-		/* just use the first storage. FIXME: does this break? */
+-		storage = list->ns->storage;
++		/* just use the default storage. FIXME: does this break? */
++		storage = mail_namespace_get_default_storage(list->ns);
+ 	}
+ 
+ 	T_BEGIN {
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index a4b06b1..29e878d 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -776,7 +776,7 @@ int mailbox_list_get_storage(struct mailbox_list **list, const char *vname,
+ 	if ((*list)->v.get_storage != NULL)
+ 		return (*list)->v.get_storage(list, vname, storage_r);
+ 	else {
+-		*storage_r = (*list)->ns->storage;
++		*storage_r = mail_namespace_get_default_storage((*list)->ns);
+ 		return 0;
+ 	}
+ }
+@@ -784,7 +784,7 @@ int mailbox_list_get_storage(struct mailbox_list **list, const char *vname,
+ void mailbox_list_get_default_storage(struct mailbox_list *list,
+ 				      struct mail_storage **storage)
+ {
+-	*storage = list->ns->storage;
++	*storage = mail_namespace_get_default_storage(list->ns);
+ }
+ 
+ char mailbox_list_get_hierarchy_sep(struct mailbox_list *list)
+diff --git a/src/plugins/acl/acl-backend-vfile.c b/src/plugins/acl/acl-backend-vfile.c
+index ce8f2ae..54426d8 100644
+--- a/src/plugins/acl/acl-backend-vfile.c
++++ b/src/plugins/acl/acl-backend-vfile.c
+@@ -127,35 +127,43 @@ static void acl_backend_vfile_deinit(struct acl_backend *_backend)
+ }
+ 
+ static const char *
+-acl_backend_vfile_get_local_dir(struct acl_backend *backend, const char *name)
++acl_backend_vfile_get_local_dir(struct acl_backend *backend,
++				const char *name)
+ {
+ 	struct mail_namespace *ns = mailbox_list_get_namespace(backend->list);
++	struct mailbox_list *list = ns->list;
++	struct mail_storage *storage;
+ 	enum mailbox_list_path_type type;
+-	const char *dir, *inbox, *error;
++	const char *dir, *inbox, *vname, *error;
+ 
+ 	if (*name == '\0')
+ 		name = NULL;
+-	else if (!mailbox_list_is_valid_name(ns->list, name, &error))
++	else if (!mailbox_list_is_valid_name(list, name, &error))
+ 		return NULL;
+ 
+ 	/* ACL files are very important. try to keep them among the main
+ 	   mail files. that's not possible though with a) if the mailbox is
+ 	   a file or b) if the mailbox path doesn't point to filesystem. */
+-	type = mail_storage_is_mailbox_file(ns->storage) ||
+-		(ns->storage->class_flags & MAIL_STORAGE_CLASS_FLAG_NO_ROOT) != 0 ?
++	vname = mailbox_list_get_vname(backend->list, name);
++	if (mailbox_list_get_storage(&list, vname, &storage) < 0)
++		return NULL;
++	i_assert(list == ns->list);
++
++	type = mail_storage_is_mailbox_file(storage) ||
++		(storage->class_flags & MAIL_STORAGE_CLASS_FLAG_NO_ROOT) != 0 ?
+ 		MAILBOX_LIST_PATH_TYPE_CONTROL : MAILBOX_LIST_PATH_TYPE_MAILBOX;
+ 	if (name == NULL) {
+-		if (!mailbox_list_get_root_path(ns->list, type, &dir))
++		if (!mailbox_list_get_root_path(list, type, &dir))
+ 			return FALSE;
+ 	} else {
+-		if (mailbox_list_get_path(ns->list, name, type, &dir) <= 0)
++		if (mailbox_list_get_path(list, name, type, &dir) <= 0)
+ 			return NULL;
+ 	}
+ 
+ 	/* verify that the directory isn't same as INBOX's directory.
+ 	   this is mainly for Maildir. */
+ 	if (name == NULL &&
+-	    mailbox_list_get_path(ns->list, "INBOX",
++	    mailbox_list_get_path(list, "INBOX",
+ 				  MAILBOX_LIST_PATH_TYPE_MAILBOX, &inbox) > 0 &&
+ 	    strcmp(inbox, dir) == 0) {
+ 		/* can't have default ACLs with this setup */
+@@ -177,15 +185,17 @@ acl_backend_vfile_object_init(struct acl_backend *_backend,
+ 	aclobj->aclobj.backend = _backend;
+ 	aclobj->aclobj.name = i_strdup(name);
+ 
+-	if (backend->global_dir != NULL) T_BEGIN {
+-		vname = mailbox_list_get_vname(backend->backend.list, name);
+-		aclobj->global_path = i_strconcat(backend->global_dir, "/",
+-						  vname, NULL);
+-	} T_END;
++	T_BEGIN {
++		if (backend->global_dir != NULL) {
++			vname = mailbox_list_get_vname(backend->backend.list, name);
++			aclobj->global_path =
++				i_strconcat(backend->global_dir, "/", vname, NULL);
++		}
+ 
+-	dir = acl_backend_vfile_get_local_dir(_backend, name);
+-	aclobj->local_path = dir == NULL ? NULL :
+-		i_strconcat(dir, "/"ACL_FILENAME, NULL);
++		dir = acl_backend_vfile_get_local_dir(_backend, name);
++		aclobj->local_path = dir == NULL ? NULL :
++			i_strconcat(dir, "/"ACL_FILENAME, NULL);
++	} T_END;
+ 	return &aclobj->aclobj;
+ }
+ 
+diff --git a/src/plugins/acl/acl-shared-storage.c b/src/plugins/acl/acl-shared-storage.c
+index 30c5493..a673718 100644
+--- a/src/plugins/acl/acl-shared-storage.c
++++ b/src/plugins/acl/acl-shared-storage.c
+@@ -84,7 +84,7 @@ int acl_shared_namespaces_add(struct mail_namespace *ns)
+ {
+ 	struct acl_user *auser = ACL_USER_CONTEXT(ns->user);
+ 	struct acl_mailbox_list *alist = ACL_LIST_CONTEXT(ns->list);
+-	struct mail_storage *storage = ns->storage;
++	struct mail_storage *storage = mail_namespace_get_default_storage(ns);
+ 	struct acl_lookup_dict_iter *iter;
+ 	const char *name;
+ 
+-- 
+1.7.10.2
+
