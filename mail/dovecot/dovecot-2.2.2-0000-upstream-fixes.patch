@@ -7175,3 +7175,2775 @@ index 30c5493..a673718 100644
 -- 
 1.7.10.2
 
+
+From a77951a4de706526ac75a3adb72375ee48912cb0 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 12:20:54 +0300
+Subject: [PATCH] lib-imap-client: Don't start another DNS lookup if there's
+ already one ongoing.
+
+
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index 886e7b9..b5e769b 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -1374,7 +1374,7 @@ void imapc_connection_connect(struct imapc_connection *conn,
+ 	unsigned int ips_count;
+ 	int ret;
+ 
+-	if (conn->fd != -1) {
++	if (conn->fd != -1 || conn->dns_lookup != NULL) {
+ 		i_assert(login_callback == NULL);
+ 		return;
+ 	}
+-- 
+1.7.10.2
+
+
+From 5143e4b2b372d092b3c523b1aaa681292ef123c0 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 12:21:14 +0300
+Subject: [PATCH] lib-imap-client: Make sure DNS lookups get aborted at
+ disconnect.
+
+
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index b5e769b..22722a6 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -352,7 +352,7 @@ void imapc_connection_disconnect(struct imapc_connection *conn)
+ 	bool reconnecting = conn->selected_box != NULL &&
+ 		conn->selected_box->reconnecting;
+ 
+-	if (conn->fd == -1)
++	if (conn->state == IMAPC_CONNECTION_STATE_DISCONNECTED)
+ 		return;
+ 
+ 	if (conn->client->set.debug)
+@@ -366,14 +366,18 @@ void imapc_connection_disconnect(struct imapc_connection *conn)
+ 		timeout_remove(&conn->to);
+ 	if (conn->to_output != NULL)
+ 		timeout_remove(&conn->to_output);
+-	imap_parser_unref(&conn->parser);
+-	io_remove(&conn->io);
++	if (conn->parser != NULL)
++		imap_parser_unref(&conn->parser);
++	if (conn->io != NULL)
++		io_remove(&conn->io);
+ 	if (conn->ssl_iostream != NULL)
+ 		ssl_iostream_unref(&conn->ssl_iostream);
+-	i_stream_destroy(&conn->input);
+-	o_stream_destroy(&conn->output);
+-	net_disconnect(conn->fd);
+-	conn->fd = -1;
++	if (conn->fd != -1) {
++		i_stream_destroy(&conn->input);
++		o_stream_destroy(&conn->output);
++		net_disconnect(conn->fd);
++		conn->fd = -1;
++	}
+ 
+ 	imapc_connection_set_state(conn, IMAPC_CONNECTION_STATE_DISCONNECTED);
+ 	imapc_connection_abort_commands(conn, NULL, reconnecting);
+-- 
+1.7.10.2
+
+
+From 36c347995167a72bc095b8cccc7ccc0f2d1759e5 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 12:24:27 +0300
+Subject: [PATCH] lib-imap-client: When switching ioloops, do it also for the
+ DNS lookup.
+
+
+diff --git a/src/lib-imap-client/imapc-connection.c b/src/lib-imap-client/imapc-connection.c
+index 22722a6..0276730 100644
+--- a/src/lib-imap-client/imapc-connection.c
++++ b/src/lib-imap-client/imapc-connection.c
+@@ -187,6 +187,8 @@ void imapc_connection_ioloop_changed(struct imapc_connection *conn)
+ 		conn->to = io_loop_move_timeout(&conn->to);
+ 	if (conn->output != NULL)
+ 		o_stream_switch_ioloop(conn->output);
++	if (conn->dns_lookup != NULL)
++		dns_lookup_switch_ioloop(conn->dns_lookup);
+ 
+ 	if (conn->client->ioloop == NULL && conn->to_output != NULL) {
+ 		/* we're only once moving the to_output to the main ioloop,
+-- 
+1.7.10.2
+
+
+From 1a3032205435548259c5265d8f1637a256fe7464 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 12:36:30 +0300
+Subject: [PATCH] var_expand*(): Fixed %N to work the same with little and big
+ endian CPUs. Also use 64bit integer to do the MOD from,
+ which should give somewhat better value distribution than
+ with 32bit.
+
+
+diff --git a/src/lib/var-expand.c b/src/lib/var-expand.c
+index 0e8ec6a..4eab9b6 100644
+--- a/src/lib/var-expand.c
++++ b/src/lib/var-expand.c
+@@ -92,17 +92,21 @@ m_str_newhash(const char *str, struct var_expand_context *ctx)
+ {
+ 	string_t *hash = t_str_new(20);
+ 	unsigned char result[MD5_RESULTLEN];
+-	unsigned int value;
++	unsigned int i;
++	uint64_t value;
+ 
+ 	md5_get_digest(str, strlen(str), result);
+-	memcpy(&value, result, sizeof(value));
++	for (i = 0; i < sizeof(value); i++) {
++		value <<= 8;
++		value |= result[i];
++	}
+ 
+ 	if (ctx->width != 0) {
+ 		value %= ctx->width;
+ 		ctx->width = 0;
+ 	}
+ 
+-	str_printfa(hash, "%x", value);
++	str_printfa(hash, "%x", (unsigned int)value);
+ 	while ((int)str_len(hash) < ctx->offset)
+ 		str_insert(hash, 0, "0");
+         ctx->offset = 0;
+-- 
+1.7.10.2
+
+
+From fa2b25d00a014d334c534646abe812c3f711f4b1 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 12:42:34 +0300
+Subject: [PATCH] var_expand*(): Added small unit tests for %H and %N
+
+
+diff --git a/src/lib/test-var-expand.c b/src/lib/test-var-expand.c
+index 4ff14c8..a00be13 100644
+--- a/src/lib/test-var-expand.c
++++ b/src/lib/test-var-expand.c
+@@ -21,9 +21,15 @@ static void test_var_expand_builtin(void)
+ 	static struct var_expand_test tests[] = {
+ 		{ "%{hostname}", NULL },
+ 		{ "%{pid}", NULL },
+-		{ "a%{env:FOO}b", "abaRb" }
++		{ "a%{env:FOO}b", "abaRb" },
++		{ "%50Hv", "1f" },
++		{ "%50Hw", "2e" },
++		{ "%50Nv", "25" },
++		{ "%50Nw", "e" }
+ 	};
+ 	static struct var_expand_table table[] = {
++		{ 'v', "value", NULL },
++		{ 'w', "value2", NULL },
+ 		{ '\0', NULL, NULL }
+ 	};
+ 	string_t *str = t_str_new(128);
+-- 
+1.7.10.2
+
+
+From 184696cc389fcf644e67bfe5ceb9a56e6abe0d0b Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Thu, 6 Jun 2013 16:43:01 +0300
+Subject: [PATCH] var_expand(): Fixed initializing variable to %N
+
+
+diff --git a/src/lib/var-expand.c b/src/lib/var-expand.c
+index 4eab9b6..e8ad5e8 100644
+--- a/src/lib/var-expand.c
++++ b/src/lib/var-expand.c
+@@ -93,7 +93,7 @@ m_str_newhash(const char *str, struct var_expand_context *ctx)
+ 	string_t *hash = t_str_new(20);
+ 	unsigned char result[MD5_RESULTLEN];
+ 	unsigned int i;
+-	uint64_t value;
++	uint64_t value = 0;
+ 
+ 	md5_get_digest(str, strlen(str), result);
+ 	for (i = 0; i < sizeof(value); i++) {
+-- 
+1.7.10.2
+
+
+From e2744cc02dbcd3b2e8c9d6510942c33afc4b5cfe Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Fri, 7 Jun 2013 20:12:15 +0300
+Subject: [PATCH] imap-login: If PLAIN mechanism is disabled, advertise
+ LOGINDISABLED always.
+
+
+diff --git a/src/imap-login/client.c b/src/imap-login/client.c
+index c5d7097..e9e291c 100644
+--- a/src/imap-login/client.c
++++ b/src/imap-login/client.c
+@@ -48,6 +48,22 @@ bool client_skip_line(struct imap_client *client)
+ 	return FALSE;
+ }
+ 
++static bool is_login_cmd_disabled(struct client *client)
++{
++	if (client->secured) {
++		if (auth_client_find_mech(auth_client, "PLAIN") == NULL) {
++			/* no PLAIN authentication, can't use LOGIN command */
++			return TRUE;
++		}
++		return FALSE;
++	}
++	if (client->set->disable_plaintext_auth)
++		return TRUE;
++	if (strcmp(client->ssl_set->ssl, "required") == 0)
++		return TRUE;
++	return FALSE;
++}
++
+ static const char *get_capability(struct client *client)
+ {
+ 	struct imap_client *imap_client = (struct imap_client *)client;
+@@ -65,8 +81,7 @@ static const char *get_capability(struct client *client)
+ 
+ 	if (client_is_tls_enabled(client) && !client->tls)
+ 		str_append(cap_str, " STARTTLS");
+-	if (!client->secured & (client->set->disable_plaintext_auth ||
+-				strcmp(client->ssl_set->ssl, "required") == 0))
++	if (is_login_cmd_disabled(client))
+ 		str_append(cap_str, " LOGINDISABLED");
+ 
+ 	client_authenticate_get_capabilities(client, cap_str);
+-- 
+1.7.10.2
+
+
+From cd94da865b183b3a191fcd0dc9c3dd9142847eb5 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Fri, 7 Jun 2013 22:06:24 +0300
+Subject: [PATCH] auth: Don't crash in non-plaintext auth if master user login
+ is tried without master passdbs.
+
+
+diff --git a/src/auth/auth-request.c b/src/auth/auth-request.c
+index 09e21de..1f6abb6 100644
+--- a/src/auth/auth-request.c
++++ b/src/auth/auth-request.c
+@@ -836,7 +836,7 @@ void auth_request_lookup_credentials(struct auth_request *request,
+ 				     const char *scheme,
+ 				     lookup_credentials_callback_t *callback)
+ {
+-	struct passdb_module *passdb = request->passdb->passdb;
++	struct passdb_module *passdb;
+ 	const char *cache_key, *cache_cred, *cache_scheme;
+ 	enum passdb_result result;
+ 
+@@ -846,6 +846,7 @@ void auth_request_lookup_credentials(struct auth_request *request,
+ 		callback(PASSDB_RESULT_USER_UNKNOWN, NULL, 0, request);
+ 		return;
+ 	}
++	passdb = request->passdb->passdb;
+ 
+ 	request->credentials_scheme = p_strdup(request->pool, scheme);
+ 	request->private_callback.lookup_credentials = callback;
+-- 
+1.7.10.2
+
+
+From b8db8a3814a77beb88c2949b6bf0eef24b7614c4 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 00:06:42 +0300
+Subject: [PATCH] auth: If worker request has been queued for 60 secs, abort
+ it.
+
+
+diff --git a/src/auth/auth-worker-server.c b/src/auth/auth-worker-server.c
+index 00be552..9ff3827 100644
+--- a/src/auth/auth-worker-server.c
++++ b/src/auth/auth-worker-server.c
+@@ -19,6 +19,7 @@
+ 
+ #define AUTH_WORKER_LOOKUP_TIMEOUT_SECS 60
+ #define AUTH_WORKER_MAX_IDLE_SECS (60*5)
++#define AUTH_WORKER_ABORT_SECS 60
+ #define AUTH_WORKER_DELAY_WARN_SECS 3
+ #define AUTH_WORKER_DELAY_WARN_MIN_INTERVAL_SECS 300
+ 
+@@ -76,20 +77,29 @@ static void auth_worker_call_timeout(struct auth_worker_connection *conn)
+ 	auth_worker_destroy(&conn, "Lookup timed out", TRUE);
+ }
+ 
+-static void auth_worker_request_send(struct auth_worker_connection *conn,
++static bool auth_worker_request_send(struct auth_worker_connection *conn,
+ 				     struct auth_worker_request *request)
+ {
+ 	struct const_iovec iov[3];
+-
+-	if (ioloop_time - request->created > AUTH_WORKER_DELAY_WARN_SECS &&
++	unsigned int age_secs = ioloop_time - request->created;
++
++	if (age_secs >= AUTH_WORKER_ABORT_SECS) {
++		i_error("Aborting auth request that was queued for %d secs, "
++			"%d left in queue",
++			age_secs, aqueue_count(worker_request_queue));
++		request->callback(t_strdup_printf(
++			"FAIL\t%d", PASSDB_RESULT_INTERNAL_FAILURE),
++			request->context);
++		return FALSE;
++	}
++	if (age_secs >= AUTH_WORKER_DELAY_WARN_SECS &&
+ 	    ioloop_time - auth_worker_last_warn >
+ 	    AUTH_WORKER_DELAY_WARN_MIN_INTERVAL_SECS) {
+ 		auth_worker_last_warn = ioloop_time;
+ 		i_warning("auth workers: Auth request was queued for %d "
+ 			  "seconds, %d left in queue "
+ 			  "(see auth_worker_max_count)",
+-			  (int)(ioloop_time - request->created),
+-			  aqueue_count(worker_request_queue));
++			  age_secs, aqueue_count(worker_request_queue));
+ 	}
+ 
+ 	request->id = ++conn->id_counter;
+@@ -110,20 +120,22 @@ static void auth_worker_request_send(struct auth_worker_connection *conn,
+ 	conn->to = timeout_add(AUTH_WORKER_LOOKUP_TIMEOUT_SECS * 1000,
+ 			       auth_worker_call_timeout, conn);
+ 	idle_count--;
++	return TRUE;
+ }
+ 
+ static void auth_worker_request_send_next(struct auth_worker_connection *conn)
+ {
+ 	struct auth_worker_request *request, *const *requestp;
+ 
+-	if (aqueue_count(worker_request_queue) == 0)
+-		return;
++	do {
++		if (aqueue_count(worker_request_queue) == 0)
++			return;
+ 
+-	requestp = array_idx(&worker_request_array,
+-			     aqueue_idx(worker_request_queue, 0));
+-	request = *requestp;
+-	aqueue_delete_tail(worker_request_queue);
+-	auth_worker_request_send(conn, request);
++		requestp = array_idx(&worker_request_array,
++				     aqueue_idx(worker_request_queue, 0));
++		request = *requestp;
++		aqueue_delete_tail(worker_request_queue);
++	} while (!auth_worker_request_send(conn, request));
+ }
+ 
+ static void auth_worker_send_handshake(struct auth_worker_connection *conn)
+@@ -410,9 +422,10 @@ auth_worker_call(pool_t pool, const char *data,
+ 			conn = auth_worker_create();
+ 		}
+ 	}
+-	if (conn != NULL)
+-		auth_worker_request_send(conn, request);
+-	else {
++	if (conn != NULL) {
++		if (!auth_worker_request_send(conn, request))
++			i_unreached();
++	} else {
+ 		/* reached the limit, queue the request */
+ 		aqueue_append(worker_request_queue, &request);
+ 	}
+-- 
+1.7.10.2
+
+
+From b2e1165a3fdd0e4f3aaf43088dd3c96a1bbbc5dc Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 00:42:36 +0300
+Subject: [PATCH] imapc: imapc_storage no longer requires imapc_mailbox_list.
+
+
+diff --git a/src/lib-storage/index/imapc/imapc-storage.c b/src/lib-storage/index/imapc/imapc-storage.c
+index cae2e6b..a3e30fa 100644
+--- a/src/lib-storage/index/imapc/imapc-storage.c
++++ b/src/lib-storage/index/imapc/imapc-storage.c
+@@ -226,6 +226,8 @@ static void imapc_storage_send_hierarcy_sep_lookup(struct imapc_storage *storage
+ 
+ int imapc_storage_try_get_root_sep(struct imapc_storage *storage, char *sep_r)
+ {
++	i_assert(storage->list != NULL);
++
+ 	if (storage->root_sep == '\0') {
+ 		imapc_storage_send_hierarcy_sep_lookup(storage);
+ 		while (storage->root_sep_pending)
+@@ -292,23 +294,28 @@ imapc_storage_create(struct mail_storage *_storage,
+ 		set.ssl_mode = IMAPC_CLIENT_SSL_MODE_NONE;
+ 	set.ssl_crypto_device = _storage->set->ssl_crypto_device;
+ 
+-	storage->list = (struct imapc_mailbox_list *)ns->list;
+-	storage->list->storage = storage;
+ 	storage->client = imapc_client_init(&set);
+ 
+ 	p_array_init(&storage->remote_namespaces, _storage->pool, 4);
+ 	p_array_init(&storage->untagged_callbacks, _storage->pool, 16);
++	if (strcmp(ns->list->name, MAILBOX_LIST_NAME_IMAPC) == 0) {
++		storage->list = (struct imapc_mailbox_list *)ns->list;
++		storage->list->storage = storage;
++		imapc_list_register_callbacks(storage->list);
++	}
++
+ 	imapc_client_register_untagged(storage->client,
+ 				       imapc_storage_untagged_cb, storage);
+-	imapc_list_register_callbacks(storage->list);
+ 	imapc_storage_register_untagged(storage, "STATUS",
+ 					imapc_untagged_status);
+ 	imapc_storage_register_untagged(storage, "NAMESPACE",
+ 					imapc_untagged_namespace);
+ 	/* start connecting to imap server and get the hierarchy separator. */
+ 	imapc_client_login(storage->client, NULL, NULL);
+-	imapc_storage_send_hierarcy_sep_lookup(storage);
+-	if ((ns->flags & NAMESPACE_FLAG_INBOX_USER) != 0) {
++	if (storage->list != NULL)
++		imapc_storage_send_hierarcy_sep_lookup(storage);
++	if ((ns->flags & NAMESPACE_FLAG_INBOX_USER) != 0 &&
++	    storage->list != NULL) {
+ 		/* we're using imapc for the INBOX namespace. wait and make
+ 		   sure we can successfully access the IMAP server (so if the
+ 		   username is invalid we don't just keep failing every
+@@ -336,8 +343,10 @@ static void imapc_storage_add_list(struct mail_storage *_storage,
+ 	struct imapc_storage *storage = (struct imapc_storage *)_storage;
+ 	struct imapc_mailbox_list *list = (struct imapc_mailbox_list *)_list;
+ 
+-	i_assert(storage->list != NULL);
+-	list->storage = storage;
++	if (strcmp(_list->name, MAILBOX_LIST_NAME_IMAPC) == 0) {
++		i_assert(storage->list != NULL);
++		list->storage = storage;
++	}
+ }
+ 
+ void imapc_storage_register_untagged(struct imapc_storage *storage,
+-- 
+1.7.10.2
+
+
+From 188b96af3c02004afc063a37868cf6ce90043043 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 00:46:06 +0300
+Subject: [PATCH] lib-storage: Added support for multiple storages per
+ namespace.
+
+
+diff --git a/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c b/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c
+index 96542f4..bc1c1ff 100644
+--- a/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c
++++ b/src/lib-storage/index/dbox-multi/mdbox-storage-rebuild.c
+@@ -541,7 +541,11 @@ rebuild_mailbox(struct mdbox_storage_rebuild_context *ctx,
+ 
+ 	box = mailbox_alloc(ns->list, vname, MAILBOX_FLAG_READONLY |
+ 			    MAILBOX_FLAG_IGNORE_ACLS);
+-	i_assert(box->storage == &ctx->storage->storage.storage);
++	if (box->storage != &ctx->storage->storage.storage) {
++		/* the namespace has multiple storages. */
++		mailbox_free(&box);
++		return 0;
++	}
+ 	if (mailbox_open(box) < 0) {
+ 		error = mailbox_get_last_mail_error(box);
+ 		i_error("Couldn't open mailbox '%s': %s",
+diff --git a/src/lib-storage/mail-namespace.c b/src/lib-storage/mail-namespace.c
+index 2383a93..a6ede7a 100644
+--- a/src/lib-storage/mail-namespace.c
++++ b/src/lib-storage/mail-namespace.c
+@@ -34,9 +34,9 @@ static struct mail_namespace_settings prefixless_ns_set;
+ void mail_namespace_add_storage(struct mail_namespace *ns,
+ 				struct mail_storage *storage)
+ {
+-	/* currently we support only a single storage */
+-	i_assert(ns->storage == NULL);
+-	ns->storage = storage;
++	if (ns->storage == NULL)
++		ns->storage = storage;
++	array_append(&ns->all_storages, &storage, 1);
+ 
+ 	if (storage->v.add_list != NULL)
+ 		storage->v.add_list(storage, ns->list);
+@@ -52,8 +52,11 @@ void mail_namespace_finish_list_init(struct mail_namespace *ns,
+ 
+ static void mail_namespace_free(struct mail_namespace *ns)
+ {
+-	if (ns->storage != NULL)
+-		mail_storage_unref(&ns->storage);
++	struct mail_storage **storagep;
++
++	array_foreach_modifiable(&ns->all_storages, storagep)
++		mail_storage_unref(storagep);
++	array_free(&ns->all_storages);
+ 	if (ns->list != NULL)
+ 		mailbox_list_destroy(&ns->list);
+ 
+@@ -150,6 +153,7 @@ namespace_add(struct mail_user *user,
+ 	ns->mail_set = mail_set;
+ 	ns->prefix = i_strdup(ns_set->prefix);
+ 	ns->special_use_mailboxes = namespace_has_special_use_mailboxes(ns_set);
++	i_array_init(&ns->all_storages, 2);
+ 
+ 	if (ns->type == MAIL_NAMESPACE_TYPE_SHARED &&
+ 	    (strchr(ns->prefix, '%') != NULL ||
+@@ -510,9 +514,12 @@ void mail_namespaces_set_storage_callbacks(struct mail_namespace *namespaces,
+ 					   void *context)
+ {
+ 	struct mail_namespace *ns;
++	struct mail_storage *const *storagep;
+ 
+-	for (ns = namespaces; ns != NULL; ns = ns->next)
+-		mail_storage_set_callbacks(ns->storage, callbacks, context);
++	for (ns = namespaces; ns != NULL; ns = ns->next) {
++		array_foreach(&ns->all_storages, storagep)
++			mail_storage_set_callbacks(*storagep, callbacks, context);
++	}
+ }
+ 
+ void mail_namespace_ref(struct mail_namespace *ns)
+@@ -558,7 +565,6 @@ void mail_namespace_destroy(struct mail_namespace *ns)
+ struct mail_storage *
+ mail_namespace_get_default_storage(struct mail_namespace *ns)
+ {
+-	/* currently we don't support more than one storage per namespace */
+ 	return ns->storage;
+ }
+ 
+diff --git a/src/lib-storage/mail-namespace.h b/src/lib-storage/mail-namespace.h
+index 081bce9..8580015 100644
+--- a/src/lib-storage/mail-namespace.h
++++ b/src/lib-storage/mail-namespace.h
+@@ -67,8 +67,8 @@ struct mail_namespace {
+ 
+ 	struct mail_user *user, *owner;
+ 	struct mailbox_list *list;
+-	/* FIXME: we should support multiple storages in one namespace */
+-	struct mail_storage *storage;
++	struct mail_storage *storage; /* default storage */
++	ARRAY(struct mail_storage *) all_storages;
+ 
+ 	const struct mail_namespace_settings *set, *unexpanded_set;
+ 	const struct mail_storage_settings *mail_set;
+diff --git a/src/lib-storage/mail-storage.c b/src/lib-storage/mail-storage.c
+index f52b353..7885702 100644
+--- a/src/lib-storage/mail-storage.c
++++ b/src/lib-storage/mail-storage.c
+@@ -298,14 +298,15 @@ mail_storage_find(struct mail_user *user,
+ 	return NULL;
+ }
+ 
+-int mail_storage_create(struct mail_namespace *ns, const char *driver,
+-			enum mail_storage_flags flags, const char **error_r)
++int mail_storage_create_full(struct mail_namespace *ns, const char *driver,
++			     const char *data, enum mail_storage_flags flags,
++			     struct mail_storage **storage_r,
++			     const char **error_r)
+ {
+ 	struct mail_storage *storage_class, *storage = NULL;
+ 	struct mailbox_list *list;
+ 	struct mailbox_list_settings list_set;
+ 	enum mailbox_list_flags list_flags = 0;
+-	const char *data = ns->set->location;
+ 	const char *p;
+ 
+ 	if ((flags & MAIL_STORAGE_FLAG_KEEP_HEADER_MD5) == 0 &&
+@@ -369,6 +370,7 @@ int mail_storage_create(struct mail_namespace *ns, const char *driver,
+ 		/* using an existing storage */
+ 		storage->refcount++;
+ 		mail_namespace_add_storage(ns, storage);
++		*storage_r = storage;
+ 		return 0;
+ 	}
+ 
+@@ -392,10 +394,20 @@ int mail_storage_create(struct mail_namespace *ns, const char *driver,
+ 	} T_END;
+ 
+ 	DLLIST_PREPEND(&ns->user->storages, storage);
+-        mail_namespace_add_storage(ns, storage);
++	mail_namespace_add_storage(ns, storage);
++	*storage_r = storage;
+ 	return 0;
+ }
+ 
++int mail_storage_create(struct mail_namespace *ns, const char *driver,
++			enum mail_storage_flags flags, const char **error_r)
++{
++	struct mail_storage *storage;
++
++	return mail_storage_create_full(ns, driver, ns->set->location,
++					flags, &storage, error_r);
++}
++
+ void mail_storage_unref(struct mail_storage **_storage)
+ {
+ 	struct mail_storage *storage = *_storage;
+@@ -639,6 +651,8 @@ struct mailbox *mailbox_alloc(struct mailbox_list *list, const char *vname,
+ 	struct mailbox_list *new_list = list;
+ 	struct mail_storage *storage;
+ 	struct mailbox *box;
++	enum mail_error open_error = 0;
++	const char *errstr = NULL;
+ 
+ 	i_assert(uni_utf8_str_is_valid(vname));
+ 
+@@ -654,14 +668,19 @@ struct mailbox *mailbox_alloc(struct mailbox_list *list, const char *vname,
+ 			vname = t_strconcat("INBOX", vname + 5, NULL);
+ 	}
+ 
+-	if (mailbox_list_get_storage(&new_list, vname, &storage) < 0) {
+-		/* just use the default storage. FIXME: does this break? */
+-		storage = mail_namespace_get_default_storage(list->ns);
+-	}
+-
+ 	T_BEGIN {
++		if (mailbox_list_get_storage(&new_list, vname, &storage) < 0) {
++			/* do a delayed failure at mailbox_open() */
++			storage = mail_namespace_get_default_storage(list->ns);
++			errstr = mailbox_list_get_last_error(new_list, &open_error);
++			errstr = t_strdup(errstr);
++		}
++
+ 		box = storage->v.mailbox_alloc(storage, new_list, vname, flags);
+ 		box->set = mailbox_settings_find(storage->user, vname);
++		box->open_error = open_error;
++		if (open_error != 0)
++			mail_storage_set_error(storage, open_error, errstr);
+ 		hook_mailbox_allocated(box);
+ 	} T_END;
+ 
+diff --git a/src/lib-storage/mail-storage.h b/src/lib-storage/mail-storage.h
+index 0a5d5b4..0a91572 100644
+--- a/src/lib-storage/mail-storage.h
++++ b/src/lib-storage/mail-storage.h
+@@ -419,6 +419,10 @@ struct mail_storage *mail_storage_find_class(const char *name);
+ int mail_storage_create(struct mail_namespace *ns, const char *driver,
+ 			enum mail_storage_flags flags, const char **error_r)
+ 	ATTR_NULL(2);
++int mail_storage_create_full(struct mail_namespace *ns, const char *driver,
++			     const char *data, enum mail_storage_flags flags,
++			     struct mail_storage **storage_r,
++			     const char **error_r) ATTR_NULL(2);
+ void mail_storage_unref(struct mail_storage **storage);
+ 
+ /* Returns the mail storage settings. */
+-- 
+1.7.10.2
+
+
+From 2ae207e9f431b1ebcdef4aa9102a3b490eb6ee98 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 00:48:14 +0300
+Subject: [PATCH] lib-storage: Added mailbox { driver } setting to specify
+ which storage to use.
+
+
+diff --git a/src/lib-storage/mail-storage-settings.c b/src/lib-storage/mail-storage-settings.c
+index 67f724d..6c13dbe 100644
+--- a/src/lib-storage/mail-storage-settings.c
++++ b/src/lib-storage/mail-storage-settings.c
+@@ -118,6 +118,7 @@ static const struct setting_define mailbox_setting_defines[] = {
+ 	DEF(SET_STR, name),
+ 	{ SET_ENUM, "auto", offsetof(struct mailbox_settings, autocreate), NULL } ,
+ 	DEF(SET_STR, special_use),
++	DEF(SET_STR, driver),
+ 
+ 	SETTING_DEFINE_LIST_END
+ };
+@@ -127,7 +128,8 @@ const struct mailbox_settings mailbox_default_settings = {
+ 	.autocreate = MAILBOX_SET_AUTO_NO":"
+ 		MAILBOX_SET_AUTO_CREATE":"
+ 		MAILBOX_SET_AUTO_SUBSCRIBE,
+-	.special_use = ""
++	.special_use = "",
++	.driver = ""
+ };
+ 
+ const struct setting_parser_info mailbox_setting_parser_info = {
+diff --git a/src/lib-storage/mail-storage-settings.h b/src/lib-storage/mail-storage-settings.h
+index aeeadc8..7c5e52b 100644
+--- a/src/lib-storage/mail-storage-settings.h
++++ b/src/lib-storage/mail-storage-settings.h
+@@ -75,6 +75,7 @@ struct mailbox_settings {
+ 	const char *name;
+ 	const char *autocreate;
+ 	const char *special_use;
++	const char *driver;
+ };
+ 
+ struct mail_user_settings {
+diff --git a/src/lib-storage/mailbox-list.c b/src/lib-storage/mailbox-list.c
+index 29e878d..03e5fec 100644
+--- a/src/lib-storage/mailbox-list.c
++++ b/src/lib-storage/mailbox-list.c
+@@ -15,7 +15,7 @@
+ #include "imap-utf7.h"
+ #include "mailbox-log.h"
+ #include "mailbox-tree.h"
+-#include "mail-storage.h"
++#include "mail-storage-private.h"
+ #include "mail-storage-hooks.h"
+ #include "mailbox-list-private.h"
+ 
+@@ -770,15 +770,50 @@ mailbox_list_get_user(const struct mailbox_list *list)
+ 	return list->ns->user;
+ }
+ 
++static int
++mailbox_list_get_storage_driver(struct mailbox_list *list, const char *driver,
++				struct mail_storage **storage_r)
++{
++	struct mail_storage *const *storagep;
++	const char *error, *data;
++
++	array_foreach(&list->ns->all_storages, storagep) {
++		if (strcmp((*storagep)->name, driver) == 0) {
++			*storage_r = *storagep;
++			return 0;
++		}
++	}
++
++	data = strchr(list->ns->set->location, ':');
++	if (data == NULL)
++		data = "";
++	else
++		data++;
++	if (mail_storage_create_full(list->ns, driver, data, 0,
++				     storage_r, &error) < 0) {
++		mailbox_list_set_critical(list,
++			"Namespace %s: Failed to create storage '%s': %s",
++			list->ns->prefix, driver, error);
++		return -1;
++	}
++	return 0;
++}
++
+ int mailbox_list_get_storage(struct mailbox_list **list, const char *vname,
+ 			     struct mail_storage **storage_r)
+ {
++	const struct mailbox_settings *set;
++
+ 	if ((*list)->v.get_storage != NULL)
+ 		return (*list)->v.get_storage(list, vname, storage_r);
+-	else {
+-		*storage_r = mail_namespace_get_default_storage((*list)->ns);
+-		return 0;
++
++	set = mailbox_settings_find((*list)->ns->user, vname);
++	if (set != NULL && set->driver[0] != '\0') {
++		return mailbox_list_get_storage_driver(*list, set->driver,
++						       storage_r);
+ 	}
++	*storage_r = mail_namespace_get_default_storage((*list)->ns);
++	return 0;
+ }
+ 
+ void mailbox_list_get_default_storage(struct mailbox_list *list,
+-- 
+1.7.10.2
+
+
+From 6ccd82c04f112e8e61e5a9312273ec9dc1b00f27 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 02:08:24 +0300
+Subject: [PATCH] lib-http: If connect to peer failed, don't recreate a new
+ connection to handle pending requests. The new connection
+ would very likely fail as well. Another peer for the host
+ should pick up the requests.
+
+
+diff --git a/src/lib-http/http-client-peer.c b/src/lib-http/http-client-peer.c
+index 12618d0..9eb7dc3 100644
+--- a/src/lib-http/http-client-peer.c
++++ b/src/lib-http/http-client-peer.c
+@@ -277,12 +277,12 @@ void http_client_peer_connection_failure(struct http_client_peer *peer,
+ 
+ 	http_client_peer_debug(peer, "Failed to make connection");
+ 
++	peer->last_connect_failed = TRUE;
+ 	if (array_count(&peer->conns) > 1) {
+ 		/* if there are other connections attempting to connect, wait
+ 		   for them before failing the requests. remember that we had
+ 		   trouble with connecting so in future we don't try to create
+ 		   more than one connection until connects work again. */
+-		peer->last_connect_failed = TRUE;
+ 	} else {
+ 		/* this was the only/last connection and connecting to it
+ 		   failed. a second connect will probably also fail, so just
+@@ -306,8 +306,11 @@ void http_client_peer_connection_lost(struct http_client_peer *peer)
+ 	http_client_peer_debug(peer, "Lost a connection (%d connections left)",
+ 		array_count(&peer->conns));
+ 
+-	/* if there are pending requests, create a new connection for them. */
+-	http_client_peer_handle_requests(peer);
++	if (!peer->last_connect_failed) {
++		/* if there are pending requests, create a new
++		   connection for them. */
++		http_client_peer_handle_requests(peer);
++	}
+ 	if (array_count(&peer->conns) == 0 &&
+ 	    http_client_peer_requests_pending(peer, &num_urgent) == 0)
+ 		http_client_peer_free(&peer);
+-- 
+1.7.10.2
+
+
+From 1359a58c3cf91cab51a2c44c8df112e319a9c0f9 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 02:46:50 +0300
+Subject: [PATCH] lib-http: Added soft_connect_timeout_msecs setting to
+ connect to multiple IPs in parallel. Based on patch by
+ Stephan Bosch.
+
+
+diff --git a/src/lib-http/http-client-connection.c b/src/lib-http/http-client-connection.c
+index 6ef4a18..2fe2659 100644
+--- a/src/lib-http/http-client-connection.c
++++ b/src/lib-http/http-client-connection.c
+@@ -672,13 +672,13 @@ http_client_connection_ready(struct http_client_connection *conn)
+ 	struct stat st;
+ 
+ 	conn->connected = TRUE;
+-	conn->peer->last_connect_failed = FALSE;
+-
+ 	if (conn->to_connect != NULL &&
+ 	    (conn->ssl_iostream == NULL ||
+ 	     ssl_iostream_is_handshaked(conn->ssl_iostream)))
+ 		timeout_remove(&conn->to_connect);
+ 
++	http_client_peer_connection_success(conn->peer);
++
+ 	if (conn->client->set.rawlog_dir != NULL &&
+ 		stat(conn->client->set.rawlog_dir, &st) == 0) {
+ 		iostream_rawlog_create(conn->client->set.rawlog_dir,
+diff --git a/src/lib-http/http-client-host.c b/src/lib-http/http-client-host.c
+index ce42ace..3886c61 100644
+--- a/src/lib-http/http-client-host.c
++++ b/src/lib-http/http-client-host.c
+@@ -41,6 +41,9 @@ http_client_host_debug(struct http_client_host *host,
+  * Host:port
+  */
+ 
++static void
++http_client_host_port_connection_setup(struct http_client_host_port *hport);
++
+ static struct http_client_host_port *
+ http_client_host_port_find(struct http_client_host *host,
+ 	unsigned int port, const char *https_name)
+@@ -65,6 +68,7 @@ http_client_host_port_init(struct http_client_host *host,
+ 	hport = http_client_host_port_find(host, port, https_name);
+ 	if (hport == NULL) {
+ 		hport = array_append_space(&host->ports);
++		hport->host = host;
+ 		hport->port = port;
+ 		hport->https_name = i_strdup(https_name);
+ 		hport->ips_connect_idx = 0;
+@@ -110,16 +114,38 @@ http_client_host_port_drop_request(struct http_client_host_port *hport,
+ 	}
+ }
+ 
+-/*
+- * Host
+- */
++static void
++http_client_host_port_soft_connect_timeout(struct http_client_host_port *hport)
++{
++	struct http_client_host *host = hport->host;
++
++	if (hport->to_connect != NULL)
++		timeout_remove(&hport->to_connect);
++
++	if (hport->ips_connect_idx + 1 >= host->ips_count)
++		return;
++
++	/* if our our previous connection attempt takes longer than the
++	   soft_connect_timeout we start a connection attempt to the next IP in
++	   parallel */
++
++	http_client_host_debug(host, "Connection to %s:%u%s is taking a long time; "
++		"starting parallel connection attempt to next IP",
++		net_ip2addr(&host->ips[hport->ips_connect_idx]), hport->port,
++		hport->https_name == NULL ? "" :
++			t_strdup_printf(" (SSL=%s)", hport->https_name));
++
++	hport->ips_connect_idx++;
++	http_client_host_port_connection_setup(hport);
++}
+ 
+ static void
+-http_client_host_connection_setup(struct http_client_host *host,
+-	struct http_client_host_port *hport)
++http_client_host_port_connection_setup(struct http_client_host_port *hport)
+ {
++	struct http_client_host *host = hport->host;
+ 	struct http_client_peer *peer = NULL;
+ 	struct http_client_peer_addr addr;
++	unsigned int msecs;
+ 
+ 	addr.ip = host->ips[hport->ips_connect_idx];
+ 	addr.port = hport->port;
+@@ -131,6 +157,107 @@ http_client_host_connection_setup(struct http_client_host *host,
+ 
+ 	peer = http_client_peer_get(host->client, &addr);
+ 	http_client_peer_add_host(peer, host);
++	hport->pending_connection_count++;
++
++	/* start soft connect time-out (but only if we have another IP left) */
++	msecs = host->client->set.soft_connect_timeout_msecs;
++	if (host->ips_count - hport->ips_connect_idx > 1 && msecs > 0 &&
++	    hport->to_connect == NULL) {
++		hport->to_connect =
++			timeout_add(msecs, http_client_host_port_soft_connect_timeout, hport);
++	}
++}
++
++static void
++http_client_host_drop_pending_connections(struct http_client_host_port *hport)
++{
++	struct http_client_peer *peer;
++	struct http_client_connection *const *conns, *conn;
++	unsigned int i, count;
++
++	for (peer = hport->host->client->peers_list; peer != NULL; peer = peer->next) {
++		if (!http_client_peer_have_host(peer, hport->host))
++			continue;
++
++		conns = array_get(&peer->conns, &count);
++		for (i = count; i > 0; i--) {
++			conn = conns[i-1];
++			if (!conn->connected) {
++				i_assert(conn->refcount == 1);
++				/* avoid recreating the connection */
++				peer->last_connect_failed = TRUE;
++				http_client_connection_unref(&conn);
++			}
++		}
++	}
++}
++
++static void
++http_client_host_port_connection_success(struct http_client_host_port *hport)
++{
++	/* we achieved at least one connection the the addr->ip */
++
++	/* stop soft connect time-out */
++	if (hport->to_connect != NULL)
++		timeout_remove(&hport->to_connect);
++
++	/* drop all other attempts. note that we get here whenever a connection
++	   is successfully created, so pending_connection_count may be 0. */
++	if (hport->pending_connection_count > 1)
++		http_client_host_drop_pending_connections(hport);
++	/* since this hport is now successfully connected, we won't be
++	   getting any connection failures to it anymore. so we need
++	   to reset the pending_connection_count count here. */
++	hport->pending_connection_count = 0;
++}
++
++static bool
++http_client_host_port_connection_failure(struct http_client_host_port *hport,
++	const char *reason)
++{
++	struct http_client_host *host = hport->host;
++
++	i_assert(hport->pending_connection_count > 0);
++	if (--hport->pending_connection_count > 0)
++		return TRUE;
++
++	/* one of the connections failed. if we're not using soft timeouts,
++	   we need to try to connect to the next IP. if we are using soft
++	   timeouts, we've already tried all of the IPs by now. */
++	if (hport->to_connect != NULL)
++		timeout_remove(&hport->to_connect);
++
++	i_assert(hport->ips_connect_idx < host->ips_count);
++	if (++hport->ips_connect_idx == host->ips_count) {
++		/* all IPs failed, but retry all of them again on the
++		   next request. */
++		hport->ips_connect_idx = 0;
++		http_client_host_port_error(hport,
++			HTTP_CLIENT_REQUEST_ERROR_CONNECT_FAILED, reason);
++		return FALSE;
++	}
++
++	http_client_host_port_connection_setup(hport);
++	return TRUE;
++}
++
++/*
++ * Host
++ */
++
++void http_client_host_connection_success(struct http_client_host *host,
++	const struct http_client_peer_addr *addr)
++{
++	struct http_client_host_port *hport;
++
++	http_client_host_debug(host, "Successfully connected to %s:%u",
++		net_ip2addr(&addr->ip), addr->port);
++
++	hport = http_client_host_port_find(host, addr->port, addr->https_name);
++	if (hport == NULL)
++		return;
++
++	http_client_host_port_connection_success(hport);
+ }
+ 
+ void http_client_host_connection_failure(struct http_client_host *host,
+@@ -145,18 +272,11 @@ void http_client_host_connection_failure(struct http_client_host *host,
+ 	if (hport == NULL)
+ 		return;
+ 
+-	i_assert(hport->ips_connect_idx < host->ips_count);
+-	if (++hport->ips_connect_idx == host->ips_count) {
+-		/* all IPs failed, but retry all of them again on the
+-		   next request. */
+-		hport->ips_connect_idx = 0;
+-		http_client_host_port_error(hport,
+-			HTTP_CLIENT_REQUEST_ERROR_CONNECT_FAILED, reason);
++	if (!http_client_host_port_connection_failure(hport, reason)) {
++		/* failed definitively for currently queued requests */
+ 		if (host->client->ioloop != NULL)
+ 			io_loop_stop(host->client->ioloop);
+-		return;
+ 	}
+-	http_client_host_connection_setup(host, hport);
+ }
+ 
+ static void
+@@ -201,7 +321,7 @@ http_client_host_dns_callback(const struct dns_lookup_result *result,
+ 		unsigned int count = array_count(&hport->request_queue);
+ 		hport->ips_connect_idx = 0;
+ 		if (count > 0)
+-			http_client_host_connection_setup(host, hport);
++			http_client_host_port_connection_setup(hport);
+ 		requests += count;
+ 	}
+ 
+@@ -306,7 +426,7 @@ void http_client_host_submit_request(struct http_client_host *host,
+ 	if (host->ips_count == 0)
+ 		return;
+ 	i_assert(hport->ips_connect_idx < host->ips_count);
+-	http_client_host_connection_setup(host, hport);
++	http_client_host_port_connection_setup(hport);
+ }
+ 
+ struct http_client_request *
+diff --git a/src/lib-http/http-client-peer.c b/src/lib-http/http-client-peer.c
+index 9eb7dc3..6d93424 100644
+--- a/src/lib-http/http-client-peer.c
++++ b/src/lib-http/http-client-peer.c
+@@ -76,7 +76,8 @@ http_client_peer_connect(struct http_client_peer *peer, unsigned int count)
+ }
+ 
+ static unsigned int
+-http_client_peer_requests_pending(struct http_client_peer *peer, unsigned int *num_urgent_r)
++http_client_peer_requests_pending(struct http_client_peer *peer,
++				  unsigned int *num_urgent_r)
+ {
+ 	struct http_client_host *const *host;
+ 	unsigned int num_requests = 0, num_urgent = 0, requests, urgent;
+@@ -232,20 +233,22 @@ http_client_peer_get(struct http_client *client,
+ 	return peer;
+ }
+ 
+-void http_client_peer_add_host(struct http_client_peer *peer,
+-			   struct http_client_host *host)
++bool http_client_peer_have_host(struct http_client_peer *peer,
++				struct http_client_host *host)
+ {
+ 	struct http_client_host *const *host_idx;
+-	bool exists = FALSE;
+ 
+ 	array_foreach(&peer->hosts, host_idx) {
+-		if (*host_idx == host) {
+-			exists = TRUE;
+-			break;
+-		}
++		if (*host_idx == host)
++			return TRUE;
+ 	}
++	return FALSE;
++}
+ 
+-	if (!exists)
++void http_client_peer_add_host(struct http_client_peer *peer,
++			       struct http_client_host *host)
++{
++	if (!http_client_peer_have_host(peer, host))
+ 		array_append(&peer->hosts, &host, 1);
+ 	http_client_peer_handle_requests(peer);
+ }
+@@ -267,6 +270,17 @@ http_client_peer_claim_request(struct http_client_peer *peer, bool no_urgent)
+ 	return NULL;
+ }
+ 
++void http_client_peer_connection_success(struct http_client_peer *peer)
++{
++	struct http_client_host *const *host;
++
++	peer->last_connect_failed = FALSE;
++
++	array_foreach(&peer->hosts, host) {
++		http_client_host_connection_success(*host, &peer->addr);
++	}
++}
++
+ void http_client_peer_connection_failure(struct http_client_peer *peer,
+ 					 const char *reason)
+ {
+diff --git a/src/lib-http/http-client-private.h b/src/lib-http/http-client-private.h
+index 396fc07..beab561 100644
+--- a/src/lib-http/http-client-private.h
++++ b/src/lib-http/http-client-private.h
+@@ -71,15 +71,20 @@ struct http_client_request {
+ };
+ 
+ struct http_client_host_port {
++	struct http_client_host *host;
++
+ 	unsigned int port;
++	char *https_name;
+ 
+ 	/* current index in host->ips */
+ 	unsigned int ips_connect_idx;
++	/* number of connections trying to connect for this host+port */
++	unsigned int pending_connection_count;
+ 
+ 	/* requests pending in queue to be picked up by connections */
+ 	ARRAY_TYPE(http_client_request) request_queue;
+ 
+-	char *https_name;
++	struct timeout *to_connect;
+ };
+ 
+ struct http_client_host {
+@@ -228,12 +233,15 @@ struct http_client_peer *
+ 	http_client_peer_get(struct http_client *client,
+ 		const struct http_client_peer_addr *addr);
+ void http_client_peer_free(struct http_client_peer **_peer);
++bool http_client_peer_have_host(struct http_client_peer *peer,
++				struct http_client_host *host);
+ void http_client_peer_add_host(struct http_client_peer *peer,
+ 	struct http_client_host *host);
+ struct http_client_request *
+ 	http_client_peer_claim_request(struct http_client_peer *peer,
+ 		bool no_urgent);
+ void http_client_peer_handle_requests(struct http_client_peer *peer);
++void http_client_peer_connection_success(struct http_client_peer *peer);
+ void http_client_peer_connection_failure(struct http_client_peer *peer,
+ 					 const char *reason);
+ void http_client_peer_connection_lost(struct http_client_peer *peer);
+@@ -247,6 +255,8 @@ void http_client_host_submit_request(struct http_client_host *host,
+ struct http_client_request *
+ http_client_host_claim_request(struct http_client_host *host,
+ 	const struct http_client_peer_addr *addr, bool no_urgent);
++void http_client_host_connection_success(struct http_client_host *host,
++	const struct http_client_peer_addr *addr);
+ void http_client_host_connection_failure(struct http_client_host *host,
+ 	const struct http_client_peer_addr *addr, const char *reason);
+ unsigned int http_client_host_requests_pending(struct http_client_host *host,
+diff --git a/src/lib-http/http-client.c b/src/lib-http/http-client.c
+index aa94853..02b4b0c 100644
+--- a/src/lib-http/http-client.c
++++ b/src/lib-http/http-client.c
+@@ -98,6 +98,7 @@ struct http_client *http_client_init(const struct http_client_settings *set)
+ 	client->set.max_redirects = set->max_redirects;
+ 	client->set.request_timeout_msecs = set->request_timeout_msecs;
+ 	client->set.connect_timeout_msecs = set->connect_timeout_msecs;
++	client->set.soft_connect_timeout_msecs = set->soft_connect_timeout_msecs;
+ 	client->set.debug = set->debug;
+ 
+ 	client->conn_list = http_client_connection_list_init();
+diff --git a/src/lib-http/http-client.h b/src/lib-http/http-client.h
+index 8a2c31e..ecba87c 100644
+--- a/src/lib-http/http-client.h
++++ b/src/lib-http/http-client.h
+@@ -63,6 +63,10 @@ struct http_client_settings {
+ 	/* max time to wait for connect() (and SSL handshake) to finish before
+ 	   retrying (default = request_timeout_msecs) */
+ 	unsigned int connect_timeout_msecs;
++	/* time to wait for connect() (and SSL handshake) to finish for the first
++	   connection before trying the next IP in parallel
++	   (default = 0; wait until current connection attempt finishes) */
++	unsigned int soft_connect_timeout_msecs;
+ 
+ 	bool debug;
+ };
+-- 
+1.7.10.2
+
+
+From c64dab7cb022c21ae82cfa15854d91ae6cf607d7 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 02:49:48 +0300
+Subject: [PATCH] man pages: Updated v2.1 -> v2.2
+
+
+diff --git a/doc/man/doveadm-altmove.1.in b/doc/man/doveadm-altmove.1.in
+index 8381fbe..11767b3c 100644
+--- a/doc/man/doveadm-altmove.1.in
++++ b/doc/man/doveadm-altmove.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2011 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-ALTMOVE 1 "2011-09-15" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-ALTMOVE 1 "2011-09-15" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-altmove \- Move matching mails to the alternative storage (dbox\-only)
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-auth.1.in b/doc/man/doveadm-auth.1.in
+index 4d73e1f..9e9fd45 100644
+--- a/doc/man/doveadm-auth.1.in
++++ b/doc/man/doveadm-auth.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-AUTH 1 "2010-06-09" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-AUTH 1 "2010-06-09" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-auth \- Test authentication for a user
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-director.1.in b/doc/man/doveadm-director.1.in
+index f1092ce..63aa3fb 100644
+--- a/doc/man/doveadm-director.1.in
++++ b/doc/man/doveadm-director.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-DIRECTOR 1 "2011-05-11" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-DIRECTOR 1 "2011-05-11" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-director \- Manage Dovecot directors
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-dump.1.in b/doc/man/doveadm-dump.1.in
+index 8fc9e71..ba0354e 100644
+--- a/doc/man/doveadm-dump.1.in
++++ b/doc/man/doveadm-dump.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-DUMP 1 "2012-02-21" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-DUMP 1 "2012-02-21" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-dump \- Dump the content of Dovecot\(aqs binary mailbox index/log
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-expunge.1.in b/doc/man/doveadm-expunge.1.in
+index f0acd25..62da6bf 100644
+--- a/doc/man/doveadm-expunge.1.in
++++ b/doc/man/doveadm-expunge.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-EXPUNGE 1 "2012-11-27" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-EXPUNGE 1 "2012-11-27" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-expunge \- Expunge messages matching given search query
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-fetch.1.in b/doc/man/doveadm-fetch.1.in
+index 6b33444..d6e6ce7 100644
+--- a/doc/man/doveadm-fetch.1.in
++++ b/doc/man/doveadm-fetch.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-FETCH 1 "2012-02-13" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-FETCH 1 "2012-02-13" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-fetch \- Fetch partial/full messages or message information
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-force-resync.1.in b/doc/man/doveadm-force-resync.1.in
+index d94bfd6..0b28448 100644
+--- a/doc/man/doveadm-force-resync.1.in
++++ b/doc/man/doveadm-force-resync.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-FORCE\-RESYNC 1 "2010-11-25" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-FORCE\-RESYNC 1 "2010-11-25" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-force\-resync \- Repair broken mailboxes
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-help.1.in b/doc/man/doveadm-help.1.in
+index cca530c..d4c1f0e 100644
+--- a/doc/man/doveadm-help.1.in
++++ b/doc/man/doveadm-help.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-HELP 1 "2010-06-22" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-HELP 1 "2010-06-22" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-help \- Show information about doveadm commands
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-import.1.in b/doc/man/doveadm-import.1.in
+index 3757f3b..db59375 100644
+--- a/doc/man/doveadm-import.1.in
++++ b/doc/man/doveadm-import.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-IMPORT 1 "2010-11-26" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-IMPORT 1 "2010-11-26" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-import \- Import messages matching given search query
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-index.1.in b/doc/man/doveadm-index.1.in
+index d27af35..14ddb95 100644
+--- a/doc/man/doveadm-index.1.in
++++ b/doc/man/doveadm-index.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2011 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-INDEX 1 "2011-05-11" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-INDEX 1 "2011-05-11" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-index \- Index mailboxes
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-instance.1.in b/doc/man/doveadm-instance.1.in
+index c7915e9..7b9b2d0 100644
+--- a/doc/man/doveadm-instance.1.in
++++ b/doc/man/doveadm-instance.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-INSTANCE 1 "2012-02-16" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-INSTANCE 1 "2012-02-16" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-instance \- Manage the list of running Dovecot instances
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-kick.1.in b/doc/man/doveadm-kick.1.in
+index a07f252..4c1ffb6 100644
+--- a/doc/man/doveadm-kick.1.in
++++ b/doc/man/doveadm-kick.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-KICK 1 "2010-06-12" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-KICK 1 "2010-06-12" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-kick \- Disconnect users by user name and/or IP address
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-log.1.in b/doc/man/doveadm-log.1.in
+index 482d823..ae63e8f 100644
+--- a/doc/man/doveadm-log.1.in
++++ b/doc/man/doveadm-log.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-LOG 1 "2012-02-22" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-LOG 1 "2012-02-22" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-log \- Locate, test or reopen Dovecot\(aqs log files
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-mailbox.1.in b/doc/man/doveadm-mailbox.1.in
+index b3de59a..8679f66 100644
+--- a/doc/man/doveadm-mailbox.1.in
++++ b/doc/man/doveadm-mailbox.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-MAILBOX 1 "2010-11-25" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-MAILBOX 1 "2010-11-25" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-mailbox \- Commands related to handling mailboxes
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-mount.1.in b/doc/man/doveadm-mount.1.in
+index 8631a91..837de27 100644
+--- a/doc/man/doveadm-mount.1.in
++++ b/doc/man/doveadm-mount.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-MOUNT 1 "2012-02-16" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-MOUNT 1 "2012-02-16" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-mount \- Manage the list of mountpoints where mails are stored
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-move.1.in b/doc/man/doveadm-move.1.in
+index a70c78d..8e316f8 100644
+--- a/doc/man/doveadm-move.1.in
++++ b/doc/man/doveadm-move.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2011 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-MOVE 1 "2011-09-25" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-MOVE 1 "2011-09-25" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-move \- Move messages matching the given search query into another
+ mailbox
+diff --git a/doc/man/doveadm-penalty.1.in b/doc/man/doveadm-penalty.1.in
+index ecbf821..fbe8666 100644
+--- a/doc/man/doveadm-penalty.1.in
++++ b/doc/man/doveadm-penalty.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-PENALTY 1 "2010-07-12" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-PENALTY 1 "2010-07-12" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-penalty \- Show current penalties
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-purge.1.in b/doc/man/doveadm-purge.1.in
+index fb33bbb..aaa5f01 100644
+--- a/doc/man/doveadm-purge.1.in
++++ b/doc/man/doveadm-purge.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-PURGE 1 "2010-11-25" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-PURGE 1 "2010-11-25" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-purge \- Remove messages with refcount=0 from mdbox files
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-pw.1.in b/doc/man/doveadm-pw.1.in
+index 7ffe707..b5e83dd 100644
+--- a/doc/man/doveadm-pw.1.in
++++ b/doc/man/doveadm-pw.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2012 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-PW 1 "2012-02-13" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-PW 1 "2012-02-13" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-pw \- Dovecot\(aqs password hash generator
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-quota.1.in b/doc/man/doveadm-quota.1.in
+index 77de49f..4c7a6a9 100644
+--- a/doc/man/doveadm-quota.1.in
++++ b/doc/man/doveadm-quota.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2011 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-QUOTA 1 "2011-02-17" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-QUOTA 1 "2011-02-17" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-quota \- Initialize/recalculate or show current quota usage
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-search-query.7 b/doc/man/doveadm-search-query.7
+index fa343f9..8c42b8d 100644
+--- a/doc/man/doveadm-search-query.7
++++ b/doc/man/doveadm-search-query.7
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-SEARCH\-QUERY 7 "2011-11-24" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-SEARCH\-QUERY 7 "2011-11-24" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-search\-query \- Overview of search queries for doveadm mailbox \
+ commands
+diff --git a/doc/man/doveadm-search.1.in b/doc/man/doveadm-search.1.in
+index 683bb94..828138d 100644
+--- a/doc/man/doveadm-search.1.in
++++ b/doc/man/doveadm-search.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-SEARCH 1 "2010-11-25" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-SEARCH 1 "2010-11-25" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-search \- Show a list of mailbox GUIDs and message UIDs matching \
+ given search query.
+diff --git a/doc/man/doveadm-user.1.in b/doc/man/doveadm-user.1.in
+index 552ac03..0a64c1c 100644
+--- a/doc/man/doveadm-user.1.in
++++ b/doc/man/doveadm-user.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2011 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-USER 1 "2011-11-04" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-USER 1 "2011-11-04" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-user \- Perform a user lookup in Dovecot\(aqs userdbs
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm-who.1.in b/doc/man/doveadm-who.1.in
+index 7845396..756f881 100644
+--- a/doc/man/doveadm-who.1.in
++++ b/doc/man/doveadm-who.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM\-WHO 1 "2010-07-12" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM\-WHO 1 "2010-07-12" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm\-who \- Show who is logged in to the Dovecot server
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveadm.1.in b/doc/man/doveadm.1.in
+index abade80..9606668 100644
+--- a/doc/man/doveadm.1.in
++++ b/doc/man/doveadm.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVEADM 1 "2011-05-11" "Dovecot v2.1" "Dovecot"
++.TH DOVEADM 1 "2011-05-11" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveadm \- Dovecot\(aqs administration utility
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/doveconf.1.in b/doc/man/doveconf.1.in
+index 8385f5b..4e34f65 100644
+--- a/doc/man/doveconf.1.in
++++ b/doc/man/doveconf.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010-2012 Dovecot authors, see the included COPYING file
+-.TH DOVECONF 1 "2012-01-29" "Dovecot v2.1" "Dovecot"
++.TH DOVECONF 1 "2012-01-29" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ doveconf \- Dovecot\(aqs configuration dumping utility
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/dovecot-lda.1.in b/doc/man/dovecot-lda.1.in
+index a7383c6..0d7421a 100644
+--- a/doc/man/dovecot-lda.1.in
++++ b/doc/man/dovecot-lda.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVECOT\-LDA 1 "2011-01-16" "Dovecot v2.1" "Dovecot"
++.TH DOVECOT\-LDA 1 "2011-01-16" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ dovecot\-lda \- Dovecot\(aqs local mail delivery agent
+ .\"------------------------------------------------------------------------
+diff --git a/doc/man/dovecot.1.in b/doc/man/dovecot.1.in
+index 644cf7e..751c172 100644
+--- a/doc/man/dovecot.1.in
++++ b/doc/man/dovecot.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DOVECOT 1 "2010-07-02" "Dovecot v2.1" "Dovecot"
++.TH DOVECOT 1 "2010-07-02" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ dovecot \- a secure and highly configurable IMAP and POP3 server
+ .\"------------------------------------------------------------------------
+@@ -148,7 +148,7 @@ Configuration files of different services and settings.
+ .SH AUTHOR
+ Dovecot <http://dovecot.org> and its manual pages were written by the
+ Dovecot authors <http://dovecot.org/doc/AUTHORS>, mainly Timo Sirainen <tss
+-at iki.fi>, and are licensed under the terms of the MIT and LGPLv2.1
++at iki.fi>, and are licensed under the terms of the MIT and LGPLv2.2
+ licenses, see <http://dovecot.org/doc/COPYING> for details.
+ .\"------------------------------------------------------------------------
+ .SH SEE ALSO
+diff --git a/doc/man/dsync.1.in b/doc/man/dsync.1.in
+index 2f34dcb..e1e4c23 100644
+--- a/doc/man/dsync.1.in
++++ b/doc/man/dsync.1.in
+@@ -1,5 +1,5 @@
+ .\" Copyright (c) 2010 Dovecot authors, see the included COPYING file
+-.TH DSYNC 1 "2011-01-16" "Dovecot v2.1" "Dovecot"
++.TH DSYNC 1 "2011-01-16" "Dovecot v2.2" "Dovecot"
+ .SH NAME
+ dsync \- Dovecot\(aqs mailbox synchronization utility
+ .\"------------------------------------------------------------------------
+-- 
+1.7.10.2
+
+
+From 47b780cdcd1531a5554b8782eabe0b6b24d648c2 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 03:10:43 +0300
+Subject: [PATCH] fts-lucene: Support normalize setting also without snowball.
+ Added no_snowball setting. Snowball seems to be converting
+ / breaking words down rather annoyingly.
+
+
+diff --git a/src/plugins/fts-lucene/fts-lucene-plugin.c b/src/plugins/fts-lucene/fts-lucene-plugin.c
+index d4f078b..be5fcc9 100644
+--- a/src/plugins/fts-lucene/fts-lucene-plugin.c
++++ b/src/plugins/fts-lucene/fts-lucene-plugin.c
+@@ -30,6 +30,8 @@ fts_lucene_plugin_init_settings(struct mail_user *user,
+ 			set->whitespace_chars = p_strdup(user->pool, *tmp + 17);
+ 		} else if (strcmp(*tmp, "normalize") == 0) {
+ 			set->normalize = TRUE;
++		} else if (strcmp(*tmp, "no_snowball") == 0) {
++			set->no_snowball = TRUE;
+ 		} else {
+ 			i_error("fts_lucene: Invalid setting: %s", *tmp);
+ 			return -1;
+@@ -51,11 +53,6 @@ fts_lucene_plugin_init_settings(struct mail_user *user,
+ 			"but Dovecot built without stemmer support");
+ 		return -1;
+ 	}
+-	if (set->normalize) {
+-		i_error("fts_lucene: normalize not currently supported "
+-			"without stemmer support");
+-		return -1;
+-	}
+ #else
+ 	if (set->default_language == NULL)
+ 		set->default_language = "english";
+@@ -80,6 +77,8 @@ uint32_t fts_lucene_settings_checksum(const struct fts_lucene_settings *set)
+ 	crc = crc32_str_more(crc, set->whitespace_chars);
+ 	if (set->normalize)
+ 		crc = crc32_str_more(crc, "n");
++	if (set->no_snowball)
++		crc = crc32_str_more(crc, "s");
+ 	return crc;
+ }
+ 
+diff --git a/src/plugins/fts-lucene/fts-lucene-plugin.h b/src/plugins/fts-lucene/fts-lucene-plugin.h
+index 42587f3..c5be44c 100644
+--- a/src/plugins/fts-lucene/fts-lucene-plugin.h
++++ b/src/plugins/fts-lucene/fts-lucene-plugin.h
+@@ -13,6 +13,7 @@ struct fts_lucene_settings {
+ 	const char *textcat_conf, *textcat_dir;
+ 	const char *whitespace_chars;
+ 	bool normalize;
++	bool no_snowball;
+ };
+ 
+ struct fts_lucene_user {
+diff --git a/src/plugins/fts-lucene/lucene-wrapper.cc b/src/plugins/fts-lucene/lucene-wrapper.cc
+index c57b676..3eea52e 100644
+--- a/src/plugins/fts-lucene/lucene-wrapper.cc
++++ b/src/plugins/fts-lucene/lucene-wrapper.cc
+@@ -67,6 +67,7 @@ struct lucene_index {
+ 	IndexWriter *writer;
+ 	IndexSearcher *searcher;
+ 
++	buffer_t *normalizer_buf;
+ 	Analyzer *default_analyzer, *cur_analyzer;
+ 	ARRAY(struct lucene_analyzer) analyzers;
+ 
+@@ -118,13 +119,20 @@ struct lucene_index *lucene_index_init(const char *path,
+ 		index->set.default_language = "";
+ 	}
+ #ifdef HAVE_LUCENE_STEMMER
+-	index->default_analyzer =
+-		_CLNEW snowball::SnowballAnalyzer(index->normalizer,
+-						  index->set.default_language);
+-#else
+-	index->default_analyzer = _CLNEW standard::StandardAnalyzer();
+-	i_assert(index->normalizer == NULL);
++	if (!set->no_snowball) {
++		index->default_analyzer =
++			_CLNEW snowball::SnowballAnalyzer(index->normalizer,
++							  index->set.default_language);
++	}
+ #endif
++	else {
++		index->default_analyzer = _CLNEW standard::StandardAnalyzer();
++		if (index->normalizer != NULL) {
++			index->normalizer_buf =
++				buffer_create_dynamic(default_pool, 1024);
++		}
++	}
++
+ 	i_array_init(&index->analyzers, 32);
+ 	textcat_refcount++;
+ 
+@@ -155,6 +163,8 @@ void lucene_index_deinit(struct lucene_index *index)
+ 		textcat = NULL;
+ 	}
+ 	_CLDELETE(index->default_analyzer);
++	if (index->normalizer_buf != NULL)
++		buffer_free(&index->normalizer_buf);
+ 	i_free(index->path);
+ 	i_free(index);
+ }
+@@ -517,6 +527,13 @@ int lucene_index_build_more(struct lucene_index *index, uint32_t uid,
+ 		index->doc->add(*_CLNEW Field(_T("box"), index->mailbox_guid, Field::STORE_YES | Field::INDEX_UNTOKENIZED));
+ 	}
+ 
++	if (index->normalizer_buf != NULL) {
++		buffer_set_used_size(index->normalizer_buf, 0);
++		index->normalizer(data, size, index->normalizer_buf);
++		data = (const unsigned char *)index->normalizer_buf->data;
++		size = index->normalizer_buf->used;
++	}
++
+ 	datasize = uni_utf8_strlen_n(data, size) + 1;
+ 	wchar_t dest[datasize];
+ 	lucene_utf8_n_to_tchar(data, size, dest, datasize);
+@@ -1055,8 +1072,18 @@ static Query *
+ lucene_get_query_str(struct lucene_index *index,
+ 		     const TCHAR *key, const char *str, bool fuzzy)
+ {
+-	const TCHAR *wvalue = t_lucene_utf8_to_tchar(index, str, TRUE);
+-	Analyzer *analyzer = guess_analyzer(index, str, strlen(str));
++	const TCHAR *wvalue;
++	Analyzer *analyzer;
++
++	if (index->normalizer_buf != NULL) {
++		buffer_set_used_size(index->normalizer_buf, 0);
++		index->normalizer(str, strlen(str), index->normalizer_buf);
++		buffer_append_c(index->normalizer_buf, '\0');
++		str = (const char *)index->normalizer_buf->data;
++	}
++
++	wvalue = t_lucene_utf8_to_tchar(index, str, TRUE);
++	analyzer = guess_analyzer(index, str, strlen(str));
+ 	if (analyzer == NULL)
+ 		analyzer = index->default_analyzer;
+ 
+-- 
+1.7.10.2
+
+
+From 001ea57f8ce1c3916f07b0ff1f4619d9d0cfe76f Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 06:02:14 +0300
+Subject: [PATCH] Added initial libsasl for implementing client side SASL
+ library. Initially supports PLAIN and LOGIN mechanisms.
+
+
+diff --git a/configure.ac b/configure.ac
+index 6bae121..121082b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2559,7 +2559,7 @@ if test "$want_shared_libs" = "yes"; then
+   LIBDOVECOT_COMPRESS='$(top_builddir)/src/lib-compression/libcompression.la'
+   LIBDOVECOT_LDA='$(top_builddir)/src/lib-lda/libdovecot-lda.la'
+ else
+-  LIBDOVECOT_DEPS='$(top_builddir)/src/lib-master/libmaster.la $(top_builddir)/src/lib-settings/libsettings.la $(top_builddir)/src/lib-http/libhttp.la $(top_builddir)/src/lib-dict/libdict.la $(top_builddir)/src/lib-dns/libdns.la $(top_builddir)/src/lib-fs/libfs.la $(top_builddir)/src/lib-imap/libimap.la $(top_builddir)/src/lib-mail/libmail.la $(top_builddir)/src/lib-auth/libauth.la $(top_builddir)/src/lib-charset/libcharset.la $(top_builddir)/src/lib-ssl-iostream/libssl_iostream.la $(top_builddir)/src/lib-test/libtest.la $(top_builddir)/src/lib/liblib.la'
++  LIBDOVECOT_DEPS='$(top_builddir)/src/lib-master/libmaster.la $(top_builddir)/src/lib-settings/libsettings.la $(top_builddir)/src/lib-http/libhttp.la $(top_builddir)/src/lib-dict/libdict.la $(top_builddir)/src/lib-dns/libdns.la $(top_builddir)/src/lib-fs/libfs.la $(top_builddir)/src/lib-imap/libimap.la $(top_builddir)/src/lib-mail/libmail.la $(top_builddir)/src/lib-sasl/libsasl.la $(top_builddir)/src/lib-auth/libauth.la $(top_builddir)/src/lib-charset/libcharset.la $(top_builddir)/src/lib-ssl-iostream/libssl_iostream.la $(top_builddir)/src/lib-test/libtest.la $(top_builddir)/src/lib/liblib.la'
+   LIBDOVECOT="$LIBDOVECOT_DEPS \$(LIBICONV) \$(MODULE_LIBS)"
+   LIBDOVECOT_STORAGE_LAST='$(top_builddir)/src/lib-storage/list/libstorage_list.la $(top_builddir)/src/lib-storage/index/libstorage_index.la $(top_builddir)/src/lib-storage/libstorage.la $(top_builddir)/src/lib-index/libindex.la $(top_builddir)/src/lib-imap-storage/libimap-storage.la'
+   LIBDOVECOT_STORAGE_FIRST='$(top_builddir)/src/lib-storage/libstorage_service.la $(top_builddir)/src/lib-storage/register/libstorage_register.la'
+@@ -2822,6 +2822,7 @@ src/lib-master/Makefile
+ src/lib-ntlm/Makefile
+ src/lib-otp/Makefile
+ src/lib-dovecot/Makefile
++src/lib-sasl/Makefile
+ src/lib-settings/Makefile
+ src/lib-ssl-iostream/Makefile
+ src/lib-test/Makefile
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 4e82017..378d614 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,6 +7,7 @@ LIBDOVECOT_SUBDIRS = \
+ 	lib-charset \
+ 	lib-dns \
+ 	lib-dict \
++	lib-sasl \
+ 	lib-ssl-iostream \
+ 	lib-http \
+ 	lib-fs \
+diff --git a/src/lib-dovecot/Makefile.am b/src/lib-dovecot/Makefile.am
+index cd7a165..e79e964 100644
+--- a/src/lib-dovecot/Makefile.am
++++ b/src/lib-dovecot/Makefile.am
+@@ -7,6 +7,7 @@ libs = \
+ 	../lib-dict/libdict.la \
+ 	../lib-imap/libimap.la \
+ 	../lib-mail/libmail.la \
++	../lib-sasl/libsasl.la \
+ 	../lib-auth/libauth.la \
+ 	../lib-dns/libdns.la \
+ 	../lib-charset/libcharset.la \
+diff --git a/src/lib-sasl/Makefile.am b/src/lib-sasl/Makefile.am
+new file mode 100644
+index 0000000..5ca1a0e
+--- /dev/null
++++ b/src/lib-sasl/Makefile.am
+@@ -0,0 +1,16 @@
++noinst_LTLIBRARIES = libsasl.la
++
++AM_CPPFLAGS = \
++	-I$(top_srcdir)/src/lib
++
++libsasl_la_SOURCES = \
++	mech-login.c \
++	mech-plain.c \
++	sasl-client.c 
++
++headers = \
++	sasl-client.h \
++	sasl-client-private.h
++
++pkginc_libdir=$(pkgincludedir)
++pkginc_lib_HEADERS = $(headers)
+diff --git a/src/lib-sasl/mech-login.c b/src/lib-sasl/mech-login.c
+new file mode 100644
+index 0000000..e1cbe9b
+--- /dev/null
++++ b/src/lib-sasl/mech-login.c
+@@ -0,0 +1,73 @@
++/* Copyright (c) 2013 Dovecot authors, see the included COPYING file */
++
++#include "lib.h"
++#include "str.h"
++#include "sasl-client-private.h"
++
++enum login_state {
++	STATE_INIT = 0,
++	STATE_USER,
++	STATE_PASS
++};
++
++struct login_sasl_client {
++	struct sasl_client client;
++	enum login_state state;
++};
++
++static int
++mech_login_input(struct sasl_client *_client,
++		 const unsigned char *input ATTR_UNUSED,
++		 unsigned int input_len ATTR_UNUSED,
++		 const char **error_r)
++{
++	struct login_sasl_client *client = (struct login_sasl_client *)_client;
++
++	if (client->state == STATE_PASS) {
++		*error_r = "Server didn't finish authentication";
++		return -1;
++	}
++	client->state++;
++	return 0;
++}
++
++static int
++mech_login_output(struct sasl_client *_client,
++		  const unsigned char **output_r, unsigned int *output_len_r,
++		  const char **error_r)
++{
++	struct login_sasl_client *client = (struct login_sasl_client *)_client;
++
++	if (_client->set.authid == NULL) {
++		*error_r = "authid not set";
++		return -1;
++	}
++	if (_client->password == NULL) {
++		*error_r = "password not set";
++		return -1;
++	}
++
++	switch (client->state) {
++	case STATE_INIT:
++		*output_r = &uchar_nul;
++		*output_len_r = 0;
++		return 0;
++	case STATE_USER:
++		*output_r = (const unsigned char *)_client->set.authid;
++		*output_len_r = strlen(_client->set.authid);
++		return 0;
++	case STATE_PASS:
++		*output_r = (const unsigned char *)_client->set.password;
++		*output_len_r = strlen(_client->set.password);
++		return 0;
++	}
++	i_unreached();
++}
++
++const struct sasl_client_mech sasl_client_mech_login = {
++	.name = "LOGIN",
++	.struct_size = sizeof(struct login_sasl_client),
++
++	.input = mech_login_input,
++	.output = mech_login_output
++};
+diff --git a/src/lib-sasl/mech-plain.c b/src/lib-sasl/mech-plain.c
+new file mode 100644
+index 0000000..ef3d137
+--- /dev/null
++++ b/src/lib-sasl/mech-plain.c
+@@ -0,0 +1,68 @@
++/* Copyright (c) 2013 Dovecot authors, see the included COPYING file */
++
++#include "lib.h"
++#include "str.h"
++#include "sasl-client-private.h"
++
++struct plain_sasl_client {
++	struct sasl_client client;
++	bool output_sent;
++};
++
++static int
++mech_plain_input(struct sasl_client *_client,
++		 const unsigned char *input ATTR_UNUSED, unsigned int input_len,
++		 const char **error_r)
++{
++	struct plain_sasl_client *client = (struct plain_sasl_client *)_client;
++
++	if (!client->output_sent) {
++		if (input_len > 0) {
++			*error_r = "Server sent non-empty initial response";
++			return -1;
++		}
++	} else {
++		*error_r = "Server didn't finish authentication";
++		return -1;
++	}
++	return 0;
++}
++
++static int
++mech_plain_output(struct sasl_client *_client,
++		  const unsigned char **output_r, unsigned int *output_len_r,
++		  const char **error_r)
++{
++	struct plain_sasl_client *client = (struct plain_sasl_client *)_client;
++	string_t *str;
++
++	if (_client->set.authid == NULL) {
++		*error_r = "authid not set";
++		return -1;
++	}
++	if (_client->password == NULL) {
++		*error_r = "password not set";
++		return -1;
++	}
++
++	str = str_new(_client->pool, 64);
++	if (_client->set.authzid != NULL)
++		str_append(str, _client->set.authzid);
++	str_append_c(str, '\0');
++	str_append(str, _client->set.authid);
++	str_append_c(str, '\0');
++	str_append(str, _client->password);
++
++	*output_r = str_data(str);
++	*output_len_r = str_len(str);
++	client->output_sent = TRUE;
++	return 0;
++}
++
++const struct sasl_client_mech sasl_client_mech_plain = {
++	.name = "PLAIN",
++	.struct_size = sizeof(struct plain_sasl_client),
++
++	.input = mech_plain_input,
++	.output = mech_plain_output
++};
+diff --git a/src/lib-sasl/sasl-client-private.h b/src/lib-sasl/sasl-client-private.h
+new file mode 100644
+index 0000000..9c5ae22
+--- /dev/null
++++ b/src/lib-sasl/sasl-client-private.h
+@@ -0,0 +1,33 @@
++#ifndef SASL_CLIENT_PRIVATE_H
++#define SASL_CLIENT_PRIVATE_H
++
++#include "sasl-client.h"
++
++struct sasl_client {
++	pool_t pool;
++	struct sasl_client_settings set;
++	char *password;
++	const struct sasl_client_mech *mech;
++};
++
++struct sasl_client_mech {
++	const char *name;
++	size_t struct_size;
++
++	int (*input)(struct sasl_client *client,
++		     const unsigned char *input,
++		     unsigned int input_len,
++		     const char **error_r);
++	int (*output)(struct sasl_client *client,
++		      const unsigned char **output_r,
++		      unsigned int *output_len_r,
++		      const char **error_r);
++	void (*free)(struct sasl_client *client);
++};
++
++extern const struct sasl_client_mech sasl_client_mech_login;
++
++void sasl_client_mech_register(const struct sasl_client_mech *mech);
++void sasl_client_mech_unregister(const struct sasl_client_mech *mech);
++
++#endif
+diff --git a/src/lib-sasl/sasl-client.c b/src/lib-sasl/sasl-client.c
+new file mode 100644
+index 0000000..78f0eda
+--- /dev/null
++++ b/src/lib-sasl/sasl-client.c
+@@ -0,0 +1,104 @@
++/* Copyright (c) 2013 Dovecot authors, see the included COPYING file */
++
++#include "lib.h"
++#include "array.h"
++#include "safe-memset.h"
++#include "sasl-client-private.h"
++
++static ARRAY(const struct sasl_client_mech *) sasl_mechanisms = ARRAY_INIT;
++
++static const struct sasl_client_mech *
++sasl_client_mech_find_idx(const char *name, unsigned int *idx_r)
++{
++	const struct sasl_client_mech *const *mechp;
++
++	array_foreach(&sasl_mechanisms, mechp) {
++		if (strcasecmp((*mechp)->name, name) == 0) {
++			*idx_r = array_foreach_idx(&sasl_mechanisms, mechp);
++			return *mechp;
++		}
++	}
++	return NULL;
++}
++
++const struct sasl_client_mech *sasl_client_mech_find(const char *name)
++{
++	unsigned int idx;
++
++	return sasl_client_mech_find_idx(name, &idx);
++}
++
++const char *sasl_client_mech_get_name(const struct sasl_client_mech *mech)
++{
++	return mech->name;
++}
++
++void sasl_client_mech_register(const struct sasl_client_mech *mech)
++{
++	array_append(&sasl_mechanisms, &mech, 1);
++}
++
++void sasl_client_mech_unregister(const struct sasl_client_mech *mech)
++{
++	unsigned int idx;
++
++	if (sasl_client_mech_find_idx(mech->name, &idx) == NULL)
++		i_panic("SASL mechanism not registered: %s", mech->name);
++	array_delete(&sasl_mechanisms, idx, 1);
++}
++
++struct sasl_client *sasl_client_new(const struct sasl_client_mech *mech,
++				    const struct sasl_client_settings *set)
++{
++	struct sasl_client *client;
++	pool_t pool = pool_alloconly_create("sasl client", 512);
++
++	client = p_malloc(pool, mech->struct_size);
++	client->pool = pool;
++	client->mech = mech;
++	client->set.authid = p_strdup(pool, set->authid);
++	client->set.authzid = p_strdup(pool, set->authzid);
++	client->password = p_strdup(pool, set->password);
++	client->set.password = client->password;
++	return client;
++}
++
++void sasl_client_free(struct sasl_client **_client)
++{
++	struct sasl_client *client = *_client;
++
++	*_client = NULL;
++
++	if (client->mech->free != NULL)
++		client->mech->free(client);
++	safe_memset(client->password, 0, strlen(client->password));
++	pool_unref(&client->pool);
++}
++
++int sasl_client_input(struct sasl_client *client,
++		      const unsigned char *input,
++		      unsigned int input_len,
++		      const char **error_r)
++{
++	return client->mech->input(client, input, input_len, error_r);
++}
++
++int sasl_client_output(struct sasl_client *client,
++		       const unsigned char **output_r,
++		       unsigned int *output_len_r,
++		       const char **error_r)
++{
++	return client->mech->output(client, output_r, output_len_r, error_r);
++}
++
++void sasl_clients_init(void)
++{
++	i_array_init(&sasl_mechanisms, 8);
++	sasl_client_mech_register(&sasl_client_mech_plain);
++	sasl_client_mech_register(&sasl_client_mech_login);
++}
++
++void sasl_clients_deinit(void)
++{
++	array_free(&sasl_mechanisms);
++}
+diff --git a/src/lib-sasl/sasl-client.h b/src/lib-sasl/sasl-client.h
+new file mode 100644
+index 0000000..dc969ef
+--- /dev/null
++++ b/src/lib-sasl/sasl-client.h
+@@ -0,0 +1,38 @@
++#ifndef SASL_CLIENT_H
++#define SASL_CLIENT_H
++
++struct sasl_client_settings {
++	/* authentication ID - must be set with most mechanisms */
++	const char *authid;
++	/* authorization ID ("master user") */
++	const char *authzid;
++	/* password - must be set with most mechanisms */
++	const char *password;
++};
++
++/* PLAIN mechanism always exists and can be accessed directly via this. */
++extern const struct sasl_client_mech sasl_client_mech_plain;
++
++const struct sasl_client_mech *sasl_client_mech_find(const char *name);
++const char *sasl_client_mech_get_name(const struct sasl_client_mech *mech);
++
++struct sasl_client *sasl_client_new(const struct sasl_client_mech *mech,
++				    const struct sasl_client_settings *set);
++void sasl_client_free(struct sasl_client **client);
++
++/* Call for server input. */
++int sasl_client_input(struct sasl_client *client,
++		      const unsigned char *input,
++		      unsigned int input_len,
++		      const char **error_r);
++/* Call for getting server output. Also used to get the initial SASL response
++   if supported by the protocol. */
++int sasl_client_output(struct sasl_client *client,
++		       const unsigned char **output_r,
++		       unsigned int *output_len_r,
++		       const char **error_r);
++
++void sasl_clients_init(void);
++void sasl_clients_deinit(void);
++
++#endif
+-- 
+1.7.10.2
+
+
+From e8cf58600cb279c9196b82989a3e8f051605dc12 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 06:03:34 +0300
+Subject: [PATCH] imap/pop3-login: Use libsasl for authenticating to remote
+ IMAP/POP3 server. Also passdb lookup can return
+ "proxy_mech" extra field to specify which SASL mechanism to
+ use.
+
+
+diff --git a/src/imap-login/Makefile.am b/src/imap-login/Makefile.am
+index ec95a05..5cc5e8c 100644
+--- a/src/imap-login/Makefile.am
++++ b/src/imap-login/Makefile.am
+@@ -6,6 +6,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/src/lib \
+ 	-I$(top_srcdir)/src/lib-settings \
+ 	-I$(top_srcdir)/src/lib-auth \
++	-I$(top_srcdir)/src/lib-sasl \
+ 	-I$(top_srcdir)/src/lib-imap \
+ 	-I$(top_srcdir)/src/lib-master \
+ 	-I$(top_srcdir)/src/login-common
+diff --git a/src/imap-login/client.h b/src/imap-login/client.h
+index 555d7b7..887c0c2 100644
+--- a/src/imap-login/client.h
++++ b/src/imap-login/client.h
+@@ -19,7 +19,6 @@ struct imap_client {
+ 	unsigned int cmd_finished:1;
+ 	unsigned int proxy_sasl_ir:1;
+ 	unsigned int proxy_seen_banner:1;
+-	unsigned int proxy_wait_auth_continue:1;
+ 	unsigned int skip_line:1;
+ 	unsigned int id_logged:1;
+ 	unsigned int client_ignores_capability_resp_code:1;
+diff --git a/src/imap-login/imap-proxy.c b/src/imap-login/imap-proxy.c
+index 71ca799..e283d48 100644
+--- a/src/imap-login/imap-proxy.c
++++ b/src/imap-login/imap-proxy.c
+@@ -9,6 +9,7 @@
+ #include "str.h"
+ #include "str-sanitize.h"
+ #include "safe-memset.h"
++#include "sasl-client.h"
+ #include "client.h"
+ #include "client-authenticate.h"
+ #include "imap-resp-code.h"
+@@ -55,42 +56,55 @@ static void proxy_free_password(struct client *client)
+ 	i_free_and_null(client->proxy_password);
+ }
+ 
+-static void get_plain_auth(struct client *client, string_t *dest)
++static int proxy_write_login(struct imap_client *client, string_t *str)
+ {
+-	string_t *str;
+-
+-	str = t_str_new(128);
+-	str_append(str, client->proxy_user);
+-	str_append_c(str, '\0');
+-	str_append(str, client->proxy_master_user);
+-	str_append_c(str, '\0');
+-	str_append(str, client->proxy_password);
+-	base64_encode(str_data(str), str_len(str), dest);
+-}
++	struct sasl_client_settings sasl_set;
++	const unsigned char *output;
++	unsigned int len;
++	const char *mech_name, *error;
+ 
+-static void proxy_write_login(struct imap_client *client, string_t *str)
+-{
+ 	str_append(str, "C CAPABILITY\r\n");
+ 
+-	if (client->common.proxy_master_user == NULL) {
++	if (client->common.proxy_mech == NULL) {
+ 		/* logging in normally - use LOGIN command */
+ 		str_append(str, "L LOGIN ");
+ 		imap_append_string(str, client->common.proxy_user);
+ 		str_append_c(str, ' ');
+ 		imap_append_string(str, client->common.proxy_password);
++		str_append(str, "\r\n");
+ 
+ 		proxy_free_password(&client->common);
+-	} else if (client->proxy_sasl_ir) {
+-		/* master user login with SASL initial response support */
+-		str_append(str, "L AUTHENTICATE PLAIN ");
+-		get_plain_auth(&client->common, str);
+-		proxy_free_password(&client->common);
+-	} else {
+-		/* master user login without SASL initial response */
+-		str_append(str, "L AUTHENTICATE PLAIN");
+-		client->proxy_wait_auth_continue = TRUE;
++		return 0;
++	}
++
++	i_assert(client->common.proxy_sasl_client == NULL);
++	memset(&sasl_set, 0, sizeof(sasl_set));
++	sasl_set.authid = client->common.proxy_user;
++	sasl_set.authzid = client->common.proxy_master_user;
++	sasl_set.password = client->common.proxy_password;
++	client->common.proxy_sasl_client =
++		sasl_client_new(client->common.proxy_mech, &sasl_set);
++	mech_name = sasl_client_mech_get_name(client->common.proxy_mech);
++
++	str_append(str, "L AUTHENTICATE ");
++	str_append(str, mech_name);
++	if (client->proxy_sasl_ir) {
++		if (sasl_client_output(client->common.proxy_sasl_client,
++				       &output, &len, &error) < 0) {
++			client_log_err(&client->common, t_strdup_printf(
++				"proxy: SASL mechanism %s init failed: %s",
++				mech_name, error));
++			return -1;
++		}
++		str_append_c(str, ' ');
++		if (len == 0)
++			str_append_c(str, '=');
++		else
++			base64_encode(output, len, str);
+ 	}
+ 	str_append(str, "\r\n");
++	proxy_free_password(&client->common);
++	return 0;
+ }
+ 
+ static int proxy_input_banner(struct imap_client *client,
+@@ -126,7 +140,8 @@ static int proxy_input_banner(struct imap_client *client,
+ 		}
+ 		str_append(str, "S STARTTLS\r\n");
+ 	} else {
+-		proxy_write_login(client, str);
++		if (proxy_write_login(client, str) < 0)
++			return -1;
+ 	}
+ 
+ 	o_stream_nsend(output, str_data(str), str_len(str));
+@@ -173,6 +188,10 @@ int imap_proxy_parse_line(struct client *client, const char *line)
+ 	struct imap_client *imap_client = (struct imap_client *)client;
+ 	struct ostream *output;
+ 	string_t *str;
++	const unsigned char *data;
++	unsigned int data_len;
++	const char *error;
++	int ret;
+ 
+ 	i_assert(!client->destroyed);
+ 
+@@ -188,17 +207,37 @@ int imap_proxy_parse_line(struct client *client, const char *line)
+ 		return 0;
+ 	} else if (*line == '+') {
+ 		/* AUTHENTICATE started. finish it. */
+-		if (!imap_client->proxy_wait_auth_continue) {
++		if (client->proxy_sasl_client == NULL) {
+ 			/* used literals with LOGIN command, just ignore. */
+ 			return 0;
+ 		}
+ 		client->proxy_state = IMAP_PROXY_STATE_AUTH_CONTINUE;
+-		imap_client->proxy_wait_auth_continue = FALSE;
+ 
+ 		str = t_str_new(128);
+-		get_plain_auth(client, str);
++		if (line[1] != ' ' ||
++		    base64_decode(line+2, strlen(line+2), NULL, str) < 0) {
++			client_log_err(client,
++				"proxy: Server sent invalid base64 data in AUTHENTICATE response");
++			client_proxy_failed(client, TRUE);
++			return -1;
++		}
++		ret = sasl_client_input(client->proxy_sasl_client,
++					str_data(str), str_len(str), &error);
++		if (ret == 0) {
++			ret = sasl_client_output(client->proxy_sasl_client,
++						 &data, &data_len, &error);
++		}
++		if (ret < 0) {
++			client_log_err(client, t_strdup_printf(
++				"proxy: Server sent invalid authentication data: %s",
++				error));
++			client_proxy_failed(client, TRUE);
++			return -1;
++		}
++
++		str_truncate(str, 0);
++		base64_encode(data, data_len, str);
+ 		str_append(str, "\r\n");
+-		proxy_free_password(client);
+ 
+ 		o_stream_nsend(output, str_data(str), str_len(str));
+ 		return 0;
+@@ -220,7 +259,10 @@ int imap_proxy_parse_line(struct client *client, const char *line)
+ 		/* i/ostreams changed. */
+ 		output = login_proxy_get_ostream(client->login_proxy);
+ 		str = t_str_new(128);
+-		proxy_write_login(imap_client, str);
++		if (proxy_write_login(imap_client, str) < 0) {
++			client_proxy_failed(client, TRUE);
++			return -1;
++		}
+ 		o_stream_nsend(output, str_data(str), str_len(str));
+ 		return 1;
+ 	} else if (strncmp(line, "L OK ", 5) == 0) {
+@@ -305,7 +347,6 @@ void imap_proxy_reset(struct client *client)
+ 
+ 	imap_client->proxy_sasl_ir = FALSE;
+ 	imap_client->proxy_seen_banner = FALSE;
+-	imap_client->proxy_wait_auth_continue = FALSE;
+ 	client->proxy_state = IMAP_PROXY_STATE_NONE;
+ }
+ 
+diff --git a/src/login-common/Makefile.am b/src/login-common/Makefile.am
+index 6db44e7..402ae74 100644
+--- a/src/login-common/Makefile.am
++++ b/src/login-common/Makefile.am
+@@ -4,6 +4,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/src/lib \
+ 	-I$(top_srcdir)/src/lib-settings \
+ 	-I$(top_srcdir)/src/lib-auth \
++	-I$(top_srcdir)/src/lib-sasl \
+ 	-I$(top_srcdir)/src/lib-master \
+ 	-I$(top_srcdir)/src/lib-ssl-iostream \
+ 	-I$(top_srcdir)/src/lib-mail \
+diff --git a/src/login-common/client-common-auth.c b/src/login-common/client-common-auth.c
+index 99c7f34..604c164 100644
+--- a/src/login-common/client-common-auth.c
++++ b/src/login-common/client-common-auth.c
+@@ -9,6 +9,7 @@
+ #include "time-util.h"
+ #include "login-proxy.h"
+ #include "auth-client.h"
++#include "sasl-client.h"
+ #include "master-service-ssl-settings.h"
+ #include "client-common.h"
+ 
+@@ -104,6 +105,8 @@ static void client_auth_parse_args(struct client *client,
+ 			reply_r->proxy_timeout_msecs = 1000*atoi(value);
+ 		else if (strcmp(key, "proxy_refresh") == 0)
+ 			reply_r->proxy_refresh_secs = atoi(value);
++		else if (strcmp(key, "proxy_mech") == 0)
++			reply_r->proxy_mech = value;
+ 		else if (strcmp(key, "master") == 0)
+ 			reply_r->master_user = value;
+ 		else if (strcmp(key, "ssl") == 0) {
+@@ -198,6 +201,8 @@ void client_proxy_failed(struct client *client, bool send_line)
+ 		client_proxy_error(client, PROXY_FAILURE_MSG);
+ 	}
+ 
++	if (client->proxy_sasl_client != NULL)
++		sasl_client_free(&client->proxy_sasl_client);
+ 	login_proxy_free(&client->login_proxy);
+ 	proxy_free_password(client);
+ 	i_free_and_null(client->proxy_user);
+@@ -270,10 +275,13 @@ static int proxy_start(struct client *client,
+ 		       const struct client_auth_reply *reply)
+ {
+ 	struct login_proxy_settings proxy_set;
++	const struct sasl_client_mech *sasl_mech = NULL;
+ 
+ 	i_assert(reply->destuser != NULL);
+ 	i_assert(!client->destroyed);
++	i_assert(client->proxy_sasl_client == NULL);
+ 
++	client->proxy_mech = NULL;
+ 	client->v.proxy_reset(client);
+ 
+ 	if (reply->password == NULL) {
+@@ -287,6 +295,20 @@ static int proxy_start(struct client *client,
+ 		return -1;
+ 	}
+ 
++	if (reply->proxy_mech != NULL) {
++		sasl_mech = sasl_client_mech_find(reply->proxy_mech);
++		if (sasl_mech == NULL) {
++			client_log_err(client, t_strdup_printf(
++				"proxy: Unsupported SASL mechanism %s",
++				reply->proxy_mech));
++			client_proxy_error(client, PROXY_FAILURE_MSG);
++			return -1;
++		}
++	} else if (reply->master_user != NULL) {
++		/* have to use PLAIN authentication with master user logins */
++		sasl_mech = &sasl_client_mech_plain;
++	}
++
+ 	i_assert(client->refcount > 1);
+ 
+ 	if (client->destroyed) {
+@@ -318,6 +340,7 @@ static int proxy_start(struct client *client,
+ 		return -1;
+ 	}
+ 
++	client->proxy_mech = sasl_mech;
+ 	client->proxy_user = i_strdup(reply->destuser);
+ 	client->proxy_master_user = i_strdup(reply->master_user);
+ 	client->proxy_password = i_strdup(reply->password);
+diff --git a/src/login-common/client-common.c b/src/login-common/client-common.c
+index e117bea..454b28e 100644
+--- a/src/login-common/client-common.c
++++ b/src/login-common/client-common.c
+@@ -18,6 +18,7 @@
+ #include "master-service-ssl-settings.h"
+ #include "master-auth.h"
+ #include "auth-client.h"
++#include "sasl-client.h"
+ #include "login-proxy.h"
+ #include "ssl-proxy.h"
+ #include "client-common.h"
+@@ -209,6 +210,8 @@ void client_destroy(struct client *client, const char *reason)
+ 		i_free_and_null(client->proxy_password);
+ 	}
+ 
++	if (client->proxy_sasl_client != NULL)
++		sasl_client_free(&client->proxy_sasl_client);
+ 	if (client->login_proxy != NULL)
+ 		login_proxy_free(&client->login_proxy);
+ 	if (client->v.destroy != NULL)
+diff --git a/src/login-common/client-common.h b/src/login-common/client-common.h
+index 2758808..a73e9fa 100644
+--- a/src/login-common/client-common.h
++++ b/src/login-common/client-common.h
+@@ -55,7 +55,7 @@ enum client_auth_result {
+ struct client_auth_reply {
+ 	const char *master_user, *reason;
+ 	/* for proxying */
+-	const char *host, *hostip, *destuser, *password;
++	const char *host, *hostip, *destuser, *password, *proxy_mech;
+ 	unsigned int port;
+ 	unsigned int proxy_timeout_msecs;
+ 	unsigned int proxy_refresh_secs;
+@@ -122,6 +122,8 @@ struct client {
+ 
+ 	struct login_proxy *login_proxy;
+ 	char *proxy_user, *proxy_master_user, *proxy_password;
++	const struct sasl_client_mech *proxy_mech;
++	struct sasl_client *proxy_sasl_client;
+ 	unsigned int proxy_state;
+ 	unsigned int proxy_ttl;
+ 
+diff --git a/src/login-common/main.c b/src/login-common/main.c
+index 0c95949..24b83ed 100644
+--- a/src/login-common/main.c
++++ b/src/login-common/main.c
+@@ -13,6 +13,7 @@
+ #include "access-lookup.h"
+ #include "anvil-client.h"
+ #include "auth-client.h"
++#include "sasl-client.h"
+ #include "master-service-ssl-settings.h"
+ #include "ssl-proxy.h"
+ #include "login-proxy.h"
+@@ -281,6 +282,7 @@ static void main_preinit(bool allow_core_dumps)
+ 	/* Initialize SSL proxy so it can read certificate and private
+ 	   key file. */
+ 	ssl_proxy_init();
++	sasl_clients_init();
+ 
+ 	/* set the number of fds we want to use. it may get increased or
+ 	   decreased. leave a couple of extra fds for auth sockets and such.
+@@ -356,6 +358,7 @@ static void main_deinit(void)
+ 		anvil_client_deinit(&anvil);
+ 	if (auth_client_to != NULL)
+ 		timeout_remove(&auth_client_to);
++	sasl_clients_deinit();
+ 	login_settings_deinit();
+ }
+ 
+diff --git a/src/pop3-login/Makefile.am b/src/pop3-login/Makefile.am
+index 6d2ad73..a3f831c 100644
+--- a/src/pop3-login/Makefile.am
++++ b/src/pop3-login/Makefile.am
+@@ -6,6 +6,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/src/lib \
+ 	-I$(top_srcdir)/src/lib-settings \
+ 	-I$(top_srcdir)/src/lib-auth \
++	-I$(top_srcdir)/src/lib-sasl \
+ 	-I$(top_srcdir)/src/lib-master \
+ 	-I$(top_srcdir)/src/login-common
+ 
+diff --git a/src/pop3-login/pop3-proxy.c b/src/pop3-login/pop3-proxy.c
+index e0d3f25..dd5c7dc 100644
+--- a/src/pop3-login/pop3-proxy.c
++++ b/src/pop3-login/pop3-proxy.c
+@@ -8,6 +8,7 @@
+ #include "safe-memset.h"
+ #include "str.h"
+ #include "str-sanitize.h"
++#include "sasl-client.h"
+ #include "client.h"
+ #include "pop3-proxy.h"
+ 
+@@ -20,21 +21,12 @@ static void proxy_free_password(struct client *client)
+ 	i_free_and_null(client->proxy_password);
+ }
+ 
+-static void get_plain_auth(struct client *client, string_t *dest)
+-{
+-	string_t *str;
+-
+-	str = t_str_new(128);
+-	str_append(str, client->proxy_user);
+-	str_append_c(str, '\0');
+-	str_append(str, client->proxy_master_user);
+-	str_append_c(str, '\0');
+-	str_append(str, client->proxy_password);
+-	base64_encode(str_data(str), str_len(str), dest);
+-}
+-
+-static void proxy_send_login(struct pop3_client *client, struct ostream *output)
++static int proxy_send_login(struct pop3_client *client, struct ostream *output)
+ {
++	struct sasl_client_settings sasl_set;
++	const unsigned char *sasl_output;
++	unsigned int len;
++	const char *mech_name, *error;
+ 	string_t *str;
+ 
+ 	i_assert(client->common.proxy_ttl > 1);
+@@ -52,16 +44,79 @@ static void proxy_send_login(struct pop3_client *client, struct ostream *output)
+ 	}
+ 
+ 	str = t_str_new(128);
+-	if (client->common.proxy_master_user == NULL) {
++	if (client->common.proxy_mech == NULL) {
+ 		/* send USER command */
+ 		str_append(str, "USER ");
+ 		str_append(str, client->common.proxy_user);
+ 		str_append(str, "\r\n");
+-	} else {
+-		/* master user login - use AUTH PLAIN. */
+-		str_append(str, "AUTH PLAIN\r\n");
++		o_stream_nsend(output, str_data(str), str_len(str));
++		return 0;
+ 	}
++
++	i_assert(client->common.proxy_sasl_client == NULL);
++	memset(&sasl_set, 0, sizeof(sasl_set));
++	sasl_set.authid = client->common.proxy_user;
++	sasl_set.authzid = client->common.proxy_master_user;
++	sasl_set.password = client->common.proxy_password;
++	client->common.proxy_sasl_client =
++		sasl_client_new(client->common.proxy_mech, &sasl_set);
++	mech_name = sasl_client_mech_get_name(client->common.proxy_mech);
++
++	str_printfa(str, "AUTH %s ", mech_name);
++	if (sasl_client_output(client->common.proxy_sasl_client,
++			       &sasl_output, &len, &error) < 0) {
++		client_log_err(&client->common, t_strdup_printf(
++			"proxy: SASL mechanism %s init failed: %s",
++			mech_name, error));
++		return -1;
++	}
++	if (len == 0)
++		str_append_c(str, '=');
++	else
++		base64_encode(sasl_output, len, str);
++	str_append(str, "\r\n");
+ 	o_stream_nsend(output, str_data(str), str_len(str));
++
++	proxy_free_password(&client->common);
++	if (client->common.proxy_state != POP3_PROXY_XCLIENT)
++		client->common.proxy_state = POP3_PROXY_LOGIN2;
++	return 0;
++}
++
++static int
++pop3_proxy_continue_sasl_auth(struct client *client, struct ostream *output,
++			      const char *line)
++{
++	string_t *str;
++	const unsigned char *data;
++	unsigned int data_len;
++	const char *error;
++	int ret;
++
++	str = t_str_new(128);
++	if (base64_decode(line, strlen(line), NULL, str) < 0) {
++		client_log_err(client, "proxy: Server sent invalid base64 data in AUTH response");
++		return -1;
++	}
++	ret = sasl_client_input(client->proxy_sasl_client,
++				str_data(str), str_len(str), &error);
++	if (ret == 0) {
++		ret = sasl_client_output(client->proxy_sasl_client,
++					 &data, &data_len, &error);
++	}
++	if (ret < 0) {
++		client_log_err(client, t_strdup_printf(
++			"proxy: Server sent invalid authentication data: %s",
++			error));
++		return -1;
++	}
++
++	str_truncate(str, 0);
++	base64_encode(data, data_len, str);
++	str_append(str, "\r\n");
++
++	o_stream_nsend(output, str_data(str), str_len(str));
++	return 0;
+ }
+ 
+ int pop3_proxy_parse_line(struct client *client, const char *line)
+@@ -69,7 +124,6 @@ int pop3_proxy_parse_line(struct client *client, const char *line)
+ 	struct pop3_client *pop3_client = (struct pop3_client *)client;
+ 	struct ostream *output;
+ 	enum login_proxy_ssl_flags ssl_flags;
+-	string_t *str;
+ 
+ 	i_assert(!client->destroyed);
+ 
+@@ -89,7 +143,10 @@ int pop3_proxy_parse_line(struct client *client, const char *line)
+ 
+ 		ssl_flags = login_proxy_get_ssl_flags(client->login_proxy);
+ 		if ((ssl_flags & PROXY_SSL_FLAG_STARTTLS) == 0) {
+-			proxy_send_login(pop3_client, output);
++			if (proxy_send_login(pop3_client, output) < 0) {
++				client_proxy_failed(client, TRUE);
++				return -1;
++			}
+ 		} else {
+ 			o_stream_nsend_str(output, "STLS\r\n");
+ 			client->proxy_state = POP3_PROXY_STARTTLS;
+@@ -109,7 +166,10 @@ int pop3_proxy_parse_line(struct client *client, const char *line)
+ 		}
+ 		/* i/ostreams changed. */
+ 		output = login_proxy_get_ostream(client->login_proxy);
+-		proxy_send_login(pop3_client, output);
++		if (proxy_send_login(pop3_client, output) < 0) {
++			client_proxy_failed(client, TRUE);
++			return -1;
++		}
+ 		return 1;
+ 	case POP3_PROXY_XCLIENT:
+ 		if (strncmp(line, "+OK", 3) != 0) {
+@@ -119,30 +179,31 @@ int pop3_proxy_parse_line(struct client *client, const char *line)
+ 			client_proxy_failed(client, TRUE);
+ 			return -1;
+ 		}
+-		client->proxy_state = POP3_PROXY_LOGIN1;
++		client->proxy_state = client->proxy_sasl_client == NULL ?
++			POP3_PROXY_LOGIN1 : POP3_PROXY_LOGIN2;
+ 		return 0;
+ 	case POP3_PROXY_LOGIN1:
+-		str = t_str_new(128);
+-		if (client->proxy_master_user == NULL) {
+-			if (strncmp(line, "+OK", 3) != 0)
+-				break;
+-
+-			/* USER successful, send PASS */
+-			str_append(str, "PASS ");
+-			str_append(str, client->proxy_password);
+-			str_append(str, "\r\n");
+-		} else {
+-			if (*line != '+')
+-				break;
+-			/* AUTH successful, send the authentication data */
+-			get_plain_auth(client, str);
+-			str_append(str, "\r\n");
+-		}
+-		o_stream_nsend(output, str_data(str), str_len(str));
++		i_assert(client->proxy_sasl_client == NULL);
++		if (strncmp(line, "+OK", 3) != 0)
++			break;
++
++		/* USER successful, send PASS */
++		o_stream_nsend_str(output, t_strdup_printf(
++			"PASS %s\r\n", client->proxy_password));
+ 		proxy_free_password(client);
+ 		client->proxy_state = POP3_PROXY_LOGIN2;
+ 		return 0;
+ 	case POP3_PROXY_LOGIN2:
++		if (strncmp(line, "+ ", 2) == 0 &&
++		    client->proxy_sasl_client != NULL) {
++			/* continue SASL authentication */
++			if (pop3_proxy_continue_sasl_auth(client, output,
++							  line+2) < 0) {
++				client_proxy_failed(client, TRUE);
++				return -1;
++			}
++			return 0;
++		}
+ 		if (strncmp(line, "+OK", 3) != 0)
+ 			break;
+ 
+-- 
+1.7.10.2
+
+
+From 0aa8cb62b76627b2df2e2ee7829e9401ca742a09 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 14:53:31 +0300
+Subject: [PATCH] lib-storage: Fixed crashes caused by recent "multiple
+ storages per namespace" change.
+
+
+diff --git a/src/lib-storage/index/shared/shared-storage.c b/src/lib-storage/index/shared/shared-storage.c
+index a6a76f3..12a2903 100644
+--- a/src/lib-storage/index/shared/shared-storage.c
++++ b/src/lib-storage/index/shared/shared-storage.c
+@@ -289,6 +289,7 @@ int shared_storage_get_namespace(struct mail_namespace **_ns,
+ 		NAMESPACE_FLAG_LIST_PREFIX | NAMESPACE_FLAG_HIDDEN |
+ 		NAMESPACE_FLAG_AUTOCREATED | NAMESPACE_FLAG_INBOX_ANY;
+ 	new_ns->mail_set = _storage->set;
++	i_array_init(&new_ns->all_storages, 2);
+ 
+ 	location = t_str_new(256);
+ 	if (ret > 0)
+diff --git a/src/lib-storage/mail-namespace.c b/src/lib-storage/mail-namespace.c
+index a6ede7a..f0176f4 100644
+--- a/src/lib-storage/mail-namespace.c
++++ b/src/lib-storage/mail-namespace.c
+@@ -408,6 +408,7 @@ int mail_namespaces_init_location(struct mail_user *user, const char *location,
+ 	ns->flags = NAMESPACE_FLAG_INBOX_USER | NAMESPACE_FLAG_INBOX_ANY |
+ 		NAMESPACE_FLAG_LIST_PREFIX | NAMESPACE_FLAG_SUBSCRIPTIONS;
+ 	ns->owner = user;
++	i_array_init(&ns->all_storages, 2);
+ 
+ 	inbox_set = p_new(user->pool, struct mail_namespace_settings, 1);
+ 	*inbox_set = mail_namespace_default_settings;
+@@ -489,6 +490,7 @@ struct mail_namespace *mail_namespaces_init_empty(struct mail_user *user)
+ 	ns->flags = NAMESPACE_FLAG_INBOX_USER | NAMESPACE_FLAG_INBOX_ANY |
+ 		NAMESPACE_FLAG_LIST_PREFIX | NAMESPACE_FLAG_SUBSCRIPTIONS;
+ 	ns->mail_set = mail_user_set_get_storage_set(user);
++	i_array_init(&ns->all_storages, 2);
+ 	user->namespaces = ns;
+ 	return ns;
+ }
+-- 
+1.7.10.2
+
+
+From b59b76cfa2c519df0f4d7cdf90a9eed08af62180 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 14:56:36 +0300
+Subject: [PATCH] acl: Crashfix
+
+
+diff --git a/src/plugins/acl/acl-backend-vfile.c b/src/plugins/acl/acl-backend-vfile.c
+index 54426d8..07f36a0 100644
+--- a/src/plugins/acl/acl-backend-vfile.c
++++ b/src/plugins/acl/acl-backend-vfile.c
+@@ -144,7 +144,7 @@ acl_backend_vfile_get_local_dir(struct acl_backend *backend,
+ 	/* ACL files are very important. try to keep them among the main
+ 	   mail files. that's not possible though with a) if the mailbox is
+ 	   a file or b) if the mailbox path doesn't point to filesystem. */
+-	vname = mailbox_list_get_vname(backend->list, name);
++	vname = name == NULL ? "" : mailbox_list_get_vname(backend->list, name);
+ 	if (mailbox_list_get_storage(&list, vname, &storage) < 0)
+ 		return NULL;
+ 	i_assert(list == ns->list);
+-- 
+1.7.10.2
+
+
+From 8df64f6ec997b8ce0b9896d6eb926fe50bd3a874 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <tss@iki.fi>
+Date: Sun, 9 Jun 2013 21:06:49 +0300
+Subject: [PATCH] man: Recent change accidentally changed LGPLv2.1 ->
+ LGPLv2.2, reverted.
+
+
+diff --git a/doc/man/dovecot.1.in b/doc/man/dovecot.1.in
+index 751c172..b2eac57 100644
+--- a/doc/man/dovecot.1.in
++++ b/doc/man/dovecot.1.in
+@@ -148,7 +148,7 @@ Configuration files of different services and settings.
+ .SH AUTHOR
+ Dovecot <http://dovecot.org> and its manual pages were written by the
+ Dovecot authors <http://dovecot.org/doc/AUTHORS>, mainly Timo Sirainen <tss
+-at iki.fi>, and are licensed under the terms of the MIT and LGPLv2.2
++at iki.fi>, and are licensed under the terms of the MIT and LGPLv2.1
+ licenses, see <http://dovecot.org/doc/COPYING> for details.
+ .\"------------------------------------------------------------------------
+ .SH SEE ALSO
+-- 
+1.7.10.2
+
