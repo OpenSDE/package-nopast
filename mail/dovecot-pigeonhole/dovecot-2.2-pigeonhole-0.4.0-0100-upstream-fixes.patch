@@ -31479,3 +31479,116 @@ index 722ad2a..ab2911a 100644
 -- 
 1.7.10.2
 
+From ffdb6f4134c012632f1faa8567f03ff580152a6c Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Tue, 18 Jun 2013 08:11:37 +0200
+Subject: [PATCH] Don't access ns->storage. Patch by Timo Sirainen.
+
+
+diff --git a/src/sieve-tools/sieve-filter.c b/src/sieve-tools/sieve-filter.c
+index d054806..7b892ab 100644
+--- a/src/sieve-tools/sieve-filter.c
++++ b/src/sieve-tools/sieve-filter.c
+@@ -505,7 +505,7 @@ int main(int argc, char **argv)
+ 	src_box = mailbox_alloc(ns->list, src_mailbox, open_flags);
+ 	if ( mailbox_open(src_box) < 0 ) {
+ 		i_fatal("Couldn't open source mailbox '%s': %s",
+-			src_mailbox, mail_storage_get_last_error(ns->storage, &error));
++			src_mailbox, mailbox_get_last_error(src_box, &error));
+ 	}
+ 
+ 	/* Open move box if necessary */
+@@ -520,7 +520,7 @@ int main(int argc, char **argv)
+ 		move_box = mailbox_alloc(ns->list, move_mailbox, open_flags);
+ 		if ( mailbox_open(move_box) < 0 ) {
+ 			i_fatal("Couldn't open mailbox '%s': %s",
+-				move_mailbox, mail_storage_get_last_error(ns->storage, &error));
++				move_mailbox, mailbox_get_last_error(move_box, &error));
+ 		}
+ 
+ 		if ( mailbox_backends_equal(src_box, move_box) ) {
+-- 
+1.7.10.2
+
+
+From c6f7816c2d7b93c38549a8220a4c429780560077 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Tue, 18 Jun 2013 08:24:40 +0200
+Subject: [PATCH] Fixed line endings in X-Sieve headers added by redirect
+ command. Modified patch by Andriy Syrovenko.
+
+
+diff --git a/src/lib-sieve/cmd-redirect.c b/src/lib-sieve/cmd-redirect.c
+index d3a2735..51bea21 100644
+--- a/src/lib-sieve/cmd-redirect.c
++++ b/src/lib-sieve/cmd-redirect.c
+@@ -344,10 +344,12 @@ static int act_redirect_send
+ 		string_t *hdr = t_str_new(256);
+ 
+ 		/* Prepend sieve headers (should not affect signatures) */
+-		rfc2822_header_write(hdr, "X-Sieve", SIEVE_IMPLEMENTATION);
+-		if ( recipient != NULL )
+-			rfc2822_header_write(hdr, "X-Sieve-Redirected-From", recipient);
+-	  o_stream_send(output, str_data(hdr), str_len(hdr));
++		rfc2822_header_append(hdr, "X-Sieve", SIEVE_IMPLEMENTATION, FALSE, NULL);
++		if ( recipient != NULL ) {
++			rfc2822_header_append
++				(hdr, "X-Sieve-Redirected-From", recipient, FALSE, NULL);
++		}
++		o_stream_send(output, str_data(hdr), str_len(hdr));
+ 	} T_END;
+ 
+ 	o_stream_send_istream(output, input);
+-- 
+1.7.10.2
+
+
+From 21a70095b779fb84c134c06530d3b4b2bda2e333 Mon Sep 17 00:00:00 2001
+From: Stephan Bosch <stephan@rename-it.nl>
+Date: Tue, 18 Jun 2013 08:34:26 +0200
+Subject: [PATCH] lib-sievestorage: Removed PATH_MAX limitation for active
+ symlink. Fixes issue for GNU/Hurd.
+
+
+diff --git a/src/lib-sievestorage/sieve-storage-script.c b/src/lib-sievestorage/sieve-storage-script.c
+index 55f6756..5945f21 100644
+--- a/src/lib-sievestorage/sieve-storage-script.c
++++ b/src/lib-sievestorage/sieve-storage-script.c
+@@ -2,6 +2,7 @@
+  */
+ 
+ #include "lib.h"
++#include "abspath.h"
+ #include "mempool.h"
+ #include "hostpid.h"
+ #include "ioloop.h"
+@@ -118,14 +119,13 @@ static struct sieve_script *sieve_storage_script_init_from_file
+ static int sieve_storage_read_active_link
+ (struct sieve_storage *storage, const char **link_r)
+ {
+-  char linkbuf[PATH_MAX];
+-  int ret;
+-
+-	*link_r = NULL;
++	int ret;
+ 
+-	ret = readlink(storage->active_path, linkbuf, sizeof(linkbuf));
++	ret = t_readlink(storage->active_path, link_r);
+ 
+ 	if ( ret < 0 ) {
++		*link_r = NULL;
++
+ 		if ( errno == EINVAL ) {
+ 			/* Our symlink is no symlink. Report 'no active script'.
+ 			 * Activating a script will automatically resolve this, so
+@@ -152,7 +152,6 @@ static int sieve_storage_read_active_link
+ 	}
+ 
+ 	/* ret is now assured to be valid, i.e. > 0 */
+-	*link_r = t_strndup(linkbuf, ret);
+ 	return 1;
+ }
+ 
+-- 
+1.7.10.2
+
