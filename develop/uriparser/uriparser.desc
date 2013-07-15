@@ -14,11 +14,10 @@
 
 [I] RFC 3986 URI parsing and processing libary
 
-[T] uriparser is a strictly RFC 3986 compliant URI parsing library written in C.
-[T] uriparser is cross-platform, fast, supports Unicode 
-[T] and is licensed under the New BSD license.
+[T] uriparser is a strictly RFC 3986 compliant, cross-platform, Unicode aware
+[T] URI parsing library written in C.
 
-[U] http://downloads.sourceforge.net/uriparser
+[U] http://uriparser.sourceforge.net/
 
 [A] Weijia Song <songweijia@gmail.com>
 [A] Sebastian Pipping <webmaster@hartwork.org>
