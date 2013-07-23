@@ -31,11 +31,11 @@
 
 [L] MIT
 [S] Stable
-[V] 2.0.1
+[V] 2.0.2
 [P] X -?---5---9 109.801
 
 [CV-URL] http://luajit.org/download.html
 
-[D] 495130945 LuaJIT-2.0.1.tar.gz http://luajit.org/download/
+[D] 1764010727 LuaJIT-2.0.2.tar.gz http://luajit.org/download/
 # official hotfixes
-[D] 4238368421 LuaJIT-2.0.1-hotfix1.patch !http://luajit.org/download/v2.0.1_hotfix1.patch
+#[D] 4238368421 LuaJIT-2.0.1-hotfix1.patch !http://luajit.org/download/v2.0.2_hotfix1.patch
