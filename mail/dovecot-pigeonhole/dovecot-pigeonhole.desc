@@ -34,8 +34,8 @@
 
 [L] LGPL
 [S] Beta
-[V] 0.4.0
+[V] 0.4.1
 [P] X -----5---9 800.000
 
-[D] 3377154051 dovecot-2.2-pigeonhole-0.4.0.tar.gz http://www.rename-it.nl/dovecot/2.2/
+[D] 2338265401 dovecot-2.2-pigeonhole-0.4.1.tar.gz http://www.rename-it.nl/dovecot/2.2/
 #[D] 1094705850 dovecot-2.2-pigeonhole-5892c2ab9b0d.tar.bz2 !http://hg.rename-it.nl/dovecot-2.2-pigeonhole/archive/5892c2ab9b0d.tar.bz2
