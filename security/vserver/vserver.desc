@@ -45,4 +45,5 @@
 [D] 1130625335 testme.sh-0.17 http://vserver.13thfloor.at/Stuff/SCRIPT/
 [D] 1025519623 testfs.sh-0.23 http://vserver.13thfloor.at/Stuff/SCRIPT/
 
-[D] 3854777096 patch-3.4.53-vs2.3.3.9.diff http://vserver.13thfloor.at/Experimental/
+#[D] 3854777096 patch-3.4.53-vs2.3.3.9.diff http://vserver.13thfloor.at/Experimental/
+[D] 2980533362 patch-3.4.55-vs2.3.3.9.diff http://dl.opensde.net/sources/vserver/experimental/
