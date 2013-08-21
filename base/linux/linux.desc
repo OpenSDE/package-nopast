@@ -31,8 +31,8 @@
 
 [L] GPL
 [S] Stable
-[V] 3.10.7
+[V] 3.10.8
 [P] X -?---5---9 102.060
 
 [D] 502805126 linux-3.10.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v3.0/
-[D] 576618799 patch-3.10.7.bz2 http://kernel.org/pub/linux/kernel/v3.0/
+[D] 599889546 patch-3.10.8.bz2 http://kernel.org/pub/linux/kernel/v3.0/
