@@ -23,9 +23,10 @@
 [A] Sebastian Pipping <webmaster@hartwork.org>
 [M] The OpenSDE Community <list@opensde.org>
 
-[C] C URI Parser
+[C] extra/development
 
 [L] BSD
+[S] Stable
 [V] 0.7.8
 [P] X -----5---9 800.000
 
