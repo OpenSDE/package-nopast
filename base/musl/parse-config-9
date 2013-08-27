@@ -79,6 +79,8 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 	musl_fix_gnulib() {
 		local dir="$1"
 
+		echo_status "fixing gnulib weirdness in $dir"
+
 		gl_config_cache="
 			gl_cv_func_isnanl_works=yes \
 			gl_cv_header_working_stdint_h=yes \
@@ -168,6 +170,12 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 	libtool)
 		hook_add preconf 9 'musl_findall_fix_configsub'
 		;;
+
+	# packages to fix gnulib weirdness
+	m4)
+		hook_add preconf 9 'musl_fix_gnulib lib'
+		;;	
+		
 	esac
 
 	# same package translations to look for patches
