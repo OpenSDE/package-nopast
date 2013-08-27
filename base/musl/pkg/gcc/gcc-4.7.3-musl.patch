@@ -415,8 +415,8 @@ diff -r 78025c74c5c1 gcc/config/rs6000/linux64.h
 +++ b/gcc/config/rs6000/linux64.h	Wed Nov 21 21:45:58 2012 -0500
 @@ -362,17 +362,21 @@
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld64.so.1"
- #define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
- #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
+ #define UCLIBC_DYNAMIC_LINKER32 "/lib32/ld-uClibc.so.0"
+ #define UCLIBC_DYNAMIC_LINKER64 "/lib64/ld64-uClibc.so.0"
 +#define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-powerpc.so.1"
 +#define MUSL_DYNAMIC_LINKER64 "/lib/ld-musl-powerpc64.so.1"
  #if DEFAULT_LIBC == LIBC_UCLIBC
