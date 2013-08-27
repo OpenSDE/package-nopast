@@ -165,6 +165,9 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 	gmp)
 		hook_add postpatch 6 'musl_fix_configsub configfsf.sub'
 		;;
+	libtool)
+		hook_add preconf 9 'musl_findall_fix_configsub'
+		;;
 	esac
 
 	# same package translations to look for patches
