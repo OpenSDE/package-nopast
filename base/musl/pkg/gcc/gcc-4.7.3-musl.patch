@@ -14,9 +14,20 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
+This patch was made by Gregor Richards (https://bitbucket.org/GregorR)
+
+https://bitbucket.org/GregorR/musl-cross/raw/8c8493b7e33486d4240965d0e2f9575ad2c3593d/patches/gcc-4.7.3-musl.diff
+
 # HG changeset patch
 # Parent 05e4cf5f033d266c8f8fe065f8c5752891c5bf7a
 Adding musl to config.sub, so it's recognized as a target platform.
+
+It has to be slightly changed to apply on top of OpenSDE's patch
+'base/gcc/gcc-4.7-multilib-1.patch' which is for adjusting multilib
+dirnames to suite OpenSDE's lib as symlink strategy.
+
+OpenSDE specific changes have been done in:
+gcc/config/rs6000/linux64.h
 
 
 diff -r 05e4cf5f033d -r 04a6a82b8e06 config.sub
