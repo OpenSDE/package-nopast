@@ -22,6 +22,13 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 	# I don't know what this is for //morfoh
 	var_append flistdel "|" "$( echo $libdir | cut -d '/' -f2- )/charset.alias"
 
+	# cross-compiling help
+	if atstage cross; then
+		# assuming a gnu compatible malloc, realloc
+		var_append configcache ' ' 'ac_cv_func_malloc_0_nonnull=yes'
+		var_append configcache ' ' 'ac_cv_func_realloc_0_nonnull=yes'
+	fi
+
 	# the most tipical fix is to config.sub
 	#
 	musl_fix_configsub() {
