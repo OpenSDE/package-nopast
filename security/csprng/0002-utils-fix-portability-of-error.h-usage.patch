@@ -14,7 +14,7 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-From 0f4e04b4aa760e5a48f0ada3c19a3bf9e00666b8 Mon Sep 17 00:00:00 2001
+From 752194d531bd7f8bdd49b51b32c11b95503d109f Mon Sep 17 00:00:00 2001
 From: Christian Wiese <chris@opensde.org>
 Date: Thu, 5 Sep 2013 09:57:46 +0200
 Subject: [PATCH] utils: fix portability of error.h usage
@@ -25,14 +25,23 @@ not providing this extension.
 
 From what I have tested so far error.h is only available in glibc and uclibc,
 but not in musl libc.
+
+Signed-off-by: Christian Wiese <chris@opensde.org>
 ---
- configure.ac                   |    1 +
- utils/csprng-generate.c        |    2 +-
- utils/csprng_error.h           |   19 +++++++++++++++++++
- utils/csprngd.c                |    2 +-
- utils/random_interface_linux.c |    2 +-
- 5 files changed, 23 insertions(+), 3 deletions(-)
- create mode 100644 utils/csprng_error.h
+ configure.ac                    |    1 +
+ include/internal/csprng_error.h |   19 +++++++++++++++++++
+ test/Makefile.am                |    1 +
+ test/havege_main.c              |    2 +-
+ test/http_main.c                |    2 +-
+ test/memt_main.c                |    2 +-
+ test/openssl-rand_main.c        |    2 +-
+ test/qrbg_main.c                |    2 +-
+ test/sha1_main.c                |    2 +-
+ utils/csprng-generate.c         |    2 +-
+ utils/csprngd.c                 |    3 ++-
+ utils/random_interface_linux.c  |    3 ++-
+ 12 files changed, 32 insertions(+), 9 deletions(-)
+ create mode 100644 include/internal/csprng_error.h
 
 diff --git a/configure.ac b/configure.ac
 index 12fd277..bce1891 100755
@@ -46,31 +55,11 @@ index 12fd277..bce1891 100755
  AC_CHECK_HEADERS([fcntl.h])
  AC_CHECK_HEADERS([stdlib.h])
  AC_CHECK_HEADERS([string.h])
-diff --git a/utils/csprng-generate.c b/utils/csprng-generate.c
-index 7a1928a..9d6fa58 100644
---- a/utils/csprng-generate.c
-+++ b/utils/csprng-generate.c
-@@ -58,7 +58,6 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
- #include <csprng/helper_utils.h>
- 
- 
--#include <error.h>
- #include <argp.h>
- #include <string.h>
- #include <math.h>
-@@ -74,6 +73,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
- 
- 
- #include "config.h"
-+#include "csprng_error.h"
- 
- /* Value added to key to get the key of the opposite option*/
- #define OPP 256
-diff --git a/utils/csprng_error.h b/utils/csprng_error.h
+diff --git a/include/internal/csprng_error.h b/include/internal/csprng_error.h
 new file mode 100644
 index 0000000..2c18414
 --- /dev/null
-+++ b/utils/csprng_error.h
++++ b/include/internal/csprng_error.h
 @@ -0,0 +1,19 @@
 +#ifndef _CSPRNG_ERROR_H
 +#define _CSPRNG_ERROR_H
@@ -91,8 +80,118 @@ index 0000000..2c18414
 +#endif
 +
 +#endif
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 023ded7..409ab54 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -12,6 +12,7 @@ if HAVE_LIBTESTU01
+   bin_PROGRAMS += TestU01_raw_stdin_input_with_log
+ endif
+ 
++openssl_rand_main_CPPFLAGS = -I$(top_srcdir)/include
+ openssl_rand_main_SOURCES = openssl-rand_main.c
+ openssl_rand_main_LDADD = -lcrypto
+ 
+diff --git a/test/havege_main.c b/test/havege_main.c
+index 181a997..1a03c18 100644
+--- a/test/havege_main.c
++++ b/test/havege_main.c
+@@ -34,7 +34,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <assert.h>
+ #include <string.h>
+ #include <errno.h>
+-#include <error.h>
++#include <internal/csprng_error.h>
+ 
+ #include <csprng/havege.h>
+ #include <openssl/sha.h>
+diff --git a/test/http_main.c b/test/http_main.c
+index 9b10034..d3c14a0 100644
+--- a/test/http_main.c
++++ b/test/http_main.c
+@@ -33,7 +33,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <csprng/http_rng.h>
+ #include <time.h>
+ #include <errno.h>
+-#include <error.h>
++#include <internal/csprng_error.h>
+ #include <string.h>
+ 
+ 
+diff --git a/test/memt_main.c b/test/memt_main.c
+index 29ddfca..6037596 100644
+--- a/test/memt_main.c
++++ b/test/memt_main.c
+@@ -38,7 +38,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <inttypes.h>
+ #include <assert.h>
+ #include <errno.h>
+-#include <error.h>
++#include <internal/csprng_error.h>
+ 
+ int main(void)
+ {
+diff --git a/test/openssl-rand_main.c b/test/openssl-rand_main.c
+index 5a4e5b6..78ec057 100644
+--- a/test/openssl-rand_main.c
++++ b/test/openssl-rand_main.c
+@@ -31,7 +31,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <stdlib.h>
+ #include <inttypes.h>
+ #include <errno.h>
+-#include <error.h>
++#include <internal/csprng_error.h>
+ 
+ #include <openssl/rand.h>
+ 
+diff --git a/test/qrbg_main.c b/test/qrbg_main.c
+index 4cf3a35..5dd1492 100644
+--- a/test/qrbg_main.c
++++ b/test/qrbg_main.c
+@@ -32,7 +32,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <errno.h>
+ #include <string.h>
+ #include <errno.h>
+-#include <error.h>
++#include <internal/csprng_error.h>
+ 
+ #include <csprng/qrbg-c.h>
+ 
+diff --git a/test/sha1_main.c b/test/sha1_main.c
+index 9b5753b..0a2349d 100644
+--- a/test/sha1_main.c
++++ b/test/sha1_main.c
+@@ -31,7 +31,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <stdlib.h>
+ #include <inttypes.h>
+ #include <errno.h>
+-#include <error.h>
++#include <internal/csprng_error.h>
+ 
+ 
+ #include <csprng/sha1_rng.h>
+diff --git a/utils/csprng-generate.c b/utils/csprng-generate.c
+index 7a1928a..cffffcd 100644
+--- a/utils/csprng-generate.c
++++ b/utils/csprng-generate.c
+@@ -58,7 +58,6 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <csprng/helper_utils.h>
+ 
+ 
+-#include <error.h>
+ #include <argp.h>
+ #include <string.h>
+ #include <math.h>
+@@ -72,6 +71,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
++#include <internal/csprng_error.h>
+ 
+ #include "config.h"
+ 
 diff --git a/utils/csprngd.c b/utils/csprngd.c
-index 8fd63be..31cf51e 100644
+index 8fd63be..9ddbe27 100644
 --- a/utils/csprngd.c
 +++ b/utils/csprngd.c
 @@ -67,7 +67,6 @@ mpstat -P ALL 2
@@ -103,16 +202,17 @@ index 8fd63be..31cf51e 100644
  #include <argp.h>
  #include <string.h>
  #include <assert.h>
-@@ -90,6 +89,7 @@ mpstat -P ALL 2
+@@ -88,6 +87,8 @@ mpstat -P ALL 2
+ #include <sys/mman.h>   //mlock
+ #include <sys/file.h>   //flock
  
++#include <internal/csprng_error.h>
++
  #include "random_interface_linux.h"
  #include "config.h"
-+#include "csprng_error.h"
  
- //getrlimit
- #include <sys/time.h>
 diff --git a/utils/random_interface_linux.c b/utils/random_interface_linux.c
-index 77552eb..46370fd 100644
+index 77552eb..ebe79b2 100644
 --- a/utils/random_interface_linux.c
 +++ b/utils/random_interface_linux.c
 @@ -30,7 +30,6 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
@@ -123,14 +223,15 @@ index 77552eb..46370fd 100644
  #include <time.h>
  #include <signal.h>
  
-@@ -45,6 +44,7 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+@@ -43,6 +42,8 @@ along with CSRNG.  If not, see <http://www.gnu.org/licenses/>.
+ //
+ #include <linux/random.h>
  
++#include <internal/csprng_error.h>
++
  #include <csprng/helper_utils.h>
  #include "random_interface_linux.h"
-+#include "csprng_error.h"
  
- //{{{ kernel_mode_t get_kernel_version( void )
- //Get version of Linux kernel
 -- 
 1.7.2.3
 
