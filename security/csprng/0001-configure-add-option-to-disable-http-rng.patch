@@ -14,7 +14,7 @@
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-From 5f069c7847bc02a738594fc21d437ecae04e2db9 Mon Sep 17 00:00:00 2001
+From 1ff114f41520671408445e18835b34a756e29650 Mon Sep 17 00:00:00 2001
 From: Christian Wiese <chris@opensde.org>
 Date: Wed, 4 Sep 2013 22:39:09 +0200
 Subject: [PATCH] configure: add option to disable http rng
@@ -56,7 +56,7 @@ index 40dfaa4..12fd277 100755
  AC_MSG_CHECKING([for --with-openssl])
  AC_ARG_WITH(
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 8e1a2bb..302a87b 100644
+index 8e1a2bb..fb0ff98 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -16,6 +16,14 @@ libcsprng_la_LIBADD =
@@ -64,7 +64,7 @@ index 8e1a2bb..302a87b 100644
  libcsprng_la_LDFLAGS = -version-number @CSPRNG_LT_VERSION@
  
 +if ENABLE_HTTP_RNG
-+	HTTP_RNG_SOURCES= \
++HTTP_RNG_SOURCES = \
 +		QRBG.h \
 +		QRBG.cpp \
 +		qrbg-c.cpp \
