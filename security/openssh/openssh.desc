@@ -38,8 +38,8 @@
 
 [L] OpenSource
 [S] Stable
-[V] 6.2p1
+[V] 6.2p2
 [P] X -?---5---9 191.100
 
-[D] 2353477316 openssh-6.2p1.tar.gz ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/
+[D] 2951842732 openssh-6.2p2.tar.gz ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/
 [D] 909527609 contrib-openssh-lpk-5.1p1-0.3.10.patch http://openssh-lpk.googlecode.com/svn/trunk/patch/contrib/
