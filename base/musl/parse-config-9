@@ -182,7 +182,7 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 		;;
 
 	# packages to fix gnulib weirdness
-	m4)
+	gzip|m4)
 		hook_add preconf 9 'musl_fix_gnulib lib'
 		;;	
 		
