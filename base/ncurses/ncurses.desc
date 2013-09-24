@@ -33,7 +33,7 @@
 
 [L] MIT
 [S] Stable
-[V] 5.9-20130518
+[V] 5.9-20130921
 [P] X 01-3-----9 104.000
 
 [D] 4009676220 ncurses-5.9.tar.gz ftp://invisible-island.net/ncurses/
@@ -42,3 +42,17 @@
 [D] 1740918885 ncurses-5.9-20130504-patch.sh.bz2 ftp://invisible-island.net/ncurses/5.9/
 [D] 743029032 ncurses-5.9-20130511.patch.gz ftp://invisible-island.net/ncurses/5.9/
 [D] 2911120 ncurses-5.9-20130518.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 3971427051 ncurses-5.9-20130525.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 1794276652 ncurses-5.9-20130608.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 1129088427 ncurses-5.9-20130615.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 3288116518 ncurses-5.9-20130622.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 1219712766 ncurses-5.9-20130706.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 1943201280 ncurses-5.9-20130713.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 1156281875 ncurses-5.9-20130720.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 52261920 ncurses-5.9-20130727.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 3912916461 ncurses-5.9-20130805.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 479663330 ncurses-5.9-20130816.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 3232630288 ncurses-5.9-20130824.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 448298690 ncurses-5.9-20130831.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 1211024065 ncurses-5.9-20130907.patch.gz ftp://invisible-island.net/ncurses/5.9/
+[D] 3032226255 ncurses-5.9-20130921.patch.gz ftp://invisible-island.net/ncurses/5.9/
