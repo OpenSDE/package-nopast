@@ -12,6 +12,6 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-if [ "$SDECFG_LIBC" == "musl" -a "${arch_target%gnu}" != "$arch_target" ]; then
-	arch_target=${arch_target%gnu}musl
+if [ "$SDECFG_LIBC" == "musl" -a "${arch_target%gnu*}" != "$arch_target" ]; then
+	arch_target=${arch_target/gnu/musl}
 fi
