@@ -1,0 +1,20 @@
+--- ./configure.ac~	2009-06-01 08:36:08.000000000 +0000
++++ ./configure.ac	2009-06-01 09:00:57.000000000 +0000
+@@ -511,11 +511,12 @@
+ #
+ # gpg-error is required.
+ #
+-AM_PATH_GPG_ERROR("$NEED_GPG_ERROR_VERSION")
+-if test "x$GPG_ERROR_LIBS" = "x"; then
+-  AC_MSG_ERROR([libgpg-error is needed.
+-                See ftp://ftp.gnupg.org/gcrypt/libgpg-error/ .])
+-fi
++PKG_CHECK_MODULES([GPG_ERROR], [gpg-error >= "$NEED_GPG_ERROR_VERSION"])
++#AM_PATH_GPG_ERROR("$NEED_GPG_ERROR_VERSION")
++#if test "x$GPG_ERROR_LIBS" = "x"; then
++#  AC_MSG_ERROR([libgpg-error is needed.
++#                See ftp://ftp.gnupg.org/gcrypt/libgpg-error/ .])
++#fi
+ 
+ AC_DEFINE(GPG_ERR_SOURCE_DEFAULT, GPG_ERR_SOURCE_GCRYPT,
+           [The default error source for libgcrypt.])
