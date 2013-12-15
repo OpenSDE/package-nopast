@@ -22,18 +22,18 @@ the application.
 This means that when using musl it has to be use as a pointer like it was
 intended to be used.
 
---- ./src/ulogd.c.orig	2013-08-29 11:45:45.175597529 +0200
-+++ ./src/ulogd.c	2013-08-29 11:53:51.722856392 +0200
-@@ -78,7 +78,7 @@
- static FILE *logfile = NULL;		/* logfile pointer */
- static char *ulogd_logfile = NULL;
+--- a/src/ulogd.c	2013-11-18 23:34:03.060775245 +0100
++++ b/src/ulogd.c	2013-12-15 14:04:09.354676690 +0100
+@@ -83,7 +83,7 @@
  static const char *ulogd_configfile = ULOGD_CONFIGFILE;
+ static const char *ulogd_pidfile = NULL;
+ static int ulogd_pidfile_fd = -1;
 -static FILE syslog_dummy;
 +static int use_syslog;
  
  static int info_mode = 0;
  
-@@ -420,7 +420,7 @@
+@@ -427,7 +427,7 @@
  	if (level < loglevel_ce.u.value)
  		return;
  
@@ -42,7 +42,7 @@ intended to be used.
  		/* FIXME: this omits the 'file' string */
  		va_start(ap, format);
  		vsyslog(ulogd2syslog_level(level), format, ap);
-@@ -937,11 +937,12 @@
+@@ -946,11 +946,12 @@
  		ulogd_logfile = strdup(name);
  	}
  
@@ -56,7 +56,7 @@ intended to be used.
  	} else {
  		logfile = fopen(ulogd_logfile, "a");
  		if (!logfile) {
-@@ -1070,7 +1071,7 @@
+@@ -1240,7 +1241,7 @@
  	unload_plugins();
  #endif
  
@@ -65,7 +65,7 @@ intended to be used.
  		fclose(logfile);
  		logfile = NULL;
  	}
-@@ -1090,7 +1091,7 @@
+@@ -1262,7 +1263,7 @@
  	switch (signal) {
  	case SIGHUP:
  		/* reopen logfile */
