@@ -174,7 +174,7 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 	gmp)
 		hook_add postpatch 6 'musl_fix_configsub configfsf.sub'
 		;;
-	lzo|lzop)
+	lzo|lzop|lvm2)
 		hook_add postpatch 6 'musl_fix_configsub autoconf/config.sub'
 		;;
 	libtool)
