@@ -71,6 +71,10 @@ CONFIG_USB_OTG_BLACKLIST_HUB=n
 # deprecated (only needed for old ATA/(E)IDE and ATAPI units)
 # users of ATA hardware are encouraged to migrate to the newer ATA subsystem
 CONFIG_IDE=n
+
+# enable support for scripts starting with #! by default (introduced in 3.10)
+# important for initramfs init scripts
+CONFIG_BINFMT_SCRIPT=y
 EOT
 
 # broken since 2.6.20 and still as of 2.6.27
