@@ -23,7 +23,7 @@ fi
 
 var_append GCC_WRAPPER_INSERT " " "-mfloat-abi=$SDECFG_ARM_FLOAT_ABI"
 
-if [ "$SDECFG_ARM_FLOAT_ABI" == hard ]; then
+if [ "$SDECFG_ARM_FLOAT_ABI" != soft ]; then
 	var_append GCC_WRAPPER_INSERT " " "-mfpu=$SDECFG_ARM_FPU"
 fi
 
