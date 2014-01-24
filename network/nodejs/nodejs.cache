@@ -1,0 +1,13 @@
+
+[TIMESTAMP] 1390568700 Fri Jan 24 14:05:00 2014
+[BUILDTIME] 40 (5)
+[SIZE] 11.48 MB, 1224 files
+
+[DEP] binutils
+[DEP] coreutils
+[DEP] gcc
+[DEP] glibc
+[DEP] linux-header
+[DEP] openssl
+[DEP] python
+[DEP] sysfiles
