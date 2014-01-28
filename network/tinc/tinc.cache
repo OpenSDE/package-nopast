@@ -1,29 +1,15 @@
 
-[TIMESTAMP] 1236336217 Fri Mar  6 12:43:37 2009
+[TIMESTAMP] 1390934990 Tue Jan 28 19:49:50 2014
 [BUILDTIME] 15 (5)
-[SIZE] 0.34 MB, 11 files
+[SIZE] 0.27 MB, 10 files
 
 [DEP] bash
 [DEP] binutils
-[DEP] bzip2
 [DEP] coreutils
-[DEP] diffutils
-[DEP] fhs
-[DEP] findutils
-[DEP] gawk
 [DEP] gcc
-[DEP] gettext
 [DEP] glibc
-[DEP] grep
 [DEP] linux-header
 [DEP] lzo
-[DEP] make
-[DEP] mktemp
 [DEP] openssl
-[DEP] runit
-[DEP] sed
 [DEP] sysfiles
-[DEP] tar
-[DEP] texinfo
-[DEP] util-linux
 [DEP] zlib
