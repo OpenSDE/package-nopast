@@ -79,7 +79,7 @@
 [DEP] tar
 [DEP] tcl
 [DEP] tk
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxpython
 [DEP] xorg-cf-files
 [DEP] xproto

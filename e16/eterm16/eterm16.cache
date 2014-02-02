@@ -43,7 +43,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xextproto
 [DEP] xorg-cf-files
 [DEP] xproto

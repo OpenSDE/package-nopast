@@ -75,7 +75,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wireless-tools
 [DEP] xextproto
 [DEP] xorg-cf-files

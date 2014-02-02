@@ -21,5 +21,5 @@
 [DEP] tar
 [DEP] tcsh
 [DEP] texinfo
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] yp-tools

@@ -20,6 +20,6 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] tetex
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xemacs
 [DEP] xemacs-packages

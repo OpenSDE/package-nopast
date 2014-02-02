@@ -29,7 +29,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] unzip
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xextproto
 [DEP] xf86dgaproto
 [DEP] xf86vidmodeproto

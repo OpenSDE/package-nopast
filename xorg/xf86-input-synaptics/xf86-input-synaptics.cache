@@ -33,7 +33,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xf86-input-acecad
 [DEP] xorg-server
 [DEP] xproto

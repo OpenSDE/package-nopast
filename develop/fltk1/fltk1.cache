@@ -36,7 +36,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xorg-cf-files
 [DEP] xprop
 [DEP] xproto

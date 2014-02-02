@@ -56,7 +56,7 @@
 [DEP] tetex
 [DEP] texinfo
 [DEP] tk
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xorg-cf-files
 [DEP] xproto
 [DEP] xz

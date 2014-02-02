@@ -115,7 +115,7 @@
 [DEP] taglib
 [DEP] tar
 [DEP] udev
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] x264
 [DEP] xcb-util
 [DEP] xextproto

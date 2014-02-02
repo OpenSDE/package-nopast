@@ -34,5 +34,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] udns
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] zlib

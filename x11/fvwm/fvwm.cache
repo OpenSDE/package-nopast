@@ -89,7 +89,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] terminus-font
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xextproto
 [DEP] xorg-cf-files
 [DEP] xproto

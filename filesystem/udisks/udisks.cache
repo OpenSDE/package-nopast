@@ -42,4 +42,4 @@
 [DEP] tar
 [DEP] udev
 [DEP] usbutils
-[DEP] util-linux-ng
+[DEP] util-linux

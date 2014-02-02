@@ -29,5 +29,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] unzip
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xz

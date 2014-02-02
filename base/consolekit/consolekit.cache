@@ -46,6 +46,6 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] upower
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto
 [DEP] zlib

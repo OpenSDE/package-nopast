@@ -70,7 +70,7 @@
 [DEP] shared-mime-info
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxwidgets
 [DEP] xproto
 [DEP] zlib

@@ -119,7 +119,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] totem
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] vino
 [DEP] xchat
 [DEP] xproto

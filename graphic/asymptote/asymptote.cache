@@ -40,5 +40,5 @@
 [DEP] tar
 [DEP] tetex
 [DEP] texinfo
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] zlib

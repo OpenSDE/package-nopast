@@ -64,7 +64,7 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xfce4-appfinder
 [DEP] xfconf
 [DEP] xfprint

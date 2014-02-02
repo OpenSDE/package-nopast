@@ -23,5 +23,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] time
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] zlib

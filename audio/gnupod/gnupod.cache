@@ -30,5 +30,5 @@
 [DEP] tar
 [DEP] texinfo
 [DEP] timidity++
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] vorbis-tools

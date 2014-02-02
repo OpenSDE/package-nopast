@@ -89,7 +89,7 @@
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wavpack
 [DEP] wxpython
 [DEP] xextproto

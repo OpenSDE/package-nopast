@@ -81,7 +81,7 @@
 [DEP] speex
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] videoproto
 [DEP] xextproto
 [DEP] xineramaproto

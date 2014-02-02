@@ -28,7 +28,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcl
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] valgrind
 [DEP] xz
 [DEP] zlib

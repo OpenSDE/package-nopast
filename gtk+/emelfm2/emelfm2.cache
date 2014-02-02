@@ -52,5 +52,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] tsclient
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto

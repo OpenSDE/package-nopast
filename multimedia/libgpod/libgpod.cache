@@ -65,7 +65,7 @@
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] vte
 [DEP] wxpython
 [DEP] xz

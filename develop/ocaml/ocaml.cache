@@ -26,6 +26,6 @@
 [DEP] tar
 [DEP] tcl
 [DEP] tk
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto
 [DEP] zlib

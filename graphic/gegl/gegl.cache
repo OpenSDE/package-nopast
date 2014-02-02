@@ -63,7 +63,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] tex-ttf
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto
 [DEP] xz
 [DEP] zlib

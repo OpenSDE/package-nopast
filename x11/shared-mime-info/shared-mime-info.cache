@@ -27,4 +27,4 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] usbutils
-[DEP] util-linux-ng
+[DEP] util-linux

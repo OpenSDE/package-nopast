@@ -79,6 +79,6 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto
 [DEP] zlib

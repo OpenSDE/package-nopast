@@ -92,7 +92,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] thunar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] vte
 [DEP] xextproto
 [DEP] xfce-utils

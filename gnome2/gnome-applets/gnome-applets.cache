@@ -123,7 +123,7 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxpython
 [DEP] xextproto
 [DEP] xorg-cf-files

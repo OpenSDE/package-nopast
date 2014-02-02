@@ -28,7 +28,7 @@
 [DEP] sed
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxwidgets
 [DEP] xorg-cf-files
 [DEP] xproto

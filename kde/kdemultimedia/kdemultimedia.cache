@@ -75,6 +75,6 @@
 [DEP] sysfiles
 [DEP] taglib
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xine-lib
 [DEP] xz

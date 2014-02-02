@@ -28,4 +28,4 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcp_wrappers
-[DEP] util-linux-ng
+[DEP] util-linux

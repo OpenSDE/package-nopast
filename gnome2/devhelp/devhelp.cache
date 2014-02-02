@@ -98,7 +98,7 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] webkit
 [DEP] wxpython
 [DEP] xextproto

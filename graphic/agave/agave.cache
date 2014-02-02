@@ -110,5 +110,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] totem
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto

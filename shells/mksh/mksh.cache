@@ -18,4 +18,4 @@
 [DEP] linux-header
 [DEP] sed
 [DEP] sysfiles
-[DEP] util-linux-ng
+[DEP] util-linux

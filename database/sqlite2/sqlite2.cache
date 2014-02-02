@@ -22,5 +22,5 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] tcl
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xz

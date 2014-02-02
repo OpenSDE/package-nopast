@@ -91,7 +91,7 @@
 [DEP] startup-notification
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] vte
 [DEP] xfce-utils
 [DEP] xfce4-appfinder

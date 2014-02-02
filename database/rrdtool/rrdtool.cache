@@ -43,7 +43,7 @@
 [DEP] tar
 [DEP] tcl
 [DEP] tcp_wrappers
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xproto
 [DEP] xz
 [DEP] zlib

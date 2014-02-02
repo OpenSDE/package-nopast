@@ -138,7 +138,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] totem-pl-parser
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] vala
 [DEP] vte
 [DEP] wxpython

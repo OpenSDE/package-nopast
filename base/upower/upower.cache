@@ -67,6 +67,6 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] udev
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxpython
 [DEP] zlib

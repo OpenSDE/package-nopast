@@ -53,7 +53,7 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] texi2html
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxpython
 [DEP] xproto
 [DEP] yasm

@@ -22,6 +22,6 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] texinfo
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xz
 [DEP] zlib

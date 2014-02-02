@@ -79,7 +79,7 @@
 [DEP] tar
 [DEP] udisks
 [DEP] upower
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxpython
 [DEP] xproto
 [DEP] zlib

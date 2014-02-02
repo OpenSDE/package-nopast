@@ -94,7 +94,7 @@
 [DEP] sysfiles
 [DEP] sysvinit
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxpython
 [DEP] xdm
 [DEP] xextproto

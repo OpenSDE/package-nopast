@@ -32,6 +32,6 @@
 [DEP] sysfiles
 [DEP] tar
 [DEP] trapproto
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xextproto
 [DEP] xproto

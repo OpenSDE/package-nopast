@@ -82,7 +82,7 @@
 [DEP] strigi
 [DEP] sysfiles
 [DEP] tar
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xextproto
 [DEP] xproto
 [DEP] xz

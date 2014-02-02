@@ -60,7 +60,7 @@
 [DEP] tar
 [DEP] tetex
 [DEP] texinfo
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] wxwidgets
 [DEP] xemacs
 [DEP] xemacs-packages

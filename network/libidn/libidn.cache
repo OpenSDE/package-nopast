@@ -28,5 +28,5 @@
 [DEP] tar
 [DEP] texinfo
 [DEP] tzdata
-[DEP] util-linux-ng
+[DEP] util-linux
 [DEP] xz
