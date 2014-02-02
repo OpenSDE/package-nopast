@@ -32,7 +32,7 @@
 [L] GPL
 [S] Stable
 [V] 3.10.28
-[P] X -?---5---9 102.060
+[P] X -?---5---9 110.000
 
 [D] 502805126 linux-3.10.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v3.0/
 [D] 4280693713 patch-3.10.28.xz http://kernel.org/pub/linux/kernel/v3.0/
