@@ -19,6 +19,7 @@
 [T] It is used in various programs to display full human-readable names instead
 [T] of cryptic numeric codes.
 
+[U] http://pci-ids.ucw.cz/
 [U] http://pciids.sourceforge.net/
 
 [A] Martin Mares <mj@ucw.cz>
