@@ -1,0 +1,13 @@
+
+[TIMESTAMP] 1393962831 Tue Mar  4 20:53:51 2014
+[BUILDTIME] 0 (5)
+[SIZE] 0.14 MB, 14 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] coreutils
+[DEP] gcc
+[DEP] glibc
+[DEP] linux-header
+[DEP] make
+[DEP] sysfiles
