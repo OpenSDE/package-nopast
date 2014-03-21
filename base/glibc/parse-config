@@ -12,6 +12,8 @@
 # GNU General Public License can be found in the file COPYING.
 # --- SDE-COPYRIGHT-NOTE-END ---
 
-if atstage cross; then
-	var_append configcachefile ' ' "$base/package/*/glibc/share/config.cache"
+if [ "$SDECFG_LIBC" == "glibc" ]; then
+	if atstage cross; then
+		var_append configcachefile ' ' "$base/package/*/glibc/share/config.cache"
+	fi
 fi
