@@ -53,6 +53,7 @@ libc_cv_forced_unwind=yes
 libc_cv_c_cleanup=yes
 libc_cv_gcc_exceptions=yes
 ## for coreutils 7.4 cross compilation
+## http://bugs.gentoo.org/show_bug.cgi?id=269256
 gl_cv_func_re_compile_pattern_working=yes
 gl_cv_func_rename_trailing_dest_slash_bug=no
 gl_cv_func_rename_trailing_slash_bug=no
