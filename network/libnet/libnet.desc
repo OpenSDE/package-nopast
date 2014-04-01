@@ -23,9 +23,11 @@
 [T] at the IP layer and link layer, as well as a host of supplementary
 [T] and complementary functionality.
 
-[U] http://packetfactory.openwall.net/projects/libnet/
+[U] https://github.com/sam-github/libnet
+[U] https://sourceforge.net/projects/libnet-dev/
 
-[A] Mike D. Schiffman <mike@infonexus.com>
+[A] Sam Roberts <vieuxtech@gmail.com>
+[A] Mike D. Schiffman <mike@infonexus.com> (original author)
 [M] The OpenSDE Community <list@opensde.org>
 
 [C] extra/network
@@ -33,7 +35,7 @@
 
 [L] BSD
 [S] Stable
-[V] 1.1.2.1
+[V] 1.1.6
 [P] X -?---5---9 115.500
 
-[D] 1190536047 libnet-1.1.2.1.tar.gz !http://packetfactory.openwall.net/libnet/dist/libnet.tar.gz
+[D] 487512952 libnet-1.1.6.tar.gz http://dl.sourceforge.net/sourceforge/libnet-dev/
