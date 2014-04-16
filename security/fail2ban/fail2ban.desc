@@ -28,7 +28,7 @@
 
 [L] GPL
 [S] Stable
-[V] 0.8.12
+[V] 0.9.0
 [P] X -----5---9 800.000
 
-[D] 2713161849 fail2ban_0.8.12.tar.gz !https://codeload.github.com/fail2ban/fail2ban/tar.gz/0.8.12
+[D] 1097288068 fail2ban_0.9.0.tar.gz !https://codeload.github.com/fail2ban/fail2ban/tar.gz/0.9.0
