@@ -180,6 +180,9 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 	expat)
 		hook_add postpatch 6 'musl_fix_configsub conftools/config.sub'
 		;;
+	bdb)
+		hook_add postpatch 6 'musl_fix_configsub dist/config.sub'
+		;;
 	libtool)
 		hook_add preconf 9 'musl_findall_fix_configsub'
 		;;
