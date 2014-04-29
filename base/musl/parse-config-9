@@ -204,6 +204,14 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 			pkg_musl_pkg=${pkg} ;;
 	esac
 
+	if atstage toolchain; then
+		pkg_musl_toolchain_patches=$( ls -1 $pkg_musl_dir/pkg/$pkg_musl_pkg/*.patch.toolchain 2> /dev/null | tr '\n' ' ' )
+		if [ -n "$pkg_musl_toolchain_patches" ]; then
+			echo_status "Appending musl libc specific toolchain patches"
+			var_append patchfiles ' ' "$pkg_musl_toolchain_patches"
+		fi
+	fi
+
 	pkg_musl_patches=$( ls -1 $pkg_musl_dir/pkg/$pkg_musl_pkg/*.patch 2> /dev/null | tr '\n' ' ' )
 	if [ -n "$pkg_musl_patches" ]; then
 		echo_status "musl: appending patches ..."
