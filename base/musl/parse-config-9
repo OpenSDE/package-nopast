@@ -198,8 +198,6 @@ if [ "$SDECFG_LIBC" == "musl" ]; then
 
 	# same package translations to look for patches
 	case "$pkg" in
-		linux*|linux-header)
-			pkg_musl_pkg=linux ;;
 		*)
 			pkg_musl_pkg=${pkg} ;;
 	esac
