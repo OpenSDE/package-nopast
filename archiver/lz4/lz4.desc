@@ -19,7 +19,8 @@
 [T] an extremely fast decoder, with speed in multiple GB/s per core, typically
 [T] reaching RAM speed limits on multi-core systems.
 
-[U] https://dl.dropboxusercontent.com/u/59565338/LZ4
+[U] http://fastcompression.blogspot.com/p/lz4.html
+[U] https://code.google.com/p/lz4/
 
 [A] Yann Collet
 [M] Christian Wiese <chris@opensde.org>
