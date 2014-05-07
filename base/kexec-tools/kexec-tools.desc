@@ -22,7 +22,7 @@
 [T] firmware is not performed during a kexec boot.
 [T] This has the effect of reducing the time required for a reboot.
 
-[U] https://www.kernel.org/pub/linux/utils/kernel/kexec
+[U] http://horms.net/projects/kexec/
 
 [A] Simon Horman <horms@verge.net.au> (current maintainer)
 [A] Eric Biederman <ebiederman@xmission.com> (original author)
