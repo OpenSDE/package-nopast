@@ -23,7 +23,7 @@
 [T] all of your systems cpus in a fair manner, keeping system performance more
 [T] predictable and constant.
 
-[U] http://irqbalance.googlecode.com
+[U] https://github.com/Irqbalance/irqbalance
 
 [A] Arjan van de Ven <arjanvandeven@gmail.com>
 [M] The OpenSDE Community <list@opensde.org>
@@ -32,7 +32,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.0.5
+[V] 1.0.7
 [P] X -?---5---9 800.000
 
-[D] 3612971831 irqbalance-1.0.5.tar.gz http://irqbalance.googlecode.com/files/
+[D] 951997075 irqbalance-1.0.7.tar.gz !https://github.com/Irqbalance/irqbalance/archive/v1.0.7.tar.gz
