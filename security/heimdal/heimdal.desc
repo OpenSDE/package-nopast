@@ -26,7 +26,6 @@
 [U] http://www.h5l.org
 
 [A] Jimmy Engelbrecht
-[M] The OpenSDE Community <list@opensde.org>
 [M] Alejandro Mery <amery@opensde.org>
 
 [C] extra/network
@@ -38,6 +37,5 @@
 [V] 1.5.3
 [P] O ??-3-5---9 116.300
 
-[D] 2766492014 heimdal-1.5.3.tar.gz https://github.com/heimdal/heimdal/archive/
-#[D] 1646049764 heimdal-1.5.2.tar.gz http://www.h5l.org/dist/src/
+[D] 950774334 heimdal-1.5.3-orig.tar.gz !http://www.h5l.org/dist/src/heimdal-1.5.3.tar.gz
 [D] 2458771974 krb5-kdc.schema http://www.stanford.edu/services/directory/openldap/configuration/
