@@ -13,22 +13,21 @@
 # Foundation; either version 2 of the License, or (at your option) any later
 # version.
 # --- SDE-COPYRIGHT-NOTE-END ---
-
---- ./src/Makefile.orig	2014-01-24 13:37:31.226403034 +0100
-+++ ./src/Makefile	2014-01-24 13:50:47.760823361 +0100
+--- ./src/Makefile.orig	2014-08-12 16:23:09.612649037 +0200
++++ ./src/Makefile	2014-08-12 16:28:04.227457692 +0200
 @@ -16,9 +16,9 @@
  # For some known distributions we do not build all programs, otherwise we do.
  BIN	=
- SBIN	= init halt shutdown runlevel killall5 fstab-decode
+ SBIN	= halt shutdown killall5 fstab-decode
 -USRBIN	= last mesg
 +USRBIN	=
  
 -MAN1	= last.1 lastb.1 mesg.1
 +MAN1	=
  MAN5	= initscript.5 inittab.5
- MAN8	= halt.8 init.8 killall5.8 pidof.8 poweroff.8 reboot.8 runlevel.8
+ MAN8	= halt.8 killall5.8 pidof.8 poweroff.8 reboot.8
  MAN8	+= shutdown.8 telinit.8 fstab-decode.8
-@@ -155,9 +155,6 @@
+@@ -162,9 +162,6 @@
  		ln -sf halt $(ROOT)/sbin/poweroff
  		ln -sf init $(ROOT)/sbin/telinit
  		ln -sf /sbin/killall5 $(ROOT)/bin/pidof
