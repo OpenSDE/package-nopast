@@ -29,10 +29,10 @@
 
 [L] PublicDomain
 [S] Stable
-[V] 2014e
+[V] 2014f
 [P] X -1---5---9 120.000
 
 [CV-URL] http://www.iana.org/time-zones
 
-[D] 3905536743 tzcode2014e.tar.gz http://www.iana.org/time-zones/repository/releases/
-[D] 1212530570 tzdata2014e.tar.gz http://www.iana.org/time-zones/repository/releases/
+[D] 476965246 tzcode2014f.tar.gz http://www.iana.org/time-zones/repository/releases/
+[D] 597442415 tzdata2014f.tar.gz http://www.iana.org/time-zones/repository/releases/
