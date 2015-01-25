@@ -41,6 +41,13 @@ char * clean_env[] = {
 	NULL
 };
 
+#ifndef __SIGRTMIN
+#define __SIGRTMIN 32
+#endif
+#ifndef __SIGRTMAX
+#define __SIGRTMAX (NSIG-1)
+#endif
+
 /* See bits/resource.h and asm/resource.h */
 struct rlimit rlim_cpu      = { RLIM_INFINITY, RLIM_INFINITY };
 struct rlimit rlim_fsize    = { RLIM_INFINITY, RLIM_INFINITY };

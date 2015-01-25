@@ -1,0 +1,10 @@
+--- ./src/init.c.orig	2015-01-25 22:33:52.743426372 +0100
++++ ./src/init.c	2015-01-25 22:50:05.813855605 +0100
+@@ -49,6 +49,7 @@
+ #include <utmp.h>
+ #include <ctype.h>
+ #include <stdarg.h>
++#include <sys/ttydefaults.h>
+ #include <sys/syslog.h>
+ #include <sys/time.h>
+ 
